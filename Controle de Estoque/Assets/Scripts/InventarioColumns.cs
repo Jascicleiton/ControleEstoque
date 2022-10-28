@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
 public class InventarioColumns
 {
     public string Entrada;
-    public int Patrimônio;
+    public string Patrimônio;
     public string Status;
     public string Serial;
     public string Categoria;
