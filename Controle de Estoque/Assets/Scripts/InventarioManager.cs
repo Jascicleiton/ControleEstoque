@@ -7,10 +7,10 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 
-public class InventarioManager : MonoBehaviour
+public class InventarioManager : Singleton<InventarioManager>
 {
-    public TextAsset inventarioCSV;
-    public InventarioListSO inventario;
+    public TextAsset sheetCSV;
+    private CSVSheetToUnity sheet;
     string fileName = "";
     [SerializeField] GameObject addPanel;
     [SerializeField] GameObject removePanel;
@@ -32,109 +32,138 @@ public class InventarioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ImportCSVToSO();
-        fileName = Application.dataPath + "/Inventario_Sysnetpro.csv";
-        txt.text = inventario.item.Count.ToString();
-        CreateSheet();
+        sheet = new CSVSheetToUnity();
+        //txt.text = sheet.item.Count.ToString();   
+        // ImportInventarioToDatabase(10);
     }
 
-    private void CreateSheet()
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            sheet = InternalDatabase.database[ConstStrings.InventarioSnPro];
+        }
+        
+    }
+
+    /// <summary>
+    /// Creates an Inventário_Sysnetpro CSV file
+    /// </summary>
+    private void CreateInventarioSheet()
+    {
+        fileName = Application.dataPath + "/" + ConstStrings.InventarioSnPro + ".csv";
         TextWriter textWriter = new StreamWriter(fileName, false);
         textWriter.WriteLine("Entrada, Patrimônio, Status, Serial, Categoria, " +
                         "Fabricante, Modelo, Local, Saída, Observação");
         textWriter.Close();
-        foreach (InventarioColumns item in inventario.item)
+        if (InternalDatabase.Instance != null)
         {
-            textWriter = new StreamWriter(fileName, true);
-            textWriter.WriteLine(item.Entrada + "," + item.Patrimônio + "," + item.Status + "," +
-                item.Serial + "," + item.Categoria + "," + item.Fabricante + "," +
-                item.Modelo + "," + item.Local + "," + item.Saída + "," + item.Observação);
-            
-        }
-        textWriter.Close();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            addPanel.SetActive(true);
-            removePanel.SetActive(false);
-        }
-        if(Input.GetKeyDown(KeyCode.F6))
-        {
-            addPanel.SetActive(false);
-            removePanel.SetActive(true);
-        }
-    }
-
-    public void ImportCSVToSO()
-    {        
-            string[] data = inventarioCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-
-            int tableSize = data.Length / 10 - 1;
-            InventarioColumns[] temp = new InventarioColumns[tableSize];
-            for (int i = 0; i < tableSize; i++)
+            sheet = InternalDatabase.database[ConstStrings.InventarioSnPro];
+            if (sheet != null)
             {
-                temp[i] = new InventarioColumns();
-                temp[i].Entrada = data[10 * (i + 1)];
-                temp[i].Patrimônio = data[10 * (i + 1) +1];
-                temp[i].Status = data[10 * (i + 1) + 2];
-                temp[i].Serial = data[10 * (i + 1) + 3];
-                temp[i].Categoria = data[10 * (i + 1) + 4];
-                temp[i].Fabricante = data[10 * (i + 1) + 5];
-                temp[i].Modelo = data[10 * (i + 1) + 6];
-                temp[i].Local = data[10 * (i + 1) + 7];
-                temp[i].Saída = data[10 * (i + 1) + 8];
-                temp[i].Observação = data[10 * (i + 1) + 9];
-            }
-            inventario.item = temp.ToList();   
-    }
-    public void AddNewItem()
-    {
-        
-        AddNewItem(entrada_txt.text, patrimonio_txt.text, status_txt.text, serial_txt.text, categoria_txt.text, fabricante_txt.text, modelo_txt.text, local_txt.text, saida_txt.text, observacao_txt.text);
-    }
-
-    public void AddNewItem(string Entrada, string Patrimônio, string Status, string Serial, string Categoria, string Fabricante, string Modelo, string Local, string Saída, string Observação)
-    {
-        if(inventario != null && inventario.item.Count > 0)
-        {
-            InventarioColumns temp = new InventarioColumns();
-            temp.Entrada = Entrada;
-            temp.Patrimônio = Patrimônio;
-            temp.Status = Status;
-            temp.Serial = Serial;
-            temp.Categoria = Categoria;
-            temp.Fabricante = Fabricante;
-            temp.Modelo = Modelo;
-            temp.Local = Local;
-            temp.Saída = Saída;
-            temp.Observação = Observação;
-            inventario.item.Add(temp);
-            
-            TextWriter textWriter = new StreamWriter(fileName, true);
-            textWriter.WriteLine(temp.Entrada + "," + temp.Patrimônio + "," + temp.Status + "," +
-                temp.Serial + "," + temp.Categoria + "," + temp.Fabricante + "," +
-                temp.Modelo + "," + temp.Local + "," + temp.Saída + "," + temp.Observação);
-            textWriter.Close();
-            txt.text = inventario.item.Count.ToString();
-            
-        }
-    }
-
-    public void RemoveItem()
-    {
-        foreach (InventarioColumns item in inventario.item)
-        {
-            if (item.Patrimônio == rem_patrimonio_txt.text)
-            {
-                if(item.Serial == rem_serial_txt.text)
+                foreach (SheetColumns item in sheet.item)
                 {
-                    inventario.item.Remove(item);
+                    textWriter = new StreamWriter(fileName, true);
+                    textWriter.WriteLine(item.Entrada + "," + item.Patrimonio + "," + item.Status + "," +
+                        item.Serial + "," + item.Categoria + "," + item.Fabricante + "," +
+                        item.Modelo + "," + item.Local + "," + item.Saida + "," + item.Observacao);
+
                 }
             }
         }
-        CreateSheet();
+        textWriter.Close();
+    }
+
+    /// <summary>
+    /// Import Inventario_SnPro.csv into the internal database
+    /// </summary>
+    public void ImportInventarioToDatabase(int numberOfColumns)
+    {
+        string[] data = sheetCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+
+        // it takes one off, because the first row is ignored
+        int tableSize = data.Length / numberOfColumns - 1;
+        sheet.item = new List<SheetColumns>();
+        for (int i = 0; i < tableSize; i++)
+        {
+            sheet.item.Add(new SheetColumns());
+            sheet.item[i].Entrada = data[4 * (i + 1)];
+            sheet.item[i].Patrimonio = data[4 * (i + 1) + 1];
+            sheet.item[i].Status = data[4 * (i + 1) + 2];
+            sheet.item[i].Serial = data[4 * (i + 1) + 3];
+            sheet.item[i].Categoria = data[4 * (i + 1) + 4];
+            sheet.item[i].Fabricante = data[4 * (i + 1) + 5];
+            sheet.item[i].Modelo = data[4 * (i + 1) + 6];
+            sheet.item[i].Local = data[4 * (i + 1) + 7];
+            sheet.item[i].Saida = data[4 * (i + 1) + 8];
+            sheet.item[i].Observacao = data[4 * (i + 1) + 9];
+        }
+        InternalDatabase.database.Add(ConstStrings.InventarioSnPro, sheet);
+        
+    }
+
+    public void AddNewItem(string sheetName)
+    {
+        switch (sheetName)
+        {
+            case ConstStrings.InventarioSnPro:
+                AddNewItem(entrada_txt.text, patrimonio_txt.text, status_txt.text, serial_txt.text, categoria_txt.text, fabricante_txt.text, modelo_txt.text, local_txt.text, saida_txt.text, observacao_txt.text);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Add new item into Inventário SnPro inside database
+    /// </summary>
+    public void AddNewItem(string Entrada, string Patrimônio, string Status, string Serial, string Categoria, string Fabricante, string Modelo, string Local, string Saída, string Observação)
+    {
+        SheetColumns temp = new SheetColumns();
+        temp.Entrada = Entrada;
+        temp.Patrimonio = Patrimônio;
+        temp.Status = Status;
+        temp.Serial = Serial;
+        temp.Categoria = Categoria;
+        temp.Fabricante = Fabricante;
+        temp.Modelo = Modelo;
+        temp.Local = Local;
+        temp.Saida = Saída;
+        temp.Observacao = Observação;
+        InternalDatabase.database[ConstStrings.InventarioSnPro].item.Add(temp);
+
+    }
+
+    // Testing
+    public void RemoveItem()
+    {
+        RemoveItem(ConstStrings.InventarioSnPro, "Patrimonio");
+    }
+
+    public void RemoveItem(string sheetName, string referenceToCheck)
+    {
+        sheetName = ConstStrings.InventarioSnPro;
+        foreach (SheetColumns item in InternalDatabase.database[sheetName].item)
+        {
+            if(referenceToCheck == "Patrimonio")
+            {
+                if (item.Patrimonio == rem_patrimonio_txt.text)
+                {
+                    InternalDatabase.database[sheetName].item.Remove(item);
+                }
+            }
+            else if (referenceToCheck == "Serial")
+            {
+                if (item.Serial == rem_serial_txt.text)
+                {
+                    InternalDatabase.database[sheetName].item.Remove(item);
+                }
+            }
+
+            
+
+
+        }
+        
     }
 }
