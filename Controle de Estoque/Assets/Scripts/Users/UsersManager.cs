@@ -22,7 +22,7 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
     private void Start()
     {
         savingWrapper = FindObjectOfType<SavingWrapper>();
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     public void  AddNewUser(User userToAdd)
@@ -35,7 +35,7 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
         }
         else
         {
-            savingWrapper.Save();
+            savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
         }
     }
 

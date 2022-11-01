@@ -277,5 +277,48 @@ public class MainMenuManager : MonoBehaviour
     {
         errorPanel.SetActive(false);
         inputEnabled = isEnabled;
-    }    
+    }
+
+    /// <summary>
+    /// show or hide the password
+    /// </summary>
+    public void ShowHidePassword(bool showPassword)
+    {
+        if(newUserPanel.activeInHierarchy)
+        {
+            if(addNewPasswordInput.contentType == TMP_InputField.ContentType.Password)
+            {
+                addNewPasswordInput.contentType = TMP_InputField.ContentType.Standard;
+            }
+            else
+            {
+                addNewPasswordInput.contentType = TMP_InputField.ContentType.Password;
+            }
+            addNewPasswordInput.ForceLabelUpdate();
+        }
+        if(adminAuthorizationPanel.activeInHierarchy)
+        {
+            if (adminPasswordInput.contentType == TMP_InputField.ContentType.Password)
+            {
+                adminPasswordInput.contentType = TMP_InputField.ContentType.Standard;
+            }
+            else
+            {
+                adminPasswordInput.contentType = TMP_InputField.ContentType.Password;
+            }
+            adminPasswordInput.ForceLabelUpdate();
+        }
+        if (!adminAuthorizing && !adminAuthorized &&!newUserPanel.activeInHierarchy)
+        {
+            if (passwordInput.contentType == TMP_InputField.ContentType.Password)
+            {
+                passwordInput.contentType = TMP_InputField.ContentType.Standard;
+            }
+            else
+            {
+                passwordInput.contentType = TMP_InputField.ContentType.Password;
+            }
+            passwordInput.ForceLabelUpdate();
+        }
+    }
 }
