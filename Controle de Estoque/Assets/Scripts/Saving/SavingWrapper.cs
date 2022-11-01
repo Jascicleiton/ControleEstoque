@@ -13,6 +13,7 @@ namespace Saving
         private void Start()
         {
             saving = GetComponent<SavingSystem>();
+            DontDestroyOnLoad(this.gameObject);
         }
         void Update()
         {
