@@ -6,7 +6,7 @@ using UnityEngine;
 /// Each instance of this class is a differente sheet, with different informations
 /// </summary>
 [System.Serializable]
-public class CSVSheetToUnity
+public class Sheet
 {
-    public List<SheetColumns> item = new List<SheetColumns>();
+    public List<SheetColumns> itens = new List<SheetColumns>();
 }

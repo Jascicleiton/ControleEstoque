@@ -1,0 +1,21 @@
+public enum Category
+{
+    InventarioSnPro,
+    HD,
+    Memoria,
+    PlacaDeRede,
+    Idrac,
+    PlacaControladora,
+    Processador,
+    Gabinete,
+    Fonte,
+    Switch,
+    Roteador,
+    Carregador,
+    AdaptadorAC,
+    SorageNAS,
+    Gbic,
+    PlacaDeVideo,
+    PlacaDeSom,
+    PlacaDeCapturaDeVideo,
+}
