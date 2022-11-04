@@ -19,7 +19,7 @@ public class SheetColumns
     public string Observacao; // Inventário
     public string Interface; // HD, placa de rede
     public string Tamanho; // HD
-    public string FormaDeArmazenamento;
+    public string FormaDeArmazenamento; // HD
     public string CapacidadeEmGB; // HD, memória
     public string RPM; //HD
     public string VelocidadeDeLeitura; //HD

@@ -7,7 +7,11 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
 {
     public static Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
     public Sheet fullDatabase = new Sheet();
+    public Sheet testingSheet = new Sheet();
 
+    /// <summary>
+    /// Get all Sheet classes saved on splitDatabase and join them into a single Sheet class
+    /// </summary>
     public void FillFullDatabase()
     {
         Sheet inventario = new Sheet();
@@ -16,49 +20,89 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         splitDatabase.TryGetValue(ConstStrings.HD, out hd);
         Sheet memoria = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Memoria, out memoria);
-        Sheet PlacaDeRede = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.PlacaDeRede, out PlacaDeRede);
-        Sheet Idrac = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Idrac, out Idrac);
-        Sheet PlacaControladora = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.PlacaControladora, out PlacaControladora);
-        Sheet Processador = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Processador, out Processador);
-        Sheet Gabinete = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Gabinete, out Gabinete);
-        Sheet Fonte = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Fonte, out Fonte);
+        Sheet placaDeRede = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeRede, out placaDeRede);
+        Sheet idrac = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Idrac, out idrac);
+        Sheet placaControladora = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaControladora, out placaControladora);
+        Sheet processador = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Processador, out processador);
+        Sheet gabinete = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Desktop, out gabinete);
+        Sheet fonte = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Fonte, out fonte);
         Sheet Switch = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Switch, out Switch);
-        Sheet Roteador = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Roteador, out Roteador);
-        Sheet Carregador = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Carregador, out Carregador);
-        Sheet AdaptadorAC = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.AdaptadorAC, out AdaptadorAC);
-        Sheet StorageNAS = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.StorageNAS, out StorageNAS);
-        Sheet Gbic = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Gbic, out Gbic);
-        Sheet PlacaDeVideo = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.PlacaDeVideo, out PlacaDeVideo);
-        Sheet PlacaDeSom = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.PlacaDeSom, out PlacaDeSom);
-        Sheet PlacaDeCapturaDeVideo = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.PlacaDeCapturaDeVideo, out PlacaDeCapturaDeVideo);
+        Sheet roteador = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Roteador, out roteador);
+        Sheet carregador = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Carregador, out carregador);
+        Sheet adaptadorAC = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.AdaptadorAC, out adaptadorAC);
+        Sheet storageNAS = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.StorageNAS, out storageNAS);
+        Sheet gbic = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Gbic, out gbic);
+        Sheet placaDeVideo = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeVideo, out placaDeVideo);
+        Sheet placaDeSom = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeSom, out placaDeSom);
+        Sheet placaDeCapturaDeVideo = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeCapturaDeVideo, out placaDeCapturaDeVideo);
 
         // Get all itens from "Inventario SnPro into the full database
-        foreach (SheetColumns item in inventario.itens)
+        if (inventario != null && inventario.itens.Count > 0)
         {
-            fullDatabase.itens.Add(item);
+            foreach (SheetColumns item in inventario.itens)
+            {
+                fullDatabase.itens.Add(item);
+            }
         }
 
         // Get the values of the detail sheet based on the "modelo" of the item on Inventario SnPro
         foreach (SheetColumns item in fullDatabase.itens)
         {
-            
-        }
+            if (item.Categoria.Trim() == ConstStrings.HD.Trim())
+            {
+                if (hd != null && hd.itens.Count > 0)
+                {
+                    foreach (SheetColumns hdItem in hd.itens)
+                    {
+                        
+                        if (item.Modelo.Trim().Equals(hdItem.Modelo.Trim()))
+                        {
+                            item.Interface = hdItem.Interface;
+                            item.Tamanho = hdItem.Tamanho;
+                            item.FormaDeArmazenamento = hdItem.FormaDeArmazenamento;
+                            item.CapacidadeEmGB = hdItem.FormaDeArmazenamento;
+                            item.RPM = hdItem.RPM;
+                            item.VelocidadeDeLeitura = hdItem.VelocidadeDeLeitura;
+                            item.Enterprise = hdItem.Enterprise;
+                           Debug.Log("Found");
+                            //Debug.LogWarning(fullDatabase.itens.IndexOf(item));
+                        }
+                        //else
+                        //{
+                        //    Debug.Log(item.Modelo.Length);
+                        //    Debug.LogWarning(fullDatabase.itens.IndexOf(item));
+                        //    Debug.Log(hdItem.Modelo.Length);
+                        //    Debug.LogWarning(hd.itens.IndexOf(hdItem));
+                        //}
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("hd não encontrado");
+                }
+            }
         
+            //else if(item.Categoria == ConstStrings.Memoria)
+            //{
+
+            //}
+        }
+
     }
 
     public object CaptureState()

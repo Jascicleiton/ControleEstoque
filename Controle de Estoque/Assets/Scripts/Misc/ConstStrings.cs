@@ -11,13 +11,13 @@ public class ConstStrings
 
     #region Sheets names
     public const string InventarioSnPro = "Inventário SnPro";
-    public const string HD = "Inventário SnPro";
+    public const string HD = "HD";
     public const string Memoria = "Memória";
     public const string PlacaDeRede = "Placa de rede";
     public const string Idrac = "iDrac";
     public const string PlacaControladora = "Placa controladora";
     public const string Processador = "Processador";
-    public const string Gabinete = "Gabinete";
+    public const string Desktop = "Desktop";
     public const string Fonte = "Fonte";
     public const string Switch = "Switch";
     public const string Roteador = "Roteador";

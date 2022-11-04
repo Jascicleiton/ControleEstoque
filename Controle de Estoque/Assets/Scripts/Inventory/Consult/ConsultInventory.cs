@@ -34,8 +34,8 @@ public class ConsultInventory : MonoBehaviour
             case ConstStrings.Processador:
                 InternalDatabase.splitDatabase.TryGetValue(ConstStrings.Processador, out sheetToReturn);
                 break;
-            case ConstStrings.Gabinete:
-                InternalDatabase.splitDatabase.TryGetValue(ConstStrings.Gabinete, out sheetToReturn);
+            case ConstStrings.Desktop:
+                InternalDatabase.splitDatabase.TryGetValue(ConstStrings.Desktop, out sheetToReturn);
                 break;
             case ConstStrings.Fonte:
                 InternalDatabase.splitDatabase.TryGetValue(ConstStrings.Fonte, out sheetToReturn);

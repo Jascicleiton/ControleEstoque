@@ -1,0 +1,13 @@
+﻿Modelo,Soquete,Nº Núcleos Físicos,Nº Núcleos lógicos,Aceita virtualização,Turbo Boost,Hyper-Threading,Estoque,Local
+E5645,LGA1366,6,12,sim,1.0,sim,#REF!,
+X5550,LGA1366,4,8,sim,1.0,sim,#REF!,
+E5-2630L,LGA2011,6,12,sim,2.0,sim,#REF!,
+E7-4870,LGA1567,10,20,sim,1.0,sim,#REF!,
+E5620,LGA1366,4,8,sim,1.0,sim,#REF!,
+i3-2120,LGA1155,2,4,sim,não,sim,#REF!,
+Pentium G620,LGA1155,2,2,sim,não,não,#REF!,
+X5355,,,,,,,2,1046
+x5458,,,,,,,2,1047
+Intel Xeon E4,,,,,,,1,70
+e5410,,,,,,,2,69
+E5-2440 V2,,,,,,,2,1055
