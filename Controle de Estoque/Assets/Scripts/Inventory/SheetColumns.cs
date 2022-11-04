@@ -18,7 +18,7 @@ public class SheetColumns
     public string Saida; // todos
     public string Observacao; // Inventário
     public string Interface; // HD, placa de rede
-    public string Tamanho; // HD
+    public string Tamanho; // HD, Storage NAS
     public string FormaDeArmazenamento; // HD
     public string CapacidadeEmGB; // HD, memória
     public string RPM; //HD
@@ -33,14 +33,14 @@ public class SheetColumns
     public string TaxaDeTransmissao; // memória
     public string Símbolo; // memória
     public string QuantidadeDePortas; // Placa de rede, Placa controladora, switch, Roteador, Placa de Vídeo, Placa de captura de vídeo
-    public string QuaisConexoes; // Placa de rede, Placa de Vídeo
+    public string QuaisConexoes; // Placa de rede, Placa de Vídeo, iDrac, Placa controladora
     public string SuportaFibraOptica; // placa de rede
     public string Desempenho; // placa de rede, Switch, GBIC
     public string VelocidadeGBs; // iDrac
     public string EntradaSD; // iDrac
     public string ServidoresSuportados; // iDrac
     public string TipoDeRAID; // placa controladora, Storage NAS
-    public string TipoDeHD; // placa controladora, Strorage NAS
+    public string TipoDeHD; // placa controladora, Storage NAS
     public string CapacidadeMaxHD; // placa controladora, Storage NAS
     public string AteQuantosHDs; // placa controladora, Servidores, Storage NAS
     public string BateriaInclusa; // placa controladora

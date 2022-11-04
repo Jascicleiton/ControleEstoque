@@ -44,16 +44,22 @@ public class InventarioManager : Singleton<InventarioManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+
         //txt.text = sheet.item.Count.ToString();   
-        ImportInventarioToDatabase(10);
-        ImportHDSheetToDatabase(11);
+        ImportSheets();
+        InternalDatabase.Instance.FillFullDatabase(); // for testing
     }
 
     private void Update()
     {
 
 
+    }
+
+    private void ImportSheets()
+    {
+        ImportInventarioToDatabase(10);
+        ImportHDSheetToDatabase(11);
     }
 
     /// <summary>
@@ -140,13 +146,9 @@ public class InventarioManager : Singleton<InventarioManager>
             SheetColumns newRow = new SheetColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
-            newRow.Modelo.Trim();
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
-            newRow.Fabricante.Trim();
             newRow.Interface = data[numberOfColumns * (i + 1) + 2];
-            newRow.Interface.Trim();
             newRow.Tamanho = data[numberOfColumns * (i + 1) + 3];
-            newRow.Tamanho.Trim();
             newRow.FormaDeArmazenamento = data[numberOfColumns * (i + 1) + 4];
             newRow.CapacidadeEmGB = data[numberOfColumns * (i + 1) + 5];
             newRow.RPM = data[numberOfColumns * (i + 1) + 6];
@@ -154,6 +156,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.Enterprise = data[numberOfColumns * (i + 1) + 8];
             newRow.Local = data[numberOfColumns * (i + 1) + 9];
             newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 10];
+
             tempSheet.itens.Add(newRow);
         }
 
@@ -165,10 +168,368 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.splitDatabase[ConstStrings.HD] = tempSheet;
         }
-        InternalDatabase.Instance.testingSheet = tempSheet;
-        InternalDatabase.Instance.FillFullDatabase(); // for testing
+        
+        
     }
 
+    /// <summary>
+    /// Import Memória.csv into the internal database
+    /// </summary>
+    public void ImportMemoriaToDatabase(int numberOfColumns)
+    {
+        string[] data = memoriaCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
+            newRow.Tipo = data[numberOfColumns * (i + 1) + 2];
+            newRow.CapacidadeEmGB = data[numberOfColumns * (i + 1) + 3];
+            newRow.VelocidadeMHz = data[numberOfColumns * (i + 1) + 4];
+            newRow.LowVoltage = data[numberOfColumns * (i + 1) + 5];
+            newRow.Rank = data[numberOfColumns * (i + 1) + 6];
+            newRow.DIMM = data[numberOfColumns * (i + 1) + 7];
+            newRow.TaxaDeTransmissao = data[numberOfColumns * (i + 1) + 8];
+            newRow.Símbolo = data[numberOfColumns * (i + 1) + 9];
+            newRow.Local = data[numberOfColumns * (i + 1) + 10];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 11];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Memoria))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Memoria, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Memoria] = tempSheet;
+        }        
+    }
+
+    /// <summary>
+    /// Import Placa de Rede.csv into the internal database
+    /// </summary>
+    public void ImportPlacaDeRedeToDatabase(int numberOfColumns)
+    {
+        string[] data = placaDeRedeCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
+            newRow.Interface = data[numberOfColumns * (i + 1) + 2];
+            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 3];
+            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 4];
+            newRow.SuportaFibraOptica = data[numberOfColumns * (i + 1) + 5];
+            newRow.Desempenho = data[numberOfColumns * (i + 1) + 6] + " Mb/s";
+            newRow.Local = data[numberOfColumns * (i + 1) + 7];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 8];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeRede))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeRede, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.PlacaDeRede] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Placa de iDrac.csv into the internal database
+    /// </summary>
+    public void ImportiDracToDatabase(int numberOfColumns)
+    {
+        string[] data = idracCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
+            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 2];
+            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 3];
+            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 4];
+            newRow.EntradaSD = data[numberOfColumns * (i + 1) + 5];
+            newRow.ServidoresSuportados = data[numberOfColumns * (i + 1) + 6];
+            newRow.Local = data[numberOfColumns * (i + 1) + 7];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 8];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Idrac))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Idrac, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Idrac] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Placa controladora.csv into the internal database
+    /// </summary>
+    public void ImportPlacaControladoraToDatabase(int numberOfColumns)
+    {
+        string[] data = placaControladoraCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 1];
+            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 2];
+            newRow.TipoDeRAID = data[numberOfColumns * (i + 1) + 3];
+            newRow.TipoDeHD = data[numberOfColumns * (i + 1) + 4];
+            newRow.CapacidadeMaxHD = data[numberOfColumns * (i + 1) + 5];
+            newRow.AteQuantosHDs = data[numberOfColumns * (i + 1) + 6];
+            newRow.BateriaInclusa = data[numberOfColumns * (i + 1) + 7];
+            newRow.Barramento = data[numberOfColumns * (i + 1) + 8];
+            newRow.Local = data[numberOfColumns * (i + 1) + 9];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 10];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaControladora))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaControladora, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.PlacaControladora] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Processador.csv into the internal database
+    /// </summary>
+    public void ImportProcessadorToDatabase(int numberOfColumns)
+    {
+        string[] data = processadorCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Soquete = data[numberOfColumns * (i + 1) + 1];
+            newRow.NucleosFisicos = data[numberOfColumns * (i + 1) + 2];
+            newRow.NucleosLogicos = data[numberOfColumns * (i + 1) + 3];
+            newRow.AceitaVirtualizacao = data[numberOfColumns * (i + 1) + 4];
+            newRow.TurboBoost = data[numberOfColumns * (i + 1) + 5];
+            newRow.HyperThreading = data[numberOfColumns * (i + 1) + 6];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 7];
+            newRow.Local = data[numberOfColumns * (i + 1) + 8];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Processador))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Processador, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Processador] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Desktop.csv into the internal database
+    /// </summary>
+    public void ImportDesktopToDatabase(int numberOfColumns)
+    {
+        string[] data = desktopCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Patrimonio = data[numberOfColumns * (i + 1)];
+            newRow.ModeloPlacaMae = data[numberOfColumns * (i + 1) + 1];
+            newRow.Fonte = data[numberOfColumns * (i + 1) + 2];
+            newRow.Memoria = data[numberOfColumns * (i + 1) + 3];
+            newRow.HD = data[numberOfColumns * (i + 1) + 4];
+            newRow.PlacaDeVideo = data[numberOfColumns * (i + 1) + 5];
+            newRow.PlacaDeRede = data[numberOfColumns * (i + 1) + 6];
+            newRow.LeitorDeDVD = data[numberOfColumns * (i + 1) + 7];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 8];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Desktop))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Desktop, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Desktop] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Fonte.csv into the internal database
+    /// </summary>
+    public void ImportFonteToDatabase(int numberOfColumns)
+    {
+        string[] data = fonteCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Watts = data[numberOfColumns * (i + 1) + 1];
+            newRow.OndeFunciona = data[numberOfColumns * (i + 1) + 2];
+            newRow.Conectores = data[numberOfColumns * (i + 1) + 3];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 4];           
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Fonte))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Fonte, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Fonte] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Switch.csv into the internal database
+    /// </summary>
+    public void ImportSwitchToDatabase(int numberOfColumns)
+    {
+        string[] data = switchCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 1];
+            newRow.Desempenho = data[numberOfColumns * (i + 1) + 2] + " MB/s";
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 3];
+           
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Switch))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Switch, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Switch] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Roteador.csv into the internal database
+    /// </summary>
+    public void ImportRoteadorToDatabase(int numberOfColumns)
+    {
+        string[] data = roteadorCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Wireless = data[numberOfColumns * (i + 1) + 1];
+            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 2];
+            newRow.BandaMaxima = data[numberOfColumns * (i + 1) + 3];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 4];
+            
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Roteador))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Roteador, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Roteador] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Carregador.csv into the internal database
+    /// </summary>
+    public void ImportCarregadorToDatabase(int numberOfColumns)
+    {
+        string[] data = carregadorCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.OndeFunciona = data[numberOfColumns * (i + 1) + 1];
+            newRow.VoltagemDeSaida = data[numberOfColumns * (i + 1) + 2];
+            newRow.AmperagemDeSaida = data[numberOfColumns * (i + 1) + 3];
+            newRow.Local = data[numberOfColumns * (i + 1) + 4];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 5];
+            
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Carregador))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Carregador, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Carregador] = tempSheet;
+        }
+    }
 
     /// <summary>
     /// Closes all panels and open the selected panel
