@@ -56,10 +56,29 @@ public class InventarioManager : Singleton<InventarioManager>
 
     }
 
+    /// <summary>
+    /// Import all sheets to internal database
+    /// </summary>
     private void ImportSheets()
     {
         ImportInventarioToDatabase(10);
-        ImportHDSheetToDatabase(11);
+        ImportHDSheetToDatabase(10);
+        ImportMemoriaToDatabase(11);
+        ImportPlacaDeRedeToDatabase(8);
+        ImportiDracToDatabase(7);
+        ImportPlacaControladoraToDatabase(10);
+        ImportProcessadorToDatabase(8);
+        ImportDesktopToDatabase(9);
+        ImportFonteToDatabase(5);
+        ImportSwitchToDatabase(4);
+        ImportRoteadorToDatabase(5);
+        ImportCarregadorToDatabase(5);
+        ImportAdaptadorAcToDatabase(5);
+        ImportStorageNASToDatabase(7);
+        ImportGBICToDatabase(4);
+        ImportPlacaDeVideoToDatabase(4);
+        ImportPlacaDeSomToDatabase(3);
+        ImportPlacaDeCapturaDeVideoToDatabase(3);
     }
 
     /// <summary>
@@ -91,6 +110,7 @@ public class InventarioManager : Singleton<InventarioManager>
         textWriter.Close();
     }
 
+    #region Import CSV to internal database
     /// <summary>
     /// Import Inventario_SnPro.csv into the internal database
     /// </summary>
@@ -154,8 +174,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.RPM = data[numberOfColumns * (i + 1) + 6];
             newRow.VelocidadeDeLeitura = data[numberOfColumns * (i + 1) + 7];
             newRow.Enterprise = data[numberOfColumns * (i + 1) + 8];
-            newRow.Local = data[numberOfColumns * (i + 1) + 9];
-            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 10];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 9];
 
             tempSheet.itens.Add(newRow);
         }
@@ -196,8 +215,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.DIMM = data[numberOfColumns * (i + 1) + 7];
             newRow.TaxaDeTransmissao = data[numberOfColumns * (i + 1) + 8];
             newRow.Símbolo = data[numberOfColumns * (i + 1) + 9];
-            newRow.Local = data[numberOfColumns * (i + 1) + 10];
-            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 11];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 10];
 
             tempSheet.itens.Add(newRow);
         }
@@ -233,8 +251,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 4];
             newRow.SuportaFibraOptica = data[numberOfColumns * (i + 1) + 5];
             newRow.Desempenho = data[numberOfColumns * (i + 1) + 6] + " Mb/s";
-            newRow.Local = data[numberOfColumns * (i + 1) + 7];
-            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 8];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 7];
 
             tempSheet.itens.Add(newRow);
         }
@@ -250,7 +267,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Placa de iDrac.csv into the internal database
+    /// Import iDrac.csv into the internal database
     /// </summary>
     public void ImportiDracToDatabase(int numberOfColumns)
     {
@@ -270,8 +287,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 4];
             newRow.EntradaSD = data[numberOfColumns * (i + 1) + 5];
             newRow.ServidoresSuportados = data[numberOfColumns * (i + 1) + 6];
-            newRow.Local = data[numberOfColumns * (i + 1) + 7];
-            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 8];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 7];
 
             tempSheet.itens.Add(newRow);
         }
@@ -309,8 +325,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.AteQuantosHDs = data[numberOfColumns * (i + 1) + 6];
             newRow.BateriaInclusa = data[numberOfColumns * (i + 1) + 7];
             newRow.Barramento = data[numberOfColumns * (i + 1) + 8];
-            newRow.Local = data[numberOfColumns * (i + 1) + 9];
-            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 10];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 9];
 
             tempSheet.itens.Add(newRow);
         }
@@ -347,7 +362,6 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.TurboBoost = data[numberOfColumns * (i + 1) + 5];
             newRow.HyperThreading = data[numberOfColumns * (i + 1) + 6];
             newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 7];
-            newRow.Local = data[numberOfColumns * (i + 1) + 8];
 
             tempSheet.itens.Add(newRow);
         }
@@ -514,9 +528,8 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.OndeFunciona = data[numberOfColumns * (i + 1) + 1];
             newRow.VoltagemDeSaida = data[numberOfColumns * (i + 1) + 2];
-            newRow.AmperagemDeSaida = data[numberOfColumns * (i + 1) + 3];
-            newRow.Local = data[numberOfColumns * (i + 1) + 4];
-            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 5];
+            newRow.AmperagemDeSaida = data[numberOfColumns * (i + 1) + 3];         
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 4];
             
             tempSheet.itens.Add(newRow);
         }
@@ -530,6 +543,201 @@ public class InventarioManager : Singleton<InventarioManager>
             InternalDatabase.splitDatabase[ConstStrings.Carregador] = tempSheet;
         }
     }
+
+    /// <summary>
+    /// Import Adaptador AC.csv into the internal database
+    /// </summary>
+    public void ImportAdaptadorAcToDatabase(int numberOfColumns)
+    {
+        string[] data = adaptadorAcCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.OndeFunciona = data[numberOfColumns * (i + 1) + 1];
+            newRow.VoltagemDeSaida = data[numberOfColumns * (i + 1) + 2];
+            newRow.AmperagemDeSaida = data[numberOfColumns * (i + 1) + 3];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 4];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.AdaptadorAC))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.AdaptadorAC, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.AdaptadorAC] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import StorageNas.csv into the internal database
+    /// </summary>
+    public void ImportStorageNASToDatabase(int numberOfColumns)
+    {
+        string[] data = storageNasCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Tamanho = data[numberOfColumns * (i + 1) + 1];
+            newRow.TipoDeRAID = data[numberOfColumns * (i + 1) + 2];
+            newRow.TipoDeHD = data[numberOfColumns * (i + 1) + 3];
+            newRow.CapacidadeMaxHD = data[numberOfColumns * (i + 1) + 4];
+            newRow.AteQuantosHDs = data[numberOfColumns * (i + 1) + 5];
+                       newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 6];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.StorageNAS))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.StorageNAS, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.StorageNAS] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Gbic.csv into the internal database
+    /// </summary>
+    public void ImportGBICToDatabase(int numberOfColumns)
+    {
+        string[] data = gbicCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
+            newRow.Desempenho = data[numberOfColumns * (i + 1) + 2] + " GB";    
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 3];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Gbic))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.Gbic, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.Gbic] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import PlacaDeVideo.csv into the internal database
+    /// </summary>
+    public void ImportPlacaDeVideoToDatabase(int numberOfColumns)
+    {
+        string[] data = placaDeVideoCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 1];
+            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 2];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 3];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeVideo))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeVideo, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.PlacaDeVideo] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import PlacaDeSom.csv into the internal database
+    /// </summary>
+    public void ImportPlacaDeSomToDatabase(int numberOfColumns)
+    {
+        string[] data = placaDeSomCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.QuantosCanais = data[numberOfColumns * (i + 1) + 1];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 2];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeSom))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeSom, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.PlacaDeSom] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Placa de captura de video.csv into the internal database
+    /// </summary>
+    public void ImportPlacaDeCapturaDeVideoToDatabase(int numberOfColumns)
+    {
+        string[] data = placaDeCapturaDeVideoCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<SheetColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            SheetColumns newRow = new SheetColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 1];
+                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 2];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeCapturaDeVideo))
+        {
+            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeCapturaDeVideo, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo] = tempSheet;
+        }
+    }
+    #endregion
 
     /// <summary>
     /// Closes all panels and open the selected panel

@@ -1,27 +1,27 @@
-﻿Modelo,Fabricante,Interface,Quantidade de Portas,Quais Portas,Suporta fibra óptica,Desempenho (Mb/s),Local,Estoque Atual
-CPU-D42543(B),Intel,PCI Express 1.0,4,RJ-45,não,10/100/1000,Estoque,#REF!
-49Y4242,IBM,PCI Express 2.0,4,RJ-45,não,10/100/1000,Estoque,#REF!
-AOC-SG-I4,Supermicro,PCI Express 2.0,4,RJ-45,não,10/100/1000,Estoque,#REF!
-ATLS1QGE,Oracle,PCI Express 1.0,4,RJ-45,não,10/100/1000,Estoque,#REF!
-DP-02,Dex,PCI  1.1,1,RJ-45,não,10/100/1000,Estoque,#REF!
-TG-3468,RoHS,PCI  1.0,1,RJ-45,não,10/100/1000,Estoque,#REF!
-TL-WN751ND,RoHS,PCI 32-bit,1,Wireless,não,150,Estoque,#REF!
-TG-3269(UN),RoHS,PCI  2.1/2.2/2.3,1,RJ-45,não,10/100/1000,Estoque,#REF!
-RTL8139D,Realtek,PCI  2.2,1,RJ-45,não,10/100,Estoque,#REF!
-ENLWI-G2,Encore,PCI 32-bit,1,Wireless,não,54,Estoque,#REF!
-Intel PRO/100+,Intel,PCI  2.2,1,RJ-45,não,10/100,Estoque,#REF!
-Intel PRO/1000 GT,Intel,PCI 2.3,1,RJ-46,não,10/100/1000,Estoque,#REF!
-Intel PRO/100,Intel,PCI 2.2,1,RJ-45,não,10/100,Estoque,#REF!
-DGE-528T,Gigabit,PCI 2.3,1,RJ-45,não,10/100/1000,Estoque,#REF!
-MLAN/N310S,Mymax,PCI Express,1,RJ-45,não,10/100,Estoque,#REF!
-7057402,Sun / Oracle,PCI Express x8,2,InfiniBand,não,10000,Estoque,#REF!
-QLE2562 - HP,HP,PCI-E 2.0 X8,2,SFP,sim,8000,Estoque,#REF!
-QLE2562 - IBMX,IBMX,PCI-E 2.0 X8,2,SFP,sim,8000,Estoque,#REF!
-QLE2562 - WB,WB,PCI-E 2.0 X8,2,SFP,sim,8000,Estoque,#REF!
-QLE2562 - SUN,Sun / Oracle,PCI-E 2.0 X8,2,SFP,sim,8000,Estoque,#REF!
-QLE2562 - DELL,DELL,PCI-E 2.0 X8,2,SFP,sim,8000,Estoque,#REF!
-QLE2562,Qlogic,PCI-E x4,2,SFP,sim,4000,Estoque,#REF!
-QLE2462 - HP,HP,PCI-E x4,2,SFP,sim,4000,Estoque,#REF!
-LPe11002-E,Emulex,PCI-E 1.0 x4,2,SFP,sim,4000,Estoque,#REF!
-43W7512,IBM,PCI-E x4,2,SFP,sim,4000,Estoque,#REF!
-LPE1150-E,Emulex,PCI-E x4,1,SFP,sim,4000,Estoque,#REF!
+﻿Modelo,Fabricante,Interface,Quantidade de Portas,Quais Portas,Suporta fibra óptica,Desempenho (Mb/s),Estoque Atual
+CPU-D42543(B),Intel,PCI Express 1.0,4,RJ-45,não,10/100/1000,#REF!
+49Y4242,IBM,PCI Express 2.0,4,RJ-45,não,10/100/1000,#REF!
+AOC-SG-I4,Supermicro,PCI Express 2.0,4,RJ-45,não,10/100/1000,#REF!
+ATLS1QGE,Oracle,PCI Express 1.0,4,RJ-45,não,10/100/1000,#REF!
+DP-02,Dex,PCI  1.1,1,RJ-45,não,10/100/1000,#REF!
+TG-3468,RoHS,PCI  1.0,1,RJ-45,não,10/100/1000,#REF!
+TL-WN751ND,RoHS,PCI 32-bit,1,Wireless,não,150,#REF!
+TG-3269(UN),RoHS,PCI  2.1/2.2/2.3,1,RJ-45,não,10/100/1000,#REF!
+RTL8139D,Realtek,PCI  2.2,1,RJ-45,não,10/100,#REF!
+ENLWI-G2,Encore,PCI 32-bit,1,Wireless,não,54,#REF!
+Intel PRO/100+,Intel,PCI  2.2,1,RJ-45,não,10/100,#REF!
+Intel PRO/1000 GT,Intel,PCI 2.3,1,RJ-46,não,10/100/1000,#REF!
+Intel PRO/100,Intel,PCI 2.2,1,RJ-45,não,10/100,#REF!
+DGE-528T,Gigabit,PCI 2.3,1,RJ-45,não,10/100/1000,#REF!
+MLAN/N310S,Mymax,PCI Express,1,RJ-45,não,10/100,#REF!
+7057402,Sun / Oracle,PCI Express x8,2,InfiniBand,não,10000,#REF!
+QLE2562 - HP,HP,PCI-E 2.0 X8,2,SFP,sim,8000,#REF!
+QLE2562 - IBMX,IBMX,PCI-E 2.0 X8,2,SFP,sim,8000,#REF!
+QLE2562 - WB,WB,PCI-E 2.0 X8,2,SFP,sim,8000,#REF!
+QLE2562 - SUN,Sun / Oracle,PCI-E 2.0 X8,2,SFP,sim,8000,#REF!
+QLE2562 - DELL,DELL,PCI-E 2.0 X8,2,SFP,sim,8000,#REF!
+QLE2562,Qlogic,PCI-E x4,2,SFP,sim,4000,#REF!
+QLE2462 - HP,HP,PCI-E x4,2,SFP,sim,4000,#REF!
+LPe11002-E,Emulex,PCI-E 1.0 x4,2,SFP,sim,4000,#REF!
+43W7512,IBM,PCI-E x4,2,SFP,sim,4000,#REF!
+LPE1150-E,Emulex,PCI-E x4,1,SFP,sim,4000,#REF!
