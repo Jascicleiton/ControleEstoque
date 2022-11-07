@@ -47,7 +47,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
         //txt.text = sheet.item.Count.ToString();   
         ImportSheets();
-       // InternalDatabase.Instance.FillFullDatabase(); // for testing
+        InternalDatabase.Instance.FillFullDatabase(); // for testing
     }
 
     private void Update()
@@ -213,7 +213,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.Rank = data[numberOfColumns * (i + 1) + 6];
             newRow.DIMM = data[numberOfColumns * (i + 1) + 7];
             newRow.TaxaDeTransmissao = data[numberOfColumns * (i + 1) + 8];
-            newRow.Símbolo = data[numberOfColumns * (i + 1) + 9];
+            newRow.Simbolo = data[numberOfColumns * (i + 1) + 9];
                         newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 10];
 
             tempSheet.itens.Add(newRow);

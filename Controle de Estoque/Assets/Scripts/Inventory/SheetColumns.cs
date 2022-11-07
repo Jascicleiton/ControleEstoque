@@ -31,7 +31,7 @@ public class SheetColumns
     public string Rank; // memória
     public string DIMM; // memória
     public string TaxaDeTransmissao; // memória
-    public string Símbolo; // memória
+    public string Simbolo; // memória
     public string QuantidadeDePortas; // Placa de rede, Placa controladora, switch, Roteador, Placa de Vídeo, Placa de captura de vídeo
     public string QuaisConexoes; // Placa de rede, Placa de Vídeo, iDrac, Placa controladora
     public string SuportaFibraOptica; // placa de rede

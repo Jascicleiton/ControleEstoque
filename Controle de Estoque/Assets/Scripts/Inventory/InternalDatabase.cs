@@ -7,7 +7,7 @@ using UnityEditor;
 public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
 {
     public static Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
-    public Sheet fullDatabase = new Sheet();
+    public static Sheet fullDatabase = new Sheet();
     public Sheet testingSheet = new Sheet();
 
     private void Update()
@@ -122,7 +122,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                                 item.Rank = memoriaItem.Rank;
                                 item.DIMM = memoriaItem.DIMM;
                                 item.TaxaDeTransmissao = memoriaItem.TaxaDeTransmissao;
-                                item.Símbolo = memoriaItem.Símbolo;
+                                item.Simbolo = memoriaItem.Simbolo;
                             }
                         }
                     }
@@ -552,6 +552,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 }
             }
         }
+        testingSheet = fullDatabase;
     }
 
     private class Databases
