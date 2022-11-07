@@ -2,12 +2,12 @@
 E5645,LGA1366,6,12,sim,1,sim,#REF!
 X5550,LGA1366,4,8,sim,1,sim,#REF!
 E5-2630L,LGA2011,6,12,sim,2,sim,#REF!
-E7-4870,LGA1567,10,20,sim,1,sim,#REF!
+E7-4870,LGA1567,10,20,sim,0,sim,#REF!
 E5620,LGA1366,4,8,sim,1,sim,#REF!
 i3-2120,LGA1155,2,4,sim,não,sim,#REF!
 Pentium G620,LGA1155,2,2,sim,não,não,#REF!
-X5355,,,,,,,2
-x5458,,,,,,,2
+X5355,LGA771,4,4,sim,não,não,2
+x5450,LGA771,4,4,sim,não,não,2
 Intel Xeon E4,,,,,,,1
-e5410,,,,,,,2
-E5-2440 V2,,,,,,,2
+e5410,LGA771,4,4,sim,não,não,2
+E5-2440 V2,LGA1356,8,16,sim,2,sim,2

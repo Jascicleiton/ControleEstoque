@@ -10,6 +10,15 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
     public Sheet fullDatabase = new Sheet();
     public Sheet testingSheet = new Sheet();
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            FillFullDatabase();
+            testingSheet = splitDatabase[ConstStrings.InventarioSnPro];
+        }
+    }
+
     /// <summary>
     /// Get all Sheet classes saved on splitDatabase and join them into a single Sheet class
     /// </summary>
@@ -255,7 +264,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                         foreach (SheetColumns desktopItem in desktop.itens)
                         {
 
-                            if (item.Modelo.Trim().Equals(desktopItem.Modelo.Trim()))
+                            if (item.Patrimonio.Trim().Equals(desktopItem.Patrimonio.Trim()))
                             {
                                 item.ModeloPlacaMae = desktopItem.ModeloPlacaMae;
                                 item.Fonte = desktopItem.Fonte;

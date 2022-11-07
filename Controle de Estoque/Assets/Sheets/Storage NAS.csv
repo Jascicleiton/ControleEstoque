@@ -1,3 +1,3 @@
 ﻿Modelo,Tamanho de HDs,Tipos de RAID,Tipo de HD,Capacidade máxima do HD,Até quantos HDs,Estoque atual
-STCU100,"2,5"" e 3,5""","0, 1, 5, 5 com hot spare, 6, 10",SATA,2Tb,4,#REF!
-NAS IX4-200D,"3,5""","5, 10",SATA,2Tb,4,#REF!
+STCU100,"2.5"" e 3.5""",0; 1; 5; 5 com hot spare; 6; 10,SATA,2Tb,4,#REF!
+NAS IX4-200D,"3.5""",5; 10,SATA,2Tb,4,#REF!

@@ -47,7 +47,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
         //txt.text = sheet.item.Count.ToString();   
         ImportSheets();
-        InternalDatabase.Instance.FillFullDatabase(); // for testing
+       // InternalDatabase.Instance.FillFullDatabase(); // for testing
     }
 
     private void Update()
@@ -116,7 +116,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportInventarioToDatabase(int numberOfColumns)
     {
-        string[] data = inventarioCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);   
+        string[] data = inventarioCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);   
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -132,7 +132,6 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.Categoria = data[numberOfColumns * (i + 1) + 4];
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 5];
             newRow.Modelo = data[numberOfColumns * (i + 1) + 6];
-            newRow.Modelo.Trim();
             newRow.Local = data[numberOfColumns * (i + 1) + 7];
             newRow.Saida = data[numberOfColumns * (i + 1) + 8];
             newRow.Observacao = data[numberOfColumns * (i + 1) + 9];
@@ -156,7 +155,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportHDSheetToDatabase(int numberOfColumns)
     {
-        string[] data = hdCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = hdCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -196,7 +195,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportMemoriaToDatabase(int numberOfColumns)
     {
-        string[] data = memoriaCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = memoriaCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -219,7 +218,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
             tempSheet.itens.Add(newRow);
         }
-
+        InternalDatabase.Instance.testingSheet = tempSheet;
         if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Memoria))
         {
             InternalDatabase.splitDatabase.Add(ConstStrings.Memoria, tempSheet);
@@ -235,7 +234,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportPlacaDeRedeToDatabase(int numberOfColumns)
     {
-        string[] data = placaDeRedeCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = placaDeRedeCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -271,7 +270,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportiDracToDatabase(int numberOfColumns)
     {
-        string[] data = idracCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = idracCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -307,7 +306,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportPlacaControladoraToDatabase(int numberOfColumns)
     {
-        string[] data = placaControladoraCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = placaControladoraCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -345,7 +344,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportProcessadorToDatabase(int numberOfColumns)
     {
-        string[] data = processadorCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = processadorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -381,7 +380,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportDesktopToDatabase(int numberOfColumns)
     {
-        string[] data = desktopCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = desktopCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -418,7 +417,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportFonteToDatabase(int numberOfColumns)
     {
-        string[] data = fonteCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = fonteCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -451,7 +450,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportSwitchToDatabase(int numberOfColumns)
     {
-        string[] data = switchCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = switchCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -483,7 +482,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportRoteadorToDatabase(int numberOfColumns)
     {
-        string[] data = roteadorCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = roteadorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -516,7 +515,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportCarregadorToDatabase(int numberOfColumns)
     {
-        string[] data = carregadorCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = carregadorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -549,7 +548,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportAdaptadorAcToDatabase(int numberOfColumns)
     {
-        string[] data = adaptadorAcCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = adaptadorAcCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -582,7 +581,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportStorageNASToDatabase(int numberOfColumns)
     {
-        string[] data = storageNasCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = storageNasCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -617,7 +616,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportGBICToDatabase(int numberOfColumns)
     {
-        string[] data = gbicCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = gbicCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -649,7 +648,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportPlacaDeVideoToDatabase(int numberOfColumns)
     {
-        string[] data = placaDeVideoCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = placaDeVideoCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -681,7 +680,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportPlacaDeSomToDatabase(int numberOfColumns)
     {
-        string[] data = placaDeSomCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = placaDeSomCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
@@ -712,7 +711,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     public void ImportPlacaDeCapturaDeVideoToDatabase(int numberOfColumns)
     {
-        string[] data = placaDeCapturaDeVideoCSV.text.Split(new string[] { ",", "\r\n" }, StringSplitOptions.None);
+        string[] data = placaDeCapturaDeVideoCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<SheetColumns>();
