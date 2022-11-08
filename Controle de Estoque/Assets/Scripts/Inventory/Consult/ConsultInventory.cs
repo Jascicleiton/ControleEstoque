@@ -29,8 +29,9 @@ public class ConsultInventory : MonoBehaviour
                 {
                    if(ConsultPatrimonio(inputField.text) != null)
                     {
+                        RemoveOldSearch();
                         GameObject result =  Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultPatrimonio(inputField.text));
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultPatrimonio(inputField.text), 0);
                     }
                     else
                     {
@@ -41,14 +42,26 @@ public class ConsultInventory : MonoBehaviour
                 {
                     if (ConsultSerial(inputField.text) != null)
                     {
+                        RemoveOldSearch();
                         GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultSerial(inputField.text));
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultSerial(inputField.text), 1);
                     }
                     else
                     {
                         print("Serial não existente");
                     }
                 }
+            }
+        }
+    }
+
+    private void RemoveOldSearch()
+    {
+        if(consultResultTransform.childCount > 0)
+        {
+            for (int i = 0; i < consultResultTransform.childCount; i++)
+            {
+                Destroy(consultResultTransform.GetChild(i).gameObject);
             }
         }
     }
