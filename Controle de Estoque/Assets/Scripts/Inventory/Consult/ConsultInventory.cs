@@ -10,8 +10,14 @@ public class ConsultInventory : MonoBehaviour
     [SerializeField] TMP_Dropdown categoryDP; // drop down used to search for an item category
     [SerializeField] TMP_InputField inputField; // field use to type the item "Patrimônio" or the item "Serial"
 
-   [SerializeField] private GameObject consultResult;
+    [SerializeField] private GameObject consultResult;
     [SerializeField] private Transform consultResultTransform;
+
+    [SerializeField] private TMP_InputField[] categorySearchInputs;
+    [SerializeField] private TMP_Text[] categorySearchNames;
+
+    List<string> searchNameList = new List<string>();
+    List<string> searchInputsList = new List<string>();
 
     private void Start()
     {
@@ -23,8 +29,7 @@ public class ConsultInventory : MonoBehaviour
         if(inputField.IsActive())
         {
             if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                
+            {               
                 if (searchOption.value == 1)
                 {
                    if(ConsultPatrimonio(inputField.text) != null)
@@ -53,6 +58,13 @@ public class ConsultInventory : MonoBehaviour
                 }
             }
         }
+        if (categoryDP.IsActive())
+        {
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+
+            }
+        }
     }
 
     private void RemoveOldSearch()
@@ -64,6 +76,46 @@ public class ConsultInventory : MonoBehaviour
                 Destroy(consultResultTransform.GetChild(i).gameObject);
             }
         }
+    }
+
+    /// <summary>
+    /// Consult if the item exists on the database using the "Serial"
+    /// </summary>
+    private SheetColumns ConsultSerial(string serialToConsult)
+    {
+        foreach (SheetColumns item in InternalDatabase.fullDatabase.itens)
+        {
+            if (item.Serial == serialToConsult)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Consult if the item exists on the database using the "Patrimônio"
+    /// </summary>
+    private SheetColumns ConsultPatrimonio(string patrimonioToConsult)
+    {
+        foreach (SheetColumns item in InternalDatabase.fullDatabase.itens)
+        {
+            if (item.Patrimonio == patrimonioToConsult)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+
+   
+
+    /// <summary>
+    /// Consult the inventory using the parameters chosen from each category
+    /// </summary>
+    private void Consult(string[] searchParamentersNames, string[] searchParametersValues)
+    {
+
     }
 
     /// <summary>
@@ -90,43 +142,5 @@ public class ConsultInventory : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    /// <summary>
-    /// Consult the inventory using the "Serial"
-    /// </summary>
-    public SheetColumns ConsultSerial(string serialToConsult)
-    {
-        foreach (SheetColumns item in InternalDatabase.fullDatabase.itens)
-        {
-            if(item.Serial == serialToConsult)
-            {
-                return item;
-            }
-        }
-        return null;
-    }
-
-    /// <summary>
-    /// Consult the inventory using the "Patrimônio"
-    /// </summary>
-    public SheetColumns ConsultPatrimonio(string patrimonioToConsult)
-    {
-        foreach (SheetColumns item in InternalDatabase.fullDatabase.itens)
-        {
-            if (item.Patrimonio == patrimonioToConsult)
-            {
-                return item;
-            }
-        }
-        return null;
-    }
-
-    /// <summary>
-    /// Consult the inventory using the parameters chosen from each category
-    /// </summary>
-    public void Consult(string[] paramentersNames, string[] parametersValues)
-    {
-
     }
 }
