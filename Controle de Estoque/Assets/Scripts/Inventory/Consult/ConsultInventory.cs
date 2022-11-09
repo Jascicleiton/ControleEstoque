@@ -13,15 +13,14 @@ public class ConsultInventory : MonoBehaviour
     [SerializeField] private GameObject consultResult;
     [SerializeField] private Transform consultResultTransform;
 
+    [SerializeField] private GameObject caterySearchParametersPanel;
     [SerializeField] private TMP_InputField[] categorySearchInputs;
-    [SerializeField] private TMP_Text[] categorySearchNames;
 
-    List<string> searchNameList = new List<string>();
-    List<string> searchInputsList = new List<string>();
+    private ConsultCategory consultCategory = null;
 
     private void Start()
     {
-       
+        consultCategory = GetComponent<ConsultCategory>();
     }
 
     private void Update()
@@ -62,7 +61,7 @@ public class ConsultInventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-
+                ConsultWithCategory();
             }
         }
     }
@@ -108,13 +107,51 @@ public class ConsultInventory : MonoBehaviour
         return null;
     }
 
-   
-
+    
     /// <summary>
     /// Consult the inventory using the parameters chosen from each category
     /// </summary>
-    private void Consult(string[] searchParamentersNames, string[] searchParametersValues)
+    private void ConsultWithCategory()
     {
+        RemoveOldSearch();
+        Sheet foundItens = new Sheet();
+        List<int> activeIndexes = new List<int>();
+        
+        for (int i = 0; i < categorySearchInputs.Length; i++)
+        {
+            if (categorySearchInputs[i].IsActive())
+            {
+                if (categorySearchInputs[i].text != "")
+                {
+                    activeIndexes.Add(i);
+                }
+            }
+        }
+
+        if (activeIndexes.Count > 0)
+        {
+            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs);
+        }
+
+        if (foundItens != null)
+        {
+            if (foundItens.itens.Count > 0)
+            {
+                foreach (SheetColumns foundItem in foundItens.itens)
+                {
+                    GameObject result = Instantiate(consultResult, consultResultTransform);
+                    result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
+                }
+            }
+            else
+            {
+                // show message nothing found
+            }
+        }
+        else
+        {
+            // show message nothing found
+        }
 
     }
 
@@ -127,15 +164,18 @@ public class ConsultInventory : MonoBehaviour
         {
             case 0:
                 categoryDP.gameObject.SetActive(true);
+                caterySearchParametersPanel.SetActive(true);
                 inputField.gameObject.SetActive(false);
                 break;
             case 1:
                 categoryDP.gameObject.SetActive(false);
+                caterySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
                 break;
             case 2:
                 categoryDP.gameObject.SetActive(false);
+                caterySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Serial";
                 break;

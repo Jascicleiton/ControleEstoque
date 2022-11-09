@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ConstStrings
 {
     #region Save files
@@ -33,4 +29,6 @@ public class ConstStrings
     #region Tags
     public const string ItemResultsParent = "ItemResultsParent";
     #endregion
+
+    public static readonly string[] HDSearchParameters = { "Status", "Modelo", "Local", "Interface", "Tamanho", "FormaDeArmazenamento", "CapacidadeEmGB", "RPM", "VelocidadeDeLeitura", "Enterprise" };
 }

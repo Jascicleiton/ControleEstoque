@@ -39,7 +39,7 @@ public class InventarioManager : Singleton<InventarioManager>
     [SerializeField] GameObject consultInventoryPanel;
     [SerializeField] GameObject addNewItemPanel;
     [SerializeField] GameObject moveItemPanel;
-    [SerializeField] TMP_Text userMessage_txt;
+        [SerializeField] TMP_Text userMessage_txt;
 
     // Start is called before the first frame update
     void Start()

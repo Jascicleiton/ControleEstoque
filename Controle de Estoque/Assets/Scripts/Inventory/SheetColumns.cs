@@ -5,6 +5,24 @@ using UnityEngine;
 [System.Serializable]
 public class SheetColumns
 {
+    public string GetValue(string valueToGet)
+    {
+        string[] allValues= { Itens, Quantidade, Entrada, Patrimonio, Status, Serial, Categoria, Fabricante, Modelo, Local,
+        Saida, Observacao, Interface, Tamanho, FormaDeArmazenamento, CapacidadeEmGB, RPM, VelocidadeDeLeitura, Enterprise, 
+        EstoqueAtual, Tipo, VelocidadeMHz, LowVoltage, Rank, DIMM, TaxaDeTransmissao, Simbolo, QuantidadeDePortas, 
+        QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs, EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
+        CapacidadeMaxHD, AteQuantosHDs, BateriaInclusa, Barramento, Soquete, NucleosFisicos, NucleosLogicos, AceitaVirtualizacao,
+        TurboBoost, HyperThreading, ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts, 
+        OndeFunciona, Conectores, Wireless, BandaMaxima, VoltagemDeSaida, AmperagemDeSaida, QuantosCanais};
+        for (int i = 0; i < allValues.Length; i++)
+        {
+            if (allValues[i] == valueToGet)
+            {
+                return allValues[i];
+            }
+        }
+        return null;
+    }
     public string Itens; // sem patrimônio e serial
     public string Quantidade; // todos
     public string Entrada; // todos

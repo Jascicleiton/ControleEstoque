@@ -77,15 +77,15 @@ public class ConsultResult : MonoBehaviour
                     parameterValues[14].text = itemToShow.DIMM;
                     parameterNames[15].text = "Taxa de transmissão";
                     parameterValues[15].text = itemToShow.TaxaDeTransmissao;
-                    parameterNames[15].text = "Símbolo";
-                    parameterValues[15].text = itemToShow.Simbolo;
+                    parameterNames[16].text = "Símbolo";
+                    parameterValues[16].text = itemToShow.Simbolo;
                     break;
                 case ConstStrings.PlacaDeRede:
                     parameterNames[9].text = "Interface";
                     parameterValues[9].text = itemToShow.Interface;
-                    parameterNames[10].text = "Quantas portas";
+                    parameterNames[10].text = "Quantas portas?";
                     parameterValues[10].text = itemToShow.QuantidadeDePortas;
-                    parameterNames[11].text = "Quais portas";
+                    parameterNames[11].text = "Quais portas?";
                     parameterValues[11].text = itemToShow.QuaisConexoes;
                     parameterNames[12].text = "Suporta fibra óptica?";
                     parameterValues[12].text = itemToShow.SuportaFibraOptica;
@@ -105,7 +105,7 @@ public class ConsultResult : MonoBehaviour
                 case ConstStrings.PlacaControladora:
                     parameterNames[9].text = "Tipo de conexão";
                     parameterValues[9].text = itemToShow.QuaisConexoes;
-                    parameterNames[10].text = "Quantidade de portas";
+                    parameterNames[10].text = "Quantas portas?";
                     parameterValues[10].text = itemToShow.QuantidadeDePortas;
                     parameterNames[11].text = "Tipos de RAID";
                     parameterValues[11].text = itemToShow.TipoDeRAID;
@@ -125,7 +125,7 @@ public class ConsultResult : MonoBehaviour
                     parameterValues[10].text = itemToShow.NucleosFisicos;
                     parameterNames[11].text = "Nº núcleos lógicos";
                     parameterValues[11].text = itemToShow.NucleosLogicos;
-                    parameterNames[12].text = "Aceita virtualização";
+                    parameterNames[12].text = "Aceita virtualização?";
                     parameterValues[12].text = itemToShow.AceitaVirtualizacao;
                     parameterNames[13].text = "Turbo boost?";
                     parameterValues[13].text = itemToShow.TurboBoost;
@@ -185,7 +185,7 @@ public class ConsultResult : MonoBehaviour
                     parameterValues[11].text = itemToShow.AmperagemDeSaida;
                     break;
                 case ConstStrings.StorageNAS:
-                    parameterNames[9].text = "Tamanho de HDs";
+                    parameterNames[9].text = "Tamanho dos HDs";
                     parameterValues[9].text = itemToShow.Tamanho;
                     parameterNames[10].text = "Tipos de RAID";
                     parameterValues[10].text = itemToShow.TipoDeRAID;
@@ -206,11 +206,11 @@ public class ConsultResult : MonoBehaviour
                     parameterValues[10].text = itemToShow.QuaisConexoes;
                     break;
                 case ConstStrings.PlacaDeSom:
-                    parameterNames[9].text = "Quantos canais";
+                    parameterNames[9].text = "Quantos canais?";
                     parameterValues[9].text = itemToShow.QuantosCanais;
                     break;
                 case ConstStrings.PlacaDeCapturaDeVideo:
-                    parameterNames[9].text = "Quantas entradas";
+                    parameterNames[9].text = "Quantas entradas?";
                     parameterValues[9].text = itemToShow.QuantidadeDePortas;
                     break;
 
@@ -225,7 +225,7 @@ public class ConsultResult : MonoBehaviour
 
         for (int i = 0; i < parameterNames.Length; i++)
         {
-            if (parameterNames[i].text == "")
+            if (parameterNames[i] != null && parameterNames[i].text == "")
             {
                 itemBoxes[i].gameObject.SetActive(false);
             }
