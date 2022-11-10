@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +10,7 @@ public class ConsultInventory : MonoBehaviour
     [SerializeField] TMP_Dropdown searchOption; // drop down used to choose search option
     [SerializeField] TMP_Dropdown categoryDP; // drop down used to search for an item category
     [SerializeField] TMP_InputField inputField; // field use to type the item "Patrimônio" or the item "Serial"
+    [SerializeField] TMP_Text numberOfItensFoundText; // show how many itens were found on the search
 
     [SerializeField] private GameObject consultResult;
     [SerializeField] private Transform consultResultTransform;
@@ -68,11 +70,12 @@ public class ConsultInventory : MonoBehaviour
 
     private void RemoveOldSearch()
     {
-        if(consultResultTransform.childCount > 0)
+        numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
+        if (consultResultTransform.childCount > 0)
         {
             for (int i = 0; i < consultResultTransform.childCount; i++)
             {
-                Destroy(consultResultTransform.GetChild(i).gameObject);
+                consultResultTransform.GetChild(i).gameObject.SetActive(false);
             }
         }
     }
@@ -89,6 +92,8 @@ public class ConsultInventory : MonoBehaviour
                 return item;
             }
         }
+        numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+        numberOfItensFoundText.text = "Serial não encontrado";
         return null;
     }
 
@@ -104,6 +109,8 @@ public class ConsultInventory : MonoBehaviour
                 return item;
             }
         }
+        numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+        numberOfItensFoundText.text = "Patrimônio não encontrado";
         return null;
     }
 
@@ -130,7 +137,8 @@ public class ConsultInventory : MonoBehaviour
 
         if (activeIndexes.Count > 0)
         {
-            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs);
+            
+            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategory(categoryDP.value));
         }
 
         if (foundItens != null)
@@ -139,20 +147,75 @@ public class ConsultInventory : MonoBehaviour
             {
                 foreach (SheetColumns foundItem in foundItens.itens)
                 {
-                    GameObject result = Instantiate(consultResult, consultResultTransform);
+                    GameObject result = PoolManager.Instance.ReuseObject(consultResult);
+                    result.SetActive(true);
                     result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
                 }
+                numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+                numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
             }
             else
             {
-                // show message nothing found
+                numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+                numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
             }
         }
         else
         {
-            // show message nothing found
+                numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+                numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
         }
 
+    }
+
+    /// <summary>
+    /// Get the correct sheet base on the category selected, to guarantee the search only happens for the specific category.
+    /// </summary>
+    private Sheet GetCategory(int value)
+    {
+        switch (value)
+        {
+            case 0:
+                return InternalDatabase.hd;
+            case 1:
+                return InternalDatabase.memoria;
+            case 2:
+                return InternalDatabase.placaDeRede;
+            case 3:
+                return InternalDatabase.idrac;
+            case 4:
+                return InternalDatabase.placaControladora;
+            case 5:
+                return InternalDatabase.processador;
+            case 6:
+                return InternalDatabase.desktop;
+            case 7:
+                return InternalDatabase.fonte;
+            case 8:
+                return InternalDatabase.Switch;
+            case 9:
+                return InternalDatabase.roteador;
+            case 10:
+                return InternalDatabase.carregador;
+            case 11:
+                return InternalDatabase.adaptadorAC;
+            case 12:
+                return InternalDatabase.storageNAS;
+            case 13:
+                return InternalDatabase.gbic;
+            case 14:
+                return InternalDatabase.placaDeVideo;
+            case 15:
+                return InternalDatabase.placaDeSom;
+            case 16:
+                return InternalDatabase.placaControladora;
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            default:
+                return null;              
+        }
     }
 
     /// <summary>
@@ -172,12 +235,14 @@ public class ConsultInventory : MonoBehaviour
                 caterySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
+                numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
                 break;
             case 2:
                 categoryDP.gameObject.SetActive(false);
                 caterySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Serial";
+                numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
                 break;
             default:
                 break;
