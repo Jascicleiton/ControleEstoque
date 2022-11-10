@@ -34,7 +34,7 @@ namespace Saving
         public void Load(string saveFile)
         {
             RestoreState(LoadFile(saveFile));
-            print("Loaded");
+            
         }
 
         public void Delete(string saveFile)

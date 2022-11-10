@@ -1,0 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SplashScreen : MonoBehaviour
+{
+    [SerializeField] GameObject background;
+
+    private CanvasGroup backgroundImage;
+    private float fadeDuration = 2f;
+    private bool isFading = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        backgroundImage = background.GetComponent<CanvasGroup>();
+        StartCoroutine(Fade());
+    }
+
+    private IEnumerator Fade()
+    {
+        isFading = true;
+        
+        // Make sure the CanvasGroup blocks raycasts into the scene so no more input can be accepted
+        backgroundImage.blocksRaycasts = true;
+
+        // Calculate hwo fast the CanvasGroup should fade based on it´s current alpha, it's final alpha and how long it has to change between the two
+        float fadeSpeed = Mathf.Abs(backgroundImage.alpha - 1) / fadeDuration;
+
+        // while the CanvasGroup hasn't reached the final alpha...
+        while (!Mathf.Approximately(backgroundImage.alpha, 1))
+        {
+            // ... move the alpha towards it's target alpha
+            backgroundImage.alpha = Mathf.MoveTowards(backgroundImage.alpha, 1, fadeSpeed * Time.deltaTime);
+
+            // wait for a frame, then continue
+            yield return null;
+        }
+
+        // Stop the CanvasGroup from blocking raycasts so input is no longer ignored
+        backgroundImage.blocksRaycasts = false;
+
+        yield return new WaitForSeconds(4f);
+        // Make sure the CanvasGroup blocks raycasts into the scene so no more input can be accepted
+        backgroundImage.blocksRaycasts = true;
+
+        fadeSpeed = Mathf.Abs(backgroundImage.alpha - 0) / fadeDuration;
+
+        // while the CanvasGroup hasn't reached the final alpha...
+        while (!Mathf.Approximately(backgroundImage.alpha, 0))
+        {
+            // ... move the alpha towards it's target alpha
+            backgroundImage.alpha = Mathf.MoveTowards(backgroundImage.alpha, 0, fadeSpeed * Time.deltaTime);
+
+            // wait for a frame, then continue
+            yield return null;
+        }
+
+        // Stop the CanvasGroup from blocking raycasts so input is no longer ignored
+        backgroundImage.blocksRaycasts = false;
+        SceneManager.LoadScene("MainMenu");
+    }
+}

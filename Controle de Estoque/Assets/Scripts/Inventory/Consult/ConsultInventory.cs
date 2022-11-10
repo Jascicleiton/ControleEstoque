@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ConsultInventory : MonoBehaviour
 {
-    [SerializeField] TMP_Dropdown searchOption; // drop down used to choose search option
+    [SerializeField] TMP_Dropdown searchOptionDP; // drop down used to choose search option
     [SerializeField] TMP_Dropdown categoryDP; // drop down used to search for an item category
     [SerializeField] TMP_InputField inputField; // field use to type the item "Patrimônio" or the item "Serial"
     [SerializeField] TMP_Text numberOfItensFoundText; // show how many itens were found on the search
@@ -31,30 +31,30 @@ public class ConsultInventory : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {               
-                if (searchOption.value == 1)
+                if (searchOptionDP.value == 1)
                 {
-                   if(ConsultPatrimonio(inputField.text) != null)
+                   if(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) != null)
                     {
                         RemoveOldSearch();
                         GameObject result =  Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultPatrimonio(inputField.text), 0);
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text), 0);
                     }
                     else
                     {
-                        print("Patrimônio não existente");
+                        SetItensFoundText(false);
                     }
                 }
-                else if (searchOption.value == 2)
+                else if (searchOptionDP.value == 2)
                 {
-                    if (ConsultSerial(inputField.text) != null)
+                    if (ConsultDatabase.Instance.ConsultSerial(inputField.text) != null)
                     {
                         RemoveOldSearch();
                         GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultSerial(inputField.text), 1);
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text), 1);
                     }
                     else
                     {
-                        print("Serial não existente");
+                        SetItensFoundText(false);
                     }
                 }
             }
@@ -70,7 +70,7 @@ public class ConsultInventory : MonoBehaviour
 
     private void RemoveOldSearch()
     {
-        numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
+        SetItensFoundText(false);
         if (consultResultTransform.childCount > 0)
         {
             for (int i = 0; i < consultResultTransform.childCount; i++)
@@ -80,41 +80,40 @@ public class ConsultInventory : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Consult if the item exists on the database using the "Serial"
-    /// </summary>
-    private SheetColumns ConsultSerial(string serialToConsult)
+    private void SetItensFoundText(bool isInvisible)
     {
-        foreach (SheetColumns item in InternalDatabase.fullDatabase.itens)
+        if (isInvisible)
         {
-            if (item.Serial == serialToConsult)
+            numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
+        }
+        else
+        {
+            numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+            switch (searchOptionDP.value)
             {
-                return item;
+                case 0:
+
+                        break;
+                case 1:
+                    if(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) == null)
+                    {
+                        numberOfItensFoundText.text = "Patrimônio não encontrado";
+                    }
+                
+                    break;
+                case 2:
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) == null)
+                    {
+                        numberOfItensFoundText.text = "Serial não encontrado";
+                    }
+                    
+                    break;
+                default:
+                    break;
             }
         }
-        numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
-        numberOfItensFoundText.text = "Serial não encontrado";
-        return null;
     }
 
-    /// <summary>
-    /// Consult if the item exists on the database using the "Patrimônio"
-    /// </summary>
-    private SheetColumns ConsultPatrimonio(string patrimonioToConsult)
-    {
-        foreach (SheetColumns item in InternalDatabase.fullDatabase.itens)
-        {
-            if (item.Patrimonio == patrimonioToConsult)
-            {
-                return item;
-            }
-        }
-        numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
-        numberOfItensFoundText.text = "Patrimônio não encontrado";
-        return null;
-    }
-
-    
     /// <summary>
     /// Consult the inventory using the parameters chosen from each category
     /// </summary>

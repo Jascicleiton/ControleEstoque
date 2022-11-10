@@ -29,6 +29,11 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
     public static Sheet placaDeSom = new Sheet();
     public static Sheet placaDeCapturaDeVideo = new Sheet();
     #endregion
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.P))

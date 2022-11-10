@@ -75,6 +75,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     private void Login(string user)
     {
+        UsersManager.Instance.currentUser.username = user;
         if (user == "marcelo.fonseca" || user == "pedro.neto")
         {
             UsersManager.Instance.adminLogged = true;

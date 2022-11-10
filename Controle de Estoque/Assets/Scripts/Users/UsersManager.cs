@@ -7,22 +7,25 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
 {
     public List<User> usersDatabase;
     private User admin;
-    public User Admin { get { return admin; } }
     public bool adminLogged = false;
     private SavingWrapper savingWrapper = null;
+    public User currentUser = new User("pessoa","");
 
     protected void Awake()
     {
         base.Awake();
         usersDatabase = new List<User>();
         admin = new User("marcelo.fonseca", "Umsegredo1");
-        usersDatabase.Add(admin);
+        if (!usersDatabase.Contains(admin))
+        {
+            usersDatabase.Add(admin);
+        }
     }
 
     private void Start()
     {
-        savingWrapper = FindObjectOfType<SavingWrapper>();
-        
+        DontDestroyOnLoad(this.gameObject);
+        savingWrapper = FindObjectOfType<SavingWrapper>();        
     }
 
     public void  AddNewUser(User userToAdd)
