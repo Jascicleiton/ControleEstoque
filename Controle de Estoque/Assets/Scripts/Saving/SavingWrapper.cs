@@ -17,20 +17,16 @@ namespace Saving
             StartCoroutine(LoadUserDatabaseRoutine());
         }
 
-        /// <summary>
-        /// for testing purposes
-        /// </summary>
-        void Update()
+        private void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.F5))
-            {
-                Save(ConstStrings.DataDatabaseSaveFile);
-            }
-            if (Input.GetKeyDown(KeyCode.F6))
-            {
-                Load(ConstStrings.DataDatabaseSaveFile);
-            }
+            EventHandler.DatabaseUpdatedEvent += Save;
         }
+
+        private void OnDisable()
+        {
+            EventHandler.DatabaseUpdatedEvent -= Save;
+        }
+
 
         /// <summary>
         /// This coroutine waits two seconds to make sure everything is active on the scene

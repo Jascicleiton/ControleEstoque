@@ -506,6 +506,7 @@ public class UpdateItem : MonoBehaviour
         itemToUpdateIndex = ConsultDatabase.Instance.GetItemIndex();
         InternalDatabase.fullDatabase.itens[itemToUpdateIndex] = itemToUpdate;
         ShowMessage();
+        EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }
 
     private void ShowMessage()

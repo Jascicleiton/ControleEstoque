@@ -47,13 +47,13 @@ public class InventarioManager : Singleton<InventarioManager>
         DontDestroyOnLoad(this.gameObject);
         //txt.text = sheet.item.Count.ToString();   
         ImportSheets();
-        InternalDatabase.Instance.FillFullDatabase(); // for testing
+       StartCoroutine(WaitToFillFullDatabase());
     }
 
-    private void Update()
+    private IEnumerator WaitToFillFullDatabase()
     {
-
-
+        yield return new WaitForSeconds(3f);
+        InternalDatabase.Instance.FillFullDatabase();
     }
 
     /// <summary>
@@ -218,7 +218,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
             tempSheet.itens.Add(newRow);
         }
-        InternalDatabase.Instance.testingSheet = tempSheet;
+        
         if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Memoria))
         {
             InternalDatabase.splitDatabase.Add(ConstStrings.Memoria, tempSheet);

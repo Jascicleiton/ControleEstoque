@@ -4,11 +4,21 @@ using UnityEngine;
 using Saving;
 using UnityEditor;
 
+
 public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
 {
+    private class Databases
+    {
+        public Dictionary<string, Sheet> splitDatabase;
+        public Sheet fullDatabase;
+        public List<Sheet> categoryDatabases;
+        public List<MovementRecords> movementRecords;
+    }
+
     public static Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
     public static Sheet fullDatabase = new Sheet();
-    public Sheet testingSheet = new Sheet();
+    //public Sheet testingSheet = new Sheet();
+    public static List<MovementRecords> movementRecords;
 
     #region Sheets with all information divided by "Categoria"
     public static Sheet hd = new Sheet();
@@ -34,15 +44,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
     {
         DontDestroyOnLoad(this.gameObject);
     }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            FillFullDatabase();
-            testingSheet = splitDatabase[ConstStrings.InventarioSnPro];
-        }
-    }
-
+   
     /// <summary>
     /// Get all Sheet classes saved on splitDatabase and join them into a single Sheet class
     /// </summary>
@@ -593,20 +595,35 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 }
             }
         }
-        testingSheet = fullDatabase;
+        //testingSheet = fullDatabase;
     }
 
-    private class Databases
-    {
-       public Dictionary<string, Sheet> splitDatabase;
-       public Sheet fullDatabase;
-    }
+
 
     public object CaptureState()
     {
         Databases databasesTosave = new Databases();
         databasesTosave.splitDatabase = splitDatabase;
         databasesTosave.fullDatabase = fullDatabase;
+        databasesTosave.categoryDatabases = new List<Sheet>();
+        databasesTosave.categoryDatabases.Add(hd);
+        databasesTosave.categoryDatabases.Add(memoria);
+        databasesTosave.categoryDatabases.Add(placaDeRede);
+        databasesTosave.categoryDatabases.Add(idrac);
+        databasesTosave.categoryDatabases.Add(placaControladora);
+        databasesTosave.categoryDatabases.Add(processador);
+        databasesTosave.categoryDatabases.Add(desktop);
+        databasesTosave.categoryDatabases.Add(fonte);
+        databasesTosave.categoryDatabases.Add(Switch);
+        databasesTosave.categoryDatabases.Add(roteador);
+        databasesTosave.categoryDatabases.Add(carregador);
+        databasesTosave.categoryDatabases.Add(adaptadorAC);
+        databasesTosave.categoryDatabases.Add(storageNAS);
+        databasesTosave.categoryDatabases.Add(gbic);
+        databasesTosave.categoryDatabases.Add(placaDeVideo);
+        databasesTosave.categoryDatabases.Add(placaDeSom);
+        databasesTosave.categoryDatabases.Add(placaDeCapturaDeVideo);
+        databasesTosave.movementRecords = movementRecords;
         return databasesTosave;
     }
 
@@ -615,5 +632,23 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         Databases databasesToLoad = (Databases)state;
         splitDatabase = databasesToLoad.splitDatabase;
         fullDatabase = databasesToLoad.fullDatabase;
+         hd = databasesToLoad.categoryDatabases[0];
+        memoria = databasesToLoad.categoryDatabases[1];
+        placaDeRede = databasesToLoad.categoryDatabases[2];
+        idrac = databasesToLoad.categoryDatabases[3];
+        placaControladora = databasesToLoad.categoryDatabases[4];
+        processador = databasesToLoad.categoryDatabases[5];
+        desktop = databasesToLoad.categoryDatabases[6];
+        fonte = databasesToLoad.categoryDatabases[7];
+        Switch = databasesToLoad.categoryDatabases[8];
+        roteador = databasesToLoad.categoryDatabases[9];
+        carregador = databasesToLoad.categoryDatabases[10];
+        adaptadorAC = databasesToLoad.categoryDatabases[11];
+        storageNAS = databasesToLoad.categoryDatabases[12];
+        gbic = databasesToLoad.categoryDatabases[13];
+        placaDeVideo = databasesToLoad.categoryDatabases[14];
+        placaDeSom = databasesToLoad.categoryDatabases[15];
+        placaDeCapturaDeVideo = databasesToLoad.categoryDatabases[16];
+        movementRecords = databasesToLoad.movementRecords;
     }
 }

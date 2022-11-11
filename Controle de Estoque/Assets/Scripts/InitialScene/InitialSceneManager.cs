@@ -61,12 +61,12 @@ public class InitialSceneManager : MonoBehaviour
 
     public void AddClicked()
     {
-        SceneManager.LoadScene("ConsultScene");
+        SceneManager.LoadScene("AddRemoveItemScene");
     }
 
     public void UpdateItemClicked()
     {
-        SceneManager.LoadScene("ConsultScene");
+        SceneManager.LoadScene("UpdateItemScene");
     }
 
     public void UpdateDatabaseClicked()

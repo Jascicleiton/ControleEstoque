@@ -24,6 +24,8 @@ public class MovementManager : MonoBehaviour
     private SheetColumns itemToChange;
     private bool itemFound = false;
 
+    MovementRecords movementToRecord;
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -131,14 +133,18 @@ public class MovementManager : MonoBehaviour
             itemToChange.Entrada = "";
             itemToChange.Saida = DateTime.Now.ToString("dd/MM/yyyy");
         }
+
+        movementToRecord = new MovementRecords();
+        movementToRecord.username = UsersManager.Instance.currentUser.username;
+        movementToRecord.date = DateTime.Now.ToString("dd/MM/yyyy");
+        movementToRecord.item = item;
     }
 
     private void UpdateDatabase()
     {
         InternalDatabase.fullDatabase.itens[itemToChangeIndex] = itemToChange;
-        print("Entrada: " + itemToChange.Entrada);
-        print("Saída: " + itemToChange.Saida);
-        print("Local: " + itemToChange.Local);
+        InternalDatabase.movementRecords.Add(movementToRecord);
+        EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }
 
     private void ShowMessage(bool itemFound)
