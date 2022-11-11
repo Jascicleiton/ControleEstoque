@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ConsultInventory : MonoBehaviour
 {
@@ -27,16 +28,16 @@ public class ConsultInventory : MonoBehaviour
 
     private void Update()
     {
-        if(inputField.IsActive())
+        if (inputField.IsActive())
         {
-            if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            {               
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
                 if (searchOptionDP.value == 1)
                 {
-                   if(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) != null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) != null)
                     {
                         RemoveOldSearch();
-                        GameObject result =  Instantiate(consultResult, consultResultTransform);
+                        GameObject result = Instantiate(consultResult, consultResultTransform);
                         result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text), 0);
                     }
                     else
@@ -93,20 +94,20 @@ public class ConsultInventory : MonoBehaviour
             {
                 case 0:
 
-                        break;
+                    break;
                 case 1:
-                    if(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) == null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) == null)
                     {
                         numberOfItensFoundText.text = "Patrimônio não encontrado";
                     }
-                
+
                     break;
                 case 2:
                     if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) == null)
                     {
                         numberOfItensFoundText.text = "Serial não encontrado";
                     }
-                    
+
                     break;
                 default:
                     break;
@@ -122,7 +123,7 @@ public class ConsultInventory : MonoBehaviour
         RemoveOldSearch();
         Sheet foundItens = new Sheet();
         List<int> activeIndexes = new List<int>();
-        
+
         for (int i = 0; i < categorySearchInputs.Length; i++)
         {
             if (categorySearchInputs[i].IsActive())
@@ -136,7 +137,7 @@ public class ConsultInventory : MonoBehaviour
 
         if (activeIndexes.Count > 0)
         {
-            
+
             foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategory(categoryDP.value));
         }
 
@@ -161,8 +162,8 @@ public class ConsultInventory : MonoBehaviour
         }
         else
         {
-                numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
-                numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
+            numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+            numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
         }
 
     }
@@ -213,7 +214,7 @@ public class ConsultInventory : MonoBehaviour
             case 19:
             case 20:
             default:
-                return null;              
+                return null;
         }
     }
 
@@ -246,5 +247,10 @@ public class ConsultInventory : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void ReturnToPreviousScreen()
+    {
+        SceneManager.LoadScene("InitialScene");
     }
 }
