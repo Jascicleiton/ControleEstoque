@@ -41,7 +41,6 @@ public class InventarioManager : Singleton<InventarioManager>
     [SerializeField] GameObject moveItemPanel;
     [SerializeField] TMP_Text userMessage_txt;
 
-    // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -50,6 +49,9 @@ public class InventarioManager : Singleton<InventarioManager>
        StartCoroutine(WaitToFillFullDatabase());
     }
 
+    /// <summary>
+    /// Wait a few seconds to call FillFullDatabase to give some time for ImportSheets to finish
+    /// </summary>
     private IEnumerator WaitToFillFullDatabase()
     {
         yield return new WaitForSeconds(3f);
@@ -97,7 +99,7 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet = InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro];
             if (tempSheet != null)
             {
-                foreach (SheetColumns item in tempSheet.itens)
+                foreach (ItemColumns item in tempSheet.itens)
                 {
                     textWriter = new StreamWriter(fileName, true);
                     textWriter.WriteLine(item.Entrada + "," + item.Patrimonio + "," + item.Status + "," +
@@ -110,7 +112,7 @@ public class InventarioManager : Singleton<InventarioManager>
         textWriter.Close();
     }
 
-    #region Import CSV to internal database
+    #region Import all CSVs to internal database
     /// <summary>
     /// Import Inventario_SnPro.csv into the internal database
     /// </summary>
@@ -119,11 +121,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = inventarioCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);   
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
                       
             newRow.Entrada = data[numberOfColumns * (i + 1)];
             newRow.Patrimonio = data[numberOfColumns * (i + 1) + 1];
@@ -158,11 +160,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = hdCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
@@ -198,11 +200,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = memoriaCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
@@ -237,11 +239,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = placaDeRedeCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
@@ -273,11 +275,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = idracCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
@@ -309,11 +311,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = placaControladoraCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 1];
@@ -347,11 +349,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = processadorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Soquete = data[numberOfColumns * (i + 1) + 1];
@@ -383,11 +385,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = desktopCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Patrimonio = data[numberOfColumns * (i + 1)];
             newRow.ModeloPlacaMae = data[numberOfColumns * (i + 1) + 1];
@@ -420,11 +422,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = fonteCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Watts = data[numberOfColumns * (i + 1) + 1];
@@ -453,11 +455,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = switchCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 1];
@@ -485,11 +487,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = roteadorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Wireless = data[numberOfColumns * (i + 1) + 1];
@@ -518,11 +520,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = carregadorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.OndeFunciona = data[numberOfColumns * (i + 1) + 1];
@@ -551,11 +553,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = adaptadorAcCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.OndeFunciona = data[numberOfColumns * (i + 1) + 1];
@@ -584,11 +586,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = storageNasCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Tamanho = data[numberOfColumns * (i + 1) + 1];
@@ -619,11 +621,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = gbicCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
@@ -651,11 +653,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = placaDeVideoCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 1];
@@ -683,11 +685,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = placaDeSomCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.QuantosCanais = data[numberOfColumns * (i + 1) + 1];
@@ -714,11 +716,11 @@ public class InventarioManager : Singleton<InventarioManager>
         string[] data = placaDeCapturaDeVideoCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
         int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
         Sheet tempSheet = new Sheet();
-        tempSheet.itens = new List<SheetColumns>();
+        tempSheet.itens = new List<ItemColumns>();
 
         for (int i = 0; i < tableSize; i++)
         {
-            SheetColumns newRow = new SheetColumns();
+            ItemColumns newRow = new ItemColumns();
 
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 1];
@@ -741,59 +743,4 @@ public class InventarioManager : Singleton<InventarioManager>
     /// <summary>
     /// Closes all panels and open the selected panel
     /// </summary>
-    public void OpenClosePanels(GameObject panelToOpen)
-    {
-        consultInventoryPanel.SetActive(false);
-        addNewItemPanel.SetActive(false);
-        moveItemPanel.SetActive(false);
-        initialPanel.SetActive(false);
-        panelToOpen.SetActive(true);
-    }
-
-    /// <summary>
-    /// Add new item into Inventário SnPro inside database
-    /// </summary>
-    public void AddItem(string Entrada, string Patrimônio, string Status, string Serial, string Categoria, string Fabricante, string Modelo, string Local, string Saída, string Observação)
-    {
-        SheetColumns temp = new SheetColumns();
-        temp.Entrada = Entrada;
-        temp.Patrimonio = Patrimônio;
-        temp.Status = Status;
-        temp.Serial = Serial;
-        temp.Categoria = Categoria;
-        temp.Fabricante = Fabricante;
-        temp.Modelo = Modelo;
-        temp.Local = Local;
-        temp.Saida = Saída;
-        temp.Observacao = Observação;
-        InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(temp);
-
-    }
-
-    public void RemoveItem(string sheetName, string referenceToCheck, string referenceValue)
-    {
-        sheetName = ConstStrings.InventarioSnPro;
-        foreach (SheetColumns item in InternalDatabase.splitDatabase[sheetName].itens)
-        {
-            if (referenceToCheck == "Patrimonio")
-            {
-                if (item.Patrimonio == referenceValue)
-                {
-                    InternalDatabase.splitDatabase[sheetName].itens.Remove(item);
-                }
-            }
-            else if (referenceToCheck == "Serial")
-            {
-                if (item.Serial == referenceValue)
-                {
-                    InternalDatabase.splitDatabase[sheetName].itens.Remove(item);
-                }
-            }
-        }
-    }
-
-    public void MoveItem(string newPlace)
-    {
-
-    }
-}
+   }

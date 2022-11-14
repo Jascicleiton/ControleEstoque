@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConsultScene.unity
     guid: 7543f8e942d25e642a24ca868e0058e0
+  - enabled: 1
+    path: Assets/Scenes/AddRemoveItemScene.unity
+    guid: 251be0b059b086940bb573c53cfb57e4
+  - enabled: 1
+    path: Assets/Scenes/MovementScene.unity
+    guid: 96cb3f81c9179ee488d84768e0e1784a
+  - enabled: 1
+    path: Assets/Scenes/UpdateItemScene.unity
+    guid: e5ced2b616fdc9645995a27b0524e325
   m_configObjects: {}

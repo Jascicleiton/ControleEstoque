@@ -30,5 +30,14 @@ public class ConstStrings
     public const string ItemResultsParent = "ItemResultsParent";
     #endregion
 
-    public static readonly string[] HDSearchParameters = { "Status", "Modelo", "Local", "Interface", "Tamanho", "FormaDeArmazenamento", "CapacidadeEmGB", "RPM", "VelocidadeDeLeitura", "Enterprise" };
+    #region Scene names
+    public const string SceneMainMenu = "MainMenu";
+    public const string SceneConsult = "ConsultScene";
+    public const string SceneAddRemoveItem = "AddRemoveItemScene";
+    public const string SceneInitial = "InitialScene";
+    public const string SceneMovement = "MovementScene";
+    public const string SceneSplash = "SplashScreen";
+    public const string SceneUpdateItem = "UpdateItemScene";
+    public const string SceneExportSheets = "ExportSheetsScene";
+    #endregion
 }

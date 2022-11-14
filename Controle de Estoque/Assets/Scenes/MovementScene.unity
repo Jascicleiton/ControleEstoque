@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 280181975}
   - component: {fileID: 280181974}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Return_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5034,8 +5034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be1693d02c89f749a41dbec9acfa733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testingSheet:
-    itens: []
 --- !u!1 &4739547014219466827
 GameObject:
   m_ObjectHideFlags: 0

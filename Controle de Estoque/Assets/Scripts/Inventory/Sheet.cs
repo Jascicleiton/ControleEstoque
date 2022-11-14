@@ -8,5 +8,5 @@ using UnityEngine;
 [System.Serializable]
 public class Sheet
 {
-    public List<SheetColumns> itens = new List<SheetColumns>();
+    public List<ItemColumns> itens = new List<ItemColumns>();
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UpdateItem : MonoBehaviour
 {
@@ -17,16 +18,20 @@ public class UpdateItem : MonoBehaviour
     [SerializeField] private TMP_Text messageText;
 
     private bool searchingItem = true;
-    private bool isUpdating = false;
 
-    private SheetColumns itemToUpdate;
+    private ItemColumns itemToUpdate;
+    private ItemColumns itemToUpdateCategory;
     private int itemToUpdateIndex;
-    // Start is called before the first frame update
+    private int itemToUpdateCategoryIndex;
+
     void Start()
     {
         ShowHideInputs();
     }
 
+    /// <summary>
+    /// Handles what happens if Enter is pressed
+    /// </summary>
     private void Update()
     {
         if (searchingItem)
@@ -40,11 +45,14 @@ public class UpdateItem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                UpdateDatabase();
+                UpdateFullDatabase();
             }
           }
     }
 
+    /// <summary>
+    /// Updates all the inputs according to the category selected
+    /// </summary>
     private void ShowHideInputs()
     {
         foreach (var item in inputs)
@@ -238,16 +246,18 @@ public class UpdateItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if the item that is going to be updated exists on the fullDatabase
+    /// </summary>
     private void CheckIfItemExists()
     {
         if (parameterToSearchDP.value == 0)
         {
-            itemToUpdate = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdateParameter.text);
-
+            itemToUpdate = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdateParameter.text, InternalDatabase.fullDatabase);
         }
         if (parameterToSearchDP.value == 1)
         {
-            itemToUpdate = ConsultDatabase.Instance.ConsultSerial(itemToUpdateParameter.text);
+            itemToUpdate = ConsultDatabase.Instance.ConsultSerial(itemToUpdateParameter.text, InternalDatabase.fullDatabase);
         }
 
         if (itemToUpdate != null)
@@ -386,7 +396,10 @@ public class UpdateItem : MonoBehaviour
 
             }
 
-    private void UpdateDatabase()
+    /// <summary>
+    /// Updates the full database
+    /// </summary>
+    private void UpdateFullDatabase()
     {
         itemToUpdate.Entrada = inputs[0].text;
         itemToUpdate.Patrimonio = inputs[1].text;
@@ -400,6 +413,7 @@ public class UpdateItem : MonoBehaviour
         switch (itemToUpdate.Categoria)
         {
             case ConstStrings.HD:
+                
                 itemToUpdate.Interface = inputs[9].text;
                 itemToUpdate.Tamanho = inputs[10].text;
                 itemToUpdate.FormaDeArmazenamento = inputs[11].text;
@@ -509,6 +523,9 @@ public class UpdateItem : MonoBehaviour
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }
 
+    /// <summary>
+    /// Show message if item to update was not found and, if it was found sho message that item was updated
+    /// </summary>
     private void ShowMessage()
     {
         messagePanel.SetActive(true);
@@ -520,22 +537,48 @@ public class UpdateItem : MonoBehaviour
         {
             messageText.text = "Item atualizado com sucesso";
         }
-        StartCoroutine(CloseShowMessage());
+        StartCoroutine(CloseShowMessagePanelRoutine());
     }
 
-
-    private IEnumerator CloseShowMessage()
+    /// <summary>
+    /// Wait a few seconds to close the MessagePanel
+    /// </summary>
+    private IEnumerator CloseShowMessagePanelRoutine()
     {
         yield return new WaitForSeconds(10f);
         CloseMessagePanel();
     }
 
+    /// <summary>
+    /// Resets the texts on all inputs
+    /// </summary>
+    private void ResetInputs()
+    {
+        foreach (var item in inputs)
+        {
+            item.gameObject.SetActive(true);
+            item.text = "";
+        }
+    }
+
+    /// <summary>
+    /// Close  message panel
+    /// </summary>
     public void CloseMessagePanel()
     {
         messagePanel.SetActive(false);
-        StopCoroutine(CloseShowMessage());
-        inputsPanel.SetActive(false);
+        StopCoroutine(CloseShowMessagePanelRoutine());
+        ResetInputs();
+        ShowHideInputs();
         searchingItem = true;
         itemToUpdateParameter.text = "";
+    }
+
+    /// <summary>
+    /// Returns to InitialScene
+    /// </summary>
+    public void ReturnToPreviousScreen()
+    {
+        SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 }

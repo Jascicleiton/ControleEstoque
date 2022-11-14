@@ -10959,8 +10959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be1693d02c89f749a41dbec9acfa733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testingSheet:
-    itens: []
 --- !u!1 &3583426306702116531
 GameObject:
   m_ObjectHideFlags: 0
@@ -11774,9 +11772,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: ShowAddNewUserPanel
+      - m_Target: {fileID: 6374339778562580736}
+        m_TargetAssemblyTypeName: UpdateItem, Assembly-CSharp
+        m_MethodName: ReturnToPreviousScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

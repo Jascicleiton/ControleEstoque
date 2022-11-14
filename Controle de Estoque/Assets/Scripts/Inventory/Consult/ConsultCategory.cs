@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ConsultCategory : MonoBehaviour
 {
+    /// <summary>
+    /// Find all itens from a specific category that match the search parameters
+    /// </summary>
     public Sheet FindItens(List<int> activeIndexes, TMP_InputField[] categorySearchInputs, Sheet databaseToConsult)
     {
         Sheet returnSheet = new Sheet();
@@ -12,7 +15,7 @@ public class ConsultCategory : MonoBehaviour
         switch (activeIndexes.Count)
         {
             case 1:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text)
                     {
@@ -21,7 +24,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 2:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text)
@@ -31,7 +34,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 3:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
 
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
@@ -43,7 +46,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 4:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&
@@ -55,7 +58,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 5:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&
@@ -68,7 +71,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 6:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&
@@ -82,7 +85,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 7:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&
@@ -97,7 +100,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 8:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&
@@ -113,7 +116,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 9:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&
@@ -130,7 +133,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 10:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&
@@ -148,7 +151,7 @@ public class ConsultCategory : MonoBehaviour
                 }
                 break;
             case 11:
-                foreach (SheetColumns item in databaseToConsult.itens)
+                foreach (ItemColumns item in databaseToConsult.itens)
                 {
                     if (item.GetValue(categorySearchInputs[activeIndexes[0]].text) == categorySearchInputs[activeIndexes[0]].text &&
                         item.GetValue(categorySearchInputs[activeIndexes[1]].text) == categorySearchInputs[activeIndexes[1]].text &&

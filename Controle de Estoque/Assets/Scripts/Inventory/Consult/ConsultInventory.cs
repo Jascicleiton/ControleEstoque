@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(ConsultCategory))]
 public class ConsultInventory : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown searchOptionDP; // drop down used to choose search option
@@ -21,11 +22,17 @@ public class ConsultInventory : MonoBehaviour
 
     private ConsultCategory consultCategory = null;
 
+    /// <summary>
+    /// get the ConsultCategory component
+    /// </summary>
     private void Start()
     {
         consultCategory = GetComponent<ConsultCategory>();
     }
 
+    /// <summary>
+    /// Handles what happens if Enter is pressed
+    /// </summary>
     private void Update()
     {
         if (inputField.IsActive())
@@ -34,11 +41,11 @@ public class ConsultInventory : MonoBehaviour
             {
                 if (searchOptionDP.value == 1)
                 {
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) != null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase) != null)
                     {
                         RemoveOldSearch();
                         GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text), 0);
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase), 0);
                     }
                     else
                     {
@@ -47,11 +54,11 @@ public class ConsultInventory : MonoBehaviour
                 }
                 else if (searchOptionDP.value == 2)
                 {
-                    if (ConsultDatabase.Instance.ConsultSerial(inputField.text) != null)
+                    if (ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.fullDatabase) != null)
                     {
                         RemoveOldSearch();
                         GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text), 1);
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.fullDatabase), 1);
                     }
                     else
                     {
@@ -69,6 +76,9 @@ public class ConsultInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Hides ItensFoundText and disables all instances of ConsultResult
+    /// </summary>
     private void RemoveOldSearch()
     {
         SetItensFoundText(false);
@@ -81,6 +91,9 @@ public class ConsultInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// If true, sets the text invisible, if false set it to be visible
+    /// </summary>
     private void SetItensFoundText(bool isInvisible)
     {
         if (isInvisible)
@@ -96,14 +109,14 @@ public class ConsultInventory : MonoBehaviour
 
                     break;
                 case 1:
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) == null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase) == null)
                     {
                         numberOfItensFoundText.text = "Patrimônio não encontrado";
                     }
 
                     break;
                 case 2:
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text) == null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase) == null)
                     {
                         numberOfItensFoundText.text = "Serial não encontrado";
                     }
@@ -138,14 +151,14 @@ public class ConsultInventory : MonoBehaviour
         if (activeIndexes.Count > 0)
         {
 
-            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategory(categoryDP.value));
+            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategorySheet(categoryDP.value));
         }
 
         if (foundItens != null)
         {
             if (foundItens.itens.Count > 0)
             {
-                foreach (SheetColumns foundItem in foundItens.itens)
+                foreach (ItemColumns foundItem in foundItens.itens)
                 {
                     GameObject result = PoolManager.Instance.ReuseObject(consultResult);
                     result.SetActive(true);
@@ -171,7 +184,7 @@ public class ConsultInventory : MonoBehaviour
     /// <summary>
     /// Get the correct sheet base on the category selected, to guarantee the search only happens for the specific category.
     /// </summary>
-    private Sheet GetCategory(int value)
+    private Sheet GetCategorySheet(int value)
     {
         switch (value)
         {
@@ -219,6 +232,7 @@ public class ConsultInventory : MonoBehaviour
     }
 
     /// <summary>
+    /// Handles what happens when the "procurar por" dropdown changes the value
     /// 0 = Categoria, 1 = Patrimônio, 2 = Serial
     /// </summary>
     public void HandleInputData(int value)
@@ -249,8 +263,11 @@ public class ConsultInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns to InitialScene
+    /// </summary>
     public void ReturnToPreviousScreen()
     {
-        SceneManager.LoadScene("InitialScene");
+        SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 }

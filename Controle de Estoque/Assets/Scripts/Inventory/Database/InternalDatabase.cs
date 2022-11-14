@@ -44,12 +44,14 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
     {
         DontDestroyOnLoad(this.gameObject);
     }
-   
+
     /// <summary>
     /// Get all Sheet classes saved on splitDatabase and join them into a single Sheet class
     /// </summary>
     public void FillFullDatabase()
     {
+        /// Try to get all sheets that are available on splitdatabase
+        #region Sheets
         Sheet inventario = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.InventarioSnPro, out inventario);
         Sheet hdTemp = new Sheet();
@@ -86,18 +88,19 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         splitDatabase.TryGetValue(ConstStrings.PlacaDeSom, out placaDeSomTemp);
         Sheet placaDeCapturaDeVideoTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.PlacaDeCapturaDeVideo, out placaDeCapturaDeVideoTemp);
+        #endregion
 
         // Get all itens from "Inventario SnPro into the full database
         if (inventario != null && inventario.itens.Count > 0)
         {
-            foreach (SheetColumns item in inventario.itens)
+            foreach (ItemColumns item in inventario.itens)
             {
                 fullDatabase.itens.Add(item);
             }
         }
 
         // Get the values of the detail sheet based on the "modelo" of the item on Inventario SnPro
-        foreach (SheetColumns item in fullDatabase.itens)
+        foreach (ItemColumns item in fullDatabase.itens)
         {
             if (item.Categoria.Trim() == ConstStrings.HD.Trim())
             {
@@ -105,7 +108,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (hdTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns hdItem in hdTemp.itens)
+                        foreach (ItemColumns hdItem in hdTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(hdItem.Modelo.Trim()))
@@ -137,7 +140,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (memoriaTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns memoriaItem in memoriaTemp.itens)
+                        foreach (ItemColumns memoriaItem in memoriaTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(memoriaItem.Modelo.Trim()))
@@ -170,7 +173,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (placaDeRedeTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns placaDeRedeItem in placaDeRedeTemp.itens)
+                        foreach (ItemColumns placaDeRedeItem in placaDeRedeTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(placaDeRedeItem.Modelo.Trim()))
@@ -200,7 +203,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (idracTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns idracItem in idracTemp.itens)
+                        foreach (ItemColumns idracItem in idracTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(idracItem.Modelo.Trim()))
@@ -229,7 +232,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (placaControladoraTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns placaControladoraItem in placaControladoraTemp.itens)
+                        foreach (ItemColumns placaControladoraItem in placaControladoraTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(placaControladoraItem.Modelo.Trim()))
@@ -262,7 +265,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (processadorTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns processadorItem in processadorTemp.itens)
+                        foreach (ItemColumns processadorItem in processadorTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(processadorItem.Modelo.Trim()))
@@ -293,7 +296,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (desktopTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns desktopItem in desktopTemp.itens)
+                        foreach (ItemColumns desktopItem in desktopTemp.itens)
                         {
 
                             if (item.Patrimonio.Trim().Equals(desktopItem.Patrimonio.Trim()))
@@ -325,7 +328,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (fonteTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns fonteItem in fonteTemp.itens)
+                        foreach (ItemColumns fonteItem in fonteTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(fonteItem.Modelo.Trim()))
@@ -353,13 +356,13 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (switchTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns switchItem in switchTemp.itens)
+                        foreach (ItemColumns switchItem in switchTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(switchItem.Modelo.Trim()))
                             {
                                 item.QuantidadeDePortas = switchItem.QuantidadeDePortas;
-                                item.Desempenho = switchItem.Desempenho;     
+                                item.Desempenho = switchItem.Desempenho;
                                 Switch.itens.Add(item);
                             }
                         }
@@ -380,14 +383,14 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (roteadorTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns roteadorItem in roteadorTemp.itens)
+                        foreach (ItemColumns roteadorItem in roteadorTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(roteadorItem.Modelo.Trim()))
                             {
                                 item.Wireless = roteadorItem.Wireless;
                                 item.QuantidadeDePortas = roteadorItem.QuantidadeDePortas;
-                                item.BandaMaxima = roteadorItem.BandaMaxima;             
+                                item.BandaMaxima = roteadorItem.BandaMaxima;
                                 roteador.itens.Add(item);
                             }
                         }
@@ -408,14 +411,14 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (carregadorTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns carregadorItem in carregadorTemp.itens)
+                        foreach (ItemColumns carregadorItem in carregadorTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(carregadorItem.Modelo.Trim()))
                             {
                                 item.OndeFunciona = carregadorItem.OndeFunciona;
                                 item.VoltagemDeSaida = carregadorItem.VoltagemDeSaida;
-                                item.AmperagemDeSaida = carregadorItem.AmperagemDeSaida;   
+                                item.AmperagemDeSaida = carregadorItem.AmperagemDeSaida;
                                 carregador.itens.Add(item);
                             }
                         }
@@ -436,14 +439,14 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (adaptadorACTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns adaptadorAcItem in adaptadorACTemp.itens)
+                        foreach (ItemColumns adaptadorAcItem in adaptadorACTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(adaptadorAcItem.Modelo.Trim()))
                             {
                                 item.OndeFunciona = adaptadorAcItem.OndeFunciona;
                                 item.VoltagemDeSaida = adaptadorAcItem.VoltagemDeSaida;
-                                item.AmperagemDeSaida = adaptadorAcItem.AmperagemDeSaida;        
+                                item.AmperagemDeSaida = adaptadorAcItem.AmperagemDeSaida;
                                 adaptadorAC.itens.Add(item);
                             }
                         }
@@ -464,7 +467,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (storageNASTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns storageNasItem in storageNASTemp.itens)
+                        foreach (ItemColumns storageNasItem in storageNASTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(storageNasItem.Modelo.Trim()))
@@ -474,7 +477,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                                 item.TipoDeHD = storageNasItem.TipoDeHD;
                                 item.CapacidadeMaxHD = storageNasItem.CapacidadeMaxHD;
                                 item.CapacidadeMaxHD = storageNasItem.CapacidadeMaxHD;
-                                item.AteQuantosHDs = storageNasItem.AteQuantosHDs;    
+                                item.AteQuantosHDs = storageNasItem.AteQuantosHDs;
                                 storageNAS.itens.Add(item);
                             }
                         }
@@ -495,12 +498,12 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (gbicTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns gbicItem in gbicTemp.itens)
+                        foreach (ItemColumns gbicItem in gbicTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(gbicItem.Modelo.Trim()))
                             {
-                                item.Desempenho = gbicItem.Desempenho;    
+                                item.Desempenho = gbicItem.Desempenho;
                                 gbic.itens.Add(item);
                             }
                         }
@@ -521,13 +524,13 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (placaDeVideoTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns placaDeVideoItem in placaDeVideoTemp.itens)
+                        foreach (ItemColumns placaDeVideoItem in placaDeVideoTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(placaDeVideoItem.Modelo.Trim()))
                             {
                                 item.QuantidadeDePortas = placaDeVideoItem.QuantidadeDePortas;
-                                item.QuaisConexoes = placaDeVideoItem.QuaisConexoes;   
+                                item.QuaisConexoes = placaDeVideoItem.QuaisConexoes;
                                 placaDeVideo.itens.Add(item);
                             }
                         }
@@ -548,12 +551,12 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (placaDeSomTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns placaDeSomItem in placaDeSomTemp.itens)
+                        foreach (ItemColumns placaDeSomItem in placaDeSomTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(placaDeSomItem.Modelo.Trim()))
                             {
-                                item.QuantidadeDePortas = placaDeSomItem.QuantidadeDePortas;       
+                                item.QuantidadeDePortas = placaDeSomItem.QuantidadeDePortas;
                                 placaDeSom.itens.Add(item);
                             }
                         }
@@ -574,7 +577,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 {
                     if (placaDeCapturaDeVideoTemp.itens.Count > 0)
                     {
-                        foreach (SheetColumns placaDeCapturaDeVideoItem in placaDeCapturaDeVideoTemp.itens)
+                        foreach (ItemColumns placaDeCapturaDeVideoItem in placaDeCapturaDeVideoTemp.itens)
                         {
 
                             if (item.Modelo.Trim().Equals(placaDeCapturaDeVideoItem.Modelo.Trim()))
@@ -595,11 +598,12 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                 }
             }
         }
-        //testingSheet = fullDatabase;
+
     }
 
-
-
+    /// <summary>
+    /// Used to save the informations of this class locally
+    /// </summary>
     public object CaptureState()
     {
         Databases databasesTosave = new Databases();
@@ -627,12 +631,15 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         return databasesTosave;
     }
 
+    /// <summary>
+    /// Used to load the informations of this class
+    /// </summary>
     public void RestoreState(object state)
     {
         Databases databasesToLoad = (Databases)state;
         splitDatabase = databasesToLoad.splitDatabase;
         fullDatabase = databasesToLoad.fullDatabase;
-         hd = databasesToLoad.categoryDatabases[0];
+        hd = databasesToLoad.categoryDatabases[0];
         memoria = databasesToLoad.categoryDatabases[1];
         placaDeRede = databasesToLoad.categoryDatabases[2];
         idrac = databasesToLoad.categoryDatabases[3];

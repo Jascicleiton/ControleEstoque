@@ -5,6 +5,7 @@ using TMPro;
 using Saving;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -92,7 +93,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     private void LoadScreen()
     {
-        print("Load screen");
+        SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 
     /// <summary>
@@ -129,6 +130,9 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Closes the ErrorPanel
+    /// </summary>
     public void CloseErrorPanel()
     {
         StopAllCoroutines();

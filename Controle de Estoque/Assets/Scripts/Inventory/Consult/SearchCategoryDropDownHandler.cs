@@ -11,6 +11,9 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         HandleInputData(0);
     }
 
+    /// <summary>
+    /// Handles the inputs placeholder texts for each category
+    /// </summary>
     public void HandleInputData(int value)
     {
         foreach (var item in searchParamenters)
@@ -19,6 +22,7 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         }
         switch (value)
         {
+            #region HD
             case 0:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Interface...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Tamanho...";
@@ -30,6 +34,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Memória
             case 1:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Tipo...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Capacidade (GB)...";
@@ -41,6 +47,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].placeholder.GetComponent<TMP_Text>().text = "Símbolo...";
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Placa de rede
             case 2:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Interface...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Quantas portas?...";
@@ -52,6 +60,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region iDrac
             case 3:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Porta...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Velocidade (GB/s)...";
@@ -63,6 +73,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Placa controladora
             case 4:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Tipo de conexão...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Quantas portas?...";
@@ -74,6 +86,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Processador
             case 5:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Soquete...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Nº núcleos físicos...";
@@ -85,6 +99,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Desktop
             case 6:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Modelo de placa mãe...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Fonte?...";
@@ -96,6 +112,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Fonte
             case 7:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Watts de potência...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Onde funciona?...";
@@ -107,6 +125,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Switch
             case 8:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Quantas entradas...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Capacidade máx de cada porta (MB/s)...";
@@ -118,6 +138,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Roteador
             case 9:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Wireless?...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Quantas entradas?...";
@@ -129,6 +151,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Carregador
             case 10:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Onde funciona?...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Voltagem de saída...";
@@ -140,6 +164,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Adaptador AC
             case 11:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Onde funciona?...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Voltagem de saída...";
@@ -151,6 +177,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Storage NAS
             case 12:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Tamanho dos HDs?...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Tipos de RAID...";
@@ -162,6 +190,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region GBIC
             case 13:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Desempenho máx (GB/s)...";
                 searchParamenters[4].gameObject.SetActive(false);
@@ -173,6 +203,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Placa de vídeo
             case 14:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Quantas entradas?...";
                 searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Quais entradas?...";
@@ -184,6 +216,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Placa de som
             case 15:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Quantos canais?...";
                 searchParamenters[4].gameObject.SetActive(false);
@@ -195,6 +229,8 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region Placa de captura de vídeo
             case 16:
                 searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Quantas entradas?...";
                 searchParamenters[4].gameObject.SetActive(false);
@@ -206,14 +242,23 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[10].gameObject.SetActive(false);
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
+            #endregion
+            #region 
             case 17:
                 break;
+            #endregion
+            #region 
             case 18:
                 break;
+            #endregion
+            #region 
             case 19:
                 break;
+            #endregion
+            #region 
             case 20:
                 break;
+            #endregion
             default:
                 break;
         }

@@ -27,11 +27,7 @@ public class PoolManager : Singleton<PoolManager>
     private void CreatePool(GameObject prefab, int poolSize)
     {
         int poolKey = prefab.GetInstanceID();
-        string prefabName = prefab.name;
-        // Create parentGameObject to parent the child objects to
-       // GameObject parentGameObject = new GameObject(prefabName + "Anchor");
-        //parentGameObject.transform.SetParent(objectPoolTransform);
-
+               
         if (!poolDicitionary.ContainsKey(poolKey))
         {
             poolDicitionary.Add(poolKey, new Queue<GameObject>());
@@ -78,14 +74,5 @@ public class PoolManager : Singleton<PoolManager>
         }
 
         return objectToReuse;
-    }
-
-    // not needed
-    private void ResetObject(Vector3 position, Quaternion rotation, GameObject objectToReuse, GameObject prefab)
-    {
-        objectToReuse.transform.position = position;
-        objectToReuse.transform.rotation = rotation;
-
-        objectToReuse.transform.localScale = prefab.transform.localScale;
     }
 }

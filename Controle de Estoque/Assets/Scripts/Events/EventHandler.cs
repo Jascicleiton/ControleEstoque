@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public static class EventHandler
 {
+    /// <summary>
+    /// Event used to save the database
+    /// </summary>
     public static event Action<string> DatabaseUpdatedEvent;
 
     public static void CallDatabaseUpdatedEvent(string saveName)

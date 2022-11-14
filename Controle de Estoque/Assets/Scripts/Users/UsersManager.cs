@@ -28,13 +28,16 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
         savingWrapper = FindObjectOfType<SavingWrapper>();        
     }
 
+    /// <summary>
+    /// Add a new user to the UsersDatabase and save it
+    /// </summary>
     public void  AddNewUser(User userToAdd)
     {
         usersDatabase.Add(userToAdd);
         if(savingWrapper == null)
         {
             savingWrapper = FindObjectOfType<SavingWrapper>();
-            AddNewUser(userToAdd);
+            savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
         }
         else
         {

@@ -11,7 +11,8 @@ public class InitialSceneManager : MonoBehaviour
     [SerializeField] private Button moveButton;
     [SerializeField] private Button addRemoveButton;
     [SerializeField] private Button updateItemButton;
-    [SerializeField] private Button updateDatabaseButton;
+    [SerializeField] private Button exportSheetsButton;
+    [SerializeField] private Button logoutButton;
 
     [SerializeField] TMP_Text helloMessage;
 
@@ -22,6 +23,9 @@ public class InitialSceneManager : MonoBehaviour
         ShowHideButtons();
     }
 
+    /// <summary>
+    /// hides the buttons that the user is not allowed to use
+    /// </summary>
     private void ShowHideButtons()
     {
         if(UsersManager.Instance != null)
@@ -32,7 +36,8 @@ public class InitialSceneManager : MonoBehaviour
                 moveButton.gameObject.SetActive(true);
                 addRemoveButton.gameObject.SetActive(true);
                 updateItemButton.gameObject.SetActive(true);
-                updateDatabaseButton.gameObject.SetActive(true);
+                exportSheetsButton.gameObject.SetActive(true);
+                logoutButton.gameObject.SetActive(true);
             }
             else
             {
@@ -40,7 +45,8 @@ public class InitialSceneManager : MonoBehaviour
                 moveButton.gameObject.SetActive(true);
                 addRemoveButton.gameObject.SetActive(false);
                 updateItemButton.gameObject.SetActive(false);
-                updateDatabaseButton.gameObject.SetActive(false);
+                exportSheetsButton.gameObject.SetActive(false);
+                logoutButton.gameObject.SetActive(true);
             }
         }
         else
@@ -49,28 +55,52 @@ public class InitialSceneManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Goes to ConsultScene
+    /// </summary>
     public void ConsultClicked()
     {
-        SceneManager.LoadScene("ConsultScene");
+        SceneManager.LoadScene(ConstStrings.SceneConsult);
     }
 
+    /// <summary>
+    /// Goes to MovementScene
+    /// </summary>
     public void MoveClicked()
     {
-        SceneManager.LoadScene("MovementScene");
+        SceneManager.LoadScene(ConstStrings.SceneMovement);
     }
 
+    /// <summary>
+    /// Goes to AddRemoveItemScene
+    /// </summary>
     public void AddClicked()
     {
-        SceneManager.LoadScene("AddRemoveItemScene");
+        SceneManager.LoadScene(ConstStrings.SceneAddRemoveItem);
     }
 
+    /// <summary>
+    /// Goes to UpdateItemScene
+    /// </summary>
     public void UpdateItemClicked()
     {
-        SceneManager.LoadScene("UpdateItemScene");
+        SceneManager.LoadScene(ConstStrings.SceneUpdateItem);
     }
 
-    public void UpdateDatabaseClicked()
+    /// <summary>
+    /// Goes to ExportSheetsScene
+    /// </summary>
+    public void ExportSheetsClicked()
     {
-        SceneManager.LoadScene("ConsultScene");
+        SceneManager.LoadScene(ConstStrings.SceneExportSheets);
+    }
+
+    /// <summary>
+    /// logout the current user and goes to MainMenu
+    /// </summary>
+    public void LogoutClicked()
+    {
+        UsersManager.Instance.currentUser = null;
+        SceneManager.LoadScene(ConstStrings.SceneMainMenu);
     }
 }

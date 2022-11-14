@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 namespace Saving
 {
+    
     public class SavingSystem : MonoBehaviour
     {
         public IEnumerator LoadLastScene(string saveFile)
@@ -25,8 +26,7 @@ namespace Saving
 
         public void Save(string saveFile)
         {
-            print("Saved");
-            Dictionary<string, object> state = LoadFile(saveFile);
+                        Dictionary<string, object> state = LoadFile(saveFile);
             CaptureState(state);
             SaveFile(saveFile, state);
         }
@@ -59,7 +59,7 @@ namespace Saving
         private void SaveFile(string saveFile, object state)
         {
             string path = GetPathFromSaveFile(saveFile);
-            print("Saving to " + path);
+            
             using (FileStream stream = File.Open(path, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

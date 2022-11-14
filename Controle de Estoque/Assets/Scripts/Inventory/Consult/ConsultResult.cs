@@ -12,10 +12,10 @@ public class ConsultResult : MonoBehaviour
     [SerializeField] private TMP_Text[] parameterValues;
 
     /// <summary>
-    /// Used to show the result of consulting using either "Patrimônio" or "Serial"
+    /// Used to show the result of consulting the database"
     /// itemName = 0: "Patrimônio"; itemName = 1: "Serial"
     /// </summary>
-    public void ShowResult(SheetColumns itemToShow, int itemName)
+    public void ShowResult(ItemColumns itemToShow, int itemName)
     {
         if (itemToShow != null)
         {
@@ -46,6 +46,7 @@ public class ConsultResult : MonoBehaviour
             parameterNames[8].text = "Observação";
             switch (itemToShow.Categoria)
             {
+                #region HD
                 case ConstStrings.HD:
                     parameterNames[9].text = "Interface";
                     parameterValues[9].text = itemToShow.Interface;
@@ -62,6 +63,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[15].text = "Enterprise";
                     parameterValues[15].text = itemToShow.Enterprise;
                     break;
+                #endregion
+                #region Memoria
                 case ConstStrings.Memoria:
                     parameterNames[9].text = "Tipo";
                     parameterValues[9].text = itemToShow.Tipo;
@@ -80,6 +83,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[16].text = "Símbolo";
                     parameterValues[16].text = itemToShow.Simbolo;
                     break;
+                #endregion
+                #region Placa de rede
                 case ConstStrings.PlacaDeRede:
                     parameterNames[9].text = "Interface";
                     parameterValues[9].text = itemToShow.Interface;
@@ -92,6 +97,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[13].text = "Desempenho (MB/s)";
                     parameterValues[13].text = itemToShow.Desempenho;
                     break;
+                #endregion
+                #region iDrac
                 case ConstStrings.Idrac:
                     parameterNames[9].text = "Porta";
                     parameterValues[9].text = itemToShow.QuaisConexoes;
@@ -102,6 +109,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[12].text = "Servidores suportados";
                     parameterValues[12].text = itemToShow.ServidoresSuportados;
                     break;
+                #endregion
+                #region Placa controladora
                 case ConstStrings.PlacaControladora:
                     parameterNames[9].text = "Tipo de conexão";
                     parameterValues[9].text = itemToShow.QuaisConexoes;
@@ -118,6 +127,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[15].text = "Barramento";
                     parameterValues[15].text = itemToShow.Barramento;
                     break;
+                #endregion
+                #region Processador
                 case ConstStrings.Processador:
                     parameterNames[9].text = "Soquete";
                     parameterValues[9].text = itemToShow.Soquete;
@@ -132,6 +143,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[14].text = "Hyper-Threading?";
                     parameterValues[14].text = itemToShow.HyperThreading;
                     break;
+                #endregion
+                #region Desktop
                 case ConstStrings.Desktop:
                     parameterNames[9].text = "Modelo de placa mãe";
                     parameterValues[9].text = itemToShow.ModeloPlacaMae;
@@ -146,6 +159,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[14].text = "Leitor de DVD?";
                     parameterValues[14].text = itemToShow.LeitorDeDVD;
                     break;
+                #endregion
+                #region Fonte
                 case ConstStrings.Fonte:
                     parameterNames[9].text = "Watts de potência";
                     parameterValues[9].text = itemToShow.Watts;
@@ -154,12 +169,16 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[11].text = "Conectores";
                     parameterValues[11].text = itemToShow.Conectores;
                     break;
+                #endregion
+                #region Switch
                 case ConstStrings.Switch:
                     parameterNames[9].text = "Quantas entradas";
                     parameterValues[9].text = itemToShow.QuantidadeDePortas;
                     parameterNames[10].text = "Capacidade máx de cada porta (MB/s)";
                     parameterValues[10].text = itemToShow.Desempenho;
                     break;
+                #endregion
+                #region Roteador
                 case ConstStrings.Roteador:
                     parameterNames[9].text = "Wireless?";
                     parameterValues[9].text = itemToShow.Wireless;
@@ -168,6 +187,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[11].text = "Banda máx (MB/s)";
                     parameterValues[11].text = itemToShow.BandaMaxima;
                     break;
+                #endregion
+                #region Carregador
                 case ConstStrings.Carregador:
                     parameterNames[9].text = "Onde funciona?";
                     parameterValues[9].text = itemToShow.OndeFunciona;
@@ -176,6 +197,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[11].text = "Amperagem de saída (mA)";
                     parameterValues[11].text = itemToShow.AmperagemDeSaida;
                     break;
+                #endregion
+                #region Adaptador AC
                 case ConstStrings.AdaptadorAC:
                     parameterNames[9].text = "Onde funciona?";
                     parameterValues[9].text = itemToShow.OndeFunciona;
@@ -184,6 +207,8 @@ public class ConsultResult : MonoBehaviour
                     parameterNames[11].text = "Amperagem de saída (A)";
                     parameterValues[11].text = itemToShow.AmperagemDeSaida;
                     break;
+                #endregion
+                #region Storage NAS
                 case ConstStrings.StorageNAS:
                     parameterNames[9].text = "Tamanho dos HDs";
                     parameterValues[9].text = itemToShow.Tamanho;
@@ -195,25 +220,33 @@ public class ConsultResult : MonoBehaviour
                     parameterValues[12].text = itemToShow.CapacidadeMaxHD;
                     parameterNames[13].text = "Até quantos HDs";
                     break;
+                #endregion
+                #region GBIC
                 case ConstStrings.Gbic:
                     parameterNames[9].text = "Desempenho máx (GB/s)";
                     parameterValues[9].text = itemToShow.Desempenho;
                     break;
+                #endregion
+                #region Placa de Video
                 case ConstStrings.PlacaDeVideo:
                     parameterNames[9].text = "Quantas entradas?";
                     parameterValues[9].text = itemToShow.QuantidadeDePortas;
                     parameterNames[10].text = "Quais entradas?";
                     parameterValues[10].text = itemToShow.QuaisConexoes;
                     break;
+                #endregion
+                #region Placa de som
                 case ConstStrings.PlacaDeSom:
                     parameterNames[9].text = "Quantos canais?";
                     parameterValues[9].text = itemToShow.QuantosCanais;
                     break;
+                #endregion
+                #region Placa de captura de video
                 case ConstStrings.PlacaDeCapturaDeVideo:
                     parameterNames[9].text = "Quantas entradas?";
                     parameterValues[9].text = itemToShow.QuantidadeDePortas;
                     break;
-
+                #endregion
                 default:
                     break;
             }
