@@ -253,11 +253,11 @@ public class UpdateItem : MonoBehaviour
     {
         if (parameterToSearchDP.value == 0)
         {
-            itemToUpdate = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdateParameter.text, InternalDatabase.fullDatabase);
+            itemToUpdate = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdateParameter.text, InternalDatabase.Instance.fullDatabase);
         }
         if (parameterToSearchDP.value == 1)
         {
-            itemToUpdate = ConsultDatabase.Instance.ConsultSerial(itemToUpdateParameter.text, InternalDatabase.fullDatabase);
+            itemToUpdate = ConsultDatabase.Instance.ConsultSerial(itemToUpdateParameter.text, InternalDatabase.Instance.fullDatabase);
         }
 
         if (itemToUpdate != null)
@@ -518,7 +518,7 @@ public class UpdateItem : MonoBehaviour
                 break;
         }
         itemToUpdateIndex = ConsultDatabase.Instance.GetItemIndex();
-        InternalDatabase.fullDatabase.itens[itemToUpdateIndex] = itemToUpdate;
+        InternalDatabase.Instance.fullDatabase.itens[itemToUpdateIndex] = itemToUpdate;
         ShowMessage();
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }

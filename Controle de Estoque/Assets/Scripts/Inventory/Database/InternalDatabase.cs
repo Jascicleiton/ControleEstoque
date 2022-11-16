@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Saving;
 using UnityEditor;
-
+using Mirror;
+using System;
 
 public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
 {
@@ -15,8 +16,9 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         public List<MovementRecords> movementRecords;
     }
 
-    public static Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
-    public static Sheet fullDatabase = new Sheet();
+   public  Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
+   public  Sheet fullDatabase = new Sheet();
+
     //public Sheet testingSheet = new Sheet();
     public static List<MovementRecords> movementRecords;
 
@@ -40,6 +42,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
     public static Sheet placaDeCapturaDeVideo = new Sheet();
     #endregion
 
+  
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);

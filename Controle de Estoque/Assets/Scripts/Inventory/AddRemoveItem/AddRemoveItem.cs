@@ -277,7 +277,7 @@ public class AddRemoveItem : MonoBehaviour
             #region HD
             case 0:
                 itemToAddFullDatabase.Categoria = ConstStrings.HD;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 
                 itemToAddFullDatabase.Interface = parameterValues[9].text;
                 itemToAddSplitDatabase.Interface = parameterValues[9].text;
@@ -294,14 +294,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Enterprise = parameterValues[15].text;
                 itemToAddSplitDatabase.Enterprise = parameterValues[15].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.HD].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.HD].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.hd.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Memoria
             case 1:
                 itemToAddFullDatabase.Categoria = ConstStrings.Memoria;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Tipo = parameterValues[9].text;
                 itemToAddSplitDatabase.Tipo = parameterValues[9].text;
                 itemToAddFullDatabase.CapacidadeEmGB = parameterValues[10].text;
@@ -319,14 +319,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Simbolo = parameterValues[16].text;
                 itemToAddSplitDatabase.Simbolo = parameterValues[16].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Memoria].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Memoria].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.memoria.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Placa de rede
             case 2:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeRede;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Interface = parameterValues[9].text;
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[11].text;
@@ -338,14 +338,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.SuportaFibraOptica = parameterValues[12].text;
                 itemToAddSplitDatabase.Desempenho = parameterValues[13].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.PlacaDeRede].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeRede].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaDeRede.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region iDrac
             case 3:
                 itemToAddFullDatabase.Categoria = ConstStrings.Idrac;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[9].text;
                 itemToAddFullDatabase.VelocidadeGBs = parameterValues[10].text;
                 itemToAddFullDatabase.EntradaSD = parameterValues[11].text;
@@ -355,14 +355,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.EntradaSD = parameterValues[11].text;
                 itemToAddSplitDatabase.ServidoresSuportados = parameterValues[12].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Idrac].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Idrac].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.idrac.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Placa controladora
             case 4:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaControladora;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[9].text;
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddFullDatabase.TipoDeRAID = parameterValues[11].text;
@@ -378,14 +378,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.BateriaInclusa = parameterValues[14].text;
                 itemToAddSplitDatabase.Barramento = parameterValues[15].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.PlacaControladora].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaControladora].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaControladora.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Processador
             case 5:
                 itemToAddFullDatabase.Categoria = ConstStrings.Processador;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Soquete = parameterValues[9].text;
                 itemToAddFullDatabase.NucleosFisicos = parameterValues[10].text;
                 itemToAddFullDatabase.NucleosLogicos = parameterValues[11].text;
@@ -399,14 +399,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.TurboBoost = parameterValues[13].text;
                 itemToAddSplitDatabase.HyperThreading = parameterValues[14].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Processador].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Processador].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.processador.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Desktop
             case 6:
                 itemToAddFullDatabase.Categoria = ConstStrings.Desktop;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.ModeloPlacaMae = parameterValues[9].text;
                 itemToAddFullDatabase.Fonte = parameterValues[10].text;
                 itemToAddFullDatabase.Memoria = parameterValues[11].text;
@@ -421,14 +421,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.PlacaDeVideo = parameterValues[13].text;
                 itemToAddSplitDatabase.LeitorDeDVD = parameterValues[14].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Desktop].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Desktop].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.desktop.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Fonte
             case 7:
                 itemToAddFullDatabase.Categoria = ConstStrings.Fonte;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Watts = parameterValues[9].text;
                 itemToAddFullDatabase.OndeFunciona = parameterValues[10].text;
                 itemToAddFullDatabase.Conectores = parameterValues[11].text;
@@ -436,27 +436,27 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.OndeFunciona = parameterValues[10].text;
                 itemToAddSplitDatabase.Conectores = parameterValues[11].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Fonte].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Fonte].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.fonte.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Switch
             case 8:
                 itemToAddFullDatabase.Categoria = ConstStrings.Switch;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[9].text;
                 itemToAddFullDatabase.Desempenho = parameterValues[10].text;
                 itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[9].text;
                 itemToAddSplitDatabase.Desempenho = parameterValues[10].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Switch].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Switch].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.Switch.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Roteador
             case 9:
                 itemToAddFullDatabase.Categoria = ConstStrings.Roteador;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Wireless = parameterValues[9].text;
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddFullDatabase.BandaMaxima = parameterValues[11].text;
@@ -464,14 +464,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddSplitDatabase.BandaMaxima = parameterValues[11].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Roteador].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Roteador].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.roteador.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Carregador
             case 10:
                 itemToAddFullDatabase.Categoria = ConstStrings.Carregador;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.OndeFunciona = parameterValues[9].text;
                 itemToAddFullDatabase.VoltagemDeSaida = parameterValues[10].text;
                 itemToAddFullDatabase.AmperagemDeSaida = parameterValues[11].text;
@@ -479,14 +479,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.VoltagemDeSaida = parameterValues[10].text;
                 itemToAddSplitDatabase.AmperagemDeSaida = parameterValues[11].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Carregador].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Carregador].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.carregador.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Adaptador AC
             case 11:
                 itemToAddFullDatabase.Categoria = ConstStrings.AdaptadorAC;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.OndeFunciona = parameterValues[9].text;
                 itemToAddFullDatabase.VoltagemDeSaida = parameterValues[10].text;
                 itemToAddFullDatabase.AmperagemDeSaida = parameterValues[11].text;
@@ -494,14 +494,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.VoltagemDeSaida = parameterValues[10].text;
                 itemToAddSplitDatabase.AmperagemDeSaida = parameterValues[11].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.AdaptadorAC].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.AdaptadorAC].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.adaptadorAC.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Storage NAS
             case 12:
                 itemToAddFullDatabase.Categoria = ConstStrings.StorageNAS;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Tamanho = parameterValues[9].text;
                 itemToAddFullDatabase.TipoDeRAID = parameterValues[10].text;
                 itemToAddFullDatabase.TipoDeHD = parameterValues[11].text;
@@ -511,60 +511,60 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.TipoDeHD = parameterValues[11].text;
                 itemToAddSplitDatabase.CapacidadeMaxHD = parameterValues[12].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.StorageNAS].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.StorageNAS].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.storageNAS.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region GBIC
             case 13:
                 itemToAddFullDatabase.Categoria = ConstStrings.Gbic;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Desempenho = parameterValues[9].text;
                 itemToAddSplitDatabase.Desempenho = parameterValues[9].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.Gbic].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Gbic].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.gbic.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Placa de Video
             case 14:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeVideo;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[9].text;
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[10].text;
                 itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[9].text;
                 itemToAddSplitDatabase.QuaisConexoes = parameterValues[10].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.PlacaDeVideo].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeVideo].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaDeVideo.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Placa de som
             case 15:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeSom;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuantosCanais = parameterValues[9].text;
                 itemToAddSplitDatabase.QuantosCanais = parameterValues[9].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.PlacaDeSom].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeSom].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaDeSom.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Placa de captura de video
             case 16:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeCapturaDeVideo;
-                InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[9].text;
                 itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[9].text;
 
-                InternalDatabase.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaDeCapturaDeVideo.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             default:
                 break;
         }
-        InternalDatabase.fullDatabase.itens.Add(itemToAddFullDatabase);
+        InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
         ShowMessage();
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }

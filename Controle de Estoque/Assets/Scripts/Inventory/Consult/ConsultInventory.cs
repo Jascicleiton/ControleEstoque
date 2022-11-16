@@ -41,11 +41,11 @@ public class ConsultInventory : MonoBehaviour
             {
                 if (searchOptionDP.value == 1)
                 {
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase) != null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase) != null)
                     {
                         RemoveOldSearch();
                         GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase), 0);
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase), 0);
                     }
                     else
                     {
@@ -54,11 +54,11 @@ public class ConsultInventory : MonoBehaviour
                 }
                 else if (searchOptionDP.value == 2)
                 {
-                    if (ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.fullDatabase) != null)
+                    if (ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase) != null)
                     {
                         RemoveOldSearch();
                         GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.fullDatabase), 1);
+                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase), 1);
                     }
                     else
                     {
@@ -109,14 +109,14 @@ public class ConsultInventory : MonoBehaviour
 
                     break;
                 case 1:
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase) == null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase) == null)
                     {
                         numberOfItensFoundText.text = "Patrimônio não encontrado";
                     }
 
                     break;
                 case 2:
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.fullDatabase) == null)
+                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase) == null)
                     {
                         numberOfItensFoundText.text = "Serial não encontrado";
                     }

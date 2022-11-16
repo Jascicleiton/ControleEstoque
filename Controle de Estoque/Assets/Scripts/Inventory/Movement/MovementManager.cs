@@ -51,11 +51,11 @@ public class MovementManager : MonoBehaviour
     {
         if (itemInformationDP.value == 0)
         {
-            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text, InternalDatabase.fullDatabase);
+            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
         }
         else if (itemInformationDP.value == 1)
         {
-            itemToChange = ConsultDatabase.Instance.ConsultSerial(itemInformationInput.text, InternalDatabase.fullDatabase);
+            itemToChange = ConsultDatabase.Instance.ConsultSerial(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
         }
 
         if (itemToChange != null)
@@ -142,7 +142,7 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     private void UpdateDatabase()
     {
-        InternalDatabase.fullDatabase.itens[itemToChangeIndex] = itemToChange;
+        InternalDatabase.Instance.fullDatabase.itens[itemToChangeIndex] = itemToChange;
         InternalDatabase.movementRecords.Add(movementToRecord);
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }

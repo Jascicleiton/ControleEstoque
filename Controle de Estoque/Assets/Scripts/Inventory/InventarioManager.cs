@@ -45,8 +45,15 @@ public class InventarioManager : Singleton<InventarioManager>
     {
         DontDestroyOnLoad(this.gameObject);
         //txt.text = sheet.item.Count.ToString();   
+
         ImportSheets();
+        if(inventarioCSV == null)
+        {
+            inventarioCSV = GameObject.Find("Assets/Sheets/Inventario_Sysnetpro").GetComponent<TextAsset>();
+            ImportSheets();
+        }
        StartCoroutine(WaitToFillFullDatabase());
+
     }
 
     /// <summary>
@@ -96,7 +103,7 @@ public class InventarioManager : Singleton<InventarioManager>
         textWriter.Close();
         if (InternalDatabase.Instance != null)
         {
-            tempSheet = InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro];
+            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro];
             if (tempSheet != null)
             {
                 foreach (ItemColumns item in tempSheet.itens)
@@ -140,13 +147,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.InventarioSnPro))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.InventarioSnPro))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.InventarioSnPro, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.InventarioSnPro, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.InventarioSnPro] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro] = tempSheet;
         }
 
         //InternalDatabase.Instance.FillFullDatabase(); // for testing
@@ -180,13 +187,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.HD))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.HD))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.HD, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.HD, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.HD] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.HD] = tempSheet;
         }
         
         
@@ -221,13 +228,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
         
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Memoria))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Memoria))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Memoria, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Memoria, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Memoria] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Memoria] = tempSheet;
         }        
     }
 
@@ -257,13 +264,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeRede))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeRede))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeRede, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaDeRede, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.PlacaDeRede] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeRede] = tempSheet;
         }
     }
 
@@ -293,13 +300,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Idrac))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Idrac))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Idrac, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Idrac, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Idrac] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Idrac] = tempSheet;
         }
     }
 
@@ -331,13 +338,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaControladora))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaControladora))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaControladora, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaControladora, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.PlacaControladora] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaControladora] = tempSheet;
         }
     }
 
@@ -367,13 +374,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Processador))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Processador))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Processador, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Processador, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Processador] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Processador] = tempSheet;
         }
     }
 
@@ -404,13 +411,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Desktop))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Desktop))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Desktop, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Desktop, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Desktop] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Desktop] = tempSheet;
         }
     }
 
@@ -437,13 +444,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Fonte))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Fonte))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Fonte, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Fonte, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Fonte] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Fonte] = tempSheet;
         }
     }
 
@@ -469,13 +476,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Switch))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Switch))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Switch, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Switch, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Switch] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Switch] = tempSheet;
         }
     }
 
@@ -502,13 +509,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Roteador))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Roteador))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Roteador, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Roteador, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Roteador] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Roteador] = tempSheet;
         }
     }
 
@@ -535,13 +542,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Carregador))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Carregador))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Carregador, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Carregador, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Carregador] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Carregador] = tempSheet;
         }
     }
 
@@ -568,13 +575,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.AdaptadorAC))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.AdaptadorAC))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.AdaptadorAC, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.AdaptadorAC, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.AdaptadorAC] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.AdaptadorAC] = tempSheet;
         }
     }
 
@@ -603,13 +610,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.StorageNAS))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.StorageNAS))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.StorageNAS, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.StorageNAS, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.StorageNAS] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.StorageNAS] = tempSheet;
         }
     }
 
@@ -635,13 +642,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.Gbic))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Gbic))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.Gbic, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Gbic, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.Gbic] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Gbic] = tempSheet;
         }
     }
 
@@ -667,13 +674,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeVideo))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeVideo))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeVideo, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaDeVideo, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.PlacaDeVideo] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeVideo] = tempSheet;
         }
     }
 
@@ -698,13 +705,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeSom))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeSom))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeSom, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaDeSom, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.PlacaDeSom] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeSom] = tempSheet;
         }
     }
 
@@ -729,13 +736,13 @@ public class InventarioManager : Singleton<InventarioManager>
             tempSheet.itens.Add(newRow);
         }
 
-        if (!InternalDatabase.splitDatabase.ContainsKey(ConstStrings.PlacaDeCapturaDeVideo))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeCapturaDeVideo))
         {
-            InternalDatabase.splitDatabase.Add(ConstStrings.PlacaDeCapturaDeVideo, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaDeCapturaDeVideo, tempSheet);
         }
         else
         {
-            InternalDatabase.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo] = tempSheet;
         }
     }
     #endregion

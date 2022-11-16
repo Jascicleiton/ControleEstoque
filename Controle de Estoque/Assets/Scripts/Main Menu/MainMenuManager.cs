@@ -37,15 +37,28 @@ public class MainMenuManager : MonoBehaviour
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
 
+    [SerializeField] private TMP_Text testingText;
+
     private void Start()
     {
         CheckIfUserDatabaseExists();
+        if (InternalDatabase.Instance.fullDatabase == null)
+        {
+            testingText.text = "no database";
+        }
+        else
+        {
+            testingText.text = "there is a database";
+        }
+        testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
+
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
+            testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
             CheckLogin();
         }
        
