@@ -14475,7 +14475,13 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Placa de som
       m_Image: {fileID: 0}
-    - m_Text: "Palca de captura de v\xEDdeo"
+    - m_Text: "Placa de captura de v\xEDdeo"
+      m_Image: {fileID: 0}
+    - m_Text: Servidor
+      m_Image: {fileID: 0}
+    - m_Text: Notebook
+      m_Image: {fileID: 0}
+    - m_Text: Monitor
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

@@ -40,9 +40,12 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
     public static Sheet placaDeVideo = new Sheet();
     public static Sheet placaDeSom = new Sheet();
     public static Sheet placaDeCapturaDeVideo = new Sheet();
+    public static Sheet servidor = new Sheet();
+    public static Sheet notebook = new Sheet();
+    public static Sheet monitor = new Sheet();
     #endregion
 
-  
+
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -91,6 +94,12 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         splitDatabase.TryGetValue(ConstStrings.PlacaDeSom, out placaDeSomTemp);
         Sheet placaDeCapturaDeVideoTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.PlacaDeCapturaDeVideo, out placaDeCapturaDeVideoTemp);
+        Sheet servidorTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Servidor, out servidorTemp);
+        Sheet notebookTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Notebook, out notebookTemp);
+        Sheet monitorTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Monitor, out monitorTemp);
         #endregion
 
         // Get all itens from "Inventario SnPro into the full database
@@ -587,6 +596,85 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                             {
                                 item.QuantidadeDePortas = placaDeCapturaDeVideoItem.QuantidadeDePortas;
                                 placaDeCapturaDeVideo.itens.Add(item);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Planilha placa de captura de vídeo vazia");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Planilha placa de captura de vídeo não encontrada");
+                }
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Servidor.Trim())
+            {
+                if (servidorTemp != null)
+                {
+                    if (servidorTemp.itens.Count > 0)
+                    {
+                        foreach (ItemColumns servidorItem in servidorTemp.itens)
+                        {
+
+                            if (item.Modelo.Trim().Equals(servidorItem.Modelo.Trim()))
+                            {
+                                // need to update the "Servidor" sheet with informations
+                                servidor.itens.Add(item);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Planilha Servidor vazia");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Planilha Servidor não encontrada");
+                }
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Notebook.Trim())
+            {
+                if (notebookTemp != null)
+                {
+                    if (notebookTemp.itens.Count > 0)
+                    {
+                        foreach (ItemColumns notebookItem in notebookTemp.itens)
+                        {
+
+                            if (item.Modelo.Trim().Equals(notebookItem.Modelo.Trim()))
+                            {
+                                // need to update the "Notebook" sheet with informations
+                                notebook.itens.Add(item);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Planilha Notebook vazia");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Planilha Notebook encontrada");
+                }
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Monitor.Trim())
+            {
+                if (monitorTemp != null)
+                {
+                    if (monitorTemp.itens.Count > 0)
+                    {
+                        foreach (ItemColumns monitorItem in monitorTemp.itens)
+                        {
+
+                            if (item.Modelo.Trim().Equals(monitorItem.Modelo.Trim()))
+                            {
+                                item.Polegadas = monitorItem.Polegadas;
+                                item.QuaisConexoes = monitorItem.QuaisConexoes;
+                                monitor.itens.Add(item);
                             }
                         }
                     }

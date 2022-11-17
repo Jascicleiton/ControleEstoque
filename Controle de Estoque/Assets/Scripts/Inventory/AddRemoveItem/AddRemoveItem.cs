@@ -213,8 +213,45 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-
+            case 17:
+                parameterNames[9].text = "";
+                parameterNames[10].text = "";
+                parameterNames[11].text = "";
+                parameterNames[12].text = "";
+                parameterNames[13].text = "";
+                parameterNames[14].text = "";
+                parameterNames[15].text = "";
+                parameterNames[16].text = "";
+                break;
+            case 18:
+                parameterNames[9].text = "";
+                parameterNames[10].text = "";
+                parameterNames[11].text = "";
+                parameterNames[12].text = "";
+                parameterNames[13].text = "";
+                parameterNames[14].text = "";
+                parameterNames[15].text = "";
+                parameterNames[16].text = "";
+                break;
+            case 19:
+                parameterNames[9].text = "";
+                parameterNames[10].text = "";
+                parameterNames[11].text = "";
+                parameterNames[12].text = "";
+                parameterNames[13].text = "";
+                parameterNames[14].text = "";
+                parameterNames[15].text = "";
+                parameterNames[16].text = "";
+                break;
             default:
+                parameterNames[9].text = "Polegadas";
+                parameterNames[10].text = "Tipos de entradas";
+                parameterNames[11].text = "";
+                parameterNames[12].text = "";
+                parameterNames[13].text = "";
+                parameterNames[14].text = "";
+                parameterNames[15].text = "";
+                parameterNames[16].text = "";
                 break;
         }
 
@@ -559,6 +596,37 @@ public class AddRemoveItem : MonoBehaviour
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaDeCapturaDeVideo.itens.Add(itemToAddFullDatabase);
+                break;
+            #endregion
+            #region Servidor
+            case 17:
+                itemToAddFullDatabase.Categoria = ConstStrings.Servidor;
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+          
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Servidor].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.servidor.itens.Add(itemToAddFullDatabase);
+                break;
+            #endregion
+            #region Notebook
+            case 18:
+                itemToAddFullDatabase.Categoria = ConstStrings.Notebook;
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Notebook].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.notebook.itens.Add(itemToAddFullDatabase);
+                break;
+            #endregion
+            #region Monitor
+            case 19:
+                itemToAddFullDatabase.Categoria = ConstStrings.Monitor;
+                InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                itemToAddFullDatabase.Polegadas = parameterValues[9].text;
+                itemToAddSplitDatabase.Polegadas = parameterValues[9].text;
+                itemToAddFullDatabase.QuaisConexoes = parameterValues[10].text;
+                itemToAddSplitDatabase.QuaisConexoes = parameterValues[10].text;
+
+                InternalDatabase.Instance.splitDatabase[ConstStrings.Monitor].itens.Add(itemToAddSplitDatabase);
+                InternalDatabase.monitor.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             default:

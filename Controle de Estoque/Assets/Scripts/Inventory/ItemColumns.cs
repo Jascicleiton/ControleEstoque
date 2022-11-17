@@ -84,4 +84,5 @@ public class ItemColumns
     public string VoltagemDeSaida; // Carregador, Adaptador AC
     public string AmperagemDeSaida; // Carregador, Adaptador AC
     public string QuantosCanais; // Placa de Som
+    public string Polegadas; // Monitor
 }

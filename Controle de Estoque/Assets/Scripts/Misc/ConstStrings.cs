@@ -24,6 +24,9 @@ public class ConstStrings
     public const string PlacaDeVideo = "Placa de vídeo";
     public const string PlacaDeSom = "Placa de som";
     public const string PlacaDeCapturaDeVideo = "Placa de captura de vídeo";
+    public const string Servidor = "Servidor";
+    public const string Notebook = "Notebook";
+    public const string Monitor = "Monitor";
     #endregion
 
     #region Tags

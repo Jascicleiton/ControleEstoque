@@ -32,8 +32,11 @@ public class InventarioManager : Singleton<InventarioManager>
     [SerializeField] private TextAsset placaDeVideoCSV;
     [SerializeField] private TextAsset placaDeSomCSV;
     [SerializeField] private TextAsset placaDeCapturaDeVideoCSV;
+    [SerializeField] private TextAsset servidorCSV;
+    [SerializeField] private TextAsset notebookCSV;
+    [SerializeField] private TextAsset monitorCSV;
     #endregion
-    
+
     private string fileName = "";
     [SerializeField] GameObject initialPanel;
     [SerializeField] GameObject consultInventoryPanel;
@@ -88,6 +91,9 @@ public class InventarioManager : Singleton<InventarioManager>
         ImportPlacaDeVideoToDatabase(4);
         ImportPlacaDeSomToDatabase(3);
         ImportPlacaDeCapturaDeVideoToDatabase(3);
+        ImportServidorToDatabase(3);
+        ImportNotebookToDatabase(3);
+        ImportMonitorToDatabase(5);
     }
 
     /// <summary>
@@ -745,9 +751,103 @@ public class InventarioManager : Singleton<InventarioManager>
             InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo] = tempSheet;
         }
     }
+
+    /// <summary>
+    /// Import Servidor.csv into the internal database
+    /// </summary>
+    public void ImportServidorToDatabase(int numberOfColumns)
+    {
+        string[] data = servidorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<ItemColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            ItemColumns newRow = new ItemColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 2];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Servidor))
+        {
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Servidor, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Servidor] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Notebook.csv into the internal database
+    /// </summary>
+    public void ImportNotebookToDatabase(int numberOfColumns)
+    {
+        string[] data = notebookCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<ItemColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            ItemColumns newRow = new ItemColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 2];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Notebook))
+        {
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Notebook, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Notebook] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import Monitor.csv into the internal database
+    /// </summary>
+    public void ImportMonitorToDatabase(int numberOfColumns)
+    {
+        string[] data = monitorCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
+        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        Sheet tempSheet = new Sheet();
+        tempSheet.itens = new List<ItemColumns>();
+
+        for (int i = 0; i < tableSize; i++)
+        {
+            ItemColumns newRow = new ItemColumns();
+
+            newRow.Modelo = data[numberOfColumns * (i + 1)];
+            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
+            newRow.Polegadas = data[numberOfColumns * (i + 1) + 2];
+            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 3];
+
+            tempSheet.itens.Add(newRow);
+        }
+
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Monitor))
+        {
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Monitor, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Monitor] = tempSheet;
+        }
+    }  
     #endregion
 
     /// <summary>
     /// Closes all panels and open the selected panel
     /// </summary>
-   }
+}
