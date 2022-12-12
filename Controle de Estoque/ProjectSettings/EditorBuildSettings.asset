@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UpdateItemScene.unity
     guid: e5ced2b616fdc9645995a27b0524e325
+  - enabled: 1
+    path: Assets/Scenes/ExportCSVsScene.unity
+    guid: 0be4870c74ebdad4481d5d93c79c9a97
   m_configObjects: {}

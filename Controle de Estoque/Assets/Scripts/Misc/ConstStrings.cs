@@ -27,6 +27,7 @@ public class ConstStrings
     public const string Servidor = "Servidor";
     public const string Notebook = "Notebook";
     public const string Monitor = "Monitor";
+    public const string Movimentacao = "Movimentação";
     #endregion
 
     #region Tags
@@ -41,6 +42,6 @@ public class ConstStrings
     public const string SceneMovement = "MovementScene";
     public const string SceneSplash = "SplashScreen";
     public const string SceneUpdateItem = "UpdateItemScene";
-    public const string SceneExportSheets = "ExportSheetsScene";
+    public const string SceneExportSheets = "ExportCSVsScene";
     #endregion
 }

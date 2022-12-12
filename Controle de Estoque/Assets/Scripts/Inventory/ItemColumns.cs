@@ -13,7 +13,7 @@ public class ItemColumns
         QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs, EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
         CapacidadeMaxHD, AteQuantosHDs, BateriaInclusa, Barramento, Soquete, NucleosFisicos, NucleosLogicos, AceitaVirtualizacao,
         TurboBoost, HyperThreading, ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts, 
-        OndeFunciona, Conectores, Wireless, BandaMaxima, VoltagemDeSaida, AmperagemDeSaida, QuantosCanais};
+        OndeFunciona, Conectores, Wireless, BandaMaxima, VoltagemDeSaida, AmperagemDeSaida, QuantosCanais, Polegadas, Processador};
         for (int i = 0; i < allValues.Length; i++)
         {
             if (allValues[i] == valueToGet)
@@ -85,4 +85,5 @@ public class ItemColumns
     public string AmperagemDeSaida; // Carregador, Adaptador AC
     public string QuantosCanais; // Placa de Som
     public string Polegadas; // Monitor
+    public string Processador; // Desktop, Servidores
 }

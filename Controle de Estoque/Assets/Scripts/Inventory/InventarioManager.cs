@@ -10,8 +10,8 @@ using Unity.VisualScripting;
 public class InventarioManager : Singleton<InventarioManager>
 {
     /// <summary>
-    /// At some point this will have to be set at runtime, draging and droping a file into the application or something
-    /// similar
+    /// At some point this will have to be set at runtime, draging and droping a file into
+    /// the application or something similar
     /// </summary>
     #region CSVs
     [SerializeField] private TextAsset inventarioCSV;
@@ -94,35 +94,6 @@ public class InventarioManager : Singleton<InventarioManager>
         ImportServidorToDatabase(3);
         ImportNotebookToDatabase(3);
         ImportMonitorToDatabase(5);
-    }
-
-    /// <summary>
-    /// Creates an Inventário_Sysnetpro CSV file
-    /// </summary>
-    private void CreateInventarioSheet()
-    {
-        Sheet tempSheet = new Sheet();
-        fileName = Application.dataPath + "/" + ConstStrings.InventarioSnPro + ".csv";
-        TextWriter textWriter = new StreamWriter(fileName, false);
-        textWriter.WriteLine("Entrada, Patrimônio, Status, Serial, Categoria, " +
-                        "Fabricante, Modelo, Local, Saída, Observação");
-        textWriter.Close();
-        if (InternalDatabase.Instance != null)
-        {
-            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro];
-            if (tempSheet != null)
-            {
-                foreach (ItemColumns item in tempSheet.itens)
-                {
-                    textWriter = new StreamWriter(fileName, true);
-                    textWriter.WriteLine(item.Entrada + "," + item.Patrimonio + "," + item.Status + "," +
-                        item.Serial + "," + item.Categoria + "," + item.Fabricante + "," +
-                        item.Modelo + "," + item.Local + "," + item.Saida + "," + item.Observacao);
-
-                }
-            }
-        }
-        textWriter.Close();
     }
 
     #region Import all CSVs to internal database
@@ -297,11 +268,10 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.Modelo = data[numberOfColumns * (i + 1)];
             newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
             newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 2];
-            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 3];
-            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 4];
-            newRow.EntradaSD = data[numberOfColumns * (i + 1) + 5];
-            newRow.ServidoresSuportados = data[numberOfColumns * (i + 1) + 6];
-                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 7];
+            newRow.VelocidadeGBs = data[numberOfColumns * (i + 1) + 3];
+            newRow.EntradaSD = data[numberOfColumns * (i + 1) + 4];
+            newRow.ServidoresSuportados = data[numberOfColumns * (i + 1) + 5];
+            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 6];
 
             tempSheet.itens.Add(newRow);
         }
@@ -412,6 +382,7 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.PlacaDeVideo = data[numberOfColumns * (i + 1) + 5];
             newRow.PlacaDeRede = data[numberOfColumns * (i + 1) + 6];
             newRow.LeitorDeDVD = data[numberOfColumns * (i + 1) + 7];
+            newRow.Processador = data[numberOfColumns * (i + 1) + 7];
             newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 8];
 
             tempSheet.itens.Add(newRow);
@@ -511,7 +482,8 @@ public class InventarioManager : Singleton<InventarioManager>
             newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 2];
             newRow.BandaMaxima = data[numberOfColumns * (i + 1) + 3];
             newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 4];
-            
+            newRow.VoltagemDeSaida = data[numberOfColumns * (i + 1) + 5];
+
             tempSheet.itens.Add(newRow);
         }
 
@@ -846,8 +818,4 @@ public class InventarioManager : Singleton<InventarioManager>
         }
     }  
     #endregion
-
-    /// <summary>
-    /// Closes all panels and open the selected panel
-    /// </summary>
 }

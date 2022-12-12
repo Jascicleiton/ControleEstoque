@@ -320,6 +320,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                                 item.PlacaDeVideo = desktopItem.PlacaDeVideo;
                                 item.PlacaDeRede = desktopItem.PlacaDeRede;
                                 item.LeitorDeDVD = desktopItem.LeitorDeDVD;
+                                item.Processador = desktopItem.Processador;
                                 desktop.itens.Add(item);
                             }
                         }
@@ -403,6 +404,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
                                 item.Wireless = roteadorItem.Wireless;
                                 item.QuantidadeDePortas = roteadorItem.QuantidadeDePortas;
                                 item.BandaMaxima = roteadorItem.BandaMaxima;
+                                item.VoltagemDeSaida = roteadorItem.VoltagemDeSaida;
                                 roteador.itens.Add(item);
                             }
                         }
