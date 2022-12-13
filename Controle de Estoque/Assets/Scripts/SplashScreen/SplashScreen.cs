@@ -9,8 +9,7 @@ public class SplashScreen : MonoBehaviour
 
     private CanvasGroup backgroundImage;
     private float fadeDuration = 2f;
-    private bool isFading = false;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +19,7 @@ public class SplashScreen : MonoBehaviour
 
     private IEnumerator Fade()
     {
-        isFading = true;
-        
+                
         // Make sure the CanvasGroup blocks raycasts into the scene so no more input can be accepted
         backgroundImage.blocksRaycasts = true;
 

@@ -6,6 +6,8 @@ using Saving;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+using System.Net;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -42,15 +44,15 @@ public class MainMenuManager : MonoBehaviour
     private void Start()
     {
         CheckIfUserDatabaseExists();
-        if (InternalDatabase.Instance.fullDatabase == null)
-        {
-            testingText.text = "no database";
-        }
-        else
-        {
-            testingText.text = "there is a database";
-        }
-        testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
+        //if (InternalDatabase.Instance.fullDatabase == null)
+        //{
+        //    testingText.text = "no database";
+        //}
+        //else
+        //{
+        //    testingText.text = "there is a database";
+        //}
+        //testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
 
     }
 
@@ -58,7 +60,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
-            testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
+           // testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
             CheckLogin();
         }
        
@@ -137,6 +139,12 @@ public class MainMenuManager : MonoBehaviour
                 case 2:
                     errorText.text = "Usuário cadastrado com sucesso.";
                     break;
+                case 3:
+                    errorText.text = "Erro no acesso ao banco de dados";
+                    break;
+                case 4:
+                    errorText.text = "Erro na appkey";
+                    break;
                 default:
                     break;
             }
@@ -208,29 +216,62 @@ public class MainMenuManager : MonoBehaviour
     /// <summary>
     /// Adds a new user to the user database
     /// </summary>
-    public void AddNewUser(User userToAdd)
+    private IEnumerator AddNewUser(User userToAdd)
     {
-        bool userFound = false;
-        foreach (User user in UsersManager.Instance.usersDatabase)
+        WWWForm newUserInfo = new WWWForm();
+        newUserInfo.AddField("apppassword", "InsertNewUser");
+        newUserInfo.AddField("username", userToAdd.username);
+        newUserInfo.AddField("password", userToAdd.password);
+    
+       UnityWebRequest createPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/newuser.php", newUserInfo);
+        createPostRequest.certificateHandler = new BypassCertificate();
+        yield return createPostRequest.SendWebRequest();
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            if (user.username == userToAdd.username && user.password == userToAdd.password)
-            {
-                inputEnabled = false;
-                errorPanel.SetActive(true);
-                SetErrorMessage(1);
-                StartCoroutine(ErrorPanelRoutine());
-                userFound = true;
-                break;
-            }
+            Debug.LogWarning("conectionerror");
         }
-         if(!userFound)
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            UsersManager.Instance.AddNewUser(userToAdd);
-            inputEnabled = false;
+            Debug.LogWarning("data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+        errorPanel.SetActive(true);
+        errorText.text = "";
+        if (createPostRequest.error == null)
+        {
             errorPanel.SetActive(true);
-            SetErrorMessage(2);
+            errorText.text = "";
+            string response = createPostRequest.downloadHandler.text;
+            if (response == "1" || response == "2" || response == "4")
+            {
+                SetErrorMessage(3);
+            }
+            else if (response == "3")
+            {
+                SetErrorMessage(1);
+            }
+            else if (response == "5")
+            {
+                SetErrorMessage(4);
+            }
+            else
+            {
+                Debug.Log(response);
+                SetErrorMessage(2);
+            }
             StartCoroutine(ErrorPanelRoutine());
         }
+        else
+        {
+            
+            Debug.LogWarning(createPostRequest.error);
+            errorText.text = createPostRequest.error;
+            StartCoroutine(ErrorPanelRoutine());
+        }
+        createPostRequest.Dispose();
     }
 
     /// <summary>
@@ -264,16 +305,17 @@ public class MainMenuManager : MonoBehaviour
             User userToCheck = new User(adminUserInput.text, adminPasswordInput.text);
             User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
             bool userFound = false;
+            
             foreach (User user in UsersManager.Instance.usersDatabase)
             {
                 if (user.username == userToCheck.username && user.password == userToCheck.password)
                 {
-                    AddNewUser(userToAdd);
+                    StartCoroutine( AddNewUser(userToAdd));
                     adminAuthorizing = false;
                     adminAuthorized = true;
-                    errorPanel.SetActive(true);
-                    SetErrorMessage(2);
-                    StartCoroutine(ErrorPanelRoutine());
+                  //  errorPanel.SetActive(true);
+                   // SetErrorMessage(2);
+                   // StartCoroutine(ErrorPanelRoutine());
                     userFound = true;
                     break;
                 }
