@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.Networking;
+using SimpleJSON;
 
 public class InventarioManager : Singleton<InventarioManager>
 {
@@ -43,29 +45,16 @@ public class InventarioManager : Singleton<InventarioManager>
     [SerializeField] GameObject addNewItemPanel;
     [SerializeField] GameObject moveItemPanel;
     [SerializeField] TMP_Text userMessage_txt;
-
+    [SerializeField] ImportingManager importingManager;
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         //txt.text = sheet.item.Count.ToString();   
 
         ImportSheets();
-        if(inventarioCSV == null)
-        {
-            inventarioCSV = GameObject.Find("Assets/Sheets/Inventario_Sysnetpro").GetComponent<TextAsset>();
-            ImportSheets();
-        }
-       StartCoroutine(WaitToFillFullDatabase());
-
-    }
-
-    /// <summary>
-    /// Wait a few seconds to call FillFullDatabase to give some time for ImportSheets to finish
-    /// </summary>
-    private IEnumerator WaitToFillFullDatabase()
-    {
-        yield return new WaitForSeconds(3f);
+       
         InternalDatabase.Instance.FillFullDatabase();
+
     }
 
     /// <summary>
@@ -73,57 +62,98 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     private void ImportSheets()
     {
-        ImportInventarioToDatabase(10);
-        ImportHDSheetToDatabase(10);
-        ImportMemoriaToDatabase(11);
-        ImportPlacaDeRedeToDatabase(8);
-        ImportiDracToDatabase(7);
-        ImportPlacaControladoraToDatabase(10);
-        ImportProcessadorToDatabase(8);
-        ImportDesktopToDatabase(9);
-        ImportFonteToDatabase(5);
-        ImportSwitchToDatabase(4);
-        ImportRoteadorToDatabase(5);
-        ImportCarregadorToDatabase(5);
-        ImportAdaptadorAcToDatabase(5);
-        ImportStorageNASToDatabase(7);
-        ImportGBICToDatabase(4);
-        ImportPlacaDeVideoToDatabase(4);
-        ImportPlacaDeSomToDatabase(3);
-        ImportPlacaDeCapturaDeVideoToDatabase(3);
-        ImportServidorToDatabase(3);
-        ImportNotebookToDatabase(3);
-        ImportMonitorToDatabase(5);
+        StartCoroutine(ImportInventarioToDatabase());
+        StartCoroutine(ImportHDSheetToDatabase());
+        StartCoroutine(ImportMemoriaToDatabase());
+        StartCoroutine(ImportPlacaDeRedeToDatabase());
+        StartCoroutine(ImportiDracToDatabase());
+        //ImportPlacaControladoraToDatabase(10);
+        //ImportProcessadorToDatabase(8);
+        //ImportDesktopToDatabase(9);
+        //ImportFonteToDatabase(5);
+        //ImportSwitchToDatabase(4);
+        //ImportRoteadorToDatabase(5);
+        //ImportCarregadorToDatabase(5);
+        //ImportAdaptadorAcToDatabase(5);
+        //ImportStorageNASToDatabase(7);
+        //ImportGBICToDatabase(4);
+        //ImportPlacaDeVideoToDatabase(4);
+        //ImportPlacaDeSomToDatabase(3);
+        //ImportPlacaDeCapturaDeVideoToDatabase(3);
+        //ImportServidorToDatabase(3);
+        //ImportNotebookToDatabase(3);
+        //ImportMonitorToDatabase(5);
     }
 
     #region Import all CSVs to internal database
     /// <summary>
-    /// Import Inventario_SnPro.csv into the internal database
+    /// Import inventario table from server into the internal database
     /// </summary>
-    public void ImportInventarioToDatabase(int numberOfColumns)
+    private IEnumerator ImportInventarioToDatabase()
     {
-        string[] data = inventarioCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);   
-        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        WWWForm getInventario = new WWWForm();
+        getInventario.AddField("apppassword", "ImportDatabase");
+        
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importinventario.php", getInventario);
+        yield return getInventarioRequest.SendWebRequest();
+
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<ItemColumns>();
 
-        for (int i = 0; i < tableSize; i++)
+        if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            ItemColumns newRow = new ItemColumns();
-                      
-            newRow.Entrada = data[numberOfColumns * (i + 1)];
-            newRow.Patrimonio = data[numberOfColumns * (i + 1) + 1];
-            newRow.Status = data[numberOfColumns * (i + 1) + 2];
-            newRow.Serial = data[numberOfColumns * (i + 1) + 3];
-            newRow.Categoria = data[numberOfColumns * (i + 1) + 4];
-            newRow.Fabricante = data[numberOfColumns * (i + 1) + 5];
-            newRow.Modelo = data[numberOfColumns * (i + 1) + 6];
-            newRow.Local = data[numberOfColumns * (i + 1) + 7];
-            newRow.Saida = data[numberOfColumns * (i + 1) + 8];
-            newRow.Observacao = data[numberOfColumns * (i + 1) + 9];
-            tempSheet.itens.Add(newRow);
+            Debug.LogWarning("conectionerror");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+        if (getInventarioRequest.error == null)
+        {
+            string response = getInventarioRequest.downloadHandler.text;
+            if (response == "1")
+            {
+                Debug.Log("DAtabase connection error");
+            }
+            else if (response == "2")
+            {
+                Debug.Log("Table query ran into an error");
+            }
+            else if (response == "3")
+            {
+                Debug.Log("Result came empty");
+            }
+            else
+            {
+                JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+                foreach (JSONNode item in inventario)
+                {
+                    ItemColumns newRow = new ItemColumns();
+
+                    newRow.Entrada = item[0];
+                    newRow.Patrimonio = item[1];
+                    newRow.Status = item[2];
+                    newRow.Serial = item[3];
+                    newRow.Categoria = item[4];
+                    newRow.Fabricante = item[5];
+                    newRow.Modelo = item[6];
+                    newRow.Local = item[7];
+                    newRow.Saida = item[8];
+                    newRow.Observacao = item[9];
+                    tempSheet.itens.Add(newRow);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning(getInventarioRequest.error);
         }
 
+        getInventarioRequest.Dispose();
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.InventarioSnPro))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.InventarioSnPro, tempSheet);
@@ -132,38 +162,77 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro] = tempSheet;
         }
-
-        //InternalDatabase.Instance.FillFullDatabase(); // for testing
+        importingManager.InventarioLoaded();
     }
 
     /// <summary>
-    /// Import HD.csv into the internal database
+    /// Import HD table from server into the internal database
     /// </summary>
-    public void ImportHDSheetToDatabase(int numberOfColumns)
+    private IEnumerator ImportHDSheetToDatabase()
     {
-        string[] data = hdCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        WWWForm getInventario = new WWWForm();
+        getInventario.AddField("apppassword", "ImportDatabase");
+
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importhd.php", getInventario);
+        yield return getInventarioRequest.SendWebRequest();
+
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<ItemColumns>();
 
-        for (int i = 0; i < tableSize; i++)
+        if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            ItemColumns newRow = new ItemColumns();
+            Debug.LogWarning("conection error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+        if (getInventarioRequest.error == null)
+        {
+            string response = getInventarioRequest.downloadHandler.text;
+            if (response == "1")
+            {
+                Debug.Log("DAtabase connection error");
+            }
+            else if (response == "2")
+            {
+                Debug.Log("Table query ran into an error");
+            }
+            else if (response == "3")
+            {
+                Debug.Log("Result came empty");
+            }
+            else
+            {
+                JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+                foreach (JSONNode item in inventario)
+                {
+                    ItemColumns newRow = new ItemColumns();
 
-            newRow.Modelo = data[numberOfColumns * (i + 1)];
-            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
-            newRow.Interface = data[numberOfColumns * (i + 1) + 2];
-            newRow.Tamanho = data[numberOfColumns * (i + 1) + 3];
-            newRow.FormaDeArmazenamento = data[numberOfColumns * (i + 1) + 4];
-            newRow.CapacidadeEmGB = data[numberOfColumns * (i + 1) + 5];
-            newRow.RPM = data[numberOfColumns * (i + 1) + 6];
-            newRow.VelocidadeDeLeitura = data[numberOfColumns * (i + 1) + 7];
-            newRow.Enterprise = data[numberOfColumns * (i + 1) + 8];
-                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 9];
-
-            tempSheet.itens.Add(newRow);
+                    newRow.Modelo = item[0];
+                    newRow.Fabricante = item[1];
+                    newRow.Interface = item[2];
+                    newRow.Tamanho = item[3];
+                    newRow.FormaDeArmazenamento = item[4];
+                    newRow.CapacidadeEmGB = item[5];
+                    newRow.RPM = item[6];
+                    newRow.VelocidadeDeLeitura = item[7];
+                    newRow.Enterprise = item[8];
+                    newRow.EstoqueAtual = item[9];
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning(getInventarioRequest.error);
         }
 
+        getInventarioRequest.Dispose();
+       
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.HD))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.HD, tempSheet);
@@ -172,39 +241,74 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.HD] = tempSheet;
         }
-        
-        
+        importingManager.HDLoaded();
     }
 
     /// <summary>
     /// Import Memória.csv into the internal database
     /// </summary>
-    public void ImportMemoriaToDatabase(int numberOfColumns)
+    private IEnumerator ImportMemoriaToDatabase()
     {
-        string[] data = memoriaCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        WWWForm getInventario = new WWWForm();
+        getInventario.AddField("apppassword", "ImportDatabase");
+
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importmemoria.php", getInventario);
+        yield return getInventarioRequest.SendWebRequest();
+
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<ItemColumns>();
 
-        for (int i = 0; i < tableSize; i++)
+        if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            ItemColumns newRow = new ItemColumns();
-
-            newRow.Modelo = data[numberOfColumns * (i + 1)];
-            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
-            newRow.Tipo = data[numberOfColumns * (i + 1) + 2];
-            newRow.CapacidadeEmGB = data[numberOfColumns * (i + 1) + 3];
-            newRow.VelocidadeMHz = data[numberOfColumns * (i + 1) + 4];
-            newRow.LowVoltage = data[numberOfColumns * (i + 1) + 5];
-            newRow.Rank = data[numberOfColumns * (i + 1) + 6];
-            newRow.DIMM = data[numberOfColumns * (i + 1) + 7];
-            newRow.TaxaDeTransmissao = data[numberOfColumns * (i + 1) + 8];
-            newRow.Simbolo = data[numberOfColumns * (i + 1) + 9];
-                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 10];
-
-            tempSheet.itens.Add(newRow);
+            Debug.LogWarning("conection error");
         }
-        
+        else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+        if (getInventarioRequest.error == null)
+        {
+            string response = getInventarioRequest.downloadHandler.text;
+            if (response == "1")
+            {
+                Debug.Log("DAtabase connection error");
+            }
+            else if (response == "2")
+            {
+                Debug.Log("Table query ran into an error");
+            }
+            else if (response == "3")
+            {
+                Debug.Log("Result came empty");
+            }
+            else
+            {
+                JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+                foreach (JSONNode item in inventario)
+                {
+                    ItemColumns newRow = new ItemColumns();
+
+                    newRow.Modelo = item[0];
+                    newRow.Fabricante = item[1];
+                    newRow.Tipo = item[2];
+                    newRow.CapacidadeEmGB = item[3];
+                    newRow.VelocidadeMHz = item[4];
+                    newRow.LowVoltage = item[5];
+                    newRow.Rank = item[6];
+                    newRow.DIMM = item[7];
+                    newRow.TaxaDeTransmissao = item[8];
+                    newRow.Simbolo = item[9];
+                    newRow.EstoqueAtual = item[10];
+
+                    tempSheet.itens.Add(newRow);
+                }
+            }
+        }
+        getInventarioRequest.Dispose();
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Memoria))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Memoria, tempSheet);
@@ -218,28 +322,66 @@ public class InventarioManager : Singleton<InventarioManager>
     /// <summary>
     /// Import Placa de Rede.csv into the internal database
     /// </summary>
-    public void ImportPlacaDeRedeToDatabase(int numberOfColumns)
+    private IEnumerator ImportPlacaDeRedeToDatabase()
     {
-        string[] data = placaDeRedeCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        WWWForm getInventario = new WWWForm();
+        getInventario.AddField("apppassword", "ImportDatabase");
+
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importplacaderede.php", getInventario);
+        yield return getInventarioRequest.SendWebRequest();
+
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<ItemColumns>();
 
-        for (int i = 0; i < tableSize; i++)
+        if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            ItemColumns newRow = new ItemColumns();
-
-            newRow.Modelo = data[numberOfColumns * (i + 1)];
-            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
-            newRow.Interface = data[numberOfColumns * (i + 1) + 2];
-            newRow.QuantidadeDePortas = data[numberOfColumns * (i + 1) + 3];
-            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 4];
-            newRow.SuportaFibraOptica = data[numberOfColumns * (i + 1) + 5];
-            newRow.Desempenho = data[numberOfColumns * (i + 1) + 6] + " Mb/s";
-                        newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 7];
-
-            tempSheet.itens.Add(newRow);
+            Debug.LogWarning("conection error");
         }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+        if (getInventarioRequest.error == null)
+        {
+            string response = getInventarioRequest.downloadHandler.text;
+            if (response == "1")
+            {
+                Debug.Log("Database connection error");
+            }
+            else if (response == "2")
+            {
+                Debug.Log("Table query ran into an error");
+            }
+            else if (response == "3")
+            {
+                Debug.Log("Result came empty");
+            }
+            else
+            {
+                JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+                foreach (JSONNode item in inventario)
+                {
+                    ItemColumns newRow = new ItemColumns();
+
+                    newRow.Modelo = item[0];
+                    newRow.Fabricante = item[1];
+                    newRow.Interface = item[2];
+                    newRow.QuantidadeDePortas = item[3];
+                    newRow.QuaisConexoes = item[4];
+                    newRow.SuportaFibraOptica = item[5];
+                    newRow.Desempenho = item[6];
+                    newRow.EstoqueAtual = item[7];
+
+                    tempSheet.itens.Add(newRow);
+                }
+            }
+        }
+
+        getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeRede))
         {
@@ -254,27 +396,65 @@ public class InventarioManager : Singleton<InventarioManager>
     /// <summary>
     /// Import iDrac.csv into the internal database
     /// </summary>
-    public void ImportiDracToDatabase(int numberOfColumns)
+    private IEnumerator ImportiDracToDatabase()
     {
-        string[] data = idracCSV.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);
-        int tableSize = data.Length / numberOfColumns - 1; // it takes one off, because the first row is ignored
+        WWWForm getInventario = new WWWForm();
+        getInventario.AddField("apppassword", "ImportDatabase");
+
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importidrac.php", getInventario);
+        yield return getInventarioRequest.SendWebRequest();
+
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<ItemColumns>();
 
-        for (int i = 0; i < tableSize; i++)
+        if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            ItemColumns newRow = new ItemColumns();
-
-            newRow.Modelo = data[numberOfColumns * (i + 1)];
-            newRow.Fabricante = data[numberOfColumns * (i + 1) + 1];
-            newRow.QuaisConexoes = data[numberOfColumns * (i + 1) + 2];
-            newRow.VelocidadeGBs = data[numberOfColumns * (i + 1) + 3];
-            newRow.EntradaSD = data[numberOfColumns * (i + 1) + 4];
-            newRow.ServidoresSuportados = data[numberOfColumns * (i + 1) + 5];
-            newRow.EstoqueAtual = data[numberOfColumns * (i + 1) + 6];
-
-            tempSheet.itens.Add(newRow);
+            Debug.LogWarning("conection error");
         }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+        if (getInventarioRequest.error == null)
+        {
+            string response = getInventarioRequest.downloadHandler.text;
+            if (response == "1")
+            {
+                Debug.Log("Database connection error");
+            }
+            else if (response == "2")
+            {
+                Debug.Log("Table query ran into an error");
+            }
+            else if (response == "3")
+            {
+                Debug.Log("Result came empty");
+            }
+            else
+            {
+                JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+                foreach (JSONNode item in inventario)
+                {
+                    ItemColumns newRow = new ItemColumns();
+
+                    newRow.Modelo = item[0];
+                    newRow.Fabricante = item[1];
+                    newRow.QuaisConexoes = item[2];
+                    newRow.VelocidadeGBs = item[3];
+                    newRow.EntradaSD = item[4];
+                    newRow.ServidoresSuportados = item[5];
+                    newRow.EstoqueAtual = item[6];
+
+                    tempSheet.itens.Add(newRow);
+                }
+            }
+        }
+
+        getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Idrac))
         {
@@ -284,6 +464,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.Idrac] = tempSheet;
         }
+        InternalDatabase.Instance.FillFullDatabase();
     }
 
     /// <summary>
