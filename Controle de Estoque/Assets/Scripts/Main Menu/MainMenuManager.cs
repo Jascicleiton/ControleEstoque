@@ -35,7 +35,7 @@ public class MainMenuManager : MonoBehaviour
     #endregion
 
     [SerializeField] private GameObject usersManagerPrefab;
-    private bool inputEnabled = true; // enable or disable the Enter key press to login
+    private bool loginEnabled = true; // enable or disable the Enter key press to login
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
 
@@ -43,64 +43,122 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        CheckIfUserDatabaseExists();
-        //if (InternalDatabase.Instance.fullDatabase == null)
-        //{
-        //    testingText.text = "no database";
-        //}
-        //else
-        //{
-        //    testingText.text = "there is a database";
-        //}
-        //testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
-
+        loginEnabled = true;
+        adminAuthorizing = false;
+        adminAuthorized = false;
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
-           // testingText.text = InternalDatabase.Instance.fullDatabase.itens.Count.ToString();
-            CheckLogin();
+           if(loginEnabled)
+            {
+                StartCoroutine(Login());
+            }
+           if(adminAuthorizing)
+            {
+                CheckAdminAuthorization();
+            }         
         }
-       
     }
 
-    /// <summary>
-    /// Safety check to see if there is a UsersManager instance and if the usersDatabase is null
-    /// </summary>
-    private void CheckIfUserDatabaseExists()
+    private void CheckAdminAuthorization()
     {
-        if(UsersManager.Instance == null)
+        adminAuthorized = false;
+              foreach (User user in UsersManager.Instance.usersDatabase)
         {
-            Instantiate(usersManagerPrefab);
-        }
-        else
-        {
-            if(UsersManager.Instance.usersDatabase == null)
+            if (adminUserInput.text == user.username && adminPasswordInput.text == user.password)
             {
-                UsersManager.Instance.usersDatabase = new List<User>();
-                SavingSystem saving = FindObjectOfType<SavingSystem>();
-                saving.Load(ConstStrings.UserDatabaseSaveFile);
+                User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
+                adminAuthorized = true;
+                StartCoroutine(AddNewUser(userToAdd));
+                break;
             }
+        }
+              if(!adminAuthorized)
+        {
+            SetErrorMessage(6);
         }
     }
 
     /// <summary>
     /// Login into the system. Different users have different access
     /// </summary>
-    private void Login(string user)
+    private IEnumerator Login()
     {
-        UsersManager.Instance.currentUser.username = user;
-        if (user == "marcelo.fonseca" || user == "pedro.neto")
+        WWWForm loginUserInfo = new WWWForm();
+        loginUserInfo.AddField("apppassword", "LoginUser");
+        loginUserInfo.AddField("username", userInput.text);
+        loginUserInfo.AddField("password", passwordInput.text);
+
+        UnityWebRequest createPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", loginUserInfo);
+         yield return createPostRequest.SendWebRequest();
+
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            UsersManager.Instance.adminLogged = true;
+            Debug.LogWarning("conectionerror");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+
+        if (createPostRequest.error == null)
+        {
+           
+                        string response = createPostRequest.downloadHandler.text;
+            if (response == "1" || response == "2" || response == "5")
+            {
+                errorPanel.SetActive(true);
+                StartCoroutine(ErrorPanelRoutine());
+                SetErrorMessage(3);
+            }
+            else if (response == "3")
+            {
+                errorPanel.SetActive(true);
+                StartCoroutine(ErrorPanelRoutine());
+                SetErrorMessage(0);
+            }
+            else if (response == "4")
+            {
+                errorPanel.SetActive(true);
+                StartCoroutine(ErrorPanelRoutine());
+                SetErrorMessage(5);
+            }
+            else
+            {
+                CheckIfAdminLogging();
+                LoadScreen();
+            }
+            
         }
         else
         {
-            UsersManager.Instance.adminLogged = false;
+            errorPanel.SetActive(true);
+            Debug.LogWarning(createPostRequest.error);
+            errorText.text = createPostRequest.error;
+            StartCoroutine(ErrorPanelRoutine());
         }
-        LoadScreen();
+        createPostRequest.Dispose();
+        }
+
+    private void CheckIfAdminLogging()
+    {
+        UsersManager.Instance.adminLogged = false;
+        foreach (User user in UsersManager.Instance.usersDatabase)
+        {
+            if(userInput.text == user.username)
+            {
+                UsersManager.Instance.adminLogged = true;
+                break;
+            }     
+        }
+        UsersManager.Instance.currentUser.username = userInput.text;
     }
 
     /// <summary>
@@ -117,7 +175,7 @@ public class MainMenuManager : MonoBehaviour
     private IEnumerator ErrorPanelRoutine()
     {
         yield return new WaitForSeconds(10);
-        inputEnabled = true;
+        loginEnabled = true;
         CloseErrorPanel();
         
     }
@@ -126,12 +184,13 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     private void SetErrorMessage(int errorID)
     {
-        if(errorText.isActiveAndEnabled)
+        errorPanel.SetActive(true);
+        if (errorText.isActiveAndEnabled)
         {
             switch (errorID)
             {
                 case 0:
-                    errorText.text = "Usuário e/ou senha incorretos. Tente novamente.";
+                    errorText.text = "Usuário incorreto. Tente novamente.";
                     break;
                 case 1:
                     errorText.text = "Usuário já existe. Tente adicionar outro usuário";
@@ -145,10 +204,18 @@ public class MainMenuManager : MonoBehaviour
                 case 4:
                     errorText.text = "Erro na appkey";
                     break;
+                case 5:
+                    errorText.text = "Senha incorreta. Tente novamente.";
+                    break;
+                case 6:
+                    
+                    errorText.text = "Login e/ou senha do admin não reconhecido.";
+                    break;
                 default:
                     break;
             }
         }
+        StartCoroutine(ErrorPanelRoutine());
     }
 
     /// <summary>
@@ -156,7 +223,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void CloseErrorPanel()
     {
-        StopAllCoroutines();
+        StopCoroutine(ErrorPanelRoutine()); 
         errorPanel.SetActive(false);
         if(adminAuthorizing)
         {            
@@ -191,26 +258,63 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void AddNewUserClicked()
     {
-        bool userFound = false;
-        adminAuthorizing = true;
-        inputEnabled = false;
-        foreach (User user in UsersManager.Instance.usersDatabase)
+               loginEnabled = false;
+
+        StartCoroutine(CheckIfUserAlreadyExists());        
+    }
+
+    private IEnumerator CheckIfUserAlreadyExists()
+    {
+        WWWForm newUserInfo = new WWWForm();
+        newUserInfo.AddField("apppassword", "CheckIfUserExist");
+        newUserInfo.AddField("username", addNewUserInput.text);
+       
+        UnityWebRequest createPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/checkuserexist.php", newUserInfo);
+        yield return createPostRequest.SendWebRequest();
+
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            if(user.username == addNewUserInput.text)
+            Debug.LogWarning("conectionerror");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+
+        if (createPostRequest.error == null)
+        {
+                       string response = createPostRequest.downloadHandler.text;
+            if (response == "1" || response == "2")
             {
-                inputEnabled = false;
-                errorPanel.SetActive(true);
-                SetErrorMessage(1);
-                StartCoroutine(ErrorPanelRoutine());
-                userFound = true;
-                break;
+                SetErrorMessage(3);
             }
+            else if (response == "3")
+            {
+                adminAuthorizationPanel.SetActive(true);
+                adminAuthorizing = true;
+            }
+            else if (response == "4")
+            {
+                SetErrorMessage(1);
+            }
+            else
+            {
+                Debug.Log(response);
+            }
+            
         }
-        if (!userFound)
+        else
         {
-            adminAuthorizationPanel.SetActive(true);
+            errorPanel.SetActive(true);
+            Debug.LogWarning(createPostRequest.error);
+            errorText.text = createPostRequest.error;
+            StartCoroutine(ErrorPanelRoutine());
         }
-        
+        createPostRequest.Dispose();
     }
 
     /// <summary>
@@ -224,8 +328,8 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("password", userToAdd.password);
     
        UnityWebRequest createPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/newuser.php", newUserInfo);
-        createPostRequest.certificateHandler = new BypassCertificate();
-        yield return createPostRequest.SendWebRequest();
+               yield return createPostRequest.SendWebRequest();
+
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
             Debug.LogWarning("conectionerror");
@@ -238,20 +342,20 @@ public class MainMenuManager : MonoBehaviour
         {
             Debug.LogWarning("protocol error");
         }
-        errorPanel.SetActive(true);
-        errorText.text = "";
+       
         if (createPostRequest.error == null)
         {
-            errorPanel.SetActive(true);
-            errorText.text = "";
-            string response = createPostRequest.downloadHandler.text;
+           
+                       string response = createPostRequest.downloadHandler.text;
             if (response == "1" || response == "2" || response == "4")
             {
                 SetErrorMessage(3);
+                
             }
             else if (response == "3")
             {
                 SetErrorMessage(1);
+                
             }
             else if (response == "5")
             {
@@ -261,12 +365,15 @@ public class MainMenuManager : MonoBehaviour
             {
                 Debug.Log(response);
                 SetErrorMessage(2);
+                newUserPanel.SetActive(false);
+                adminAuthorizing = false;
+                loginEnabled = true;
             }
-            StartCoroutine(ErrorPanelRoutine());
+            
         }
         else
         {
-            
+            errorPanel.SetActive(true);
             Debug.LogWarning(createPostRequest.error);
             errorText.text = createPostRequest.error;
             StartCoroutine(ErrorPanelRoutine());
@@ -275,68 +382,12 @@ public class MainMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if the username and password exist on the database and are typed correctly
-    /// </summary>
-    public void CheckLogin()
-    {
-        if (!adminAuthorizing)
-        {
-            User userToCheck = new User(userInput.text, passwordInput.text);
-            bool userFound = false;
-            foreach (User user in UsersManager.Instance.usersDatabase)
-            {
-                if(user.username == userToCheck.username && user.password == userToCheck.password)
-                {
-                    Login(userToCheck.username);
-                    userFound = true;
-                    break;
-                }
-            }               
-            if(!userFound)
-            {
-                inputEnabled = false;
-                errorPanel.SetActive(true);
-                SetErrorMessage(0);
-                StartCoroutine(ErrorPanelRoutine());
-            }
-        }
-        else
-        {
-            User userToCheck = new User(adminUserInput.text, adminPasswordInput.text);
-            User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
-            bool userFound = false;
-            
-            foreach (User user in UsersManager.Instance.usersDatabase)
-            {
-                if (user.username == userToCheck.username && user.password == userToCheck.password)
-                {
-                    StartCoroutine( AddNewUser(userToAdd));
-                    adminAuthorizing = false;
-                    adminAuthorized = true;
-                  //  errorPanel.SetActive(true);
-                   // SetErrorMessage(2);
-                   // StartCoroutine(ErrorPanelRoutine());
-                    userFound = true;
-                    break;
-                }
-            }
-            if(!userFound)
-            {
-                inputEnabled = false;
-                errorPanel.SetActive(true);
-                SetErrorMessage(0);
-                StartCoroutine(ErrorPanelRoutine());
-            }
-        }
-    }
-
-    /// <summary>
     /// Called by the OK button inside the error panel to close the panel and enable enter input
     /// </summary>
     public void SetInputEnabled(bool isEnabled)
     {
         errorPanel.SetActive(false);
-        inputEnabled = isEnabled;
+        loginEnabled = isEnabled;
     }
 
     /// <summary>

@@ -11,7 +11,7 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
     private SavingWrapper savingWrapper = null;
     public User currentUser = new User("pessoa","");
 
-    protected void Awake()
+    protected  override void Awake()
     {
         base.Awake();
         usersDatabase = new List<User>();
