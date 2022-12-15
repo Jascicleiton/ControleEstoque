@@ -21,6 +21,11 @@ public class ImportingManager : MonoBehaviour
     [SerializeField] TMP_Text storagenas;
     [SerializeField] TMP_Text gbic;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     public void InventarioLoaded()
     {
         inventario.text = "Carregado";

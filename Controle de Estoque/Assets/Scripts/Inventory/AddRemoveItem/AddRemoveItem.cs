@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class AddRemoveItem : MonoBehaviour
@@ -635,6 +636,1019 @@ public class AddRemoveItem : MonoBehaviour
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
         ShowMessage();
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
+    }
+
+    private IEnumerator AddNewItemRoutine()
+    {
+        WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+        UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+        yield return createInventarioPostRequest.SendWebRequest();
+
+        if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("conectionerror");
+        }
+        else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+
+        if (createInventarioPostRequest.error == null)
+        {
+
+            string response = createInventarioPostRequest.downloadHandler.text;
+            if (response == "1" || response == "2" || response == "5")
+            {
+               
+            }
+            else if (response == "3")
+            {
+               
+            }
+            else if (response == "4")
+            {
+               
+            }
+            else
+            {
+                
+            }
+
+        }
+        else
+        {
+           
+        }
+        createInventarioPostRequest.Dispose();
+        switch (categoryDP.value)
+        {
+            #region HD
+            case 0:
+                WWWForm hdForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createHDPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/addnewhd.php", hdForm);
+                yield return createHDPostRequest.SendWebRequest();
+
+                if (createHDPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createHDPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createHDPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createHDPostRequest.error == null)
+                {
+
+                    string response = createHDPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createHDPostRequest.Dispose();
+                break;
+            #endregion
+            #region Memoria
+            case 1:
+                WWWForm memoriaForm = CreateAddItemForm.GetHDForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de rede
+            case 2:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region iDrac
+            case 3:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa controladora
+            case 4:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Processador
+            case 5:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Desktop
+            case 6:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Fonte
+            case 7:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Switch
+            case 8:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Roteador
+            case 9:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Carregador
+            case 10:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Adaptador AC
+            case 11:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Storage NAS
+            case 12:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region GBIC
+            case 13:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de Video
+            case 14:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de som
+            case 15:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de captura de video
+            case 16:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Servidor
+            case 17:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Notebook
+            case 18:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            #region Monitor
+            case 19:
+                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
+                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+                yield return createInventarioPostRequest.SendWebRequest();
+
+                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createInventarioPostRequest.error == null)
+                {
+
+                    string response = createInventarioPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createInventarioPostRequest.Dispose();
+                break;
+            #endregion
+            default:
+                break;
+        }
     }
 
     // MAYBE will be implemented

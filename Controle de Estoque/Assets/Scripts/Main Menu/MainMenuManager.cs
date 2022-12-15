@@ -87,6 +87,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     private IEnumerator Login()
     {
+        InternalDatabase.Instance.FillFullDatabase();
         WWWForm loginUserInfo = new WWWForm();
         loginUserInfo.AddField("apppassword", "LoginUser");
         loginUserInfo.AddField("username", userInput.text);
