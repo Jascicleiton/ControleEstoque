@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Networking;
 
 public class MovementManager : MonoBehaviour
 {
@@ -47,23 +47,110 @@ public class MovementManager : MonoBehaviour
     /// <summary>
     /// Checks if the item that is trying to move exists on the fulldatabase
     /// </summary>
-    private void CheckIfItemExists()
+    private IEnumerator CheckIfItemExists()
     {
         if (itemInformationDP.value == 0)
         {
-            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
+            WWWForm consultPatrimonioForm = CreateAddItemForm.GetConsultPatrimonioForm(itemInformationInput.text);
+            
+            UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
+            yield return createPostRequest.SendWebRequest();
+            if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.LogWarning("conectionerror");
+            }
+            else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+            {
+                Debug.LogWarning("data processing error");
+            }
+            else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogWarning("protocol error");
+            }
+
+            if (createPostRequest.error == null)
+            {
+
+                string response = createPostRequest.downloadHandler.text;
+                if (response == "1" || response == "2" || response == "5")
+                {
+
+                }
+                else if (response == "0")
+                {
+                    itemFound = true;
+                }
+                else if (response == "4")
+                {
+
+                }
+                else
+                {
+                }
+
+            }
+            else
+            {
+               
+                Debug.LogWarning(createPostRequest.error);
+               
+            }
+            createPostRequest.Dispose();
         }
         else if (itemInformationDP.value == 1)
         {
-            itemToChange = ConsultDatabase.Instance.ConsultSerial(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
+            WWWForm consultSerialForm = CreateAddItemForm.GetConsultSerialForm(itemInformationInput.text);
+            
+            UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultserial.php", consultSerialForm);
+            yield return createPostRequest.SendWebRequest();
+            if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.LogWarning("conectionerror");
+            }
+            else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+            {
+                Debug.LogWarning("data processing error");
+            }
+            else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogWarning("protocol error");
+            }
+
+            if (createPostRequest.error == null)
+            {
+
+                string response = createPostRequest.downloadHandler.text;
+                if (response == "1" || response == "2" || response == "5")
+                {
+
+                }
+                else if (response == "0")
+                {
+                    itemFound = true;
+                }
+                else if (response == "4")
+                {
+
+                }
+                else
+                {
+                }
+
+            }
+            else
+            {
+
+                Debug.LogWarning(createPostRequest.error);
+
+            }
+            createPostRequest.Dispose();
         }
 
-        if (itemToChange != null)
+        if (itemFound)
         {
             ShouldHidePanels(false);
             fromInput.text = itemToChange.Local;
             whoInput.text = UsersManager.Instance.currentUser.username;
-            itemFound = true;
         }
         else
         {
@@ -99,6 +186,11 @@ public class MovementManager : MonoBehaviour
     {
         if (itemToChange != null)
         {
+            WWWForm moveItemForm = new WWWForm();
+            if(itemInformationDP.value == 0)
+            {
+               
+            }
             itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
             UpdateItemToChange(itemToChange);
             UpdateDatabase();

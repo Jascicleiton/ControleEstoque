@@ -12,7 +12,7 @@ public class AddRemoveItem : MonoBehaviour
     [SerializeField] private TMP_InputField[] parameterValues;
     [SerializeField] private GameObject[] itensToShow;
     [SerializeField] private TMP_Dropdown categoryDP;
-    
+
     [SerializeField] GameObject messagePanel;
     [SerializeField] TMP_Text messageText;
 
@@ -31,7 +31,7 @@ public class AddRemoveItem : MonoBehaviour
             itensToShow[i].SetActive(true);
             parameterValues[i].text = "";
         }
-        
+
         parameterNames[0].text = "Entrada no estoque";
         parameterNames[1].text = "Patrimônio";
         parameterNames[2].text = "Status";
@@ -88,11 +88,11 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[9].text = "Tipo de conexão";
                 parameterNames[10].text = "Quantas portas?";
                 parameterNames[11].text = "Tipos de RAID";
-                parameterNames[12].text = "Capacidade máx do HD (TB)";
-                parameterNames[13].text = "Até quantos HDs";
-                parameterNames[14].text = "Bateria inclusa?";
-                parameterNames[15].text = "Barramento";
-                parameterNames[16].text = "";
+                parameterNames[12].text = "Tipo de HD";
+                parameterNames[13].text = "Capacidade máx do HD (TB)";
+                parameterNames[14].text = "Até quantos HDs";
+                parameterNames[15].text = "Bateria inclusa?";
+                parameterNames[16].text = "Barramento";
                 break;
             case 5:
                 parameterNames[9].text = "Soquete";
@@ -110,9 +110,9 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[11].text = "Memória?";
                 parameterNames[12].text = "HD?";
                 parameterNames[13].text = "Placa de vídeo?";
-                parameterNames[14].text = "Leitor de DVD?";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
+                parameterNames[14].text = "Pla de rede?";
+                parameterNames[15].text = "Leitor de DVD?";
+                parameterNames[16].text = "Processador?";
                 break;
             case 7:
                 parameterNames[9].text = "Watts de potência";
@@ -138,7 +138,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[9].text = "Wireless?";
                 parameterNames[10].text = "Quantas entradas?";
                 parameterNames[11].text = "Banda máx (MB/s)";
-                parameterNames[12].text = "";
+                parameterNames[12].text = "Voltagem";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
@@ -178,7 +178,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[9].text = "Desempenho máx (GB/s)";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
-                                parameterNames[12].text = "";
+                parameterNames[12].text = "";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
@@ -276,7 +276,7 @@ public class AddRemoveItem : MonoBehaviour
     /// <summary>
     /// Wait for a few seconds before automatically closing the message
     /// </summary>
-        private IEnumerator CloseMessageRoutine()
+    private IEnumerator CloseMessageRoutine()
     {
         yield return new WaitForSeconds(5f);
         CloseMessage();
@@ -316,7 +316,7 @@ public class AddRemoveItem : MonoBehaviour
             case 0:
                 itemToAddFullDatabase.Categoria = ConstStrings.HD;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                
+
                 itemToAddFullDatabase.Interface = parameterValues[9].text;
                 itemToAddSplitDatabase.Interface = parameterValues[9].text;
                 itemToAddFullDatabase.Tamanho = parameterValues[10].text;
@@ -404,17 +404,19 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[9].text;
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddFullDatabase.TipoDeRAID = parameterValues[11].text;
-                itemToAddFullDatabase.CapacidadeMaxHD = parameterValues[12].text;
-                itemToAddFullDatabase.AteQuantosHDs = parameterValues[13].text;
-                itemToAddFullDatabase.BateriaInclusa = parameterValues[14].text;
-                itemToAddFullDatabase.Barramento = parameterValues[15].text;
+                itemToAddFullDatabase.TipoDeHD = parameterValues[12].text;
+                itemToAddFullDatabase.CapacidadeMaxHD = parameterValues[13].text;
+                itemToAddFullDatabase.AteQuantosHDs = parameterValues[14].text;
+                itemToAddFullDatabase.BateriaInclusa = parameterValues[15].text;
+                itemToAddFullDatabase.Barramento = parameterValues[16].text;
                 itemToAddSplitDatabase.QuaisConexoes = parameterValues[9].text;
                 itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddSplitDatabase.TipoDeRAID = parameterValues[11].text;
-                itemToAddSplitDatabase.CapacidadeMaxHD = parameterValues[12].text;
-                itemToAddSplitDatabase.AteQuantosHDs = parameterValues[13].text;
-                itemToAddSplitDatabase.BateriaInclusa = parameterValues[14].text;
-                itemToAddSplitDatabase.Barramento = parameterValues[15].text;
+                itemToAddSplitDatabase.TipoDeHD = parameterValues[12].text;
+                itemToAddSplitDatabase.CapacidadeMaxHD = parameterValues[13].text;
+                itemToAddSplitDatabase.AteQuantosHDs = parameterValues[14].text;
+                itemToAddSplitDatabase.BateriaInclusa = parameterValues[15].text;
+                itemToAddSplitDatabase.Barramento = parameterValues[16].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaControladora].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaControladora.itens.Add(itemToAddFullDatabase);
@@ -450,14 +452,18 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Memoria = parameterValues[11].text;
                 itemToAddFullDatabase.HD = parameterValues[12].text;
                 itemToAddFullDatabase.PlacaDeVideo = parameterValues[13].text;
-                itemToAddFullDatabase.LeitorDeDVD = parameterValues[14].text;
+                itemToAddFullDatabase.PlacaDeRede = parameterValues[14].text;
+                itemToAddFullDatabase.LeitorDeDVD = parameterValues[15].text;
+                itemToAddFullDatabase.Processador = parameterValues[16].text;
                 itemToAddSplitDatabase.Patrimonio = parameterValues[1].text;
                 itemToAddSplitDatabase.ModeloPlacaMae = parameterValues[9].text;
                 itemToAddSplitDatabase.Fonte = parameterValues[10].text;
                 itemToAddSplitDatabase.Memoria = parameterValues[11].text;
                 itemToAddSplitDatabase.HD = parameterValues[12].text;
                 itemToAddSplitDatabase.PlacaDeVideo = parameterValues[13].text;
-                itemToAddSplitDatabase.LeitorDeDVD = parameterValues[14].text;
+                itemToAddSplitDatabase.PlacaDeRede = parameterValues[14].text;
+                itemToAddSplitDatabase.LeitorDeDVD = parameterValues[15].text;
+                itemToAddSplitDatabase.Processador = parameterValues[16].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Desktop].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.desktop.itens.Add(itemToAddFullDatabase);
@@ -498,9 +504,11 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Wireless = parameterValues[9].text;
                 itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddFullDatabase.BandaMaxima = parameterValues[11].text;
+                itemToAddFullDatabase.VoltagemDeSaida = parameterValues[12].text;
                 itemToAddSplitDatabase.Wireless = parameterValues[9].text;
                 itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[10].text;
                 itemToAddSplitDatabase.BandaMaxima = parameterValues[11].text;
+                itemToAddSplitDatabase.VoltagemDeSaida = parameterValues[12].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Roteador].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.roteador.itens.Add(itemToAddFullDatabase);
@@ -544,10 +552,12 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.TipoDeRAID = parameterValues[10].text;
                 itemToAddFullDatabase.TipoDeHD = parameterValues[11].text;
                 itemToAddFullDatabase.CapacidadeMaxHD = parameterValues[12].text;
+                itemToAddFullDatabase.AteQuantosHDs = parameterValues[13].text;
                 itemToAddSplitDatabase.Tamanho = parameterValues[9].text;
                 itemToAddSplitDatabase.TipoDeRAID = parameterValues[10].text;
                 itemToAddSplitDatabase.TipoDeHD = parameterValues[11].text;
                 itemToAddSplitDatabase.CapacidadeMaxHD = parameterValues[12].text;
+                itemToAddSplitDatabase.AteQuantosHDs = parameterValues[13].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.StorageNAS].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.storageNAS.itens.Add(itemToAddFullDatabase);
@@ -603,7 +613,7 @@ public class AddRemoveItem : MonoBehaviour
             case 17:
                 itemToAddFullDatabase.Categoria = ConstStrings.Servidor;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-          
+
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Servidor].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.servidor.itens.Add(itemToAddFullDatabase);
                 break;
@@ -612,7 +622,7 @@ public class AddRemoveItem : MonoBehaviour
             case 18:
                 itemToAddFullDatabase.Categoria = ConstStrings.Notebook;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                
+
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Notebook].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.notebook.itens.Add(itemToAddFullDatabase);
                 break;
@@ -634,14 +644,19 @@ public class AddRemoveItem : MonoBehaviour
                 break;
         }
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
+        StartCoroutine(AddNewItemRoutine());
         ShowMessage();
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }
 
     private IEnumerator AddNewItemRoutine()
     {
-        WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-        UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
+        #region Add new item to Inventario
+        WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text,
+        parameterValues[2].text, parameterValues[3].text, parameterValues[4].text,
+        HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text,
+        parameterValues[7].text, parameterValues[8].text);
+        UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
         yield return createInventarioPostRequest.SendWebRequest();
 
         if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -663,33 +678,36 @@ public class AddRemoveItem : MonoBehaviour
             string response = createInventarioPostRequest.downloadHandler.text;
             if (response == "1" || response == "2" || response == "5")
             {
-               
+
             }
             else if (response == "3")
             {
-               
+
             }
             else if (response == "4")
             {
-               
+
             }
             else
             {
-                
+
             }
 
         }
         else
         {
-           
+
         }
         createInventarioPostRequest.Dispose();
+        #endregion
         switch (categoryDP.value)
         {
             #region HD
             case 0:
-                WWWForm hdForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createHDPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/addnewhd.php", hdForm);
+                WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text);
+                UnityWebRequest createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
                 yield return createHDPostRequest.SendWebRequest();
 
                 if (createHDPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -736,27 +754,29 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Memoria
             case 1:
-                WWWForm memoriaForm = CreateAddItemForm.GetHDForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
+                UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
+                yield return createMemoriaPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createMemoriaPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createMemoriaPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createMemoriaPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createMemoriaPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -779,32 +799,34 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createMemoriaPostRequest.Dispose();
                 break;
             #endregion
             #region Placa de rede
             case 2:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm placaDeRedeForm = CreateAddItemForm.GetPlacaDeRedeForm(parameterValues[5].text,
+                parameterValues[4].text, parameterValues[9].text, parameterValues[10].text, parameterValues[11].text,
+                parameterValues[12].text, parameterValues[13].text);
+                UnityWebRequest createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacarede.php", placaDeRedeForm);
+                yield return createPlacaDeRedePostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createPlacaDeRedePostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createPlacaDeRedePostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -827,32 +849,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createPlacaDeRedePostRequest.Dispose();
                 break;
             #endregion
             #region iDrac
             case 3:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm iDracForm = CreateAddItemForm.GetiDracForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
+                UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemidrac.php", iDracForm);
+                yield return createiDracPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createiDracPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createiDracPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createiDracPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createiDracPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createiDracPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -875,32 +898,34 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createiDracPostRequest.Dispose();
                 break;
             #endregion
             #region Placa controladora
             case 4:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm placaControladoraForm = CreateAddItemForm.GetPlacaControladoraForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
+                UnityWebRequest createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacontroladora.php", placaControladoraForm);
+                yield return createPlacaControladoraPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createPlacaControladoraPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createPlacaControladoraPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -923,32 +948,34 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createPlacaControladoraPostRequest.Dispose();
                 break;
             #endregion
             #region Processador
             case 5:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm processadorForm = CreateAddItemForm.GetProcessadorForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text);
+                UnityWebRequest createProcessadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemprocessador.php", processadorForm);
+                yield return createProcessadorPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createProcessadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createProcessadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createProcessadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createProcessadorPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createProcessadorPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -971,32 +998,34 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createProcessadorPostRequest.Dispose();
                 break;
             #endregion
             #region Desktop
             case 6:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm desktopForm = CreateAddItemForm.GetDesktopForm(parameterValues[1].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
+                UnityWebRequest createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemdesktop.php", desktopForm);
+                yield return createDesktopPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createDesktopPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createDesktopPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createDesktopPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createDesktopPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createDesktopPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1019,32 +1048,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createDesktopPostRequest.Dispose();
                 break;
             #endregion
             #region Fonte
             case 7:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm fonteForm = CreateAddItemForm.GetFonteForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
+                UnityWebRequest createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemfonte.php", fonteForm);
+                yield return createFontePostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createFontePostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createFontePostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createFontePostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createFontePostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createFontePostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1067,32 +1097,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createFontePostRequest.Dispose();
                 break;
             #endregion
             #region Switch
             case 8:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm switchForm = CreateAddItemForm.GetSwitchForm(parameterValues[5].text, parameterValues[9].text,
+                parameterValues[10].text);
+                UnityWebRequest createSwitchPostRequest = UnityWebRequest.Post("addnewitemswitch.php", switchForm);
+                yield return createSwitchPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createSwitchPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createSwitchPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createSwitchPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createSwitchPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createSwitchPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1115,32 +1146,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createSwitchPostRequest.Dispose();
                 break;
             #endregion
             #region Roteador
             case 9:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm roteadorForm = CreateAddItemForm.GetRoteadorForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
+                UnityWebRequest createRoteadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemroteador.php", roteadorForm);
+                yield return createRoteadorPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createRoteadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createRoteadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createRoteadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createRoteadorPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createRoteadorPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1163,32 +1195,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createRoteadorPostRequest.Dispose();
                 break;
             #endregion
             #region Carregador
             case 10:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm carregadorForm = CreateAddItemForm.GetCarregadorForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
+                UnityWebRequest createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemcarregador.php", carregadorForm);
+                yield return createCarregadorPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createCarregadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createCarregadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createCarregadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createCarregadorPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createCarregadorPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1211,32 +1244,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createCarregadorPostRequest.Dispose();
                 break;
             #endregion
             #region Adaptador AC
             case 11:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm adaptadorACForm = CreateAddItemForm.GetAdaptadorACForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
+                UnityWebRequest createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemadaptadorac.php", adaptadorACForm);
+                yield return createAdaptadorAcPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createAdaptadorAcPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createAdaptadorAcPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1259,32 +1293,34 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createAdaptadorAcPostRequest.Dispose();
                 break;
             #endregion
             #region Storage NAS
             case 12:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm storageNasForm = CreateAddItemForm.GetStorageNASForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text);
+                UnityWebRequest createStorageNasPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemstoragenas.php", storageNasForm);
+                yield return createStorageNasPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createStorageNasPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createStorageNasPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createStorageNasPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createStorageNasPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createStorageNasPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1307,32 +1343,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createStorageNasPostRequest.Dispose();
                 break;
             #endregion
             #region GBIC
             case 13:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm gbicForm = CreateAddItemForm.GetGBICForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text);
+                UnityWebRequest createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemgbic.php", gbicForm);
+                yield return createGbicPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createGbicPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createGbicPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createGbicPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createGbicPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createGbicPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1355,32 +1392,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createGbicPostRequest.Dispose();
                 break;
             #endregion
             #region Placa de Video
             case 14:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm placaDeVideoForm = CreateAddItemForm.GetPlacaVideoForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text);
+                UnityWebRequest createPlacaDeVideoPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadevideo.php", placaDeVideoForm);
+                yield return createPlacaDeVideoPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createPlacaDeVideoPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createPlacaDeVideoPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1403,32 +1441,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createPlacaDeVideoPostRequest.Dispose();
                 break;
             #endregion
             #region Placa de som
             case 15:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm placaDeSomForm = CreateAddItemForm.GetPlacaSomForm(parameterValues[5].text,
+                parameterValues[9].text);
+                UnityWebRequest createPlacaDeSomPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadesom.php", placaDeSomForm);
+                yield return createPlacaDeSomPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createPlacaDeSomPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createPlacaDeSomPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1451,32 +1490,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createPlacaDeSomPostRequest.Dispose();
                 break;
             #endregion
             #region Placa de captura de video
             case 16:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm placaDeCapturaDeVideoForm = CreateAddItemForm.GetPlacaCapturaVideoForm(parameterValues[5].text,
+                parameterValues[9].text);
+                UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post("addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
+                yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createPlacaDeCapturaDeVideoPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createPlacaDeCapturaDeVideoPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1499,32 +1539,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createPlacaDeCapturaDeVideoPostRequest.Dispose();
                 break;
             #endregion
             #region Servidor
             case 17:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm servidorForm = CreateAddItemForm.GetServidorForm(parameterValues[5].text,
+                parameterValues[4].text);
+                UnityWebRequest createServidorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemservidor.php", servidorForm);
+                yield return createServidorPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createServidorPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createServidorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createServidorPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createServidorPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createServidorPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1547,32 +1588,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createServidorPostRequest.Dispose();
                 break;
             #endregion
             #region Notebook
             case 18:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm notebookForm = CreateAddItemForm.GetNotebookForm(parameterValues[5].text,
+                parameterValues[4].text);
+                UnityWebRequest createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemnotebook.php", notebookForm);
+                yield return createNotebookPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createNotebookPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createNotebookPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createNotebookPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createNotebookPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createNotebookPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1595,32 +1637,33 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createNotebookPostRequest.Dispose();
                 break;
             #endregion
             #region Monitor
             case 19:
-                WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text, parameterValues[5].text, parameterValues[6].text, parameterValues[7].text, parameterValues[8].text);
-                UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", inventarioForm);
-                yield return createInventarioPostRequest.SendWebRequest();
+                WWWForm monitorForm = CreateAddItemForm.GetMonitorForm(parameterValues[5].text,
+                parameterValues[4].text, parameterValues[9].text, parameterValues[10].text);
+                UnityWebRequest createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "adnewitemmonitor.php", monitorForm);
+                yield return createMonitorPostRequest.SendWebRequest();
 
-                if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                if (createMonitorPostRequest.result == UnityWebRequest.Result.ConnectionError)
                 {
                     Debug.LogWarning("conectionerror");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                else if (createMonitorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
                 {
                     Debug.LogWarning("data processing error");
                 }
-                else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                else if (createMonitorPostRequest.result == UnityWebRequest.Result.ProtocolError)
                 {
                     Debug.LogWarning("protocol error");
                 }
 
-                if (createInventarioPostRequest.error == null)
+                if (createMonitorPostRequest.error == null)
                 {
 
-                    string response = createInventarioPostRequest.downloadHandler.text;
+                    string response = createMonitorPostRequest.downloadHandler.text;
                     if (response == "1" || response == "2" || response == "5")
                     {
 
@@ -1643,7 +1686,7 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                 }
-                createInventarioPostRequest.Dispose();
+                createMonitorPostRequest.Dispose();
                 break;
             #endregion
             default:
@@ -1660,7 +1703,7 @@ public class AddRemoveItem : MonoBehaviour
     /// <summary>
     /// Call UpdateNames whenever a new category is selected
     /// </summary>
-        public void HandleInputData(int value)
+    public void HandleInputData(int value)
     {
         UpdateNames();
     }

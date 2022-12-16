@@ -44,4 +44,11 @@ public class ConstStrings
     public const string SceneUpdateItem = "UpdateItemScene";
     public const string SceneExportSheets = "ExportCSVsScene";
     #endregion
+
+    #region PHP folder URL
+    public const string PhpRootFolder = "http://localhost/controledeestoque/";
+    public const string PhpAdditemsFolder = "http://localhost/controledeestoque/Additems/";
+    public const string PhpMovementsFolder = "http://localhost/controledeestoque/Movements/";
+    #endregion
+
 }

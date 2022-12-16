@@ -93,7 +93,7 @@ public class MainMenuManager : MonoBehaviour
         loginUserInfo.AddField("username", userInput.text);
         loginUserInfo.AddField("password", passwordInput.text);
 
-        UnityWebRequest createPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/loginuser.php", loginUserInfo);
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
          yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -270,7 +270,7 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("apppassword", "CheckIfUserExist");
         newUserInfo.AddField("username", addNewUserInput.text);
        
-        UnityWebRequest createPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/checkuserexist.php", newUserInfo);
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
         yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -328,7 +328,7 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("username", userToAdd.username);
         newUserInfo.AddField("password", userToAdd.password);
     
-       UnityWebRequest createPostRequest = UnityWebRequest.Post("http://localhost/controledeestoque/newuser.php", newUserInfo);
+       UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
                yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
