@@ -299,11 +299,11 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
         return inventario;
     }
 
-    public static WWWForm GetUpdateItemLocationForm(string patrimonio, string serial, string usuario, string data, 
+    public static WWWForm GetMoveItemForm(string patrimonio, string serial, string usuario, string data, 
         string deOnde, string paraOnde)
     {
         WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", "ConsultDatabase");
+        inventario.AddField("apppassword", "MoveItem");
         inventario.AddField("patrimonio", patrimonio);
         inventario.AddField("serial", serial);
         inventario.AddField("usuario", usuario);

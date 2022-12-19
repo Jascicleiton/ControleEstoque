@@ -23,8 +23,15 @@ public class MovementManager : MonoBehaviour
     private int itemToChangeIndex;
     private ItemColumns itemToChange;
     private bool itemFound = false;
+    private int categoryIndex = 0;
 
     MovementRecords movementToRecord;
+
+
+    private void Start()
+    {
+        itemInformationDP.value = 0;    
+    }
 
     /// <summary>
     /// Handles what happens if Enter is pressed
@@ -35,11 +42,11 @@ public class MovementManager : MonoBehaviour
         {
             if (itemFound)
             {
-                MoveItem();
+                StartCoroutine(MoveItem());
             }
             else
             {
-                CheckIfItemExists();
+                StartCoroutine(CheckIfItemExists());
             }
         }
     }
@@ -49,8 +56,10 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     private IEnumerator CheckIfItemExists()
     {
+        //print("hi");
         if (itemInformationDP.value == 0)
         {
+            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text,InternalDatabase.Instance.fullDatabase);
             WWWForm consultPatrimonioForm = CreateAddItemForm.GetConsultPatrimonioForm(itemInformationInput.text);
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
@@ -74,18 +83,19 @@ public class MovementManager : MonoBehaviour
                 string response = createPostRequest.downloadHandler.text;
                 if (response == "1" || response == "2" || response == "5")
                 {
-
+                    print("1, 2 ou 5");
                 }
                 else if (response == "0")
                 {
-                    itemFound = true;
+                    print("0");
                 }
                 else if (response == "4")
                 {
-
+                    itemFound = true;
                 }
                 else
                 {
+                    print("vai saber");
                 }
 
             }
@@ -99,6 +109,7 @@ public class MovementManager : MonoBehaviour
         }
         else if (itemInformationDP.value == 1)
         {
+            itemToChange = ConsultDatabase.Instance.ConsultSerial(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
             WWWForm consultSerialForm = CreateAddItemForm.GetConsultSerialForm(itemInformationInput.text);
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultserial.php", consultSerialForm);
@@ -122,18 +133,21 @@ public class MovementManager : MonoBehaviour
                 string response = createPostRequest.downloadHandler.text;
                 if (response == "1" || response == "2" || response == "5")
                 {
-
+                    print("1, 2 ou 5");
                 }
                 else if (response == "0")
                 {
+                    print("0");
                     itemFound = true;
                 }
                 else if (response == "4")
                 {
-
+                    print("4");
+                    itemFound = true;
                 }
                 else
                 {
+                    print("Vai saber");
                 }
 
             }
@@ -145,10 +159,11 @@ public class MovementManager : MonoBehaviour
             }
             createPostRequest.Dispose();
         }
-
+        yield return new WaitForSeconds(0.5f);
         if (itemFound)
         {
             ShouldHidePanels(false);
+            
             fromInput.text = itemToChange.Local;
             whoInput.text = UsersManager.Instance.currentUser.username;
         }
@@ -182,24 +197,67 @@ public class MovementManager : MonoBehaviour
     /// <summary>
     /// Try to change the item location
     /// </summary>
-    private void MoveItem()
+    private IEnumerator MoveItem()
     {
-        if (itemToChange != null)
+        WWWForm moveItemForm = new WWWForm();
+        if (itemInformationDP.value == 0)
         {
-            WWWForm moveItemForm = new WWWForm();
-            if(itemInformationDP.value == 0)
+            moveItemForm = CreateAddItemForm.GetMoveItemForm(itemInformationInput.text, itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+        }
+        else if (itemInformationDP.value == 1)
+        {
+            moveItemForm = CreateAddItemForm.GetMoveItemForm(itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+        }
+        
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
+        yield return createPostRequest.SendWebRequest();
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("conectionerror");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+
+        if (createPostRequest.error == null)
+        {
+
+            string response = createPostRequest.downloadHandler.text;
+            if (response == "1" || response == "2" || response == "5")
             {
-               
+                print("MoveItem =  1 or 2 or 5");
             }
-            itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
-            UpdateItemToChange(itemToChange);
-            UpdateDatabase();
-            ShowMessage(true);
+            else if (response == "0")
+            {
+                print("MoveItem =  0");
+            }
+            else if (response == "4")
+            {
+                print("4");
+            }
+            else
+            {
+                print("MoveItem =  ???");
+            }
+
         }
         else
         {
-            ShowMessage(false);
+
+            Debug.LogWarning(createPostRequest.error);
+
         }
+        createPostRequest.Dispose();
+        itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
+       
+        UpdateItemToChange(itemToChange);
+        UpdateDatabase();
+        ShowMessage(true);
     }
 
     /// <summary>
@@ -234,8 +292,9 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     private void UpdateDatabase()
     {
+        print(itemToChangeIndex);
         InternalDatabase.Instance.fullDatabase.itens[itemToChangeIndex] = itemToChange;
-        InternalDatabase.movementRecords.Add(movementToRecord);
+       // InternalDatabase.movementRecords.Add(movementToRecord);
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }
 
@@ -294,6 +353,7 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     public void HandleInputData(int value)
     {
+
         if (value == 0)
         {
             itemInformationInput.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
@@ -311,5 +371,6 @@ public class MovementManager : MonoBehaviour
     {
         SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
+
 
 }

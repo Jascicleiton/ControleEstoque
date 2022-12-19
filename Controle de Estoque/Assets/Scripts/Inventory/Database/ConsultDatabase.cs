@@ -13,13 +13,16 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
         itemIndex = 0;
         foreach (ItemColumns item in databaseToConsult.itens)
         {
-            itemIndex++;
             if (item.Serial == serialToConsult)
             {
-                                return item;
+                return item;
+            }
+            else
+            {
+                itemIndex++;
             }
         }
-       
+
         return null;
     }
 
@@ -31,14 +34,16 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
         itemIndex = 0;
         foreach (ItemColumns item in databaseToConsult.itens)
         {
-            itemIndex++;
             if (item.Patrimonio == patrimonioToConsult)
             {
-
                 return item;
             }
+            else
+            {
+                itemIndex++;
+            }
         }
-        
+
         return null;
     }
 

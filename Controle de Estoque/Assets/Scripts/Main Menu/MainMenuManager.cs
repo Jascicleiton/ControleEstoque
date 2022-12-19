@@ -22,8 +22,8 @@ public class MainMenuManager : MonoBehaviour
     #region NewUser
     [SerializeField] private GameObject newUserPanel;
     [SerializeField] private TMP_Text newUserMessage;
-    [SerializeField] private TMP_InputField addNewUserInput; 
-    [SerializeField] private TMP_InputField addNewPasswordInput; 
+    [SerializeField] private TMP_InputField addNewUserInput;
+    [SerializeField] private TMP_InputField addNewPasswordInput;
     [SerializeField] private Button openAddNewUserPanelButton;
     [SerializeField] private TMP_Text addNewUserButtonText;
     #endregion
@@ -39,6 +39,8 @@ public class MainMenuManager : MonoBehaviour
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
 
+    
+
     [SerializeField] private TMP_Text testingText;
 
     private void Start()
@@ -50,23 +52,23 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
         {
-           if(loginEnabled)
+            if (loginEnabled)
             {
                 StartCoroutine(Login());
             }
-           if(adminAuthorizing)
+            if (adminAuthorizing)
             {
                 CheckAdminAuthorization();
-            }         
+            }
         }
     }
 
     private void CheckAdminAuthorization()
     {
         adminAuthorized = false;
-              foreach (User user in UsersManager.Instance.usersDatabase)
+        foreach (User user in UsersManager.Instance.usersDatabase)
         {
             if (adminUserInput.text == user.username && adminPasswordInput.text == user.password)
             {
@@ -76,7 +78,7 @@ public class MainMenuManager : MonoBehaviour
                 break;
             }
         }
-              if(!adminAuthorized)
+        if (!adminAuthorized)
         {
             SetErrorMessage(6);
         }
@@ -87,14 +89,14 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     private IEnumerator Login()
     {
-        InternalDatabase.Instance.FillFullDatabase();
+        
         WWWForm loginUserInfo = new WWWForm();
         loginUserInfo.AddField("apppassword", "LoginUser");
         loginUserInfo.AddField("username", userInput.text);
         loginUserInfo.AddField("password", passwordInput.text);
 
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
-         yield return createPostRequest.SendWebRequest();
+        yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
@@ -111,8 +113,7 @@ public class MainMenuManager : MonoBehaviour
 
         if (createPostRequest.error == null)
         {
-           
-                        string response = createPostRequest.downloadHandler.text;
+            string response = createPostRequest.downloadHandler.text;
             if (response == "1" || response == "2" || response == "5")
             {
                 errorPanel.SetActive(true);
@@ -136,7 +137,7 @@ public class MainMenuManager : MonoBehaviour
                 CheckIfAdminLogging();
                 LoadScreen();
             }
-            
+
         }
         else
         {
@@ -146,18 +147,18 @@ public class MainMenuManager : MonoBehaviour
             StartCoroutine(ErrorPanelRoutine());
         }
         createPostRequest.Dispose();
-        }
+    }
 
     private void CheckIfAdminLogging()
     {
-        UsersManager.Instance.adminLogged = false;
+           UsersManager.Instance.adminLogged = false;
         foreach (User user in UsersManager.Instance.usersDatabase)
         {
-            if(userInput.text == user.username)
+            if (userInput.text == user.username)
             {
                 UsersManager.Instance.adminLogged = true;
                 break;
-            }     
+            }
         }
         UsersManager.Instance.currentUser.username = userInput.text;
     }
@@ -178,7 +179,7 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(10);
         loginEnabled = true;
         CloseErrorPanel();
-        
+
     }
     /// <summary>
     /// 0 = Username/Password error, 1 = Username already exists, 2 = New user added
@@ -209,7 +210,7 @@ public class MainMenuManager : MonoBehaviour
                     errorText.text = "Senha incorreta. Tente novamente.";
                     break;
                 case 6:
-                    
+
                     errorText.text = "Login e/ou senha do admin não reconhecido.";
                     break;
                 default:
@@ -224,10 +225,10 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void CloseErrorPanel()
     {
-        StopCoroutine(ErrorPanelRoutine()); 
+        StopCoroutine(ErrorPanelRoutine());
         errorPanel.SetActive(false);
-        if(adminAuthorizing)
-        {            
+        if (adminAuthorizing)
+        {
             adminAuthorizationPanel.SetActive(false);
             adminAuthorizing = false;
         }
@@ -259,9 +260,9 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void AddNewUserClicked()
     {
-               loginEnabled = false;
+        loginEnabled = false;
 
-        StartCoroutine(CheckIfUserAlreadyExists());        
+        StartCoroutine(CheckIfUserAlreadyExists());
     }
 
     private IEnumerator CheckIfUserAlreadyExists()
@@ -269,7 +270,7 @@ public class MainMenuManager : MonoBehaviour
         WWWForm newUserInfo = new WWWForm();
         newUserInfo.AddField("apppassword", "CheckIfUserExist");
         newUserInfo.AddField("username", addNewUserInput.text);
-       
+
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
         yield return createPostRequest.SendWebRequest();
 
@@ -288,7 +289,7 @@ public class MainMenuManager : MonoBehaviour
 
         if (createPostRequest.error == null)
         {
-                       string response = createPostRequest.downloadHandler.text;
+            string response = createPostRequest.downloadHandler.text;
             if (response == "1" || response == "2")
             {
                 SetErrorMessage(3);
@@ -306,7 +307,7 @@ public class MainMenuManager : MonoBehaviour
             {
                 Debug.Log(response);
             }
-            
+
         }
         else
         {
@@ -327,9 +328,9 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("apppassword", "InsertNewUser");
         newUserInfo.AddField("username", userToAdd.username);
         newUserInfo.AddField("password", userToAdd.password);
-    
-       UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
-               yield return createPostRequest.SendWebRequest();
+
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
+        yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
@@ -343,20 +344,20 @@ public class MainMenuManager : MonoBehaviour
         {
             Debug.LogWarning("protocol error");
         }
-       
+
         if (createPostRequest.error == null)
         {
-           
-                       string response = createPostRequest.downloadHandler.text;
+
+            string response = createPostRequest.downloadHandler.text;
             if (response == "1" || response == "2" || response == "4")
             {
                 SetErrorMessage(3);
-                
+
             }
             else if (response == "3")
             {
                 SetErrorMessage(1);
-                
+
             }
             else if (response == "5")
             {
@@ -370,7 +371,7 @@ public class MainMenuManager : MonoBehaviour
                 adminAuthorizing = false;
                 loginEnabled = true;
             }
-            
+
         }
         else
         {
@@ -396,9 +397,9 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void ShowHidePassword(bool showPassword)
     {
-        if(newUserPanel.activeInHierarchy)
+        if (newUserPanel.activeInHierarchy)
         {
-            if(addNewPasswordInput.contentType == TMP_InputField.ContentType.Password)
+            if (addNewPasswordInput.contentType == TMP_InputField.ContentType.Password)
             {
                 addNewPasswordInput.contentType = TMP_InputField.ContentType.Standard;
             }
@@ -408,7 +409,7 @@ public class MainMenuManager : MonoBehaviour
             }
             addNewPasswordInput.ForceLabelUpdate();
         }
-        if(adminAuthorizationPanel.activeInHierarchy)
+        if (adminAuthorizationPanel.activeInHierarchy)
         {
             if (adminPasswordInput.contentType == TMP_InputField.ContentType.Password)
             {
@@ -420,7 +421,7 @@ public class MainMenuManager : MonoBehaviour
             }
             adminPasswordInput.ForceLabelUpdate();
         }
-        if (!adminAuthorizing && !adminAuthorized &&!newUserPanel.activeInHierarchy)
+        if (!adminAuthorizing && !adminAuthorized && !newUserPanel.activeInHierarchy)
         {
             if (passwordInput.contentType == TMP_InputField.ContentType.Password)
             {

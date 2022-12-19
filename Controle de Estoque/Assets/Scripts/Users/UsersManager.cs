@@ -7,6 +7,7 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
 {
     public List<User> usersDatabase;
     private User admin;
+    private User admin1;
     public bool adminLogged = false;
     private SavingWrapper savingWrapper = null;
     public User currentUser = new User("pessoa","");
@@ -19,6 +20,11 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
         if (!usersDatabase.Contains(admin))
         {
             usersDatabase.Add(admin);
+        }
+        admin1 = new User("marcelo.fonseca", "Umsegredo1");
+        if (!usersDatabase.Contains(admin1))
+        {
+            usersDatabase.Add(admin1);
         }
     }
 

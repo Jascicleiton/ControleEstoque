@@ -15,7 +15,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// <summary>
     /// Import all sheets to internal database
     /// </summary>
-    private void ImportSheets()
+    public void ImportSheets()
     {
         StartCoroutine(ImportInventarioToDatabase());
         StartCoroutine(ImportHDSheetToDatabase());
@@ -178,6 +178,8 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.VelocidadeDeLeitura = item[7];
                     newRow.Enterprise = item[8];
                     newRow.EstoqueAtual = item[9];
+                    newRow.Categoria = ConstStrings.HD;
+                    tempSheet.itens.Add(newRow);
                 }
             }
         }
@@ -258,6 +260,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.TaxaDeTransmissao = item[8];
                     newRow.Simbolo = item[9];
                     newRow.EstoqueAtual = item[10];
+                    newRow.Categoria = ConstStrings.Memoria;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -331,6 +334,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.SuportaFibraOptica = item[5];
                     newRow.Desempenho = item[6];
                     newRow.EstoqueAtual = item[7];
+                    newRow.Categoria = ConstStrings.PlacaDeRede;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -342,12 +346,12 @@ public class InventarioManager : Singleton<InventarioManager>
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeRede))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaDeRede, tempSheet);
-        }
+                    }
         else
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeRede] = tempSheet;
-        }
-
+                    }
+       
     }
 
     /// <summary>
@@ -405,6 +409,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.EntradaSD = item[4];
                     newRow.ServidoresSuportados = item[5];
                     newRow.EstoqueAtual = item[6];
+                    newRow.Categoria = ConstStrings.Idrac;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -482,6 +487,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.BateriaInclusa = item[7];
                     newRow.Barramento = item[8];
                     newRow.EstoqueAtual = item[9];
+                    newRow.Categoria = ConstStrings.PlacaControladora;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -554,6 +560,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.TurboBoost = item[5];
                     newRow.HyperThreading = item[6];
                     newRow.EstoqueAtual = item[7];
+                    newRow.Categoria = ConstStrings.Processador;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -628,6 +635,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.LeitorDeDVD = item[7];
                     newRow.Processador = item[8];
                     newRow.EstoqueAtual = item[9];
+                    newRow.Categoria = ConstStrings.Desktop;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -699,6 +707,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.OndeFunciona = item[2];
                     newRow.Conectores = item[3];
                     newRow.EstoqueAtual = item[4];
+                    newRow.Categoria = ConstStrings.Fonte;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -769,6 +778,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.QuantidadeDePortas = item[1];
                     newRow.Desempenho = item[2];
                     newRow.EstoqueAtual = item[3];
+                    newRow.Categoria = ConstStrings.Switch;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -841,6 +851,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.BandaMaxima = item[3];
                     newRow.VoltagemDeSaida = item[4];
                     newRow.EstoqueAtual = item[5];
+                    newRow.Categoria = ConstStrings.Roteador;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -912,6 +923,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.VoltagemDeSaida = item[2];
                     newRow.AmperagemDeSaida = item[3];
                     newRow.EstoqueAtual = item[4];
+                    newRow.Categoria = ConstStrings.Carregador;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -983,6 +995,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.VoltagemDeSaida = item[2];
                     newRow.AmperagemDeSaida = item[3];
                     newRow.EstoqueAtual = item[4];
+                    newRow.Categoria = ConstStrings.AdaptadorAC;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1055,6 +1068,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.CapacidadeMaxHD = item[4];
                     newRow.AteQuantosHDs = item[5];
                     newRow.EstoqueAtual = item[6];
+                    newRow.Categoria = ConstStrings.StorageNAS;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1125,6 +1139,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Fabricante = item[1];
                     newRow.Desempenho = item[2];
                     newRow.EstoqueAtual = item[3];
+                    newRow.Categoria = ConstStrings.Gbic;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1194,6 +1209,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.QuantidadeDePortas = item[1];
                     newRow.QuaisConexoes = item[2];
                     newRow.EstoqueAtual = item[3];
+                    newRow.Categoria = ConstStrings.PlacaDeVideo;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1262,6 +1278,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Modelo = item[0];
                     newRow.QuantosCanais = item[1];
                     newRow.EstoqueAtual = item[2];
+                    newRow.Categoria = ConstStrings.PlacaDeSom;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1331,6 +1348,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Modelo = item[0];
                     newRow.QuantidadeDePortas = item[1];
                     newRow.EstoqueAtual = item[2];
+                    newRow.Categoria = ConstStrings.PlacaDeCapturaDeVideo;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1399,6 +1417,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Modelo = item[0];
                     newRow.Fabricante = item[1];
                     newRow.EstoqueAtual = item[2];
+                    newRow.Categoria = ConstStrings.Servidor;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1468,6 +1487,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Modelo = item[0];
                     newRow.Fabricante = item[1];
                     newRow.EstoqueAtual = item[2];
+                    newRow.Categoria = ConstStrings.Notebook;
 
                     tempSheet.itens.Add(newRow);
                 }
@@ -1538,6 +1558,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Fabricante = item[1];
                     newRow.Polegadas = item[2];
                     newRow.QuaisConexoes = item[3];
+                    newRow.Categoria = ConstStrings.Monitor;
 
                     tempSheet.itens.Add(newRow);
                 }

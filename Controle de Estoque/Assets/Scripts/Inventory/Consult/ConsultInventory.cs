@@ -28,6 +28,7 @@ public class ConsultInventory : MonoBehaviour
     private void Start()
     {
         consultCategory = GetComponent<ConsultCategory>();
+       // InventarioManager.Instance.ImportSheets();
     }
 
     /// <summary>
@@ -152,6 +153,11 @@ public class ConsultInventory : MonoBehaviour
         {
 
             foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategorySheet(categoryDP.value));
+            //InternalDatabase.Instance.testingSheet = GetCategorySheet(categoryDP.value);
+        }
+        else
+        {
+            print(activeIndexes.Count);
         }
 
         if (foundItens != null)
@@ -221,10 +227,13 @@ public class ConsultInventory : MonoBehaviour
             case 15:
                 return InternalDatabase.placaDeSom;
             case 16:
-                return InternalDatabase.placaControladora;
+                return InternalDatabase.placaDeCapturaDeVideo;
             case 17:
+                return InternalDatabase.servidor;
             case 18:
+                return InternalDatabase.notebook;
             case 19:
+                return InternalDatabase.monitor;
             case 20:
             default:
                 return null;

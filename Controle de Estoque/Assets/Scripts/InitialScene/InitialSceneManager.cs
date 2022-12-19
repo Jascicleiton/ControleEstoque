@@ -21,6 +21,7 @@ public class InitialSceneManager : MonoBehaviour
     {
         helloMessage.text = "Olá " + UsersManager.Instance.currentUser.username + ". \nO que você deseja fazer agora?";
         ShowHideButtons();
+        InternalDatabase.Instance.FillFullDatabase();
     }
 
     /// <summary>
@@ -100,7 +101,7 @@ public class InitialSceneManager : MonoBehaviour
     /// </summary>
     public void LogoutClicked()
     {
-        UsersManager.Instance.currentUser = null;
+        UsersManager.Instance.currentUser = new User("pessoa", "");
         SceneManager.LoadScene(ConstStrings.SceneMainMenu);
     }
 }
