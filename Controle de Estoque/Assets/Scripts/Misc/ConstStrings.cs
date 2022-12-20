@@ -51,4 +51,8 @@ public class ConstStrings
     public const string PhpMovementsFolder = "http://localhost/controledeestoque/Movements/";
     #endregion
 
+    #region Save parameters
+    public const string showWarningMessage = "ShowWarningMessage";
+    #endregion
+
 }
