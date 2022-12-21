@@ -395,7 +395,7 @@ public class MainMenuManager : MonoBehaviour
     /// <summary>
     /// show or hide the password
     /// </summary>
-    public void ShowHidePassword(bool showPassword)
+    public void ShowHidePassword()
     {
         if (newUserPanel.activeInHierarchy)
         {
