@@ -652,7 +652,7 @@ public class AddRemoveItem : MonoBehaviour
     private IEnumerator AddNewItemRoutine()
     {
         #region Add new item to Inventario
-        WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text,
+        WWWForm inventarioForm = CreateForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text,
         parameterValues[2].text, parameterValues[3].text, parameterValues[4].text,
         HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text,
         parameterValues[7].text, parameterValues[8].text);
@@ -704,57 +704,16 @@ public class AddRemoveItem : MonoBehaviour
         {
             #region HD
             case 0:
-                WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterValues[5].text, parameterValues[4].text,
+                WWWForm hdForm = CreateForm.GetHDForm(parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text);
-                UnityWebRequest createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
-                yield return createHDPostRequest.SendWebRequest();
-
-                if (createHDPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createHDPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createHDPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createHDPostRequest.error == null)
-                {
-
-                    string response = createHDPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createHDPostRequest.Dispose();
+                MessagesManager.ShowMessage(HelperMethods.SendMyWebRequest(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm));
+                
                 break;
             #endregion
             #region Memoria
             case 1:
-                WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterValues[5].text, parameterValues[4].text,
+                WWWForm memoriaForm = CreateForm.GetMemoriaForm(parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
                 UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
@@ -804,7 +763,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Placa de rede
             case 2:
-                WWWForm placaDeRedeForm = CreateAddItemForm.GetPlacaDeRedeForm(parameterValues[5].text,
+                WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(parameterValues[5].text,
                 parameterValues[4].text, parameterValues[9].text, parameterValues[10].text, parameterValues[11].text,
                 parameterValues[12].text, parameterValues[13].text);
                 UnityWebRequest createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacarede.php", placaDeRedeForm);
@@ -854,7 +813,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region iDrac
             case 3:
-                WWWForm iDracForm = CreateAddItemForm.GetiDracForm(parameterValues[5].text, parameterValues[4].text,
+                WWWForm iDracForm = CreateForm.GetiDracForm(parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
                 UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemidrac.php", iDracForm);
                 yield return createiDracPostRequest.SendWebRequest();
@@ -903,7 +862,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Placa controladora
             case 4:
-                WWWForm placaControladoraForm = CreateAddItemForm.GetPlacaControladoraForm(parameterValues[5].text,
+                WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
                 UnityWebRequest createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacontroladora.php", placaControladoraForm);
@@ -953,7 +912,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Processador
             case 5:
-                WWWForm processadorForm = CreateAddItemForm.GetProcessadorForm(parameterValues[5].text,
+                WWWForm processadorForm = CreateForm.GetProcessadorForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text);
                 UnityWebRequest createProcessadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemprocessador.php", processadorForm);
@@ -1003,7 +962,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Desktop
             case 6:
-                WWWForm desktopForm = CreateAddItemForm.GetDesktopForm(parameterValues[1].text,
+                WWWForm desktopForm = CreateForm.GetDesktopForm(parameterValues[1].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
                 UnityWebRequest createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemdesktop.php", desktopForm);
@@ -1053,7 +1012,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Fonte
             case 7:
-                WWWForm fonteForm = CreateAddItemForm.GetFonteForm(parameterValues[5].text,
+                WWWForm fonteForm = CreateForm.GetFonteForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
                 UnityWebRequest createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemfonte.php", fonteForm);
                 yield return createFontePostRequest.SendWebRequest();
@@ -1102,7 +1061,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Switch
             case 8:
-                WWWForm switchForm = CreateAddItemForm.GetSwitchForm(parameterValues[5].text, parameterValues[9].text,
+                WWWForm switchForm = CreateForm.GetSwitchForm(parameterValues[5].text, parameterValues[9].text,
                 parameterValues[10].text);
                 UnityWebRequest createSwitchPostRequest = UnityWebRequest.Post("addnewitemswitch.php", switchForm);
                 yield return createSwitchPostRequest.SendWebRequest();
@@ -1151,7 +1110,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Roteador
             case 9:
-                WWWForm roteadorForm = CreateAddItemForm.GetRoteadorForm(parameterValues[5].text,
+                WWWForm roteadorForm = CreateForm.GetRoteadorForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
                 UnityWebRequest createRoteadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemroteador.php", roteadorForm);
                 yield return createRoteadorPostRequest.SendWebRequest();
@@ -1200,7 +1159,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Carregador
             case 10:
-                WWWForm carregadorForm = CreateAddItemForm.GetCarregadorForm(parameterValues[5].text,
+                WWWForm carregadorForm = CreateForm.GetCarregadorForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
                 UnityWebRequest createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemcarregador.php", carregadorForm);
                 yield return createCarregadorPostRequest.SendWebRequest();
@@ -1249,7 +1208,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Adaptador AC
             case 11:
-                WWWForm adaptadorACForm = CreateAddItemForm.GetAdaptadorACForm(parameterValues[5].text,
+                WWWForm adaptadorACForm = CreateForm.GetAdaptadorACForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
                 UnityWebRequest createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemadaptadorac.php", adaptadorACForm);
                 yield return createAdaptadorAcPostRequest.SendWebRequest();
@@ -1298,7 +1257,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Storage NAS
             case 12:
-                WWWForm storageNasForm = CreateAddItemForm.GetStorageNASForm(parameterValues[5].text,
+                WWWForm storageNasForm = CreateForm.GetStorageNASForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text);
                 UnityWebRequest createStorageNasPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemstoragenas.php", storageNasForm);
@@ -1348,7 +1307,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region GBIC
             case 13:
-                WWWForm gbicForm = CreateAddItemForm.GetGBICForm(parameterValues[5].text, parameterValues[4].text,
+                WWWForm gbicForm = CreateForm.GetGBICForm(parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text);
                 UnityWebRequest createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemgbic.php", gbicForm);
                 yield return createGbicPostRequest.SendWebRequest();
@@ -1397,7 +1356,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Placa de Video
             case 14:
-                WWWForm placaDeVideoForm = CreateAddItemForm.GetPlacaVideoForm(parameterValues[5].text,
+                WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text);
                 UnityWebRequest createPlacaDeVideoPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadevideo.php", placaDeVideoForm);
                 yield return createPlacaDeVideoPostRequest.SendWebRequest();
@@ -1446,7 +1405,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Placa de som
             case 15:
-                WWWForm placaDeSomForm = CreateAddItemForm.GetPlacaSomForm(parameterValues[5].text,
+                WWWForm placaDeSomForm = CreateForm.GetPlacaSomForm(parameterValues[5].text,
                 parameterValues[9].text);
                 UnityWebRequest createPlacaDeSomPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadesom.php", placaDeSomForm);
                 yield return createPlacaDeSomPostRequest.SendWebRequest();
@@ -1495,7 +1454,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Placa de captura de video
             case 16:
-                WWWForm placaDeCapturaDeVideoForm = CreateAddItemForm.GetPlacaCapturaVideoForm(parameterValues[5].text,
+                WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaCapturaVideoForm(parameterValues[5].text,
                 parameterValues[9].text);
                 UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post("addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
                 yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
@@ -1544,7 +1503,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Servidor
             case 17:
-                WWWForm servidorForm = CreateAddItemForm.GetServidorForm(parameterValues[5].text,
+                WWWForm servidorForm = CreateForm.GetServidorForm(parameterValues[5].text,
                 parameterValues[4].text);
                 UnityWebRequest createServidorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemservidor.php", servidorForm);
                 yield return createServidorPostRequest.SendWebRequest();
@@ -1593,7 +1552,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Notebook
             case 18:
-                WWWForm notebookForm = CreateAddItemForm.GetNotebookForm(parameterValues[5].text,
+                WWWForm notebookForm = CreateForm.GetNotebookForm(parameterValues[5].text,
                 parameterValues[4].text);
                 UnityWebRequest createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemnotebook.php", notebookForm);
                 yield return createNotebookPostRequest.SendWebRequest();
@@ -1642,7 +1601,7 @@ public class AddRemoveItem : MonoBehaviour
             #endregion
             #region Monitor
             case 19:
-                WWWForm monitorForm = CreateAddItemForm.GetMonitorForm(parameterValues[5].text,
+                WWWForm monitorForm = CreateForm.GetMonitorForm(parameterValues[5].text,
                 parameterValues[4].text, parameterValues[9].text, parameterValues[10].text);
                 UnityWebRequest createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "adnewitemmonitor.php", monitorForm);
                 yield return createMonitorPostRequest.SendWebRequest();

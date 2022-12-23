@@ -50,7 +50,11 @@ public class InventarioManager : Singleton<InventarioManager>
         getInventario.AddField("apppassword", "ImportDatabase");
 
         UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importinventario.php", getInventario);
-        yield return getInventarioRequest.SendWebRequest();
+        getInventarioRequest.SendWebRequest();
+
+        while (!getInventarioRequest.isDone)
+        {    
+        }
 
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<ItemColumns>();
@@ -117,7 +121,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro] = tempSheet;
         }
-
+        yield return null;
     }
 
     /// <summary>

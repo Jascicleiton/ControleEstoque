@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class HelperMethods
 {
@@ -52,4 +53,64 @@ public class HelperMethods
                 return ConstStrings.HD;
         }
     }
+
+    public static string SendMyWebRequest(string path, WWWForm form)
+    {
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(path, form);
+        createPostRequest.SendWebRequest();
+
+        while (!createPostRequest.isDone)
+        {
+        }
+
+        string message = "";
+
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("conectionerror");
+            message = "Conection error";
+            
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+            message = "Data processing error";
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+            message = "Protocol error";
+        }
+
+        if (createPostRequest.error == null)
+        {
+
+            string response = createPostRequest.downloadHandler.text;
+            if (response == "1" || response == "2" || response == "5")
+            {
+                message = "Server error";
+            }
+            else if (response == "3")
+            {
+                message = "Query ran into an error";
+            }
+            else if (response == "4")
+            {
+                message = "Something";
+            }
+            else
+            {
+                message = "Success";
+            }
+
+        }
+        else
+        {
+            message = createPostRequest.error;
+        }
+        createPostRequest.Dispose();
+        return message;
+    }
+
+    
 }

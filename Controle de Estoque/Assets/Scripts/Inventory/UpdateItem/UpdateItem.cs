@@ -257,12 +257,12 @@ public class UpdateItem : MonoBehaviour
         UnityWebRequest createItemUpdatePostRequest = new UnityWebRequest();
         if (parameterToSearchDP.value == 0)
         {
-            itemForm = CreateAddItemForm.GetConsultPatrimonioForm(itemToUpdateParameter.text);
+            itemForm = CreateForm.GetConsultPatrimonioForm(itemToUpdateParameter.text);
             createItemUpdatePostRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "getitempatrimoniotoupdate.php", itemForm);
         }
         if (parameterToSearchDP.value == 1)
         {
-            itemForm = CreateAddItemForm.GetConsultPatrimonioForm(itemToUpdateParameter.text);
+            itemForm = CreateForm.GetConsultPatrimonioForm(itemToUpdateParameter.text);
             createItemUpdatePostRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "getitemserialtoupdate.php", itemForm);
         }    
          
@@ -466,7 +466,7 @@ public class UpdateItem : MonoBehaviour
     private IEnumerator UpdateDatabaseRoutine()
     {
         #region Update inventario
-        WWWForm itemForm = CreateAddItemForm.GetInventarioForm(inputs[0].text, inputs[1].text, inputs[2].text, 
+        WWWForm itemForm = CreateForm.GetInventarioForm(inputs[0].text, inputs[1].text, inputs[2].text, 
         inputs[3].text, inputs[4].text, inputs[5].text, inputs[6].text, inputs[7].text, inputs[8].text, 
         inputs[9].text);
        
@@ -516,7 +516,7 @@ public class UpdateItem : MonoBehaviour
             #region HD
             case ConstStrings.HD:
 
-                WWWForm hdForm = CreateAddItemForm.GetHDForm(inputs[6].text, inputs[11].text, inputs[12].text,
+                WWWForm hdForm = CreateForm.GetHDForm(inputs[6].text, inputs[11].text, inputs[12].text,
                 inputs[13].text, inputs[14].text, inputs[15].text, inputs[16].text, inputs[17].text, inputs[18].text);
 
                 UnityWebRequest createUpdateHDRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatehd.php", hdForm);

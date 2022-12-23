@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CreateAddItemForm
+public class CreateForm
 {
     public static WWWForm GetInventarioForm(string entrada, string patrimonio, string status, string serial, 
         string categoria, string fabricante, string modelo, string local, string saida, string observacao)
