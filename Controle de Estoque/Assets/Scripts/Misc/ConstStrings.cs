@@ -49,6 +49,7 @@ public class ConstStrings
     public const string PhpRootFolder = "http://localhost/controledeestoque/";
     public const string PhpAdditemsFolder = "http://localhost/controledeestoque/Additems/";
     public const string PhpMovementsFolder = "http://localhost/controledeestoque/Movements/";
+    public const string PhpUpdateItemsFolder = "http://localhost/controledeestoque/UpdateItems/";
     #endregion
 
     #region Save parameters

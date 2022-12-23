@@ -1,8 +1,10 @@
+using SimpleJSON;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class UpdateItem : MonoBehaviour
@@ -249,16 +251,72 @@ public class UpdateItem : MonoBehaviour
     /// <summary>
     /// Check if the item that is going to be updated exists on the fullDatabase
     /// </summary>
-    private void CheckIfItemExists()
+    private IEnumerator CheckIfItemExists()
     {
+        WWWForm itemForm = new WWWForm();
+        UnityWebRequest createItemUpdatePostRequest = new UnityWebRequest();
         if (parameterToSearchDP.value == 0)
         {
-            itemToUpdate = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdateParameter.text, InternalDatabase.Instance.fullDatabase);
+            itemForm = CreateAddItemForm.GetConsultPatrimonioForm(itemToUpdateParameter.text);
+            createItemUpdatePostRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "getitempatrimoniotoupdate.php", itemForm);
         }
         if (parameterToSearchDP.value == 1)
         {
-            itemToUpdate = ConsultDatabase.Instance.ConsultSerial(itemToUpdateParameter.text, InternalDatabase.Instance.fullDatabase);
+            itemForm = CreateAddItemForm.GetConsultPatrimonioForm(itemToUpdateParameter.text);
+            createItemUpdatePostRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "getitemserialtoupdate.php", itemForm);
+        }    
+         
+        yield return createItemUpdatePostRequest.SendWebRequest();
+
+        if (createItemUpdatePostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("conectionerror");
         }
+        else if (createItemUpdatePostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (createItemUpdatePostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+
+        if (createItemUpdatePostRequest.error == null)
+        {
+            string response = createItemUpdatePostRequest.downloadHandler.text;
+            if (response == "1" || response == "2")
+            {
+                Debug.LogWarning("Server error");
+            }
+            else if (response == "3")
+            {
+                Debug.LogWarning("Item does not exist");
+            }
+            else
+            {
+                JSONNode inventario = JSON.Parse(createItemUpdatePostRequest.downloadHandler.text);
+                foreach (JSONNode item in inventario)
+                {                  
+                    itemToUpdate.Entrada = item[0];
+                    itemToUpdate.Patrimonio = item[1];
+                    itemToUpdate.Status = item[2];
+                    itemToUpdate.Serial = item[3];
+                    itemToUpdate.Categoria = item[4];
+                    itemToUpdate.Fabricante = item[5];
+                    itemToUpdate.Modelo = item[6];
+                    itemToUpdate.Local = item[7];
+                    itemToUpdate.Saida = item[8];
+                    itemToUpdate.Observacao = item[9];                 
+                }
+            }
+
+        }
+        else
+        {
+            Debug.LogWarning(createItemUpdatePostRequest.error);
+        }
+        createItemUpdatePostRequest.Dispose();
+        
 
         if (itemToUpdate != null)
         {
@@ -278,6 +336,15 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void ShowUpdateItem()
     {
+        ItemColumns tempItem = ConsultDatabase.Instance.ConsultSerial(itemToUpdate.Serial, InternalDatabase.Instance.fullDatabase);
+        if (tempItem != null)
+        {
+            itemToUpdate = tempItem;
+        }
+        else
+        {
+            //TODO: update the internal database and try again
+        }
         inputs[0].text = itemToUpdate.Entrada;
         inputs[1].text = itemToUpdate.Patrimonio;
         inputs[2].text = itemToUpdate.Status;
@@ -394,8 +461,202 @@ public class UpdateItem : MonoBehaviour
                 break;
         }
 
+    }
+
+    private IEnumerator UpdateDatabaseRoutine()
+    {
+        #region Update inventario
+        WWWForm itemForm = CreateAddItemForm.GetInventarioForm(inputs[0].text, inputs[1].text, inputs[2].text, 
+        inputs[3].text, inputs[4].text, inputs[5].text, inputs[6].text, inputs[7].text, inputs[8].text, 
+        inputs[9].text);
+       
+        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateinventario.php", itemForm);
+        yield return createUpdateInventarioRequest.SendWebRequest();
+
+        if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("conectionerror");
+        }
+        else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("data processing error");
+        }
+        else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("protocol error");
+        }
+
+        if (createUpdateInventarioRequest.error == null)
+        {
+            string response = createUpdateInventarioRequest.downloadHandler.text;
+            if (response == "1" || response == "2")
+            {
+                Debug.LogWarning("Server error");
+            }
+            else if (response == "3")
+            {
+                Debug.LogWarning("Item does not exist");
+            }
+            else
+            {
+                //TODO show success message
             }
 
+        }
+        else
+        {
+            Debug.LogWarning(createUpdateInventarioRequest.error);
+            // TODO send message to user with error and recomendation
+        }
+        createUpdateInventarioRequest.Dispose();
+        #endregion
+        #region Update the details tables
+        switch (itemToUpdate.Categoria)
+        {
+            #region HD
+            case ConstStrings.HD:
+
+                WWWForm hdForm = CreateAddItemForm.GetHDForm(inputs[6].text, inputs[11].text, inputs[12].text,
+                inputs[13].text, inputs[14].text, inputs[15].text, inputs[16].text, inputs[17].text, inputs[18].text);
+
+                UnityWebRequest createUpdateHDRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatehd.php", hdForm);
+                yield return createUpdateHDRequest.SendWebRequest();
+
+                if (createUpdateHDRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdateHDRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdateHDRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdateHDRequest.error == null)
+                {
+                    string response = createUpdateHDRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdateHDRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdateHDRequest.Dispose();
+                break;
+            #endregion
+            case ConstStrings.Memoria:
+                itemToUpdate.Tipo = inputs[9].text;
+                itemToUpdate.CapacidadeEmGB = inputs[10].text;
+                itemToUpdate.VelocidadeMHz = inputs[11].text;
+                itemToUpdate.LowVoltage = inputs[12].text;
+                itemToUpdate.Rank = inputs[13].text;
+                itemToUpdate.DIMM = inputs[14].text;
+                itemToUpdate.TaxaDeTransmissao = inputs[15].text;
+                itemToUpdate.Simbolo = inputs[16].text;
+                break;
+            case ConstStrings.PlacaDeRede:
+                itemToUpdate.Interface = inputs[9].text;
+                itemToUpdate.QuantidadeDePortas = inputs[10].text;
+                itemToUpdate.QuaisConexoes = inputs[11].text;
+                itemToUpdate.SuportaFibraOptica = inputs[12].text;
+                itemToUpdate.Desempenho = inputs[13].text;
+                break;
+            case ConstStrings.Idrac:
+                itemToUpdate.QuaisConexoes = inputs[9].text;
+                itemToUpdate.VelocidadeGBs = inputs[10].text;
+                itemToUpdate.EntradaSD = inputs[11].text;
+                itemToUpdate.ServidoresSuportados = inputs[12].text;
+                break;
+            case ConstStrings.PlacaControladora:
+                itemToUpdate.QuaisConexoes = inputs[9].text;
+                itemToUpdate.QuantidadeDePortas = inputs[10].text;
+                itemToUpdate.TipoDeRAID = inputs[11].text;
+                itemToUpdate.CapacidadeMaxHD = inputs[12].text;
+                itemToUpdate.AteQuantosHDs = inputs[13].text;
+                itemToUpdate.BateriaInclusa = inputs[14].text;
+                itemToUpdate.Barramento = inputs[15].text;
+                break;
+            case ConstStrings.Processador:
+                itemToUpdate.Soquete = inputs[9].text;
+                itemToUpdate.NucleosFisicos = inputs[10].text;
+                itemToUpdate.NucleosLogicos = inputs[11].text;
+                itemToUpdate.AceitaVirtualizacao = inputs[12].text;
+                itemToUpdate.TurboBoost = inputs[13].text;
+                itemToUpdate.HyperThreading = inputs[14].text;
+                break;
+            case ConstStrings.Desktop:
+                itemToUpdate.ModeloPlacaMae = inputs[9].text;
+                itemToUpdate.Fonte = inputs[10].text;
+                itemToUpdate.Memoria = inputs[11].text;
+                itemToUpdate.HD = inputs[12].text;
+                itemToUpdate.PlacaDeVideo = inputs[13].text;
+                itemToUpdate.LeitorDeDVD = inputs[14].text;
+                break;
+            case ConstStrings.Fonte:
+                itemToUpdate.Watts = inputs[9].text;
+                itemToUpdate.OndeFunciona = inputs[10].text;
+                itemToUpdate.Conectores = inputs[11].text;
+                break;
+            case ConstStrings.Switch:
+                itemToUpdate.QuantidadeDePortas = inputs[9].text;
+                itemToUpdate.Desempenho = inputs[10].text;
+                break;
+            case ConstStrings.Roteador:
+                itemToUpdate.Wireless = inputs[9].text;
+                itemToUpdate.QuantidadeDePortas = inputs[10].text;
+                itemToUpdate.BandaMaxima = inputs[11].text;
+                break;
+            case ConstStrings.Carregador:
+                itemToUpdate.OndeFunciona = inputs[9].text;
+                itemToUpdate.VoltagemDeSaida = inputs[10].text;
+                itemToUpdate.AmperagemDeSaida = inputs[11].text;
+                break;
+            case ConstStrings.AdaptadorAC:
+                itemToUpdate.OndeFunciona = inputs[9].text;
+                itemToUpdate.VoltagemDeSaida = inputs[10].text;
+                itemToUpdate.AmperagemDeSaida = inputs[11].text;
+                break;
+            case ConstStrings.StorageNAS:
+                itemToUpdate.Tamanho = inputs[9].text;
+                itemToUpdate.TipoDeRAID = inputs[10].text;
+                itemToUpdate.TipoDeHD = inputs[11].text;
+                itemToUpdate.CapacidadeMaxHD = inputs[12].text;
+                break;
+            case ConstStrings.Gbic:
+                itemToUpdate.Desempenho = inputs[9].text;
+                break;
+            case ConstStrings.PlacaDeVideo:
+                itemToUpdate.QuantidadeDePortas = inputs[9].text;
+                itemToUpdate.QuaisConexoes = inputs[10].text;
+                break;
+            case ConstStrings.PlacaDeSom:
+                itemToUpdate.QuantosCanais = inputs[9].text;
+                break;
+            case ConstStrings.PlacaDeCapturaDeVideo:
+                itemToUpdate.QuantidadeDePortas = inputs[9].text;
+                break;
+
+            default:
+                break;
+        }
+        #endregion
+    }
     /// <summary>
     /// Updates the full database
     /// </summary>

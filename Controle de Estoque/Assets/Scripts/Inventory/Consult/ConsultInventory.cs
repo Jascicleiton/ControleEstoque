@@ -12,6 +12,7 @@ public class ConsultInventory : MonoBehaviour
     [SerializeField] TMP_Dropdown searchOptionDP; // drop down used to choose search option
     [SerializeField] TMP_Dropdown categoryDP; // drop down used to search for an item category
     [SerializeField] TMP_InputField inputField; // field use to type the item "Patrimônio" or the item "Serial"
+    [SerializeField] CanvasGroup numberOfItemsImage;
     [SerializeField] TMP_Text numberOfItensFoundText; // show how many itens were found on the search
 
     [SerializeField] private GameObject consultResult;
@@ -99,11 +100,11 @@ public class ConsultInventory : MonoBehaviour
     {
         if (isInvisible)
         {
-            numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
+            numberOfItemsImage.alpha = 0f;
         }
         else
         {
-            numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+            numberOfItemsImage.alpha = 1f;
             switch (searchOptionDP.value)
             {
                 case 0:
@@ -114,12 +115,20 @@ public class ConsultInventory : MonoBehaviour
                     {
                         numberOfItensFoundText.text = "Patrimônio não encontrado";
                     }
+                    else
+                    {
+                        numberOfItensFoundText.text = "1 item encontrado";
+                    }
 
                     break;
                 case 2:
                     if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase) == null)
                     {
                         numberOfItensFoundText.text = "Serial não encontrado";
+                    }
+                    else
+                    {
+                        numberOfItensFoundText.text = "1 item encontrado";
                     }
 
                     break;
@@ -170,18 +179,18 @@ public class ConsultInventory : MonoBehaviour
                     result.SetActive(true);
                     result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
                 }
-                numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+                numberOfItemsImage.alpha = 1f;
                 numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
             }
             else
             {
-                numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+                numberOfItemsImage.alpha = 1f;
                 numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
             }
         }
         else
         {
-            numberOfItensFoundText.color = new Color32(255, 255, 255, 255);
+            numberOfItemsImage.alpha = 1f;
             numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
         }
 
@@ -258,14 +267,14 @@ public class ConsultInventory : MonoBehaviour
                 caterySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
-                numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
+                numberOfItemsImage.alpha = 0f;
                 break;
             case 2:
                 categoryDP.gameObject.SetActive(false);
                 caterySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Serial";
-                numberOfItensFoundText.color = new Color32(255, 255, 255, 0);
+                numberOfItemsImage.alpha = 0f;
                 break;
             default:
                 break;

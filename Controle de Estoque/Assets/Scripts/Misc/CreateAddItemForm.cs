@@ -312,4 +312,5 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
         inventario.AddField("paraonde", paraOnde);
         return inventario;
     }
+
 }
