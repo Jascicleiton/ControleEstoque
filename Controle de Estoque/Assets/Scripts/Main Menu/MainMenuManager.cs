@@ -135,6 +135,7 @@ public class MainMenuManager : MonoBehaviour
             else
             {
                 CheckIfAdminLogging();
+                createPostRequest.Dispose();
                 LoadScreen();
             }
 

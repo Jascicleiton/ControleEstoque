@@ -49,7 +49,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importinventario.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importinventario.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -128,7 +128,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importhd.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importhd.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -209,7 +209,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importmemoria.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmemoria.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -286,7 +286,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importplacaderede.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacaderede.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -362,7 +362,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importidrac.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importidrac.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -437,7 +437,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importplacacontroladora.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacacontroladora.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -512,7 +512,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importprocessador.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importprocessador.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -585,7 +585,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importdesktop.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importdesktop.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -662,7 +662,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importfonte.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importfonte.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -734,7 +734,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importswitch.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importswitch.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -805,7 +805,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importroteador.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importroteador.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -878,7 +878,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importcarregador.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importcarregador.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -950,7 +950,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importadaptadorac.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importadaptadorac.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1021,7 +1021,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importstoragenas.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importstoragenas.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1095,7 +1095,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importgbic.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importgbic.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1165,7 +1165,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importplacadevideo.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadevideo.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1235,7 +1235,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importplacadesom.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadesom.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1305,7 +1305,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importplacadecapturadevideo.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadecapturadevideo.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1374,7 +1374,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importservidor.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importservidor.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1444,7 +1444,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importnotebook.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importnotebook.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1514,7 +1514,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post("http://localhost/controledeestoque/importmonitor.php", getInventario);
+        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmonitor.php", getInventario);
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();

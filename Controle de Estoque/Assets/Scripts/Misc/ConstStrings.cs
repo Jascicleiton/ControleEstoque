@@ -46,10 +46,11 @@ public class ConstStrings
     #endregion
 
     #region PHP folder URL
-    public const string PhpRootFolder = "http://localhost/controledeestoque/";
-    public const string PhpAdditemsFolder = "http://localhost/controledeestoque/Additems/";
-    public const string PhpMovementsFolder = "http://localhost/controledeestoque/Movements/";
-    public const string PhpUpdateItemsFolder = "http://localhost/controledeestoque/UpdateItems/";
+    public const string PhpRootFolder = "https://sysnetpro.com.br/home/sysnetpro/controle_de_estoque/htdocs";
+    public const string PhpImportTablesFolder = "https://sysnetpro.com.br/home/sysnetpro/controle_de_estoque/htdocs/Import/";
+    public const string PhpAdditemsFolder = "https://sysnetpro.com.br/home/sysnetpro/controle_de_estoque/htdocs/Additems/";
+    public const string PhpMovementsFolder = "https://sysnetpro.com.br/home/sysnetpro/controle_de_estoque/htdocs/Movements/";
+    public const string PhpUpdateItemsFolder = "https://sysnetpro.com.br/home/sysnetpro/controle_de_estoque/htdocs/UpdateItems/";
     #endregion
 
     #region Save parameters
