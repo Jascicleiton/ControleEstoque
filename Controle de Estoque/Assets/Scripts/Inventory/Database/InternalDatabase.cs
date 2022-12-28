@@ -22,6 +22,8 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
     public Sheet testingSheet = new Sheet();
     public static List<MovementRecords> movementRecords;
 
+    public bool IsOnline = true;
+
     #region Sheets with all information divided by "Categoria"
     public static Sheet hd = new Sheet();
     public static Sheet memoria = new Sheet();

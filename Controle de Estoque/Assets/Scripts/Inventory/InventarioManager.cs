@@ -18,26 +18,26 @@ public class InventarioManager : Singleton<InventarioManager>
     public void ImportSheets()
     {
         StartCoroutine(ImportInventarioToDatabase());
-        StartCoroutine(ImportHDSheetToDatabase());
-        StartCoroutine(ImportMemoriaToDatabase());
-        StartCoroutine(ImportPlacaDeRedeToDatabase());
-        StartCoroutine(ImportiDracToDatabase());
-        StartCoroutine(ImportPlacaControladoraToDatabase());
-        StartCoroutine(ImportProcessadorToDatabase());
-        StartCoroutine(ImportDesktopToDatabase());
-        StartCoroutine(ImportFonteToDatabase());
-        StartCoroutine(ImportSwitchToDatabase());
-        StartCoroutine(ImportRoteadorToDatabase());
-        StartCoroutine(ImportCarregadorToDatabase());
-        StartCoroutine(ImportAdaptadorAcToDatabase());
-        StartCoroutine(ImportStorageNASToDatabase());
-        StartCoroutine(ImportGBICToDatabase());
-        StartCoroutine(ImportPlacaDeVideoToDatabase());
-        StartCoroutine(ImportPlacaDeSomToDatabase());
-        StartCoroutine(ImportPlacaDeCapturaDeVideoToDatabase());
-        StartCoroutine(ImportServidorToDatabase());
-        StartCoroutine(ImportNotebookToDatabase());
-        StartCoroutine(ImportMonitorToDatabase());
+        //StartCoroutine(ImportHDSheetToDatabase());
+        //StartCoroutine(ImportMemoriaToDatabase());
+        //StartCoroutine(ImportPlacaDeRedeToDatabase());
+        //StartCoroutine(ImportiDracToDatabase());
+        //StartCoroutine(ImportPlacaControladoraToDatabase());
+        //StartCoroutine(ImportProcessadorToDatabase());
+        //StartCoroutine(ImportDesktopToDatabase());
+        //StartCoroutine(ImportFonteToDatabase());
+        //StartCoroutine(ImportSwitchToDatabase());
+        //StartCoroutine(ImportRoteadorToDatabase());
+        //StartCoroutine(ImportCarregadorToDatabase());
+        //StartCoroutine(ImportAdaptadorAcToDatabase());
+        //StartCoroutine(ImportStorageNASToDatabase());
+        //StartCoroutine(ImportGBICToDatabase());
+        //StartCoroutine(ImportPlacaDeVideoToDatabase());
+        //StartCoroutine(ImportPlacaDeSomToDatabase());
+        //StartCoroutine(ImportPlacaDeCapturaDeVideoToDatabase());
+        //StartCoroutine(ImportServidorToDatabase());
+        //StartCoroutine(ImportNotebookToDatabase());
+        //StartCoroutine(ImportMonitorToDatabase());
     }
 
     #region Import all tables to internal database
@@ -84,22 +84,30 @@ public class InventarioManager : Singleton<InventarioManager>
             }
             else
             {
+                Debug.Log(getInventarioRequest.downloadHandler.text);
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                foreach (JSONNode item in inventario)
+                if (inventario != null)
                 {
-                    ItemColumns newRow = new ItemColumns();
+                    foreach (JSONNode item in inventario)
+                    {
+                        ItemColumns newRow = new ItemColumns();
 
-                    newRow.Entrada = item[0];
-                    newRow.Patrimonio = item[1];
-                    newRow.Status = item[2];
-                    newRow.Serial = item[3];
-                    newRow.Categoria = item[4];
-                    newRow.Fabricante = item[5];
-                    newRow.Modelo = item[6];
-                    newRow.Local = item[7];
-                    newRow.Saida = item[8];
-                    newRow.Observacao = item[9];
-                    tempSheet.itens.Add(newRow);
+                        newRow.Entrada = item[0];
+                        newRow.Patrimonio = item[1];
+                        newRow.Status = item[2];
+                        newRow.Serial = item[3];
+                        newRow.Categoria = item[4];
+                        newRow.Fabricante = item[5];
+                        newRow.Modelo = item[6];
+                        newRow.Local = item[7];
+                        newRow.Saida = item[8];
+                        newRow.Observacao = item[9];
+                        tempSheet.itens.Add(newRow);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("JSON is null");
                 }
             }
         }

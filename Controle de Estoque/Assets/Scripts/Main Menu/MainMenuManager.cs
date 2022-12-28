@@ -39,7 +39,7 @@ public class MainMenuManager : MonoBehaviour
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
 
-    
+    private MainMenuOffline mainMenuOffline = null;
 
     [SerializeField] private TMP_Text testingText;
 
@@ -48,7 +48,7 @@ public class MainMenuManager : MonoBehaviour
         loginEnabled = true;
         adminAuthorizing = false;
         adminAuthorized = false;
-    }
+            }
 
     private void Update()
     {
@@ -56,7 +56,7 @@ public class MainMenuManager : MonoBehaviour
         {
             if (loginEnabled)
             {
-                StartCoroutine(Login());
+                StartCoroutine(Login());          
             }
             if (adminAuthorizing)
             {
@@ -74,7 +74,9 @@ public class MainMenuManager : MonoBehaviour
             {
                 User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
                 adminAuthorized = true;
-                StartCoroutine(AddNewUser(userToAdd));
+                
+                    StartCoroutine(AddNewUser(userToAdd));
+               
                 break;
             }
         }
@@ -213,6 +215,9 @@ public class MainMenuManager : MonoBehaviour
                 case 6:
 
                     errorText.text = "Login e/ou senha do admin não reconhecido.";
+                    break;
+                case 7:
+                    errorText.text = "Login e/ou senha incorretos. Tente novamente";
                     break;
                 default:
                     break;
