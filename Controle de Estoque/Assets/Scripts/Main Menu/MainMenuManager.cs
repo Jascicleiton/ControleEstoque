@@ -98,6 +98,7 @@ public class MainMenuManager : MonoBehaviour
         loginUserInfo.AddField("password", passwordInput.text);
 
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
+        MouseManager.Instance.SetWaitingCursor();
         yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -150,6 +151,7 @@ public class MainMenuManager : MonoBehaviour
             StartCoroutine(ErrorPanelRoutine());
         }
         createPostRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     private void CheckIfAdminLogging()

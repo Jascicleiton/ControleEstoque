@@ -37,7 +37,7 @@ public class InitialSceneManager : MonoBehaviour
                 moveButton.gameObject.SetActive(true);
                 addRemoveButton.gameObject.SetActive(true);
                 updateItemButton.gameObject.SetActive(true);
-                exportSheetsButton.gameObject.SetActive(true);
+                exportSheetsButton.gameObject.SetActive(false);
                 logoutButton.gameObject.SetActive(true);
             }
             else

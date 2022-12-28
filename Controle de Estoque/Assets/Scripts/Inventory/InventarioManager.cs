@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using SimpleJSON;
+using UnityEngine.UIElements;
 
 public class InventarioManager : Singleton<InventarioManager>
 {
@@ -18,26 +19,26 @@ public class InventarioManager : Singleton<InventarioManager>
     public void ImportSheets()
     {
         StartCoroutine(ImportInventarioToDatabase());
-        //StartCoroutine(ImportHDSheetToDatabase());
-        //StartCoroutine(ImportMemoriaToDatabase());
-        //StartCoroutine(ImportPlacaDeRedeToDatabase());
-        //StartCoroutine(ImportiDracToDatabase());
-        //StartCoroutine(ImportPlacaControladoraToDatabase());
-        //StartCoroutine(ImportProcessadorToDatabase());
-        //StartCoroutine(ImportDesktopToDatabase());
-        //StartCoroutine(ImportFonteToDatabase());
-        //StartCoroutine(ImportSwitchToDatabase());
-        //StartCoroutine(ImportRoteadorToDatabase());
-        //StartCoroutine(ImportCarregadorToDatabase());
-        //StartCoroutine(ImportAdaptadorAcToDatabase());
-        //StartCoroutine(ImportStorageNASToDatabase());
-        //StartCoroutine(ImportGBICToDatabase());
-        //StartCoroutine(ImportPlacaDeVideoToDatabase());
-        //StartCoroutine(ImportPlacaDeSomToDatabase());
-        //StartCoroutine(ImportPlacaDeCapturaDeVideoToDatabase());
-        //StartCoroutine(ImportServidorToDatabase());
-        //StartCoroutine(ImportNotebookToDatabase());
-        //StartCoroutine(ImportMonitorToDatabase());
+        StartCoroutine(ImportHDSheetToDatabase());
+        StartCoroutine(ImportMemoriaToDatabase());
+        StartCoroutine(ImportPlacaDeRedeToDatabase());
+        StartCoroutine(ImportiDracToDatabase());
+        StartCoroutine(ImportPlacaControladoraToDatabase());
+        StartCoroutine(ImportProcessadorToDatabase());
+        StartCoroutine(ImportDesktopToDatabase());
+        StartCoroutine(ImportFonteToDatabase());
+        StartCoroutine(ImportSwitchToDatabase());
+        StartCoroutine(ImportRoteadorToDatabase());
+        StartCoroutine(ImportCarregadorToDatabase());
+        StartCoroutine(ImportAdaptadorAcToDatabase());
+        StartCoroutine(ImportStorageNASToDatabase());
+        StartCoroutine(ImportGBICToDatabase());
+        StartCoroutine(ImportPlacaDeVideoToDatabase());
+        StartCoroutine(ImportPlacaDeSomToDatabase());
+        StartCoroutine(ImportPlacaDeCapturaDeVideoToDatabase());
+        StartCoroutine(ImportServidorToDatabase());
+        StartCoroutine(ImportNotebookToDatabase());
+        StartCoroutine(ImportMonitorToDatabase());
     }
 
     #region Import all tables to internal database
@@ -50,6 +51,7 @@ public class InventarioManager : Singleton<InventarioManager>
         getInventario.AddField("apppassword", "ImportDatabase");
 
         UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importinventario.php", getInventario);
+        MouseManager.Instance.SetWaitingCursor();
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -57,42 +59,41 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conectionerror");
+            Debug.LogWarning("inventario conectionerror");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("inventario data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("inventario protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("DAtabase connection error");
+                Debug.Log("inventario Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("inventario Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("inventario Result came empty");
             }
             else
             {
-                Debug.Log(getInventarioRequest.downloadHandler.text);
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+               
                 if (inventario != null)
                 {
                     foreach (JSONNode item in inventario)
                     {
                         ItemColumns newRow = new ItemColumns();
-
-                        newRow.Entrada = item[0];
+                                                newRow.Entrada = item[0];
                         newRow.Patrimonio = item[1];
                         newRow.Status = item[2];
                         newRow.Serial = item[3];
@@ -104,16 +105,17 @@ public class InventarioManager : Singleton<InventarioManager>
                         newRow.Observacao = item[9];
                         tempSheet.itens.Add(newRow);
                     }
+                   
                 }
                 else
                 {
-                    Debug.LogWarning("JSON is null");
+                    Debug.LogWarning("inventario JSON is null");
                 }
             }
         }
         else
         {
-            Debug.LogWarning(getInventarioRequest.error);
+            Debug.LogWarning("inventario\n " + getInventarioRequest.error);
         }
 
         getInventarioRequest.Dispose();
@@ -125,6 +127,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro] = tempSheet;
         }
+        MouseManager.Instance.SetDefaultCursor();
 
     }
 
@@ -137,6 +140,7 @@ public class InventarioManager : Singleton<InventarioManager>
         getInventario.AddField("apppassword", "ImportDatabase");
 
         UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importhd.php", getInventario);
+        MouseManager.Instance.SetWaitingCursor();       
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -144,34 +148,35 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("hd conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("hd data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("hd protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("DAtabase connection error");
+                Debug.Log("hd Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("hd Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("hd Result came empty");
             }
             else
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+                
                 foreach (JSONNode item in inventario)
                 {
                     ItemColumns newRow = new ItemColumns();
@@ -189,11 +194,12 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Categoria = ConstStrings.HD;
                     tempSheet.itens.Add(newRow);
                 }
+      
             }
         }
         else
         {
-            Debug.LogWarning(getInventarioRequest.error);
+            Debug.LogWarning("hd \n" +getInventarioRequest.error);
         }
 
         getInventarioRequest.Dispose();
@@ -206,7 +212,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.HD] = tempSheet;
         }
-
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -225,30 +231,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("memoria conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("memoria data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("memoria protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("DAtabase connection error");
+                Debug.Log("memoria Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("memoria Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("memoria Result came empty");
             }
             else
             {
@@ -274,7 +280,13 @@ public class InventarioManager : Singleton<InventarioManager>
                 }
             }
         }
+        else
+        {
+            Debug.LogWarning("memoria \n" + getInventarioRequest.error);
+        }
+
         getInventarioRequest.Dispose();
+
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Memoria))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Memoria, tempSheet);
@@ -302,30 +314,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("placa de rede conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("placa de rede data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("placa de rede protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("placa de rede Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("placa de rede Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("placa de rede Result came empty");
             }
             else
             {
@@ -359,7 +371,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeRede] = tempSheet;
                     }
-       
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -378,30 +390,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("iDrac conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("iDrac data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("iDrac protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("iDrac Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("iDrac Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("iDrac Result came empty");
             }
             else
             {
@@ -434,7 +446,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.Idrac] = tempSheet;
         }
-
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -453,30 +465,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Placa controladora conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Placa controladora data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Placa controladora protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Placa controladora Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Placa controladora Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Placa controladora Result came empty");
             }
             else
             {
@@ -510,6 +522,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaControladora] = tempSheet;
         }
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -583,6 +596,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.Processador] = tempSheet;
         }
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -660,6 +674,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.Desktop] = tempSheet;
         }
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
