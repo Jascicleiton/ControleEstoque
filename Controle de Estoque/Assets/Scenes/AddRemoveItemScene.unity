@@ -15953,6 +15953,7 @@ GameObject:
   - component: {fileID: 1866416874537355205}
   - component: {fileID: 1866416874537355202}
   - component: {fileID: 1866416874537355208}
+  - component: {fileID: 1866416874537355209}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -16098,6 +16099,38 @@ MonoBehaviour:
   categoryDP: {fileID: 2078973779}
   messagePanel: {fileID: 181720800}
   messageText: {fileID: 311526577}
+--- !u!114 &1866416874537355209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866416874537355203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4079dbe5b5e494f892791591e03625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFields:
+  - {fileID: 654665876}
+  - {fileID: 1809075719}
+  - {fileID: 108074486}
+  - {fileID: 1722764852}
+  - {fileID: 1878731697}
+  - {fileID: 779587313}
+  - {fileID: 1173936845}
+  - {fileID: 213097213}
+  - {fileID: 1147751385}
+  - {fileID: 981888500}
+  - {fileID: 209322804}
+  - {fileID: 257544153}
+  - {fileID: 2018361704}
+  - {fileID: 1998952131}
+  - {fileID: 1427252954}
+  - {fileID: 127968886}
+  - {fileID: 1672708547}
+  - {fileID: 1257449634}
+  inputIndex: 0
 --- !u!224 &1866416875243339644
 RectTransform:
   m_ObjectHideFlags: 0

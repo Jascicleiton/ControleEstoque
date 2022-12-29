@@ -72,8 +72,9 @@ public class UpdateItem : MonoBehaviour
         {
             itemForm = CreateAddItemForm.GetConsultPatrimonioForm(itemToUpdateParameter.text);
             createItemUpdatePostRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "getitemserialtoupdate.php", itemForm);
-        }    
-         
+        }
+
+        MouseManager.Instance.SetWaitingCursor(); 
         yield return createItemUpdatePostRequest.SendWebRequest();
 
         if (createItemUpdatePostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -124,7 +125,7 @@ public class UpdateItem : MonoBehaviour
             Debug.LogWarning(createItemUpdatePostRequest.error);
         }
         createItemUpdatePostRequest.Dispose();
-        
+        MouseManager.Instance.SetDefaultCursor();
 
         if (itemToUpdate != null)
         {
@@ -530,11 +531,12 @@ public class UpdateItem : MonoBehaviour
     private IEnumerator UpdateDatabaseRoutine()
     {
         #region Update inventario
-        WWWForm itemForm = CreateAddItemForm.GetInventarioForm(parameterInputs[0].text, parameterInputs[1].text, parameterInputs[2].text, 
-        parameterInputs[3].text, parameterInputs[17].text, parameterInputs[4].text, parameterInputs[5].text, parameterInputs[6].text, parameterInputs[7].text, 
-        parameterInputs[8].text);
-       
+        WWWForm itemForm = CreateAddItemForm.GetInventarioForm(parameterInputs[0].text, parameterInputs[1].text,
+        parameterInputs[2].text, parameterInputs[3].text, parameterInputs[4].text, parameterInputs[5].text,
+        parameterInputs[6].text, parameterInputs[7].text, parameterInputs[8].text, parameterInputs[9].text);
+
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateinventario.php", itemForm);
+        MouseManager.Instance.SetWaitingCursor();
         yield return createUpdateInventarioRequest.SendWebRequest();
 
         if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -580,8 +582,9 @@ public class UpdateItem : MonoBehaviour
             #region HD
             case ConstStrings.HD:
 
-                WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterInputs[6].text, parameterInputs[11].text, parameterInputs[12].text,
-                parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text, parameterInputs[17].text, parameterInputs[18].text);
+                WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterInputs[6].text, parameterInputs[5].text,
+                parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+                parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text);
 
                 UnityWebRequest createUpdateHDRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatehd.php", hdForm);
                 yield return createUpdateHDRequest.SendWebRequest();
@@ -626,12 +629,12 @@ public class UpdateItem : MonoBehaviour
                 createUpdateHDRequest.Dispose();
                 break;
             #endregion
-            #region Memíria
+            #region Memória
             case ConstStrings.Memoria:
-                WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterInputs[6].text, parameterInputs[7].text,
+                WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterInputs[6].text, parameterInputs[5].text,
                 parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
                 parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
-                UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
+                UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "updatememoria.php", memoriaForm);
                 yield return createMemoriaPostRequest.SendWebRequest();
 
                 if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -678,105 +681,878 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Placa de rede
             case ConstStrings.PlacaDeRede:
-                itemToUpdate.Interface = parameterInputs[9].text;
-                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
-                itemToUpdate.QuaisConexoes = parameterInputs[11].text;
-                itemToUpdate.SuportaFibraOptica = parameterInputs[12].text;
-                itemToUpdate.Desempenho = parameterInputs[13].text;
+
+                WWWForm placaDeRedeForm = CreateAddItemForm.GetPlacaDeRedeForm(parameterInputs[6].text, parameterInputs[5].text,
+                parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[11].text,
+                parameterInputs[13].text);
+
+                UnityWebRequest createUpdatePlacaDeRedeRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacaderede.php", placaDeRedeForm);
+                yield return createUpdatePlacaDeRedeRequest.SendWebRequest();
+
+                if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdatePlacaDeRedeRequest.error == null)
+                {
+                    string response = createUpdatePlacaDeRedeRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdatePlacaDeRedeRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdatePlacaDeRedeRequest.Dispose();
                 break;
             #endregion
             #region iDRAC
             case ConstStrings.Idrac:
-                itemToUpdate.QuaisConexoes = parameterInputs[9].text;
-                itemToUpdate.VelocidadeGBs = parameterInputs[10].text;
-                itemToUpdate.EntradaSD = parameterInputs[11].text;
-                itemToUpdate.ServidoresSuportados = parameterInputs[12].text;
+                WWWForm idracForm = CreateAddItemForm.GetiDracForm(parameterInputs[6].text, parameterInputs[5].text,
+               parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text);
+                UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "updateidrac.php", idracForm);
+                yield return createiDracPostRequest.SendWebRequest();
+
+                if (createiDracPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createiDracPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createiDracPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createiDracPostRequest.error == null)
+                {
+
+                    string response = createiDracPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createiDracPostRequest.Dispose();
                 break;
             #endregion
             #region Placa controladora
             case ConstStrings.PlacaControladora:
-                itemToUpdate.QuaisConexoes = parameterInputs[9].text;
-                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
-                itemToUpdate.TipoDeRAID = parameterInputs[11].text;
-                itemToUpdate.CapacidadeMaxHD = parameterInputs[12].text;
-                itemToUpdate.AteQuantosHDs = parameterInputs[13].text;
-                itemToUpdate.BateriaInclusa = parameterInputs[14].text;
-                itemToUpdate.Barramento = parameterInputs[15].text;
+                WWWForm placaControladoraForm = CreateAddItemForm.GetPlacaControladoraForm(parameterInputs[6].text,
+                parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+                parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
+
+                UnityWebRequest createUpdatePlacaControladoraRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacacontroladora.php", placaControladoraForm);
+                yield return createUpdatePlacaControladoraRequest.SendWebRequest();
+
+                if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdatePlacaControladoraRequest.error == null)
+                {
+                    string response = createUpdatePlacaControladoraRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdatePlacaControladoraRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdatePlacaControladoraRequest.Dispose();
                 break;
             #endregion
             #region Processador
             case ConstStrings.Processador:
-                itemToUpdate.Soquete = parameterInputs[9].text;
-                itemToUpdate.NucleosFisicos = parameterInputs[10].text;
-                itemToUpdate.NucleosLogicos = parameterInputs[11].text;
-                itemToUpdate.AceitaVirtualizacao = parameterInputs[12].text;
-                itemToUpdate.TurboBoost = parameterInputs[13].text;
-                itemToUpdate.HyperThreading = parameterInputs[14].text;
+                WWWForm processadorForm = CreateAddItemForm.GetProcessadorForm(parameterInputs[6].text,
+                parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+                parameterInputs[13].text, parameterInputs[14].text);
+
+                UnityWebRequest createProcessadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateprocesador.php", processadorForm);
+                yield return createProcessadorRequest.SendWebRequest();
+
+                if (createProcessadorRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createProcessadorRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createProcessadorRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createProcessadorRequest.error == null)
+                {
+                    string response = createProcessadorRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createProcessadorRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createProcessadorRequest.Dispose();
                 break;
             #endregion
             #region Desktop
             case ConstStrings.Desktop:
-                itemToUpdate.ModeloPlacaMae = parameterInputs[9].text;
-                itemToUpdate.Fonte = parameterInputs[10].text;
-                itemToUpdate.Memoria = parameterInputs[11].text;
-                itemToUpdate.HD = parameterInputs[12].text;
-                itemToUpdate.PlacaDeVideo = parameterInputs[13].text;
-                itemToUpdate.LeitorDeDVD = parameterInputs[14].text;
+                WWWForm desktopForm = CreateAddItemForm.GetDesktopForm(parameterInputs[1].text,
+                 parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+                 parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
+
+                UnityWebRequest createUpdatedesktopRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatedesktop.php", desktopForm);
+                yield return createUpdatedesktopRequest.SendWebRequest();
+
+                if (createUpdatedesktopRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdatedesktopRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdatedesktopRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdatedesktopRequest.error == null)
+                {
+                    string response = createUpdatedesktopRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdatedesktopRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdatedesktopRequest.Dispose();
                 break;
             #endregion
             #region Fonte
             case ConstStrings.Fonte:
-                itemToUpdate.Watts = parameterInputs[9].text;
-                itemToUpdate.OndeFunciona = parameterInputs[10].text;
-                itemToUpdate.Conectores = parameterInputs[11].text;
+                WWWForm fonteForm = CreateAddItemForm.GetFonteForm(parameterInputs[6].text, parameterInputs[9].text,
+                parameterInputs[10].text, parameterInputs[11].text);
+
+                UnityWebRequest createUpdatefonteRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatefonte.php", fonteForm);
+                yield return createUpdatefonteRequest.SendWebRequest();
+
+                if (createUpdatefonteRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdatefonteRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdatefonteRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdatefonteRequest.error == null)
+                {
+                    string response = createUpdatefonteRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdatefonteRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdatefonteRequest.Dispose();
                 break;
             #endregion
             #region Switch
             case ConstStrings.Switch:
-                itemToUpdate.QuantidadeDePortas = parameterInputs[9].text;
-                itemToUpdate.Desempenho = parameterInputs[10].text;
+                WWWForm switchForm = CreateAddItemForm.GetSwitchForm(parameterInputs[6].text, parameterInputs[9].text,
+                parameterInputs[10].text);
+
+                UnityWebRequest createUpdateSwitchRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateswitch.php", switchForm);
+                yield return createUpdateSwitchRequest.SendWebRequest();
+
+                if (createUpdateSwitchRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdateSwitchRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdateSwitchRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdateSwitchRequest.error == null)
+                {
+                    string response = createUpdateSwitchRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdateSwitchRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdateSwitchRequest.Dispose();
                 break;
             #endregion
             #region Roteador
             case ConstStrings.Roteador:
-                itemToUpdate.Wireless = parameterInputs[9].text;
-                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
-                itemToUpdate.BandaMaxima = parameterInputs[11].text;
+                WWWForm roteadorForm = CreateAddItemForm.GetRoteadorForm(parameterInputs[6].text, parameterInputs[9].text,
+                 parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text);
+
+                UnityWebRequest createUpdateRoteadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateroteador.php", roteadorForm);
+                yield return createUpdateRoteadorRequest.SendWebRequest();
+
+                if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdateRoteadorRequest.error == null)
+                {
+                    string response = createUpdateRoteadorRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdateRoteadorRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdateRoteadorRequest.Dispose();
                 break;
             #endregion
+            #region Carregador
             case ConstStrings.Carregador:
-                itemToUpdate.OndeFunciona = parameterInputs[9].text;
-                itemToUpdate.VoltagemDeSaida = parameterInputs[10].text;
-                itemToUpdate.AmperagemDeSaida = parameterInputs[11].text;
+                WWWForm carregadorForm = CreateAddItemForm.GetCarregadorForm(parameterInputs[6].text, parameterInputs[9].text,
+                parameterInputs[10].text, parameterInputs[11].text);
+
+                UnityWebRequest createUpdateCarregadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatecarregador.php", carregadorForm);
+                yield return createUpdateCarregadorRequest.SendWebRequest();
+
+                if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createUpdateCarregadorRequest.error == null)
+                {
+                    string response = createUpdateCarregadorRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createUpdateCarregadorRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createUpdateCarregadorRequest.Dispose();
                 break;
+            #endregion
+            #region Adaptador AC
             case ConstStrings.AdaptadorAC:
-                itemToUpdate.OndeFunciona = parameterInputs[9].text;
-                itemToUpdate.VoltagemDeSaida = parameterInputs[10].text;
-                itemToUpdate.AmperagemDeSaida = parameterInputs[11].text;
+                WWWForm adaptadorACForm = CreateAddItemForm.GetAdaptadorACForm(parameterInputs[6].text, parameterInputs[9].text,
+                parameterInputs[10].text, parameterInputs[11].text);
+
+                UnityWebRequest createAdaptadorACRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateadaptadorac.php", adaptadorACForm);
+                yield return createAdaptadorACRequest.SendWebRequest();
+
+                if (createAdaptadorACRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createAdaptadorACRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createAdaptadorACRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createAdaptadorACRequest.error == null)
+                {
+                    string response = createAdaptadorACRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createAdaptadorACRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createAdaptadorACRequest.Dispose();
                 break;
+            #endregion
+            #region Storage NAS
             case ConstStrings.StorageNAS:
-                itemToUpdate.Tamanho = parameterInputs[9].text;
-                itemToUpdate.TipoDeRAID = parameterInputs[10].text;
-                itemToUpdate.TipoDeHD = parameterInputs[11].text;
-                itemToUpdate.CapacidadeMaxHD = parameterInputs[12].text;
+                WWWForm storageNasForm = CreateAddItemForm.GetStorageNASForm(parameterInputs[6].text, parameterInputs[9].text,
+                parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text, parameterInputs[13].text);
+
+                UnityWebRequest createStorageNasRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatestoragenas.php", storageNasForm);
+                yield return createStorageNasRequest.SendWebRequest();
+
+                if (createStorageNasRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createStorageNasRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createStorageNasRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createStorageNasRequest.error == null)
+                {
+                    string response = createStorageNasRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createStorageNasRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createStorageNasRequest.Dispose();
                 break;
+            #endregion
+            #region GBIC
             case ConstStrings.Gbic:
-                itemToUpdate.Desempenho = parameterInputs[9].text;
+                WWWForm gbicForm = CreateAddItemForm.GetGBICForm(parameterInputs[6].text, parameterInputs[7].text,
+           parameterInputs[9].text);
+
+                UnityWebRequest createGbicRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updategbic.php", gbicForm);
+                yield return createGbicRequest.SendWebRequest();
+
+                if (createGbicRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createGbicRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createGbicRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createGbicRequest.error == null)
+                {
+                    string response = createGbicRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createGbicRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createGbicRequest.Dispose();
                 break;
+            #endregion
+            #region Placa de vídeo
             case ConstStrings.PlacaDeVideo:
-                itemToUpdate.QuantidadeDePortas = parameterInputs[9].text;
-                itemToUpdate.QuaisConexoes = parameterInputs[10].text;
+                WWWForm placaDeVideoForm = CreateAddItemForm.GetPlacaVideoForm(parameterInputs[6].text, parameterInputs[9].text,
+                parameterInputs[10].text);
+
+                UnityWebRequest createPlacaDeVideoRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadevideo.php", placaDeVideoForm);
+                yield return createPlacaDeVideoRequest.SendWebRequest();
+
+                if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createPlacaDeVideoRequest.error == null)
+                {
+                    string response = createPlacaDeVideoRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createPlacaDeVideoRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createPlacaDeVideoRequest.Dispose();
                 break;
+            #endregion
+            #region Placa de som
             case ConstStrings.PlacaDeSom:
-                itemToUpdate.QuantosCanais = parameterInputs[9].text;
+                WWWForm placaDeSomForm = CreateAddItemForm.GetPlacaSomForm(parameterInputs[6].text, parameterInputs[9].text);
+
+                UnityWebRequest createPlacaDeSomRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadesom.php", placaDeSomForm);
+                yield return createPlacaDeSomRequest.SendWebRequest();
+
+                if (createPlacaDeSomRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createPlacaDeSomRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createPlacaDeSomRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createPlacaDeSomRequest.error == null)
+                {
+                    string response = createPlacaDeSomRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createPlacaDeSomRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createPlacaDeSomRequest.Dispose();
                 break;
+            #endregion
+            #region Placa de captura de vídeo
             case ConstStrings.PlacaDeCapturaDeVideo:
-                itemToUpdate.QuantidadeDePortas = parameterInputs[9].text;
+                WWWForm placaDeCapturaDeVideoForm = CreateAddItemForm.GetPlacaCapturaVideoForm(parameterInputs[6].text, 
+                parameterInputs[9].text);
+
+                UnityWebRequest createPlacaDeCapturaDeVideoRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadecapturadevideo.php", placaDeCapturaDeVideoForm);
+                yield return createPlacaDeCapturaDeVideoRequest.SendWebRequest();
+
+                if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createPlacaDeCapturaDeVideoRequest.error == null)
+                {
+                    string response = createPlacaDeCapturaDeVideoRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createPlacaDeCapturaDeVideoRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createPlacaDeCapturaDeVideoRequest.Dispose();
                 break;
+            #endregion
+            #region Servidor
+            case ConstStrings.Servidor:
+                WWWForm servidorForm = CreateAddItemForm.GetServidorForm(parameterInputs[6].text,
+     parameterInputs[7].text);
+
+                UnityWebRequest createServidorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateservidor.php", servidorForm);
+                yield return createServidorRequest.SendWebRequest();
+
+                if (createServidorRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createServidorRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createServidorRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createServidorRequest.error == null)
+                {
+                    string response = createServidorRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createServidorRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createServidorRequest.Dispose();
+                break;
+            #endregion
+            #region Notebook
+            case ConstStrings.Notebook:
+                WWWForm notebookForm = CreateAddItemForm.GetNotebookForm(parameterInputs[6].text,
+                   parameterInputs[7].text);
+
+                UnityWebRequest createNotebookRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatenotebook.php", notebookForm);
+                yield return createNotebookRequest.SendWebRequest();
+
+                if (createNotebookRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createNotebookRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createNotebookRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createNotebookRequest.error == null)
+                {
+                    string response = createNotebookRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createNotebookRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createNotebookRequest.Dispose();
+                break;
+            #endregion
+            #region Monitor
+            case ConstStrings.Monitor:
+                WWWForm monitorForm = CreateAddItemForm.GetMonitorForm(parameterInputs[6].text,
+                  parameterInputs[7].text, parameterInputs[9].text, parameterInputs[10].text);
+
+                UnityWebRequest createMonitorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatemonitor.php", monitorForm);
+                yield return createMonitorRequest.SendWebRequest();
+
+                if (createMonitorRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("conectionerror");
+                }
+                else if (createMonitorRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("data processing error");
+                }
+                else if (createMonitorRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("protocol error");
+                }
+
+                if (createMonitorRequest.error == null)
+                {
+                    string response = createMonitorRequest.downloadHandler.text;
+                    if (response == "1" || response == "2")
+                    {
+                        Debug.LogWarning("Server error");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else if (response == "3")
+                    {
+                        Debug.LogWarning("Item does not exist");
+                        // TODO send message to user with error and recomendation
+                    }
+                    else
+                    {
+                        //TODO show success message
+                    }
+
+                }
+                else
+                {
+                    Debug.LogWarning(createMonitorRequest.error);
+                    // TODO send message to user with error and recomendation
+                }
+                createMonitorRequest.Dispose();
+                break;
+            #endregion
 
             default:
                 break;
         }
+        MouseManager.Instance.SetDefaultCursor();
         #endregion
     }
     /// <summary>

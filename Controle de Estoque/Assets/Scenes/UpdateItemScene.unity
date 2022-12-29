@@ -27758,6 +27758,7 @@ GameObject:
   - component: {fileID: 6374339778562580734}
   - component: {fileID: 6374339778562580736}
   - component: {fileID: 6374339778562580738}
+  - component: {fileID: 6374339778562580739}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -27780,24 +27781,24 @@ MonoBehaviour:
   itemToUpdateParameter: {fileID: 1469288882}
   parameterToSearchDP: {fileID: 821115388}
   parameterItems:
-  - {fileID: 139810607}
-  - {fileID: 1586796063}
-  - {fileID: 1153521361}
-  - {fileID: 1704447898}
-  - {fileID: 1421907656}
-  - {fileID: 272017851}
-  - {fileID: 986756889}
-  - {fileID: 1136464112}
-  - {fileID: 801494789}
-  - {fileID: 977756915}
-  - {fileID: 1758493800}
-  - {fileID: 1000504110}
-  - {fileID: 296537434}
-  - {fileID: 602522003}
-  - {fileID: 1961895863}
-  - {fileID: 1224756617}
-  - {fileID: 1166921996}
-  - {fileID: 1294403439}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   parameterInputs:
   - {fileID: 1337698760}
   - {fileID: 816133887}
@@ -27866,6 +27867,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6374339778562580735}
   m_CullTransparentMesh: 1
+--- !u!114 &6374339778562580739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374339778562580735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4079dbe5b5e494f892791591e03625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFields:
+  - {fileID: 1337698760}
+  - {fileID: 816133887}
+  - {fileID: 1284525912}
+  - {fileID: 1733734889}
+  - {fileID: 1515220552}
+  - {fileID: 203875183}
+  - {fileID: 1188822606}
+  - {fileID: 107076350}
+  - {fileID: 1163018475}
+  - {fileID: 1940318459}
+  - {fileID: 1711376378}
+  - {fileID: 1434319934}
+  - {fileID: 1109949071}
+  - {fileID: 539634659}
+  - {fileID: 399238478}
+  - {fileID: 1584149776}
+  - {fileID: 1114533751}
+  - {fileID: 1283220165}
+  inputIndex: 0
 --- !u!222 &6374339778646548085
 CanvasRenderer:
   m_ObjectHideFlags: 0

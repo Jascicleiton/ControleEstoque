@@ -16,7 +16,7 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
     {
         base.Awake();
         usersDatabase = new List<User>();
-        admin = new User("1", "1");
+        admin = new User("pedro.neto", "Sysnetpr0");
         if (!usersDatabase.Contains(admin))
         {
             usersDatabase.Add(admin);

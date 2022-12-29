@@ -23,14 +23,14 @@ public class MovementManager : MonoBehaviour
     private int itemToChangeIndex;
     private ItemColumns itemToChange;
     private bool itemFound = false;
-    private int categoryIndex = 0;
-
+    
     MovementRecords movementToRecord;
 
 
     private void Start()
     {
-        itemInformationDP.value = 0;    
+        itemInformationDP.value = 0;
+        ShouldHidePanels(true);
     }
 
     /// <summary>
@@ -63,7 +63,9 @@ public class MovementManager : MonoBehaviour
             WWWForm consultPatrimonioForm = CreateAddItemForm.GetConsultPatrimonioForm(itemInformationInput.text);
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
+            MouseManager.Instance.SetWaitingCursor();
             yield return createPostRequest.SendWebRequest();
+            
             if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.LogWarning("conectionerror");
@@ -113,7 +115,9 @@ public class MovementManager : MonoBehaviour
             WWWForm consultSerialForm = CreateAddItemForm.GetConsultSerialForm(itemInformationInput.text);
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultserial.php", consultSerialForm);
+            MouseManager.Instance.SetWaitingCursor();
             yield return createPostRequest.SendWebRequest();
+            
             if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.LogWarning("conectionerror");
@@ -160,6 +164,7 @@ public class MovementManager : MonoBehaviour
             createPostRequest.Dispose();
         }
         yield return new WaitForSeconds(0.5f);
+        MouseManager.Instance.SetDefaultCursor();
         if (itemFound)
         {
             ShouldHidePanels(false);
@@ -183,14 +188,20 @@ public class MovementManager : MonoBehaviour
         if (shouldHide)
         {
             fromPanel.GetComponent<CanvasGroup>().alpha = 0;
+            fromInput.enabled = false;
             toPanel.GetComponent<CanvasGroup>().alpha = 0;
+            toInput.enabled = false;
             whoPanel.GetComponent<CanvasGroup>().alpha = 0;
+            whoInput.enabled = false;
         }
         else
         {
             fromPanel.GetComponent<CanvasGroup>().alpha = 1;
+            fromInput.enabled = true;
             toPanel.GetComponent<CanvasGroup>().alpha = 1;
+            toInput.enabled = true;
             whoPanel.GetComponent<CanvasGroup>().alpha = 1;
+            whoInput.enabled = true;
         }
     }
 
@@ -210,7 +221,9 @@ public class MovementManager : MonoBehaviour
         }
         
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
+        MouseManager.Instance.SetWaitingCursor();
         yield return createPostRequest.SendWebRequest();
+       
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
             Debug.LogWarning("conectionerror");
@@ -253,6 +266,7 @@ public class MovementManager : MonoBehaviour
 
         }
         createPostRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
         itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
        
         UpdateItemToChange(itemToChange);

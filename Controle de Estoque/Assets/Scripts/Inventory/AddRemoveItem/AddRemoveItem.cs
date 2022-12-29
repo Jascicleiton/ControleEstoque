@@ -657,6 +657,7 @@ public class AddRemoveItem : MonoBehaviour
         HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text,
         parameterValues[7].text, parameterValues[8].text);
         UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
+        MouseManager.Instance.SetWaitingCursor();
         yield return createInventarioPostRequest.SendWebRequest();
 
         if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -707,6 +708,7 @@ public class AddRemoveItem : MonoBehaviour
                 WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text);
+             
                 UnityWebRequest createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
                 yield return createHDPostRequest.SendWebRequest();
 
@@ -1687,11 +1689,13 @@ public class AddRemoveItem : MonoBehaviour
 
                 }
                 createMonitorPostRequest.Dispose();
+                
                 break;
             #endregion
             default:
                 break;
         }
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     // MAYBE will be implemented

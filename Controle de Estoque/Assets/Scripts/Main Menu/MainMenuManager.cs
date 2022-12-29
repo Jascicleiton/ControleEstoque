@@ -1,17 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Saving;
-using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-using System.Net;
 
 public class MainMenuManager : MonoBehaviour
 {
     #region Login
+    [SerializeField] private GameObject loginPanel = null;
     [SerializeField] private TMP_InputField userInput;
     [SerializeField] private TMP_InputField passwordInput;
     #endregion
@@ -39,8 +36,6 @@ public class MainMenuManager : MonoBehaviour
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
 
-    private MainMenuOffline mainMenuOffline = null;
-
     [SerializeField] private TMP_Text testingText;
 
     private void Start()
@@ -48,7 +43,7 @@ public class MainMenuManager : MonoBehaviour
         loginEnabled = true;
         adminAuthorizing = false;
         adminAuthorized = false;
-            }
+    }
 
     private void Update()
     {
@@ -257,6 +252,7 @@ public class MainMenuManager : MonoBehaviour
         openAddNewUserPanelButton.interactable = false;
         openAddNewUserPanelButton.enabled = false;
         newUserPanel.SetActive(true);
+        loginPanel.SetActive(false);
         newUserMessage.text = "Digite o novo usuário e senha, e aperte no botão abaixo para adicionar novo usuário.";
         addNewUserButtonText.text = "Adicionar novo usuário";
         adminAuthorizing = false;
@@ -280,6 +276,7 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("username", addNewUserInput.text);
 
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
+        MouseManager.Instance.SetWaitingCursor();
         yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -304,6 +301,7 @@ public class MainMenuManager : MonoBehaviour
             }
             else if (response == "3")
             {
+                newUserPanel.SetActive(false);
                 adminAuthorizationPanel.SetActive(true);
                 adminAuthorizing = true;
             }
@@ -325,6 +323,7 @@ public class MainMenuManager : MonoBehaviour
             StartCoroutine(ErrorPanelRoutine());
         }
         createPostRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -338,6 +337,7 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("password", userToAdd.password);
 
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
+        MouseManager.Instance.SetWaitingCursor();
         yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -377,6 +377,7 @@ public class MainMenuManager : MonoBehaviour
                 SetErrorMessage(2);
                 newUserPanel.SetActive(false);
                 adminAuthorizing = false;
+                loginPanel.SetActive(true);
                 loginEnabled = true;
             }
 
@@ -389,6 +390,7 @@ public class MainMenuManager : MonoBehaviour
             StartCoroutine(ErrorPanelRoutine());
         }
         createPostRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>

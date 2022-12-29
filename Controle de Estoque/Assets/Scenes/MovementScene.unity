@@ -467,7 +467,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5498536992447531868}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 177849842}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -944,7 +956,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5498536992447531868}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 374574575}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -3146,7 +3170,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5498536992447531868}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1272118862}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -4168,7 +4204,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5498536992447531868}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1658872003}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -5317,6 +5365,7 @@ GameObject:
   - component: {fileID: 5498536992447531175}
   - component: {fileID: 5498536992447531864}
   - component: {fileID: 5498536992447531867}
+  - component: {fileID: 5498536992447531868}
   m_Layer: 5
   m_Name: InputPanel
   m_TagString: Untagged
@@ -5350,6 +5399,24 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &5498536992447531868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498536992447531866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4079dbe5b5e494f892791591e03625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFields:
+  - {fileID: 374574575}
+  - {fileID: 1658872003}
+  - {fileID: 177849842}
+  - {fileID: 1272118862}
+  inputIndex: 0
 --- !u!224 &5498536992455823233
 RectTransform:
   m_ObjectHideFlags: 0

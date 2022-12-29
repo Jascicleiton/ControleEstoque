@@ -51,7 +51,7 @@ public class InventarioManager : Singleton<InventarioManager>
         getInventario.AddField("apppassword", "ImportDatabase");
 
         UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importinventario.php", getInventario);
-        MouseManager.Instance.SetWaitingCursor();
+      //  MouseManager.Instance.SetWaitingCursor();
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -127,7 +127,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro] = tempSheet;
         }
-        MouseManager.Instance.SetDefaultCursor();
+      //  MouseManager.Instance.SetDefaultCursor();
 
     }
 
@@ -140,7 +140,7 @@ public class InventarioManager : Singleton<InventarioManager>
         getInventario.AddField("apppassword", "ImportDatabase");
 
         UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importhd.php", getInventario);
-        MouseManager.Instance.SetWaitingCursor();       
+        //MouseManager.Instance.SetWaitingCursor();       
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -212,7 +212,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.HD] = tempSheet;
         }
-        MouseManager.Instance.SetDefaultCursor();
+        //MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
