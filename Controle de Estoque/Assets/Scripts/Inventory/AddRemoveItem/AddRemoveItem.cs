@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -31,8 +32,9 @@ public class AddRemoveItem : MonoBehaviour
             itensToShow[i].SetActive(true);
             parameterValues[i].text = "";
         }
-
+        
         parameterNames[0].text = "Entrada no estoque";
+        parameterValues[0].text = DateTime.Now.ToString("dd/MM/yyyy");
         parameterNames[1].text = "Patrimônio";
         parameterNames[2].text = "Status";
         parameterNames[3].text = "Serial";
@@ -282,6 +284,1062 @@ public class AddRemoveItem : MonoBehaviour
         CloseMessage();
     }
 
+    private IEnumerator AddNewItemRoutine()
+    {
+        bool addSuccess = false;
+        #region Add new item to Inventario
+        WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text,
+        parameterValues[2].text, parameterValues[3].text, parameterValues[4].text,
+        HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text,
+        parameterValues[7].text, parameterValues[8].text);
+        UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
+        MouseManager.Instance.SetWaitingCursor();
+        yield return createInventarioPostRequest.SendWebRequest();
+
+        if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("Inventario: conectionerror");
+        }
+        else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("Inventario: data processing error");
+        }
+        else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("Inventario: protocol error");
+        }
+
+        if (createInventarioPostRequest.error == null)
+        {
+
+            string response = createInventarioPostRequest.downloadHandler.text;
+            if (response == "Database connection error" || response == "2" || response == "5")
+            {
+
+            }
+            else if (response == "3")
+            {
+
+            }
+            else if (response == "4")
+            {
+
+            }
+            else
+            {
+                addSuccess = true;
+            }
+
+        }
+        else
+        {
+
+        }
+        createInventarioPostRequest.Dispose();
+        #endregion
+        switch (categoryDP.value)
+        {
+            #region HD
+            case 0:
+                WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text);
+
+                UnityWebRequest createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
+                yield return createHDPostRequest.SendWebRequest();
+
+                if (createHDPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("HD: conectionerror");
+                    addSuccess = false;
+                }
+                else if (createHDPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("HD: data processing error");
+                    addSuccess = false;
+                }
+                else if (createHDPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("HD: protocol error");
+                    addSuccess = false;
+                }
+
+                if (createHDPostRequest.error == null)
+                {
+
+                    string response = createHDPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+                        addSuccess = false;
+                    }
+                    else if (response == "3")
+                    {
+                        addSuccess = false;
+                    }
+                    else if (response == "4")
+                    {
+                        addSuccess = false;
+                    }
+                    else
+                    {
+                        addSuccess = true;
+                    }
+
+                }
+                else
+                {
+
+                }
+                createHDPostRequest.Dispose();
+                break;
+            #endregion
+            #region Memoria
+            case 1:
+                WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
+                UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
+                yield return createMemoriaPostRequest.SendWebRequest();
+
+                if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Memoria: conectionerror");
+                    addSuccess = false;
+                }
+                else if (createMemoriaPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Memoria: data processing error");
+                    addSuccess = false;
+                }
+                else if (createMemoriaPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Memoria: protocol error");
+                    addSuccess = false;
+                }
+
+                if (createMemoriaPostRequest.error == null)
+                {
+
+                    string response = createMemoriaPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+                        addSuccess = false;
+                    }
+                    else if (response == "3")
+                    {
+                        addSuccess = false;
+                    }
+                    else if (response == "4")
+                    {
+                        addSuccess = false;
+                    }
+                    else
+                    {
+                        addSuccess = true;
+                    }
+
+                }
+                else
+                {
+
+                }
+                createMemoriaPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de rede
+            case 2:
+                WWWForm placaDeRedeForm = CreateAddItemForm.GetPlacaDeRedeForm(parameterValues[5].text,
+                parameterValues[4].text, parameterValues[9].text, parameterValues[10].text, parameterValues[11].text,
+                parameterValues[12].text, parameterValues[13].text);
+                UnityWebRequest createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacarede.php", placaDeRedeForm);
+                yield return createPlacaDeRedePostRequest.SendWebRequest();
+
+                if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Placa de rede: conectionerror");
+                }
+                else if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Placa de rede: data processing error");
+                }
+                else if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Placa de rede: protocol error");
+                }
+
+                if (createPlacaDeRedePostRequest.error == null)
+                {
+
+                    string response = createPlacaDeRedePostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createPlacaDeRedePostRequest.Dispose();
+                break;
+            #endregion
+            #region iDrac
+            case 3:
+                WWWForm iDracForm = CreateAddItemForm.GetiDracForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
+                UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemidrac.php", iDracForm);
+                yield return createiDracPostRequest.SendWebRequest();
+
+                if (createiDracPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("IDrac: conectionerror");
+                }
+                else if (createiDracPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("IDrac: data processing error");
+                }
+                else if (createiDracPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("IDrac: protocol error");
+                }
+
+                if (createiDracPostRequest.error == null)
+                {
+
+                    string response = createiDracPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createiDracPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa controladora
+            case 4:
+                WWWForm placaControladoraForm = CreateAddItemForm.GetPlacaControladoraForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
+                UnityWebRequest createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacontroladora.php", placaControladoraForm);
+                yield return createPlacaControladoraPostRequest.SendWebRequest();
+
+                if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Placa controladora: conectionerror");
+                }
+                else if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Placa controladora: data processing error");
+                }
+                else if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Placa controladora: protocol error");
+                }
+
+                if (createPlacaControladoraPostRequest.error == null)
+                {
+
+                    string response = createPlacaControladoraPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createPlacaControladoraPostRequest.Dispose();
+                break;
+            #endregion
+            #region Processador
+            case 5:
+                WWWForm processadorForm = CreateAddItemForm.GetProcessadorForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text);
+                UnityWebRequest createProcessadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemprocessador.php", processadorForm);
+                yield return createProcessadorPostRequest.SendWebRequest();
+
+                if (createProcessadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Processador: conectionerror");
+                }
+                else if (createProcessadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Processador: data processing error");
+                }
+                else if (createProcessadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Processador: protocol error");
+                }
+
+                if (createProcessadorPostRequest.error == null)
+                {
+
+                    string response = createProcessadorPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createProcessadorPostRequest.Dispose();
+                break;
+            #endregion
+            #region Desktop
+            case 6:
+                WWWForm desktopForm = CreateAddItemForm.GetDesktopForm(parameterValues[1].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
+                UnityWebRequest createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemdesktop.php", desktopForm);
+                yield return createDesktopPostRequest.SendWebRequest();
+
+                if (createDesktopPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Desktop: conectionerror");
+                }
+                else if (createDesktopPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Desktop: data processing error");
+                }
+                else if (createDesktopPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Desktop: protocol error");
+                }
+
+                if (createDesktopPostRequest.error == null)
+                {
+
+                    string response = createDesktopPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createDesktopPostRequest.Dispose();
+                break;
+            #endregion
+            #region Fonte
+            case 7:
+                WWWForm fonteForm = CreateAddItemForm.GetFonteForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
+                UnityWebRequest createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemfonte.php", fonteForm);
+                yield return createFontePostRequest.SendWebRequest();
+
+                if (createFontePostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Fonte: conectionerror");
+                }
+                else if (createFontePostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Fonte: data processing error");
+                }
+                else if (createFontePostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Fonte: protocol error");
+                }
+
+                if (createFontePostRequest.error == null)
+                {
+
+                    string response = createFontePostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createFontePostRequest.Dispose();
+                break;
+            #endregion
+            #region Switch
+            case 8:
+                WWWForm switchForm = CreateAddItemForm.GetSwitchForm(parameterValues[5].text, parameterValues[9].text,
+                parameterValues[10].text);
+                UnityWebRequest createSwitchPostRequest = UnityWebRequest.Post("addnewitemswitch.php", switchForm);
+                yield return createSwitchPostRequest.SendWebRequest();
+
+                if (createSwitchPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Switch: conectionerror");
+                }
+                else if (createSwitchPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Switch: data processing error");
+                }
+                else if (createSwitchPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Switch: protocol error");
+                }
+
+                if (createSwitchPostRequest.error == null)
+                {
+
+                    string response = createSwitchPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createSwitchPostRequest.Dispose();
+                break;
+            #endregion
+            #region Roteador
+            case 9:
+                WWWForm roteadorForm = CreateAddItemForm.GetRoteadorForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
+                UnityWebRequest createRoteadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemroteador.php", roteadorForm);
+                yield return createRoteadorPostRequest.SendWebRequest();
+
+                if (createRoteadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Roteador: conectionerror");
+                }
+                else if (createRoteadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Roteador: data processing error");
+                }
+                else if (createRoteadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Roteador: protocol error");
+                }
+
+                if (createRoteadorPostRequest.error == null)
+                {
+
+                    string response = createRoteadorPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createRoteadorPostRequest.Dispose();
+                break;
+            #endregion
+            #region Carregador
+            case 10:
+                WWWForm carregadorForm = CreateAddItemForm.GetCarregadorForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
+                UnityWebRequest createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemcarregador.php", carregadorForm);
+                yield return createCarregadorPostRequest.SendWebRequest();
+
+                if (createCarregadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Carregador: conectionerror");
+                }
+                else if (createCarregadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Carregador: data processing error");
+                }
+                else if (createCarregadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Carregador: protocol error");
+                }
+
+                if (createCarregadorPostRequest.error == null)
+                {
+
+                    string response = createCarregadorPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createCarregadorPostRequest.Dispose();
+                break;
+            #endregion
+            #region Adaptador AC
+            case 11:
+                WWWForm adaptadorACForm = CreateAddItemForm.GetAdaptadorACForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
+                UnityWebRequest createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemadaptadorac.php", adaptadorACForm);
+                yield return createAdaptadorAcPostRequest.SendWebRequest();
+
+                if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Adaptador AC: conectionerror");
+                }
+                else if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Adaptador AC: data processing error");
+                }
+                else if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Adaptador AC: protocol error");
+                }
+
+                if (createAdaptadorAcPostRequest.error == null)
+                {
+
+                    string response = createAdaptadorAcPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createAdaptadorAcPostRequest.Dispose();
+                break;
+            #endregion
+            #region Storage NAS
+            case 12:
+                WWWForm storageNasForm = CreateAddItemForm.GetStorageNASForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
+                parameterValues[13].text);
+                UnityWebRequest createStorageNasPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemstoragenas.php", storageNasForm);
+                yield return createStorageNasPostRequest.SendWebRequest();
+
+                if (createStorageNasPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Storage NAS: conectionerror");
+                }
+                else if (createStorageNasPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Storage NAS: data processing error");
+                }
+                else if (createStorageNasPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Storage NAS: protocol error");
+                }
+
+                if (createStorageNasPostRequest.error == null)
+                {
+
+                    string response = createStorageNasPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createStorageNasPostRequest.Dispose();
+                break;
+            #endregion
+            #region GBIC
+            case 13:
+                WWWForm gbicForm = CreateAddItemForm.GetGBICForm(parameterValues[5].text, parameterValues[4].text,
+                parameterValues[9].text);
+                UnityWebRequest createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemgbic.php", gbicForm);
+                yield return createGbicPostRequest.SendWebRequest();
+
+                if (createGbicPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("GBIC: conectionerror");
+                }
+                else if (createGbicPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("GBIC: data processing error");
+                }
+                else if (createGbicPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("GBIC: protocol error");
+                }
+
+                if (createGbicPostRequest.error == null)
+                {
+
+                    string response = createGbicPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createGbicPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de Video
+            case 14:
+                WWWForm placaDeVideoForm = CreateAddItemForm.GetPlacaVideoForm(parameterValues[5].text,
+                parameterValues[9].text, parameterValues[10].text);
+                UnityWebRequest createPlacaDeVideoPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadevideo.php", placaDeVideoForm);
+                yield return createPlacaDeVideoPostRequest.SendWebRequest();
+
+                if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Placa de video: conectionerror");
+                }
+                else if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Placa de video: data processing error");
+                }
+                else if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Placa de video: protocol error");
+                }
+
+                if (createPlacaDeVideoPostRequest.error == null)
+                {
+
+                    string response = createPlacaDeVideoPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createPlacaDeVideoPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de som
+            case 15:
+                WWWForm placaDeSomForm = CreateAddItemForm.GetPlacaSomForm(parameterValues[5].text,
+                parameterValues[9].text);
+                UnityWebRequest createPlacaDeSomPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadesom.php", placaDeSomForm);
+                yield return createPlacaDeSomPostRequest.SendWebRequest();
+
+                if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Placa de som: conectionerror");
+                }
+                else if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Placa de som: data processing error");
+                }
+                else if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Placa de som: protocol error");
+                }
+
+                if (createPlacaDeSomPostRequest.error == null)
+                {
+
+                    string response = createPlacaDeSomPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createPlacaDeSomPostRequest.Dispose();
+                break;
+            #endregion
+            #region Placa de captura de video
+            case 16:
+                WWWForm placaDeCapturaDeVideoForm = CreateAddItemForm.GetPlacaCapturaVideoForm(parameterValues[5].text,
+                parameterValues[9].text);
+                UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post("addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
+                yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
+
+                if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Placa de captura de video: conectionerror");
+                }
+                else if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Placa de captura de video: data processing error");
+                }
+                else if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Placa de captura de video: protocol error");
+                }
+
+                if (createPlacaDeCapturaDeVideoPostRequest.error == null)
+                {
+
+                    string response = createPlacaDeCapturaDeVideoPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createPlacaDeCapturaDeVideoPostRequest.Dispose();
+                break;
+            #endregion
+            #region Servidor
+            case 17:
+                WWWForm servidorForm = CreateAddItemForm.GetServidorForm(parameterValues[5].text,
+                parameterValues[4].text);
+                UnityWebRequest createServidorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemservidor.php", servidorForm);
+                yield return createServidorPostRequest.SendWebRequest();
+
+                if (createServidorPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Servidor: conectionerror");
+                }
+                else if (createServidorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Servidor: data processing error");
+                }
+                else if (createServidorPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Servidor: protocol error");
+                }
+
+                if (createServidorPostRequest.error == null)
+                {
+
+                    string response = createServidorPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createServidorPostRequest.Dispose();
+                break;
+            #endregion
+            #region Notebook
+            case 18:
+                WWWForm notebookForm = CreateAddItemForm.GetNotebookForm(parameterValues[5].text,
+                parameterValues[4].text);
+                UnityWebRequest createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemnotebook.php", notebookForm);
+                yield return createNotebookPostRequest.SendWebRequest();
+
+                if (createNotebookPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Notebook: conectionerror");
+                }
+                else if (createNotebookPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Notebook: data processing error");
+                }
+                else if (createNotebookPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Notebook: protocol error");
+                }
+
+                if (createNotebookPostRequest.error == null)
+                {
+
+                    string response = createNotebookPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createNotebookPostRequest.Dispose();
+                break;
+            #endregion
+            #region Monitor
+            case 19:
+                WWWForm monitorForm = CreateAddItemForm.GetMonitorForm(parameterValues[5].text,
+                parameterValues[4].text, parameterValues[9].text, parameterValues[10].text);
+                UnityWebRequest createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "adnewitemmonitor.php", monitorForm);
+                yield return createMonitorPostRequest.SendWebRequest();
+
+                if (createMonitorPostRequest.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.LogWarning("Monitor: conectionerror");
+                }
+                else if (createMonitorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+                {
+                    Debug.LogWarning("Monitor: data processing error");
+                }
+                else if (createMonitorPostRequest.result == UnityWebRequest.Result.ProtocolError)
+                {
+                    Debug.LogWarning("Monitor: protocol error");
+                }
+
+                if (createMonitorPostRequest.error == null)
+                {
+
+                    string response = createMonitorPostRequest.downloadHandler.text;
+                    if (response == "1" || response == "2" || response == "5")
+                    {
+
+                    }
+                    else if (response == "3")
+                    {
+
+                    }
+                    else if (response == "4")
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+                createMonitorPostRequest.Dispose();
+
+                break;
+            #endregion
+            default:
+                break;
+        }
+        MouseManager.Instance.SetDefaultCursor();
+    }
+
     /// <summary>
     /// Close the message. It is public to be used on the button too
     /// </summary>
@@ -295,7 +1353,7 @@ public class AddRemoveItem : MonoBehaviour
     /// <summary>
     /// Add a new item to all databases
     /// </summary>
-    public void AddItem()
+    private void AddItem()
     {
         ItemColumns itemToAddFullDatabase = new ItemColumns();
         ItemColumns itemToAddSplitDatabase = new ItemColumns();
@@ -644,1058 +1702,13 @@ public class AddRemoveItem : MonoBehaviour
                 break;
         }
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
-        StartCoroutine(AddNewItemRoutine());
         ShowMessage();
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
-    }
+    }   
 
-    private IEnumerator AddNewItemRoutine()
+    public void AddItemClicked()
     {
-        #region Add new item to Inventario
-        WWWForm inventarioForm = CreateAddItemForm.GetInventarioForm(parameterValues[0].text, parameterValues[1].text,
-        parameterValues[2].text, parameterValues[3].text, parameterValues[4].text,
-        HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text,
-        parameterValues[7].text, parameterValues[8].text);
-        UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
-        MouseManager.Instance.SetWaitingCursor();
-        yield return createInventarioPostRequest.SendWebRequest();
-
-        if (createInventarioPostRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.LogWarning("conectionerror");
-        }
-        else if (createInventarioPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("data processing error");
-        }
-        else if (createInventarioPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("protocol error");
-        }
-
-        if (createInventarioPostRequest.error == null)
-        {
-
-            string response = createInventarioPostRequest.downloadHandler.text;
-            if (response == "1" || response == "2" || response == "5")
-            {
-
-            }
-            else if (response == "3")
-            {
-
-            }
-            else if (response == "4")
-            {
-
-            }
-            else
-            {
-
-            }
-
-        }
-        else
-        {
-
-        }
-        createInventarioPostRequest.Dispose();
-        #endregion
-        switch (categoryDP.value)
-        {
-            #region HD
-            case 0:
-                WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterValues[5].text, parameterValues[4].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
-                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text);
-             
-                UnityWebRequest createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
-                yield return createHDPostRequest.SendWebRequest();
-
-                if (createHDPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createHDPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createHDPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createHDPostRequest.error == null)
-                {
-
-                    string response = createHDPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createHDPostRequest.Dispose();
-                break;
-            #endregion
-            #region Memoria
-            case 1:
-                WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterValues[5].text, parameterValues[4].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
-                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
-                UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
-                yield return createMemoriaPostRequest.SendWebRequest();
-
-                if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createMemoriaPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createMemoriaPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createMemoriaPostRequest.error == null)
-                {
-
-                    string response = createMemoriaPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createMemoriaPostRequest.Dispose();
-                break;
-            #endregion
-            #region Placa de rede
-            case 2:
-                WWWForm placaDeRedeForm = CreateAddItemForm.GetPlacaDeRedeForm(parameterValues[5].text,
-                parameterValues[4].text, parameterValues[9].text, parameterValues[10].text, parameterValues[11].text,
-                parameterValues[12].text, parameterValues[13].text);
-                UnityWebRequest createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacarede.php", placaDeRedeForm);
-                yield return createPlacaDeRedePostRequest.SendWebRequest();
-
-                if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createPlacaDeRedePostRequest.error == null)
-                {
-
-                    string response = createPlacaDeRedePostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createPlacaDeRedePostRequest.Dispose();
-                break;
-            #endregion
-            #region iDrac
-            case 3:
-                WWWForm iDracForm = CreateAddItemForm.GetiDracForm(parameterValues[5].text, parameterValues[4].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
-                UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemidrac.php", iDracForm);
-                yield return createiDracPostRequest.SendWebRequest();
-
-                if (createiDracPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createiDracPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createiDracPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createiDracPostRequest.error == null)
-                {
-
-                    string response = createiDracPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createiDracPostRequest.Dispose();
-                break;
-            #endregion
-            #region Placa controladora
-            case 4:
-                WWWForm placaControladoraForm = CreateAddItemForm.GetPlacaControladoraForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
-                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
-                UnityWebRequest createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacontroladora.php", placaControladoraForm);
-                yield return createPlacaControladoraPostRequest.SendWebRequest();
-
-                if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createPlacaControladoraPostRequest.error == null)
-                {
-
-                    string response = createPlacaControladoraPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createPlacaControladoraPostRequest.Dispose();
-                break;
-            #endregion
-            #region Processador
-            case 5:
-                WWWForm processadorForm = CreateAddItemForm.GetProcessadorForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
-                parameterValues[13].text, parameterValues[14].text);
-                UnityWebRequest createProcessadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemprocessador.php", processadorForm);
-                yield return createProcessadorPostRequest.SendWebRequest();
-
-                if (createProcessadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createProcessadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createProcessadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createProcessadorPostRequest.error == null)
-                {
-
-                    string response = createProcessadorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createProcessadorPostRequest.Dispose();
-                break;
-            #endregion
-            #region Desktop
-            case 6:
-                WWWForm desktopForm = CreateAddItemForm.GetDesktopForm(parameterValues[1].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
-                parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
-                UnityWebRequest createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemdesktop.php", desktopForm);
-                yield return createDesktopPostRequest.SendWebRequest();
-
-                if (createDesktopPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createDesktopPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createDesktopPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createDesktopPostRequest.error == null)
-                {
-
-                    string response = createDesktopPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createDesktopPostRequest.Dispose();
-                break;
-            #endregion
-            #region Fonte
-            case 7:
-                WWWForm fonteForm = CreateAddItemForm.GetFonteForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
-                UnityWebRequest createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemfonte.php", fonteForm);
-                yield return createFontePostRequest.SendWebRequest();
-
-                if (createFontePostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createFontePostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createFontePostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createFontePostRequest.error == null)
-                {
-
-                    string response = createFontePostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createFontePostRequest.Dispose();
-                break;
-            #endregion
-            #region Switch
-            case 8:
-                WWWForm switchForm = CreateAddItemForm.GetSwitchForm(parameterValues[5].text, parameterValues[9].text,
-                parameterValues[10].text);
-                UnityWebRequest createSwitchPostRequest = UnityWebRequest.Post("addnewitemswitch.php", switchForm);
-                yield return createSwitchPostRequest.SendWebRequest();
-
-                if (createSwitchPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createSwitchPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createSwitchPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createSwitchPostRequest.error == null)
-                {
-
-                    string response = createSwitchPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createSwitchPostRequest.Dispose();
-                break;
-            #endregion
-            #region Roteador
-            case 9:
-                WWWForm roteadorForm = CreateAddItemForm.GetRoteadorForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
-                UnityWebRequest createRoteadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemroteador.php", roteadorForm);
-                yield return createRoteadorPostRequest.SendWebRequest();
-
-                if (createRoteadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createRoteadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createRoteadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createRoteadorPostRequest.error == null)
-                {
-
-                    string response = createRoteadorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createRoteadorPostRequest.Dispose();
-                break;
-            #endregion
-            #region Carregador
-            case 10:
-                WWWForm carregadorForm = CreateAddItemForm.GetCarregadorForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
-                UnityWebRequest createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemcarregador.php", carregadorForm);
-                yield return createCarregadorPostRequest.SendWebRequest();
-
-                if (createCarregadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createCarregadorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createCarregadorPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createCarregadorPostRequest.error == null)
-                {
-
-                    string response = createCarregadorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createCarregadorPostRequest.Dispose();
-                break;
-            #endregion
-            #region Adaptador AC
-            case 11:
-                WWWForm adaptadorACForm = CreateAddItemForm.GetAdaptadorACForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
-                UnityWebRequest createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemadaptadorac.php", adaptadorACForm);
-                yield return createAdaptadorAcPostRequest.SendWebRequest();
-
-                if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createAdaptadorAcPostRequest.error == null)
-                {
-
-                    string response = createAdaptadorAcPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createAdaptadorAcPostRequest.Dispose();
-                break;
-            #endregion
-            #region Storage NAS
-            case 12:
-                WWWForm storageNasForm = CreateAddItemForm.GetStorageNASForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
-                parameterValues[13].text);
-                UnityWebRequest createStorageNasPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemstoragenas.php", storageNasForm);
-                yield return createStorageNasPostRequest.SendWebRequest();
-
-                if (createStorageNasPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createStorageNasPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createStorageNasPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createStorageNasPostRequest.error == null)
-                {
-
-                    string response = createStorageNasPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createStorageNasPostRequest.Dispose();
-                break;
-            #endregion
-            #region GBIC
-            case 13:
-                WWWForm gbicForm = CreateAddItemForm.GetGBICForm(parameterValues[5].text, parameterValues[4].text,
-                parameterValues[9].text);
-                UnityWebRequest createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemgbic.php", gbicForm);
-                yield return createGbicPostRequest.SendWebRequest();
-
-                if (createGbicPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createGbicPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createGbicPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createGbicPostRequest.error == null)
-                {
-
-                    string response = createGbicPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createGbicPostRequest.Dispose();
-                break;
-            #endregion
-            #region Placa de Video
-            case 14:
-                WWWForm placaDeVideoForm = CreateAddItemForm.GetPlacaVideoForm(parameterValues[5].text,
-                parameterValues[9].text, parameterValues[10].text);
-                UnityWebRequest createPlacaDeVideoPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadevideo.php", placaDeVideoForm);
-                yield return createPlacaDeVideoPostRequest.SendWebRequest();
-
-                if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createPlacaDeVideoPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createPlacaDeVideoPostRequest.error == null)
-                {
-
-                    string response = createPlacaDeVideoPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createPlacaDeVideoPostRequest.Dispose();
-                break;
-            #endregion
-            #region Placa de som
-            case 15:
-                WWWForm placaDeSomForm = CreateAddItemForm.GetPlacaSomForm(parameterValues[5].text,
-                parameterValues[9].text);
-                UnityWebRequest createPlacaDeSomPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacadesom.php", placaDeSomForm);
-                yield return createPlacaDeSomPostRequest.SendWebRequest();
-
-                if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createPlacaDeSomPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createPlacaDeSomPostRequest.error == null)
-                {
-
-                    string response = createPlacaDeSomPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createPlacaDeSomPostRequest.Dispose();
-                break;
-            #endregion
-            #region Placa de captura de video
-            case 16:
-                WWWForm placaDeCapturaDeVideoForm = CreateAddItemForm.GetPlacaCapturaVideoForm(parameterValues[5].text,
-                parameterValues[9].text);
-                UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post("addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
-                yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
-
-                if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createPlacaDeCapturaDeVideoPostRequest.error == null)
-                {
-
-                    string response = createPlacaDeCapturaDeVideoPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createPlacaDeCapturaDeVideoPostRequest.Dispose();
-                break;
-            #endregion
-            #region Servidor
-            case 17:
-                WWWForm servidorForm = CreateAddItemForm.GetServidorForm(parameterValues[5].text,
-                parameterValues[4].text);
-                UnityWebRequest createServidorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemservidor.php", servidorForm);
-                yield return createServidorPostRequest.SendWebRequest();
-
-                if (createServidorPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createServidorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createServidorPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createServidorPostRequest.error == null)
-                {
-
-                    string response = createServidorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createServidorPostRequest.Dispose();
-                break;
-            #endregion
-            #region Notebook
-            case 18:
-                WWWForm notebookForm = CreateAddItemForm.GetNotebookForm(parameterValues[5].text,
-                parameterValues[4].text);
-                UnityWebRequest createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemnotebook.php", notebookForm);
-                yield return createNotebookPostRequest.SendWebRequest();
-
-                if (createNotebookPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createNotebookPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createNotebookPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createNotebookPostRequest.error == null)
-                {
-
-                    string response = createNotebookPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createNotebookPostRequest.Dispose();
-                break;
-            #endregion
-            #region Monitor
-            case 19:
-                WWWForm monitorForm = CreateAddItemForm.GetMonitorForm(parameterValues[5].text,
-                parameterValues[4].text, parameterValues[9].text, parameterValues[10].text);
-                UnityWebRequest createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "adnewitemmonitor.php", monitorForm);
-                yield return createMonitorPostRequest.SendWebRequest();
-
-                if (createMonitorPostRequest.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.LogWarning("conectionerror");
-                }
-                else if (createMonitorPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-                {
-                    Debug.LogWarning("data processing error");
-                }
-                else if (createMonitorPostRequest.result == UnityWebRequest.Result.ProtocolError)
-                {
-                    Debug.LogWarning("protocol error");
-                }
-
-                if (createMonitorPostRequest.error == null)
-                {
-
-                    string response = createMonitorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
-                    {
-
-                    }
-                    else if (response == "3")
-                    {
-
-                    }
-                    else if (response == "4")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-                else
-                {
-
-                }
-                createMonitorPostRequest.Dispose();
-                
-                break;
-            #endregion
-            default:
-                break;
-        }
-        MouseManager.Instance.SetDefaultCursor();
+        StartCoroutine(AddNewItemRoutine());
     }
 
     // MAYBE will be implemented

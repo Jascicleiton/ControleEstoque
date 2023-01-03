@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using SimpleJSON;
-using UnityEngine.UIElements;
 
 public class InventarioManager : Singleton<InventarioManager>
 {
@@ -541,30 +540,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Processador: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Processador: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Processador: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Processador: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Processador: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Processador: Result came empty");
             }
             else
             {
@@ -615,30 +614,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Desktop: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Desktop: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Desktop: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Desktop: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Desktop: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Desktop: Result came empty");
             }
             else
             {
@@ -693,30 +692,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Fonte: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Fonte: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Fonte: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Fonte: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Fonte: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Fonte: Result came empty");
             }
             else
             {
@@ -765,30 +764,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Switch: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Switch: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Switch: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Switch: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Switch: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Switch: Result came empty");
             }
             else
             {
@@ -836,30 +835,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Roteador: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Roteador: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Roteador: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Roteador: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Roteador: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Roteador: Result came empty");
             }
             else
             {
@@ -909,30 +908,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Carregador: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Carregador: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Carregador: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Carregador: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Carregador: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Carregador: Result came empty");
             }
             else
             {
@@ -981,30 +980,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Adaptador AC: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Adaptador AC: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Adaptador AC: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Adaptador AC: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Adaptador AC: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Adaptador AC: Result came empty");
             }
             else
             {
@@ -1052,30 +1051,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Storage NAS: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Storage NAS: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Storage NAS: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Storage NAS: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Storage NAS: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Storage NAS: Result came empty");
             }
             else
             {
@@ -1126,30 +1125,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("GBIC: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("GBIC: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("GBIC: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("GBIC: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("GBIC: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("GBIC: Result came empty");
             }
             else
             {
@@ -1196,30 +1195,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Placa de video: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Placa de video: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Placa de video: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Placa de video: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Placa de video: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Placa de video: Result came empty");
             }
             else
             {
@@ -1266,30 +1265,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Placa de som: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Placa de som: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Placa de som: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Placa de som: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Placa de som: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Placa de som: Result came empty");
             }
             else
             {
@@ -1336,30 +1335,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Placa de captura de video: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Placa de captura de video: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Placa de captura de video: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Placa de captura de video: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Placa de captura de video: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Placa de captura de video: Result came empty");
             }
             else
             {
@@ -1405,30 +1404,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Servidor: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Servidor: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Servidor: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Servidor: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Servidor: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Servidor: Result came empty");
             }
             else
             {
@@ -1475,30 +1474,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Notebook: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Notebook: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Notebook: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Notebook: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Notebook: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Notebook: Result came empty");
             }
             else
             {
@@ -1545,30 +1544,30 @@ public class InventarioManager : Singleton<InventarioManager>
 
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("conection error");
+            Debug.LogWarning("Monitor: conection error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("data processing error");
+            Debug.LogWarning("Monitor: data processing error");
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("protocol error");
+            Debug.LogWarning("Monitor: protocol error");
         }
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
             if (response == "1")
             {
-                Debug.Log("Database connection error");
+                Debug.Log("Monitor: Database connection error");
             }
             else if (response == "2")
             {
-                Debug.Log("Table query ran into an error");
+                Debug.Log("Monitor: Table query ran into an error");
             }
             else if (response == "3")
             {
-                Debug.Log("Result came empty");
+                Debug.Log("Monitor: Result came empty");
             }
             else
             {

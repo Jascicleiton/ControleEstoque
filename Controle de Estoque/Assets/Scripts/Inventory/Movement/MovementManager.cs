@@ -286,7 +286,7 @@ public class MovementManager : MonoBehaviour
         itemToChange.Local = toInput.text;
         if (itemToChange.Local == "Estoque")
         {
-            itemToChange.Entrada = DateTime.Now.ToString("ddMMyyyy");
+            itemToChange.Entrada = DateTime.Now.ToString("dd/MM/yyyy");
             itemToChange.Saida = "";
         }
         if (fromInput.text == "Estoque" || fromInput.text == "estoque")

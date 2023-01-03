@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Saving;
 
-public class UsersManager : Singleton<UsersManager>, ISaveable
+public class UsersManager : Singleton<UsersManager>
 {
     public List<User> usersDatabase;
     private User admin;
     private User admin1;
     public bool adminLogged = false;
-    private SavingWrapper savingWrapper = null;
     public User currentUser = new User("pessoa","");
 
     protected  override void Awake()
@@ -31,7 +30,7 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        savingWrapper = FindObjectOfType<SavingWrapper>();        
+        //savingWrapper = FindObjectOfType<SavingWrapper>();        
     }
 
     /// <summary>
@@ -40,24 +39,24 @@ public class UsersManager : Singleton<UsersManager>, ISaveable
     public void  AddNewUser(User userToAdd)
     {
         usersDatabase.Add(userToAdd);
-        if(savingWrapper == null)
-        {
-            savingWrapper = FindObjectOfType<SavingWrapper>();
-            savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
-        }
-        else
-        {
-            savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
-        }
+        //if(savingWrapper == null)
+        //{
+        //    savingWrapper = FindObjectOfType<SavingWrapper>();
+        //    savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
+        //}
+        //else
+        //{
+        //    savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
+        //}
     }
 
-    public object CaptureState()
-    {
-        return usersDatabase;
-    }
+    //public object CaptureState()
+    //{
+    //    return usersDatabase;
+    //}
 
-    public void RestoreState(object state)
-    {
-        usersDatabase = (List<User>)state;
-    }
+    //public void RestoreState(object state)
+    //{
+    //    usersDatabase = (List<User>)state;
+    //}
 }

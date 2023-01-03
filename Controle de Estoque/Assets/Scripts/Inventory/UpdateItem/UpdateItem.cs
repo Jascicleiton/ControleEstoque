@@ -1713,6 +1713,7 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void ResetInputs()
     {
+        inputsPanel.SetActive(true);
         for (int i = 0; i < parameterItems.Length; i++)
         {
             parameterItems[i].SetActive(true);

@@ -51,7 +51,7 @@ public class ConsultInventory : MonoBehaviour
                     }
                     else
                     {
-                        SetItensFoundText(false);
+                        RemoveOldSearch();
                     }
                 }
                 else if (searchOptionDP.value == 2)
@@ -64,7 +64,7 @@ public class ConsultInventory : MonoBehaviour
                     }
                     else
                     {
-                        SetItensFoundText(false);
+                        RemoveOldSearch();
                     }
                 }
             }

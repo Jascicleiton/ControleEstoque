@@ -346,7 +346,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 108074486}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -575,7 +587,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 127968886}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -1521,7 +1545,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 209322804}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -1697,7 +1733,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 213097213}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -2157,7 +2205,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 257544153}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -4660,7 +4720,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 654665876}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -5860,7 +5932,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 779587313}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -6974,7 +7058,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1866416874537355208}
         m_TargetAssemblyTypeName: AddRemoveItem, Assembly-CSharp
-        m_MethodName: AddItem
+        m_MethodName: AddItemClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7391,7 +7475,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 981888500}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -8668,7 +8764,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1147751385}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -9135,7 +9243,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1173936845}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -9562,7 +9682,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1257449634}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -10728,7 +10860,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1427252954}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -12479,7 +12623,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1672708547}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -12789,7 +12945,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1722764852}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -13648,7 +13816,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1809075719}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -14058,7 +14238,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1878731697}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -14762,7 +14954,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1998952131}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -14938,7 +15142,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1866416874537355209}
+        m_TargetAssemblyTypeName: TabInputHandler, Assembly-CSharp
+        m_MethodName: InputSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2018361704}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []

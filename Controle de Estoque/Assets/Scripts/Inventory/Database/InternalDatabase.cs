@@ -8,21 +8,19 @@ using System;
 
 public class InternalDatabase : Singleton<InternalDatabase>
 {
-    private class Databases
-    {
-        public Dictionary<string, Sheet> splitDatabase;
-        public Sheet fullDatabase;
-        public List<Sheet> categoryDatabases;
-        public List<MovementRecords> movementRecords;
-    }
+    //private class Databases
+    //{
+    //    public Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
+    //    public Sheet fullDatabase = new Sheet();
+    //    public List<Sheet> categoryDatabases = new List<Sheet>();
+    //    public List<MovementRecords> movementRecords = new List<MovementRecords>();
+    //}
 
    public  Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
    public  Sheet fullDatabase = new Sheet();
 
     public Sheet testingSheet = new Sheet();
     public static List<MovementRecords> movementRecords;
-
-    public bool IsOnline = true;
 
     #region Sheets with all information divided by "Categoria"
     public static Sheet hd = new Sheet();
@@ -139,7 +137,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                                     hd.itens.Add(item);
                                                                    }
                             }
-                            testingSheet = hd;
+                          //  testingSheet = hd;
                             
                         }
                         else

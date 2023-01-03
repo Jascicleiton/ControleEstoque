@@ -48,7 +48,7 @@ public class ConstStrings
     #region PHP folder URL
     public const string PhpRootFolder = "https://sysnetpro.com.br/controleestoque/";
     public const string PhpImportTablesFolder = "https://sysnetpro.com.br/controleestoque/Import/";
-    public const string PhpAdditemsFolder = "https://sysnetpro.com.br/controleestoque/Additems/";
+    public const string PhpAdditemsFolder = "https://sysnetpro.com.br/controleestoque/AddItems/";
     public const string PhpMovementsFolder = "https://sysnetpro.com.br/controleestoque/Movements/";
     public const string PhpUpdateItemsFolder = "https://sysnetpro.com.br/controleestoque/UpdateItems/";
     #endregion
