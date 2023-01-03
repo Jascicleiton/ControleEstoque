@@ -163,170 +163,165 @@ public class UpdateItem : MonoBehaviour
         parameterInputs[1].text = itemToUpdate.Patrimonio;
         parameterInputs[2].text = itemToUpdate.Status;
         parameterInputs[3].text = itemToUpdate.Serial;
-        parameterInputs[4].text = itemToUpdate.Fabricante;
-        parameterInputs[5].text = itemToUpdate.Modelo;
-        parameterInputs[6].text = itemToUpdate.Local;
-        parameterInputs[7].text = itemToUpdate.Saida;
-        parameterInputs[8].text = itemToUpdate.Observacao;
+        parameterInputs[4].text = itemToUpdate.Categoria;
+        parameterInputs[5].text = itemToUpdate.Fabricante;
+        parameterInputs[6].text = itemToUpdate.Modelo;
+        parameterInputs[7].text = itemToUpdate.Local;
+        parameterInputs[8].text = itemToUpdate.Saida;
+        parameterInputs[9].text = itemToUpdate.Observacao;
 
         parameterNames[0].text = "Entrada no estoque";
         parameterNames[1].text = "Patrimônio";
         parameterNames[2].text = "Status";
         parameterNames[3].text = "Serial";
-        parameterNames[4].text = "Fabricante";
-        parameterNames[5].text = "Modelo";
-        parameterNames[6].text = "Local";
-        parameterNames[7].text = "Saída do estoque";
-        parameterNames[8].text = "Observação";
+        parameterNames[4].text = "Categoria";
+        parameterNames[5].text = "Fabricante";
+        parameterNames[6].text = "Modelo";
+        parameterNames[7].text = "Local";
+        parameterNames[8].text = "Saída do estoque";
+        parameterNames[9].text = "Observação";
 
         switch (itemToUpdate.Categoria)
         {
             #region HD
             case ConstStrings.HD:
-                parameterInputs[9].text = itemToUpdate.Interface;
-                parameterInputs[10].text = itemToUpdate.Tamanho;
-                parameterInputs[11].text = itemToUpdate.FormaDeArmazenamento;
-                parameterInputs[12].text = itemToUpdate.CapacidadeEmGB;
-                parameterInputs[13].text = itemToUpdate.RPM;
-                parameterInputs[14].text = itemToUpdate.VelocidadeDeLeitura;
-                parameterInputs[15].text = itemToUpdate.Enterprise;
-                parameterNames[9].text = "Interface";
-                parameterNames[10].text = "Tamanho";
-                parameterNames[11].text = "Forma de armazenamento";
-                parameterNames[12].text = "Capacidade (GB)";
-                parameterNames[13].text = "RPM";
-                parameterNames[14].text = "Velocidade de Leitura (Gb/s)";
-                parameterNames[15].text = "Enterprise";
-                parameterNames[16].text = "";
+                parameterInputs[10].text = itemToUpdate.Interface;
+                parameterInputs[11].text = itemToUpdate.Tamanho;
+                parameterInputs[12].text = itemToUpdate.FormaDeArmazenamento;
+                parameterInputs[13].text = itemToUpdate.CapacidadeEmGB;
+                parameterInputs[14].text = itemToUpdate.RPM;
+                parameterInputs[15].text = itemToUpdate.VelocidadeDeLeitura;
+                parameterInputs[16].text = itemToUpdate.Enterprise;
+                parameterNames[10].text = "Interface";
+                parameterNames[11].text = "Tamanho";
+                parameterNames[12].text = "Forma de armazenamento";
+                parameterNames[13].text = "Capacidade (GB)";
+                parameterNames[14].text = "RPM";
+                parameterNames[15].text = "Velocidade de Leitura (Gb/s)";
+                parameterNames[16].text = "Enterprise";
                 parameterNames[17].text = "";
                 break;
             #endregion
             #region Memoria
             case ConstStrings.Memoria:
-                parameterInputs[9].text = itemToUpdate.Tipo;
-                parameterInputs[10].text = itemToUpdate.CapacidadeEmGB;
-                parameterInputs[11].text = itemToUpdate.VelocidadeMHz;
-                parameterInputs[12].text = itemToUpdate.LowVoltage;
-                parameterInputs[13].text = itemToUpdate.Rank;
-                parameterInputs[14].text = itemToUpdate.DIMM;
-                parameterInputs[15].text = itemToUpdate.TaxaDeTransmissao;
-                parameterInputs[16].text = itemToUpdate.Simbolo;
-                parameterNames[9].text = "Tipo";
-                parameterNames[10].text = "Capacidade (GB)";
-                parameterNames[11].text = "Velocidade (MHz)";
-                parameterNames[12].text = "É low voltage?";
-                parameterNames[13].text = "Rank";
-                parameterNames[14].text = "DIMM";
-                parameterNames[15].text = "Taxa de transmissão";
-                parameterNames[16].text = "Símbolo";
-                parameterNames[17].text = "";
+                parameterInputs[10].text = itemToUpdate.Tipo;
+                parameterInputs[11].text = itemToUpdate.CapacidadeEmGB;
+                parameterInputs[12].text = itemToUpdate.VelocidadeMHz;
+                parameterInputs[13].text = itemToUpdate.LowVoltage;
+                parameterInputs[14].text = itemToUpdate.Rank;
+                parameterInputs[15].text = itemToUpdate.DIMM;
+                parameterInputs[16].text = itemToUpdate.TaxaDeTransmissao;
+                parameterInputs[17].text = itemToUpdate.Simbolo;
+                parameterNames[10].text = "Tipo";
+                parameterNames[11].text = "Capacidade (GB)";
+                parameterNames[12].text = "Velocidade (MHz)";
+                parameterNames[13].text = "É low voltage?";
+                parameterNames[14].text = "Rank";
+                parameterNames[15].text = "DIMM";
+                parameterNames[16].text = "Taxa de transmissão";
+                parameterNames[17].text = "Símbolo";
                 break;
             #endregion
             #region Placa de rede
             case ConstStrings.PlacaDeRede:
-                parameterInputs[9].text = itemToUpdate.Interface;
-                parameterInputs[10].text = itemToUpdate.QuantidadeDePortas;
-                parameterInputs[11].text = itemToUpdate.QuaisConexoes;
-                parameterInputs[12].text = itemToUpdate.SuportaFibraOptica;
-                parameterInputs[13].text = itemToUpdate.Desempenho;
-                parameterNames[9].text = "Interface";
-                parameterNames[10].text = "Quantas portas?";
-                parameterNames[11].text = "Quais portas?";
-                parameterNames[12].text = "Suporta fibra óptica?";
-                parameterNames[13].text = "Desempenho (MB/s)";
-                parameterNames[14].text = "";
+                parameterInputs[10].text = itemToUpdate.Interface;
+                parameterInputs[11].text = itemToUpdate.QuantidadeDePortas;
+                parameterInputs[12].text = itemToUpdate.QuaisConexoes;
+                parameterInputs[13].text = itemToUpdate.SuportaFibraOptica;
+                parameterInputs[14].text = itemToUpdate.Desempenho;
+                parameterNames[10].text = "Interface";
+                parameterNames[11].text = "Quantas portas?";
+                parameterNames[12].text = "Quais portas?";
+                parameterNames[13].text = "Suporta fibra óptica?";
+                parameterNames[14].text = "Desempenho (MB/s)";
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 parameterNames[17].text = "";
-                break;
+                                break;
             #endregion
             #region iDrac
             case ConstStrings.Idrac:
-                parameterInputs[9].text = itemToUpdate.QuaisConexoes;
-                parameterInputs[10].text = itemToUpdate.VelocidadeGBs;
-                parameterInputs[11].text = itemToUpdate.EntradaSD;
-                parameterInputs[12].text = itemToUpdate.ServidoresSuportados;
-                parameterNames[9].text = "Porta";
-                parameterNames[10].text = "Velocidade (GB/s)";
-                parameterNames[11].text = "Entrada SD";
-                parameterNames[12].text = "Servidores suportados";
-                parameterNames[13].text = "";
+                parameterInputs[10].text = itemToUpdate.QuaisConexoes;
+                parameterInputs[11].text = itemToUpdate.VelocidadeGBs;
+                parameterInputs[12].text = itemToUpdate.EntradaSD;
+                parameterInputs[13].text = itemToUpdate.ServidoresSuportados;
+                parameterNames[10].text = "Porta";
+                parameterNames[11].text = "Velocidade (GB/s)";
+                parameterNames[12].text = "Entrada SD";
+                parameterNames[13].text = "Servidores suportados";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
-                parameterNames[17].text = "";
+                               parameterNames[17].text = "";
                 break;
             #endregion
             #region Placa controladora
             case ConstStrings.PlacaControladora:
-                parameterInputs[9].text = itemToUpdate.QuaisConexoes;
-                parameterInputs[10].text = itemToUpdate.QuantidadeDePortas;
-                parameterInputs[11].text = itemToUpdate.TipoDeRAID;
-                parameterInputs[12].text = itemToUpdate.TipoDeHD;
-                parameterInputs[13].text = itemToUpdate.CapacidadeMaxHD;
-                parameterInputs[14].text = itemToUpdate.AteQuantosHDs;
-                parameterInputs[15].text = itemToUpdate.BateriaInclusa;
-                parameterInputs[16].text = itemToUpdate.Barramento;
-                parameterNames[9].text = "Tipo de conexão";
-                parameterNames[10].text = "Quantas portas?";
-                parameterNames[11].text = "Tipos de RAID";
-                parameterNames[12].text = "Tipo de HD";
-                parameterNames[13].text = "Capacidade máx do HD (TB)";
-                parameterNames[14].text = "Até quantos HDs";
-                parameterNames[15].text = "Bateria inclusa?";
-                parameterNames[16].text = "Barramento";
-                parameterNames[17].text = "";
-                break;
+                parameterInputs[10].text = itemToUpdate.QuaisConexoes;
+                parameterInputs[11].text = itemToUpdate.QuantidadeDePortas;
+                parameterInputs[12].text = itemToUpdate.TipoDeRAID;
+                parameterInputs[13].text = itemToUpdate.TipoDeHD;
+                parameterInputs[14].text = itemToUpdate.CapacidadeMaxHD;
+                parameterInputs[15].text = itemToUpdate.AteQuantosHDs;
+                parameterInputs[16].text = itemToUpdate.BateriaInclusa;
+                parameterInputs[17].text = itemToUpdate.Barramento;
+                parameterNames[10].text = "Tipo de conexão";
+                parameterNames[11].text = "Quantas portas?";
+                parameterNames[12].text = "Tipos de RAID";
+                parameterNames[13].text = "Tipo de HD";
+                parameterNames[14].text = "Capacidade máx do HD (TB)";
+                parameterNames[15].text = "Até quantos HDs";
+                parameterNames[16].text = "Bateria inclusa?";
+                parameterNames[17].text = "Barramento";
+                               break;
             #endregion
             #region Processador
             case ConstStrings.Processador:
-                parameterInputs[9].text = itemToUpdate.Soquete;
-                parameterInputs[10].text = itemToUpdate.NucleosFisicos;
-                parameterInputs[11].text = itemToUpdate.NucleosLogicos;
-                parameterInputs[12].text = itemToUpdate.AceitaVirtualizacao;
-                parameterInputs[13].text = itemToUpdate.TurboBoost;
-                parameterInputs[14].text = itemToUpdate.HyperThreading;
-                parameterNames[9].text = "Soquete";
-                parameterNames[10].text = "Nº núcleos físicos";
-                parameterNames[11].text = "Nº núcleos lógicos";
-                parameterNames[12].text = "Aceita virtualização?";
-                parameterNames[13].text = "Turbo boost?";
-                parameterNames[14].text = "Hyper-Threading?";
-                parameterNames[15].text = "";
+                parameterInputs[10].text = itemToUpdate.Soquete;
+                parameterInputs[11].text = itemToUpdate.NucleosFisicos;
+                parameterInputs[12].text = itemToUpdate.NucleosLogicos;
+                parameterInputs[13].text = itemToUpdate.AceitaVirtualizacao;
+                parameterInputs[14].text = itemToUpdate.TurboBoost;
+                parameterInputs[15].text = itemToUpdate.HyperThreading;
+                parameterNames[10].text = "Soquete";
+                parameterNames[11].text = "Nº núcleos físicos";
+                parameterNames[12].text = "Nº núcleos lógicos";
+                parameterNames[13].text = "Aceita virtualização?";
+                parameterNames[14].text = "Turbo boost?";
+                parameterNames[15].text = "Hyper-Threading?";
                 parameterNames[16].text = "";
                 parameterNames[17].text = "";
                 break;
             #endregion
             #region Desktop
             case ConstStrings.Desktop:
-                parameterInputs[9].text = itemToUpdate.ModeloPlacaMae;
-                parameterInputs[10].text = itemToUpdate.Fonte;
-                parameterInputs[11].text = itemToUpdate.Memoria;
-                parameterInputs[12].text = itemToUpdate.HD;
-                parameterInputs[13].text = itemToUpdate.PlacaDeVideo;
-                parameterInputs[14].text = itemToUpdate.PlacaDeRede;
-                parameterInputs[15].text = itemToUpdate.LeitorDeDVD;
-                parameterInputs[16].text = itemToUpdate.Processador;
-                parameterNames[9].text = "Modelo de placa mãe";
-                parameterNames[10].text = "Fonte?";
-                parameterNames[11].text = "Memória?";
-                parameterNames[12].text = "HD?";
-                parameterNames[13].text = "Placa de vídeo?";
-                parameterNames[14].text = "Placa de rede?";
-                parameterNames[15].text = "Leitor de DVD?";
-                parameterNames[16].text = "Processador?";
+                parameterInputs[10].text = itemToUpdate.ModeloPlacaMae;
+                parameterInputs[11].text = itemToUpdate.Fonte;
+                parameterInputs[12].text = itemToUpdate.Memoria;
+                parameterInputs[13].text = itemToUpdate.HD;
+                parameterInputs[14].text = itemToUpdate.PlacaDeVideo;
+                parameterInputs[15].text = itemToUpdate.PlacaDeRede;
+                parameterInputs[16].text = itemToUpdate.LeitorDeDVD;
+                parameterInputs[17].text = itemToUpdate.Processador;
+                parameterNames[10].text = "Modelo de placa mãe";
+                parameterNames[11].text = "Fonte?";
+                parameterNames[12].text = "Memória?";
+                parameterNames[13].text = "HD?";
+                parameterNames[14].text = "Placa de vídeo?";
+                parameterNames[15].text = "Placa de rede?";
+                parameterNames[16].text = "Leitor de DVD?";
+                parameterNames[17].text = "Processador?";
                 break;
             #endregion
             #region Fonte
             case ConstStrings.Fonte:
-                parameterInputs[9].text = itemToUpdate.Watts;
-                parameterInputs[10].text = itemToUpdate.OndeFunciona;
-                parameterInputs[11].text = itemToUpdate.Conectores;
-                parameterNames[9].text = "Watts de potência";
-                parameterNames[10].text = "Onde funciona?";
-                parameterNames[11].text = "Conectores";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
+                parameterInputs[10].text = itemToUpdate.Watts;
+                parameterInputs[11].text = itemToUpdate.OndeFunciona;
+                parameterInputs[12].text = itemToUpdate.Conectores;
+                parameterNames[10].text = "Watts de potência";
+                parameterNames[11].text = "Onde funciona?";
+                parameterNames[12].text = "Conectores";
+                                parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
@@ -335,12 +330,11 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Switch
             case ConstStrings.Switch:
-                parameterInputs[9].text = itemToUpdate.QuantidadeDePortas;
-                parameterInputs[10].text = itemToUpdate.Desempenho;
-                parameterNames[9].text = "Quantas entradas";
-                parameterNames[10].text = "Capacidade máx de cada porta (MB/s)";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
+                parameterInputs[10].text = itemToUpdate.QuantidadeDePortas;
+                parameterInputs[11].text = itemToUpdate.Desempenho;
+                parameterNames[10].text = "Quantas entradas";
+                parameterNames[11].text = "Capacidade máx de cada porta (MB/s)";
+                                parameterNames[12].text = "";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
@@ -350,15 +344,15 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Roteador
             case ConstStrings.Roteador:
-                parameterInputs[9].text = itemToUpdate.Wireless;
-                parameterInputs[10].text = itemToUpdate.QuantidadeDePortas;
-                parameterInputs[11].text = itemToUpdate.BandaMaxima;
-                parameterNames[9].text = "Wireless?";
-                parameterNames[10].text = "Quantas entradas?";
-                parameterNames[11].text = "Banda máx (MB/s)";
-                parameterNames[12].text = "Voltagem";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
+                parameterInputs[10].text = itemToUpdate.Wireless;
+                parameterInputs[11].text = itemToUpdate.QuantidadeDePortas;
+                parameterInputs[12].text = itemToUpdate.BandaMaxima;
+                parameterInputs[13].text = itemToUpdate.VoltagemDeSaida;
+                parameterNames[10].text = "Wireless?";
+                parameterNames[11].text = "Quantas entradas?";
+                parameterNames[12].text = "Banda máx (MB/s)";
+                parameterNames[13].text = "Voltagem";
+                                parameterNames[14].text = "";
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 parameterNames[17].text = "";
@@ -366,14 +360,13 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Carregador
             case ConstStrings.Carregador:
-                parameterInputs[9].text = itemToUpdate.OndeFunciona;
-                parameterInputs[10].text = itemToUpdate.VoltagemDeSaida;
-                parameterInputs[11].text = itemToUpdate.AmperagemDeSaida;
-                parameterNames[9].text = "Onde funciona?";
-                parameterNames[10].text = "Voltagem de saída";
-                parameterNames[11].text = "Amperagem de saída (mA)";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
+                parameterInputs[10].text = itemToUpdate.OndeFunciona;
+                parameterInputs[11].text = itemToUpdate.VoltagemDeSaida;
+                parameterInputs[12].text = itemToUpdate.AmperagemDeSaida;
+                parameterNames[10].text = "Onde funciona?";
+                parameterNames[11].text = "Voltagem de saída";
+                parameterNames[12].text = "Amperagem de saída (mA)";
+                                parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
@@ -382,14 +375,13 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Adaptador AC
             case ConstStrings.AdaptadorAC:
-                parameterInputs[9].text = itemToUpdate.OndeFunciona;
-                parameterInputs[10].text = itemToUpdate.VoltagemDeSaida;
-                parameterInputs[11].text = itemToUpdate.AmperagemDeSaida;
-                parameterNames[9].text = "Onde funciona?";
-                parameterNames[10].text = "Voltagem de saída";
-                parameterNames[11].text = "Amperagem de saída (A)";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
+                parameterInputs[10].text = itemToUpdate.OndeFunciona;
+                parameterInputs[11].text = itemToUpdate.VoltagemDeSaida;
+                parameterInputs[12].text = itemToUpdate.AmperagemDeSaida;
+                parameterNames[10].text = "Onde funciona?";
+                parameterNames[11].text = "Voltagem de saída";
+                parameterNames[12].text = "Amperagem de saída (A)";
+                                parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
@@ -398,27 +390,26 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Storage NAS
             case ConstStrings.StorageNAS:
-                parameterInputs[9].text = itemToUpdate.Tamanho;
-                parameterInputs[10].text = itemToUpdate.TipoDeRAID;
-                parameterInputs[11].text = itemToUpdate.TipoDeHD;
-                parameterInputs[12].text = itemToUpdate.CapacidadeMaxHD;
-                parameterNames[9].text = "Tamanho dos HDs";
-                parameterNames[10].text = "Tipos de RAID";
-                parameterNames[11].text = "Tipo de HD";
-                parameterNames[12].text = "Capacidade máx do HD";
-                parameterNames[13].text = "Até quantos HDs";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
+                parameterInputs[10].text = itemToUpdate.Tamanho;
+                parameterInputs[11].text = itemToUpdate.TipoDeRAID;
+                parameterInputs[12].text = itemToUpdate.TipoDeHD;
+                parameterInputs[13].text = itemToUpdate.CapacidadeMaxHD;
+                parameterInputs[14].text = itemToUpdate.AteQuantosHDs;
+                parameterNames[10].text = "Tamanho dos HDs";
+                parameterNames[11].text = "Tipos de RAID";
+                parameterNames[12].text = "Tipo de HD";
+                parameterNames[13].text = "Capacidade máx do HD";
+                parameterNames[14].text = "Até quantos HDs";
+                                parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 parameterNames[17].text = "";
                 break;
             #endregion
             #region GBIC
             case ConstStrings.Gbic:
-                parameterInputs[9].text = itemToUpdate.Desempenho;
-                parameterNames[9].text = "Desempenho máx (GB/s)";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
+                parameterInputs[10].text = itemToUpdate.Desempenho;
+                parameterNames[10].text = "Desempenho máx (GB/s)";
+                                parameterNames[11].text = "";
                 parameterNames[12].text = "";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
@@ -429,12 +420,11 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Placa de video
             case ConstStrings.PlacaDeVideo:
-                parameterInputs[9].text = itemToUpdate.QuantidadeDePortas;
-                parameterInputs[10].text = itemToUpdate.QuaisConexoes;
-                parameterNames[9].text = "Quantas entradas?";
-                parameterNames[10].text = "Quais entradas?";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
+                parameterInputs[10].text = itemToUpdate.QuantidadeDePortas;
+                parameterInputs[11].text = itemToUpdate.QuaisConexoes;
+                parameterNames[10].text = "Quantas entradas?";
+                parameterNames[11].text = "Quais entradas?";
+                                parameterNames[12].text = "";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
@@ -444,10 +434,9 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Placa de Som
             case ConstStrings.PlacaDeSom:
-                parameterInputs[9].text = itemToUpdate.QuantosCanais;
-                parameterNames[9].text = "Quantos canais?";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
+                parameterInputs[10].text = itemToUpdate.QuantosCanais;
+                parameterNames[10].text = "Quantos canais?";
+                                parameterNames[11].text = "";
                 parameterNames[12].text = "";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
@@ -458,10 +447,9 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Placa de captura de vídeo
             case ConstStrings.PlacaDeCapturaDeVideo:
-                parameterInputs[9].text = itemToUpdate.QuantidadeDePortas;
-                parameterNames[9].text = "Quantas entradas?";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
+                parameterInputs[10].text = itemToUpdate.QuantidadeDePortas;
+                parameterNames[10].text = "Quantas entradas?";
+                                parameterNames[11].text = "";
                 parameterNames[12].text = "";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
@@ -472,7 +460,6 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Servidor
             case ConstStrings.Servidor:
-                parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
                 parameterNames[12].text = "";
@@ -485,8 +472,7 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Notebook
             case ConstStrings.Notebook:
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
+                               parameterNames[10].text = "";
                 parameterNames[11].text = "";
                 parameterNames[12].text = "";
                 parameterNames[13].text = "";
@@ -498,10 +484,9 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Monitor
             case ConstStrings.Monitor:
-                parameterNames[9].text = "Polegadas";
-                parameterNames[10].text = "Tipos de entradas";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
+                parameterNames[10].text = "Polegadas";
+                parameterNames[11].text = "Tipos de entradas";
+                               parameterNames[12].text = "";
                 parameterNames[13].text = "";
                 parameterNames[14].text = "";
                 parameterNames[15].text = "";
@@ -511,7 +496,6 @@ public class UpdateItem : MonoBehaviour
             #endregion
 
             default:
-                parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
                 parameterNames[12].text = "";
