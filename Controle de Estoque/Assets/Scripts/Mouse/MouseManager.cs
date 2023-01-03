@@ -13,12 +13,12 @@ public class MouseManager : Singleton<MouseManager>
 
     public void SetDefaultCursor()
     {
-        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+     //   Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
     public void SetWaitingCursor()
     {
-        Cursor.SetCursor(waitingCursor, Vector2.zero, CursorMode.Auto);
+      //  Cursor.SetCursor(waitingCursor, Vector2.zero, CursorMode.Auto);
     }
    
 }

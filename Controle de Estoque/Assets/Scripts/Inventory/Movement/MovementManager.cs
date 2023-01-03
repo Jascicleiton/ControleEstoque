@@ -60,7 +60,7 @@ public class MovementManager : MonoBehaviour
         if (itemInformationDP.value == 0)
         {
             itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text,InternalDatabase.Instance.fullDatabase);
-            WWWForm consultPatrimonioForm = CreateAddItemForm.GetConsultPatrimonioForm(itemInformationInput.text);
+            WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
             MouseManager.Instance.SetWaitingCursor();
@@ -112,7 +112,7 @@ public class MovementManager : MonoBehaviour
         else if (itemInformationDP.value == 1)
         {
             itemToChange = ConsultDatabase.Instance.ConsultSerial(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
-            WWWForm consultSerialForm = CreateAddItemForm.GetConsultSerialForm(itemInformationInput.text);
+            WWWForm consultSerialForm = CreateForm.GetConsultSerialForm(ConstStrings.ConsultKey, itemInformationInput.text);
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultserial.php", consultSerialForm);
             MouseManager.Instance.SetWaitingCursor();
@@ -213,11 +213,11 @@ public class MovementManager : MonoBehaviour
         WWWForm moveItemForm = new WWWForm();
         if (itemInformationDP.value == 0)
         {
-            moveItemForm = CreateAddItemForm.GetMoveItemForm(itemInformationInput.text, itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
         }
         else if (itemInformationDP.value == 1)
         {
-            moveItemForm = CreateAddItemForm.GetMoveItemForm(itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
         }
         
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);

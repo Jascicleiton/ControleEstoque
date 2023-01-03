@@ -57,4 +57,17 @@ public class ConstStrings
     public const string showWarningMessage = "ShowWarningMessage";
     #endregion
 
+    #region AppKeys
+    public const string ConsultKey = "ConsultDatabase";
+    public const string InsertUserKey = "InsertNewUser";
+    public const string LoginKey = "LoginUser";
+    public const string CheckUserExistKey = "CheckIfUserExist";
+    public const string ImportDatabaseKey = "ImportDatabase";
+    public const string AddNewItemKey = "AddNewItem";
+    public const string MoveItemKey = "MoveItem";
+    public const string ExportDatabaseKey = "ExportDatabase";
+    public const string UpdateItemKey = "UpdateItem";
+
+    #endregion
+
 }
