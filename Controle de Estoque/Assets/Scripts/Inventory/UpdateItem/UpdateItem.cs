@@ -1728,6 +1728,7 @@ public class UpdateItem : MonoBehaviour
             placeholders[i].text = "Digite o valor";
         }       
         inputsPanel.SetActive(false);
+        inputEnabled = true;
     }
 
     /// <summary>

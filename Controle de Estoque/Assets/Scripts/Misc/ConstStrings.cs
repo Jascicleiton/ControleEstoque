@@ -43,6 +43,7 @@ public class ConstStrings
     public const string SceneSplash = "SplashScreen";
     public const string SceneUpdateItem = "UpdateItemScene";
     public const string SceneExportSheets = "ExportCSVsScene";
+    public const string SceneNoPaNoSe = "NoPaNoSeScene";
     #endregion
 
     #region PHP folder URL
@@ -51,6 +52,7 @@ public class ConstStrings
     public const string PhpAdditemsFolder = "https://sysnetpro.com.br/controleestoque/AddItems/";
     public const string PhpMovementsFolder = "https://sysnetpro.com.br/controleestoque/Movements/";
     public const string PhpUpdateItemsFolder = "https://sysnetpro.com.br/controleestoque/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolder = "https://sysnetpro.com.br/controleestoque/NoPaNoSeItems/";
     #endregion
 
     #region Save parameters

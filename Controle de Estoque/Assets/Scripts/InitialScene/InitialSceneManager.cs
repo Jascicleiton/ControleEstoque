@@ -13,6 +13,7 @@ public class InitialSceneManager : MonoBehaviour
     [SerializeField] private Button updateItemButton;
     [SerializeField] private Button exportSheetsButton;
     [SerializeField] private Button logoutButton;
+    [SerializeField] private Button noPaNoSeButton;
 
     [SerializeField] TMP_Text helloMessage;
 
@@ -39,6 +40,7 @@ public class InitialSceneManager : MonoBehaviour
                 updateItemButton.gameObject.SetActive(true);
                 exportSheetsButton.gameObject.SetActive(false);
                 logoutButton.gameObject.SetActive(true);
+                noPaNoSeButton.gameObject.SetActive(true);
             }
             else
             {
@@ -48,6 +50,7 @@ public class InitialSceneManager : MonoBehaviour
                 updateItemButton.gameObject.SetActive(false);
                 exportSheetsButton.gameObject.SetActive(false);
                 logoutButton.gameObject.SetActive(true);
+                noPaNoSeButton.gameObject.SetActive(true);
             }
         }
         else
@@ -94,6 +97,11 @@ public class InitialSceneManager : MonoBehaviour
     public void ExportSheetsClicked()
     {
         SceneManager.LoadScene(ConstStrings.SceneExportSheets);
+    }
+
+    public void NoPaNoSeClicked()
+    {
+        SceneManager.LoadScene(ConstStrings.SceneNoPaNoSe);
     }
 
     /// <summary>

@@ -313,4 +313,12 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
         return inventario;
     }
 
+    public static WWWForm GetNoPaNoSeForm(string appPassword, string itemName, int itemQuantity)
+    {
+        WWWForm item = new WWWForm();
+        item.AddField("apppassword", appPassword);
+        item.AddField("itemname", itemName);
+        item.AddField("itemQuantity", itemQuantity);
+        return item;
+    }
 }
