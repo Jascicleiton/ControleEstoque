@@ -34,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
     private bool loginEnabled = true; // enable or disable the Enter key press to login
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
+    private bool inputEnabled = true;
 
     [SerializeField] private TMP_Text testingText;
 
@@ -46,15 +47,18 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+        if (inputEnabled)
         {
-            if (loginEnabled)
+            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
             {
-                StartCoroutine(Login());
-            }
-            if (adminAuthorizing)
-            {
-                CheckAdminAuthorization();
+                if (loginEnabled)
+                {
+                    StartCoroutine(Login());
+                }
+                if (adminAuthorizing)
+                {
+                    CheckAdminAuthorization();
+                }
             }
         }
     }
@@ -96,6 +100,7 @@ public class MainMenuManager : MonoBehaviour
 
         UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
         MouseManager.Instance.SetWaitingCursor();
+        inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -114,7 +119,7 @@ public class MainMenuManager : MonoBehaviour
         if (createPostRequest.error == null)
         {
             string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "username query ran into an error" || response == "playerinfo query failed")
+            if (response == "Database connection error" || response == "username query ran into an error" || response == "playerinfo query failed" || response == "wrong appkey")
             {
                 errorPanel.SetActive(true);
                 StartCoroutine(ErrorPanelRoutine());
@@ -149,6 +154,134 @@ public class MainMenuManager : MonoBehaviour
         }
         createPostRequest.Dispose();
         MouseManager.Instance.SetDefaultCursor();
+        inputEnabled = true;
+    }
+    /// <summary>
+    /// Checks on the database if the user already exists
+    /// </summary>
+    private IEnumerator CheckIfUserAlreadyExists()
+    {
+        WWWForm newUserInfo = new WWWForm();
+        newUserInfo.AddField("apppassword", "CheckIfUserExist");
+        newUserInfo.AddField("username", addNewUserInput.text);
+
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
+        MouseManager.Instance.SetWaitingCursor();
+        inputEnabled = false;
+        yield return createPostRequest.SendWebRequest();
+
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("CheckIfUserAlreadyExists: conectionerror");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("CheckIfUserAlreadyExists: data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("CheckIfUserAlreadyExists: protocol error");
+        }
+
+        if (createPostRequest.error == null)
+        {
+            string response = createPostRequest.downloadHandler.text;
+            if (response == "Database connection error" || response == "username query ran into an error")
+            {
+                SetErrorMessage(3);
+            }
+            else if (response == "Username does not exist or there is more than one in the table")
+            {
+                newUserPanel.SetActive(false);
+                adminAuthorizationPanel.SetActive(true);
+                adminAuthorizing = true;
+            }
+            else if (response == "Username already exist")
+            {
+                SetErrorMessage(1);
+            }
+            else
+            {
+                Debug.Log(response);
+            }
+        }
+        else
+        {
+            errorPanel.SetActive(true);
+            Debug.LogWarning(createPostRequest.error);
+            errorText.text = createPostRequest.error;
+            StartCoroutine(ErrorPanelRoutine());
+        }
+        createPostRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
+        inputEnabled = true;
+    }
+
+    /// <summary>
+    /// Adds a new user to the user database
+    /// </summary>
+    private IEnumerator AddNewUser(User userToAdd)
+    {
+        WWWForm newUserInfo = new WWWForm();
+        newUserInfo.AddField("apppassword", "InsertNewUser");
+        newUserInfo.AddField("username", userToAdd.username);
+        newUserInfo.AddField("password", userToAdd.password);
+
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
+        MouseManager.Instance.SetWaitingCursor();
+        inputEnabled = false;
+        yield return createPostRequest.SendWebRequest();
+
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("AddNewUser: conectionerror");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("AddNewUser: data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("AddNewUser: protocol error");
+        }
+
+        if (createPostRequest.error == null)
+        {
+            string response = createPostRequest.downloadHandler.text;
+            if (response == "Database connection error" || response == "username query ran into an error" || response == "insert user failed")
+            {
+                SetErrorMessage(3);
+
+            }
+            else if (response == "Username already exists")
+            {
+                SetErrorMessage(1);
+
+            }
+            else if (response == "wrong appkey")
+            {
+                SetErrorMessage(4);
+            }
+            else if (response == "User added")
+            {
+                Debug.Log(response);
+                SetErrorMessage(2);
+                newUserPanel.SetActive(false);
+                adminAuthorizing = false;
+                loginPanel.SetActive(true);
+                loginEnabled = true;
+            }
+        }
+        else
+        {
+            errorPanel.SetActive(true);
+            Debug.LogWarning(createPostRequest.error);
+            errorText.text = createPostRequest.error;
+            StartCoroutine(ErrorPanelRoutine());
+        }
+        createPostRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
+        inputEnabled = true;
     }
 
     /// <summary>
@@ -228,129 +361,7 @@ public class MainMenuManager : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Checks on the database if the user already exists
-    /// </summary>
-    private IEnumerator CheckIfUserAlreadyExists()
-    {
-        WWWForm newUserInfo = new WWWForm();
-        newUserInfo.AddField("apppassword", "CheckIfUserExist");
-        newUserInfo.AddField("username", addNewUserInput.text);
-
-        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
-        MouseManager.Instance.SetWaitingCursor();
-        yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: conectionerror");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: protocol error");
-        }
-
-        if (createPostRequest.error == null)
-        {
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "username query ran into an error")
-            {
-                SetErrorMessage(3);
-            }
-            else if (response == "Username does not exist or there is more than one in the table")
-            {
-                newUserPanel.SetActive(false);
-                adminAuthorizationPanel.SetActive(true);
-                adminAuthorizing = true;
-            }
-            else if (response == "Username already exist")
-            {
-                SetErrorMessage(1);
-            }
-            else
-            {
-                Debug.Log(response);
-            }
-        }
-        else
-        {
-            errorPanel.SetActive(true);
-            Debug.LogWarning(createPostRequest.error);
-            errorText.text = createPostRequest.error;
-            StartCoroutine(ErrorPanelRoutine());
-        }
-        createPostRequest.Dispose();
-        MouseManager.Instance.SetDefaultCursor();
-    }
-
-    /// <summary>
-    /// Adds a new user to the user database
-    /// </summary>
-    private IEnumerator AddNewUser(User userToAdd)
-    {
-        WWWForm newUserInfo = new WWWForm();
-        newUserInfo.AddField("apppassword", "InsertNewUser");
-        newUserInfo.AddField("username", userToAdd.username);
-        newUserInfo.AddField("password", userToAdd.password);
-
-        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
-        MouseManager.Instance.SetWaitingCursor();
-        yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.LogWarning("AddNewUser: conectionerror");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("AddNewUser: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("AddNewUser: protocol error");
-        }
-
-        if (createPostRequest.error == null)
-        {
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "username query ran into an error" || response == "insert user failed")
-            {
-                SetErrorMessage(3);
-
-            }
-            else if (response == "Username already exists")
-            {
-                SetErrorMessage(1);
-
-            }
-            else if (response == "wrong appkey")
-            {
-                SetErrorMessage(4);
-            }
-            else if (response == "User added")
-            {
-                Debug.Log(response);
-                SetErrorMessage(2);
-                newUserPanel.SetActive(false);
-                adminAuthorizing = false;
-                loginPanel.SetActive(true);
-                loginEnabled = true;
-            }
-        }
-        else
-        {
-            errorPanel.SetActive(true);
-            Debug.LogWarning(createPostRequest.error);
-            errorText.text = createPostRequest.error;
-            StartCoroutine(ErrorPanelRoutine());
-        }
-        createPostRequest.Dispose();
-        MouseManager.Instance.SetDefaultCursor();
-    } 
+  
 
     /// <summary>
     /// Closes the ErrorPanel
@@ -407,6 +418,7 @@ public class MainMenuManager : MonoBehaviour
     {
         errorPanel.SetActive(false);
         loginEnabled = isEnabled;
+        inputEnabled = isEnabled;
     }
 
     /// <summary>
@@ -450,5 +462,16 @@ public class MainMenuManager : MonoBehaviour
             }
             passwordInput.ForceLabelUpdate();
         }
+    }
+
+    public void CancelAddNewUser()
+    {
+        addNewPasswordInput.text = "";
+        addNewUserInput.text = "";
+        newUserPanel.SetActive(false);
+        loginPanel.SetActive(true);
+        loginEnabled = true;
+        adminAuthorizing = false;
+        inputEnabled = true;
     }
 }

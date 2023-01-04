@@ -23,11 +23,14 @@ public class UpdateItem : MonoBehaviour
     [SerializeField] private TMP_Text messageText;
 
     private bool searchingItem = true;
+    private bool inputEnabled = true;
 
     private ItemColumns itemToUpdate;
     private ItemColumns itemToUpdateCategory;
     private int itemToUpdateIndex;
     private int itemToUpdateCategoryIndex;
+
+
 
     void Start()
     {
@@ -40,20 +43,23 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (searchingItem)
+        if (inputEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (searchingItem)
             {
-               StartCoroutine( CheckIfItemExists());
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    StartCoroutine(CheckIfItemExists());
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    StartCoroutine(UpdateDatabaseRoutine());
+                }
             }
         }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                StartCoroutine(UpdateDatabaseRoutine());
-                          }
-          }
     }
 
     /// <summary>
@@ -74,7 +80,8 @@ public class UpdateItem : MonoBehaviour
             createItemUpdatePostRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "getitemserialtoupdate.php", itemForm);
         }
 
-        MouseManager.Instance.SetWaitingCursor(); 
+        MouseManager.Instance.SetWaitingCursor();
+        inputEnabled = false;
         yield return createItemUpdatePostRequest.SendWebRequest();
 
         if (createItemUpdatePostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -93,16 +100,15 @@ public class UpdateItem : MonoBehaviour
         if (createItemUpdatePostRequest.error == null)
         {
             string response = createItemUpdatePostRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "Wrong appkey")
             {
                 Debug.LogWarning("CheckIfItemExists: conectionerror error");
             }
-            else if  (response == "2")
+            else if (response == "Check query failed")
             {
                 Debug.LogWarning("CheckIfItemExists: query error");
-
             }
-            else if (response == "3")
+            else if (response == "Item not found")
             {
                 Debug.LogWarning("CheckIfItemExists: Item does not exist");
             }
@@ -110,7 +116,7 @@ public class UpdateItem : MonoBehaviour
             {
                 JSONNode inventario = JSON.Parse(createItemUpdatePostRequest.downloadHandler.text);
                 foreach (JSONNode item in inventario)
-                {                  
+                {
                     itemToUpdate.Entrada = item[0];
                     itemToUpdate.Patrimonio = item[1];
                     itemToUpdate.Status = item[2];
@@ -120,7 +126,11 @@ public class UpdateItem : MonoBehaviour
                     itemToUpdate.Modelo = item[6];
                     itemToUpdate.Local = item[7];
                     itemToUpdate.Saida = item[8];
-                    itemToUpdate.Observacao = item[9];                 
+                    itemToUpdate.Observacao = item[9];
+                }
+                if (inventario == null)
+                {
+                    Debug.LogWarning("CheckIfItemExists: " + response);
                 }
             }
 
@@ -131,6 +141,7 @@ public class UpdateItem : MonoBehaviour
         }
         createItemUpdatePostRequest.Dispose();
         MouseManager.Instance.SetDefaultCursor();
+        inputEnabled = true;
 
         if (itemToUpdate != null)
         {
@@ -514,7 +525,6 @@ public class UpdateItem : MonoBehaviour
                 parameterItems[i].SetActive(false);
             }
         }
-
     }
 
     private IEnumerator UpdateDatabaseRoutine()
@@ -526,6 +536,7 @@ public class UpdateItem : MonoBehaviour
 
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateinventario.php", itemForm);
         MouseManager.Instance.SetWaitingCursor();
+        inputEnabled = false;
         yield return createUpdateInventarioRequest.SendWebRequest();
 
         if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -552,17 +563,21 @@ public class UpdateItem : MonoBehaviour
             {
                 Debug.LogWarning("UpdateDatabaseRoutine: app key");
             }
-            else
+            else if(response == "Updated")
             {
                 Debug.Log("Worked");
                 UpdateFullDatabase();
             }
-
+            else
+            {
+                Debug.LogWarning("UpdateDatabaseRoutine: " + response);
+                // TODO: send message to user with error and recomendation
+            }
         }
         else
         {
             Debug.LogWarning(createUpdateInventarioRequest.error);
-            // TODO send message to user with error and recomendation
+            // TODO: send message to user with error and recomendation
         }
         createUpdateInventarioRequest.Dispose();
         #endregion
@@ -1543,6 +1558,7 @@ public class UpdateItem : MonoBehaviour
      //           break;
      //   }
         MouseManager.Instance.SetDefaultCursor();
+        inputEnabled = true;
         #endregion
     }
     /// <summary>
@@ -1710,8 +1726,7 @@ public class UpdateItem : MonoBehaviour
             parameterInputs[i].text = "";
             parameterNames[i].text = "";
             placeholders[i].text = "Digite o valor";
-        }
-        
+        }       
         inputsPanel.SetActive(false);
     }
 
@@ -1733,5 +1748,11 @@ public class UpdateItem : MonoBehaviour
     public void ReturnToPreviousScreen()
     {
         SceneManager.LoadScene(ConstStrings.SceneInitial);
+    }
+
+    public void ResetUpdate()
+    {
+        searchingItem = false;
+        ResetInputs();
     }
 }

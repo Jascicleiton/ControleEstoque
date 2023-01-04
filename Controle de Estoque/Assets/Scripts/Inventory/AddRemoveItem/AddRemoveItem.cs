@@ -266,12 +266,21 @@ public class AddRemoveItem : MonoBehaviour
             }
         }
     }
+
     /// <summary>
     /// Shows the message that the item was added
     /// </summary>
-    private void ShowMessage()
+    private void ShowMessage(bool success)
     {
         messagePanel.SetActive(true);
+        if (success)
+        {
+            messageText.text = "Item adicionado com sucesso";
+                    }
+        else
+        {
+            messageText.text = "Ocorrou algum erro ao adicionar o item. Contate seu administrador.";
+        }
         StartCoroutine(CloseMessageRoutine());
     }
 
@@ -311,29 +320,25 @@ public class AddRemoveItem : MonoBehaviour
 
         if (createInventarioPostRequest.error == null)
         {
-
             string response = createInventarioPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "2" || response == "5")
+            if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
             {
-
+                Debug.LogWarning("Inventario: Server error");
+                addSuccess = false;
             }
-            else if (response == "3")
-            {
-
-            }
-            else if (response == "4")
-            {
-
-            }
-            else
+            else if (response == "Item added")
             {
                 addSuccess = true;
             }
-
+             else
+            {
+                Debug.LogWarning("Inventario: " + response);
+                addSuccess = false;
+            }
         }
         else
         {
-
+            Debug.LogWarning("Inventario: " + createInventarioPostRequest.error);
         }
         createInventarioPostRequest.Dispose();
         #endregion
@@ -366,29 +371,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createHDPostRequest.error == null)
                 {
-
                     string response = createHDPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
+                        Debug.LogWarning("HD: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "3")
-                    {
-                        addSuccess = false;
-                    }
-                    else if (response == "4")
-                    {
-                        addSuccess = false;
-                    }
-                    else
+                    else if (response == "Item added")
                     {
                         addSuccess = true;
                     }
-
+                    else
+                    {
+                        Debug.LogWarning("HD: " + response);
+                        addSuccess = false;
+                    }
                 }
                 else
                 {
-
+                    Debug.LogWarning("HD: " + createInventarioPostRequest.error);
                 }
                 createHDPostRequest.Dispose();
                 break;
@@ -421,27 +422,24 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                     string response = createMemoriaPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
+                        Debug.LogWarning("Memoria: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "3")
-                    {
-                        addSuccess = false;
-                    }
-                    else if (response == "4")
-                    {
-                        addSuccess = false;
-                    }
-                    else
+                    else if (response == "Item added")
                     {
                         addSuccess = true;
                     }
-
+                    else
+                    {
+                        Debug.LogWarning("Memoria: " + response);
+                        addSuccess = false;
+                    }
                 }
                 else
                 {
-
+                    Debug.LogWarning("Memoria: " + createInventarioPostRequest.error);
                 }
                 createMemoriaPostRequest.Dispose();
                 break;
@@ -471,27 +469,24 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                     string response = createPlacaDeRedePostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Placa de rede: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Placa de rede: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Placa de rede: " + createInventarioPostRequest.error);
                 }
                 createPlacaDeRedePostRequest.Dispose();
                 break;
@@ -520,27 +515,24 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                     string response = createiDracPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("iDrac: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("iDrac: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("iDrac: " + createInventarioPostRequest.error);
                 }
                 createiDracPostRequest.Dispose();
                 break;
@@ -568,29 +560,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createPlacaControladoraPostRequest.error == null)
                 {
-
                     string response = createPlacaControladoraPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Placa controladora: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Placa controladora: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Placa controladora: " + createInventarioPostRequest.error);
                 }
                 createPlacaControladoraPostRequest.Dispose();
                 break;
@@ -615,32 +603,27 @@ public class AddRemoveItem : MonoBehaviour
                 {
                     Debug.LogWarning("Processador: protocol error");
                 }
-
                 if (createProcessadorPostRequest.error == null)
                 {
-
-                    string response = createProcessadorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createProcessadorPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Processador: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Processador: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Processador: " + createInventarioPostRequest.error);
                 }
                 createProcessadorPostRequest.Dispose();
                 break;
@@ -668,29 +651,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createDesktopPostRequest.error == null)
                 {
-
                     string response = createDesktopPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Desktop: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Desktop: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Desktop: " + createInventarioPostRequest.error);
                 }
                 createDesktopPostRequest.Dispose();
                 break;
@@ -719,27 +698,24 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                     string response = createFontePostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Fonte: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Fonte: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Fonte: " + createInventarioPostRequest.error);
                 }
                 createFontePostRequest.Dispose();
                 break;
@@ -768,27 +744,24 @@ public class AddRemoveItem : MonoBehaviour
                 {
 
                     string response = createSwitchPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Switch: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Switch: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Switch: " + createInventarioPostRequest.error);
                 }
                 createSwitchPostRequest.Dispose();
                 break;
@@ -815,29 +788,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createRoteadorPostRequest.error == null)
                 {
-
                     string response = createRoteadorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Roteador: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Roteador: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Roteador: " + createInventarioPostRequest.error);
                 }
                 createRoteadorPostRequest.Dispose();
                 break;
@@ -864,29 +833,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createCarregadorPostRequest.error == null)
                 {
-
-                    string response = createCarregadorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createCarregadorPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Carregador: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Carregador: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Carregador: " + createInventarioPostRequest.error);
                 }
                 createCarregadorPostRequest.Dispose();
                 break;
@@ -913,29 +878,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createAdaptadorAcPostRequest.error == null)
                 {
-
-                    string response = createAdaptadorAcPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createAdaptadorAcPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Adaptador AC: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Adaptador AC: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Adaptador AC: " + createInventarioPostRequest.error);
                 }
                 createAdaptadorAcPostRequest.Dispose();
                 break;
@@ -963,29 +924,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createStorageNasPostRequest.error == null)
                 {
-
-                    string response = createStorageNasPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createStorageNasPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Storage NAS: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Storage NAS: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Storage NAS: " + createInventarioPostRequest.error);
                 }
                 createStorageNasPostRequest.Dispose();
                 break;
@@ -1012,29 +969,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createGbicPostRequest.error == null)
                 {
-
-                    string response = createGbicPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createGbicPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("GBIC: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("GBIC: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("GBIC: " + createInventarioPostRequest.error);
                 }
                 createGbicPostRequest.Dispose();
                 break;
@@ -1061,29 +1014,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createPlacaDeVideoPostRequest.error == null)
                 {
-
-                    string response = createPlacaDeVideoPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createPlacaDeVideoPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Placa de video: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Placa de video: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Placa de video: " + createInventarioPostRequest.error);
                 }
                 createPlacaDeVideoPostRequest.Dispose();
                 break;
@@ -1110,29 +1059,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createPlacaDeSomPostRequest.error == null)
                 {
-
                     string response = createPlacaDeSomPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Placa de som: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Placa de som: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Placa de som: " + createInventarioPostRequest.error);
                 }
                 createPlacaDeSomPostRequest.Dispose();
                 break;
@@ -1159,29 +1104,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createPlacaDeCapturaDeVideoPostRequest.error == null)
                 {
-
-                    string response = createPlacaDeCapturaDeVideoPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createPlacaDeCapturaDeVideoPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Placa de captura de video: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Placa de captura de video: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Placa de captura de video: " + createInventarioPostRequest.error);
                 }
                 createPlacaDeCapturaDeVideoPostRequest.Dispose();
                 break;
@@ -1208,29 +1149,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createServidorPostRequest.error == null)
                 {
-
-                    string response = createServidorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createServidorPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Servidor: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Servidor: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Servidor: " + createInventarioPostRequest.error);
                 }
                 createServidorPostRequest.Dispose();
                 break;
@@ -1257,29 +1194,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createNotebookPostRequest.error == null)
                 {
-
-                    string response = createNotebookPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                        string response = createNotebookPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Notebook: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Notebook: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Notebook: " + createInventarioPostRequest.error);
                 }
                 createNotebookPostRequest.Dispose();
                 break;
@@ -1306,29 +1239,25 @@ public class AddRemoveItem : MonoBehaviour
 
                 if (createMonitorPostRequest.error == null)
                 {
-
-                    string response = createMonitorPostRequest.downloadHandler.text;
-                    if (response == "1" || response == "2" || response == "5")
+                                       string response = createMonitorPostRequest.downloadHandler.text;
+                    if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
                     {
-
+                        Debug.LogWarning("Monitor: Server error");
+                        addSuccess = false;
                     }
-                    else if (response == "3")
+                    else if (response == "Item added")
                     {
-
-                    }
-                    else if (response == "4")
-                    {
-
+                        addSuccess = true;
                     }
                     else
                     {
-
+                        Debug.LogWarning("Monitor: " + response);
+                        addSuccess = false;
                     }
-
                 }
                 else
                 {
-
+                    Debug.LogWarning("Monitor: " + createInventarioPostRequest.error);
                 }
                 createMonitorPostRequest.Dispose();
 
@@ -1338,6 +1267,15 @@ public class AddRemoveItem : MonoBehaviour
                 break;
         }
         MouseManager.Instance.SetDefaultCursor();
+        if (addSuccess)
+        {
+            AddItem();
+            ShowMessage(true);
+        }
+        else
+        {
+            ShowMessage(false);
+        }
     }
 
     /// <summary>
@@ -1702,7 +1640,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
         }
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
-        ShowMessage();
+       // ShowMessage();
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }   
 
@@ -1731,5 +1669,10 @@ public class AddRemoveItem : MonoBehaviour
     public void ReturnToPreviousScreen()
     {
         SceneManager.LoadScene(ConstStrings.SceneInitial);
+    }
+
+    public void ResetAddItem()
+    {
+        UpdateNames();
     }
 }

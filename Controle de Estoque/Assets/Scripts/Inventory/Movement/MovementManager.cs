@@ -23,6 +23,7 @@ public class MovementManager : MonoBehaviour
     private int itemToChangeIndex;
     private ItemColumns itemToChange;
     private bool itemFound = false;
+    private bool inputEnabled = true;
     
     MovementRecords movementToRecord;
 
@@ -38,15 +39,18 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (inputEnabled)
         {
-            if (itemFound)
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                StartCoroutine(MoveItem());
-            }
-            else
-            {
-                StartCoroutine(CheckIfItemExists());
+                if (itemFound)
+                {
+                    StartCoroutine(MoveItem());
+                }
+                else
+                {
+                    StartCoroutine(CheckIfItemExists());
+                }
             }
         }
     }
@@ -64,48 +68,47 @@ public class MovementManager : MonoBehaviour
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
             MouseManager.Instance.SetWaitingCursor();
+            inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
             
             if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.LogWarning("conectionerror");
+                Debug.LogWarning("CheckIfItemExists: conectionerror");
             }
             else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
             {
-                Debug.LogWarning("data processing error");
+                Debug.LogWarning("CheckIfItemExists: data processing error");
             }
             else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
             {
-                Debug.LogWarning("protocol error");
+                Debug.LogWarning("CheckIfItemExists: protocol error");
             }
 
             if (createPostRequest.error == null)
             {
-
                 string response = createPostRequest.downloadHandler.text;
-                if (response == "1" || response == "2" || response == "5")
+                if (response == "Database connection error" || response == "Query failed" || response == "Wrong appkey")
                 {
-                    print("1, 2 ou 5");
+                    Debug.LogWarning("Server errror");
+                    // TODO: show message to user
                 }
-                else if (response == "0")
-                {
-                    print("0");
-                }
-                else if (response == "4")
+                else if (response == "Item found")
                 {
                     itemFound = true;
                 }
+                else if (response == "Not found or found duplicate") 
+                {
+                    Debug.LogWarning("Item not found or found duplicate");
+                    // TODO: show message to user
+                }
                 else
                 {
-                    print("vai saber");
+                    Debug.LogWarning("CheckIfItemExists - Patrimonio: " + response);
                 }
-
             }
             else
-            {
-               
-                Debug.LogWarning(createPostRequest.error);
-               
+            {               
+                Debug.LogWarning("CheckIfItemExists: " + createPostRequest.error);               
             }
             createPostRequest.Dispose();
         }
@@ -116,55 +119,55 @@ public class MovementManager : MonoBehaviour
             
             UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultserial.php", consultSerialForm);
             MouseManager.Instance.SetWaitingCursor();
+            inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
             
             if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.LogWarning("conectionerror");
+                Debug.LogWarning("CheckIfItemExists: conectionerror");
             }
             else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
             {
-                Debug.LogWarning("data processing error");
+                Debug.LogWarning("CheckIfItemExists: data processing error");
             }
             else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
             {
-                Debug.LogWarning("protocol error");
+                Debug.LogWarning("CheckIfItemExists: protocol error");
             }
 
             if (createPostRequest.error == null)
             {
-
                 string response = createPostRequest.downloadHandler.text;
-                if (response == "1" || response == "2" || response == "5")
+                if (response == "Database connection error" || response == "Query failed" || response == "Wrong appkey")
                 {
-                    print("1, 2 ou 5");
+                    Debug.LogWarning("Server errror");
+                    // TODO: show message to user
                 }
-                else if (response == "0")
+                else if (response == "Item found")
                 {
-                    print("0");
                     itemFound = true;
                 }
-                else if (response == "4")
+                else if (response == "Not found or found duplicate")
                 {
-                    print("4");
-                    itemFound = true;
+                    Debug.LogWarning("Item not found or found duplicate");
+                    // TODO: show message to user
                 }
                 else
                 {
-                    print("Vai saber");
+                    Debug.LogWarning("CheckIfItemExists - Patrimonio: " + response);
                 }
-
             }
             else
             {
 
-                Debug.LogWarning(createPostRequest.error);
+                Debug.LogWarning("CheckIfItemExists: " + createPostRequest.error);
 
             }
             createPostRequest.Dispose();
         }
         yield return new WaitForSeconds(0.5f);
         MouseManager.Instance.SetDefaultCursor();
+        inputEnabled = true;
         if (itemFound)
         {
             ShouldHidePanels(false);
@@ -178,6 +181,86 @@ public class MovementManager : MonoBehaviour
             ShowMessage(itemFound);
         }
 
+    }
+
+    /// <summary>
+    /// Try to change the item location
+    /// </summary>
+    private IEnumerator MoveItem()
+    {
+        WWWForm moveItemForm = new WWWForm();
+        if (itemInformationDP.value == 0)
+        {
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+        }
+        else if (itemInformationDP.value == 1)
+        {
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+        }
+
+        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
+        MouseManager.Instance.SetWaitingCursor();
+        inputEnabled = false;
+        yield return createPostRequest.SendWebRequest();
+
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("MoveItem: conectionerror");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("MoveItem: data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("MoveItem: protocol error");
+        }
+
+        if (createPostRequest.error == null)
+        {
+
+            string response = createPostRequest.downloadHandler.text;
+            if (response == "Database connection error" || response == "Wrong appkey")
+            {
+                Debug.LogWarning("MoveItem: Server error");
+                // TODO: show message to user
+            }
+            else if (response == "Movement query failed")
+            {
+                Debug.LogWarning("MoveItem: Movement query failed");
+                // TODO: show message to user
+            }
+            else if (response == "Date query failed")
+            {
+                Debug.LogWarning("MoveItem: Date query failed");
+                // TODO: show message to user
+            }
+            else if (response == "Location query failed")
+            {
+                Debug.LogWarning("MoveItem: Location query failed");
+                // TODO: show message to user
+            }
+            else if (response == "Item moved")
+            {
+                Debug.LogWarning("MoveItem: itemMoved");
+                itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
+                UpdateItemToChange(itemToChange);
+                UpdateDatabase();
+                ShowMessage(true);
+            }
+            else
+            {
+                Debug.LogWarning("MoveItem: " + response);
+                // TODO: show message to user
+            }
+        }
+        else
+        {
+            Debug.LogWarning(createPostRequest.error);
+        }
+        createPostRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
+        inputEnabled = true;       
     }
 
     /// <summary>
@@ -203,75 +286,6 @@ public class MovementManager : MonoBehaviour
             whoPanel.GetComponent<CanvasGroup>().alpha = 1;
             whoInput.enabled = true;
         }
-    }
-
-    /// <summary>
-    /// Try to change the item location
-    /// </summary>
-    private IEnumerator MoveItem()
-    {
-        WWWForm moveItemForm = new WWWForm();
-        if (itemInformationDP.value == 0)
-        {
-            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
-        }
-        else if (itemInformationDP.value == 1)
-        {
-            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
-        }
-        
-        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
-        MouseManager.Instance.SetWaitingCursor();
-        yield return createPostRequest.SendWebRequest();
-       
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.LogWarning("conectionerror");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("protocol error");
-        }
-
-        if (createPostRequest.error == null)
-        {
-
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "1" || response == "2" || response == "5")
-            {
-                print("MoveItem =  1 or 2 or 5");
-            }
-            else if (response == "0")
-            {
-                print("MoveItem =  0");
-            }
-            else if (response == "4")
-            {
-                print("4");
-            }
-            else
-            {
-                print("MoveItem =  ???");
-            }
-
-        }
-        else
-        {
-
-            Debug.LogWarning(createPostRequest.error);
-
-        }
-        createPostRequest.Dispose();
-        MouseManager.Instance.SetDefaultCursor();
-        itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
-       
-        UpdateItemToChange(itemToChange);
-        UpdateDatabase();
-        ShowMessage(true);
     }
 
     /// <summary>
@@ -305,8 +319,7 @@ public class MovementManager : MonoBehaviour
     /// Update the item on the fullDatabase, save a new MovementRecords and call DatabaseUpdatedEvent
     /// </summary>
     private void UpdateDatabase()
-    {
-        print(itemToChangeIndex);
+    {       
         InternalDatabase.Instance.fullDatabase.itens[itemToChangeIndex] = itemToChange;
        // InternalDatabase.movementRecords.Add(movementToRecord);
         EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
@@ -386,5 +399,10 @@ public class MovementManager : MonoBehaviour
         SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 
-
+    public void ResetMovement()
+    {
+        inputEnabled = true;
+        itemFound = false;
+        ResetInputs();
+    }
 }

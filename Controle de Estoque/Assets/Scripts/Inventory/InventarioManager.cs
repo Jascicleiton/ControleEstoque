@@ -71,17 +71,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("inventario Database connection error");
+                Debug.LogWarning("inventario: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("inventario Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("inventario Result came empty");
+                Debug.LogWarning("inventario: Result came empty");
             }
             else
             {
@@ -160,17 +156,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("hd Database connection error");
+                Debug.LogWarning("hd: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("hd Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("hd Result came empty");
+                Debug.LogWarning("hd: Result came empty");
             }
             else
             {
@@ -243,17 +235,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("memoria Database connection error");
+                Debug.LogWarning("memoria: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("memoria Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("memoria Result came empty");
+                Debug.LogWarning("memoria: Result came empty");
             }
             else
             {
@@ -326,17 +314,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("placa de rede Database connection error");
+                Debug.LogWarning("Placa de rede: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("placa de rede Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("placa de rede Result came empty");
+                Debug.LogWarning("Placa de rede: Result came empty");
             }
             else
             {
@@ -402,17 +386,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("iDrac Database connection error");
+                Debug.LogWarning("iDrac: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("iDrac Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("iDrac Result came empty");
+                Debug.LogWarning("iDrac: Result came empty");
             }
             else
             {
@@ -477,17 +457,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Placa controladora Database connection error");
+                Debug.LogWarning("Placa controladora: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Placa controladora Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Placa controladora Result came empty");
+                Debug.LogWarning("Placa controladora: Result came empty");
             }
             else
             {
@@ -553,17 +529,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Processador: Database connection error");
+                Debug.LogWarning("Processador: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Processador: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Processador: Result came empty");
+                Debug.LogWarning("Processador: Result came empty");
             }
             else
             {
@@ -627,17 +599,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Desktop: Database connection error");
+                Debug.LogWarning("Desktop: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Desktop: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Desktop: Result came empty");
+                Debug.LogWarning("Desktop: Result came empty");
             }
             else
             {
@@ -705,17 +673,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Fonte: Database connection error");
+                Debug.LogWarning("Fonte: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Fonte: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Fonte: Result came empty");
+                Debug.LogWarning("Fonte: Result came empty");
             }
             else
             {
@@ -777,17 +741,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Switch: Database connection error");
+                Debug.LogWarning("Switch: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Switch: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Switch: Result came empty");
+                Debug.LogWarning("Switch: Result came empty");
             }
             else
             {
@@ -848,17 +808,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Roteador: Database connection error");
+                Debug.LogWarning("Roteador: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Roteador: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Roteador: Result came empty");
+                Debug.LogWarning("Roteador: Result came empty");
             }
             else
             {
@@ -921,17 +877,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Carregador: Database connection error");
+                Debug.LogWarning("Carregador: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Carregador: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Carregador: Result came empty");
+                Debug.LogWarning("Carregador: Result came empty");
             }
             else
             {
@@ -993,17 +945,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Adaptador AC: Database connection error");
+                Debug.LogWarning("Adaptador AC: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Adaptador AC: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Adaptador AC: Result came empty");
+                Debug.LogWarning("Adaptador AC: Result came empty");
             }
             else
             {
@@ -1064,17 +1012,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Storage NAS: Database connection error");
+                Debug.LogWarning("Storage NAS: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Storage NAS: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Storage NAS: Result came empty");
+                Debug.LogWarning("Storage NAS: Result came empty");
             }
             else
             {
@@ -1138,17 +1082,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("GBIC: Database connection error");
+                Debug.LogWarning("GBIC: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("GBIC: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("GBIC: Result came empty");
+                Debug.LogWarning("GBIC: Result came empty");
             }
             else
             {
@@ -1208,17 +1148,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Placa de video: Database connection error");
+                Debug.LogWarning("Placa de video: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Placa de video: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Placa de video: Result came empty");
+                Debug.LogWarning("Placa de video: Result came empty");
             }
             else
             {
@@ -1278,17 +1214,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Placa de som: Database connection error");
+                Debug.LogWarning("Placa de som: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Placa de som: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Placa de som: Result came empty");
+                Debug.LogWarning("Placa de som: Result came empty");
             }
             else
             {
@@ -1348,17 +1280,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Placa de captura de video: Database connection error");
+                Debug.LogWarning("Placa de captura de video: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Placa de captura de video: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Placa de captura de video: Result came empty");
+                Debug.LogWarning("Placa de captura de video: Result came empty");
             }
             else
             {
@@ -1417,17 +1345,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Servidor: Database connection error");
+                Debug.LogWarning("Servidor: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Servidor: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Servidor: Result came empty");
+                Debug.LogWarning("Servidor: Result came empty");
             }
             else
             {
@@ -1487,17 +1411,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Notebook: Database connection error");
+                Debug.LogWarning("Notebook: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Notebook: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Notebook: Result came empty");
+                Debug.LogWarning("Notebook: Result came empty");
             }
             else
             {
@@ -1557,17 +1477,13 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.error == null)
         {
             string response = getInventarioRequest.downloadHandler.text;
-            if (response == "1")
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
-                Debug.Log("Monitor: Database connection error");
+                Debug.LogWarning("Monitor: Server error");
             }
-            else if (response == "2")
+            else if (response == "Result came empty")
             {
-                Debug.Log("Monitor: Table query ran into an error");
-            }
-            else if (response == "3")
-            {
-                Debug.Log("Monitor: Result came empty");
+                Debug.LogWarning("Monitor: Result came empty");
             }
             else
             {
