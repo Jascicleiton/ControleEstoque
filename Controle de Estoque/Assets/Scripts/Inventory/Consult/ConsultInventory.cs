@@ -204,45 +204,45 @@ public class ConsultInventory : MonoBehaviour
         switch (value)
         {
             case 0:
-                return InternalDatabase.hd;
-            case 1:
-                return InternalDatabase.memoria;
-            case 2:
-                return InternalDatabase.placaDeRede;
-            case 3:
-                return InternalDatabase.idrac;
-            case 4:
-                return InternalDatabase.placaControladora;
-            case 5:
-                return InternalDatabase.processador;
-            case 6:
-                return InternalDatabase.desktop;
-            case 7:
-                return InternalDatabase.fonte;
-            case 8:
-                return InternalDatabase.Switch;
-            case 9:
-                return InternalDatabase.roteador;
-            case 10:
-                return InternalDatabase.carregador;
-            case 11:
                 return InternalDatabase.adaptadorAC;
-            case 12:
-                return InternalDatabase.storageNAS;
-            case 13:
+            case 1:
+                return InternalDatabase.carregador;
+            case 2:
+                return InternalDatabase.desktop;
+            case 3:
+                return InternalDatabase.fonte;
+            case 4:
                 return InternalDatabase.gbic;
+            case 5:
+                return InternalDatabase.hd;
+            case 6:
+                return InternalDatabase.idrac;
+            case 7:
+                return InternalDatabase.memoria;
+            case 8:
+                return InternalDatabase.monitor;
+            case 9:
+                return InternalDatabase.notebook;
+            case 10:
+                return InternalDatabase.placaControladora;
+            case 11:
+                return InternalDatabase.placaDeCapturaDeVideo;
+            case 12:
+                return InternalDatabase.placaDeRede;
+            case 13:
+                return InternalDatabase.placaDeSom;
             case 14:
                 return InternalDatabase.placaDeVideo;
             case 15:
-                return InternalDatabase.placaDeSom;
+                return InternalDatabase.processador;
             case 16:
-                return InternalDatabase.placaDeCapturaDeVideo;
+                return InternalDatabase.roteador;
             case 17:
                 return InternalDatabase.servidor;
             case 18:
-                return InternalDatabase.notebook;
+                return InternalDatabase.storageNAS;
             case 19:
-                return InternalDatabase.monitor;
+                return InternalDatabase.Switch;
             case 20:
             default:
                 return null;
