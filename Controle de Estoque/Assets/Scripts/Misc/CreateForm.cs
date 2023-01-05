@@ -3,11 +3,12 @@ using UnityEngine.Networking;
 
 public class CreateForm
 {
-    public static WWWForm GetInventarioForm(string appPassword, string entrada, string patrimonio, string status, string serial, 
+    public static WWWForm GetInventarioForm(string appPassword, string aquisicao, string entrada, string patrimonio, string status, string serial, 
         string categoria, string fabricante, string modelo, string local, string saida, string observacao)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        inventario.AddField("aquisicao", aquisicao);
         inventario.AddField("entrada", entrada);
         inventario.AddField("patrimonio", patrimonio);
         inventario.AddField("status", status);

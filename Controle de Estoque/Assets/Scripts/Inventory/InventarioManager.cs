@@ -88,7 +88,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     foreach (JSONNode item in inventario)
                     {
                         ItemColumns newRow = new ItemColumns();
-                                                newRow.Entrada = item[0];
+                        newRow.Entrada = item[0];
                         newRow.Patrimonio = item[1];
                         newRow.Status = item[2];
                         newRow.Serial = item[3];
@@ -98,6 +98,7 @@ public class InventarioManager : Singleton<InventarioManager>
                         newRow.Local = item[7];
                         newRow.Saida = item[8];
                         newRow.Observacao = item[9];
+                        newRow.Aquisicao = item[10];
                         tempSheet.itens.Add(newRow);
                     }
                    

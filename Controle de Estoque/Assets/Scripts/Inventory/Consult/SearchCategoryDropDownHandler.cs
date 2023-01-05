@@ -243,16 +243,43 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamenters[11].gameObject.SetActive(false);
                 break;
             #endregion
-            #region 
+            #region Servidor
             case 17:
+                searchParamenters[3].gameObject.SetActive(false);
+                searchParamenters[4].gameObject.SetActive(false);
+                searchParamenters[5].gameObject.SetActive(false);
+                searchParamenters[6].gameObject.SetActive(false);
+                searchParamenters[7].gameObject.SetActive(false);
+                searchParamenters[8].gameObject.SetActive(false);
+                searchParamenters[9].gameObject.SetActive(false);
+                searchParamenters[10].gameObject.SetActive(false);
+                searchParamenters[11].gameObject.SetActive(false);
                 break;
             #endregion
-            #region 
+            #region Notebook
             case 18:
+                searchParamenters[3].gameObject.SetActive(false);
+                searchParamenters[4].gameObject.SetActive(false);
+                searchParamenters[5].gameObject.SetActive(false);
+                searchParamenters[6].gameObject.SetActive(false);
+                searchParamenters[7].gameObject.SetActive(false);
+                searchParamenters[8].gameObject.SetActive(false);
+                searchParamenters[9].gameObject.SetActive(false);
+                searchParamenters[10].gameObject.SetActive(false);
+                searchParamenters[11].gameObject.SetActive(false);
                 break;
-            #endregion
-            #region 
+            #endregion 
+            #region Monitor
             case 19:
+                searchParamenters[3].placeholder.GetComponent<TMP_Text>().text = "Polegadas...";
+                searchParamenters[4].placeholder.GetComponent<TMP_Text>().text = "Quais entradas?...";
+                searchParamenters[5].gameObject.SetActive(false);
+                searchParamenters[6].gameObject.SetActive(false);
+                searchParamenters[7].gameObject.SetActive(false);
+                searchParamenters[8].gameObject.SetActive(false);
+                searchParamenters[9].gameObject.SetActive(false);
+                searchParamenters[10].gameObject.SetActive(false);
+                searchParamenters[11].gameObject.SetActive(false);
                 break;
             #endregion
             #region 

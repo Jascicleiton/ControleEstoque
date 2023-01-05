@@ -43,18 +43,16 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (inputEnabled)
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            if (searchingItem)
+            if (inputEnabled)
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                inputEnabled = false;
+                if (searchingItem)
                 {
                     StartCoroutine(CheckIfItemExists());
                 }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                else
                 {
                     StartCoroutine(UpdateDatabaseRoutine());
                 }
@@ -127,6 +125,7 @@ public class UpdateItem : MonoBehaviour
                     itemToUpdate.Local = item[7];
                     itemToUpdate.Saida = item[8];
                     itemToUpdate.Observacao = item[9];
+                    itemToUpdate.Aquisicao = item[10];
                 }
                 if (inventario == null)
                 {
@@ -170,7 +169,7 @@ public class UpdateItem : MonoBehaviour
         {
             //TODO: update the internal database and try again
         }
-        parameterInputs[0].text = itemToUpdate.Entrada;
+       // parameterInputs[0].text = itemToUpdate.Entrada;
         parameterInputs[1].text = itemToUpdate.Patrimonio;
         parameterInputs[2].text = itemToUpdate.Status;
         parameterInputs[3].text = itemToUpdate.Serial;
@@ -178,10 +177,12 @@ public class UpdateItem : MonoBehaviour
         parameterInputs[5].text = itemToUpdate.Fabricante;
         parameterInputs[6].text = itemToUpdate.Modelo;
         parameterInputs[7].text = itemToUpdate.Local;
+        parameterInputs[7].interactable = false;
         parameterInputs[8].text = itemToUpdate.Saida;
+        parameterInputs[8].interactable = false;
         parameterInputs[9].text = itemToUpdate.Observacao;
 
-        parameterNames[0].text = "Entrada no estoque";
+       // parameterNames[0].text = "Entrada no estoque";
         parameterNames[1].text = "Patrimônio";
         parameterNames[2].text = "Status";
         parameterNames[3].text = "Serial";
@@ -530,7 +531,7 @@ public class UpdateItem : MonoBehaviour
     private IEnumerator UpdateDatabaseRoutine()
     {
         #region Update inventario
-        WWWForm itemForm = CreateForm.GetInventarioForm(ConstStrings.UpdateItemKey, parameterInputs[0].text, parameterInputs[1].text,
+        WWWForm itemForm = CreateForm.GetInventarioForm(ConstStrings.UpdateItemKey,itemToUpdate.Aquisicao, itemToUpdate.Entrada, parameterInputs[1].text,
         parameterInputs[2].text, parameterInputs[3].text, parameterInputs[4].text, parameterInputs[5].text,
         parameterInputs[6].text, parameterInputs[7].text, parameterInputs[8].text, parameterInputs[9].text);
 
@@ -582,1103 +583,1113 @@ public class UpdateItem : MonoBehaviour
         createUpdateInventarioRequest.Dispose();
         #endregion
         #region Update the details tables
-     //   switch (itemToUpdate.Categoria)
-     //   {
-     //       #region HD
-     //       case ConstStrings.HD:
-
-     //           WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterInputs[6].text, parameterInputs[5].text,
-     //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
-     //           parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text);
-
-     //           UnityWebRequest createUpdateHDRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatehd.php", hdForm);
-     //           yield return createUpdateHDRequest.SendWebRequest();
-
-     //           if (createUpdateHDRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdateHDRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdateHDRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdateHDRequest.error == null)
-     //           {
-     //               string response = createUpdateHDRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdateHDRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdateHDRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Memória
-     //       case ConstStrings.Memoria:
-     //           WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterInputs[6].text, parameterInputs[5].text,
-     //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
-     //           parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
-     //           UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "updatememoria.php", memoriaForm);
-     //           yield return createMemoriaPostRequest.SendWebRequest();
-
-     //           if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createMemoriaPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createMemoriaPostRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createMemoriaPostRequest.error == null)
-     //           {
-
-     //               string response = createMemoriaPostRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2" || response == "5")
-     //               {
-
-     //               }
-     //               else if (response == "3")
-     //               {
-
-     //               }
-     //               else if (response == "4")
-     //               {
-
-     //               }
-     //               else
-     //               {
-
-     //               }
-
-     //           }
-     //           else
-     //           {
-
-     //           }
-     //           createMemoriaPostRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Placa de rede
-     //       case ConstStrings.PlacaDeRede:
-
-     //           WWWForm placaDeRedeForm = CreateAddItemForm.GetPlacaDeRedeForm(parameterInputs[6].text, parameterInputs[5].text,
-     //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[11].text,
-     //           parameterInputs[13].text);
-
-     //           UnityWebRequest createUpdatePlacaDeRedeRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacaderede.php", placaDeRedeForm);
-     //           yield return createUpdatePlacaDeRedeRequest.SendWebRequest();
-
-     //           if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdatePlacaDeRedeRequest.error == null)
-     //           {
-     //               string response = createUpdatePlacaDeRedeRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdatePlacaDeRedeRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdatePlacaDeRedeRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region iDRAC
-     //       case ConstStrings.Idrac:
-     //           WWWForm idracForm = CreateAddItemForm.GetiDracForm(parameterInputs[6].text, parameterInputs[5].text,
-     //          parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text);
-     //           UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "updateidrac.php", idracForm);
-     //           yield return createiDracPostRequest.SendWebRequest();
-
-     //           if (createiDracPostRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createiDracPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createiDracPostRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createiDracPostRequest.error == null)
-     //           {
-
-     //               string response = createiDracPostRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2" || response == "5")
-     //               {
-
-     //               }
-     //               else if (response == "3")
-     //               {
-
-     //               }
-     //               else if (response == "4")
-     //               {
-
-     //               }
-     //               else
-     //               {
-
-     //               }
-
-     //           }
-     //           else
-     //           {
-
-     //           }
-     //           createiDracPostRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Placa controladora
-     //       case ConstStrings.PlacaControladora:
-     //           WWWForm placaControladoraForm = CreateAddItemForm.GetPlacaControladoraForm(parameterInputs[6].text,
-     //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
-     //           parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
-
-     //           UnityWebRequest createUpdatePlacaControladoraRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacacontroladora.php", placaControladoraForm);
-     //           yield return createUpdatePlacaControladoraRequest.SendWebRequest();
-
-     //           if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdatePlacaControladoraRequest.error == null)
-     //           {
-     //               string response = createUpdatePlacaControladoraRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdatePlacaControladoraRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdatePlacaControladoraRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Processador
-     //       case ConstStrings.Processador:
-     //           WWWForm processadorForm = CreateAddItemForm.GetProcessadorForm(parameterInputs[6].text,
-     //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
-     //           parameterInputs[13].text, parameterInputs[14].text);
-
-     //           UnityWebRequest createProcessadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateprocesador.php", processadorForm);
-     //           yield return createProcessadorRequest.SendWebRequest();
-
-     //           if (createProcessadorRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createProcessadorRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createProcessadorRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createProcessadorRequest.error == null)
-     //           {
-     //               string response = createProcessadorRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createProcessadorRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createProcessadorRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Desktop
-     //       case ConstStrings.Desktop:
-     //           WWWForm desktopForm = CreateAddItemForm.GetDesktopForm(parameterInputs[1].text,
-     //            parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
-     //            parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
-
-     //           UnityWebRequest createUpdatedesktopRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatedesktop.php", desktopForm);
-     //           yield return createUpdatedesktopRequest.SendWebRequest();
-
-     //           if (createUpdatedesktopRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdatedesktopRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdatedesktopRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdatedesktopRequest.error == null)
-     //           {
-     //               string response = createUpdatedesktopRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdatedesktopRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdatedesktopRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Fonte
-     //       case ConstStrings.Fonte:
-     //           WWWForm fonteForm = CreateAddItemForm.GetFonteForm(parameterInputs[6].text, parameterInputs[9].text,
-     //           parameterInputs[10].text, parameterInputs[11].text);
-
-     //           UnityWebRequest createUpdatefonteRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatefonte.php", fonteForm);
-     //           yield return createUpdatefonteRequest.SendWebRequest();
-
-     //           if (createUpdatefonteRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdatefonteRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdatefonteRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdatefonteRequest.error == null)
-     //           {
-     //               string response = createUpdatefonteRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdatefonteRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdatefonteRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Switch
-     //       case ConstStrings.Switch:
-     //           WWWForm switchForm = CreateAddItemForm.GetSwitchForm(parameterInputs[6].text, parameterInputs[9].text,
-     //           parameterInputs[10].text);
-
-     //           UnityWebRequest createUpdateSwitchRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateswitch.php", switchForm);
-     //           yield return createUpdateSwitchRequest.SendWebRequest();
-
-     //           if (createUpdateSwitchRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdateSwitchRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdateSwitchRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdateSwitchRequest.error == null)
-     //           {
-     //               string response = createUpdateSwitchRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdateSwitchRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdateSwitchRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Roteador
-     //       case ConstStrings.Roteador:
-     //           WWWForm roteadorForm = CreateAddItemForm.GetRoteadorForm(parameterInputs[6].text, parameterInputs[9].text,
-     //            parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text);
-
-     //           UnityWebRequest createUpdateRoteadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateroteador.php", roteadorForm);
-     //           yield return createUpdateRoteadorRequest.SendWebRequest();
-
-     //           if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdateRoteadorRequest.error == null)
-     //           {
-     //               string response = createUpdateRoteadorRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdateRoteadorRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdateRoteadorRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Carregador
-     //       case ConstStrings.Carregador:
-     //           WWWForm carregadorForm = CreateAddItemForm.GetCarregadorForm(parameterInputs[6].text, parameterInputs[9].text,
-     //           parameterInputs[10].text, parameterInputs[11].text);
-
-     //           UnityWebRequest createUpdateCarregadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatecarregador.php", carregadorForm);
-     //           yield return createUpdateCarregadorRequest.SendWebRequest();
-
-     //           if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createUpdateCarregadorRequest.error == null)
-     //           {
-     //               string response = createUpdateCarregadorRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createUpdateCarregadorRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createUpdateCarregadorRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Adaptador AC
-     //       case ConstStrings.AdaptadorAC:
-     //           WWWForm adaptadorACForm = CreateAddItemForm.GetAdaptadorACForm(parameterInputs[6].text, parameterInputs[9].text,
-     //           parameterInputs[10].text, parameterInputs[11].text);
-
-     //           UnityWebRequest createAdaptadorACRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateadaptadorac.php", adaptadorACForm);
-     //           yield return createAdaptadorACRequest.SendWebRequest();
-
-     //           if (createAdaptadorACRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createAdaptadorACRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createAdaptadorACRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createAdaptadorACRequest.error == null)
-     //           {
-     //               string response = createAdaptadorACRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createAdaptadorACRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createAdaptadorACRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Storage NAS
-     //       case ConstStrings.StorageNAS:
-     //           WWWForm storageNasForm = CreateAddItemForm.GetStorageNASForm(parameterInputs[6].text, parameterInputs[9].text,
-     //           parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text, parameterInputs[13].text);
-
-     //           UnityWebRequest createStorageNasRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatestoragenas.php", storageNasForm);
-     //           yield return createStorageNasRequest.SendWebRequest();
-
-     //           if (createStorageNasRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createStorageNasRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createStorageNasRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createStorageNasRequest.error == null)
-     //           {
-     //               string response = createStorageNasRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createStorageNasRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createStorageNasRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region GBIC
-     //       case ConstStrings.Gbic:
-     //           WWWForm gbicForm = CreateAddItemForm.GetGBICForm(parameterInputs[6].text, parameterInputs[7].text,
-     //      parameterInputs[9].text);
-
-     //           UnityWebRequest createGbicRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updategbic.php", gbicForm);
-     //           yield return createGbicRequest.SendWebRequest();
-
-     //           if (createGbicRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createGbicRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createGbicRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createGbicRequest.error == null)
-     //           {
-     //               string response = createGbicRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createGbicRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createGbicRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Placa de vídeo
-     //       case ConstStrings.PlacaDeVideo:
-     //           WWWForm placaDeVideoForm = CreateAddItemForm.GetPlacaVideoForm(parameterInputs[6].text, parameterInputs[9].text,
-     //           parameterInputs[10].text);
-
-     //           UnityWebRequest createPlacaDeVideoRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadevideo.php", placaDeVideoForm);
-     //           yield return createPlacaDeVideoRequest.SendWebRequest();
-
-     //           if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createPlacaDeVideoRequest.error == null)
-     //           {
-     //               string response = createPlacaDeVideoRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createPlacaDeVideoRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createPlacaDeVideoRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Placa de som
-     //       case ConstStrings.PlacaDeSom:
-     //           WWWForm placaDeSomForm = CreateAddItemForm.GetPlacaSomForm(parameterInputs[6].text, parameterInputs[9].text);
-
-     //           UnityWebRequest createPlacaDeSomRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadesom.php", placaDeSomForm);
-     //           yield return createPlacaDeSomRequest.SendWebRequest();
-
-     //           if (createPlacaDeSomRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createPlacaDeSomRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createPlacaDeSomRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createPlacaDeSomRequest.error == null)
-     //           {
-     //               string response = createPlacaDeSomRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createPlacaDeSomRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createPlacaDeSomRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Placa de captura de vídeo
-     //       case ConstStrings.PlacaDeCapturaDeVideo:
-     //           WWWForm placaDeCapturaDeVideoForm = CreateAddItemForm.GetPlacaCapturaVideoForm(parameterInputs[6].text, 
-     //           parameterInputs[9].text);
-
-     //           UnityWebRequest createPlacaDeCapturaDeVideoRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadecapturadevideo.php", placaDeCapturaDeVideoForm);
-     //           yield return createPlacaDeCapturaDeVideoRequest.SendWebRequest();
-
-     //           if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createPlacaDeCapturaDeVideoRequest.error == null)
-     //           {
-     //               string response = createPlacaDeCapturaDeVideoRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createPlacaDeCapturaDeVideoRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createPlacaDeCapturaDeVideoRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Servidor
-     //       case ConstStrings.Servidor:
-     //           WWWForm servidorForm = CreateAddItemForm.GetServidorForm(parameterInputs[6].text,
-     //parameterInputs[7].text);
-
-     //           UnityWebRequest createServidorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateservidor.php", servidorForm);
-     //           yield return createServidorRequest.SendWebRequest();
-
-     //           if (createServidorRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createServidorRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createServidorRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createServidorRequest.error == null)
-     //           {
-     //               string response = createServidorRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createServidorRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createServidorRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Notebook
-     //       case ConstStrings.Notebook:
-     //           WWWForm notebookForm = CreateAddItemForm.GetNotebookForm(parameterInputs[6].text,
-     //              parameterInputs[7].text);
-
-     //           UnityWebRequest createNotebookRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatenotebook.php", notebookForm);
-     //           yield return createNotebookRequest.SendWebRequest();
-
-     //           if (createNotebookRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createNotebookRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createNotebookRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createNotebookRequest.error == null)
-     //           {
-     //               string response = createNotebookRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createNotebookRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createNotebookRequest.Dispose();
-     //           break;
-     //       #endregion
-     //       #region Monitor
-     //       case ConstStrings.Monitor:
-     //           WWWForm monitorForm = CreateAddItemForm.GetMonitorForm(parameterInputs[6].text,
-     //             parameterInputs[7].text, parameterInputs[9].text, parameterInputs[10].text);
-
-     //           UnityWebRequest createMonitorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatemonitor.php", monitorForm);
-     //           yield return createMonitorRequest.SendWebRequest();
-
-     //           if (createMonitorRequest.result == UnityWebRequest.Result.ConnectionError)
-     //           {
-     //               Debug.LogWarning("conectionerror");
-     //           }
-     //           else if (createMonitorRequest.result == UnityWebRequest.Result.DataProcessingError)
-     //           {
-     //               Debug.LogWarning("data processing error");
-     //           }
-     //           else if (createMonitorRequest.result == UnityWebRequest.Result.ProtocolError)
-     //           {
-     //               Debug.LogWarning("protocol error");
-     //           }
-
-     //           if (createMonitorRequest.error == null)
-     //           {
-     //               string response = createMonitorRequest.downloadHandler.text;
-     //               if (response == "1" || response == "2")
-     //               {
-     //                   Debug.LogWarning("Server error");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else if (response == "3")
-     //               {
-     //                   Debug.LogWarning("Item does not exist");
-     //                   // TODO send message to user with error and recomendation
-     //               }
-     //               else
-     //               {
-     //                   //TODO show success message
-     //               }
-
-     //           }
-     //           else
-     //           {
-     //               Debug.LogWarning(createMonitorRequest.error);
-     //               // TODO send message to user with error and recomendation
-     //           }
-     //           createMonitorRequest.Dispose();
-     //           break;
-     //       #endregion
-
-     //       default:
-     //           break;
-     //   }
+        //   switch (itemToUpdate.Categoria)
+        //   {
+        //       #region HD
+        //       case ConstStrings.HD:
+
+        //           WWWForm hdForm = CreateAddItemForm.GetHDForm(parameterInputs[6].text, parameterInputs[5].text,
+        //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+        //           parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text);
+
+        //           UnityWebRequest createUpdateHDRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatehd.php", hdForm);
+        //           yield return createUpdateHDRequest.SendWebRequest();
+
+        //           if (createUpdateHDRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdateHDRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdateHDRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdateHDRequest.error == null)
+        //           {
+        //               string response = createUpdateHDRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdateHDRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdateHDRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Memória
+        //       case ConstStrings.Memoria:
+        //           WWWForm memoriaForm = CreateAddItemForm.GetMemoriaForm(parameterInputs[6].text, parameterInputs[5].text,
+        //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+        //           parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
+        //           UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "updatememoria.php", memoriaForm);
+        //           yield return createMemoriaPostRequest.SendWebRequest();
+
+        //           if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createMemoriaPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createMemoriaPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createMemoriaPostRequest.error == null)
+        //           {
+
+        //               string response = createMemoriaPostRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2" || response == "5")
+        //               {
+
+        //               }
+        //               else if (response == "3")
+        //               {
+
+        //               }
+        //               else if (response == "4")
+        //               {
+
+        //               }
+        //               else
+        //               {
+
+        //               }
+
+        //           }
+        //           else
+        //           {
+
+        //           }
+        //           createMemoriaPostRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Placa de rede
+        //       case ConstStrings.PlacaDeRede:
+
+        //           WWWForm placaDeRedeForm = CreateAddItemForm.GetPlacaDeRedeForm(parameterInputs[6].text, parameterInputs[5].text,
+        //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[11].text,
+        //           parameterInputs[13].text);
+
+        //           UnityWebRequest createUpdatePlacaDeRedeRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacaderede.php", placaDeRedeForm);
+        //           yield return createUpdatePlacaDeRedeRequest.SendWebRequest();
+
+        //           if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdatePlacaDeRedeRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdatePlacaDeRedeRequest.error == null)
+        //           {
+        //               string response = createUpdatePlacaDeRedeRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdatePlacaDeRedeRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdatePlacaDeRedeRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region iDRAC
+        //       case ConstStrings.Idrac:
+        //           WWWForm idracForm = CreateAddItemForm.GetiDracForm(parameterInputs[6].text, parameterInputs[5].text,
+        //          parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text);
+        //           UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "updateidrac.php", idracForm);
+        //           yield return createiDracPostRequest.SendWebRequest();
+
+        //           if (createiDracPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createiDracPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createiDracPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createiDracPostRequest.error == null)
+        //           {
+
+        //               string response = createiDracPostRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2" || response == "5")
+        //               {
+
+        //               }
+        //               else if (response == "3")
+        //               {
+
+        //               }
+        //               else if (response == "4")
+        //               {
+
+        //               }
+        //               else
+        //               {
+
+        //               }
+
+        //           }
+        //           else
+        //           {
+
+        //           }
+        //           createiDracPostRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Placa controladora
+        //       case ConstStrings.PlacaControladora:
+        //           WWWForm placaControladoraForm = CreateAddItemForm.GetPlacaControladoraForm(parameterInputs[6].text,
+        //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+        //           parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
+
+        //           UnityWebRequest createUpdatePlacaControladoraRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacacontroladora.php", placaControladoraForm);
+        //           yield return createUpdatePlacaControladoraRequest.SendWebRequest();
+
+        //           if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdatePlacaControladoraRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdatePlacaControladoraRequest.error == null)
+        //           {
+        //               string response = createUpdatePlacaControladoraRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdatePlacaControladoraRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdatePlacaControladoraRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Processador
+        //       case ConstStrings.Processador:
+        //           WWWForm processadorForm = CreateAddItemForm.GetProcessadorForm(parameterInputs[6].text,
+        //           parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+        //           parameterInputs[13].text, parameterInputs[14].text);
+
+        //           UnityWebRequest createProcessadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateprocesador.php", processadorForm);
+        //           yield return createProcessadorRequest.SendWebRequest();
+
+        //           if (createProcessadorRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createProcessadorRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createProcessadorRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createProcessadorRequest.error == null)
+        //           {
+        //               string response = createProcessadorRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createProcessadorRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createProcessadorRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Desktop
+        //       case ConstStrings.Desktop:
+        //           WWWForm desktopForm = CreateAddItemForm.GetDesktopForm(parameterInputs[1].text,
+        //            parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
+        //            parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
+
+        //           UnityWebRequest createUpdatedesktopRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatedesktop.php", desktopForm);
+        //           yield return createUpdatedesktopRequest.SendWebRequest();
+
+        //           if (createUpdatedesktopRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdatedesktopRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdatedesktopRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdatedesktopRequest.error == null)
+        //           {
+        //               string response = createUpdatedesktopRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdatedesktopRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdatedesktopRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Fonte
+        //       case ConstStrings.Fonte:
+        //           WWWForm fonteForm = CreateAddItemForm.GetFonteForm(parameterInputs[6].text, parameterInputs[9].text,
+        //           parameterInputs[10].text, parameterInputs[11].text);
+
+        //           UnityWebRequest createUpdatefonteRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatefonte.php", fonteForm);
+        //           yield return createUpdatefonteRequest.SendWebRequest();
+
+        //           if (createUpdatefonteRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdatefonteRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdatefonteRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdatefonteRequest.error == null)
+        //           {
+        //               string response = createUpdatefonteRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdatefonteRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdatefonteRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Switch
+        //       case ConstStrings.Switch:
+        //           WWWForm switchForm = CreateAddItemForm.GetSwitchForm(parameterInputs[6].text, parameterInputs[9].text,
+        //           parameterInputs[10].text);
+
+        //           UnityWebRequest createUpdateSwitchRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateswitch.php", switchForm);
+        //           yield return createUpdateSwitchRequest.SendWebRequest();
+
+        //           if (createUpdateSwitchRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdateSwitchRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdateSwitchRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdateSwitchRequest.error == null)
+        //           {
+        //               string response = createUpdateSwitchRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdateSwitchRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdateSwitchRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Roteador
+        //       case ConstStrings.Roteador:
+        //           WWWForm roteadorForm = CreateAddItemForm.GetRoteadorForm(parameterInputs[6].text, parameterInputs[9].text,
+        //            parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text);
+
+        //           UnityWebRequest createUpdateRoteadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateroteador.php", roteadorForm);
+        //           yield return createUpdateRoteadorRequest.SendWebRequest();
+
+        //           if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdateRoteadorRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdateRoteadorRequest.error == null)
+        //           {
+        //               string response = createUpdateRoteadorRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdateRoteadorRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdateRoteadorRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Carregador
+        //       case ConstStrings.Carregador:
+        //           WWWForm carregadorForm = CreateAddItemForm.GetCarregadorForm(parameterInputs[6].text, parameterInputs[9].text,
+        //           parameterInputs[10].text, parameterInputs[11].text);
+
+        //           UnityWebRequest createUpdateCarregadorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatecarregador.php", carregadorForm);
+        //           yield return createUpdateCarregadorRequest.SendWebRequest();
+
+        //           if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createUpdateCarregadorRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createUpdateCarregadorRequest.error == null)
+        //           {
+        //               string response = createUpdateCarregadorRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createUpdateCarregadorRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createUpdateCarregadorRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Adaptador AC
+        //       case ConstStrings.AdaptadorAC:
+        //           WWWForm adaptadorACForm = CreateAddItemForm.GetAdaptadorACForm(parameterInputs[6].text, parameterInputs[9].text,
+        //           parameterInputs[10].text, parameterInputs[11].text);
+
+        //           UnityWebRequest createAdaptadorACRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateadaptadorac.php", adaptadorACForm);
+        //           yield return createAdaptadorACRequest.SendWebRequest();
+
+        //           if (createAdaptadorACRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createAdaptadorACRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createAdaptadorACRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createAdaptadorACRequest.error == null)
+        //           {
+        //               string response = createAdaptadorACRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createAdaptadorACRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createAdaptadorACRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Storage NAS
+        //       case ConstStrings.StorageNAS:
+        //           WWWForm storageNasForm = CreateAddItemForm.GetStorageNASForm(parameterInputs[6].text, parameterInputs[9].text,
+        //           parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text, parameterInputs[13].text);
+
+        //           UnityWebRequest createStorageNasRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatestoragenas.php", storageNasForm);
+        //           yield return createStorageNasRequest.SendWebRequest();
+
+        //           if (createStorageNasRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createStorageNasRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createStorageNasRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createStorageNasRequest.error == null)
+        //           {
+        //               string response = createStorageNasRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createStorageNasRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createStorageNasRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region GBIC
+        //       case ConstStrings.Gbic:
+        //           WWWForm gbicForm = CreateAddItemForm.GetGBICForm(parameterInputs[6].text, parameterInputs[7].text,
+        //      parameterInputs[9].text);
+
+        //           UnityWebRequest createGbicRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updategbic.php", gbicForm);
+        //           yield return createGbicRequest.SendWebRequest();
+
+        //           if (createGbicRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createGbicRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createGbicRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createGbicRequest.error == null)
+        //           {
+        //               string response = createGbicRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createGbicRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createGbicRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Placa de vídeo
+        //       case ConstStrings.PlacaDeVideo:
+        //           WWWForm placaDeVideoForm = CreateAddItemForm.GetPlacaVideoForm(parameterInputs[6].text, parameterInputs[9].text,
+        //           parameterInputs[10].text);
+
+        //           UnityWebRequest createPlacaDeVideoRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadevideo.php", placaDeVideoForm);
+        //           yield return createPlacaDeVideoRequest.SendWebRequest();
+
+        //           if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createPlacaDeVideoRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createPlacaDeVideoRequest.error == null)
+        //           {
+        //               string response = createPlacaDeVideoRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createPlacaDeVideoRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createPlacaDeVideoRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Placa de som
+        //       case ConstStrings.PlacaDeSom:
+        //           WWWForm placaDeSomForm = CreateAddItemForm.GetPlacaSomForm(parameterInputs[6].text, parameterInputs[9].text);
+
+        //           UnityWebRequest createPlacaDeSomRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadesom.php", placaDeSomForm);
+        //           yield return createPlacaDeSomRequest.SendWebRequest();
+
+        //           if (createPlacaDeSomRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createPlacaDeSomRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createPlacaDeSomRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createPlacaDeSomRequest.error == null)
+        //           {
+        //               string response = createPlacaDeSomRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createPlacaDeSomRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createPlacaDeSomRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Placa de captura de vídeo
+        //       case ConstStrings.PlacaDeCapturaDeVideo:
+        //           WWWForm placaDeCapturaDeVideoForm = CreateAddItemForm.GetPlacaCapturaVideoForm(parameterInputs[6].text, 
+        //           parameterInputs[9].text);
+
+        //           UnityWebRequest createPlacaDeCapturaDeVideoRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateplacadecapturadevideo.php", placaDeCapturaDeVideoForm);
+        //           yield return createPlacaDeCapturaDeVideoRequest.SendWebRequest();
+
+        //           if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createPlacaDeCapturaDeVideoRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createPlacaDeCapturaDeVideoRequest.error == null)
+        //           {
+        //               string response = createPlacaDeCapturaDeVideoRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createPlacaDeCapturaDeVideoRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createPlacaDeCapturaDeVideoRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Servidor
+        //       case ConstStrings.Servidor:
+        //           WWWForm servidorForm = CreateAddItemForm.GetServidorForm(parameterInputs[6].text,
+        //parameterInputs[7].text);
+
+        //           UnityWebRequest createServidorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updateservidor.php", servidorForm);
+        //           yield return createServidorRequest.SendWebRequest();
+
+        //           if (createServidorRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createServidorRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createServidorRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createServidorRequest.error == null)
+        //           {
+        //               string response = createServidorRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createServidorRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createServidorRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Notebook
+        //       case ConstStrings.Notebook:
+        //           WWWForm notebookForm = CreateAddItemForm.GetNotebookForm(parameterInputs[6].text,
+        //              parameterInputs[7].text);
+
+        //           UnityWebRequest createNotebookRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatenotebook.php", notebookForm);
+        //           yield return createNotebookRequest.SendWebRequest();
+
+        //           if (createNotebookRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createNotebookRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createNotebookRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createNotebookRequest.error == null)
+        //           {
+        //               string response = createNotebookRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createNotebookRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createNotebookRequest.Dispose();
+        //           break;
+        //       #endregion
+        //       #region Monitor
+        //       case ConstStrings.Monitor:
+        //           WWWForm monitorForm = CreateAddItemForm.GetMonitorForm(parameterInputs[6].text,
+        //             parameterInputs[7].text, parameterInputs[9].text, parameterInputs[10].text);
+
+        //           UnityWebRequest createMonitorRequest = UnityWebRequest.Post(ConstStrings.PhpUpdateItemsFolder + "updatemonitor.php", monitorForm);
+        //           yield return createMonitorRequest.SendWebRequest();
+
+        //           if (createMonitorRequest.result == UnityWebRequest.Result.ConnectionError)
+        //           {
+        //               Debug.LogWarning("conectionerror");
+        //           }
+        //           else if (createMonitorRequest.result == UnityWebRequest.Result.DataProcessingError)
+        //           {
+        //               Debug.LogWarning("data processing error");
+        //           }
+        //           else if (createMonitorRequest.result == UnityWebRequest.Result.ProtocolError)
+        //           {
+        //               Debug.LogWarning("protocol error");
+        //           }
+
+        //           if (createMonitorRequest.error == null)
+        //           {
+        //               string response = createMonitorRequest.downloadHandler.text;
+        //               if (response == "1" || response == "2")
+        //               {
+        //                   Debug.LogWarning("Server error");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else if (response == "3")
+        //               {
+        //                   Debug.LogWarning("Item does not exist");
+        //                   // TODO send message to user with error and recomendation
+        //               }
+        //               else
+        //               {
+        //                   //TODO show success message
+        //               }
+
+        //           }
+        //           else
+        //           {
+        //               Debug.LogWarning(createMonitorRequest.error);
+        //               // TODO send message to user with error and recomendation
+        //           }
+        //           createMonitorRequest.Dispose();
+        //           break;
+        //       #endregion
+
+        //       default:
+        //           break;
+        //   }
+        #endregion
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;
-        #endregion
+        
     }
     /// <summary>
     /// Updates the full database
     /// </summary>
     private void UpdateFullDatabase()
     {
-        itemToUpdate.Entrada = parameterInputs[0].text;
+       // itemToUpdate.Entrada = parameterInputs[0].text;
         itemToUpdate.Patrimonio = parameterInputs[1].text;
         itemToUpdate.Status = parameterInputs[2].text;
         itemToUpdate.Serial = parameterInputs[3].text;
-        itemToUpdate.Fabricante = parameterInputs[4].text;
-        itemToUpdate.Modelo = parameterInputs[5].text;
-        itemToUpdate.Local = parameterInputs[6].text;
-        itemToUpdate.Saida = parameterInputs[7].text;
-        itemToUpdate.Saida = parameterInputs[17].text;
+        itemToUpdate.Fabricante = parameterInputs[5].text;
+        itemToUpdate.Modelo = parameterInputs[6].text;
+        itemToUpdate.Local = parameterInputs[7].text;
+        itemToUpdate.Saida = parameterInputs[8].text;
+        itemToUpdate.Observacao = parameterInputs[9].text;
         switch (itemToUpdate.Categoria)
         {
             case ConstStrings.HD:
                 
-                itemToUpdate.Interface = parameterInputs[9].text;
-                itemToUpdate.Tamanho = parameterInputs[10].text;
-                itemToUpdate.FormaDeArmazenamento = parameterInputs[11].text;
-                itemToUpdate.CapacidadeEmGB = parameterInputs[12].text;
-                itemToUpdate.RPM = parameterInputs[13].text;
-                itemToUpdate.VelocidadeDeLeitura = parameterInputs[14].text;
-                itemToUpdate.Enterprise = parameterInputs[15].text;
+                itemToUpdate.Interface = parameterInputs[10].text;
+                itemToUpdate.Tamanho = parameterInputs[11].text;
+                itemToUpdate.FormaDeArmazenamento = parameterInputs[12].text;
+                itemToUpdate.CapacidadeEmGB = parameterInputs[13].text;
+                itemToUpdate.RPM = parameterInputs[14].text;
+                itemToUpdate.VelocidadeDeLeitura = parameterInputs[15].text;
+                itemToUpdate.Enterprise = parameterInputs[16].text;
                 break;
             case ConstStrings.Memoria:
-                itemToUpdate.Tipo = parameterInputs[9].text;
-                itemToUpdate.CapacidadeEmGB = parameterInputs[10].text;
-                itemToUpdate.VelocidadeMHz = parameterInputs[11].text;
-                itemToUpdate.LowVoltage = parameterInputs[12].text;
-                itemToUpdate.Rank = parameterInputs[13].text;
-                itemToUpdate.DIMM = parameterInputs[14].text;
-                itemToUpdate.TaxaDeTransmissao = parameterInputs[15].text;
-                itemToUpdate.Simbolo = parameterInputs[16].text;
+                itemToUpdate.Tipo = parameterInputs[10].text;
+                itemToUpdate.CapacidadeEmGB = parameterInputs[11].text;
+                itemToUpdate.VelocidadeMHz = parameterInputs[12].text;
+                itemToUpdate.LowVoltage = parameterInputs[13].text;
+                itemToUpdate.Rank = parameterInputs[14].text;
+                itemToUpdate.DIMM = parameterInputs[15].text;
+                itemToUpdate.TaxaDeTransmissao = parameterInputs[16].text;
+                itemToUpdate.Simbolo = parameterInputs[17].text;
                 break;
             case ConstStrings.PlacaDeRede:
-                itemToUpdate.Interface = parameterInputs[9].text;
-                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
-                itemToUpdate.QuaisConexoes = parameterInputs[11].text;
-                itemToUpdate.SuportaFibraOptica = parameterInputs[12].text;
-                itemToUpdate.Desempenho = parameterInputs[13].text;
+                itemToUpdate.Interface = parameterInputs[10].text;
+                itemToUpdate.QuantidadeDePortas = parameterInputs[11].text;
+                itemToUpdate.QuaisConexoes = parameterInputs[12].text;
+                itemToUpdate.SuportaFibraOptica = parameterInputs[13].text;
+                itemToUpdate.Desempenho = parameterInputs[14].text;
                 break;
             case ConstStrings.Idrac:
-                itemToUpdate.QuaisConexoes = parameterInputs[9].text;
-                itemToUpdate.VelocidadeGBs = parameterInputs[10].text;
-                itemToUpdate.EntradaSD = parameterInputs[11].text;
-                itemToUpdate.ServidoresSuportados = parameterInputs[12].text;
+                itemToUpdate.QuaisConexoes = parameterInputs[10].text;
+                itemToUpdate.VelocidadeGBs = parameterInputs[11].text;
+                itemToUpdate.EntradaSD = parameterInputs[12].text;
+                itemToUpdate.ServidoresSuportados = parameterInputs[13].text;
                 break;
             case ConstStrings.PlacaControladora:
-                itemToUpdate.QuaisConexoes = parameterInputs[9].text;
-                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
-                itemToUpdate.TipoDeRAID = parameterInputs[11].text;
-                itemToUpdate.CapacidadeMaxHD = parameterInputs[12].text;
-                itemToUpdate.AteQuantosHDs = parameterInputs[13].text;
-                itemToUpdate.BateriaInclusa = parameterInputs[14].text;
-                itemToUpdate.Barramento = parameterInputs[15].text;
+                itemToUpdate.QuaisConexoes = parameterInputs[10].text;
+                itemToUpdate.QuantidadeDePortas = parameterInputs[11].text;
+                itemToUpdate.TipoDeRAID = parameterInputs[12].text;
+                itemToUpdate.CapacidadeMaxHD = parameterInputs[13].text;
+                itemToUpdate.AteQuantosHDs = parameterInputs[14].text;
+                itemToUpdate.BateriaInclusa = parameterInputs[15].text;
+                itemToUpdate.Barramento = parameterInputs[16].text;
                 break;
             case ConstStrings.Processador:
-                itemToUpdate.Soquete = parameterInputs[9].text;
-                itemToUpdate.NucleosFisicos = parameterInputs[10].text;
-                itemToUpdate.NucleosLogicos = parameterInputs[11].text;
-                itemToUpdate.AceitaVirtualizacao = parameterInputs[12].text;
-                itemToUpdate.TurboBoost = parameterInputs[13].text;
-                itemToUpdate.HyperThreading = parameterInputs[14].text;
+                itemToUpdate.Soquete = parameterInputs[10].text;
+                itemToUpdate.NucleosFisicos = parameterInputs[11].text;
+                itemToUpdate.NucleosLogicos = parameterInputs[12].text;
+                itemToUpdate.AceitaVirtualizacao = parameterInputs[13].text;
+                itemToUpdate.TurboBoost = parameterInputs[14].text;
+                itemToUpdate.HyperThreading = parameterInputs[15].text;
                 break;
             case ConstStrings.Desktop:
-                itemToUpdate.ModeloPlacaMae = parameterInputs[9].text;
-                itemToUpdate.Fonte = parameterInputs[10].text;
-                itemToUpdate.Memoria = parameterInputs[11].text;
-                itemToUpdate.HD = parameterInputs[12].text;
-                itemToUpdate.PlacaDeVideo = parameterInputs[13].text;
-                itemToUpdate.LeitorDeDVD = parameterInputs[14].text;
+                itemToUpdate.ModeloPlacaMae = parameterInputs[10].text;
+                itemToUpdate.Fonte = parameterInputs[11].text;
+                itemToUpdate.Memoria = parameterInputs[12].text;
+                itemToUpdate.HD = parameterInputs[13].text;
+                itemToUpdate.PlacaDeVideo = parameterInputs[14].text;
+                itemToUpdate.LeitorDeDVD = parameterInputs[15].text;
                 break;
             case ConstStrings.Fonte:
-                itemToUpdate.Watts = parameterInputs[9].text;
-                itemToUpdate.OndeFunciona = parameterInputs[10].text;
-                itemToUpdate.Conectores = parameterInputs[11].text;
+                itemToUpdate.Watts = parameterInputs[10].text;
+                itemToUpdate.OndeFunciona = parameterInputs[11].text;
+                itemToUpdate.Conectores = parameterInputs[12].text;
                 break;
             case ConstStrings.Switch:
-                itemToUpdate.QuantidadeDePortas = parameterInputs[9].text;
-                itemToUpdate.Desempenho = parameterInputs[10].text;
+                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
+                itemToUpdate.Desempenho = parameterInputs[11].text;
                 break;
             case ConstStrings.Roteador:
-                itemToUpdate.Wireless = parameterInputs[9].text;
-                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
-                itemToUpdate.BandaMaxima = parameterInputs[11].text;
+                itemToUpdate.Wireless = parameterInputs[10].text;
+                itemToUpdate.QuantidadeDePortas = parameterInputs[11].text;
+                itemToUpdate.BandaMaxima = parameterInputs[12].text;
                 break;
             case ConstStrings.Carregador:
-                itemToUpdate.OndeFunciona = parameterInputs[9].text;
-                itemToUpdate.VoltagemDeSaida = parameterInputs[10].text;
-                itemToUpdate.AmperagemDeSaida = parameterInputs[11].text;
+                itemToUpdate.OndeFunciona = parameterInputs[10].text;
+                itemToUpdate.VoltagemDeSaida = parameterInputs[11].text;
+                itemToUpdate.AmperagemDeSaida = parameterInputs[12].text;
                 break;
             case ConstStrings.AdaptadorAC:
-                itemToUpdate.OndeFunciona = parameterInputs[9].text;
-                itemToUpdate.VoltagemDeSaida = parameterInputs[10].text;
-                itemToUpdate.AmperagemDeSaida = parameterInputs[11].text;
+                itemToUpdate.OndeFunciona = parameterInputs[10].text;
+                itemToUpdate.VoltagemDeSaida = parameterInputs[11].text;
+                itemToUpdate.AmperagemDeSaida = parameterInputs[12].text;
                 break;
             case ConstStrings.StorageNAS:
-                itemToUpdate.Tamanho = parameterInputs[9].text;
-                itemToUpdate.TipoDeRAID = parameterInputs[10].text;
-                itemToUpdate.TipoDeHD = parameterInputs[11].text;
-                itemToUpdate.CapacidadeMaxHD = parameterInputs[12].text;
+                itemToUpdate.Tamanho = parameterInputs[10].text;
+                itemToUpdate.TipoDeRAID = parameterInputs[11].text;
+                itemToUpdate.TipoDeHD = parameterInputs[12].text;
+                itemToUpdate.CapacidadeMaxHD = parameterInputs[13].text;
                 break;
             case ConstStrings.Gbic:
-                itemToUpdate.Desempenho = parameterInputs[9].text;
+                itemToUpdate.Desempenho = parameterInputs[10].text;
                 break;
             case ConstStrings.PlacaDeVideo:
-                itemToUpdate.QuantidadeDePortas = parameterInputs[9].text;
-                itemToUpdate.QuaisConexoes = parameterInputs[10].text;
+                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
+                itemToUpdate.QuaisConexoes = parameterInputs[11].text;
                 break;
             case ConstStrings.PlacaDeSom:
-                itemToUpdate.QuantosCanais = parameterInputs[9].text;
+                itemToUpdate.QuantosCanais = parameterInputs[10].text;
                 break;
             case ConstStrings.PlacaDeCapturaDeVideo:
-                itemToUpdate.QuantidadeDePortas = parameterInputs[9].text;
+                itemToUpdate.QuantidadeDePortas = parameterInputs[10].text;
                 break;
+            case ConstStrings.Servidor:
 
+                break;
+            case ConstStrings.Notebook:
+
+                break;
+            case ConstStrings.Monitor:
+                itemToUpdate.Polegadas = parameterInputs[10].text;
+                itemToUpdate.QuaisConexoes = parameterInputs[11].text;
+                break;
             default:
                 break;
         }
@@ -1719,6 +1730,7 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void ResetInputs()
     {
+        inputEnabled = false;
         inputsPanel.SetActive(true);
         for (int i = 0; i < parameterItems.Length; i++)
         {
@@ -1753,7 +1765,7 @@ public class UpdateItem : MonoBehaviour
 
     public void ResetUpdate()
     {
-        searchingItem = false;
         ResetInputs();
+        searchingItem = true;
     }
 }

@@ -368,7 +368,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void CloseErrorPanel()
     {
-        StopCoroutine(ErrorPanelRoutine());
+        StopAllCoroutines();
         errorPanel.SetActive(false);
         if (adminAuthorizing)
         {

@@ -7,7 +7,7 @@ public class ItemColumns
 {
     public string GetValue(string valueToGet)
     {
-        string[] allValues= { Itens, Quantidade, Entrada, Patrimonio, Status, Serial, Categoria, Fabricante, Modelo, Local,
+        string[] allValues= { Itens, Quantidade, Aquisicao, Entrada, Patrimonio, Status, Serial, Categoria, Fabricante, Modelo, Local,
         Saida, Observacao, Interface, Tamanho, FormaDeArmazenamento, CapacidadeEmGB, RPM, VelocidadeDeLeitura, Enterprise, 
         EstoqueAtual, Tipo, VelocidadeMHz, LowVoltage, Rank, DIMM, TaxaDeTransmissao, Simbolo, QuantidadeDePortas, 
         QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs, EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
@@ -25,6 +25,7 @@ public class ItemColumns
     }
     public string Itens; // sem patrimônio e serial
     public string Quantidade; // todos
+    public string Aquisicao; // todos
     public string Entrada; // todos
     public string Patrimonio; 
     public string Status; // todos
@@ -86,4 +87,4 @@ public class ItemColumns
     public string QuantosCanais; // Placa de Som
     public string Polegadas; // Monitor
     public string Processador; // Desktop, Servidores
-}
+    }

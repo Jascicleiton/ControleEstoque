@@ -33,15 +33,16 @@ public class AddRemoveItem : MonoBehaviour
             parameterValues[i].text = "";
         }
         
-        parameterNames[0].text = "Entrada no estoque";
+        parameterNames[0].text = "Aquisição";
         parameterValues[0].text = DateTime.Now.ToString("dd/MM/yyyy");
-        parameterNames[1].text = "Patrimônio";
-        parameterNames[2].text = "Status";
-        parameterNames[3].text = "Serial";
-        parameterNames[4].text = "Fabricante";
-        parameterNames[5].text = "Modelo";
-        parameterNames[6].text = "Local";
-        parameterNames[7].text = "Saída do estoque";
+        parameterNames[1].text = "Entrada no estoque";
+        parameterValues[1].text = DateTime.Now.ToString("dd/MM/yyyy");
+        parameterNames[2].text = "Patrimônio";
+        parameterNames[3].text = "Status";
+        parameterNames[4].text = "Serial";
+        parameterNames[5].text = "Fabricante";
+        parameterNames[6].text = "Modelo";
+        parameterNames[7].text = "Local";
         parameterNames[8].text = "Observação";
 
         switch (categoryDP.value)
@@ -279,7 +280,7 @@ public class AddRemoveItem : MonoBehaviour
                     }
         else
         {
-            messageText.text = "Ocorrou algum erro ao adicionar o item. Contate seu administrador.";
+            messageText.text = "Ocorreu algum erro ao adicionar o item. Contate seu administrador.";
         }
         StartCoroutine(CloseMessageRoutine());
     }
@@ -297,10 +298,10 @@ public class AddRemoveItem : MonoBehaviour
     {
         bool addSuccess = false;
         #region Add new item to Inventario
-        WWWForm inventarioForm = CreateForm.GetInventarioForm(ConstStrings.AddNewItemKey, parameterValues[0].text, parameterValues[1].text,
-        parameterValues[2].text, parameterValues[3].text, parameterValues[4].text,
-        HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text,
-        parameterValues[7].text, parameterValues[8].text);
+        WWWForm inventarioForm = CreateForm.GetInventarioForm(ConstStrings.AddNewItemKey, parameterValues[0].text, 
+        parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text,
+        HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text, 
+        parameterValues[7].text, "", parameterValues[8].text);
         UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
         MouseManager.Instance.SetWaitingCursor();
         yield return createInventarioPostRequest.SendWebRequest();
@@ -1296,15 +1297,16 @@ public class AddRemoveItem : MonoBehaviour
         ItemColumns itemToAddFullDatabase = new ItemColumns();
         ItemColumns itemToAddSplitDatabase = new ItemColumns();
 
-        itemToAddFullDatabase.Entrada = parameterValues[0].text;
-        itemToAddFullDatabase.Patrimonio = parameterValues[1].text;
-        itemToAddFullDatabase.Status = parameterValues[2].text;
-        itemToAddFullDatabase.Serial = parameterValues[3].text;
-        itemToAddFullDatabase.Fabricante = parameterValues[4].text;
-        itemToAddFullDatabase.Modelo = parameterValues[5].text;
-        itemToAddSplitDatabase.Modelo = parameterValues[5].text;
-        itemToAddFullDatabase.Local = parameterValues[6].text;
-        itemToAddFullDatabase.Saida = parameterValues[7].text;
+        itemToAddFullDatabase.Aquisicao = parameterValues[0].text;
+        itemToAddFullDatabase.Entrada = parameterValues[1].text;
+        itemToAddFullDatabase.Patrimonio = parameterValues[2].text;
+        itemToAddFullDatabase.Status = parameterValues[3].text;
+        itemToAddFullDatabase.Serial = parameterValues[4].text;
+        itemToAddFullDatabase.Fabricante = parameterValues[5].text;
+        itemToAddFullDatabase.Modelo = parameterValues[6].text;
+        itemToAddSplitDatabase.Modelo = parameterValues[6].text;
+        itemToAddFullDatabase.Local = parameterValues[7].text;
+        itemToAddFullDatabase.Saida = "";
         itemToAddFullDatabase.Observacao = parameterValues[8].text;
         switch (categoryDP.value)
         {
