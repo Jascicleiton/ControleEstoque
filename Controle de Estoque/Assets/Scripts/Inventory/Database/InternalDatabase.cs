@@ -46,7 +46,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
     #endregion
     private bool fullDatabaseFilled = false;
 
-    
+    public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
 
     private void Start()
     {

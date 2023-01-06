@@ -24,9 +24,8 @@ public class MovementManager : MonoBehaviour
     private ItemColumns itemToChange;
     private bool itemFound = false;
     private bool inputEnabled = true;
-    
-    MovementRecords movementToRecord;
 
+    MovementRecords movementToRecord;
 
     private void Start()
     {
@@ -65,8 +64,20 @@ public class MovementManager : MonoBehaviour
         {
             itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text,InternalDatabase.Instance.fullDatabase);
             WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
-            
-            UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
+
+            UnityWebRequest createPostRequest = new UnityWebRequest();
+            switch (InternalDatabase.Instance.currentEstoque)
+            {
+                case CurrentEstoque.SnPro:
+                    createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
+                    break;
+                case CurrentEstoque.Funsoft:
+                    createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolderFunsoft + "consultpatrimonio.php", consultPatrimonioForm);
+                    break;
+                default:
+                    createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
+                    break;
+            }
             MouseManager.Instance.SetWaitingCursor();
             inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
@@ -198,7 +209,19 @@ public class MovementManager : MonoBehaviour
             moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
         }
 
-        UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
+        UnityWebRequest createPostRequest = new UnityWebRequest();
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
+                break;
+            case CurrentEstoque.Funsoft:
+                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolderFunsoft + "moveitem.php", moveItemForm);
+                break;
+            default:
+                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
+                break;
+        }
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();

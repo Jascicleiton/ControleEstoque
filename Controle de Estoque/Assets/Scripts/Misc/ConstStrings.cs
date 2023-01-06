@@ -55,6 +55,15 @@ public class ConstStrings
     public const string PhpNoPaNoSeItemsFolder = "https://sysnetpro.com.br/controleestoque/NoPaNoSeItems/";
     #endregion
 
+    #region PHP folder URL - Controle de estoque Funsoft
+    public const string PhpRootFolderFunsoft = "https://sysnetpro.com.br/funsoft/";
+    public const string PhpImportTablesFolderFunsoft = "https://sysnetpro.com.br/funsoft/Import/";
+    public const string PhpAdditemsFolderFunsoft = "https://sysnetpro.com.br/funsoft/AddItems/";
+    public const string PhpMovementsFolderFunsoft = "https://sysnetpro.com.br/funsoft/Movements/";
+    public const string PhpUpdateItemsFolderFunsoft = "https://sysnetpro.com.br/funsoft/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolderFunsoft = "https://sysnetpro.com.br/funsoft/NoPaNoSeItems/";
+    #endregion
+
     #region Save parameters
     public const string showWarningMessage = "ShowWarningMessage";
     #endregion

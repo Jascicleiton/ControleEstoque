@@ -4,3 +4,9 @@ public enum MessageToShow
     Failure,
     Duplicate
 }
+
+public enum CurrentEstoque
+{
+    SnPro,
+    Funsoft
+}

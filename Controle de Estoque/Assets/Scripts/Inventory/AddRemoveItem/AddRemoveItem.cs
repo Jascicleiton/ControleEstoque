@@ -312,7 +312,19 @@ public class AddRemoveItem : MonoBehaviour
         parameterValues[1].text, parameterValues[2].text, parameterValues[3].text, parameterValues[4].text,
         HelperMethods.GetCategoryString(categoryDP.value), parameterValues[5].text, parameterValues[6].text, 
         parameterValues[7].text, "", parameterValues[8].text);
-        UnityWebRequest createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
+        UnityWebRequest createInventarioPostRequest = new UnityWebRequest();
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
+                break;
+            case CurrentEstoque.Funsoft:
+                createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewiteminventario.php", inventarioForm);
+                break;
+            default:
+                createInventarioPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewiteminventario.php", inventarioForm);
+                break;
+        }
         MouseManager.Instance.SetWaitingCursor();
         yield return createInventarioPostRequest.SendWebRequest();
 
@@ -374,7 +386,19 @@ public class AddRemoveItem : MonoBehaviour
             case 0:
                 WWWForm adaptadorACForm = CreateForm.GetAdaptadorACForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
-                UnityWebRequest createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemadaptadorac.php", adaptadorACForm);
+                UnityWebRequest createAdaptadorAcPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemadaptadorac.php", adaptadorACForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemadaptadorac.php", adaptadorACForm);
+                        break;
+                    default:
+                        createAdaptadorAcPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemadaptadorac.php", adaptadorACForm);
+                        break;
+                }
                 yield return createAdaptadorAcPostRequest.SendWebRequest();
 
                 if (createAdaptadorAcPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -419,7 +443,19 @@ public class AddRemoveItem : MonoBehaviour
             case 1:
                 WWWForm carregadorForm = CreateForm.GetCarregadorForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
-                UnityWebRequest createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemcarregador.php", carregadorForm);
+                UnityWebRequest createCarregadorPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemcarregador.php", carregadorForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemcarregador.php", carregadorForm);
+                        break;
+                    default:
+                        createCarregadorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemcarregador.php", carregadorForm);
+                        break;
+                }
                 yield return createCarregadorPostRequest.SendWebRequest();
 
                 if (createCarregadorPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -465,7 +501,19 @@ public class AddRemoveItem : MonoBehaviour
                 WWWForm desktopForm = CreateForm.GetDesktopForm(ConstStrings.AddNewItemKey, parameterValues[1].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
-                UnityWebRequest createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemdesktop.php", desktopForm);
+                UnityWebRequest createDesktopPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemdesktop.php", desktopForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemdesktop.php", desktopForm);
+                        break;
+                    default:
+                        createDesktopPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemdesktop.php", desktopForm);
+                        break;
+                }
                 yield return createDesktopPostRequest.SendWebRequest();
 
                 if (createDesktopPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -510,7 +558,19 @@ public class AddRemoveItem : MonoBehaviour
             case 3:
                 WWWForm fonteForm = CreateForm.GetFonteForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text);
-                UnityWebRequest createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemfonte.php", fonteForm);
+                UnityWebRequest createFontePostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemfonte.php", fonteForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemfonte.php", fonteForm);
+                        break;
+                    default:
+                        createFontePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemfonte.php", fonteForm);
+                        break;
+                }
                 yield return createFontePostRequest.SendWebRequest();
 
                 if (createFontePostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -556,7 +616,19 @@ public class AddRemoveItem : MonoBehaviour
             case 4:
                 WWWForm gbicForm = CreateForm.GetGBICForm(ConstStrings.AddNewItemKey, parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text);
-                UnityWebRequest createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemgbic.php", gbicForm);
+                UnityWebRequest createGbicPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemgbic.php", gbicForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemgbic.php", gbicForm);
+                        break;
+                    default:
+                        createGbicPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemgbic.php", gbicForm);
+                        break;
+                }
                 yield return createGbicPostRequest.SendWebRequest();
 
                 if (createGbicPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -603,7 +675,19 @@ public class AddRemoveItem : MonoBehaviour
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text);
 
-                UnityWebRequest createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
+                UnityWebRequest createHDPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemhd.php", hdForm);
+                        break;
+                    default:
+                        createHDPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemhd.php", hdForm);
+                        break;
+                }
                 yield return createHDPostRequest.SendWebRequest();
 
                 if (createHDPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -651,7 +735,19 @@ public class AddRemoveItem : MonoBehaviour
             case 6:
                 WWWForm iDracForm = CreateForm.GetiDracForm(ConstStrings.AddNewItemKey, parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
-                UnityWebRequest createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemidrac.php", iDracForm);
+                UnityWebRequest createiDracPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemidrac.php", iDracForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemidrac.php", iDracForm);
+                        break;
+                    default:
+                        createiDracPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemidrac.php", iDracForm);
+                        break;
+                }
                 yield return createiDracPostRequest.SendWebRequest();
 
                 if (createiDracPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -693,13 +789,24 @@ public class AddRemoveItem : MonoBehaviour
                 createiDracPostRequest.Dispose();
                 break;
             #endregion
-
             #region Memoria
             case 7:
                 WWWForm memoriaForm = CreateForm.GetMemoriaForm(ConstStrings.AddNewItemKey, parameterValues[5].text, parameterValues[4].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
-                UnityWebRequest createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
+                UnityWebRequest createMemoriaPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemmemoria.php", memoriaForm);
+                        break;
+                    default:
+                        createMemoriaPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemmemoria.php", memoriaForm);
+                        break;
+                }
                 yield return createMemoriaPostRequest.SendWebRequest();
 
                 if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -748,7 +855,19 @@ public class AddRemoveItem : MonoBehaviour
             case 8:
                 WWWForm monitorForm = CreateForm.GetMonitorForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[4].text, parameterValues[9].text, parameterValues[10].text);
-                UnityWebRequest createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "adnewitemmonitor.php", monitorForm);
+                UnityWebRequest createMonitorPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "adnewitemmonitor.php", monitorForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "adnewitemmonitor.php", monitorForm);
+                        break;
+                    default:
+                        createMonitorPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "adnewitemmonitor.php", monitorForm);
+                        break;
+                }
                 yield return createMonitorPostRequest.SendWebRequest();
 
                 if (createMonitorPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -794,7 +913,19 @@ public class AddRemoveItem : MonoBehaviour
             case 9:
                 WWWForm notebookForm = CreateForm.GetNotebookForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[4].text);
-                UnityWebRequest createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemnotebook.php", notebookForm);
+                UnityWebRequest createNotebookPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemnotebook.php", notebookForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemnotebook.php", notebookForm);
+                        break;
+                    default:
+                        createNotebookPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemnotebook.php", notebookForm);
+                        break;
+                }
                 yield return createNotebookPostRequest.SendWebRequest();
 
                 if (createNotebookPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -840,7 +971,19 @@ public class AddRemoveItem : MonoBehaviour
                 WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
-                UnityWebRequest createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacontroladora.php", placaControladoraForm);
+                UnityWebRequest createPlacaControladoraPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacontroladora.php", placaControladoraForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemplacacontroladora.php", placaControladoraForm);
+                        break;
+                    default:
+                        createPlacaControladoraPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacontroladora.php", placaControladoraForm);
+                        break;
+                }
                 yield return createPlacaControladoraPostRequest.SendWebRequest();
 
                 if (createPlacaControladoraPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -885,7 +1028,19 @@ public class AddRemoveItem : MonoBehaviour
             case 11:
                 WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaCapturaVideoForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[9].text);
-                UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post("addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
+                UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
+                        break;
+                    default:
+                        createPlacaDeCapturaDeVideoPostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacacapturavideo.php", placaDeCapturaDeVideoForm);
+                        break;
+                }
                 yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
 
                 if (createPlacaDeCapturaDeVideoPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -931,7 +1086,19 @@ public class AddRemoveItem : MonoBehaviour
                 WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(ConstStrings.AddNewItemKey, parameterValues[5].text,
                 parameterValues[4].text, parameterValues[9].text, parameterValues[10].text, parameterValues[11].text,
                 parameterValues[12].text, parameterValues[13].text);
-                UnityWebRequest createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacarede.php", placaDeRedeForm);
+                UnityWebRequest createPlacaDeRedePostRequest = new UnityWebRequest();
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacarede.php", placaDeRedeForm);
+                        break;
+                    case CurrentEstoque.Funsoft:
+                        createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolderFunsoft + "addnewitemplacarede.php", placaDeRedeForm);
+                        break;
+                    default:
+                        createPlacaDeRedePostRequest = UnityWebRequest.Post(ConstStrings.PhpAdditemsFolder + "addnewitemplacarede.php", placaDeRedeForm);
+                        break;
+                }
                 yield return createPlacaDeRedePostRequest.SendWebRequest();
 
                 if (createPlacaDeRedePostRequest.result == UnityWebRequest.Result.ConnectionError)
