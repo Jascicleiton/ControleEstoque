@@ -46,7 +46,7 @@ public class ConstStrings
     public const string SceneNoPaNoSe = "NoPaNoSeScene";
     #endregion
 
-    #region PHP folder URL
+    #region PHP folder URL - Controle de estoque SNPro
     public const string PhpRootFolder = "https://sysnetpro.com.br/controleestoque/";
     public const string PhpImportTablesFolder = "https://sysnetpro.com.br/controleestoque/Import/";
     public const string PhpAdditemsFolder = "https://sysnetpro.com.br/controleestoque/AddItems/";

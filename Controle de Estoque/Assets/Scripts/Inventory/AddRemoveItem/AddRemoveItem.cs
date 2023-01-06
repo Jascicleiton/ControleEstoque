@@ -17,6 +17,8 @@ public class AddRemoveItem : MonoBehaviour
     [SerializeField] GameObject messagePanel;
     [SerializeField] TMP_Text messageText;
 
+    private MessageToShow messageToShow = MessageToShow.Success;
+
     private void Start()
     {
         UpdateNames();
@@ -272,17 +274,24 @@ public class AddRemoveItem : MonoBehaviour
     /// <summary>
     /// Shows the message that the item was added
     /// </summary>
-    private void ShowMessage(bool success)
+    private void ShowMessage(MessageToShow message)
     {
         messagePanel.SetActive(true);
-        if (success)
+        switch (message)
         {
-            messageText.text = "Item adicionado com sucesso";
-                    }
-        else
-        {
-            messageText.text = "Ocorreu algum erro ao adicionar o item. Contate seu administrador.";
-        }
+            case MessageToShow.Success:
+                messageText.text = "Item adicionado com sucesso";
+                break;
+            case MessageToShow.Failure:
+                messageText.text = "Ocorreu algum erro ao adicionar o item. Contate seu administrador.";
+                break;
+            case MessageToShow.Duplicate:
+                messageText.text = "Item já consta no banco de dados";
+                break;
+            default:
+                break;
+        }    
+
         StartCoroutine(CloseMessageRoutine());
     }
 
@@ -326,7 +335,7 @@ public class AddRemoveItem : MonoBehaviour
         if (createInventarioPostRequest.error == null)
         {
             string response = createInventarioPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey")
+            if (response == "Database connection error" || response == "insert item failed" || response == "wrong appkey" || response == "Patrimônio query failed" || response == "Serial query failed")
             {
                 Debug.LogWarning("Inventario: Server error");
                 addSuccess = false;
@@ -334,6 +343,18 @@ public class AddRemoveItem : MonoBehaviour
             else if (response == "Item added")
             {
                 addSuccess = true;
+            }
+            else if(response == "Patrimônio found")
+            {
+                addSuccess = false;
+                ShowMessage(MessageToShow.Duplicate);
+                yield break;
+            }
+            else if (response == "Serial found")
+            {
+                addSuccess = false;
+                ShowMessage(MessageToShow.Duplicate);
+                yield break;
             }
             else
             {
@@ -377,7 +398,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Adaptador AC: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -422,7 +443,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Carregador: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -468,7 +489,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Desktop: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -514,7 +535,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Fonte: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -559,7 +580,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("GBIC: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -609,7 +630,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("HD: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -655,7 +676,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("iDrac: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -706,7 +727,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Memoria: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -751,7 +772,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Monitor: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -797,7 +818,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Notebook: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -843,7 +864,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Placa controladora: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -888,7 +909,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Placa de captura de video: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -935,7 +956,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Placa de rede: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -980,7 +1001,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Placa de som: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -1025,7 +1046,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Placa de video: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -1071,7 +1092,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Processador: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -1116,7 +1137,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Roteador: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -1161,7 +1182,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Servidor: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -1208,7 +1229,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Storage NAS: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -1254,7 +1275,7 @@ public class AddRemoveItem : MonoBehaviour
                         Debug.LogWarning("Switch: Server error");
                         addSuccess = false;
                     }
-                    else if (response == "Item added")
+                    else if (response == "Item added" || response == "Modelo found")
                     {
                         addSuccess = true;
                     }
@@ -1279,11 +1300,11 @@ public class AddRemoveItem : MonoBehaviour
         if (addSuccess)
         {
             AddItem();
-            ShowMessage(true);
+            ShowMessage(MessageToShow.Success);
         }
         else
         {
-            ShowMessage(false);
+            ShowMessage(MessageToShow.Failure);
         }
     }
 

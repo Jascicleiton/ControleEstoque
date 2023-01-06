@@ -46,6 +46,8 @@ public class InternalDatabase : Singleton<InternalDatabase>
     #endregion
     private bool fullDatabaseFilled = false;
 
+    
+
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
