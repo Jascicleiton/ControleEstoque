@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -6,6 +8,7 @@ public class CreateForm
     public static WWWForm GetInventarioForm(string appPassword, string aquisicao, string entrada, string patrimonio, string status, string serial, 
         string categoria, string fabricante, string modelo, string local, string saida, string observacao)
     {
+
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("aquisicao", aquisicao);
@@ -22,7 +25,7 @@ public class CreateForm
 
         return inventario;
     }
-
+    
     public static WWWForm GetHDForm(string appPassword, string modelo, string fabricante, string Interface, string tamanho, string formaDeArmazenamento,
        string Capacidade, string RPM, string VelocidadeLeitura, string Enterprise)
     {

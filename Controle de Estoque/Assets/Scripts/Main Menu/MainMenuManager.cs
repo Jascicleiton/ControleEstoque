@@ -358,10 +358,7 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(10);
         loginEnabled = true;
         CloseErrorPanel();
-
     }
-
-  
 
     /// <summary>
     /// Closes the ErrorPanel
@@ -372,12 +369,12 @@ public class MainMenuManager : MonoBehaviour
         errorPanel.SetActive(false);
         if (adminAuthorizing)
         {
-            adminAuthorizationPanel.SetActive(false);
+          //  adminAuthorizationPanel.SetActive(false);
             adminAuthorizing = false;
         }
         if (adminAuthorized)
         {
-            newUserPanel.SetActive(false);
+           // newUserPanel.SetActive(false);
             adminAuthorizationPanel.SetActive(false);
         }
         openAddNewUserPanelButton.enabled = true;
@@ -473,5 +470,14 @@ public class MainMenuManager : MonoBehaviour
         loginEnabled = true;
         adminAuthorizing = false;
         inputEnabled = true;
+    }
+
+    public void CloseAdminPanel()
+    {
+        adminUserInput.text = "";
+        adminPasswordInput.text = "";
+        adminAuthorizationPanel.SetActive(false);
+        adminAuthorizing = false;
+        newUserPanel.SetActive(true);
     }
 }

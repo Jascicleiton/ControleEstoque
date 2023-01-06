@@ -18,7 +18,7 @@ public class ConsultInventory : MonoBehaviour
     [SerializeField] private GameObject consultResult;
     [SerializeField] private Transform consultResultTransform;
 
-    [SerializeField] private GameObject caterySearchParametersPanel;
+    [SerializeField] private GameObject categorySearchParametersPanel;
     [SerializeField] private TMP_InputField[] categorySearchInputs;
 
     private ConsultCategory consultCategory = null;
@@ -259,19 +259,19 @@ public class ConsultInventory : MonoBehaviour
         {
             case 0:
                 categoryDP.gameObject.SetActive(true);
-                caterySearchParametersPanel.SetActive(true);
+                categorySearchParametersPanel.SetActive(true);
                 inputField.gameObject.SetActive(false);
                 break;
             case 1:
                 categoryDP.gameObject.SetActive(false);
-                caterySearchParametersPanel.SetActive(false);
+                categorySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
                 numberOfItemsImage.alpha = 0f;
                 break;
             case 2:
                 categoryDP.gameObject.SetActive(false);
-                caterySearchParametersPanel.SetActive(false);
+                categorySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Serial";
                 numberOfItemsImage.alpha = 0f;

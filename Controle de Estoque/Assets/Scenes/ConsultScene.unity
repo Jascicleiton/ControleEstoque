@@ -5762,7 +5762,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 0, y: 150}
+  m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &6915215404974936412
 GameObject:
@@ -7285,7 +7285,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 40}
+  m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6915215405209976946
 GameObject:
@@ -10627,7 +10627,7 @@ MonoBehaviour:
   numberOfItensFoundText: {fileID: 6915215405885928991}
   consultResult: {fileID: 7274859430521039339, guid: 5af0038fbbe8a014d95ce759ee6a0b03, type: 3}
   consultResultTransform: {fileID: 6915215404271023245}
-  caterySearchParametersPanel: {fileID: 6915215404369312449}
+  categorySearchParametersPanel: {fileID: 6915215404369312449}
   categorySearchInputs:
   - {fileID: 6915215404235358712}
   - {fileID: 6915215405203997380}
@@ -11630,7 +11630,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &6915215406059609084
 GameObject:
