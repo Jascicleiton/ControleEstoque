@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using SimpleJSON;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
 {
@@ -17,7 +19,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
 
     [SerializeField] private Transform itemParentTransform = null;
     [SerializeField] private GameObject itemPrefab = null;
-
+    [SerializeField] private ScrollRect scrollRect;
     [HideInInspector] public bool inputEnabled = true;
 
     private void Start()
@@ -32,6 +34,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         NoPaNoSeItemManager newItemManager = newItem.GetComponent<NoPaNoSeItemManager>();
         newItemManager.SetItemInformation(itemName, itemQuantity);
         allitems.noPaNoSeItems.Add(newItemManager.GetItem());
+        StartCoroutine(ScrollToTop());
     }
 
     private IEnumerator StartListRoutine()
@@ -39,7 +42,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         WWWForm itemForm = new WWWForm();
         itemForm.AddField("apppassword", ConstStrings.ImportDatabaseKey);
 
-        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "importallnopanoseitems.php", itemForm);
+        UnityWebRequest createUpdateInventarioRequest = HelperMethods.GetPostRequest(itemForm, "importallnopanoseitems.php", 5);
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
@@ -94,7 +97,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
     {     
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, int.Parse(newItemQuantityInput.text));
 
-        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "addnopanoseitem.php", itemForm);
+        UnityWebRequest createUpdateInventarioRequest = HelperMethods.GetPostRequest(itemForm, "addnopanoseitem.php", 5);
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
@@ -160,5 +163,18 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         newItemPanel.SetActive(true);
         newItemNameInput.text = "";
         newItemQuantityInput.text = "";
+    }
+
+    private IEnumerator ScrollToTop()
+    {
+        yield return new WaitForEndOfFrame();
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 0f;
+        Canvas.ForceUpdateCanvases();
+    }
+
+    public void ReturnToInitialScene()
+    {
+        SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 }
