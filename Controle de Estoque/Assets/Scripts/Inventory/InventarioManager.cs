@@ -57,6 +57,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importinventario.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importinventario.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importinventario.php", getInventario);
                 break;
@@ -156,6 +159,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importhd.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importhd.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importhd.php", getInventario);
                 break;
@@ -249,6 +255,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importmemoria.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importmemoria.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmemoria.php", getInventario);
                 break;
@@ -340,6 +349,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacaderede.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacaderede.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacaderede.php", getInventario);
                 break;
@@ -425,6 +437,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importidrac.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importidrac.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importidrac.php", getInventario);
                 break;
@@ -508,6 +523,9 @@ public class InventarioManager : Singleton<InventarioManager>
                 break;
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacacontroladora.php", getInventario);
+                break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacacontroladora.php", getInventario);
                 break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacacontroladora.php", getInventario);
@@ -594,6 +612,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importprocessador.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importprocessador.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importprocessador.php", getInventario);
                 break;
@@ -675,6 +696,9 @@ public class InventarioManager : Singleton<InventarioManager>
                 break;
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importdesktop.php", getInventario);
+                break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importdesktop.php", getInventario);
                 break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importdesktop.php", getInventario);
@@ -762,6 +786,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importfonte.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importfonte.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importfonte.php", getInventario);
                 break;
@@ -842,6 +869,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importswitch.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importswitch.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importswitch.php", getInventario);
                 break;
@@ -920,6 +950,9 @@ public class InventarioManager : Singleton<InventarioManager>
                 break;
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importroteador.php", getInventario);
+                break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importroteador.php", getInventario);
                 break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importroteador.php", getInventario);
@@ -1002,6 +1035,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importcarregador.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importcarregador.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importcarregador.php", getInventario);
                 break;
@@ -1082,6 +1118,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importadaptadorac.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importadaptadorac.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importadaptadorac.php", getInventario);
                 break;
@@ -1160,6 +1199,9 @@ public class InventarioManager : Singleton<InventarioManager>
                 break;
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importstoragenas.php", getInventario);
+                break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importstoragenas.php", getInventario);
                 break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importstoragenas.php", getInventario);
@@ -1243,6 +1285,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importgbic.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importgbic.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importgbic.php", getInventario);
                 break;
@@ -1320,6 +1365,9 @@ public class InventarioManager : Singleton<InventarioManager>
                 break;
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacadevideo.php", getInventario);
+                break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacadevideo.php", getInventario);
                 break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadevideo.php", getInventario);
@@ -1399,6 +1447,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacadesom.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacadesom.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadesom.php", getInventario);
                 break;
@@ -1477,6 +1528,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacadecapturadevideo.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacadecapturadevideo.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadecapturadevideo.php", getInventario);
                 break;
@@ -1553,6 +1607,9 @@ public class InventarioManager : Singleton<InventarioManager>
                 break;
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importservidor.php", getInventario);
+                break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importservidor.php", getInventario);
                 break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importservidor.php", getInventario);
@@ -1632,6 +1689,9 @@ public class InventarioManager : Singleton<InventarioManager>
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importnotebook.php", getInventario);
                 break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importnotebook.php", getInventario);
+                break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importnotebook.php", getInventario);
                 break;
@@ -1709,6 +1769,9 @@ public class InventarioManager : Singleton<InventarioManager>
                 break;
             case CurrentEstoque.Funsoft:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importmonitor.php", getInventario);
+                break;
+            case CurrentEstoque.ESF:
+                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importmonitor.php", getInventario);
                 break;
             default:
                 getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmonitor.php", getInventario);

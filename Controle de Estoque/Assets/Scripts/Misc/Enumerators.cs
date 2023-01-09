@@ -8,5 +8,6 @@ public enum MessageToShow
 public enum CurrentEstoque
 {
     SnPro,
-    Funsoft
+    Funsoft,
+    ESF
 }

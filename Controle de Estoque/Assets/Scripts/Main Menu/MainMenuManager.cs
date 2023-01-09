@@ -107,6 +107,9 @@ public class MainMenuManager : MonoBehaviour
             case CurrentEstoque.Funsoft:
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderFunsoft + "loginuser.php", loginUserInfo);
                 break;
+            case CurrentEstoque.ESF:
+                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderESF + "loginuser.php", loginUserInfo);
+                break;
             default:
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
                 break;
@@ -186,6 +189,9 @@ public class MainMenuManager : MonoBehaviour
             case CurrentEstoque.Funsoft:
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderFunsoft + "checkuserexist.php", newUserInfo);
                 break;
+            case CurrentEstoque.ESF:
+                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderESF + "checkuserexist.php", newUserInfo);
+                break;
             default:
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
                 break;
@@ -259,6 +265,9 @@ public class MainMenuManager : MonoBehaviour
                 break;
             case CurrentEstoque.Funsoft:
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderFunsoft + "newuser.php", newUserInfo);
+                break;
+            case CurrentEstoque.ESF:
+                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderESF + "newuser.php", newUserInfo);
                 break;
             default:
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);

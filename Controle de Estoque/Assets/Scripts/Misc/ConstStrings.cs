@@ -56,12 +56,21 @@ public class ConstStrings
     #endregion
 
     #region PHP folder URL - Controle de estoque Funsoft
-    public const string PhpRootFolderFunsoft = "https://sysnetpro.com.br/funsoft/";
-    public const string PhpImportTablesFolderFunsoft = "https://sysnetpro.com.br/funsoft/Import/";
-    public const string PhpAdditemsFolderFunsoft = "https://sysnetpro.com.br/funsoft/AddItems/";
-    public const string PhpMovementsFolderFunsoft = "https://sysnetpro.com.br/funsoft/Movements/";
-    public const string PhpUpdateItemsFolderFunsoft = "https://sysnetpro.com.br/funsoft/UpdateItems/";
-    public const string PhpNoPaNoSeItemsFolderFunsoft = "https://sysnetpro.com.br/funsoft/NoPaNoSeItems/";
+    public const string PhpRootFolderFunsoft = "https://sysnetpro.com.br/Funsoft/";
+    public const string PhpImportTablesFolderFunsoft = "https://sysnetpro.com.br/Funsoft/Import/";
+    public const string PhpAdditemsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/AddItems/";
+    public const string PhpMovementsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/Movements/";
+    public const string PhpUpdateItemsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/NoPaNoSeItems/";
+    #endregion
+
+    #region PHP folder URL - Controle de estoque ESF - Encontre sua franquia
+    public const string PhpRootFolderESF = "https://sysnetpro.com.br/ESF/";
+    public const string PhpImportTablesFolderESF = "https://sysnetpro.com.br/ESF/Import/";
+    public const string PhpAdditemsFolderESF = "https://sysnetpro.com.br/ESF/AddItems/";
+    public const string PhpMovementsFolderESF = "https://sysnetpro.com.br/ESF/Movements/";
+    public const string PhpUpdateItemsFolderESF = "https://sysnetpro.com.br/ESF/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolderESF = "https://sysnetpro.com.br/ESF/NoPaNoSeItems/";
     #endregion
 
     #region Save parameters

@@ -64,20 +64,9 @@ public class MovementManager : MonoBehaviour
         {
             itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text,InternalDatabase.Instance.fullDatabase);
             WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
-
-            UnityWebRequest createPostRequest = new UnityWebRequest();
-            switch (InternalDatabase.Instance.currentEstoque)
-            {
-                case CurrentEstoque.SnPro:
-                    createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
-                    break;
-                case CurrentEstoque.Funsoft:
-                    createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolderFunsoft + "consultpatrimonio.php", consultPatrimonioForm);
-                    break;
-                default:
-                    createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultpatrimonio.php", consultPatrimonioForm);
-                    break;
-            }
+           
+            UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
+          
             MouseManager.Instance.SetWaitingCursor();
             inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
@@ -127,8 +116,8 @@ public class MovementManager : MonoBehaviour
         {
             itemToChange = ConsultDatabase.Instance.ConsultSerial(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
             WWWForm consultSerialForm = CreateForm.GetConsultSerialForm(ConstStrings.ConsultKey, itemInformationInput.text);
-            
-            UnityWebRequest createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "consultserial.php", consultSerialForm);
+
+            UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(consultSerialForm, "consultserial.php", 3);
             MouseManager.Instance.SetWaitingCursor();
             inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
@@ -209,19 +198,7 @@ public class MovementManager : MonoBehaviour
             moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
         }
 
-        UnityWebRequest createPostRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
-                break;
-            case CurrentEstoque.Funsoft:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolderFunsoft + "moveitem.php", moveItemForm);
-                break;
-            default:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpMovementsFolder + "moveitem.php", moveItemForm);
-                break;
-        }
+        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(moveItemForm, "moveitem.php", 3);
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
