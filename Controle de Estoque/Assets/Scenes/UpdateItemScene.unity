@@ -28736,6 +28736,7 @@ GameObject:
   - component: {fileID: 6374339779012895445}
   - component: {fileID: 6374339779012895450}
   - component: {fileID: 6374339779012895451}
+  - component: {fileID: 6374339779012895452}
   m_Layer: 5
   m_Name: Return_btn
   m_TagString: Untagged
@@ -28817,9 +28818,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6374339778562580736}
-        m_TargetAssemblyTypeName: UpdateItem, Assembly-CSharp
-        m_MethodName: ReturnToPreviousScreen
+      - m_Target: {fileID: 6374339779012895452}
+        m_TargetAssemblyTypeName: ChangeScreenManager, Assembly-CSharp
+        m_MethodName: ButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28829,6 +28830,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6374339779012895452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374339779012895449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf11f4e3897a5b544be214bf7f8f2d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenes: 3
 --- !u!114 &6374339779491352160
 MonoBehaviour:
   m_ObjectHideFlags: 0

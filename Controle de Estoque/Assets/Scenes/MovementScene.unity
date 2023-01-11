@@ -636,6 +636,7 @@ GameObject:
   - component: {fileID: 280181976}
   - component: {fileID: 280181975}
   - component: {fileID: 280181974}
+  - component: {fileID: 280181977}
   m_Layer: 5
   m_Name: Return_btn
   m_TagString: Untagged
@@ -708,9 +709,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5498536992455823238}
-        m_TargetAssemblyTypeName: MovementManager, Assembly-CSharp
-        m_MethodName: ReturnToPreviousScreen
+      - m_Target: {fileID: 280181977}
+        m_TargetAssemblyTypeName: ChangeScreenManager, Assembly-CSharp
+        m_MethodName: ButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -758,6 +759,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280181972}
   m_CullTransparentMesh: 1
+--- !u!114 &280181977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280181972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf11f4e3897a5b544be214bf7f8f2d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenes: 3
 --- !u!1 &285279857
 GameObject:
   m_ObjectHideFlags: 0

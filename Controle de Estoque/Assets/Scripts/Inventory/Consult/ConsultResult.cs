@@ -287,5 +287,22 @@ public class ConsultResult : MonoBehaviour
                 itemBoxes[i].gameObject.SetActive(false);
             }
         }
+       // ChangeSize();
+    }
+
+    private void ChangeSize()
+    {
+        if(itemBoxes.Length < 10)
+        {
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 210f);
+        }
+        else if( itemBoxes.Length < 20)
+        {
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 370f);
+        }
+        else
+        {
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 550f);
+        }
     }
 }

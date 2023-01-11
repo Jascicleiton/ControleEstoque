@@ -11,3 +11,18 @@ public enum CurrentEstoque
     Funsoft,
     ESF
 }
+
+public enum Scenes
+{
+    SceneMainMenu,
+    SceneConsult,
+    SceneAddRemoveItem,
+    SceneInitial,
+    SceneMovement,
+    SceneSplash,
+    SceneUpdateItem,
+    SceneExportSchets,
+    SceneConsultInventoryAll,
+    SceneConsultDetailsAll,
+    SceneNoPaNoSe
+}

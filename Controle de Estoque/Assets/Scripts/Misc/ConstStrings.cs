@@ -43,6 +43,8 @@ public class ConstStrings
     public const string SceneSplash = "SplashScreen";
     public const string SceneUpdateItem = "UpdateItemScene";
     public const string SceneExportSheets = "ExportCSVsScene";
+    public const string SceneConsultInventoryAll = "ConsultSceneAllinventory";
+    public const string SceneConsultDetailsAll = "ConsultSceneAllDetails";
     public const string SceneNoPaNoSe = "NoPaNoSeScene";
     #endregion
 
