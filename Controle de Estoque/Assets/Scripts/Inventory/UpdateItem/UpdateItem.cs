@@ -1191,7 +1191,7 @@ public class UpdateItem : MonoBehaviour
             #region Monitor
             case ConstStrings.Monitor:
                 WWWForm monitorForm = CreateForm.GetMonitorForm(ConstStrings.UpdateItemKey, parameterInputs[6].text,
-                  parameterInputs[7].text, parameterInputs[9].text, parameterInputs[10].text);
+                  parameterInputs[5].text, parameterInputs[10].text, parameterInputs[11].text);
 
                 UnityWebRequest createMonitorRequest = HelperMethods.GetPostRequest(monitorForm, "updatemonitor.php", 4);
                 yield return createMonitorRequest.SendWebRequest();
@@ -1724,6 +1724,8 @@ public class UpdateItem : MonoBehaviour
             #endregion
             #region Monitor
             case ConstStrings.Monitor:
+                parameterInputs[10].text = itemToUpdate.Polegadas;
+                parameterInputs[11].text = itemToUpdate.QuaisConexoes;
                 parameterNames[10].text = "Polegadas";
                 parameterNames[11].text = "Tipos de entradas";
                 parameterNames[12].text = "";

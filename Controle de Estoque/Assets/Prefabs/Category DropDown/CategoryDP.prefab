@@ -593,6 +593,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Monitor
       m_Image: {fileID: 0}
+    - m_Text: Mouse
+      m_Image: {fileID: 0}
     - m_Text: Notebook
       m_Image: {fileID: 0}
     - m_Text: Placa Controladora
@@ -614,6 +616,8 @@ MonoBehaviour:
     - m_Text: Storage NAS
       m_Image: {fileID: 0}
     - m_Text: Switch
+      m_Image: {fileID: 0}
+    - m_Text: Teclado
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

@@ -495,7 +495,7 @@ MonoBehaviour:
     itens: []
   testingSheet:
     itens: []
-  currentEstoque: 0
+  currentEstoque: 2
 --- !u!114 &2113933708
 MonoBehaviour:
   m_ObjectHideFlags: 0
