@@ -139,7 +139,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 9: // Notebook
+            case 9: // Mouse
                 parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -149,7 +149,17 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 10: // Placa controladora
+            case 10: // Notebook
+                parameterNames[9].text = "";
+                parameterNames[10].text = "";
+                parameterNames[11].text = "";
+                parameterNames[12].text = "";
+                parameterNames[13].text = "";
+                parameterNames[14].text = "";
+                parameterNames[15].text = "";
+                parameterNames[16].text = "";
+                break;
+            case 11: // Placa controladora
                 parameterNames[9].text = "Tipo de conexão";
                 parameterNames[10].text = "Quantas portas?";
                 parameterNames[11].text = "Tipos de RAID";
@@ -159,7 +169,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "Bateria inclusa?";
                 parameterNames[16].text = "Barramento";
                 break;
-            case 11: // Placa de captura de vídeo
+            case 12: // Placa de captura de vídeo
                 parameterNames[9].text = "Quantas entradas?";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -169,7 +179,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 12: // Placa de rede
+            case 13: // Placa de rede
                 parameterNames[9].text = "Interface";
                 parameterNames[10].text = "Quantas portas?";
                 parameterNames[11].text = "Quais portas?";
@@ -179,7 +189,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 13: // Placa de som
+            case 14: // Placa de som
                 parameterNames[9].text = "Quantos canais?";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -189,7 +199,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 14: // Placa de vídeo
+            case 15: // Placa de vídeo
                 parameterNames[9].text = "Quantas entradas?";
                 parameterNames[10].text = "Quais entradas?";
                 parameterNames[11].text = "";
@@ -199,7 +209,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 15: // Processador
+            case 16: // Processador
                 parameterNames[9].text = "Soquete";
                 parameterNames[10].text = "Nº núcleos físicos";
                 parameterNames[11].text = "Nº núcleos lógicos";
@@ -209,7 +219,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 16: // Roteador
+            case 17: // Roteador
                 parameterNames[9].text = "Wireless?";
                 parameterNames[10].text = "Quantas entradas?";
                 parameterNames[11].text = "Banda máx (MB/s)";
@@ -219,7 +229,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 17: // Servidor
+            case 18: // Servidor
                 parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -229,7 +239,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 18: // Storage NAS
+            case 19: // Storage NAS
                 parameterNames[9].text = "Tamanho dos HDs";
                 parameterNames[10].text = "Tipos de RAID";
                 parameterNames[11].text = "Tipo de HD";
@@ -240,9 +250,19 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[16].text = "";
                 break;
 
-            case 19: // Switch
+            case 20: // Switch
                 parameterNames[9].text = "Quantas entradas";
                 parameterNames[10].text = "Capacidade máx de cada porta (MB/s)";
+                parameterNames[11].text = "";
+                parameterNames[12].text = "";
+                parameterNames[13].text = "";
+                parameterNames[14].text = "";
+                parameterNames[15].text = "";
+                parameterNames[16].text = "";
+                break;
+            case 21: // Teclado
+                parameterNames[9].text = "";
+                parameterNames[10].text = "";
                 parameterNames[11].text = "";
                 parameterNames[12].text = "";
                 parameterNames[13].text = "";
@@ -810,8 +830,12 @@ public class AddRemoveItem : MonoBehaviour
 
                 break;
             #endregion
-            #region Notebook
+            #region Mouse
             case 9:
+                break;
+            #endregion
+            #region Notebook
+            case 10:
                 WWWForm notebookForm = CreateForm.GetNotebookForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[5].text);
                 UnityWebRequest createNotebookPostRequest = HelperMethods.GetPostRequest(notebookForm, "addnewitemnotebook.php", 2);
@@ -857,7 +881,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Placa controladora
-            case 10:
+            case 11:
                 WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text, parameterValues[15].text, parameterValues[16].text);
@@ -904,7 +928,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Placa de captura de video
-            case 11:
+            case 12:
                 WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaCapturaVideoForm(ConstStrings.AddNewItemKey, 
                     parameterValues[6].text, parameterValues[9].text);
                 UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = HelperMethods.GetPostRequest(placaDeCapturaDeVideoForm, "addnewitemplacacapturavideo.php", 2);
@@ -950,7 +974,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Placa de rede
-            case 12:
+            case 13:
                 WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[5].text, parameterValues[9].text, parameterValues[10].text, parameterValues[11].text,
                 parameterValues[12].text, parameterValues[13].text);
@@ -998,7 +1022,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Placa de som
-            case 13:
+            case 14:
                 WWWForm placaDeSomForm = CreateForm.GetPlacaSomForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[9].text);
                 UnityWebRequest createPlacaDeSomPostRequest = HelperMethods.GetPostRequest(placaDeSomForm, "addnewitemplacadesom.php", 2);
@@ -1044,7 +1068,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Placa de Video
-            case 14:
+            case 15:
                 WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[9].text, parameterValues[10].text);
                 UnityWebRequest createPlacaDeVideoPostRequest = HelperMethods.GetPostRequest(placaDeVideoForm, "addnewitemplacadevideo.php", 2);
@@ -1090,7 +1114,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Processador
-            case 15:
+            case 16:
                 WWWForm processadorForm = CreateForm.GetProcessadorForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text, parameterValues[14].text);
@@ -1136,7 +1160,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Roteador
-            case 16:
+            case 17:
                 WWWForm roteadorForm = CreateForm.GetRoteadorForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text);
                 UnityWebRequest createRoteadorPostRequest = HelperMethods.GetPostRequest(roteadorForm, "addnewitemroteador.php", 2);
@@ -1182,7 +1206,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Servidor
-            case 17:
+            case 18:
                 WWWForm servidorForm = CreateForm.GetServidorForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[5].text);
                 UnityWebRequest createServidorPostRequest = HelperMethods.GetPostRequest(servidorForm, "addnewitemservidor.php", 2);
@@ -1227,7 +1251,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Storage NAS
-            case 18:
+            case 19:
                 WWWForm storageNasForm = CreateForm.GetStorageNASForm(ConstStrings.AddNewItemKey, parameterValues[6].text,
                 parameterValues[9].text, parameterValues[10].text, parameterValues[11].text, parameterValues[12].text,
                 parameterValues[13].text);
@@ -1273,7 +1297,7 @@ public class AddRemoveItem : MonoBehaviour
                 break;
             #endregion
             #region Switch
-            case 19:
+            case 20:
                 WWWForm switchForm = CreateForm.GetSwitchForm(ConstStrings.AddNewItemKey, parameterValues[6].text, parameterValues[9].text,
                 parameterValues[10].text);
                 UnityWebRequest createSwitchPostRequest = HelperMethods.GetPostRequest(switchForm, "addnewitemswitch.php", 2);
@@ -1318,7 +1342,11 @@ public class AddRemoveItem : MonoBehaviour
                 createSwitchPostRequest.Dispose();
                 break;
             #endregion
+            #region Teclado
+            case 21:
 
+                break;
+            #endregion
             default:
                 break;
         }

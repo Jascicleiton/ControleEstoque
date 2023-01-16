@@ -28,6 +28,8 @@ public class ConstStrings
     public const string Notebook = "Notebook";
     public const string Monitor = "Monitor";
     public const string Movimentacao = "Movimentação";
+    public const string Mouse = "Mouse";
+    public const string Teclado = "Teclado";
     #endregion
 
     #region Tags

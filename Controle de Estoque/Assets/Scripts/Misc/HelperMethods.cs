@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -28,27 +29,31 @@ public class HelperMethods
             case 8:
                 return ConstStrings.Monitor;
             case 9:
-                return ConstStrings.Notebook;
+                return ConstStrings.Mouse;
             case 10:
-                return ConstStrings.PlacaControladora;
+                return ConstStrings.Notebook;
             case 11:
-                return ConstStrings.PlacaDeCapturaDeVideo;
+                return ConstStrings.PlacaControladora;
             case 12:
-                return ConstStrings.PlacaDeRede;
+                return ConstStrings.PlacaDeCapturaDeVideo;
             case 13:
-                return ConstStrings.PlacaDeSom;
+                return ConstStrings.PlacaDeRede;
             case 14:
-                return ConstStrings.PlacaDeVideo;
+                return ConstStrings.PlacaDeSom;
             case 15:
-                return ConstStrings.Processador;
+                return ConstStrings.PlacaDeVideo;
             case 16:
-                return ConstStrings.Roteador;
+                return ConstStrings.Processador;
             case 17:
-                return ConstStrings.Servidor;
+                return ConstStrings.Roteador;
             case 18:
-                return ConstStrings.StorageNAS;
+                return ConstStrings.Servidor;
             case 19:
+                return ConstStrings.StorageNAS;
+            case 20:
                 return ConstStrings.Switch;
+            case 21:
+                return ConstStrings.Teclado;
             default:
                 return "Adicionar nova categoria";
         }
