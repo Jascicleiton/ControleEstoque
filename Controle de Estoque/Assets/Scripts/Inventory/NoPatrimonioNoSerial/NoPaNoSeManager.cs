@@ -43,7 +43,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         itemForm.AddField("apppassword", ConstStrings.ImportDatabaseKey);
 
         UnityWebRequest createUpdateInventarioRequest = HelperMethods.GetPostRequest(itemForm, "importallnopanoseitems.php", 5);
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
 
         yield return createUpdateInventarioRequest.SendWebRequest();
 
@@ -98,7 +98,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, int.Parse(newItemQuantityInput.text));
 
         UnityWebRequest createUpdateInventarioRequest = HelperMethods.GetPostRequest(itemForm, "addnopanoseitem.php", 5);
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
 
         yield return createUpdateInventarioRequest.SendWebRequest();
 

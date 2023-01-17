@@ -38,7 +38,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.UpdateItemKey, item.ItemName, itemNewQuantity);
 
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "updatenopanose.php", itemForm);
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
         
         yield return createUpdateInventarioRequest.SendWebRequest();
 

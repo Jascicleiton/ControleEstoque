@@ -78,7 +78,7 @@ public class UpdateItem : MonoBehaviour
             createItemUpdatePostRequest = HelperMethods.GetPostRequest(itemForm, "getitemserialtoupdate.php", 4);
         }
 
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
         inputEnabled = false;
         yield return createItemUpdatePostRequest.SendWebRequest();
 
@@ -163,7 +163,7 @@ public class UpdateItem : MonoBehaviour
         parameterInputs[6].text, parameterInputs[7].text, parameterInputs[8].text, parameterInputs[9].text);
 
         UnityWebRequest createUpdateInventarioRequest = HelperMethods.GetPostRequest(itemForm, "updateinventario.php", 4);
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
         inputEnabled = false;
         yield return createUpdateInventarioRequest.SendWebRequest();
 

@@ -67,7 +67,7 @@ public class MovementManager : MonoBehaviour
            
             UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
           
-            MouseManager.Instance.SetWaitingCursor();
+            MouseManager.Instance.SetWaitingCursor(this.gameObject);
             inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
             
@@ -118,7 +118,7 @@ public class MovementManager : MonoBehaviour
             WWWForm consultSerialForm = CreateForm.GetConsultSerialForm(ConstStrings.ConsultKey, itemInformationInput.text);
 
             UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(consultSerialForm, "consultserial.php", 3);
-            MouseManager.Instance.SetWaitingCursor();
+            MouseManager.Instance.SetWaitingCursor(this.gameObject);
             inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
             
@@ -199,7 +199,7 @@ public class MovementManager : MonoBehaviour
         }
 
         UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(moveItemForm, "moveitem.php", 3);
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 

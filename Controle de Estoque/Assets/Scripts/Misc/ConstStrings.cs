@@ -30,6 +30,8 @@ public class ConstStrings
     public const string Movimentacao = "Movimentação";
     public const string Mouse = "Mouse";
     public const string Teclado = "Teclado";
+    public const string FoneRamal = "Fone para ramal";
+    public const string Ramal = "Ramal";
     #endregion
 
     #region Tags

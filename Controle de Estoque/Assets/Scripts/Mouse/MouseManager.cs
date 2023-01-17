@@ -16,8 +16,9 @@ public class MouseManager : Singleton<MouseManager>
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
-    public void SetWaitingCursor()
+    public void SetWaitingCursor(GameObject callingObject)
     {
+       // Debug.Log(callingObject.name + " Called");
         Cursor.SetCursor(waitingCursor, Vector2.zero, CursorMode.Auto);
     }
    

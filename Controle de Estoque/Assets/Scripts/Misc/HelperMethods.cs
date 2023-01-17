@@ -17,42 +17,46 @@ public class HelperMethods
             case 2:
                 return ConstStrings.Desktop;
             case 3:
-                return ConstStrings.Fonte;
+                return ConstStrings.FoneRamal;
             case 4:
-                return ConstStrings.Gbic;
+                return ConstStrings.Fonte;
             case 5:
-                return ConstStrings.HD;
+                return ConstStrings.Gbic;
             case 6:
-                return ConstStrings.Idrac;
+                return ConstStrings.HD;
             case 7:
-                return ConstStrings.Memoria;
+                return ConstStrings.Idrac;
             case 8:
-                return ConstStrings.Monitor;
+                return ConstStrings.Memoria;
             case 9:
-                return ConstStrings.Mouse;
+                return ConstStrings.Monitor;
             case 10:
-                return ConstStrings.Notebook;
+                return ConstStrings.Mouse;
             case 11:
-                return ConstStrings.PlacaControladora;
+                return ConstStrings.Notebook;
             case 12:
-                return ConstStrings.PlacaDeCapturaDeVideo;
+                return ConstStrings.PlacaControladora;
             case 13:
-                return ConstStrings.PlacaDeRede;
+                return ConstStrings.PlacaDeCapturaDeVideo;
             case 14:
-                return ConstStrings.PlacaDeSom;
+                return ConstStrings.PlacaDeRede;
             case 15:
-                return ConstStrings.PlacaDeVideo;
+                return ConstStrings.PlacaDeSom;
             case 16:
-                return ConstStrings.Processador;
+                return ConstStrings.PlacaDeVideo;
             case 17:
-                return ConstStrings.Roteador;
+                return ConstStrings.Processador;
             case 18:
-                return ConstStrings.Servidor;
+                return ConstStrings.Roteador;
             case 19:
-                return ConstStrings.StorageNAS;
+                return ConstStrings.Ramal;
             case 20:
-                return ConstStrings.Switch;
+                return ConstStrings.Servidor;
             case 21:
+                return ConstStrings.StorageNAS;
+            case 22:
+                return ConstStrings.Switch;
+            case 23:
                 return ConstStrings.Teclado;
             default:
                 return "Adicionar nova categoria";

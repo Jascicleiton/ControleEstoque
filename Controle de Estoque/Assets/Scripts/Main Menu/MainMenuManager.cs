@@ -114,7 +114,7 @@ public class MainMenuManager : MonoBehaviour
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
                 break;
         }
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
@@ -196,7 +196,7 @@ public class MainMenuManager : MonoBehaviour
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
                 break;
         }
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
@@ -273,7 +273,7 @@ public class MainMenuManager : MonoBehaviour
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
                 break;
         }
-        MouseManager.Instance.SetWaitingCursor();
+        MouseManager.Instance.SetWaitingCursor(this.gameObject);
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
