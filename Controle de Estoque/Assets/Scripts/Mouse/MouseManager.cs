@@ -21,5 +21,11 @@ public class MouseManager : Singleton<MouseManager>
        // Debug.Log(callingObject.name + " Called");
         Cursor.SetCursor(waitingCursor, Vector2.zero, CursorMode.Auto);
     }
-   
+
+    public void SetWaitingCursor()
+    {
+        // Debug.Log(callingObject.name + " Called");
+        Cursor.SetCursor(waitingCursor, Vector2.zero, CursorMode.Auto);
+    }
+
 }

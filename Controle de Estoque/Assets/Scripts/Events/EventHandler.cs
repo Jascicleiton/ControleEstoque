@@ -16,5 +16,15 @@ public static class EventHandler
             DatabaseUpdatedEvent(saveName);
         }
     }
+
+    public static event Action<string> OpenMessageEvent;
+
+    public static void CallOpenMessageEvent(string message)
+    {
+        if(OpenMessageEvent != null)
+        {
+            OpenMessageEvent(message);
+        }
+    }
 }
 

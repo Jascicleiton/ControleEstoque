@@ -9,7 +9,8 @@ public enum CurrentEstoque
 {
     SnPro,
     Funsoft,
-    ESF
+    ESF,
+    Testing
 }
 
 public enum Scenes

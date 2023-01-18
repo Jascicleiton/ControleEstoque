@@ -32,6 +32,7 @@ public class ConstStrings
     public const string Teclado = "Teclado";
     public const string FoneRamal = "Fone para ramal";
     public const string Ramal = "Ramal";
+    public const string Nobreak = "No break";
     #endregion
 
     #region Tags
@@ -77,6 +78,15 @@ public class ConstStrings
     public const string PhpMovementsFolderESF = "https://sysnetpro.com.br/ESF/Movements/";
     public const string PhpUpdateItemsFolderESF = "https://sysnetpro.com.br/ESF/UpdateItems/";
     public const string PhpNoPaNoSeItemsFolderESF = "https://sysnetpro.com.br/ESF/NoPaNoSeItems/";
+    #endregion
+
+    #region PHP folder URL - Testing server
+    public const string PhpRootFolderTesting = "https://sysnetpro.com.br/Testing/";
+    public const string PhpImportTablesFolderTesting = "https://sysnetpro.com.br/Testing/Import/";
+    public const string PhpAdditemsFolderTesting = "https://sysnetpro.com.br/Testing/AddItems/";
+    public const string PhpMovementsFolderTesting = "https://sysnetpro.com.br/Testing/Movements/";
+    public const string PhpUpdateItemsFolderTesting = "https://sysnetpro.com.br/Testing/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolderTesting = "https://sysnetpro.com.br/Testing/NoPaNoSeItems/";
     #endregion
 
     #region Save parameters

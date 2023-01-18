@@ -219,7 +219,7 @@ public class UpdateItem : MonoBehaviour
                 parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
                 parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text);
 
-                UnityWebRequest createUpdateHDRequest = HelperMethods.GetPostRequest(hdForm, "updatehd", 4);
+                UnityWebRequest createUpdateHDRequest = HelperMethods.GetPostRequest(hdForm, "updatehd.php", 4);
                 yield return createUpdateHDRequest.SendWebRequest();
 
                 if (createUpdateHDRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -269,7 +269,7 @@ public class UpdateItem : MonoBehaviour
                 WWWForm memoriaForm = CreateForm.GetMemoriaForm(ConstStrings.UpdateItemKey, parameterInputs[6].text, parameterInputs[5].text,
                 parameterInputs[9].text, parameterInputs[10].text, parameterInputs[11].text, parameterInputs[12].text,
                 parameterInputs[13].text, parameterInputs[14].text, parameterInputs[15].text, parameterInputs[16].text);
-                UnityWebRequest createMemoriaPostRequest = HelperMethods.GetPostRequest(memoriaForm, "updatememoria", 4);
+                UnityWebRequest createMemoriaPostRequest = HelperMethods.GetPostRequest(memoriaForm, "updatememoria.php", 4);
                 yield return createMemoriaPostRequest.SendWebRequest();
 
                 if (createMemoriaPostRequest.result == UnityWebRequest.Result.ConnectionError)
