@@ -28344,6 +28344,8 @@ MonoBehaviour:
   inputsPanel: {fileID: 6637724}
   messagePanel: {fileID: 6374339779706573414}
   messageText: {fileID: 6374339778646548090}
+  resetButton: {fileID: 1219796091}
+  returnButton: {fileID: 6374339779012895451}
 --- !u!222 &6374339778562580738
 CanvasRenderer:
   m_ObjectHideFlags: 0

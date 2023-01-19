@@ -45,6 +45,10 @@ public class MessageManager : MonoBehaviour
             message2 = message;
             OpenMessage();
         }
+        if(message2 == "")
+        {
+            OpenMessage();
+        }
         
     }
 

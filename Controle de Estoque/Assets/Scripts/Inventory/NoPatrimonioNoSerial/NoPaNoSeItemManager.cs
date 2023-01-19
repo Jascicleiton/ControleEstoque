@@ -10,7 +10,9 @@ public class NoPaNoSeItemManager : MonoBehaviour
     [SerializeField] private TMP_Text itemName = null;
     [SerializeField] private TMP_Text itemQuantity = null;
     [SerializeField] private TMP_InputField quantityInput = null;
+    #pragma warning disable CS0219 // Variable is assigned but its value is never used
     [SerializeField] private TMP_InputField whereToInput = null;
+    #pragma warning restore CS0219 // Variable is assigned but its value is never used
 
     private NoPaNoSeItem item = new NoPaNoSeItem();
 

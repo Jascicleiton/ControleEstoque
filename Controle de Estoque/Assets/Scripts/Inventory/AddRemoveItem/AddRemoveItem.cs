@@ -191,7 +191,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 11: // Notebook
+            case 11: // No break
                 parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -201,7 +201,17 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 12: // Placa controladora
+            case 12: // Notebook
+                parameterNames[9].text = "";
+                parameterNames[10].text = "";
+                parameterNames[11].text = "";
+                parameterNames[12].text = "";
+                parameterNames[13].text = "";
+                parameterNames[14].text = "";
+                parameterNames[15].text = "";
+                parameterNames[16].text = "";
+                break;
+            case 13: // Placa controladora
                 parameterNames[9].text = "Tipo de conexão";
                 parameterNames[10].text = "Quantas portas?";
                 parameterNames[11].text = "Tipos de RAID";
@@ -211,7 +221,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "Bateria inclusa?";
                 parameterNames[16].text = "Barramento";
                 break;
-            case 13: // Placa de captura de vídeo
+            case 14: // Placa de captura de vídeo
                 parameterNames[9].text = "Quantas entradas?";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -221,7 +231,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 14: // Placa de rede
+            case 15: // Placa de rede
                 parameterNames[9].text = "Interface";
                 parameterNames[10].text = "Quantas portas?";
                 parameterNames[11].text = "Quais portas?";
@@ -231,7 +241,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 15: // Placa de som
+            case 16: // Placa de som
                 parameterNames[9].text = "Quantos canais?";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -241,7 +251,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 16: // Placa de vídeo
+            case 17: // Placa de vídeo
                 parameterNames[9].text = "Quantas entradas?";
                 parameterNames[10].text = "Quais entradas?";
                 parameterNames[11].text = "";
@@ -251,7 +261,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 17: // Processador
+            case 18: // Processador
                 parameterNames[9].text = "Soquete";
                 parameterNames[10].text = "Nº núcleos físicos";
                 parameterNames[11].text = "Nº núcleos lógicos";
@@ -261,7 +271,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 18: // Ramal
+            case 19: // Ramal
                 parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -271,7 +281,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 19: // Roteador
+            case 20: // Roteador
                 parameterNames[9].text = "Wireless?";
                 parameterNames[10].text = "Quantas entradas?";
                 parameterNames[11].text = "Banda máx (MB/s)";
@@ -281,7 +291,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 20: // Servidor
+            case 21: // Servidor
                 parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";
@@ -291,7 +301,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 21: // Storage NAS
+            case 22: // Storage NAS
                 parameterNames[9].text = "Tamanho dos HDs";
                 parameterNames[10].text = "Tipos de RAID";
                 parameterNames[11].text = "Tipo de HD";
@@ -302,7 +312,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[16].text = "";
                 break;
 
-            case 22: // Switch
+            case 23: // Switch
                 parameterNames[9].text = "Quantas entradas";
                 parameterNames[10].text = "Capacidade máx de cada porta (MB/s)";
                 parameterNames[11].text = "";
@@ -312,7 +322,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameterNames[15].text = "";
                 parameterNames[16].text = "";
                 break;
-            case 23: // Teclado
+            case 24: // Teclado
                 parameterNames[9].text = "";
                 parameterNames[10].text = "";
                 parameterNames[11].text = "";

@@ -67,6 +67,63 @@ public class HelperMethods
         }
     }
 
+    public static int GetCategoryInt(string category)
+    {
+        switch (category)
+        {
+            case ConstStrings.AdaptadorAC:
+                return 0;
+            case ConstStrings.Carregador:
+                return 1;
+            case ConstStrings.Desktop:
+                return 2;
+            case ConstStrings.FoneRamal:
+                return 3;
+            case ConstStrings.Fonte:
+                return 4;
+            case ConstStrings.Gbic:
+                return 5;
+            case ConstStrings.HD:
+                return 6;
+            case ConstStrings.Idrac:
+                return 7;
+            case ConstStrings.Memoria:
+                return 8;
+            case ConstStrings.Monitor:
+                return 9;
+            case ConstStrings.Mouse:
+                return 10;
+            case ConstStrings.Nobreak:
+                return 11;
+            case ConstStrings.Notebook:
+                return 12;
+            case ConstStrings.PlacaControladora:
+                return 13;
+            case ConstStrings.PlacaDeCapturaDeVideo:
+                return 14;
+            case ConstStrings.PlacaDeRede:
+                return 15;
+            case ConstStrings.PlacaDeSom:
+                return 16;
+            case ConstStrings.PlacaDeVideo:
+                return 17;
+            case ConstStrings.Processador:
+                return 18;
+            case ConstStrings.Roteador:
+                return 19;
+            case ConstStrings.Ramal:
+                return 20;
+            case ConstStrings.Servidor: 
+                return 21;
+            case ConstStrings.StorageNAS:
+                return 22;
+            case ConstStrings.Switch:
+                return 23;
+            default:
+                return 666;
+        }
+    }
+
     /// <summary>
     /// Root = 0, Import = 1, AddItem = 2, Movements = 3, Update = 4, NoPaNoSe = 5
     /// </summary>
