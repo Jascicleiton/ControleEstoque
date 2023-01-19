@@ -26,5 +26,25 @@ public static class EventHandler
             OpenMessageEvent(message);
         }
     }
+
+    public static event Action<bool> EnableInput;
+
+    public static void CallEnableInput(bool inputEnabled)
+    {
+        if(EnableInput != null)
+        {
+            EnableInput(inputEnabled);
+        }
+    }
+
+    public static event Action MessageClosed;
+
+    public static void CallMessageClosed()
+    {
+        if(MessageClosed != null)
+        {
+            MessageClosed();
+        }
+    }
 }
 

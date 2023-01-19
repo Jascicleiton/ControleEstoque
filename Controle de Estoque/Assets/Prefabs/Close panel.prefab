@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warningMessagePanel: {fileID: 5810954883830316221}
+  closeButton: {fileID: 5810954883483016221}
 --- !u!1 &5810954883559374556
 GameObject:
   m_ObjectHideFlags: 0

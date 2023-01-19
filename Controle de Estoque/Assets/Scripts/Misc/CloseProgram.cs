@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CloseProgram : MonoBehaviour
 {
     private static bool showWarningMessage = true;
     [SerializeField] private GameObject warningMessagePanel = null;
+    [SerializeField] private Button closeButton;
     
     private void Awake()
     {
@@ -16,6 +18,29 @@ public class CloseProgram : MonoBehaviour
             showWarningMessage = true;
         }
        
+    }
+
+    private void Start()
+    {
+        if(closeButton == null)
+        {
+            closeButton = GetComponent<Button>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        EventHandler.EnableInput += EnableInput; 
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.EnableInput -= EnableInput;
+    }
+
+    private void EnableInput(bool enableInput)
+    {
+        closeButton.enabled = enableInput;
     }
 
     private void SaveWarningMessageValue()

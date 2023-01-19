@@ -261,12 +261,12 @@ public class HelperMethods
             else if(response == "Patrimônio found")
             {
                 addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Patrimônio duplicado");
+                EventHandler.CallOpenMessageEvent("Patrimônio já existe");
             }
             else if (response == "Serial found")
             {
                 addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Serial duplicado");
+                EventHandler.CallOpenMessageEvent("Serial já existe");
             }
             #region Check if already exists Queries
             else if (response == "Patrimônio query failed")
@@ -306,6 +306,12 @@ public class HelperMethods
                 addUpdateResponse = true;
                 EventHandler.CallOpenMessageEvent("Worked");
             }
+            else if (response == "Updated")
+            {
+                Debug.Log("Updated");
+                addUpdateResponse = true;
+                EventHandler.CallOpenMessageEvent("Updated");
+            }
             else
             {
                 Debug.LogWarning("AddUpdate: " + response);
@@ -327,6 +333,7 @@ public class HelperMethods
     /// </summary>
     public static IEnumerator AddUpdateItem(int catedoryDpValue, int folderID, List<string> parameters, bool addInventario)
     {
+        EventHandler.CallEnableInput(false);
         string appKey = "";
         string phpName = "";
         if (folderID == 2)
@@ -343,7 +350,6 @@ public class HelperMethods
         {
             //returnResponse = "Wrong or invalid folderID";
         }
-        Debug.Log("Category ID: " + catedoryDpValue);
         if (addInventario)
         {
             WWWForm itemForm = CreateForm.GetInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
@@ -355,6 +361,11 @@ public class HelperMethods
             yield return createUpdateInventarioRequest.SendWebRequest();
 
             SendWebRequestHandler(createUpdateInventarioRequest);
+            if (!addUpdateResponse)
+            {
+                EventHandler.CallOpenMessageEvent("Inventario Failed");
+                yield break;
+            }
         }       
         else
         {
@@ -593,6 +604,7 @@ public class HelperMethods
                 #region Mouse
                 case ConstStrings.Mouse:
                     addUpdateResponse = true;
+                    EventHandler.CallOpenMessageEvent("Worked");
                     //  WWWForm mouseForm = CreateForm.GetMouseForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     //parameters[4], parameters[5]);
 
@@ -606,6 +618,7 @@ public class HelperMethods
                 #region Teclado
                 case ConstStrings.Teclado:
                     addUpdateResponse = true;
+                    EventHandler.CallOpenMessageEvent("Worked");
                     //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     //parameters[4], parameters[5]);
 
@@ -619,6 +632,7 @@ public class HelperMethods
                 #region Fone ramal
                 case ConstStrings.FoneRamal:
                     addUpdateResponse = true;
+                    EventHandler.CallOpenMessageEvent("Worked");
                     //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     //parameters[4], parameters[5]);
 
@@ -632,6 +646,7 @@ public class HelperMethods
                 #region Ramal
                 case ConstStrings.Ramal:
                     addUpdateResponse = true;
+                    EventHandler.CallOpenMessageEvent("Worked");
                     //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     //parameters[4], parameters[5]);
 
@@ -645,6 +660,7 @@ public class HelperMethods
                 #region Nobreak
                 case ConstStrings.Nobreak:
                     addUpdateResponse = true;
+                    EventHandler.CallOpenMessageEvent("Worked");
                     //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     //parameters[4], parameters[5]);
 

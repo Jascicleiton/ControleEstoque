@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AddRemoveItem : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class AddRemoveItem : MonoBehaviour
     [SerializeField] private TMP_InputField[] parameterValues;
     [SerializeField] private GameObject[] itensToShow;
     [SerializeField] private TMP_Dropdown categoryDP;
+    [SerializeField] private Button resetButton;
+    [SerializeField] private Button returnButton;
+    [SerializeField] private Button addButton;
+    [SerializeField] private Button addDetailsButton;
 
     [SerializeField] GameObject messagePanel;
     [SerializeField] TMP_Text messageText;
@@ -23,12 +28,32 @@ public class AddRemoveItem : MonoBehaviour
         UpdateNames();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && messagePanel.activeInHierarchy)
+        EventHandler.MessageClosed += MessageClosed;
+        EventHandler.EnableInput += SetInputEnabled;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.MessageClosed -= MessageClosed;
+        EventHandler.EnableInput -= SetInputEnabled;
+    }
+
+    private void SetInputEnabled(bool inputEnabled)
+    {
+        for (int i = 0; i < parameterValues.Length; i++)
         {
-            CloseMessage();
+            if (parameterValues[i].gameObject.activeInHierarchy)
+            {
+                parameterValues[i].interactable = inputEnabled;
+            }
         }
+        categoryDP.interactable = inputEnabled;
+        resetButton.interactable = inputEnabled;
+        returnButton.interactable = inputEnabled;
+        addButton.interactable = inputEnabled;
+        addDetailsButton.interactable = inputEnabled;
     }
 
     /// <summary>
@@ -318,43 +343,12 @@ public class AddRemoveItem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Shows the message that the item was added
-    /// </summary>
-    private void ShowMessage(MessageToShow message)
-    {
-        messagePanel.SetActive(true);
-        switch (message)
-        {
-            case MessageToShow.Success:
-                messageText.text = "Item adicionado com sucesso";
-                break;
-            case MessageToShow.Failure:
-                messageText.text = "Ocorreu algum erro ao adicionar o item. Contate seu administrador.";
-                break;
-            case MessageToShow.Duplicate:
-                messageText.text = "Item já consta no banco de dados";
-                break;
-            default:
-                break;
-        }
-
-        StartCoroutine(CloseMessageRoutine());
-    }
-
-    /// <summary>
-    /// Wait for a few seconds before automatically closing the message
-    /// </summary>
-    private IEnumerator CloseMessageRoutine()
-    {
-        yield return new WaitForSeconds(5f);
-        CloseMessage();
-    }
-
     private IEnumerator AddNewItemRoutine(bool addInventario)
     {
+#pragma warning disable CS0219 // Variable is assigned but its value is never used
         bool addDetalheSuccess = false;
-        bool addInventarioSucsess = false;
+#pragma warning restore CS0219 // Variable is assigned but its value is never used
+        bool addInventarioSuccess = false;
         if (addInventario)
         {
             #region Add new item to Inventario
@@ -370,20 +364,21 @@ public class AddRemoveItem : MonoBehaviour
             parameters.Add(parameterValues[7].text);
             parameters.Add("");
             parameters.Add(parameterValues[8].text);
-            
+
             yield return HelperMethods.AddUpdateItem(categoryDP.value, 2, parameters, true);
 
-            if(HelperMethods.GetAddUpdateResponse())
+            if (HelperMethods.GetAddUpdateResponse())
             {
-                addInventarioSucsess = true;
+                addInventarioSuccess = true;
                 // success
             }
             else
             {
-                addInventarioSucsess = false;
+                addInventarioSuccess = false;
+                addDetalheSuccess = false;
                 // fail
             }
-           
+
             #endregion
         }
         switch (HelperMethods.GetCategoryString(categoryDP.value))
@@ -394,8 +389,8 @@ public class AddRemoveItem : MonoBehaviour
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[9].text);
                 parameters.Add(parameterValues[10].text);
-                parameters.Add(parameterValues[11].text);        
-                             break;
+                parameters.Add(parameterValues[11].text);
+                break;
             #endregion
             #region Carregador
             case ConstStrings.Carregador:
@@ -403,7 +398,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[9].text);
                 parameters.Add(parameterValues[10].text);
-                parameters.Add(parameterValues[11].text);       
+                parameters.Add(parameterValues[11].text);
                 break;
             #endregion
             #region Desktop
@@ -418,7 +413,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameters.Add(parameterValues[14].text);
                 parameters.Add(parameterValues[15].text);
                 parameters.Add(parameterValues[16].text);
-                               break;
+                break;
             #endregion
             #region Fone para ramal
             case ConstStrings.FoneRamal:
@@ -453,7 +448,7 @@ public class AddRemoveItem : MonoBehaviour
                 parameters.Add(parameterValues[13].text);
                 parameters.Add(parameterValues[14].text);
                 parameters.Add(parameterValues[15].text);
-break;
+                break;
             #endregion
             #region iDrac
             case ConstStrings.Idrac:
@@ -464,7 +459,7 @@ break;
                 parameters.Add(parameterValues[10].text);
                 parameters.Add(parameterValues[11].text);
                 parameters.Add(parameterValues[12].text);
-                                break;
+                break;
             #endregion
             #region Memoria
             case ConstStrings.Memoria:
@@ -479,7 +474,7 @@ break;
                 parameters.Add(parameterValues[14].text);
                 parameters.Add(parameterValues[15].text);
                 parameters.Add(parameterValues[16].text);
-                                                break;
+                break;
             #endregion
             #region Monitor
             case ConstStrings.Monitor:
@@ -498,7 +493,7 @@ break;
             case ConstStrings.Notebook:
                 parameters.Clear();
                 parameters.Add(parameterValues[6].text);
-                parameters.Add(parameterValues[5].text);               
+                parameters.Add(parameterValues[5].text);
                 break;
             #endregion
             #region Placa controladora
@@ -507,12 +502,12 @@ break;
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[9].text);
                 parameters.Add(parameterValues[10].text);
-                parameters.Add(parameterValues[11].text); 
+                parameters.Add(parameterValues[11].text);
                 parameters.Add(parameterValues[12].text);
                 parameters.Add(parameterValues[13].text);
                 parameters.Add(parameterValues[14].text);
                 parameters.Add(parameterValues[15].text);
-                parameters.Add(parameterValues[16].text);                
+                parameters.Add(parameterValues[16].text);
                 break;
             #endregion
             #region Placa de captura de video
@@ -520,25 +515,26 @@ break;
                 parameters.Clear();
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[9].text);
-       break;
+                break;
             #endregion
             #region Placa de rede
             case ConstStrings.PlacaDeRede:
                 parameters.Clear();
                 parameters.Add(parameterValues[6].text);
+                parameters.Add(parameterValues[5].text);
                 parameters.Add(parameterValues[9].text);
                 parameters.Add(parameterValues[10].text);
                 parameters.Add(parameterValues[11].text);
                 parameters.Add(parameterValues[12].text);
                 parameters.Add(parameterValues[13].text);
-               break;
+                break;
             #endregion
             #region Placa de som
             case ConstStrings.PlacaDeSom:
                 parameters.Clear();
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[9].text);
-              break;
+                break;
             #endregion
             #region Placa de Video
             case ConstStrings.PlacaDeVideo:
@@ -546,7 +542,7 @@ break;
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[9].text);
                 parameters.Add(parameterValues[10].text);
-               break;
+                break;
             #endregion
             #region Processador
             case ConstStrings.Processador:
@@ -558,7 +554,7 @@ break;
                 parameters.Add(parameterValues[12].text);
                 parameters.Add(parameterValues[13].text);
                 parameters.Add(parameterValues[14].text);
-                               break;
+                break;
             #endregion
             #region Ramal
             case ConstStrings.Ramal:
@@ -571,7 +567,7 @@ break;
                 parameters.Add(parameterValues[9].text);
                 parameters.Add(parameterValues[10].text);
                 parameters.Add(parameterValues[11].text);
-                parameters.Add(parameterValues[12].text);               
+                parameters.Add(parameterValues[12].text);
                 break;
             #endregion
             #region Servidor
@@ -579,7 +575,7 @@ break;
                 parameters.Clear();
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[5].text);
-              break;
+                break;
             #endregion
             #region Storage NAS
             case ConstStrings.StorageNAS:
@@ -590,7 +586,7 @@ break;
                 parameters.Add(parameterValues[11].text);
                 parameters.Add(parameterValues[12].text);
                 parameters.Add(parameterValues[13].text);
-               break;
+                break;
             #endregion
             #region Switch
             case ConstStrings.Switch:
@@ -598,7 +594,7 @@ break;
                 parameters.Add(parameterValues[6].text);
                 parameters.Add(parameterValues[9].text);
                 parameters.Add(parameterValues[10].text);
-               break;
+                break;
             #endregion
             #region Teclado
             case ConstStrings.Teclado:
@@ -614,38 +610,33 @@ break;
                 break;
         }
 
-        yield return HelperMethods.AddUpdateItem(categoryDP.value, 2, parameters,false);
-
+        yield return HelperMethods.AddUpdateItem(categoryDP.value, 2, parameters, false);
         if (HelperMethods.GetAddUpdateResponse())
         {
             addDetalheSuccess = true;
-            // success
         }
         else
         {
             addDetalheSuccess = false;
-            // fail
         }
-        MouseManager.Instance.SetDefaultCursor();
-        if (addDetalheSuccess)
+        if (!addInventario)
+        {
+            EventHandler.CallOpenMessageEvent("Worked");
+            addInventarioSuccess = true;
+        }
+
+        if (addInventarioSuccess)
         {
             AddItem();
-            ShowMessage(MessageToShow.Success);
-        }
-        else
-        {
-            ShowMessage(MessageToShow.Failure);
         }
     }
 
     /// <summary>
     /// Close the message. It is public to be used on the button too
     /// </summary>
-    public void CloseMessage()
+    public void MessageClosed()
     {
         UpdateNames();
-        messagePanel.SetActive(false);
-        StopAllCoroutines();
         MouseManager.Instance.SetDefaultCursor();
     }
 
