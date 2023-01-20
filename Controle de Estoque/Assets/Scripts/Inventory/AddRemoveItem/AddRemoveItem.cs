@@ -388,8 +388,12 @@ public class AddRemoveItem : MonoBehaviour
                 addDetalheSuccess = false;
                 // fail
             }
-
+            EventHandler.CallIsOneMessageOnlyEvent(false);
             #endregion
+        }
+        else
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
         }
         switch (HelperMethods.GetCategoryString(categoryDP.value))
         {
@@ -648,6 +652,7 @@ public class AddRemoveItem : MonoBehaviour
     {
         UpdateNames();
         MouseManager.Instance.SetDefaultCursor();
+        SetInputEnabled(true);
     }
 
     /// <summary>

@@ -26,7 +26,7 @@ public class UpdateItem : MonoBehaviour
     [SerializeField] Button returnButton;
 
     private bool searchingItem = true;
-    private bool inputEnabled = true;
+    [SerializeField] private bool inputEnabled = true;
 
     private List<string> parameters = new List<string>();
     private ItemColumns itemToUpdate;
@@ -35,12 +35,14 @@ public class UpdateItem : MonoBehaviour
     private int itemToUpdateCategoryIndex;
 
     private bool updateInventarioSuccess = false;
+#pragma warning disable CS0219
     private bool updateDetailsSuccess = false;
-
+#pragma warning restore CS0219
     void Start()
     {
         ResetInputs();
         itemToUpdate = new ItemColumns();
+        inputEnabled = true;
     }
 
     private void OnEnable()
@@ -60,10 +62,11 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (inputEnabled)
         {
-            if (inputEnabled)
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
+                print("enter");
                 inputEnabled = false;
                 if (searchingItem)
                 {
@@ -114,16 +117,16 @@ public class UpdateItem : MonoBehaviour
         MouseManager.Instance.SetWaitingCursor(this.gameObject);
         EventHandler.CallEnableInput(false);
         yield return createItemUpdatePostRequest.SendWebRequest();
-
+        EventHandler.CallIsOneMessageOnlyEvent(true);
         if (createItemUpdatePostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
             Debug.LogWarning("CheckIfItemExists: conectionerror");
-            EventHandler.CallOpenMessageEvent("Server error: 1");
+                        EventHandler.CallOpenMessageEvent("Server error: 1");
         }
         else if (createItemUpdatePostRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
             Debug.LogWarning("CheckIfItemExists: data processing error");
-            EventHandler.CallOpenMessageEvent("Server error: 2");
+                   EventHandler.CallOpenMessageEvent("Server error: 2");
         }
         else if (createItemUpdatePostRequest.result == UnityWebRequest.Result.ProtocolError)
         {
@@ -170,6 +173,7 @@ public class UpdateItem : MonoBehaviour
                     itemToUpdate.Saida = item[8];
                     itemToUpdate.Observacao = item[9];
                     itemToUpdate.Aquisicao = item[10];
+                    
                 }
                 if (inventario == null)
                 {
@@ -192,17 +196,20 @@ public class UpdateItem : MonoBehaviour
         {
             searchingItem = false;
             inputsPanel.SetActive(true);
+            EventHandler.CallEnableInput(true);
             ShowUpdateItem();
+           
         }
         else
         {
             searchingItem = true;
-            //ShowMessage();
+            EventHandler.CallOpenMessageEvent("Item a ser atualizado não foi encontrado");
         }
     }
     
     private IEnumerator UpdateDatabaseRoutine()
     {
+        EventHandler.CallIsOneMessageOnlyEvent(false);
         #region Update inventario
         parameters.Clear();
         parameters.Add(itemToUpdate.Aquisicao);
@@ -609,6 +616,7 @@ public class UpdateItem : MonoBehaviour
         parameterInputs[4].text = itemToUpdate.Categoria;
         parameterInputs[5].text = itemToUpdate.Fabricante;
         parameterInputs[6].text = itemToUpdate.Modelo;
+        parameterInputs[6].interactable = false;
         parameterInputs[7].text = itemToUpdate.Local;
         parameterInputs[7].interactable = false;
         parameterInputs[8].text = itemToUpdate.Saida;
@@ -964,37 +972,10 @@ public class UpdateItem : MonoBehaviour
     }
 
     /// <summary>
-    /// Show message if item to update was not found and, if it was found sho message that item was updated
-    /// </summary>
-    //private void ShowMessage()
-    //{
-    //    messagePanel.SetActive(true);
-    //    if (itemToUpdate == null)
-    //    {
-    //        messageText.text = "Item não encontrado. Confira se o parâmetro digitado está correto";
-    //    }
-    //    else
-    //    {
-    //        messageText.text = "Item atualizado com sucesso";
-    //    }
-    //    StartCoroutine(CloseShowMessagePanelRoutine());
-    //}
-
-    ///// <summary>
-    ///// Wait a few seconds to close the MessagePanel
-    ///// </summary>
-    //private IEnumerator CloseShowMessagePanelRoutine()
-    //{
-    //    yield return new WaitForSeconds(10f);
-    //    CloseMessagePanel();
-    //}
-
-    /// <summary>
     /// Resets the texts on all inputs
     /// </summary>
     private void ResetInputs()
     {
-        inputEnabled = false;
         inputsPanel.SetActive(true);
         for (int i = 0; i < parameterItems.Length; i++)
         {
@@ -1003,16 +984,22 @@ public class UpdateItem : MonoBehaviour
             parameterNames[i].text = "";
             placeholders[i].text = "Digite o valor";
         }       
-        inputsPanel.SetActive(false);
-        inputEnabled = true;
+        inputsPanel.SetActive(false);      
     }
 
     public void MessageClosed()
     {
-        ResetInputs();
         searchingItem = true;
+        ResetInputs();
+        
         itemToUpdateParameter.text = "";
         MouseManager.Instance.SetDefaultCursor();
+        StartCoroutine(WaitASecond());
+        }
+    private IEnumerator WaitASecond()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        EventHandler.CallEnableInput(true);
     }
 
     /// <summary>

@@ -27,6 +27,16 @@ public static class EventHandler
         }
     }
 
+    public static event Action<bool> IsOneMessageOnlyEvent;
+
+    public static void CallIsOneMessageOnlyEvent(bool isOneMessageOnly)
+    {
+        if(IsOneMessageOnlyEvent != null)
+        {
+            IsOneMessageOnlyEvent(isOneMessageOnly);
+        }
+    }
+
     public static event Action<bool> EnableInput;
 
     public static void CallEnableInput(bool inputEnabled)

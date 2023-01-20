@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 public class HelperMethods
 {
     public static bool addUpdateResponse = false;
+    public static bool isSingleMessage = false;
 
     public static string GetCategoryString(int value)
     {
@@ -390,6 +391,7 @@ public class HelperMethods
     /// </summary>
     public static IEnumerator AddUpdateItem(int catedoryDpValue, int folderID, List<string> parameters, bool addInventario)
     {
+        isSingleMessage = !addInventario;
         EventHandler.CallEnableInput(false);
         string appKey = "";
         string phpName = "";
@@ -420,6 +422,7 @@ public class HelperMethods
             SendWebRequestHandler(createUpdateInventarioRequest);
             if (!addUpdateResponse)
             {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Inventario Failed");
                 yield break;
             }

@@ -11,10 +11,13 @@ public class MessageManager : MonoBehaviour
     private string message1 = "";
     private string message2 = "";
     private bool inputEnabled = false;
+    private bool isOnlyOneMessage = false;
+
     private void Update()
     {
         if (inputEnabled)
         {
+            print(inputEnabled);
             if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && messagePanel.activeInHierarchy)
             {
                 CloseMessage();
@@ -26,40 +29,53 @@ public class MessageManager : MonoBehaviour
     {
         EventHandler.OpenMessageEvent += MessageReceived;
         EventHandler.EnableInput += SetInputEnabled;
+        EventHandler.IsOneMessageOnlyEvent += SetIsOneMessageOnly;
     }
 
     private void OnDisable()
     {
         EventHandler.OpenMessageEvent -= MessageReceived;
         EventHandler.EnableInput -= SetInputEnabled;
+        EventHandler.IsOneMessageOnlyEvent -= SetIsOneMessageOnly;
     }
 
     private void MessageReceived(string message)
     {
-        if (message1 == "")
+        if (isOnlyOneMessage)
         {
             message1 = message;
+            OpenMessage();
         }
         else
         {
-            message2 = message;
-            OpenMessage();
-        }
-        if(message2 == "")
-        {
-            OpenMessage();
-        }
-        
+            if (message1 == "")
+            {
+                message1 = message;
+            }
+            else
+            {
+                message2 = message;
+                OpenMessage();
+            }
+        }   
+    }
+
+    private void SetIsOneMessageOnly(bool value)
+    {
+        isOnlyOneMessage = value;
     }
 
     private void SetInputEnabled(bool inputEnabled)
     {
+        
         this.inputEnabled = !inputEnabled;
     }
 
     private void OpenMessage()
     {
+        MouseManager.Instance.SetDefaultCursor();
         EventHandler.CallEnableInput(false);
+        inputEnabled = true;
         messagePanel.SetActive(true);
         if((message1 == "Worked" && message2 == "Worked") || (message1 == "Updated" && message2 == "Updated"))
         {
@@ -74,7 +90,7 @@ public class MessageManager : MonoBehaviour
             
             //full success
         }
-        else if ((message1 == "Worked" && message2 != "Worked") || (message1 == "Updated" && message2 != "Updated"))
+        else if ((message1 == "Worked" && message2 != "Worked") || (message1 == "Updated" && (message2 != "Updated" ||message2 != "Worked")))
         {
             if (message1 == "Worked")
             {
@@ -92,6 +108,7 @@ public class MessageManager : MonoBehaviour
         StartCoroutine(CloseMessageRoutine());
         message1 = "";
         message2 = "";
+        inputEnabled = true;
     }
 
     public void CloseMessage()
@@ -101,8 +118,9 @@ public class MessageManager : MonoBehaviour
         message2 = "";
         messagePanel.SetActive(false);
         StopAllCoroutines();
-        EventHandler.CallEnableInput(true);
+        
         EventHandler.CallMessageClosed();
+        //EventHandler.CallEnableInput(true);
     }
 
     private IEnumerator CloseMessageRoutine()
