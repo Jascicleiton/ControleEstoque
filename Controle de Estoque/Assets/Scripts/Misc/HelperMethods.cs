@@ -270,7 +270,7 @@ public class HelperMethods
         }
 
         requestToSend = UnityWebRequest.Post(folder + phpName, form);
-        
+        Debug.Log(folder + phpName);
         return requestToSend;
     }
 

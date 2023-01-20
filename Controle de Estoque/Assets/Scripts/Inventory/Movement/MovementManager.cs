@@ -191,15 +191,23 @@ public class MovementManager : MonoBehaviour
         WWWForm moveItemForm = new WWWForm();
         if (itemInformationDP.value == 0)
         {
-            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, 
+            itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), 
+            fromInput.text, toInput.text);
         }
         else if (itemInformationDP.value == 1)
         {
-            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("ddMMyyyy"), fromInput.text, toInput.text);
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), fromInput.text, toInput.text);
         }
+        print(itemToChange.Patrimonio);
+        print(itemToChange.Serial);
+        print(UsersManager.Instance.currentUser.username);
+        print(DateTime.Now.ToString("dd/MM/yyyy"));
+        print(fromInput.text);
+        print(toInput.text);
 
         UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(moveItemForm, "moveitem.php", 3);
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
