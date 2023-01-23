@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Unity.VisualScripting;
 
 public static class EventHandler
 {
@@ -54,6 +54,16 @@ public static class EventHandler
         if(MessageClosed != null)
         {
             MessageClosed();
+        }
+    }
+
+    public static event Action<bool> ImportFinished;
+
+    public static void CallImportFinished(bool isInventory)
+    {
+        if(ImportFinished != null)
+        {
+            ImportFinished(isInventory);
         }
     }
 }

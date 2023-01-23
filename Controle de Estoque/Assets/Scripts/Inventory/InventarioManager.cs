@@ -116,7 +116,7 @@ public class InventarioManager : Singleton<InventarioManager>
                         newRow.Aquisicao = item[10];
                         tempSheet.itens.Add(newRow);
                     }
-                   
+                    EventHandler.CallImportFinished(true);
                 }
                 else
                 {
@@ -217,7 +217,7 @@ public class InventarioManager : Singleton<InventarioManager>
                     newRow.Categoria = ConstStrings.HD;
                     tempSheet.itens.Add(newRow);
                 }
-      
+                EventHandler.CallImportFinished(false);
             }
         }
         else
@@ -312,6 +312,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
         else
@@ -404,6 +405,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -491,6 +493,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -581,6 +584,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
         getInventarioRequest.Dispose();
@@ -666,6 +670,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
         getInventarioRequest.Dispose();
@@ -753,6 +758,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -837,6 +843,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -919,6 +926,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -1003,6 +1011,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -1086,6 +1095,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -1169,6 +1179,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
         getInventarioRequest.Dispose();
@@ -1253,6 +1264,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -1335,6 +1347,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
         getInventarioRequest.Dispose();
@@ -1416,6 +1429,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
         getInventarioRequest.Dispose();
@@ -1496,6 +1510,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -1577,6 +1592,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
         getInventarioRequest.Dispose();
@@ -1657,6 +1673,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -1738,6 +1755,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
@@ -1820,6 +1838,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
                     tempSheet.itens.Add(newRow);
                 }
+                EventHandler.CallImportFinished(false);
             }
         }
 
