@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class ConstStrings
 {
     #region Save files
@@ -33,6 +35,15 @@ public class ConstStrings
     public const string FoneRamal = "Fone para ramal";
     public const string Ramal = "Ramal";
     public const string Nobreak = "No break";
+    #endregion
+
+    #region Categories arrays
+    public static readonly string[] AllCategories = { AdaptadorAC, Carregador, Desktop, FoneRamal, Fonte, Gbic, HD, Idrac, Memoria, Monitor, 
+    Mouse, Nobreak, Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Ramal, 
+    Servidor, StorageNAS, Switch, Teclado };
+    public static readonly string[] SNPCategories = { AdaptadorAC, Carregador, Desktop, Fonte, Gbic, HD, Idrac, Memoria, Monitor, Nobreak, 
+    Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Servidor, StorageNAS, 
+    Switch };
     #endregion
 
     #region Tags

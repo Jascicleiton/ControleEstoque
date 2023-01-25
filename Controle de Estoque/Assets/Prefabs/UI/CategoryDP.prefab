@@ -456,6 +456,7 @@ GameObject:
   - component: {fileID: 1923040632725810633}
   - component: {fileID: 1923040632725810632}
   - component: {fileID: 1923040632725810631}
+  - component: {fileID: 4864874382610716099}
   m_Layer: 5
   m_Name: CategoryDP
   m_TagString: Untagged
@@ -573,57 +574,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Adaptador AC
-      m_Image: {fileID: 0}
-    - m_Text: Carregador
-      m_Image: {fileID: 0}
-    - m_Text: Desktop
-      m_Image: {fileID: 0}
-    - m_Text: Fonte
-      m_Image: {fileID: 0}
-    - m_Text: Fone para ramal
-      m_Image: {fileID: 0}
-    - m_Text: GBIC
-      m_Image: {fileID: 0}
-    - m_Text: HD
-      m_Image: {fileID: 0}
-    - m_Text: iDrac
-      m_Image: {fileID: 0}
-    - m_Text: "Mem\xF3ria"
-      m_Image: {fileID: 0}
-    - m_Text: Monitor
-      m_Image: {fileID: 0}
-    - m_Text: Mouse
-      m_Image: {fileID: 0}
-    - m_Text: No break
-      m_Image: {fileID: 0}
-    - m_Text: Notebook
-      m_Image: {fileID: 0}
-    - m_Text: Placa Controladora
-      m_Image: {fileID: 0}
-    - m_Text: "Placa de captura de v\xEDdeo"
-      m_Image: {fileID: 0}
-    - m_Text: Placa de Rede
-      m_Image: {fileID: 0}
-    - m_Text: Placa de som
-      m_Image: {fileID: 0}
-    - m_Text: "Placa de v\xEDdeo"
-      m_Image: {fileID: 0}
-    - m_Text: Processador
-      m_Image: {fileID: 0}
-    - m_Text: Ramal
-      m_Image: {fileID: 0}
-    - m_Text: Roteador
-      m_Image: {fileID: 0}
-    - m_Text: Servidor
-      m_Image: {fileID: 0}
-    - m_Text: Storage NAS
-      m_Image: {fileID: 0}
-    - m_Text: Switch
-      m_Image: {fileID: 0}
-    - m_Text: Teclado
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -640,6 +591,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &4864874382610716099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923040632725810629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584c966857bd1de4689f74684b5f382b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 1923040632725810631}
 --- !u!1 &1923040632838822682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Adaptador AC
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

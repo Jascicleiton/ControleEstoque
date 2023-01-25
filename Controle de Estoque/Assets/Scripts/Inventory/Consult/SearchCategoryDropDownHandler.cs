@@ -20,6 +20,7 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         {
             item.gameObject.SetActive(true);
         }
+
         switch (value)
         {
             #region Adaptador AC

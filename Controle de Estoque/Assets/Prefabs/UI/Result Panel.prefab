@@ -6841,6 +6841,7 @@ GameObject:
   - component: {fileID: 7274859430521039337}
   - component: {fileID: 473954210859558230}
   - component: {fileID: 4429510380932970301}
+  - component: {fileID: 8618715902338270999}
   m_Layer: 5
   m_Name: Result Panel
   m_TagString: Untagged
@@ -6949,6 +6950,47 @@ MonoBehaviour:
   - {fileID: 7745133344866180786}
   - {fileID: 5393477064707599333}
   - {fileID: 2874000908158030676}
+  itemInformationPanelControler: {fileID: 8618715902338270999}
+--- !u!114 &8618715902338270999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274859430521039339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add2674adb5dcfa4988134e73f4bef6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemBoxes:
+  - {fileID: 7131436409230532481}
+  - {fileID: 8042188903508856705}
+  - {fileID: 3790725377998495901}
+  - {fileID: 3344429395706901825}
+  - {fileID: 2394281184703588370}
+  - {fileID: 9051853778243456829}
+  - {fileID: 3142175393300585014}
+  - {fileID: 6859609284114270372}
+  - {fileID: 5729123304069302020}
+  - {fileID: 6062082507653530705}
+  - {fileID: 6246448245007425868}
+  - {fileID: 3917574245287856379}
+  - {fileID: 3995399991961848581}
+  - {fileID: 6444190023667942519}
+  - {fileID: 4287749360145935355}
+  - {fileID: 1948288500569287929}
+  - {fileID: 3358119691016941335}
+  - {fileID: 5724341935414578310}
+  - {fileID: 4368923236522690919}
+  - {fileID: 4365322494296036446}
+  - {fileID: 4924392003203568983}
+  - {fileID: 316086762756732505}
+  - {fileID: 504397296153717694}
+  - {fileID: 2946798658557883980}
+  - {fileID: 7745133344866180786}
+  - {fileID: 5393477064707599333}
+  - {fileID: 2874000908158030676}
   parameterNames:
   - {fileID: 7131436408277587860}
   - {fileID: 825350531395519204}
@@ -6977,7 +7019,8 @@ MonoBehaviour:
   - {fileID: 6448303792542458278}
   - {fileID: 1820172358451353340}
   - {fileID: 3173692655097717024}
-  parameterValues:
+  parameterValues: []
+  parameterValuesText:
   - {fileID: 7131436408162965853}
   - {fileID: 7414954785369966963}
   - {fileID: 1442037911197255458}

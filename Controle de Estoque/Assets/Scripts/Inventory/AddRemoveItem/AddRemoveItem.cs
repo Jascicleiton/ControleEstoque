@@ -10,9 +10,7 @@ using UnityEngine.UI;
 
 public class AddRemoveItem : MonoBehaviour
 {
-    [SerializeField] private TMP_Text[] parameterNames;
     [SerializeField] private TMP_InputField[] parameterValues;
-    [SerializeField] private GameObject[] itensToShow;
     [SerializeField] private TMP_Dropdown categoryDP;
     [SerializeField] private Button resetButton;
     [SerializeField] private Button returnButton;
@@ -21,10 +19,15 @@ public class AddRemoveItem : MonoBehaviour
 
     [SerializeField] GameObject messagePanel;
     [SerializeField] TMP_Text messageText;
+    [SerializeField] ItemInformationPanelControler itemInformationPanelController;
     private List<string> parameters = new List<string>();
 
     private void Start()
     {
+        if(itemInformationPanelController == null)
+        {
+            itemInformationPanelController = FindObjectOfType<ItemInformationPanelControler>();
+        }
         UpdateNames();
     }
 
@@ -61,296 +64,7 @@ public class AddRemoveItem : MonoBehaviour
     /// </summary>
     private void UpdateNames()
     {
-        for (int i = 0; i < itensToShow.Length; i++)
-        {
-            itensToShow[i].SetActive(true);
-            parameterValues[i].text = "";
-        }
-
-        parameterNames[0].text = "Aquisição";
-        parameterValues[0].text = DateTime.Now.ToString("dd/MM/yyyy");
-        parameterNames[1].text = "Entrada no estoque";
-        parameterValues[1].text = DateTime.Now.ToString("dd/MM/yyyy");
-        parameterNames[2].text = "Patrimônio";
-        parameterNames[3].text = "Status";
-        parameterNames[4].text = "Serial";
-        parameterNames[5].text = "Fabricante";
-        parameterNames[6].text = "Modelo";
-        parameterNames[7].text = "Local";
-        parameterNames[8].text = "Observação";
-
-        switch (categoryDP.value)
-        {
-            case 0: // Adaptador AC
-                parameterNames[9].text = "Onde funciona?";
-                parameterNames[10].text = "Voltagem de saída";
-                parameterNames[11].text = "Amperagem de saída (A)";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 1: // Carregador
-                parameterNames[9].text = "Onde funciona?";
-                parameterNames[10].text = "Voltagem de saída";
-                parameterNames[11].text = "Amperagem de saída (mA)";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 2: // Desktop
-                parameterNames[9].text = "Modelo de placa mãe";
-                parameterNames[10].text = "Fonte?";
-                parameterNames[11].text = "Memória?";
-                parameterNames[12].text = "HD?";
-                parameterNames[13].text = "Placa de vídeo?";
-                parameterNames[14].text = "Placa de rede?";
-                parameterNames[15].text = "Leitor de DVD?";
-                parameterNames[16].text = "Processador?";
-                break;
-            case 3: // Fone para ramal
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 4: // Fonte
-                parameterNames[9].text = "Watts de potência";
-                parameterNames[10].text = "Onde funciona?";
-                parameterNames[11].text = "Conectores";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 5: // Gbic
-                parameterNames[9].text = "Desempenho máx (GB/s)";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 6: // HD
-                parameterNames[9].text = "Interface";
-                parameterNames[10].text = "Tamanho";
-                parameterNames[11].text = "Forma de armazenamento";
-                parameterNames[12].text = "Capacidade (GB)";
-                parameterNames[13].text = "RPM";
-                parameterNames[14].text = "Velocidade de Leitura (Gb/s)";
-                parameterNames[15].text = "Enterprise";
-                parameterNames[16].text = "";
-                break;
-            case 7: // idrac
-                parameterNames[9].text = "Porta";
-                parameterNames[10].text = "Velocidade (GB/s)";
-                parameterNames[11].text = "Entrada SD";
-                parameterNames[12].text = "Servidores suportados";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 8: // Memoria
-                parameterNames[9].text = "Tipo";
-                parameterNames[10].text = "Capacidade (GB)";
-                parameterNames[11].text = "Velocidade (MHz)";
-                parameterNames[12].text = "É low voltage?";
-                parameterNames[13].text = "Rank";
-                parameterNames[14].text = "DIMM";
-                parameterNames[15].text = "Taxa de transmissão";
-                parameterNames[16].text = "Símbolo";
-                break;
-            case 9: // Monitor
-                parameterNames[9].text = "Polegadas";
-                parameterNames[10].text = "Tipos de entradas";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 10: // Mouse
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 11: // No break
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 12: // Notebook
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 13: // Placa controladora
-                parameterNames[9].text = "Tipo de conexão";
-                parameterNames[10].text = "Quantas portas?";
-                parameterNames[11].text = "Tipos de RAID";
-                parameterNames[12].text = "Tipo de HD";
-                parameterNames[13].text = "Capacidade máx do HD (TB)";
-                parameterNames[14].text = "Até quantos HDs";
-                parameterNames[15].text = "Bateria inclusa?";
-                parameterNames[16].text = "Barramento";
-                break;
-            case 14: // Placa de captura de vídeo
-                parameterNames[9].text = "Quantas entradas?";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 15: // Placa de rede
-                parameterNames[9].text = "Interface";
-                parameterNames[10].text = "Quantas portas?";
-                parameterNames[11].text = "Quais portas?";
-                parameterNames[12].text = "Suporta fibra óptica?";
-                parameterNames[13].text = "Desempenho (MB/s)";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 16: // Placa de som
-                parameterNames[9].text = "Quantos canais?";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 17: // Placa de vídeo
-                parameterNames[9].text = "Quantas entradas?";
-                parameterNames[10].text = "Quais entradas?";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 18: // Processador
-                parameterNames[9].text = "Soquete";
-                parameterNames[10].text = "Nº núcleos físicos";
-                parameterNames[11].text = "Nº núcleos lógicos";
-                parameterNames[12].text = "Aceita virtualização?";
-                parameterNames[13].text = "Turbo boost?";
-                parameterNames[14].text = "Hyper-Threading?";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 19: // Ramal
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 20: // Roteador
-                parameterNames[9].text = "Wireless?";
-                parameterNames[10].text = "Quantas entradas?";
-                parameterNames[11].text = "Banda máx (MB/s)";
-                parameterNames[12].text = "Voltagem";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 21: // Servidor
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 22: // Storage NAS
-                parameterNames[9].text = "Tamanho dos HDs";
-                parameterNames[10].text = "Tipos de RAID";
-                parameterNames[11].text = "Tipo de HD";
-                parameterNames[12].text = "Capacidade máx do HD";
-                parameterNames[13].text = "Até quantos HDs";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-
-            case 23: // Switch
-                parameterNames[9].text = "Quantas entradas";
-                parameterNames[10].text = "Capacidade máx de cada porta (MB/s)";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            case 24: // Teclado
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-            default:
-                parameterNames[9].text = "";
-                parameterNames[10].text = "";
-                parameterNames[11].text = "";
-                parameterNames[12].text = "";
-                parameterNames[13].text = "";
-                parameterNames[14].text = "";
-                parameterNames[15].text = "";
-                parameterNames[16].text = "";
-                break;
-        }
-
-        for (int i = 0; i < itensToShow.Length; i++)
-        {
-            if (parameterNames[i].text == "")
-            {
-                itensToShow[i].SetActive(false);
-            }
-        }
+        itemInformationPanelController.ShowCategoryItemTemplate(HelperMethods.GetCategoryString(categoryDP.value));
     }
 
     private IEnumerator AddNewItemRoutine(bool addInventario)
@@ -1009,7 +723,7 @@ public class AddRemoveItem : MonoBehaviour
         }
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
         // ShowMessage();
-        EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
+       // EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }
 
     public void AddItemClicked()

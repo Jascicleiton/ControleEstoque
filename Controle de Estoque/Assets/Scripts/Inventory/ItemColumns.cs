@@ -87,4 +87,9 @@ public class ItemColumns
     public string QuantosCanais; // Placa de Som
     public string Polegadas; // Monitor
     public string Processador; // Desktop, Servidores
+    public string MemoriasSuportadas; // Servidores
+    public string QuantasMemorias; // Servidores
+    public string OrdemDasMemorias; // Servidores
+    public string CapacidadeRAMTotal; // Servidores
+    public string PlacaControladora; // Servidores
     }

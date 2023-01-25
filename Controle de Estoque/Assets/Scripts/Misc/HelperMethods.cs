@@ -11,116 +11,117 @@ public class HelperMethods
 
     public static string GetCategoryString(int value)
     {
-        switch (value)
+        switch (InternalDatabase.Instance.currentEstoque)
         {
-            case 0:
-                return ConstStrings.AdaptadorAC;
-            case 1:
-                return ConstStrings.Carregador;
-            case 2:
-                return ConstStrings.Desktop;
-            case 3:
-                return ConstStrings.FoneRamal;
-            case 4:
-                return ConstStrings.Fonte;
-            case 5:
-                return ConstStrings.Gbic;
-            case 6:
-                return ConstStrings.HD;
-            case 7:
-                return ConstStrings.Idrac;
-            case 8:
-                return ConstStrings.Memoria;
-            case 9:
-                return ConstStrings.Monitor;
-            case 10:
-                return ConstStrings.Mouse;
-            case 11:
-                return ConstStrings.Nobreak;
-            case 12:
-                return ConstStrings.Notebook;
-            case 13:
-                return ConstStrings.PlacaControladora;
-            case 14:
-                return ConstStrings.PlacaDeCapturaDeVideo;
-            case 15:
-                return ConstStrings.PlacaDeRede;
-            case 16:
-                return ConstStrings.PlacaDeSom;
-            case 17:
-                return ConstStrings.PlacaDeVideo;
-            case 18:
-                return ConstStrings.Processador;
-            case 19:
-                return ConstStrings.Roteador;
-            case 20:
-                return ConstStrings.Ramal;
-            case 21:
-                return ConstStrings.Servidor;
-            case 22:
-                return ConstStrings.StorageNAS;
-            case 23:
-                return ConstStrings.Switch;
-            case 24:
-                return ConstStrings.Teclado;
+            case CurrentEstoque.SnPro:
+                if (value < ConstStrings.SNPCategories.Length)
+                {
+                    return ConstStrings.SNPCategories[value];
+                }
+                else
+                {
+                    return "Adicionar nova categoria";
+                }
+            case CurrentEstoque.Funsoft:
+                if (value < ConstStrings.AllCategories.Length)
+                {
+                    return ConstStrings.AllCategories[value];
+                }
+                else
+                {
+                    return "Adicionar nova categoria";
+                }
+            case CurrentEstoque.ESF:
+                if (value < ConstStrings.AllCategories.Length)
+                {
+                    return ConstStrings.AllCategories[value];
+                }
+                else
+                {
+                    return "Adicionar nova categoria";
+                }
+            case CurrentEstoque.Testing:
+                if (value < ConstStrings.AllCategories.Length)
+                {
+                    return ConstStrings.AllCategories[value];
+                }
+                else
+                {
+                    return "Adicionar nova categoria";
+                }
             default:
-                return "Adicionar nova categoria";
+                if (value < ConstStrings.SNPCategories.Length)
+                {
+                    return ConstStrings.SNPCategories[value];
+                }
+                else
+                {
+                    return "Adicionar nova categoria";
+                }
         }
     }
 
+    //public static List<string> CreateStringListFromArray(string[] array)
+    //{
+    //    List<string> list = new List<string>();
+    //    if (array.Length > 0)
+    //    {
+    //        for (int i = 0; i < array.Length; i++)
+    //        {
+    //            list.Add(array[i]);
+    //        }
+    //    }
+    //    return list;
+    //}
+
     public static int GetCategoryInt(string category)
     {
-        switch (category)
+        switch (InternalDatabase.Instance.currentEstoque)
         {
-            case ConstStrings.AdaptadorAC:
-                return 0;
-            case ConstStrings.Carregador:
-                return 1;
-            case ConstStrings.Desktop:
-                return 2;
-            case ConstStrings.FoneRamal:
-                return 3;
-            case ConstStrings.Fonte:
-                return 4;
-            case ConstStrings.Gbic:
-                return 5;
-            case ConstStrings.HD:
-                return 6;
-            case ConstStrings.Idrac:
-                return 7;
-            case ConstStrings.Memoria:
-                return 8;
-            case ConstStrings.Monitor:
-                return 9;
-            case ConstStrings.Mouse:
-                return 10;
-            case ConstStrings.Nobreak:
-                return 11;
-            case ConstStrings.Notebook:
-                return 12;
-            case ConstStrings.PlacaControladora:
-                return 13;
-            case ConstStrings.PlacaDeCapturaDeVideo:
-                return 14;
-            case ConstStrings.PlacaDeRede:
-                return 15;
-            case ConstStrings.PlacaDeSom:
-                return 16;
-            case ConstStrings.PlacaDeVideo:
-                return 17;
-            case ConstStrings.Processador:
-                return 18;
-            case ConstStrings.Roteador:
-                return 19;
-            case ConstStrings.Ramal:
-                return 20;
-            case ConstStrings.Servidor: 
-                return 21;
-            case ConstStrings.StorageNAS:
-                return 22;
-            case ConstStrings.Switch:
-                return 23;
+            case CurrentEstoque.SnPro:
+                for (int i = 0; i < ConstStrings.SNPCategories.Length; i++)
+                {
+                    if (category == ConstStrings.SNPCategories[i])
+                    {
+                        return i;
+                    }
+                }
+                return 666;
+            case CurrentEstoque.Funsoft:
+                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
+                {
+                    if (category == ConstStrings.AllCategories[i])
+                    {
+                        return i;
+                    }
+                }
+                return 666;
+            case CurrentEstoque.ESF:
+                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
+                {
+                    if (category == ConstStrings.AllCategories[i])
+                    {
+                        return i;
+                    }
+                }
+                return 666;
+            case CurrentEstoque.Testing:
+                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
+                {
+                    if (category == ConstStrings.AllCategories[i])
+                    {
+                        return i;
+                    }
+                }
+                return 666;
             default:
+                for (int i = 0; i < ConstStrings.SNPCategories.Length; i++)
+                {
+                    if (category == ConstStrings.SNPCategories[i])
+                    {
+                        return i;
+                    }
+                }
                 return 666;
         }
     }
@@ -151,7 +152,7 @@ public class HelperMethods
                         break;
                     default:
                         break;
-                }                
+                }
                 break;
             case 1:
                 switch (InternalDatabase.Instance.currentEstoque)
@@ -316,7 +317,7 @@ public class HelperMethods
                 addUpdateResponse = false;
                 EventHandler.CallOpenMessageEvent("Server error: 6");
             }
-            else if(response == "Patrimônio found")
+            else if (response == "Patrimônio found")
             {
                 addUpdateResponse = false;
                 EventHandler.CallOpenMessageEvent("Patrimônio já existe");
@@ -374,7 +375,7 @@ public class HelperMethods
             {
                 Debug.LogWarning("AddUpdate: " + response);
                 addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 9");                
+                EventHandler.CallOpenMessageEvent("Server error: 9");
             }
         }
         else
@@ -400,7 +401,7 @@ public class HelperMethods
             appKey = ConstStrings.AddNewItemKey;
             phpName = "addnewitem";
         }
-        else if(folderID == 4)
+        else if (folderID == 4)
         {
             appKey = ConstStrings.UpdateItemKey;
             phpName = "update";
@@ -426,7 +427,7 @@ public class HelperMethods
                 EventHandler.CallOpenMessageEvent("Inventario Failed");
                 yield break;
             }
-        }       
+        }
         else
         {
             switch (GetCategoryString(catedoryDpValue))
@@ -735,7 +736,7 @@ public class HelperMethods
                     break;
             }
         }
-       // return returnResponse;
+        // return returnResponse;
     }
 
     public static bool GetAddUpdateResponse()
@@ -743,4 +744,426 @@ public class HelperMethods
         return addUpdateResponse;
     }
 
+    public static Dictionary<string, List<string>> GetParameterValuesAndNames(ItemColumns itemToShow, string category)
+    {
+        Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+        dictionary.Add("Names", new List<string>());
+        dictionary.Add("Values", new List<string>());
+        #region Values
+        if (itemToShow != null)
+        {
+            #region Inventário
+            dictionary["Values"].Add(itemToShow.Aquisicao);
+            dictionary["Values"].Add(itemToShow.Entrada);
+            dictionary["Values"].Add(itemToShow.Patrimonio);
+            dictionary["Values"].Add(itemToShow.Status);
+            dictionary["Values"].Add(itemToShow.Serial);
+            dictionary["Values"].Add(itemToShow.Categoria);
+            dictionary["Values"].Add(itemToShow.Fabricante);
+            dictionary["Values"].Add(itemToShow.Modelo);
+            dictionary["Values"].Add(itemToShow.Local);
+            dictionary["Values"].Add(itemToShow.Saida);
+            dictionary["Values"].Add(itemToShow.Observacao);
+            #endregion
+            switch (itemToShow.Categoria)
+            {
+                #region Adaptador AC
+                case ConstStrings.AdaptadorAC:
+                    dictionary["Values"].Add(itemToShow.OndeFunciona);
+                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida);
+                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida);
+                    break;
+                #endregion
+                #region Carregador
+                case ConstStrings.Carregador:
+                    dictionary["Values"].Add(itemToShow.OndeFunciona);
+                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida);
+                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida);
+                    break;
+                #endregion
+                #region Desktop
+                case ConstStrings.Desktop:
+                    dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
+                    dictionary["Values"].Add(itemToShow.Fonte);
+                    dictionary["Values"].Add(itemToShow.Memoria);
+                    dictionary["Values"].Add(itemToShow.HD);
+                    dictionary["Values"].Add(itemToShow.PlacaDeVideo);
+                    dictionary["Values"].Add(itemToShow.LeitorDeDVD);
+                    dictionary["Values"].Add(itemToShow.Processador);
+                    break;
+                #endregion
+                #region Fone para ramal
+                case ConstStrings.FoneRamal:
+                    break;
+                #endregion
+                #region Fonte
+                case ConstStrings.Fonte:
+                    dictionary["Values"].Add(itemToShow.Watts);
+                    dictionary["Values"].Add(itemToShow.OndeFunciona);
+                    dictionary["Values"].Add(itemToShow.Conectores);
+                    break;
+                #endregion
+                #region GBIC
+                case ConstStrings.Gbic:
+                    dictionary["Values"].Add(itemToShow.Desempenho);
+                    break;
+                #endregion
+                #region HD
+                case ConstStrings.HD:
+                    dictionary["Values"].Add(itemToShow.Interface);
+                    dictionary["Values"].Add(itemToShow.Tamanho);
+                    dictionary["Values"].Add(itemToShow.FormaDeArmazenamento);
+                    dictionary["Values"].Add(itemToShow.CapacidadeEmGB);
+                    dictionary["Values"].Add(itemToShow.RPM);
+                    dictionary["Values"].Add(itemToShow.VelocidadeDeLeitura);
+                    dictionary["Values"].Add(itemToShow.Enterprise);
+                    break;
+                #endregion
+                #region iDrac
+                case ConstStrings.Idrac:
+                    dictionary["Values"].Add(itemToShow.QuaisConexoes);
+                    dictionary["Values"].Add(itemToShow.VelocidadeGBs);
+                    dictionary["Values"].Add(itemToShow.EntradaSD);
+                    dictionary["Values"].Add(itemToShow.ServidoresSuportados);
+                    break;
+                #endregion
+                #region Memoria
+                case ConstStrings.Memoria:
+                    dictionary["Values"].Add(itemToShow.Tipo);
+                    dictionary["Values"].Add(itemToShow.CapacidadeEmGB);
+                    dictionary["Values"].Add(itemToShow.VelocidadeMHz);
+                    dictionary["Values"].Add(itemToShow.LowVoltage);
+                    dictionary["Values"].Add(itemToShow.Rank);
+                    dictionary["Values"].Add(itemToShow.DIMM);
+                    dictionary["Values"].Add(itemToShow.TaxaDeTransmissao);
+                    dictionary["Values"].Add(itemToShow.Simbolo);
+                    break;
+                #endregion
+                #region Monitor
+                case ConstStrings.Monitor:
+                    dictionary["Values"].Add(itemToShow.Polegadas);
+                    dictionary["Values"].Add(itemToShow.QuaisConexoes);
+                    break;
+                #endregion
+                #region Mouse
+                case ConstStrings.Mouse:
+
+                    break;
+                #endregion
+                #region No break
+                case ConstStrings.Nobreak:
+                    break;
+                #endregion
+                #region Notebook
+                case ConstStrings.Notebook:
+                    break;
+                #endregion
+                #region Placa controladora
+                case ConstStrings.PlacaControladora:
+                    dictionary["Values"].Add(itemToShow.QuaisConexoes);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.TipoDeRAID);
+                    dictionary["Values"].Add(itemToShow.CapacidadeMaxHD);
+                    dictionary["Values"].Add(itemToShow.AteQuantosHDs);
+                    dictionary["Values"].Add(itemToShow.BateriaInclusa);
+                    dictionary["Values"].Add(itemToShow.Barramento);
+                    break;
+                #endregion
+                #region Placa de captura de video
+                case ConstStrings.PlacaDeCapturaDeVideo:
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    break;
+                #endregion
+                #region Placa de rede
+                case ConstStrings.PlacaDeRede:
+                    dictionary["Values"].Add(itemToShow.Interface);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.QuaisConexoes);
+                    dictionary["Values"].Add(itemToShow.SuportaFibraOptica);
+                    dictionary["Values"].Add(itemToShow.Desempenho);
+                    break;
+                #endregion
+                #region Placa de som
+                case ConstStrings.PlacaDeSom:
+                    dictionary["Values"].Add(itemToShow.QuantosCanais);
+                    break;
+                #endregion
+                #region Placa de Video
+                case ConstStrings.PlacaDeVideo:
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.QuaisConexoes);
+                    break;
+                #endregion
+                #region Processador
+                case ConstStrings.Processador:
+                    dictionary["Values"].Add(itemToShow.Soquete);
+                    dictionary["Values"].Add(itemToShow.NucleosFisicos);
+                    dictionary["Values"].Add(itemToShow.NucleosLogicos);
+                    dictionary["Values"].Add(itemToShow.AceitaVirtualizacao);
+                    dictionary["Values"].Add(itemToShow.TurboBoost);
+                    dictionary["Values"].Add(itemToShow.HyperThreading);
+                    break;
+                #endregion
+                #region Ramal
+                case ConstStrings.Ramal:
+                    break;
+                #endregion
+                #region Roteador
+                case ConstStrings.Roteador:
+                    dictionary["Values"].Add(itemToShow.Wireless);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.BandaMaxima);
+                    break;
+                #endregion
+                #region Servidor
+                case ConstStrings.Servidor:
+                    dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
+                    dictionary["Values"].Add(itemToShow.Fonte);
+                    dictionary["Values"].Add(itemToShow.Memoria);
+                    dictionary["Values"].Add(itemToShow.HD);
+                    dictionary["Values"].Add(itemToShow.PlacaDeVideo);
+                    dictionary["Values"].Add(itemToShow.PlacaDeRede);
+                    dictionary["Values"].Add(itemToShow.Processador);
+                    dictionary["Values"].Add(itemToShow.MemoriasSuportadas);
+                    dictionary["Values"].Add(itemToShow.OrdemDasMemorias);
+                    dictionary["Values"].Add(itemToShow.CapacidadeRAMTotal);
+                    dictionary["Values"].Add(itemToShow.Soquete);
+                    dictionary["Values"].Add(itemToShow.PlacaControladora);
+                    dictionary["Values"].Add(itemToShow.AteQuantosHDs);
+                    dictionary["Values"].Add(itemToShow.TipoDeHD);
+                    dictionary["Values"].Add(itemToShow.TipoDeRAID);
+                    break;
+                #endregion
+                #region Storage NAS
+                case ConstStrings.StorageNAS:
+                    dictionary["Values"].Add(itemToShow.Tamanho);
+                    dictionary["Values"].Add(itemToShow.TipoDeRAID);
+                    dictionary["Values"].Add(itemToShow.TipoDeHD);
+                    dictionary["Values"].Add(itemToShow.CapacidadeMaxHD);
+                    dictionary["Values"].Add(itemToShow.AteQuantosHDs);
+                    break;
+                #endregion
+                #region Switch
+                case ConstStrings.Switch:
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.Desempenho);
+                    break;
+                #endregion
+                #region Teclado
+                case ConstStrings.Teclado:
+                    break;
+                #endregion
+                default:
+                    break;
+            }
+        }
+        #endregion
+        #region Names
+        #region Inventário
+        dictionary["Names"].Add("Aquisição");
+        dictionary["Names"].Add("Entrada");
+        dictionary["Names"].Add("Patrimônio");
+        dictionary["Names"].Add("Status");
+        dictionary["Names"].Add("Serial");
+        dictionary["Names"].Add("Categoria");
+        dictionary["Names"].Add("Fabricante");
+        dictionary["Names"].Add("Modelo");
+        dictionary["Names"].Add("Local");
+        dictionary["Names"].Add("Saída");
+        dictionary["Names"].Add("Observação");
+        #endregion
+        switch (category)
+        {
+            #region Adaptador AC
+            case ConstStrings.AdaptadorAC:
+                dictionary["Names"].Add("Onde funciona?");
+                dictionary["Names"].Add("Voltagem de saída");
+                dictionary["Names"].Add("Amperagem de saída (A)");
+                break;
+            #endregion
+            #region Carregador
+            case ConstStrings.Carregador:
+                dictionary["Names"].Add("Onde funciona?");
+                dictionary["Names"].Add("Voltagem de saída");
+                dictionary["Names"].Add("Amperagem de saída (mA)");
+                break;
+            #endregion
+            #region Desktop
+            case ConstStrings.Desktop:
+                dictionary["Names"].Add("Modelo de placa mãe");
+                dictionary["Names"].Add("Fonte?");
+                dictionary["Names"].Add("Memória?");
+                dictionary["Names"].Add("HD?");
+                dictionary["Names"].Add("Placa de vídeo?");
+                dictionary["Names"].Add("Leitor de DVD?");
+                dictionary["Names"].Add("Processador");
+                break;
+            #endregion
+            #region Fone para ramal
+            case ConstStrings.FoneRamal:
+                break;
+            #endregion
+            #region Fonte
+            case ConstStrings.Fonte:
+                dictionary["Names"].Add("Watts de potência");
+                dictionary["Names"].Add("Onde funciona?");
+                dictionary["Names"].Add("Conectores");
+                break;
+            #endregion
+            #region GBIC
+            case ConstStrings.Gbic:
+                dictionary["Names"].Add("Desempenho máx (GB/s)");
+                break;
+            #endregion
+            #region HD
+            case ConstStrings.HD:
+                dictionary["Names"].Add("Interface");
+                dictionary["Names"].Add("Tamanho");
+                dictionary["Names"].Add("Forma de armazenamento");
+                dictionary["Names"].Add("Capacidade (GB)");
+                dictionary["Names"].Add("RPM");
+                dictionary["Names"].Add("Velocidade de Leitura (Gb/s)");
+                dictionary["Names"].Add("Enterprise");
+                break;
+            #endregion
+            #region iDrac
+            case ConstStrings.Idrac:
+                dictionary["Names"].Add("Porta");
+                dictionary["Names"].Add("Velocidade (GB/s)");
+                dictionary["Names"].Add("Entrada SD");
+                dictionary["Names"].Add("Servidores suportados");
+                break;
+            #endregion
+            #region Memoria
+            case ConstStrings.Memoria:
+                dictionary["Names"].Add("Tipo");
+                dictionary["Names"].Add("Capacidade (GB)");
+                dictionary["Names"].Add("Velocidade (MHz)");
+                dictionary["Names"].Add("É low voltage?");
+                dictionary["Names"].Add("Rank");
+                dictionary["Names"].Add("DIMM");
+                dictionary["Names"].Add("Taxa de transmissão");
+                dictionary["Names"].Add("Símbolo");
+                break;
+            #endregion
+            #region Monitor
+            case ConstStrings.Monitor:
+                dictionary["Names"].Add("Polegadas");
+                dictionary["Names"].Add("Quais entradas?");
+                break;
+            #endregion
+            #region Mouse
+            case ConstStrings.Mouse:
+
+                break;
+            #endregion
+            #region No break
+            case ConstStrings.Nobreak:
+                break;
+            #endregion
+            #region Notebook
+            case ConstStrings.Notebook:
+                break;
+            #endregion
+            #region Placa controladora
+            case ConstStrings.PlacaControladora:
+                dictionary["Names"].Add("Tipo de conexão");
+                dictionary["Names"].Add("Quantas portas?");
+                dictionary["Names"].Add("Tipos de RAID");
+                dictionary["Names"].Add("Capacidade máx do HD (TB)");
+                dictionary["Names"].Add("Até quantos HDs");
+                dictionary["Names"].Add("Bateria inclusa?");
+                dictionary["Names"].Add("Barramento");
+                break;
+            #endregion
+            #region Placa de captura de video
+            case ConstStrings.PlacaDeCapturaDeVideo:
+                dictionary["Names"].Add("Quantas entradas?");
+                break;
+            #endregion
+            #region Placa de rede
+            case ConstStrings.PlacaDeRede:
+                dictionary["Names"].Add("Interface");
+                dictionary["Names"].Add("Quantas portas?");
+                dictionary["Names"].Add("Quais portas?");
+                dictionary["Names"].Add("Suporta fibra óptica?");
+                dictionary["Names"].Add("Desempenho (MB/s)");
+                break;
+            #endregion
+            #region Placa de som
+            case ConstStrings.PlacaDeSom:
+                dictionary["Names"].Add("Quantos canais?");
+                break;
+            #endregion
+            #region Placa de Video
+            case ConstStrings.PlacaDeVideo:
+                dictionary["Names"].Add("Quantas entradas?");
+                dictionary["Names"].Add("Quais entradas?");
+                break;
+            #endregion
+            #region Processador
+            case ConstStrings.Processador:
+                dictionary["Names"].Add("Soquete");
+                dictionary["Names"].Add("Nº núcleos físicos");
+                dictionary["Names"].Add("Nº núcleos lógicos");
+                dictionary["Names"].Add("Aceita virtualização?");
+                dictionary["Names"].Add("Turbo boost?");
+                dictionary["Names"].Add("Hyper-Threading?");
+                break;
+            #endregion
+            #region Ramal
+            case ConstStrings.Ramal:
+                break;
+            #endregion
+            #region Roteador
+            case ConstStrings.Roteador:
+                dictionary["Names"].Add("Wireless?");
+                dictionary["Names"].Add("Quantas entradas?");
+                dictionary["Names"].Add("Banda máx (MB/s)");
+                break;
+            #endregion
+            #region Servidor
+            case ConstStrings.Servidor:
+                dictionary["Names"].Add("Modelo da placa mãe");
+                dictionary["Names"].Add("Fonte");
+                dictionary["Names"].Add("Memórias instaladas");
+                dictionary["Names"].Add("HD instalado");
+                dictionary["Names"].Add("Placa de vídeo");
+                dictionary["Names"].Add("Placa de rede");
+                dictionary["Names"].Add("Processadores instalados");
+                dictionary["Names"].Add("Memórias suportadas");
+                dictionary["Names"].Add("Ordem das memórias");
+                dictionary["Names"].Add("Capacidade RAM total");
+                dictionary["Names"].Add("Soquete do processador");
+                dictionary["Names"].Add("Placa controladora");
+                dictionary["Names"].Add("Até quantos HDs");
+                dictionary["Names"].Add("Tipos de HD");
+                dictionary["Names"].Add("Tipos de RAID");
+                break;
+            #endregion
+            #region Storage NAS
+            case ConstStrings.StorageNAS:
+                dictionary["Names"].Add("Tamanho dos HDs");
+                dictionary["Names"].Add("Tipos de RAID");
+                dictionary["Names"].Add("Tipo de HD");
+                dictionary["Names"].Add("Capacidade máx do HD");
+                dictionary["Names"].Add("Até quantos HDs");
+                break;
+            #endregion
+            #region Switch
+            case ConstStrings.Switch:
+                dictionary["Names"].Add("Quantas entradas");
+                dictionary["Names"].Add("Capacidade máx de cada porta (MB/s)");
+                break;
+            #endregion
+            #region Teclado
+            case ConstStrings.Teclado:
+                break;
+            #endregion
+            default:
+                break;
+        }
+        #endregion
+        return dictionary;
+    }
 }

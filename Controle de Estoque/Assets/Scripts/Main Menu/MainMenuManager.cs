@@ -114,7 +114,7 @@ public class MainMenuManager : MonoBehaviour
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
                 break;
         }
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
