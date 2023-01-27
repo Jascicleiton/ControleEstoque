@@ -92,4 +92,7 @@ public class ItemColumns
     public string OrdemDasMemorias; // Servidores
     public string CapacidadeRAMTotal; // Servidores
     public string PlacaControladora; // Servidores
+    public string EntradaRJ49;// notebook
+    public string AdaptadorAC; // notebook
+    public string Windows; // notebook
     }

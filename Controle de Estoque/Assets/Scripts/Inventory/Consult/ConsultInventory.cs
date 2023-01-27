@@ -22,6 +22,7 @@ public class ConsultInventory : MonoBehaviour
     [SerializeField] private TMP_InputField[] categorySearchInputs;
 
     private ConsultCategory consultCategory = null;
+    private bool inputEnabled = true;
 
     /// <summary>
     /// get the ConsultCategory component
@@ -32,50 +33,69 @@ public class ConsultInventory : MonoBehaviour
        // InventarioManager.Instance.ImportSheets();
     }
 
+    private void OnEnable()
+    {
+        EventHandler.EnableInput += SetInputEnabled;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.EnableInput -= SetInputEnabled;
+    }
+
     /// <summary>
     /// Handles what happens if Enter is pressed
     /// </summary>
     private void Update()
     {
-        if (inputField.IsActive())
+        if (inputEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (inputField.IsActive())
             {
-                if (searchOptionDP.value == 1)
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                 {
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase) != null)
+                    if (searchOptionDP.value == 1)
                     {
-                        RemoveOldSearch();
-                        GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase), 0);
+                        if (ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase) != null)
+                        {
+                            RemoveOldSearch();
+                            GameObject result = Instantiate(consultResult, consultResultTransform);
+                            result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(inputField.text, InternalDatabase.Instance.fullDatabase), 0);
+                        }
+                        else
+                        {
+                            RemoveOldSearch();
+                        }
                     }
-                    else
+                    else if (searchOptionDP.value == 2)
                     {
-                        RemoveOldSearch();
-                    }
-                }
-                else if (searchOptionDP.value == 2)
-                {
-                    if (ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase) != null)
-                    {
-                        RemoveOldSearch();
-                        GameObject result = Instantiate(consultResult, consultResultTransform);
-                        result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase), 1);
-                    }
-                    else
-                    {
-                        RemoveOldSearch();
+                        if (ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase) != null)
+                        {
+                            RemoveOldSearch();
+                            GameObject result = Instantiate(consultResult, consultResultTransform);
+                            result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase), 1);
+                        }
+                        else
+                        {
+                            RemoveOldSearch();
+                        }
                     }
                 }
             }
-        }
-        if (categoryDP.IsActive())
-        {
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            if (categoryDP.IsActive())
             {
-                ConsultWithCategory();
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    ConsultWithCategory();
+                }
             }
         }
+    }
+
+
+    private void SetInputEnabled(bool enableInput)
+    {
+        inputEnabled = enableInput;
     }
 
     /// <summary>
@@ -201,52 +221,7 @@ public class ConsultInventory : MonoBehaviour
     /// </summary>
     private Sheet GetCategorySheet(int value)
     {
-        switch (value)
-        {
-            case 0:
-                return InternalDatabase.adaptadorAC;
-            case 1:
-                return InternalDatabase.carregador;
-            case 2:
-                return InternalDatabase.desktop;
-            case 3:
-                return InternalDatabase.fonte;
-            case 4:
-                return InternalDatabase.gbic;
-            case 5:
-                return InternalDatabase.hd;
-            case 6:
-                return InternalDatabase.idrac;
-            case 7:
-                return InternalDatabase.memoria;
-            case 8:
-                return InternalDatabase.monitor;
-            case 9:
-                return InternalDatabase.notebook;
-            case 10:
-                return InternalDatabase.placaControladora;
-            case 11:
-                return InternalDatabase.placaDeCapturaDeVideo;
-            case 12:
-                return InternalDatabase.placaDeRede;
-            case 13:
-                return InternalDatabase.placaDeSom;
-            case 14:
-                return InternalDatabase.placaDeVideo;
-            case 15:
-                return InternalDatabase.processador;
-            case 16:
-                return InternalDatabase.roteador;
-            case 17:
-                return InternalDatabase.servidor;
-            case 18:
-                return InternalDatabase.storageNAS;
-            case 19:
-                return InternalDatabase.Switch;
-            case 20:
-            default:
-                return null;
-        }
+        return InternalDatabase.allFullDetailsSheets[value];
     }
 
     /// <summary>

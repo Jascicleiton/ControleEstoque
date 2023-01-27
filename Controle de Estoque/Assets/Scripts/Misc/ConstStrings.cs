@@ -39,7 +39,7 @@ public class ConstStrings
 
     #region Categories arrays
     public static readonly string[] AllCategories = { AdaptadorAC, Carregador, Desktop, FoneRamal, Fonte, Gbic, HD, Idrac, Memoria, Monitor, 
-    Mouse, Nobreak, Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Ramal, 
+    Mouse, Nobreak, Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Ramal,Roteador,
     Servidor, StorageNAS, Switch, Teclado };
     public static readonly string[] SNPCategories = { AdaptadorAC, Carregador, Desktop, Fonte, Gbic, HD, Idrac, Memoria, Monitor, Nobreak, 
     Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Servidor, StorageNAS, 

@@ -61,18 +61,18 @@ public class HelperMethods
         }
     }
 
-    //public static List<string> CreateStringListFromArray(string[] array)
-    //{
-    //    List<string> list = new List<string>();
-    //    if (array.Length > 0)
-    //    {
-    //        for (int i = 0; i < array.Length; i++)
-    //        {
-    //            list.Add(array[i]);
-    //        }
-    //    }
-    //    return list;
-    //}
+    public static List<Sheet> CreateSheetListFromArray(Sheet[] array)
+    {
+        List<Sheet> list = new List<Sheet>();
+        if (array.Length > 0)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                list.Add(array[i]);
+            }
+        }
+        return list;
+    }
 
     public static int GetCategoryInt(string category)
     {

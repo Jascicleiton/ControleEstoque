@@ -132,6 +132,7 @@ public class ItemInformationPanelControler : MonoBehaviour
             List<string> names = new List<string>();
             List<string> values = new List<string>();
             dictionary.TryGetValue("Names", out names);
+            dictionary.TryGetValue("Values", out values);
             FillNames(names);
             FillValues(values);
         }
@@ -152,6 +153,7 @@ public class ItemInformationPanelControler : MonoBehaviour
             List<string> names = new List<string>();
             List<string> values = new List<string>();
             dictionary.TryGetValue("Names", out names);
+            dictionary.TryGetValue("Values", out values);
             FillNames(names);
             FillValuesTexts(values);
         }
