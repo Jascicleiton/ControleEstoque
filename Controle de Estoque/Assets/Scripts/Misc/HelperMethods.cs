@@ -620,7 +620,7 @@ public class HelperMethods
                 #endregion
                 #region Placa de captura de vídeo
                 case ConstStrings.PlacaDeCapturaDeVideo:
-                    WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaCapturaVideoForm(appKey, parameters[0], parameters[1]);
+                    WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaDeCapturaDeVideoForm(appKey, parameters[0], parameters[1]);
 
                     UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = GetPostRequest(placaDeCapturaDeVideoForm, phpName + "placacapturavideo.php", folderID);
 
@@ -631,7 +631,9 @@ public class HelperMethods
                 #endregion
                 #region Servidor
                 case ConstStrings.Servidor:
-                    WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters[0], parameters[1]);
+                    WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                    parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11],
+                     parameters[12], parameters[13], parameters[14], parameters[15], parameters[16], parameters[17], parameters[18]);
 
                     UnityWebRequest createServidorPostRequest = GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
 
@@ -642,7 +644,8 @@ public class HelperMethods
                 #endregion
                 #region Notebook
                 case ConstStrings.Notebook:
-                    WWWForm notebookForm = CreateForm.GetNotebookForm(appKey, parameters[0], parameters[1]);
+                    WWWForm notebookForm = CreateForm.GetNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
+                    parameters[5], parameters[6], parameters[7], parameters[8]);
 
                     UnityWebRequest createNotebookPostRequest = GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
 

@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -25,7 +23,74 @@ public class CreateForm
 
         return inventario;
     }
-    
+    #region Categories Forms
+    public static WWWForm GetAdaptadorACForm(string appPassword, string modelo, string ondefunciona,
+        string voltagem, string amperagem)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("ondefunciona", ondefunciona);
+        inventario.AddField("voltagem", voltagem);
+        inventario.AddField("amperagem", amperagem);
+
+        return inventario;
+    }
+
+    public static WWWForm GetCarregadorForm(string appPassword, string modelo, string ondefunciona,
+       string voltagem, string amperagem)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("ondefunciona", ondefunciona);
+        inventario.AddField("voltagem", voltagem);
+        inventario.AddField("amperagem", amperagem);
+
+        return inventario;
+    }
+
+    public static WWWForm GetDesktopForm(string appPassword, string patrimonio, string modeloplacamae, string fonte, string memoria,
+   string hd, string placavideo, string placarede, string leitordvd, string processador)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("patrimonio", patrimonio);
+        inventario.AddField("modeloplacamae", modeloplacamae);
+        inventario.AddField("fonte", fonte);
+        inventario.AddField("memoria", memoria);
+        inventario.AddField("hd", hd);
+        inventario.AddField("placavideo", placavideo);
+        inventario.AddField("placarede", placarede);
+        inventario.AddField("leitordvd", leitordvd);
+        inventario.AddField("processador", processador);
+
+        return inventario;
+    }
+
+    public static WWWForm GetFonteForm(string appPassword, string modelo, string watts, string ondefunciona, string conectores)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("watts", watts);
+        inventario.AddField("ondefunciona", ondefunciona);
+        inventario.AddField("conectores", conectores);
+
+        return inventario;
+    }
+
+    public static WWWForm GetGBICForm(string appPassword, string modelo, string fabricante, string desempenho)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("fabricante", fabricante);
+        inventario.AddField("desempenho", desempenho);
+
+        return inventario;
+    }
+
     public static WWWForm GetHDForm(string appPassword, string modelo, string fabricante, string Interface, string tamanho, string formaDeArmazenamento,
        string Capacidade, string RPM, string VelocidadeLeitura, string Enterprise)
     {
@@ -40,6 +105,21 @@ public class CreateForm
         inventario.AddField("rpm", RPM);
         inventario.AddField("velocidade", VelocidadeLeitura);
         inventario.AddField("enterprise", Enterprise);
+
+        return inventario;
+    }
+
+    public static WWWForm GetiDracForm(string appPassword, string modelo, string fabricante, string porta, string velocidade,
+     string entradasd, string servidoressuportados)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("fabricante", fabricante);
+        inventario.AddField("porta", porta);
+        inventario.AddField("velocidade", velocidade);
+        inventario.AddField("entradasd", entradasd);
+        inventario.AddField("servidoressuportados", servidoressuportados);
 
         return inventario;
     }
@@ -63,6 +143,63 @@ public class CreateForm
         return inventario;
     }
 
+    public static WWWForm GetMonitorForm(string appPassword, string modelo, string fabricante, string polegadas, string tiposentradas)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("fabricante", fabricante);
+        inventario.AddField("polegadas", polegadas);
+        inventario.AddField("tiposentradas", tiposentradas);
+
+        return inventario;
+    }
+
+    public static WWWForm GetNotebookForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria, string entradarj49, 
+        string bateria, string adaptadorac, string windows)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("patrimonio", patrimonio);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("fabricante", fabricante);
+        inventario.AddField("hd", hd);
+        inventario.AddField("memoria", memoria);
+        inventario.AddField("entradarj49", entradarj49);
+        inventario.AddField("bateria", bateria);
+        inventario.AddField("adaptadorac", adaptadorac);
+        inventario.AddField("windows", windows);
+        return inventario;
+    }
+
+    public static WWWForm GetPlacaControladoraForm(string appPassword, string modelo, string tipoconexao, string quantidadeportas,
+    string tiporaid, string tipohd, string capacidademaxhd, string quantoshd, string bateriainclusa, string barramento)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("tipoconexao", tipoconexao);
+        inventario.AddField("quantidadeportas", quantidadeportas);
+        inventario.AddField("tiporaid", tiporaid);
+        inventario.AddField("tipohd", tipohd);
+        inventario.AddField("capacidademaxhd", capacidademaxhd);
+        inventario.AddField("quantoshd", quantoshd);
+        inventario.AddField("bateriainclusa", bateriainclusa);
+        inventario.AddField("barramento", barramento);
+
+        return inventario;
+    }
+
+    public static WWWForm GetPlacaDeCapturaDeVideoForm(string appPassword, string modelo, string quantasentradas)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("quantasentradas", quantasentradas);
+
+        return inventario;
+    }
+
     public static WWWForm GetPlacaDeRedeForm(string appPassword, string modelo, string fabricante, string Interface, string quantidadeportas,
 string quaisconexoes, string suportafibraoptica, string desempenho)
     {
@@ -79,35 +216,23 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
         return inventario;
     }
 
-    public static WWWForm GetiDracForm(string appPassword, string modelo, string fabricante, string porta, string velocidade,
-       string entradasd, string servidoressuportados)
+    public static WWWForm GetPlacaSomForm(string appPassword, string modelo, string quantoscanais)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("porta", porta);
-        inventario.AddField("velocidade", velocidade);
-        inventario.AddField("entradasd", entradasd);
-        inventario.AddField("servidoressuportados", servidoressuportados);
+        inventario.AddField("quantoscanais", quantoscanais);
 
         return inventario;
     }
 
-    public static WWWForm GetPlacaControladoraForm(string appPassword, string modelo, string tipoconexao, string quantidadeportas,
-        string tiporaid, string tipohd, string capacidademaxhd, string quantoshd, string bateriainclusa, string barramento)
+    public static WWWForm GetPlacaVideoForm(string appPassword, string modelo, string quantasentradas, string quaisentradas)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("modelo", modelo);
-        inventario.AddField("tipoconexao", tipoconexao);
-        inventario.AddField("quantidadeportas", quantidadeportas);
-        inventario.AddField("tiporaid", tiporaid);
-        inventario.AddField("tipohd", tipohd);
-        inventario.AddField("capacidademaxhd", capacidademaxhd);
-        inventario.AddField("quantoshd", quantoshd);
-        inventario.AddField("bateriainclusa", bateriainclusa);
-        inventario.AddField("barramento", barramento);
+        inventario.AddField("quantasentradas", quantasentradas);
+        inventario.AddField("quaisentradas", quaisentradas);
 
         return inventario;
     }
@@ -127,31 +252,61 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
 
         return inventario;
     }
-    public static WWWForm GetDesktopForm(string appPassword, string patrimonio, string modeloplacamae, string fonte, string memoria,
-       string hd, string placavideo, string placarede, string leitordvd, string processador)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modeloplacamae", modeloplacamae);
-        inventario.AddField("fonte", fonte);
-        inventario.AddField("memoria", memoria);
-        inventario.AddField("hd", hd);
-        inventario.AddField("placavideo", placavideo);
-        inventario.AddField("placarede", placarede);
-        inventario.AddField("leitordvd", leitordvd);
-        inventario.AddField("processador", processador);
 
-        return inventario;
-    }
-    public static WWWForm GetFonteForm(string appPassword, string modelo, string watts, string ondefunciona, string conectores)
+    public static WWWForm GetRoteadorForm(string appPassword, string modelo, string wireless, string quantasentradas,
+         string bandamax, string voltagem)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("modelo", modelo);
-        inventario.AddField("watts", watts);
-        inventario.AddField("ondefunciona", ondefunciona);
-        inventario.AddField("conectores", conectores);
+        inventario.AddField("wireless", wireless);
+        inventario.AddField("quantasentradas", quantasentradas);
+        inventario.AddField("bandamax", bandamax);
+        inventario.AddField("voltagem", voltagem);
+
+        return inventario;
+    }
+
+    public static WWWForm GetServidorForm(string appPassword, string patrimonio, string modelo, string fabricante, string modeloplacamae, string fonte, string memoria,
+        string hd, string placadevideo, string placaderede, string processador, string memoriassuportadas, string quantasmemorias, 
+        string ordemdasmemorias, string capacidaderamtotal, string soquete, string placacontroladora, string atequantoshds, string tiposdehd,
+        string tiposderaid)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("patrimonio", patrimonio);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("fabricante", fabricante);
+        inventario.AddField("modeloplacamae", modeloplacamae);
+        inventario.AddField("fonte", fonte);
+        inventario.AddField("memoria", memoria);
+        inventario.AddField("hd", hd);
+        inventario.AddField("placadevideo", placadevideo);
+        inventario.AddField("placaderede", placaderede);
+        inventario.AddField("processador", processador);
+        inventario.AddField("memoriassuportadas", memoriassuportadas);
+        inventario.AddField("quantasmemorias", quantasmemorias);
+        inventario.AddField("ordemdasmemorias", ordemdasmemorias);
+        inventario.AddField("capacidaderamtotal", capacidaderamtotal);
+        inventario.AddField("soquete", soquete);
+        inventario.AddField("placacontroladora", placacontroladora);
+        inventario.AddField("atequantoshds", atequantoshds);
+        inventario.AddField("tiposdehd", tiposdehd);
+        inventario.AddField("tiposderaid", tiposderaid);
+        return inventario;
+    }
+
+    public static WWWForm GetStorageNASForm(string appPassword, string modelo, string tamanhohd, string tiporaid,
+       string tipohd, string capacidademaxhd, string quantoshd)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("modelo", modelo);
+        inventario.AddField("tamanhohd", tamanhohd);
+        inventario.AddField("tiporaid", tiporaid);
+        inventario.AddField("tipohd", tipohd);
+        inventario.AddField("capacidademaxhd", capacidademaxhd);
+        inventario.AddField("quantoshd", quantoshd);
 
         return inventario;
     }
@@ -166,124 +321,7 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
        
         return inventario;
     }
-    public static WWWForm GetRoteadorForm(string appPassword, string modelo, string wireless, string quantasentradas,
-        string bandamax, string voltagem)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("wireless", wireless);
-        inventario.AddField("quantasentradas", quantasentradas);
-        inventario.AddField("bandamax", bandamax);
-        inventario.AddField("voltagem", voltagem);
-       
-        return inventario;
-    }
-    public static WWWForm GetCarregadorForm(string appPassword, string modelo, string ondefunciona,
-        string voltagem, string amperagem)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("ondefunciona", ondefunciona);
-        inventario.AddField("voltagem", voltagem);
-        inventario.AddField("amperagem", amperagem);
-
-        return inventario;
-    }
-    public static WWWForm GetAdaptadorACForm(string appPassword, string modelo, string ondefunciona,
-        string voltagem, string amperagem)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("ondefunciona", ondefunciona);
-        inventario.AddField("voltagem", voltagem);
-        inventario.AddField("amperagem", amperagem);
-
-        return inventario;
-    }
-    public static WWWForm GetStorageNASForm(string appPassword, string modelo, string tamanhohd, string tiporaid,
-        string tipohd, string capacidademaxhd, string quantoshd)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("tamanhohd", tamanhohd);
-        inventario.AddField("tiporaid", tiporaid);
-        inventario.AddField("tipohd", tipohd);
-        inventario.AddField("capacidademaxhd", capacidademaxhd);
-        inventario.AddField("quantoshd", quantoshd);
-
-        return inventario;
-    }
-    public static WWWForm GetGBICForm(string appPassword, string modelo, string fabricante, string desempenho)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("desempenho", desempenho);
-        
-        return inventario;
-    }
-    public static WWWForm GetPlacaVideoForm(string appPassword, string modelo, string quantasentradas, string quaisentradas)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("quantasentradas", quantasentradas);
-        inventario.AddField("quaisentradas", quaisentradas);
-
-        return inventario;
-    }
-    public static WWWForm GetPlacaSomForm(string appPassword, string modelo, string quantoscanais)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("quantoscanais", quantoscanais);
-        
-        return inventario;
-    }
-    public static WWWForm GetPlacaCapturaVideoForm(string appPassword, string modelo, string quantasentradas)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("quantasentradas", quantasentradas);
-        
-        return inventario;
-    }
-    public static WWWForm GetServidorForm(string appPassword, string modelo, string fabricante)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-       
-        return inventario;
-    }
-    public static WWWForm GetNotebookForm(string appPassword, string modelo, string fabricante)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-       
-        return inventario;
-    }
-    public static WWWForm GetMonitorForm(string appPassword, string modelo, string fabricante, string polegadas, string tiposentradas)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("polegadas", polegadas);
-        inventario.AddField("tiposentradas", tiposentradas);
-       
-        return inventario;
-    }
+#endregion
 
     public static WWWForm GetConsultPatrimonioForm(string appPassword, string patrimonio)
     {

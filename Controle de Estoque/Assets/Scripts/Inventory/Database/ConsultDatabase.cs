@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ConsultDatabase : Singleton<ConsultDatabase>
 {
-    private int itemIndex = 0;
+    private int itemIndexFullDatabase = 0;
+    private int categoryItemIndex = 0;
     /// <summary>
     /// Consult if the item exists on the database using the "Serial"
     /// </summary>
     public ItemColumns ConsultSerial(string serialToConsult, Sheet databaseToConsult)
     {
-        itemIndex = 0;
+        itemIndexFullDatabase = 0;
         foreach (ItemColumns item in databaseToConsult.itens)
         {
             if (item.Serial == serialToConsult)
@@ -19,7 +20,7 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
             }
             else
             {
-                itemIndex++;
+                itemIndexFullDatabase++;
             }
         }
 
@@ -31,7 +32,7 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
     /// </summary>
     public ItemColumns ConsultPatrimonio(string patrimonioToConsult, Sheet databaseToConsult)
     {
-        itemIndex = 0;
+        itemIndexFullDatabase = 0;
         foreach (ItemColumns item in databaseToConsult.itens)
         {
             if (item.Patrimonio == patrimonioToConsult)
@@ -40,7 +41,7 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
             }
             else
             {
-                itemIndex++;
+                itemIndexFullDatabase++;
             }
         }
 
@@ -52,7 +53,21 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
     /// </summary>
     public int GetItemIndex()
     {
-        return itemIndex;
+        return itemIndexFullDatabase;
+    }
+
+    public int GetCategoryItemIndex(Sheet categoryToConsult, string patrimonio)
+    {
+        categoryItemIndex = 0;
+        for (int i = 0; i < categoryToConsult.itens.Count; i++)
+        {
+            if (categoryToConsult.itens[i].Patrimonio == patrimonio)
+            {
+                categoryItemIndex = i;
+                break;
+            }
+        }
+        return categoryItemIndex;
     }
 
 }
