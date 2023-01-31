@@ -21,14 +21,28 @@ public class TabInputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             inputIndex++;
+            print(inputIndex);
             if (inputIndex >= inputFields.Length)
             {
                 inputIndex = 0;
             }
-            if (inputFields[inputIndex] != null && inputFields[inputIndex].isActiveAndEnabled)
+            if (inputFields[inputIndex] != null && inputFields[inputIndex].isActiveAndEnabled && inputIndex < inputFields.Length)
+            {
+                inputFields[inputIndex].Select();
+            }
+            else if ((inputFields[inputIndex] != null && !inputFields[inputIndex].interactable) || inputFields[inputIndex] == null)
+            {
+                while ((inputFields[inputIndex] != null && !inputFields[inputIndex].interactable) || inputFields[inputIndex] == null)
+                {
+                    inputIndex++;
+                    //    print(inputIndex);
+                }
+            }
+            print(inputIndex);
+            if (inputIndex < inputFields.Length)
             {
                 inputFields[inputIndex].Select();
             }

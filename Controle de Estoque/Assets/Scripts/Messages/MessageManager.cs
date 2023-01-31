@@ -17,7 +17,7 @@ public class MessageManager : MonoBehaviour
     {
         if (inputEnabled)
         {
-            print(inputEnabled);
+            
             if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && messagePanel.activeInHierarchy)
             {
                 CloseMessage();

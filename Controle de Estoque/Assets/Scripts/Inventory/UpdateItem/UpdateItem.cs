@@ -69,7 +69,6 @@ public class UpdateItem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                print("enter");
                 inputEnabled = false;
                 if (searchingItem)
                 {
@@ -209,7 +208,9 @@ public class UpdateItem : MonoBehaviour
         #region Update inventario
         parameters.Clear();
         parameters = itemInformationPanelControler.GetInventoryValues();
-
+        parameters.Insert(0, itemToUpdate.Aquisicao);
+        parameters.Insert(1, itemToUpdate.Entrada);
+    
         yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(itemToUpdate.Categoria), 4, parameters, true);
         if (HelperMethods.GetAddUpdateResponse())
         {
@@ -252,7 +253,10 @@ public class UpdateItem : MonoBehaviour
         parameters.Add(itemToUpdate.Entrada);
         for (int i = 0; i < parameterInputs.Length; i++)
         {
-            parameters.Add(parameterInputs[i].text);
+            if (parameterInputs[i] != null)
+            {
+                parameters.Add(parameterInputs[i].text);
+            }
         }
         InternalDatabase.Instance.UpdateDatabase(parameters, itemToUpdateIndex);     
     }

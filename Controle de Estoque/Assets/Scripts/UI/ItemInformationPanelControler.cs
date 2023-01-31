@@ -215,6 +215,12 @@ public class ItemInformationPanelControler : MonoBehaviour
         parameterValues[9].interactable = false;
     }
 
+    public void DisableItemsForAdd()
+    {
+        itemBoxes[5].gameObject.SetActive(false);
+        itemBoxes[9].gameObject.SetActive(false);
+    }
+
     public List<string> GetInventoryValues()
     {
        List<string> valuesList = new List<string>();
@@ -225,7 +231,6 @@ public class ItemInformationPanelControler : MonoBehaviour
                 valuesList.Add(parameterValues[i].text);
             }
         }
-
         return valuesList;
     }
 

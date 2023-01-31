@@ -1665,10 +1665,24 @@ public class InventarioManager : Singleton<InventarioManager>
                 foreach (JSONNode item in inventario)
                 {
                     ItemColumns newRow = new ItemColumns();
-
-                    newRow.Modelo = item[0];
-                    newRow.Fabricante = item[1];
-                    newRow.EstoqueAtual = item[2];
+                    newRow.Patrimonio = item[0];
+                    newRow.Modelo = item[1];
+                    newRow.ModeloPlacaMae = item[2];
+                    newRow.Fonte = item[3];
+                    newRow.Memoria = item[4];
+                    newRow.HD = item[5];
+                    newRow.PlacaDeVideo = item[6];
+                    newRow.PlacaDeRede = item[7];
+                    newRow.Processador = item[8];
+                    newRow.MemoriasSuportadas = item[9];
+                    newRow.QuantasMemorias = item[10];
+                    newRow.OrdemDasMemorias = item[11];
+                    newRow.CapacidadeRAMTotal = item[12];
+                    newRow.Soquete = item[13];
+                    newRow.PlacaControladora = item[14];
+                    newRow.AteQuantosHDs = item[15];
+                    newRow.TipoDeHD = item[16];
+                    newRow.TipoDeRAID = item[17];
                     newRow.Categoria = ConstStrings.Servidor;
 
                     tempSheet.itens.Add(newRow);
@@ -1747,10 +1761,15 @@ public class InventarioManager : Singleton<InventarioManager>
                 foreach (JSONNode item in inventario)
                 {
                     ItemColumns newRow = new ItemColumns();
-
-                    newRow.Modelo = item[0];
-                    newRow.Fabricante = item[1];
-                    newRow.EstoqueAtual = item[2];
+                    newRow.Patrimonio = item[0];
+                    newRow.Modelo = item[1];
+                    newRow.Fabricante = item[2];
+                    newRow.HD = item[3];
+                    newRow.Memoria = item[4];
+                    newRow.EntradaRJ49 = item[5];
+                    newRow.BateriaInclusa = item[6];
+                    newRow.AdaptadorAC = item[7];                 
+                    newRow.Windows = item[8];
                     newRow.Categoria = ConstStrings.Notebook;
 
                     tempSheet.itens.Add(newRow);

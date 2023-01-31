@@ -838,10 +838,12 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns tecladoItem in tecladoTemp.itens)
                             {
-
-                                if (item.Patrimonio.Trim().Equals(tecladoItem.Patrimonio.Trim()))
+                                if (item.Patrimonio != null && tecladoItem.Patrimonio != null)
                                 {
-                                    teclado.itens.Add(item);
+                                    if (item.Patrimonio.Trim().Equals(tecladoItem.Patrimonio.Trim()))
+                                    {
+                                        teclado.itens.Add(item);
+                                    }
                                 }
                             }
                         }

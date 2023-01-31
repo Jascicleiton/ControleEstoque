@@ -65,6 +65,7 @@ public class AddRemoveItem : MonoBehaviour
     private void UpdateNames()
     {
         itemInformationPanelController.ShowCategoryItemTemplate(HelperMethods.GetCategoryString(categoryDP.value));
+        itemInformationPanelController.DisableItemsForAdd();
     }
 
     private IEnumerator AddNewItemRoutine(bool addInventario)

@@ -186,7 +186,7 @@ public class ConsultInventory : MonoBehaviour
         }
         else
         {
-            print(activeIndexes.Count);
+            
         }
 
         if (foundItens != null)

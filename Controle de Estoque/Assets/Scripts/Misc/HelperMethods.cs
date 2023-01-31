@@ -271,7 +271,7 @@ public class HelperMethods
         }
 
         requestToSend = UnityWebRequest.Post(folder + phpName, form);
-        Debug.Log(folder + phpName);
+        
         return requestToSend;
     }
 
@@ -859,6 +859,12 @@ public class HelperMethods
                 #endregion
                 #region Notebook
                 case ConstStrings.Notebook:
+                    dictionary["Values"].Add(itemToShow.HD);
+                    dictionary["Values"].Add(itemToShow.Memoria);
+                    dictionary["Values"].Add(itemToShow.EntradaRJ49);
+                    dictionary["Values"].Add(itemToShow.BateriaInclusa);
+                    dictionary["Values"].Add(itemToShow.AdaptadorAC);
+                    dictionary["Values"].Add(itemToShow.Windows);
                     break;
                 #endregion
                 #region Placa controladora
@@ -1066,6 +1072,12 @@ public class HelperMethods
             #endregion
             #region Notebook
             case ConstStrings.Notebook:
+                dictionary["Names"].Add("HD");
+                dictionary["Names"].Add("Memória");
+                dictionary["Names"].Add("Entrada RJ49");
+                dictionary["Names"].Add("Bateria");
+                dictionary["Names"].Add("AdaptadorAC");
+                dictionary["Names"].Add("Windows");
                 break;
             #endregion
             #region Placa controladora
