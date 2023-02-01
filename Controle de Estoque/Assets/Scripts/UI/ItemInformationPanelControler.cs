@@ -11,6 +11,21 @@ public class ItemInformationPanelControler : MonoBehaviour
     [SerializeField] private TMP_Text[] parameterNames;
     [SerializeField] private TMP_InputField[] parameterValues;
     [SerializeField] private TMP_Text[] parameterValuesText;
+    [SerializeField] private TabInputHandler tabInputHandler;
+
+    private int numberOfActiveBoxes = 0;
+
+    private void Start()
+    {
+        if(tabInputHandler == null)
+        {
+            tabInputHandler = GetComponent<TabInputHandler>();
+        }
+        if (tabInputHandler != null)
+        {
+            tabInputHandler.isWithItemInformationPanelController = true;
+        }
+    }
 
     private void OnEnable()
     {
@@ -46,7 +61,10 @@ public class ItemInformationPanelControler : MonoBehaviour
         for (int i = 0; i < itemBoxes.Length; i++)
         {
             itemBoxes[i].gameObject.SetActive(true);
-            parameterValues[i].interactable = true;
+            if (parameterValues.Length > 0)
+            {
+                parameterValues[i].interactable = true;
+            }
         }
     }
 
@@ -104,6 +122,44 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             }
         }
+    } 
+
+    private void ChangeSize()
+    {
+        numberOfActiveBoxes = GetNumberOfActiveBoxes();
+        if (numberOfActiveBoxes < 7)
+        {
+            GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 135f);
+        }
+        else if (numberOfActiveBoxes < 13)
+        {
+            GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 260f);
+        }
+        else if(numberOfActiveBoxes < 19)
+        {
+            GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 380f);
+        }
+        else if( numberOfActiveBoxes < 25)
+        {
+            GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 500f);
+        }
+        else
+        {
+            GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 620f);
+        }
+    }
+
+    public int GetNumberOfActiveBoxes()
+    {
+        numberOfActiveBoxes = 0;
+        for (int i = 0; i < itemBoxes.Length; i++)
+        {
+            if (itemBoxes[i].gameObject.activeInHierarchy)
+            {
+                numberOfActiveBoxes++;
+            }
+        }
+        return numberOfActiveBoxes;
     }
 
     public void ResetValues()
@@ -164,6 +220,13 @@ public class ItemInformationPanelControler : MonoBehaviour
             print("Item to show is null");
         }
         HideEmpityItemBox();
+        if (tabInputHandler != null)
+        {
+            tabInputHandler.GetActiveInputs();
+            tabInputHandler.CheckIfInputIsActiveAndEnabled();
+        }
+        ChangeSize();
+
     }
 
     public void ShowItemConsult(ItemColumns itemToShow)
@@ -229,8 +292,10 @@ public class ItemInformationPanelControler : MonoBehaviour
             if (parameterValues[i].IsActive())
             {
                 valuesList.Add(parameterValues[i].text);
+                
             }
         }
+
         return valuesList;
     }
 
@@ -438,6 +503,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 valuesList.Add(parameterValues[23].text);
                 valuesList.Add(parameterValues[24].text);
                 valuesList.Add(parameterValues[25].text);
+                valuesList.Add(parameterValues[26].text);
                 break;
             #endregion
             #region Notebook
@@ -468,5 +534,13 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
 
         return valuesList;
+    }
+
+    private void Testing (List<string> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            print(list[i]);
+        }
     }
 }

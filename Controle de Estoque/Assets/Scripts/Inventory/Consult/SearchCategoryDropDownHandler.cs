@@ -7,11 +7,14 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
 {
     [SerializeField] private TMP_Text[] searchParamenters;
     [SerializeField] private TMP_InputField[] searchParamentersInput;
+
     List<string> names = new List<string>();
     Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+    
     private void Start()
     {
         HandleInputData(0);
+
     }
 
     /// <summary>
@@ -55,5 +58,5 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamentersInput[i].gameObject.SetActive(false);
             }
         }
-    }
+    }  
 }

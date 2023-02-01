@@ -853,63 +853,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383766752}
   m_CullTransparentMesh: 1
---- !u!1001 &499679851
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.23200718
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.037530575
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 81.01163
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 398342940508441299, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449397594123008831, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
-      propertyPath: m_Name
-      value: PersistentClasses - Test
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e76cc9004101d3146bd98d420266cc25, type: 3}
 --- !u!1 &602510895
 GameObject:
   m_ObjectHideFlags: 0
@@ -6130,6 +6073,8 @@ MonoBehaviour:
   - {fileID: 1130460430}
   - {fileID: 1651195347}
   - {fileID: 1019073413}
+  categorySearchParametersPanel: {fileID: 6915215404369312449}
+  searchResultsPanel: {fileID: 6915215405666083176}
 --- !u!1 &6915215404353824632
 GameObject:
   m_ObjectHideFlags: 0
@@ -6322,7 +6267,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 105.18}
-  m_SizeDelta: {x: 0, y: 210.36}
+  m_SizeDelta: {x: 0, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6915215404369312449
 GameObject:
@@ -6431,7 +6376,7 @@ MonoBehaviour:
   - {fileID: 6915215405486160621}
   - {fileID: 6915215404921292066}
   - {fileID: 6915215404743760252}
-  inputIndex: 0
+  isWithItemInformationPanelController: 0
 --- !u!114 &6915215404400927264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12760,7 +12705,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 20
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 6915215404827785026}
   m_HorizontalScrollbar: {fileID: 6915215404153270411}
   m_VerticalScrollbar: {fileID: 6915215404059195365}
@@ -12791,8 +12736,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -250}
-  m_SizeDelta: {x: 0, y: 500}
+  m_AnchoredPosition: {x: 0, y: -270}
+  m_SizeDelta: {x: 0, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6915215405707185539
 CanvasRenderer:
@@ -13024,6 +12969,13 @@ MonoBehaviour:
   - {fileID: 6915215405486160621}
   - {fileID: 6915215404921292066}
   - {fileID: 6915215404743760252}
+  - {fileID: 1582167894}
+  - {fileID: 985810134}
+  - {fileID: 1532771182}
+  - {fileID: 1130460430}
+  - {fileID: 1651195347}
+  - {fileID: 1019073413}
+  searchResultsPanel: {fileID: 6915215405666083176}
 --- !u!224 &6915215405759569518
 RectTransform:
   m_ObjectHideFlags: 0

@@ -631,6 +631,7 @@ public class HelperMethods
                 #endregion
                 #region Servidor
                 case ConstStrings.Servidor:
+                    Debug.Log(parameters.Count);
                     WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11],
                      parameters[12], parameters[13], parameters[14], parameters[15], parameters[16], parameters[17], parameters[18]);
@@ -934,6 +935,7 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.PlacaDeRede);
                     dictionary["Values"].Add(itemToShow.Processador);
                     dictionary["Values"].Add(itemToShow.MemoriasSuportadas);
+                    dictionary["Values"].Add(itemToShow.QuantasMemorias);
                     dictionary["Values"].Add(itemToShow.OrdemDasMemorias);
                     dictionary["Values"].Add(itemToShow.CapacidadeRAMTotal);
                     dictionary["Values"].Add(itemToShow.Soquete);
@@ -1147,6 +1149,7 @@ public class HelperMethods
                 dictionary["Names"].Add("Placa de rede");
                 dictionary["Names"].Add("Processadores instalados");
                 dictionary["Names"].Add("Memórias suportadas");
+                dictionary["Names"].Add("Até quantas memórias");
                 dictionary["Names"].Add("Ordem das memórias");
                 dictionary["Names"].Add("Capacidade RAM total");
                 dictionary["Names"].Add("Soquete do processador");

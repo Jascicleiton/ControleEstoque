@@ -23,7 +23,7 @@ public class ConsultInventory : MonoBehaviour
 
     private ConsultCategory consultCategory = null;
     private bool inputEnabled = true;
-
+    
     /// <summary>
     /// get the ConsultCategory component
     /// </summary>
@@ -92,7 +92,6 @@ public class ConsultInventory : MonoBehaviour
         }
     }
 
-
     private void SetInputEnabled(bool enableInput)
     {
         inputEnabled = enableInput;
@@ -109,6 +108,13 @@ public class ConsultInventory : MonoBehaviour
             for (int i = 0; i < consultResultTransform.childCount; i++)
             {
                 consultResultTransform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+        for (int i = 0; i < categorySearchInputs.Length; i++)
+        {
+            if (categorySearchInputs[i].IsActive())
+            {
+                categorySearchInputs[i].text = "";
             }
         }
     }
@@ -180,15 +186,9 @@ public class ConsultInventory : MonoBehaviour
 
         if (activeIndexes.Count > 0)
         {
-
             foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategorySheet(categoryDP.value));
             //InternalDatabase.Instance.testingSheet = GetCategorySheet(categoryDP.value);
         }
-        else
-        {
-            
-        }
-
         if (foundItens != null)
         {
             if (foundItens.itens.Count > 0)
@@ -243,14 +243,16 @@ public class ConsultInventory : MonoBehaviour
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
                 numberOfItemsImage.alpha = 0f;
-                break;
+               
+                                break;
             case 2:
                 categoryDP.gameObject.SetActive(false);
                 categorySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Serial";
                 numberOfItemsImage.alpha = 0f;
-                break;
+               
+                                break;
             default:
                 break;
         }

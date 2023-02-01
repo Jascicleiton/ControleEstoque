@@ -139,15 +139,18 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns adaptadorAcItem in adaptadorACTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(adaptadorAcItem.Modelo.Trim()))
+                                if (item.Modelo != null && adaptadorAcItem.Modelo != null)
                                 {
-                                    item.OndeFunciona = adaptadorAcItem.OndeFunciona;
-                                    item.VoltagemDeSaida = adaptadorAcItem.VoltagemDeSaida;
-                                    item.AmperagemDeSaida = adaptadorAcItem.AmperagemDeSaida;
-                                    adaptadorAC.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(adaptadorAcItem.Modelo.Trim()))
+                                    {
+                                        item.OndeFunciona = adaptadorAcItem.OndeFunciona;
+                                        item.VoltagemDeSaida = adaptadorAcItem.VoltagemDeSaida;
+                                        item.AmperagemDeSaida = adaptadorAcItem.AmperagemDeSaida;
+                                        adaptadorAC.itens.Add(item);
+                                    }
                                 }
                             }
+                            testingSheet = adaptadorAC;
                         }
                         else
                         {
@@ -167,13 +170,15 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns carregadorItem in carregadorTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(carregadorItem.Modelo.Trim()))
+                                if (item.Modelo != null && carregadorItem.Modelo != null)
                                 {
-                                    item.OndeFunciona = carregadorItem.OndeFunciona;
-                                    item.VoltagemDeSaida = carregadorItem.VoltagemDeSaida;
-                                    item.AmperagemDeSaida = carregadorItem.AmperagemDeSaida;
-                                    carregador.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(carregadorItem.Modelo.Trim()))
+                                    {
+                                        item.OndeFunciona = carregadorItem.OndeFunciona;
+                                        item.VoltagemDeSaida = carregadorItem.VoltagemDeSaida;
+                                        item.AmperagemDeSaida = carregadorItem.AmperagemDeSaida;
+                                        carregador.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -195,18 +200,20 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns desktopItem in desktopTemp.itens)
                             {
-
-                                if (item.Patrimonio.Trim().Equals(desktopItem.Patrimonio.Trim()))
+                                if (item.Patrimonio != null && desktopItem.Patrimonio != null)
                                 {
-                                    item.ModeloPlacaMae = desktopItem.ModeloPlacaMae;
-                                    item.Fonte = desktopItem.Fonte;
-                                    item.Memoria = desktopItem.Memoria;
-                                    item.HD = desktopItem.HD;
-                                    item.PlacaDeVideo = desktopItem.PlacaDeVideo;
-                                    item.PlacaDeRede = desktopItem.PlacaDeRede;
-                                    item.LeitorDeDVD = desktopItem.LeitorDeDVD;
-                                    item.Processador = desktopItem.Processador;
-                                    desktop.itens.Add(item);
+                                    if (item.Patrimonio.Trim().Equals(desktopItem.Patrimonio.Trim()))
+                                    {
+                                        item.ModeloPlacaMae = desktopItem.ModeloPlacaMae;
+                                        item.Fonte = desktopItem.Fonte;
+                                        item.Memoria = desktopItem.Memoria;
+                                        item.HD = desktopItem.HD;
+                                        item.PlacaDeVideo = desktopItem.PlacaDeVideo;
+                                        item.PlacaDeRede = desktopItem.PlacaDeRede;
+                                        item.LeitorDeDVD = desktopItem.LeitorDeDVD;
+                                        item.Processador = desktopItem.Processador;
+                                        desktop.itens.Add(item);
+                                    }
                                 }
                             }
 
@@ -229,9 +236,12 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns foneRamalItem in foneRamalTemp.itens)
                             {
-                                if (item.Patrimonio.Trim().Equals(foneRamalItem.Patrimonio.Trim()))
+                                if (item.Patrimonio != null && foneRamalItem.Patrimonio != null)
                                 {
-                                    foneRamal.itens.Add(item);
+                                    if (item.Patrimonio.Trim().Equals(foneRamalItem.Patrimonio.Trim()))
+                                    {
+                                        foneRamal.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -253,13 +263,15 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns fonteItem in fonteTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(fonteItem.Modelo.Trim()))
+                                if (item.Modelo != null && fonteItem.Modelo != null)
                                 {
-                                    item.Watts = fonteItem.Watts;
-                                    item.OndeFunciona = fonteItem.OndeFunciona;
-                                    item.Conectores = fonteItem.Conectores;
-                                    fonte.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(fonteItem.Modelo.Trim()))
+                                    {
+                                        item.Watts = fonteItem.Watts;
+                                        item.OndeFunciona = fonteItem.OndeFunciona;
+                                        item.Conectores = fonteItem.Conectores;
+                                        fonte.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -281,11 +293,13 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns gbicItem in gbicTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(gbicItem.Modelo.Trim()))
+                                if (item.Modelo != null && gbicItem.Modelo != null)
                                 {
-                                    item.Desempenho = gbicItem.Desempenho;
-                                    gbic.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(gbicItem.Modelo.Trim()))
+                                    {
+                                        item.Desempenho = gbicItem.Desempenho;
+                                        gbic.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -307,21 +321,21 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns hdItem in hdTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(hdItem.Modelo.Trim()))
+                                if (item.Modelo != null && hdItem.Modelo != null)
                                 {
-                                    item.Interface = hdItem.Interface;
-                                    item.Tamanho = hdItem.Tamanho;
-                                    item.FormaDeArmazenamento = hdItem.FormaDeArmazenamento;
-                                    item.CapacidadeEmGB = hdItem.CapacidadeEmGB;
-                                    item.RPM = hdItem.RPM;
-                                    item.VelocidadeDeLeitura = hdItem.VelocidadeDeLeitura;
-                                    item.Enterprise = hdItem.Enterprise;
-                                    hd.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(hdItem.Modelo.Trim()))
+                                    {
+                                        item.Interface = hdItem.Interface;
+                                        item.Tamanho = hdItem.Tamanho;
+                                        item.FormaDeArmazenamento = hdItem.FormaDeArmazenamento;
+                                        item.CapacidadeEmGB = hdItem.CapacidadeEmGB;
+                                        item.RPM = hdItem.RPM;
+                                        item.VelocidadeDeLeitura = hdItem.VelocidadeDeLeitura;
+                                        item.Enterprise = hdItem.Enterprise;
+                                        hd.itens.Add(item);
+                                    }
                                 }
                             }
-                            //  testingSheet = hd;
-
                         }
                         else
                         {
@@ -341,14 +355,16 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns idracItem in idracTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(idracItem.Modelo.Trim()))
+                                if (item.Modelo != null && idracItem.Modelo != null)
                                 {
-                                    item.QuaisConexoes = idracItem.QuaisConexoes;
-                                    item.VelocidadeGBs = idracItem.VelocidadeGBs;
-                                    item.EntradaSD = idracItem.EntradaSD;
-                                    item.ServidoresSuportados = idracItem.ServidoresSuportados;
-                                    idrac.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(idracItem.Modelo.Trim()))
+                                    {
+                                        item.QuaisConexoes = idracItem.QuaisConexoes;
+                                        item.VelocidadeGBs = idracItem.VelocidadeGBs;
+                                        item.EntradaSD = idracItem.EntradaSD;
+                                        item.ServidoresSuportados = idracItem.ServidoresSuportados;
+                                        idrac.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -370,18 +386,20 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns memoriaItem in memoriaTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(memoriaItem.Modelo.Trim()))
+                                if (item.Modelo != null && memoriaItem.Modelo != null)
                                 {
-                                    item.Tipo = memoriaItem.Tipo;
-                                    item.CapacidadeEmGB = memoriaItem.CapacidadeEmGB;
-                                    item.VelocidadeMHz = memoriaItem.VelocidadeMHz;
-                                    item.LowVoltage = memoriaItem.LowVoltage;
-                                    item.Rank = memoriaItem.Rank;
-                                    item.DIMM = memoriaItem.DIMM;
-                                    item.TaxaDeTransmissao = memoriaItem.TaxaDeTransmissao;
-                                    item.Simbolo = memoriaItem.Simbolo;
-                                    memoria.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(memoriaItem.Modelo.Trim()))
+                                    {
+                                        item.Tipo = memoriaItem.Tipo;
+                                        item.CapacidadeEmGB = memoriaItem.CapacidadeEmGB;
+                                        item.VelocidadeMHz = memoriaItem.VelocidadeMHz;
+                                        item.LowVoltage = memoriaItem.LowVoltage;
+                                        item.Rank = memoriaItem.Rank;
+                                        item.DIMM = memoriaItem.DIMM;
+                                        item.TaxaDeTransmissao = memoriaItem.TaxaDeTransmissao;
+                                        item.Simbolo = memoriaItem.Simbolo;
+                                        memoria.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -403,12 +421,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns monitorItem in monitorTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(monitorItem.Modelo.Trim()))
+                                if (item.Modelo != null && monitorItem.Modelo != null)
                                 {
-                                    item.Polegadas = monitorItem.Polegadas;
-                                    item.QuaisConexoes = monitorItem.QuaisConexoes;
-                                    monitor.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(monitorItem.Modelo.Trim()))
+                                    {
+                                        item.Polegadas = monitorItem.Polegadas;
+                                        item.QuaisConexoes = monitorItem.QuaisConexoes;
+                                        monitor.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -430,10 +450,12 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns mouseItem in mouseTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(mouseItem.Modelo.Trim()))
+                                if (item.Patrimonio != null && mouseItem.Patrimonio != null)
                                 {
-                                    mouse.itens.Add(item);
+                                    if (item.Patrimonio.Trim().Equals(mouseItem.Patrimonio.Trim()))
+                                    {
+                                        mouse.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -453,11 +475,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     {
                         if (nobreakTemp.itens.Count > 0)
                         {
-                            foreach (ItemColumns notebookItem in nobreakTemp.itens)
+                            foreach (ItemColumns nobreakItem in nobreakTemp.itens)
                             {
-                                if (item.Modelo.Trim().Equals(notebookItem.Modelo.Trim()))
+                                if (item.Modelo != null && nobreakItem.Modelo != null)
                                 {
-                                    nobreak.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(nobreakItem.Modelo.Trim()))
+                                    {
+                                        nobreak.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -479,16 +504,18 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns notebookItem in notebookTemp.itens)
                             {
-
-                                if (item.Patrimonio.Trim().Equals(notebookItem.Patrimonio.Trim()))
+                                if (item.Patrimonio != null && notebookItem.Patrimonio != null)
                                 {
-                                    item.HD = notebookItem.HD;
-                                    item.Memoria = notebookItem.Memoria;
-                                    item.EntradaRJ49 = notebookItem.EntradaRJ49;
-                                    item.BateriaInclusa = notebookItem.BateriaInclusa;
-                                    item.AdaptadorAC = notebookItem.AdaptadorAC;
-                                    item.Windows = notebookItem.Windows;
-                                    notebook.itens.Add(item);
+                                    if (item.Patrimonio.Trim().Equals(notebookItem.Patrimonio.Trim()))
+                                    {
+                                        item.HD = notebookItem.HD;
+                                        item.Memoria = notebookItem.Memoria;
+                                        item.EntradaRJ49 = notebookItem.EntradaRJ49;
+                                        item.BateriaInclusa = notebookItem.BateriaInclusa;
+                                        item.AdaptadorAC = notebookItem.AdaptadorAC;
+                                        item.Windows = notebookItem.Windows;
+                                        notebook.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -510,18 +537,20 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns placaControladoraItem in placaControladoraTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(placaControladoraItem.Modelo.Trim()))
+                                if (item.Modelo != null && placaControladoraItem.Modelo != null)
                                 {
-                                    item.QuaisConexoes = placaControladoraItem.QuaisConexoes;
-                                    item.QuantidadeDePortas = placaControladoraItem.QuantidadeDePortas;
-                                    item.TipoDeRAID = placaControladoraItem.TipoDeRAID;
-                                    item.TipoDeHD = placaControladoraItem.TipoDeHD;
-                                    item.CapacidadeMaxHD = placaControladoraItem.CapacidadeMaxHD;
-                                    item.AteQuantosHDs = placaControladoraItem.AteQuantosHDs;
-                                    item.BateriaInclusa = placaControladoraItem.BateriaInclusa;
-                                    item.Barramento = placaControladoraItem.Barramento;
-                                    placaControladora.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(placaControladoraItem.Modelo.Trim()))
+                                    {
+                                        item.QuaisConexoes = placaControladoraItem.QuaisConexoes;
+                                        item.QuantidadeDePortas = placaControladoraItem.QuantidadeDePortas;
+                                        item.TipoDeRAID = placaControladoraItem.TipoDeRAID;
+                                        item.TipoDeHD = placaControladoraItem.TipoDeHD;
+                                        item.CapacidadeMaxHD = placaControladoraItem.CapacidadeMaxHD;
+                                        item.AteQuantosHDs = placaControladoraItem.AteQuantosHDs;
+                                        item.BateriaInclusa = placaControladoraItem.BateriaInclusa;
+                                        item.Barramento = placaControladoraItem.Barramento;
+                                        placaControladora.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -543,11 +572,13 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns placaDeCapturaDeVideoItem in placaDeCapturaDeVideoTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(placaDeCapturaDeVideoItem.Modelo.Trim()))
+                                if (item.Modelo != null && placaDeCapturaDeVideoItem.Modelo != null)
                                 {
-                                    item.QuantidadeDePortas = placaDeCapturaDeVideoItem.QuantidadeDePortas;
-                                    placaDeCapturaDeVideo.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(placaDeCapturaDeVideoItem.Modelo.Trim()))
+                                    {
+                                        item.QuantidadeDePortas = placaDeCapturaDeVideoItem.QuantidadeDePortas;
+                                        placaDeCapturaDeVideo.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -569,15 +600,17 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns placaDeRedeItem in placaDeRedeTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(placaDeRedeItem.Modelo.Trim()))
+                                if (item.Modelo != null && placaDeRedeItem.Modelo != null)
                                 {
-                                    item.Interface = placaDeRedeItem.Interface;
-                                    item.QuantidadeDePortas = placaDeRedeItem.QuantidadeDePortas;
-                                    item.QuaisConexoes = placaDeRedeItem.QuaisConexoes;
-                                    item.SuportaFibraOptica = placaDeRedeItem.SuportaFibraOptica;
-                                    item.Desempenho = placaDeRedeItem.Desempenho;
-                                    placaDeRede.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(placaDeRedeItem.Modelo.Trim()))
+                                    {
+                                        item.Interface = placaDeRedeItem.Interface;
+                                        item.QuantidadeDePortas = placaDeRedeItem.QuantidadeDePortas;
+                                        item.QuaisConexoes = placaDeRedeItem.QuaisConexoes;
+                                        item.SuportaFibraOptica = placaDeRedeItem.SuportaFibraOptica;
+                                        item.Desempenho = placaDeRedeItem.Desempenho;
+                                        placaDeRede.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -599,11 +632,13 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns placaDeSomItem in placaDeSomTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(placaDeSomItem.Modelo.Trim()))
+                                if (item.Modelo != null && placaDeSomItem.Modelo != null)
                                 {
-                                    item.QuantidadeDePortas = placaDeSomItem.QuantidadeDePortas;
-                                    placaDeSom.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(placaDeSomItem.Modelo.Trim()))
+                                    {
+                                        item.QuantidadeDePortas = placaDeSomItem.QuantidadeDePortas;
+                                        placaDeSom.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -625,12 +660,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns placaDeVideoItem in placaDeVideoTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(placaDeVideoItem.Modelo.Trim()))
+                                if (item.Modelo != null && placaDeVideoItem.Modelo != null)
                                 {
-                                    item.QuantidadeDePortas = placaDeVideoItem.QuantidadeDePortas;
-                                    item.QuaisConexoes = placaDeVideoItem.QuaisConexoes;
-                                    placaDeVideo.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(placaDeVideoItem.Modelo.Trim()))
+                                    {
+                                        item.QuantidadeDePortas = placaDeVideoItem.QuantidadeDePortas;
+                                        item.QuaisConexoes = placaDeVideoItem.QuaisConexoes;
+                                        placaDeVideo.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -652,16 +689,18 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns processadorItem in processadorTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(processadorItem.Modelo.Trim()))
+                                if (item.Modelo != null && processadorItem.Modelo != null)
                                 {
-                                    item.Soquete = processadorItem.Soquete;
-                                    item.NucleosFisicos = processadorItem.NucleosFisicos;
-                                    item.NucleosLogicos = processadorItem.NucleosLogicos;
-                                    item.AceitaVirtualizacao = processadorItem.AceitaVirtualizacao;
-                                    item.TurboBoost = processadorItem.TurboBoost;
-                                    item.HyperThreading = processadorItem.HyperThreading;
-                                    processador.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(processadorItem.Modelo.Trim()))
+                                    {
+                                        item.Soquete = processadorItem.Soquete;
+                                        item.NucleosFisicos = processadorItem.NucleosFisicos;
+                                        item.NucleosLogicos = processadorItem.NucleosLogicos;
+                                        item.AceitaVirtualizacao = processadorItem.AceitaVirtualizacao;
+                                        item.TurboBoost = processadorItem.TurboBoost;
+                                        item.HyperThreading = processadorItem.HyperThreading;
+                                        processador.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -683,10 +722,13 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns ramalItem in ramalTemp.itens)
                             {
-                                if (item.Patrimonio.Trim().Equals(ramalItem.Patrimonio.Trim()))
+                                if (item.Patrimonio != null && ramalItem.Patrimonio != null)
                                 {
-                                    ramal.itens.Add(item);
-                                }
+                                    if (item.Patrimonio.Trim().Equals(ramalItem.Patrimonio.Trim()))
+                                    {
+                                        ramal.itens.Add(item);
+                                    }
+                                }                               
                             }
                         }
                         else
@@ -707,14 +749,16 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns roteadorItem in roteadorTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(roteadorItem.Modelo.Trim()))
+                                if (item.Modelo != null && roteadorItem.Modelo != null)
                                 {
-                                    item.Wireless = roteadorItem.Wireless;
-                                    item.QuantidadeDePortas = roteadorItem.QuantidadeDePortas;
-                                    item.BandaMaxima = roteadorItem.BandaMaxima;
-                                    item.VoltagemDeSaida = roteadorItem.VoltagemDeSaida;
-                                    roteador.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(roteadorItem.Modelo.Trim()))
+                                    {
+                                        item.Wireless = roteadorItem.Wireless;
+                                        item.QuantidadeDePortas = roteadorItem.QuantidadeDePortas;
+                                        item.BandaMaxima = roteadorItem.BandaMaxima;
+                                        item.VoltagemDeSaida = roteadorItem.VoltagemDeSaida;
+                                        roteador.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -736,29 +780,31 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns servidorItem in servidorTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(servidorItem.Modelo.Trim()))
+                                if (item.Patrimonio != null && servidorItem.Patrimonio != null)
                                 {
-                                    item.Patrimonio = servidorItem.Patrimonio;
-                                    item.Modelo = servidorItem.Modelo;
-                                    item.Fabricante = servidorItem.Fabricante;
-                                    item.ModeloPlacaMae = servidorItem.ModeloPlacaMae;
-                                    item.Fonte = servidorItem.Fonte;
-                                    item.Memoria = servidorItem.Memoria;
-                                    item.HD = servidorItem.HD;
-                                    item.PlacaDeVideo = servidorItem.PlacaDeVideo;
-                                    item.PlacaDeRede = servidorItem.PlacaDeRede;
-                                    item.Processador = servidorItem.Processador;
-                                    item.MemoriasSuportadas = servidorItem.MemoriasSuportadas;
-                                    item.QuantasMemorias = servidorItem.QuantasMemorias;
-                                    item.OrdemDasMemorias = servidorItem.OrdemDasMemorias;
-                                    item.CapacidadeRAMTotal = servidorItem.CapacidadeRAMTotal;
-                                    item.Soquete = servidorItem.Soquete;
-                                    item.PlacaControladora = servidorItem.PlacaControladora;
-                                    item.AteQuantosHDs = servidorItem.AteQuantosHDs;
-                                    item.TipoDeHD = servidorItem.TipoDeHD;
-                                    item.TipoDeRAID = servidorItem.TipoDeRAID;
-                                    servidor.itens.Add(item);
+                                    if (item.Patrimonio.Trim().Equals(servidorItem.Patrimonio.Trim()))
+                                    {
+                                        item.Patrimonio = servidorItem.Patrimonio;
+                                        item.Modelo = servidorItem.Modelo;
+                                        item.Fabricante = servidorItem.Fabricante;
+                                        item.ModeloPlacaMae = servidorItem.ModeloPlacaMae;
+                                        item.Fonte = servidorItem.Fonte;
+                                        item.Memoria = servidorItem.Memoria;
+                                        item.HD = servidorItem.HD;
+                                        item.PlacaDeVideo = servidorItem.PlacaDeVideo;
+                                        item.PlacaDeRede = servidorItem.PlacaDeRede;
+                                        item.Processador = servidorItem.Processador;
+                                        item.MemoriasSuportadas = servidorItem.MemoriasSuportadas;
+                                        item.QuantasMemorias = servidorItem.QuantasMemorias;
+                                        item.OrdemDasMemorias = servidorItem.OrdemDasMemorias;
+                                        item.CapacidadeRAMTotal = servidorItem.CapacidadeRAMTotal;
+                                        item.Soquete = servidorItem.Soquete;
+                                        item.PlacaControladora = servidorItem.PlacaControladora;
+                                        item.AteQuantosHDs = servidorItem.AteQuantosHDs;
+                                        item.TipoDeHD = servidorItem.TipoDeHD;
+                                        item.TipoDeRAID = servidorItem.TipoDeRAID;
+                                        servidor.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -780,16 +826,18 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns storageNasItem in storageNASTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(storageNasItem.Modelo.Trim()))
+                                if (item.Modelo != null && storageNasItem.Modelo != null)
                                 {
-                                    item.Tamanho = storageNasItem.Tamanho;
-                                    item.TipoDeRAID = storageNasItem.TipoDeRAID;
-                                    item.TipoDeHD = storageNasItem.TipoDeHD;
-                                    item.CapacidadeMaxHD = storageNasItem.CapacidadeMaxHD;
-                                    item.CapacidadeMaxHD = storageNasItem.CapacidadeMaxHD;
-                                    item.AteQuantosHDs = storageNasItem.AteQuantosHDs;
-                                    storageNAS.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(storageNasItem.Modelo.Trim()))
+                                    {
+                                        item.Tamanho = storageNasItem.Tamanho;
+                                        item.TipoDeRAID = storageNasItem.TipoDeRAID;
+                                        item.TipoDeHD = storageNasItem.TipoDeHD;
+                                        item.CapacidadeMaxHD = storageNasItem.CapacidadeMaxHD;
+                                        item.CapacidadeMaxHD = storageNasItem.CapacidadeMaxHD;
+                                        item.AteQuantosHDs = storageNasItem.AteQuantosHDs;
+                                        storageNAS.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -811,12 +859,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns switchItem in switchTemp.itens)
                             {
-
-                                if (item.Modelo.Trim().Equals(switchItem.Modelo.Trim()))
+                                if (item.Modelo != null && switchItem.Modelo != null)
                                 {
-                                    item.QuantidadeDePortas = switchItem.QuantidadeDePortas;
-                                    item.Desempenho = switchItem.Desempenho;
-                                    Switch.itens.Add(item);
+                                    if (item.Modelo.Trim().Equals(switchItem.Modelo.Trim()))
+                                    {
+                                        item.QuantidadeDePortas = switchItem.QuantidadeDePortas;
+                                        item.Desempenho = switchItem.Desempenho;
+                                        Switch.itens.Add(item);
+                                    }
                                 }
                             }
                         }
@@ -858,12 +908,28 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     }
                 }
             }
-            allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
+            switch (currentEstoque)
+            {
+                case CurrentEstoque.SnPro:
+                    allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
+            carregador, desktop, fonte, gbic, hd, idrac, memoria, monitor, nobreak,
+            notebook, placaControladora, placaDeCapturaDeVideo, placaDeRede, placaDeSom, placaDeVideo,
+            processador,roteador, servidor, storageNAS, Switch});
+                    break;
+                case CurrentEstoque.Funsoft:
+                case CurrentEstoque.ESF:
+                case CurrentEstoque.Testing:
+                    allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
             carregador, desktop, foneRamal, fonte, gbic, hd, idrac, memoria, monitor, mouse, nobreak,
             notebook, placaControladora, placaDeCapturaDeVideo, placaDeRede, placaDeSom, placaDeVideo,
-            processador, ramal, roteador, servidor, storageNAS, Switch, teclado });
+            processador, ramal, roteador, servidor, storageNAS, Switch, teclado });              
+                    break;
+                default:
+                    break;
+            }
+           
             fullDatabaseFilled = true;
-        }
+       }
     }
 
    public void UpdateDatabase(List<string> parameters, int itemIndexFullDatabase)

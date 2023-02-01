@@ -47,27 +47,31 @@ public class ConsultResult : MonoBehaviour
                 this.itemName.text = itemToShow.Serial;
             }
             itemInformationPanelControler.ShowItemConsult(itemToShow);
+            ChangeSize(itemInformationPanelControler.GetNumberOfActiveBoxes());
         }
         else
         {
             Debug.LogWarning("itemToShow is null");
         }
-        ChangeSize();
     }
 
-    private void ChangeSize()
+    public void ChangeSize(int numberOfActiveBoxes)
     {
-        if(itemBoxes.Length < 10)
+        if (numberOfActiveBoxes < 10)
         {
-            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 210f);
+            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 170);
         }
-        else if( itemBoxes.Length < 20)
+        else if (numberOfActiveBoxes < 19)
         {
-            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 370f);
+            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 280);
+        }
+        else if (numberOfActiveBoxes <28)
+        {
+            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 380);
         }
         else
         {
-            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 550f);
+            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 505);
         }
     }
 }

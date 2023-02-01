@@ -40,6 +40,7 @@ public class UpdateItem : MonoBehaviour
 #pragma warning disable CS0219
     private bool updateDetailsSuccess = false;
 #pragma warning restore CS0219
+
     void Start()
     {
         ResetInputs();
@@ -97,6 +98,7 @@ public class UpdateItem : MonoBehaviour
     private IEnumerator CheckIfItemExists()
     {
         WWWForm itemForm = new WWWForm();
+        itemToUpdate = new ItemColumns();
         UnityWebRequest createItemUpdatePostRequest = new UnityWebRequest();
         if (parameterToSearchDP.value == 0)
         {
@@ -266,7 +268,7 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void ShowUpdateItem()
     {
-        ItemColumns tempItem = ConsultDatabase.Instance.ConsultSerial(itemToUpdate.Serial, InternalDatabase.Instance.fullDatabase);
+        ItemColumns tempItem = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdate.Patrimonio, InternalDatabase.Instance.fullDatabase);
         if (tempItem != null)
         {
             itemToUpdate = tempItem;
