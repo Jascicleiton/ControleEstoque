@@ -278,9 +278,16 @@ public class ItemInformationPanelControler : MonoBehaviour
         parameterValues[9].interactable = false;
     }
 
-    public void DisableItemsForAdd()
+    public void DisableItemsForAdd(string category)
     {
-        itemBoxes[5].gameObject.SetActive(false);
+        if (category == ConstStrings.Outros)
+        {
+            itemBoxes[5].gameObject.SetActive(true);
+        }
+        else
+        {
+            itemBoxes[5].gameObject.SetActive(false);
+        }
         itemBoxes[9].gameObject.SetActive(false);
     }
 
@@ -291,11 +298,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         {
             if (parameterValues[i].IsActive())
             {
-                valuesList.Add(parameterValues[i].text);
-                
+                valuesList.Add(parameterValues[i].text);                
             }
         }
-
         return valuesList;
     }
 

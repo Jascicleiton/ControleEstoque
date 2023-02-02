@@ -65,7 +65,7 @@ public class AddRemoveItem : MonoBehaviour
     private void UpdateNames()
     {
         itemInformationPanelController.ShowCategoryItemTemplate(HelperMethods.GetCategoryString(categoryDP.value));
-        itemInformationPanelController.DisableItemsForAdd();
+        itemInformationPanelController.DisableItemsForAdd(HelperMethods.GetCategoryString(categoryDP.value));
     }
 
     private IEnumerator AddNewItemRoutine(bool addInventario)
@@ -83,12 +83,19 @@ public class AddRemoveItem : MonoBehaviour
             parameters.Add(parameterValues[2].text);
             parameters.Add(parameterValues[3].text);
             parameters.Add(parameterValues[4].text);
-            parameters.Add(HelperMethods.GetCategoryString(categoryDP.value));
-            parameters.Add(parameterValues[5].text);
+            if (HelperMethods.GetCategoryString(categoryDP.value) == ConstStrings.Outros)
+            {
+                parameters.Add(parameterValues[5].text);
+            }
+            else
+            {
+                parameters.Add(HelperMethods.GetCategoryString(categoryDP.value));
+            }
             parameters.Add(parameterValues[6].text);
             parameters.Add(parameterValues[7].text);
-            parameters.Add("");
             parameters.Add(parameterValues[8].text);
+            parameters.Add("");
+            parameters.Add(parameterValues[10].text);
 
             yield return HelperMethods.AddUpdateItem(categoryDP.value, 2, parameters, true);
 

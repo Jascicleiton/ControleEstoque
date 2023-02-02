@@ -737,6 +737,8 @@ public class HelperMethods
                     break;
                 #endregion
                 default:
+                    addUpdateResponse = true;
+                    EventHandler.CallOpenMessageEvent("Worked");
                     break;
             }
         }

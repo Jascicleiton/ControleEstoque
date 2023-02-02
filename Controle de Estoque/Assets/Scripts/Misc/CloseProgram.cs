@@ -24,7 +24,7 @@ public class CloseProgram : MonoBehaviour
     {
         if(closeButton == null)
         {
-            closeButton = GetComponent<Button>();
+            closeButton = GetComponentInChildren<Button>();
         }
     }
 

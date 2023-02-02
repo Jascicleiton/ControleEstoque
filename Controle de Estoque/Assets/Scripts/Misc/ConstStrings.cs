@@ -35,15 +35,16 @@ public class ConstStrings
     public const string FoneRamal = "Fone para ramal";
     public const string Ramal = "Ramal";
     public const string Nobreak = "No break";
+    public const string Outros = "Outros";
     #endregion
 
     #region Categories arrays
     public static readonly string[] AllCategories = { AdaptadorAC, Carregador, Desktop, FoneRamal, Fonte, Gbic, HD, Idrac, Memoria, Monitor, 
     Mouse, Nobreak, Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Ramal,Roteador,
-    Servidor, StorageNAS, Switch, Teclado };
+    Servidor, StorageNAS, Switch, Teclado, Outros };
     public static readonly string[] SNPCategories = { AdaptadorAC, Carregador, Desktop, Fonte, Gbic, HD, Idrac, Memoria, Monitor, Nobreak, 
     Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Servidor, StorageNAS, 
-    Switch };
+    Switch, Outros };
     #endregion
 
     #region Tags
