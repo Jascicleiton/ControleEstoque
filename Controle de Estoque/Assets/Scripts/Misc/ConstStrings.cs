@@ -22,7 +22,7 @@ public class ConstStrings
     public const string Carregador = "Carregador";
     public const string AdaptadorAC = "Adaptador AC";
     public const string StorageNAS = "Storage NAS";
-    public const string Gbic = "GBIC";
+    public const string Gbic = "Gbic";
     public const string PlacaDeVideo = "Placa de vídeo";
     public const string PlacaDeSom = "Placa de som";
     public const string PlacaDeCapturaDeVideo = "Placa de captura de vídeo";

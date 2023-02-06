@@ -168,8 +168,7 @@ public class ConsultInventory : MonoBehaviour
     /// Consult the inventory using the parameters chosen from each category
     /// </summary>
     private void ConsultWithCategory()
-    {
-        RemoveOldSearch();
+    {     
         Sheet foundItens = new Sheet();
         List<int> activeIndexes = new List<int>();
 
@@ -180,15 +179,18 @@ public class ConsultInventory : MonoBehaviour
                 if (categorySearchInputs[i].text != "")
                 {
                     activeIndexes.Add(i);
-                }
+                    
+                     }
             }
-        }
+                    }
 
         if (activeIndexes.Count > 0)
         {
             foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategorySheet(categoryDP.value));
-            //InternalDatabase.Instance.testingSheet = GetCategorySheet(categoryDP.value);
+            print(GetCategorySheet(categoryDP.value));
+            InternalDatabase.Instance.testingSheet = GetCategorySheet(categoryDP.value);
         }
+        RemoveOldSearch();
         if (foundItens != null)
         {
             if (foundItens.itens.Count > 0)

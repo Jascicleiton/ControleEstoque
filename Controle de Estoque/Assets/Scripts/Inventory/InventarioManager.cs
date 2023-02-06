@@ -38,6 +38,7 @@ public class InventarioManager : Singleton<InventarioManager>
         StartCoroutine(ImportServidorToDatabase());
         StartCoroutine(ImportNotebookToDatabase());
         StartCoroutine(ImportMonitorToDatabase());
+        
     }
 
     #region Import all tables to internal database
@@ -1872,5 +1873,6 @@ public class InventarioManager : Singleton<InventarioManager>
             InternalDatabase.Instance.splitDatabase[ConstStrings.Monitor] = tempSheet;
         }
     }
+   
     #endregion
 }

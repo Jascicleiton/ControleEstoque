@@ -8,8 +8,8 @@ public class ImportingWidgetController : MonoBehaviour
 {
     [SerializeField] private GameObject image;
     [SerializeField] private TMP_Text percentageText;
-    private float percentage;
-
+    private float totalPercentageLoaded;
+    private float percentageToLoad;
 
     private void Start()
     {
@@ -30,15 +30,45 @@ public class ImportingWidgetController : MonoBehaviour
     {
         if (isInventory)
         {
-            percentage += 0.048f;
+            switch (InternalDatabase.Instance.currentEstoque)
+            {
+                case CurrentEstoque.SnPro:
+                    percentageToLoad = 0.0480f;
+                    break;
+                case CurrentEstoque.Funsoft:
+                    break;
+                case CurrentEstoque.ESF:
+                    percentageToLoad = 0.16f;
+                    break;
+                case CurrentEstoque.Testing:
+                    break;
+                default:
+                    break;
+            }
+
         }
         else
         {
-            percentage += 0.0476f;
+            switch (InternalDatabase.Instance.currentEstoque)
+            {
+                case CurrentEstoque.SnPro:
+                    percentageToLoad = 0.0476f;
+                    break;
+                case CurrentEstoque.Funsoft:
+                    break;
+                case CurrentEstoque.ESF:
+                    percentageToLoad = 0.14f;
+                    break;
+                case CurrentEstoque.Testing:
+                    break;
+                default:
+                    break;
+            }
         }
-        image.transform.localScale = new Vector3(percentage, 1f, 1f);
-        percentageText.text = (percentage * 100).ToString() + "%";
-        if (percentage > 0.99f)
+        totalPercentageLoaded += percentageToLoad;
+        image.transform.localScale = new Vector3(totalPercentageLoaded, 1f, 1f);
+        percentageText.text = (totalPercentageLoaded * 100).ToString("0.00") + "%";
+        if (totalPercentageLoaded > 0.99f)
         {
             Destroy(this.gameObject);
         }

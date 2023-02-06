@@ -12,8 +12,8 @@ public class InternalDatabase : Singleton<InternalDatabase>
     //    public List<MovementRecords> movementRecords = new List<MovementRecords>();
     //}
 
-   public  Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
-   public  Sheet fullDatabase = new Sheet();
+    public Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
+    public Sheet fullDatabase = new Sheet();
 
     public Sheet testingSheet = new Sheet();
     public static List<MovementRecords> movementRecords;
@@ -44,6 +44,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
     public static Sheet storageNAS = new Sheet();
     public static Sheet Switch = new Sheet();
     public static Sheet teclado = new Sheet();
+    public static Sheet outros = new Sheet();
     #endregion
     public static List<Sheet> allFullDetailsSheets = new List<Sheet>();
 
@@ -117,6 +118,8 @@ public class InternalDatabase : Singleton<InternalDatabase>
             splitDatabase.TryGetValue(ConstStrings.Switch, out switchTemp);
             Sheet tecladoTemp = new Sheet();
             splitDatabase.TryGetValue(ConstStrings.StorageNAS, out tecladoTemp);
+            Sheet outrosTemp = new Sheet();
+            splitDatabase.TryGetValue(ConstStrings.Outros, out outrosTemp);
             #endregion
             // testingSheet = hdTemp;
             // Get all itens from "Inventario SnPro into the full database
@@ -150,7 +153,6 @@ public class InternalDatabase : Singleton<InternalDatabase>
                                     }
                                 }
                             }
-                            testingSheet = adaptadorAC;
                         }
                         else
                         {
@@ -230,30 +232,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 }
                 else if (item.Categoria.Trim() == ConstStrings.FoneRamal.Trim())
                 {
-                    if (foneRamalTemp != null)
-                    {
-                        if (foneRamal.itens.Count > 0)
-                        {
-                            foreach (ItemColumns foneRamalItem in foneRamalTemp.itens)
-                            {
-                                if (item.Patrimonio != null && foneRamalItem.Patrimonio != null)
-                                {
-                                    if (item.Patrimonio.Trim().Equals(foneRamalItem.Patrimonio.Trim()))
-                                    {
-                                        foneRamal.itens.Add(item);
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogWarning("Planilha foneRamal vazia");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Planilha foneRamal não encontrada");
-                    }
+                    foneRamal.itens.Add(item);
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Fonte.Trim())
                 {
@@ -444,57 +423,11 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Mouse.Trim())
                 {
-                    if (mouseTemp != null)
-                    {
-                        if (mouseTemp.itens.Count > 0)
-                        {
-                            foreach (ItemColumns mouseItem in mouseTemp.itens)
-                            {
-                                if (item.Patrimonio != null && mouseItem.Patrimonio != null)
-                                {
-                                    if (item.Patrimonio.Trim().Equals(mouseItem.Patrimonio.Trim()))
-                                    {
-                                        mouse.itens.Add(item);
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogWarning("Planilha mouse vazia");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Planilha mouse não encontrada");
-                    }
+                    mouseTemp.itens.Add(item);
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Nobreak.Trim())
                 {
-                    if (nobreakTemp != null)
-                    {
-                        if (nobreakTemp.itens.Count > 0)
-                        {
-                            foreach (ItemColumns nobreakItem in nobreakTemp.itens)
-                            {
-                                if (item.Modelo != null && nobreakItem.Modelo != null)
-                                {
-                                    if (item.Modelo.Trim().Equals(nobreakItem.Modelo.Trim()))
-                                    {
-                                        nobreak.itens.Add(item);
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogWarning("Planilha nobreak vazia");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Planilha nobreak encontrada");
-                    }
+                    nobreak.itens.Add(item);
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Notebook.Trim())
                 {
@@ -716,30 +649,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Ramal.Trim())
                 {
-                    if (ramalTemp != null)
-                    {
-                        if (ramalTemp.itens.Count > 0)
-                        {
-                            foreach (ItemColumns ramalItem in ramalTemp.itens)
-                            {
-                                if (item.Patrimonio != null && ramalItem.Patrimonio != null)
-                                {
-                                    if (item.Patrimonio.Trim().Equals(ramalItem.Patrimonio.Trim()))
-                                    {
-                                        ramal.itens.Add(item);
-                                    }
-                                }                               
-                            }
-                        }
-                        else
-                        {
-                            Debug.LogWarning("Planilha roteador vazia");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Planilha roteador não encontrada");
-                    }
+                    ramal.itens.Add(item);
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Roteador.Trim())
                 {
@@ -907,6 +817,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         Debug.LogWarning("Planilha teclado não encontrada");
                     }
                 }
+                else
+                {
+                    outros.itens.Add(item);
+                }
             }
             switch (currentEstoque)
             {
@@ -914,7 +828,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
             carregador, desktop, fonte, gbic, hd, idrac, memoria, monitor, nobreak,
             notebook, placaControladora, placaDeCapturaDeVideo, placaDeRede, placaDeSom, placaDeVideo,
-            processador,roteador, servidor, storageNAS, Switch});
+            processador,roteador, servidor, storageNAS, Switch, outros});
                     break;
                 case CurrentEstoque.Funsoft:
                 case CurrentEstoque.ESF:
@@ -922,17 +836,17 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
             carregador, desktop, foneRamal, fonte, gbic, hd, idrac, memoria, monitor, mouse, nobreak,
             notebook, placaControladora, placaDeCapturaDeVideo, placaDeRede, placaDeSom, placaDeVideo,
-            processador, ramal, roteador, servidor, storageNAS, Switch, teclado });              
+            processador, ramal, roteador, servidor, storageNAS, Switch, teclado, outros });
                     break;
                 default:
                     break;
             }
-           
+
             fullDatabaseFilled = true;
-       }
+        }
     }
 
-   public void UpdateDatabase(List<string> parameters, int itemIndexFullDatabase)
+    public void UpdateDatabase(List<string> parameters, int itemIndexFullDatabase)
     {
         int categoryItemToUpdateIndex = 0;
 
@@ -1094,7 +1008,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 processador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Ramal:
-                            categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(ramal, itemToUpdate.Patrimonio);
+                categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(ramal, itemToUpdate.Patrimonio);
                 ramal.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Roteador:
@@ -1124,7 +1038,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(servidor, itemToUpdate.Patrimonio);
                 servidor.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
-                            case ConstStrings.StorageNAS:
+            case ConstStrings.StorageNAS:
                 itemToUpdate.Tamanho = parameters[11];
                 itemToUpdate.TipoDeRAID = parameters[12];
                 itemToUpdate.TipoDeHD = parameters[13];
@@ -1138,13 +1052,15 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(Switch, itemToUpdate.Patrimonio);
                 Switch.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
-                            case ConstStrings.Teclado:
+            case ConstStrings.Teclado:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(teclado, itemToUpdate.Patrimonio);
                 teclado.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             default:
+                categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(outros, itemToUpdate.Patrimonio);
+                outros.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
         }
-       fullDatabase.itens[itemIndexFullDatabase] = itemToUpdate;
+        fullDatabase.itens[itemIndexFullDatabase] = itemToUpdate;
     }
 }
