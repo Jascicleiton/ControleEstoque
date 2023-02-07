@@ -13,10 +13,10 @@ public class UpdateItem : MonoBehaviour
     [SerializeField] private TMP_InputField itemToUpdateParameter;
     [SerializeField] private TMP_Dropdown parameterToSearchDP;
 
-    [SerializeField] GameObject[] parameterItems;
-    [SerializeField] TMP_InputField[] parameterInputs;
-    [SerializeField] TMP_Text[] placeholders;
-    [SerializeField] TMP_Text[] parameterNames;
+    //[SerializeField] GameObject[] parameterItems;
+    //[SerializeField] TMP_InputField[] parameterInputs;
+    //[SerializeField] TMP_Text[] placeholders;
+    //[SerializeField] TMP_Text[] parameterNames;
 
     [SerializeField] private GameObject inputsPanel;
     [SerializeField] private GameObject messagePanel;
@@ -251,15 +251,9 @@ public class UpdateItem : MonoBehaviour
     private void UpdateFullDatabase()
     {
         List<string> parameters = new List<string>();
-        parameters.Add(itemToUpdate.Aquisicao);
-        parameters.Add(itemToUpdate.Entrada);
-        for (int i = 0; i < parameterInputs.Length; i++)
-        {
-            if (parameterInputs[i] != null)
-            {
-                parameters.Add(parameterInputs[i].text);
-            }
-        }
+        parameters.AddRange(itemInformationPanelControler.GetInventoryValues());
+        parameters.AddRange(itemInformationPanelControler.GetCategoryValues(itemToUpdate.Categoria));
+        
         InternalDatabase.Instance.UpdateDatabase(parameters, itemToUpdateIndex);     
     }
 
