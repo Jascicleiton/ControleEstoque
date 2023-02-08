@@ -275,6 +275,7 @@ public class UpdateItem : MonoBehaviour
         inputsPanel.SetActive(true);
         itemInformationPanelControler.ShowItem(tempItem);
         itemInformationPanelControler.DisableInputForUpdate();
+        EventHandler.CallUpdateTabInputs();
     }
 
     /// <summary>

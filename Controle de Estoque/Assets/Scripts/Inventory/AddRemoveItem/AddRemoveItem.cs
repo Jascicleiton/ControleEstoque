@@ -66,6 +66,7 @@ public class AddRemoveItem : MonoBehaviour
     {
         itemInformationPanelController.ShowCategoryItemTemplate(HelperMethods.GetCategoryString(categoryDP.value));
         itemInformationPanelController.DisableItemsForAdd(HelperMethods.GetCategoryString(categoryDP.value));
+        EventHandler.CallUpdateTabInputs();
     }
 
     private IEnumerator AddNewItemRoutine(bool addInventario)
@@ -116,29 +117,30 @@ public class AddRemoveItem : MonoBehaviour
         else
         {
             EventHandler.CallIsOneMessageOnlyEvent(true);
+            addInventarioSuccess = true;
         }
-
-        parameters.Clear();
-        parameters = itemInformationPanelController.GetCategoryValues(HelperMethods.GetCategoryString(categoryDP.value));
-
-        yield return HelperMethods.AddUpdateItem(categoryDP.value, 2, parameters, false);
-        if (HelperMethods.GetAddUpdateResponse())
+        if (addInventarioSuccess)
         {
-            addDetalheSuccess = true;
-        }
-        else
-        {
-            addDetalheSuccess = false;
+
+            parameters.Clear();
+            parameters = itemInformationPanelController.GetCategoryValues(HelperMethods.GetCategoryString(categoryDP.value));
+
+            yield return HelperMethods.AddUpdateItem(categoryDP.value, 2, parameters, false);
+            if (HelperMethods.GetAddUpdateResponse())
+            {
+                addDetalheSuccess = true;
+            }
+            else
+            {
+                addDetalheSuccess = false;
+            }
+
+            AddItem();
         }
         if (!addInventario)
         {
             EventHandler.CallOpenMessageEvent("Worked");
             addInventarioSuccess = true;
-        }
-
-        if (addInventarioSuccess)
-        {
-            AddItem();
         }
     }
 

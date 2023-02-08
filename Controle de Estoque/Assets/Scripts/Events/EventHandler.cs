@@ -66,5 +66,15 @@ public static class EventHandler
             ImportFinished(isInventory);
         }
     }
+
+    public static event Action UpdateTabInputs;
+
+    public static void CallUpdateTabInputs()
+    {
+        if(UpdateTabInputs != null)
+        {
+            UpdateTabInputs();
+        }
+    }
 }
 

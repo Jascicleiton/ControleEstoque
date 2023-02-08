@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System;
 
 public class NoPaNoSeItemManager : MonoBehaviour
 {
@@ -37,10 +38,11 @@ public class NoPaNoSeItemManager : MonoBehaviour
         {
             itemNewQuantity = item.Quantity - int.Parse(quantityInput.text);
         }
+        item.Quantity = itemNewQuantity;
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.UpdateItemKey, item.ItemName, itemNewQuantity);
 
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "updatenopanose.php", itemForm);
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
         
         yield return createUpdateInventarioRequest.SendWebRequest();
 
@@ -71,6 +73,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
             else if (response == "Updated")
             {
                 SetItemInformation(item.ItemName, itemNewQuantity);
+                quantityInput.text = "";
                 Debug.Log("Worked");               
             }
             else
@@ -100,6 +103,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
         if (add)
         {
             StartCoroutine(ChangeItemQuantityRoutine(add));
+            StartCoroutine(MoveItem(add));
         }
         else
         {
@@ -110,9 +114,71 @@ public class NoPaNoSeItemManager : MonoBehaviour
             else
             {
                 StartCoroutine(ChangeItemQuantityRoutine(add));
+                StartCoroutine(MoveItem(add));
+            }
+        }    
+    }
+
+    private IEnumerator MoveItem(bool isAdding)
+    {
+        WWWForm itemForm = new WWWForm();
+        if (isAdding)
+        {
+             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, item.Quantity,
+           UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), whereToInput.text, "Estoque");
+        }
+        else
+        {
+             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, item.Quantity,
+          UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", whereToInput.text);
+        }
+
+        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "movenopanose.php", itemForm);
+        MouseManager.Instance.SetWaitingCursor();
+
+        yield return createUpdateInventarioRequest.SendWebRequest();
+
+        if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("ChangeItemQuantityRoutine: conectionerror");
+        }
+        else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("ChangeItemQuantityRoutine: data processing error");
+        }
+        else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("ChangeItemQuantityRoutine: protocol error");
+        }
+
+        if (createUpdateInventarioRequest.error == null)
+        {
+            string response = createUpdateInventarioRequest.downloadHandler.text;
+            if (response == "Conection error" || response == "Inventario update failed")
+            {
+                Debug.LogWarning("ChangeItemQuantityRoutine: Server error");
+            }
+            else if (response == "Wrong app key")
+            {
+                Debug.LogWarning("ChangeItemQuantityRoutine: app key");
+            }
+            else if (response == "Updated")
+            {
+                whereToInput.text = "";
+            }
+            else
+            {
+                Debug.LogWarning("ChangeItemQuantityRoutine: " + response);
+                // TODO: send message to user with error and recomendation
             }
         }
-     
+        else
+        {
+            Debug.LogWarning("ChangeItemQuantityRoutine: " + createUpdateInventarioRequest.error);
+            // TODO: send message to user with error and recomendation
+        }
+        createUpdateInventarioRequest.Dispose();
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     public NoPaNoSeItem GetItem()

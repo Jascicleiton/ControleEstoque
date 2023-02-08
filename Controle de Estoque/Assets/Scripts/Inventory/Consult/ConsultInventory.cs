@@ -179,16 +179,14 @@ public class ConsultInventory : MonoBehaviour
                 if (categorySearchInputs[i].text != "")
                 {
                     activeIndexes.Add(i);
-                    
-                     }
+
+                }
             }
-                    }
+        }
 
         if (activeIndexes.Count > 0)
         {
             foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategorySheet(categoryDP.value));
-            print(GetCategorySheet(categoryDP.value));
-            InternalDatabase.Instance.testingSheet = GetCategorySheet(categoryDP.value);
         }
         RemoveOldSearch();
         if (foundItens != null)
@@ -197,9 +195,12 @@ public class ConsultInventory : MonoBehaviour
             {
                 foreach (ItemColumns foundItem in foundItens.itens)
                 {
-                    GameObject result = PoolManager.Instance.ReuseObject(consultResult);
-                    result.SetActive(true);
-                    result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
+                    if (foundItem.Status != "DEFEITO")
+                    {
+                        GameObject result = PoolManager.Instance.ReuseObject(consultResult);
+                        result.SetActive(true);
+                        result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
+                    }
                 }
                 numberOfItemsImage.alpha = 1f;
                 numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";

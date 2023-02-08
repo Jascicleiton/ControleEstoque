@@ -58,5 +58,6 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 searchParamentersInput[i].gameObject.SetActive(false);
             }
         }
+        EventHandler.CallUpdateTabInputs();
     }  
 }

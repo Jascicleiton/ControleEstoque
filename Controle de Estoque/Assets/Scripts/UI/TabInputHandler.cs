@@ -12,26 +12,48 @@ public class TabInputHandler : MonoBehaviour
     public bool isWithItemInformationPanelController = false;
 
     private void Start()
-    {
-        if (!isWithItemInformationPanelController)
-        {
+    {      
             GetActiveInputs();
-            CheckIfInputIsActiveAndEnabled();
-        }
+       //     CheckIfInputIsActiveAndEnabled();
     }
 
+    private void OnEnable()
+    {
+        EventHandler.UpdateTabInputs += GetActiveInputs;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.UpdateTabInputs -= GetActiveInputs;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            inputIndex++;
-            if (inputIndex >= activeInputsCount)
+            print("hi");
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                inputIndex = 0;
+                inputIndex--;
+                if (inputIndex < 0)
+                {
+                    inputIndex = activeInputsCount - 1;
+                }
+                CheckIfInputIsActiveAndEnabled();
             }
-            CheckIfInputIsActiveAndEnabled();
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                inputIndex++;
+                if (inputIndex >= activeInputsCount)
+                {
+                    inputIndex = 0;
+                }
+                CheckIfInputIsActiveAndEnabled();
+            }
         }
     }
 
@@ -58,15 +80,17 @@ public class TabInputHandler : MonoBehaviour
 
     public void GetActiveInputs()
     {
+        inputIndex = 0;
         activeInputsCount = 0;
         for (int i = 0; i < inputFields.Length; i++)
         {
             if (inputFields[i] != null && inputFields[i].IsActive())
             {
                 activeInputsCount++;
-                            }
-        }
             }
+        }
+        CheckIfInputIsActiveAndEnabled();
+    }
 
     public void InputSelected(TMP_InputField inputSelected)
     {
