@@ -48,6 +48,9 @@ public class ChangeScreenManager : MonoBehaviour
             case Scenes.SceneNoPaNoSe:
                 SceneManager.LoadScene(ConstStrings.SceneNoPaNoSe);
                 break;
+            case Scenes.SceneShowAllMovements:
+                SceneManager.LoadScene(ConstStrings.SceneShowAllMovements);
+                break;
             default:
                 break;
         }

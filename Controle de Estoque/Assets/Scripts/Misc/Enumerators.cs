@@ -1,10 +1,3 @@
-//public enum MessageToShow
-//{
-//    Success,
-//    Failure,
-//    Duplicate
-//}
-
 /// <summary>
 /// Used to determine which "estoque" is being used
 /// </summary>
@@ -32,6 +25,7 @@ public enum Scenes
     SceneExportSchets,
     SceneConsultInventoryAll,
     SceneConsultDetailsAll,
-    SceneNoPaNoSe
+    SceneNoPaNoSe,
+    SceneShowAllMovements
 }
 

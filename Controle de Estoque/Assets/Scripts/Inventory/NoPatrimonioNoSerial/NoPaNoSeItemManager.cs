@@ -136,12 +136,12 @@ public class NoPaNoSeItemManager : MonoBehaviour
         WWWForm itemForm = new WWWForm();
         if (isAdding)
         {
-             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, item.Quantity,
+             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, quantityInput.text,
            UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), whereToInput.text, "Estoque");
         }
         else
         {
-             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, item.Quantity,
+             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, quantityInput.text,
           UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", whereToInput.text);
         }
 

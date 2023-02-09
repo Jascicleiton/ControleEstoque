@@ -63,6 +63,7 @@ public class ConstStrings
     public const string SceneConsultInventoryAll = "ConsultSceneAllinventory";
     public const string SceneConsultDetailsAll = "ConsultSceneAllDetails";
     public const string SceneNoPaNoSe = "NoPaNoSeScene";
+    public const string SceneShowAllMovements = "ShowAllMovementsScene";
     #endregion
 
     #region PHP folder URL - Controle de estoque SNPro
