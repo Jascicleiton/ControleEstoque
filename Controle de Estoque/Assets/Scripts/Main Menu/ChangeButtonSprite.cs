@@ -15,6 +15,9 @@ public class ChangeButtonSprite : MonoBehaviour
         button = GetComponent<Button>();
     }
 
+    /// <summary>
+    /// Changes the sprite of the Show/Hide password button
+    /// </summary>
     public void ChangeSprite()
     {
         if(button.image.sprite == sprite1)

@@ -24,6 +24,9 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
+    /// <summary>
+    /// Ceate a pool of game objects to optimize the instantiation of multiple game objects
+    /// </summary>
     private void CreatePool(GameObject prefab, int poolSize)
     {
         int poolKey = prefab.GetInstanceID();
@@ -42,6 +45,9 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public GameObject ReuseObject(GameObject prefab)
     {
         int poolKey = prefab.GetInstanceID();
@@ -60,6 +66,9 @@ public class PoolManager : Singleton<PoolManager>
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private GameObject GetObjectFromPool(int poolKey)
     {
         // returns the first game object from the queue

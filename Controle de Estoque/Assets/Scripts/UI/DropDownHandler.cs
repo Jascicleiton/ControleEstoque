@@ -8,7 +8,10 @@ public class DropDownHandler : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown dropdown;
     List<string> itemsToInclude;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Handle which items are available on the category dropdown based on which "estoque" is selected
+    /// </summary>
     void Start()
     {      
         if(dropdown == null)

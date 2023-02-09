@@ -28,22 +28,28 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         StartCoroutine(StartListRoutine());
     }
 
+    /// <summary>
+    /// Add a new item to the screen and scrolls to the bottom of the list
+    /// </summary>
     private void AddNewItem(string itemName, int itemQuantity)
     {
         GameObject newItem = Instantiate(itemPrefab, itemParentTransform);
         NoPaNoSeItemManager newItemManager = newItem.GetComponent<NoPaNoSeItemManager>();
         newItemManager.SetItemInformation(itemName, itemQuantity);
         allitems.noPaNoSeItems.Add(newItemManager.GetItem());
-        StartCoroutine(ScrollToTop());
+        StartCoroutine(ScrollToBottom());
     }
 
+    /// <summary>
+    /// Import all items stored on the online database
+    /// </summary>
     private IEnumerator StartListRoutine()
     {
         WWWForm itemForm = new WWWForm();
         itemForm.AddField("apppassword", ConstStrings.ImportDatabaseKey);
 
         UnityWebRequest createUpdateInventarioRequest = HelperMethods.GetPostRequest(itemForm, "importallnopanoseitems.php", 5);
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
 
@@ -93,12 +99,15 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         MouseManager.Instance.SetDefaultCursor();
     }
 
+    /// <summary>
+    /// Add a new item to the online database
+    /// </summary>
     private IEnumerator AddNewItemRoutine()
     {     
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, int.Parse(newItemQuantityInput.text));
 
         UnityWebRequest createUpdateInventarioRequest = HelperMethods.GetPostRequest(itemForm, "addnopanoseitem.php", 5);
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
 
@@ -165,7 +174,10 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         newItemQuantityInput.text = "";
     }
 
-    private IEnumerator ScrollToTop()
+    /// <summary>
+    /// Scroll down to the bottom of the list to show the last added item
+    /// </summary>
+    private IEnumerator ScrollToBottom()
     {
         yield return new WaitForEndOfFrame();
         Canvas.ForceUpdateCanvases();
@@ -173,6 +185,9 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         Canvas.ForceUpdateCanvases();
     }
 
+    /// <summary>
+    /// Returns to InitialScene
+    /// </summary>
     public void ReturnToInitialScene()
     {
         SceneManager.LoadScene(ConstStrings.SceneInitial);

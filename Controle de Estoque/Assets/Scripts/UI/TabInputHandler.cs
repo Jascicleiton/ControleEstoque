@@ -27,12 +27,12 @@ public class TabInputHandler : MonoBehaviour
         EventHandler.UpdateTabInputs -= GetActiveInputs;
     }
 
-    // Update is called once per frame
+    // Check if Shift + Tab or Tab is being pressed
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            print("hi");
+            
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 inputIndex--;
@@ -57,6 +57,9 @@ public class TabInputHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loops through all inputs and and selects the first one that is active, enabled and interactable
+    /// </summary>
     public void CheckIfInputIsActiveAndEnabled()
     {
         if (inputFields[inputIndex] != null && inputFields[inputIndex].isActiveAndEnabled && inputFields[inputIndex].interactable)
@@ -78,6 +81,10 @@ public class TabInputHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loops through all inputs, get the ones that are Active and select the first active one. It is called using the Event 'UpdateTabInputs'
+    /// each time the number of inputs changes.
+    /// </summary>
     public void GetActiveInputs()
     {
         inputIndex = 0;
@@ -92,6 +99,9 @@ public class TabInputHandler : MonoBehaviour
         CheckIfInputIsActiveAndEnabled();
     }
 
+    /// <summary>
+    /// Called each time an input is selected to set the inputIndex so it circles through the inputs in the correct order
+    /// </summary>
     public void InputSelected(TMP_InputField inputSelected)
     {
         for (int i = 0; i < inputFields.Length; i++)

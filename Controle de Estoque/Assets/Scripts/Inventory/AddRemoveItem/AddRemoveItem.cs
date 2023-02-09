@@ -43,6 +43,9 @@ public class AddRemoveItem : MonoBehaviour
         EventHandler.EnableInput -= SetInputEnabled;
     }
 
+    /// <summary>
+    /// Set the input enabled or disabled. Called using the Event EnableInput
+    /// </summary>
     private void SetInputEnabled(bool inputEnabled)
     {
         for (int i = 0; i < parameterValues.Length; i++)
@@ -69,6 +72,9 @@ public class AddRemoveItem : MonoBehaviour
         EventHandler.CallUpdateTabInputs();
     }
 
+    /// <summary>
+    /// Routine used to add a new item to the online database
+    /// </summary>
     private IEnumerator AddNewItemRoutine(bool addInventario)
     {
 #pragma warning disable CS0219 // Variable is assigned but its value is never used
@@ -145,9 +151,9 @@ public class AddRemoveItem : MonoBehaviour
     }
 
     /// <summary>
-    /// Close the message. It is public to be used on the button too
+    /// Close the message. Called by the Event MessageClosed
     /// </summary>
-    public void MessageClosed()
+    private void MessageClosed()
     {
         UpdateNames();
         MouseManager.Instance.SetDefaultCursor();
@@ -155,7 +161,7 @@ public class AddRemoveItem : MonoBehaviour
     }
 
     /// <summary>
-    /// Add a new item to all databases
+    /// Add a new item to all internal databases
     /// </summary>
     private void AddItem()
     {
@@ -511,6 +517,9 @@ public class AddRemoveItem : MonoBehaviour
        // EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
     }
 
+    /// <summary>
+    /// Called when the AddItem Button is clicked
+    /// </summary>
     public void AddItemClicked()
     {
         StartCoroutine(AddNewItemRoutine(true));
@@ -538,6 +547,9 @@ public class AddRemoveItem : MonoBehaviour
         SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 
+    /// <summary>
+    /// Resets all inputs to default balues
+    /// </summary>
     public void ResetAddItem()
     {
         UpdateNames();

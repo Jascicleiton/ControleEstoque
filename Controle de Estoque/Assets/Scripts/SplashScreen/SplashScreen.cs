@@ -23,6 +23,9 @@ public class SplashScreen : MonoBehaviour
         StartCoroutine(Fade());
     }
 
+    /// <summary>
+    /// Fade in and out the screen
+    /// </summary>
     private IEnumerator Fade()
     {
                 

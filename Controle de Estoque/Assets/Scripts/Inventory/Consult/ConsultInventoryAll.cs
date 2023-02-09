@@ -6,7 +6,9 @@ public class ConsultInventoryAll : MonoBehaviour
 {
     [SerializeField] ConsultResult[] allresults;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Shows all items from the "Inventario" sheet. If there are too many items may stop or crash the program
+    /// </summary>
     void Start()
     {
        if(InternalDatabase.Instance != null)

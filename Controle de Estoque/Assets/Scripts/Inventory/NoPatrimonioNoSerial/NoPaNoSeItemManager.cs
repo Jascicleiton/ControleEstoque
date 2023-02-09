@@ -17,7 +17,9 @@ public class NoPaNoSeItemManager : MonoBehaviour
 
     private NoPaNoSeItem item = new NoPaNoSeItem();
 
-
+    /// <summary>
+    /// Update the item informations
+    /// </summary>
     private void UpdateText()
     {
         itemName.text = item.ItemName;
@@ -91,6 +93,9 @@ public class NoPaNoSeItemManager : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
     }
 
+    /// <summary>
+    /// Set the item information as is stored on the online database. Called by NoPaNoSeManager  each time an item is instantiated
+    /// </summary>
     public void SetItemInformation(string name, int quantity)
     {
         item.ItemName = name;
@@ -98,6 +103,9 @@ public class NoPaNoSeItemManager : MonoBehaviour
         UpdateText();
     }
 
+    /// <summary>
+    /// Changes the quantity value of an item
+    /// </summary>
     public void ChangeItemQuantity(bool add)
     {
         if (add)
@@ -119,6 +127,10 @@ public class NoPaNoSeItemManager : MonoBehaviour
         }    
     }
 
+    /// <summary>
+    /// Called to generate a movement record each time an item quantity is changed. It is a different movement record from an item that do
+    /// have "serial" and "patrimônio"
+    /// </summary>
     private IEnumerator MoveItem(bool isAdding)
     {
         WWWForm itemForm = new WWWForm();
@@ -181,6 +193,9 @@ public class NoPaNoSeItemManager : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
     }
 
+    /// <summary>
+    /// Get the item that is stored in this instance
+    /// </summary>
     public NoPaNoSeItem GetItem()
     {
         return item;

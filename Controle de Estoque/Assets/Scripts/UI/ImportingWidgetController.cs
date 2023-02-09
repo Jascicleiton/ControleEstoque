@@ -26,6 +26,9 @@ public class ImportingWidgetController : MonoBehaviour
         EventHandler.ImportFinished -= UpdateInformations;
     }
 
+    /// <summary>
+    ///  Update the text and image each time a sheet is imported. Called by the event ImportFinished
+    /// </summary>
     private void UpdateInformations(bool isInventory)
     {
         if (isInventory)

@@ -14,7 +14,6 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
     private void Start()
     {
         HandleInputData(0);
-
     }
 
     /// <summary>
@@ -32,6 +31,9 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         SetParameterPlaceholders();
     }
 
+    /// <summary>
+    /// Reset all the search parameters to their default values
+    /// </summary>
     private void ResetParameterNames()
     {
         for (int i = 3; i < searchParamenters.Length; i++)
@@ -40,6 +42,9 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set all search parameters each time a new category is selected
+    /// </summary>
     private void SetParameterPlaceholders()
     {
         ResetParameterNames();

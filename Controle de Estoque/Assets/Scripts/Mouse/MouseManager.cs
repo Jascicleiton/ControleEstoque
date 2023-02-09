@@ -11,17 +11,17 @@ public class MouseManager : Singleton<MouseManager>
         DontDestroyOnLoad(this.gameObject);
     }
 
+    /// <summary>
+    /// Set the mouse cursor to it's default sprite
+    /// </summary>
     public void SetDefaultCursor()
     {
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
-    public void SetWaitingCursor(GameObject callingObject)
-    {
-       // Debug.Log(callingObject.name + " Called");
-        Cursor.SetCursor(waitingCursor, Vector2.zero, CursorMode.Auto);
-    }
-
+    /// <summary>
+    /// Set the mouse cursor to it's waiting sprite
+    /// </summary>
     public void SetWaitingCursor()
     {
         // Debug.Log(callingObject.name + " Called");

@@ -17,6 +17,9 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Event used to open the message panel
+    /// </summary>
     public static event Action<string> OpenMessageEvent;
 
     public static void CallOpenMessageEvent(string message)
@@ -27,16 +30,23 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Event used to tell the message panel if it is going to receive one or two strings before showing the message
+    /// </summary>
     public static event Action<bool> IsOneMessageOnlyEvent;
 
     public static void CallIsOneMessageOnlyEvent(bool isOneMessageOnly)
     {
-        if(IsOneMessageOnlyEvent != null)
+        if (IsOneMessageOnlyEvent != null)
         {
             IsOneMessageOnlyEvent(isOneMessageOnly);
         }
     }
 
+
+    /// <summary>
+    /// Called to enable or disable input
+    /// </summary>
     public static event Action<bool> EnableInput;
 
     public static void CallEnableInput(bool inputEnabled)
@@ -47,6 +57,9 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Used to tell all inscribed classses that the message panel was closed
+    /// </summary>
     public static event Action MessageClosed;
 
     public static void CallMessageClosed()
@@ -57,6 +70,9 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Used to tell the ImportingWidgetController each time a sheet is imported, so it can update it's status
+    /// </summary>
     public static event Action<bool> ImportFinished;
 
     public static void CallImportFinished(bool isInventory)
@@ -67,6 +83,9 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Used by TabInputHandler to know when to get the active inputs
+    /// </summary>
     public static event Action UpdateTabInputs;
 
     public static void CallUpdateTabInputs()

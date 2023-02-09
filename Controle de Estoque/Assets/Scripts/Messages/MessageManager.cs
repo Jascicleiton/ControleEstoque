@@ -39,38 +39,50 @@ public class MessageManager : MonoBehaviour
         EventHandler.IsOneMessageOnlyEvent -= SetIsOneMessageOnly;
     }
 
-    private void MessageReceived(string message)
+    /// <summary>
+    /// Receive a message and show an apropriate response
+    /// </summary>
+    private void MessageReceived(string messageReceived)
     {
         if (isOnlyOneMessage)
         {
-            message1 = message;
+            message1 = messageReceived;
             OpenMessage();
         }
         else
         {
             if (message1 == "")
             {
-                message1 = message;
+                message1 = messageReceived;
             }
             else
             {
-                message2 = message;
+                message2 = messageReceived;
                 OpenMessage();
             }
         }   
     }
 
+    /// <summary>
+    /// Determines if it should show a message after receiving one or two messages. Called by IsOneMessageOnlyEvent
+    /// </summary>
     private void SetIsOneMessageOnly(bool value)
     {
         isOnlyOneMessage = value;
     }
 
+    /// <summary>
+    /// Enable or disable input. Called by EnableInput event. It is the opossite of the input received so it is enabled when the "screen" inputs
+    /// are disabled
+    /// </summary>
     private void SetInputEnabled(bool inputEnabled)
-    {
-        
+    {        
         this.inputEnabled = !inputEnabled;
     }
 
+    /// <summary>
+    /// Open a message based on the message(s) received
+    /// </summary>
     private void OpenMessage()
     {
         MouseManager.Instance.SetDefaultCursor();
@@ -111,6 +123,9 @@ public class MessageManager : MonoBehaviour
         inputEnabled = true;
     }
 
+    /// <summary>
+    /// Close the message panel and send an event call to all subscribed classes
+    /// </summary>
     public void CloseMessage()
     {
         messageText.text = "";
@@ -123,6 +138,9 @@ public class MessageManager : MonoBehaviour
         //EventHandler.CallEnableInput(true);
     }
 
+    /// <summary>
+    /// Close the message after 10 seconds
+    /// </summary>
     private IEnumerator CloseMessageRoutine()
     {
         yield return new WaitForSecondsRealtime(10f);

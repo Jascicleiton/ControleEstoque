@@ -37,6 +37,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         EventHandler.EnableInput -= SetInputEnabled;
     }
 
+    /// <summary>
+    /// Enable or disable input. Called by EnableInput event.
+    /// </summary>
     private void SetInputEnabled(bool inputEnabled)
     {
         foreach (var item in parameterValues)
@@ -45,7 +48,10 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
-    private void HideEmpityItemBox()
+    /// <summary>
+    /// Hide all item boxes that have a empty name
+    /// </summary>
+    private void HideEmptyItemBox()
     {
         for (int i = 0; i < parameterNames.Length; i++)
         {
@@ -56,6 +62,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Activate all item boxes
+    /// </summary>
     private void ActivateAllItemBoxes()
     {
         for (int i = 0; i < itemBoxes.Length; i++)
@@ -68,17 +77,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
-    private void ResetNames()
-    {
-        for (int i = 0; i < parameterNames.Length; i++)
-        {
-            if (parameterNames[i] != null)
-            {
-                parameterNames[i].text = "";
-            }
-        }
-    }
-
+    /// <summary>
+    /// Fill the names of all item boxes that should get a name
+    /// </summary>
     private void FillNames(List<string> names)
     {
         for (int i = 0; i < parameterNames.Length; i++)
@@ -94,6 +95,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fill the values of all item boxes that should get a value. Used when the item box have an inputField object
+    /// </summary>
     private void FillValues(List<string> values)
     {
         for (int i = 0; i < parameterValues.Length; i++)
@@ -109,6 +113,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fill the values of all item boxes that should get a value. Used when the item box have an text object
+    /// </summary>
     private void FillValuesTexts(List<string> values)
     {
         for (int i = 0; i < parameterValuesText.Length; i++)
@@ -124,6 +131,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     } 
 
+    /// <summary>
+    /// Change the size of the panel based on the number of active item boxes
+    /// </summary>
     private void ChangeSize()
     {
         numberOfActiveBoxes = GetNumberOfActiveBoxes();
@@ -149,6 +159,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get the number of active boxes
+    /// </summary>
     public int GetNumberOfActiveBoxes()
     {
         numberOfActiveBoxes = 0;
@@ -162,6 +175,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         return numberOfActiveBoxes;
     }
 
+    /// <summary>
+    /// Reset the values of all item boxes to empty
+    /// </summary>
     public void ResetValues()
     {
         if (parameterValues != null && parameterValues.Length > 0)
@@ -187,6 +203,23 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Reset the names of all item boxes to ""
+    /// </summary>
+    private void ResetNames()
+    {
+        for (int i = 0; i < parameterNames.Length; i++)
+        {
+            if (parameterNames[i] != null)
+            {
+                parameterNames[i].text = "";
+            }
+        }
+    }
+
+    /// <summary>
+    /// Resets the names and values of all item boxes
+    /// </summary>
     public void ResetItems()
     {
         for (int i = 0; i < itemBoxes.Length; i++)
@@ -201,6 +234,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Show all informations of a specific item.
+    /// </summary>
     public void ShowItem(ItemColumns itemToShow)
     {
         ActivateAllItemBoxes();
@@ -219,7 +255,7 @@ public class ItemInformationPanelControler : MonoBehaviour
         {
             print("Item to show is null");
         }
-        HideEmpityItemBox();
+        HideEmptyItemBox();
         if (tabInputHandler != null)
         {
             tabInputHandler.GetActiveInputs();
@@ -229,6 +265,9 @@ public class ItemInformationPanelControler : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Show all informations of a specific item on the consult scene
+    /// </summary>
     public void ShowItemConsult(ItemColumns itemToShow)
     {
         ActivateAllItemBoxes();
@@ -247,9 +286,12 @@ public class ItemInformationPanelControler : MonoBehaviour
         {
             print("Item to show is null");
         }
-        HideEmpityItemBox();
+        HideEmptyItemBox();
     }
 
+    /// <summary>
+    /// Show the template of an item based on it's category.
+    /// </summary>
     public void ShowCategoryItemTemplate(string category)
     {
         ActivateAllItemBoxes();
@@ -265,9 +307,12 @@ public class ItemInformationPanelControler : MonoBehaviour
         parameterValues[0].text = DateTime.Now.ToString("dd/MM/yyyy");
         parameterValues[1].text = DateTime.Now.ToString("dd/MM/yyyy");
 
-        HideEmpityItemBox();
+        HideEmptyItemBox();
     }
 
+    /// <summary>
+    /// Disable input of certain item boxes on UpdateItemScene
+    /// </summary>
     public void DisableInputForUpdate()
     {
         itemBoxes[0].gameObject.SetActive(false);
@@ -278,6 +323,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         parameterValues[9].interactable = false;
     }
 
+    /// <summary>
+    /// Disable the input of certain item boxes  based on the category of the item
+    /// </summary>
     public void DisableItemsForAdd(string category)
     {
         if (category == ConstStrings.Outros)
@@ -291,6 +339,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         itemBoxes[9].gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Get all the inventory values that are/were set on the input boxes
+    /// </summary>
     public List<string> GetInventoryValues()
     {
        List<string> valuesList = new List<string>();
@@ -304,6 +355,9 @@ public class ItemInformationPanelControler : MonoBehaviour
         return valuesList;
     }
 
+    /// <summary>
+    /// Get all the values that are specific to each category that are/were set on the input boxes
+    /// </summary>
     public List<string> GetCategoryValues(string category)
     {
         List<string> valuesList = new List<string>();
@@ -541,11 +595,11 @@ public class ItemInformationPanelControler : MonoBehaviour
         return valuesList;
     }
 
-    private void Testing (List<string> list)
-    {
-        for (int i = 0; i < list.Count; i++)
-        {
-            print(list[i]);
-        }
-    }
+    //private void Testing (List<string> list)
+    //{
+    //    for (int i = 0; i < list.Count; i++)
+    //    {
+    //        print(list[i]);
+    //    }
+    //}
 }

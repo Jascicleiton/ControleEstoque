@@ -7,6 +7,9 @@ public class ChangeScreenManager : MonoBehaviour
 {
     [SerializeField] private Scenes scenes = Scenes.SceneInitial;
 
+    /// <summary>
+    /// Change to the appropriate scene according to the scenes variable. This variable is set on the inspector
+    /// </summary>
     public void ButtonClicked()
     {
         switch (scenes)

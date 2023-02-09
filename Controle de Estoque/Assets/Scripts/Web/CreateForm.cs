@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
+/// <summary>
+/// Create all the necessary WWWForms
+/// </summary>
 public class CreateForm
 {
-    public static WWWForm GetInventarioForm(string appPassword, string aquisicao, string entrada, string patrimonio, string status, string serial, 
+    public static WWWForm GetInventarioForm(string appPassword, string aquisicao, string entrada, string patrimonio, string status, string serial,
         string categoria, string fabricante, string modelo, string local, string saida, string observacao)
     {
 
@@ -155,7 +158,7 @@ public class CreateForm
         return inventario;
     }
 
-    public static WWWForm GetNotebookForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria, string entradarj49, 
+    public static WWWForm GetNotebookForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria, string entradarj49,
         string bateria, string adaptadorac, string windows)
     {
         WWWForm inventario = new WWWForm();
@@ -201,7 +204,7 @@ public class CreateForm
     }
 
     public static WWWForm GetPlacaDeRedeForm(string appPassword, string modelo, string fabricante, string Interface, string quantidadeportas,
-string quaisconexoes, string suportafibraoptica, string desempenho)
+    string quaisconexoes, string suportafibraoptica, string desempenho)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
@@ -238,7 +241,7 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
     }
 
     public static WWWForm GetProcessadorForm(string appPassword, string modelo, string soquete, string nucleosfisicos, string nucleoslogicos,
-       string aceitavirtualizacao, string turboboost, string hyperthreading)
+    string aceitavirtualizacao, string turboboost, string hyperthreading)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
@@ -254,7 +257,7 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
     }
 
     public static WWWForm GetRoteadorForm(string appPassword, string modelo, string wireless, string quantasentradas,
-         string bandamax, string voltagem)
+    string bandamax, string voltagem)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
@@ -268,7 +271,7 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
     }
 
     public static WWWForm GetServidorForm(string appPassword, string patrimonio, string modelo, string fabricante, string modeloplacamae, string fonte, string memoria,
-        string hd, string placadevideo, string placaderede, string processador, string memoriassuportadas, string quantasmemorias, 
+        string hd, string placadevideo, string placaderede, string processador, string memoriassuportadas, string quantasmemorias,
         string ordemdasmemorias, string capacidaderamtotal, string soquete, string placacontroladora, string atequantoshds, string tiposdehd,
         string tiposderaid)
     {
@@ -318,17 +321,17 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
         inventario.AddField("modelo", modelo);
         inventario.AddField("quantasentradas", quantasentradas);
         inventario.AddField("capacidademaxporta", capacidademaxporta);
-       
+
         return inventario;
     }
-#endregion
+    #endregion
 
     public static WWWForm GetConsultPatrimonioForm(string appPassword, string patrimonio)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("patrimonio", patrimonio);
-        
+
         return inventario;
     }
 
@@ -341,7 +344,7 @@ string quaisconexoes, string suportafibraoptica, string desempenho)
         return inventario;
     }
 
-    public static WWWForm GetMoveItemForm(string appPassword, string patrimonio, string serial, string usuario, string data, 
+    public static WWWForm GetMoveItemForm(string appPassword, string patrimonio, string serial, string usuario, string data,
         string deOnde, string paraOnde)
     {
         WWWForm inventario = new WWWForm();

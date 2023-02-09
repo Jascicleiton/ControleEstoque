@@ -9,7 +9,10 @@ public class HelperMethods
     public static bool addUpdateResponse = false;
     public static bool isSingleMessage = false;
 
-    public static string GetCategoryString(int value)
+    /// <summary>
+    /// Get the category "name" based on the value of the dropdown item selected
+    /// </summary>
+        public static string GetCategoryString(int value)
     {
         switch (InternalDatabase.Instance.currentEstoque)
         {
@@ -61,6 +64,9 @@ public class HelperMethods
         }
     }
 
+    /// <summary>
+    /// Transforms an array of Sheets into a List of Sheets
+    /// </summary>
     public static List<Sheet> CreateSheetListFromArray(Sheet[] array)
     {
         List<Sheet> list = new List<Sheet>();
@@ -74,7 +80,10 @@ public class HelperMethods
         return list;
     }
 
-    public static int GetCategoryInt(string category)
+    /// <summary>
+    /// Get the index of a category based on its name
+    /// </summary>
+        public static int GetCategoryInt(string category)
     {
         switch (InternalDatabase.Instance.currentEstoque)
         {
@@ -275,6 +284,9 @@ public class HelperMethods
         return requestToSend;
     }
 
+    /// <summary>
+    /// Handles what happens after a web request is sent
+    /// </summary>
     private static void SendWebRequestHandler(UnityWebRequest requestToHandle)
     {
         if (requestToHandle.result == UnityWebRequest.Result.ConnectionError)
@@ -745,12 +757,18 @@ public class HelperMethods
         // return returnResponse;
     }
 
+    /// <summary>
+    /// Get if the Add or Update is true or false
+    /// </summary>
     public static bool GetAddUpdateResponse()
     {
         return addUpdateResponse;
     }
 
-    public static Dictionary<string, List<string>> GetParameterValuesAndNames(ItemColumns itemToShow, string category)
+    /// <summary>
+    /// Create a dictionary with all the parameters values and names of a specific item to be shown to the user
+    /// </summary>
+        public static Dictionary<string, List<string>> GetParameterValuesAndNames(ItemColumns itemToShow, string category)
     {
         Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
         dictionary.Add("Names", new List<string>());

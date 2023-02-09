@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class ItemColumns
 {
+    /// <summary>
+    /// Get a specific value based on it's name
+    /// </summary>
     public string GetValue(string valueToGet)
     {
         string[] allValues= { Itens, Quantidade, Aquisicao, Entrada, Patrimonio, Status, Serial, Categoria, Fabricante, Modelo, Local,
@@ -23,6 +26,8 @@ public class ItemColumns
         }
         return null;
     }
+
+    #region All possible values an item can have
     public string Itens; // sem patrimônio e serial
     public string Quantidade; // todos
     public string Aquisicao; // todos
@@ -95,4 +100,5 @@ public class ItemColumns
     public string EntradaRJ49;// notebook
     public string AdaptadorAC; // notebook
     public string Windows; // notebook
-    }
+    #endregion
+}

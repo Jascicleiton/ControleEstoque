@@ -15,6 +15,9 @@ public class ConsultDetailsAll : MonoBehaviour
         ShowResult(dropdown.value);
     }
 
+    /// <summary>
+    /// Show all items from a specific categorys
+    /// </summary>
     private void ShowResult(int value)
     {
         if (allResults.Count > 0)

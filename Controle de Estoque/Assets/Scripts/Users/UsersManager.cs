@@ -30,33 +30,13 @@ public class UsersManager : Singleton<UsersManager>
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        //savingWrapper = FindObjectOfType<SavingWrapper>();        
     }
 
     /// <summary>
-    /// Add a new user to the UsersDatabase and save it
+    /// Add a new user to the UsersDatabase
     /// </summary>
     public void  AddNewUser(User userToAdd)
     {
         usersDatabase.Add(userToAdd);
-        //if(savingWrapper == null)
-        //{
-        //    savingWrapper = FindObjectOfType<SavingWrapper>();
-        //    savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
-        //}
-        //else
-        //{
-        //    savingWrapper.Save(ConstStrings.UserDatabaseSaveFile);
-        //}
     }
-
-    //public object CaptureState()
-    //{
-    //    return usersDatabase;
-    //}
-
-    //public void RestoreState(object state)
-    //{
-    //    usersDatabase = (List<User>)state;
-    //}
 }

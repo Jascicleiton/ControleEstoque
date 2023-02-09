@@ -171,8 +171,9 @@ public class MainMenuManager : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;
     }
+
     /// <summary>
-    /// Checks on the database if the user already exists
+    /// Checks on the online database if the user already exists
     /// </summary>
     private IEnumerator CheckIfUserAlreadyExists()
     {
@@ -196,7 +197,7 @@ public class MainMenuManager : MonoBehaviour
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
                 break;
         }
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
@@ -248,7 +249,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds a new user to the user database
+    /// Adds a new user to the online user database
     /// </summary>
     private IEnumerator AddNewUser(User userToAdd)
     {
@@ -273,7 +274,7 @@ public class MainMenuManager : MonoBehaviour
                 createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
                 break;
         }
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
@@ -449,9 +450,7 @@ public class MainMenuManager : MonoBehaviour
         loginEnabled = false;
 
         StartCoroutine(CheckIfUserAlreadyExists());
-    }
-
-   
+    } 
 
     /// <summary>
     /// Called by the OK button inside the error panel to close the panel and enable enter input
@@ -506,6 +505,9 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cancel the adition of a new user and returns to login panel
+    /// </summary>
     public void CancelAddNewUser()
     {
         addNewPasswordInput.text = "";
@@ -517,6 +519,9 @@ public class MainMenuManager : MonoBehaviour
         inputEnabled = true;
     }
 
+    /// <summary>
+    /// CLose the admin authorization panel and returns to the add new user panel
+    /// </summary>
     public void CloseAdminPanel()
     {
         adminUserInput.text = "";

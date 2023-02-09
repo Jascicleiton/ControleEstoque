@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+/// <summary>
+/// Class used to hold user information
+/// </summary>
 [System.Serializable]
 public class User
 {

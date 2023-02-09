@@ -83,6 +83,9 @@ public class UpdateItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enables or disables the input. Called by the Event EnableInput
+    /// </summary>
     private void SetInputEnabled(bool inputEnabled)
     {
               parameterToSearchDP.interactable = inputEnabled;
@@ -93,7 +96,7 @@ public class UpdateItem : MonoBehaviour
     }
 
     /// <summary>
-    /// Check if the item that is going to be updated exists on the fullDatabase
+    /// Check if the item that is going to be updated exists on the online database
     /// </summary>
     private IEnumerator CheckIfItemExists()
     {
@@ -111,7 +114,7 @@ public class UpdateItem : MonoBehaviour
             createItemUpdatePostRequest = HelperMethods.GetPostRequest(itemForm, "getitemserialtoupdate.php", 4);
         }
 
-        MouseManager.Instance.SetWaitingCursor(this.gameObject);
+        MouseManager.Instance.SetWaitingCursor();
         EventHandler.CallEnableInput(false);
         yield return createItemUpdatePostRequest.SendWebRequest();
         EventHandler.CallIsOneMessageOnlyEvent(true);
@@ -204,6 +207,9 @@ public class UpdateItem : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Update the item on the online database
+    /// </summary>
     private IEnumerator UpdateDatabaseRoutine()
     {
         EventHandler.CallIsOneMessageOnlyEvent(false);
@@ -246,7 +252,7 @@ public class UpdateItem : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the full database
+    /// Updates the internal full database
     /// </summary>
     private void UpdateFullDatabase()
     {
@@ -293,7 +299,10 @@ public class UpdateItem : MonoBehaviour
         inputsPanel.SetActive(false);      
     }
 
-    public void MessageClosed()
+    /// <summary>
+    /// Called by the Event MessageClosed to reset all inputs and enable input after tha message is closed
+    /// </summary>
+    private void MessageClosed()
     {
         searchingItem = true;
         ResetInputs();
@@ -302,6 +311,10 @@ public class UpdateItem : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
         StartCoroutine(WaitASecond());
         }
+
+    /// <summary>
+    /// Waits one second to enable input to prevent the Update from wrongly detecting enter input 
+    /// </summary>
     private IEnumerator WaitASecond()
     {
         yield return new WaitForSecondsRealtime(1f);
@@ -316,6 +329,9 @@ public class UpdateItem : MonoBehaviour
         SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 
+    /// <summary>
+    /// Resets all inputs to default values and set searchingItem to true, so an item can be searched
+    /// </summary>
     public void ResetUpdate()
     {
         ResetInputs();

@@ -28,7 +28,7 @@ public class InitialSceneManager : MonoBehaviour
     }
 
     /// <summary>
-    /// hides the buttons that the user is not allowed to use
+    /// Hides the buttons that the user is not allowed to use
     /// </summary>
     private void ShowHideButtons()
     {
@@ -66,7 +66,7 @@ public class InitialSceneManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Goes to ConsultScene
+    /// Go to ConsultScene
     /// </summary>
     public void ConsultClicked()
     {
@@ -82,7 +82,7 @@ public class InitialSceneManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Goes to AddRemoveItemScene
+    /// Go to AddRemoveItemScene
     /// </summary>
     public void AddClicked()
     {
@@ -98,30 +98,39 @@ public class InitialSceneManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Goes to ExportSheetsScene
+    /// Go to ExportSheetsScene
     /// </summary>
     public void ExportSheetsClicked()
     {
         SceneManager.LoadScene(ConstStrings.SceneExportSheets);
     }
 
+    /// <summary>
+    /// Go to NoPaNoSeScene
+    /// </summary>
     public void NoPaNoSeClicked()
     {
         SceneManager.LoadScene(ConstStrings.SceneNoPaNoSe);
     }
 
+    /// <summary>
+    /// Go to ConsultSceneAllinventory
+    /// </summary>
     public void ShowAllInventoryClicked()
     {
         SceneManager.LoadScene(ConstStrings.SceneConsultInventoryAll);
     }
 
+    /// <summary>
+    /// Go to ConsultSceneAllDetails
+    /// </summary>
     public void ShowAllDetailsClicked()
     {
         SceneManager.LoadScene(ConstStrings.SceneConsultDetailsAll);
     }
 
     /// <summary>
-    /// logout the current user and goes to MainMenu
+    /// logout the current user and go to MainMenu
     /// </summary>
     public void LogoutClicked()
     {

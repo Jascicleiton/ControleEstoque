@@ -846,6 +846,9 @@ public class InternalDatabase : Singleton<InternalDatabase>
         }
     }
 
+    /// <summary>
+    /// Updates ONE specific item on all relevant sheets in the internal database
+    /// </summary>
     public void UpdateDatabase(List<string> parameters, int itemIndexFullDatabase)
     {
         int categoryItemToUpdateIndex = 0;

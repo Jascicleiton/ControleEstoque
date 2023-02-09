@@ -92,7 +92,10 @@ public class ConsultInventory : MonoBehaviour
         }
     }
 
-    private void SetInputEnabled(bool enableInput)
+    /// <summary>
+    /// Enables or disables input. Called by Event EnableInput
+    /// </summary>
+        private void SetInputEnabled(bool enableInput)
     {
         inputEnabled = enableInput;
     }

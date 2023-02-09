@@ -14,6 +14,9 @@ public class LogoManager : MonoBehaviour
         image = GetComponent<Image>();
     }
 
+    /// <summary>
+    /// Show or hide an extra logo depending of which "estoque" is being used
+    /// </summary>
     private void Start()
     {
         switch (InternalDatabase.Instance.currentEstoque)
@@ -28,6 +31,7 @@ public class LogoManager : MonoBehaviour
                 image.sprite = esfSprite;
                 break;
             default:
+                this.gameObject.SetActive(false);
                 break;
         }
     }

@@ -55,6 +55,9 @@ public class ConsultResult : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the panel size according to the number of active "boxes" or parameters inside the panel
+    /// </summary>
     public void ChangeSize(int numberOfActiveBoxes)
     {
         if (numberOfActiveBoxes < 10)

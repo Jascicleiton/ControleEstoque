@@ -49,13 +49,16 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
     }
 
     /// <summary>
-    /// Get the index of the item found during a consult
+    /// Get the index of the item found during a consult on the "Inventário" sheet
     /// </summary>
     public int GetItemIndex()
     {
         return itemIndexFullDatabase;
     }
 
+    /// <summary>
+    /// Get the index of the item found during a consult on it's respective category sheet
+    /// </summary>
     public int GetCategoryItemIndex(Sheet categoryToConsult, string patrimonio)
     {
         categoryItemIndex = 0;
