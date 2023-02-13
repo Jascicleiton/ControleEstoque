@@ -17,6 +17,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
 
     public Sheet testingSheet = new Sheet();
     public static List<MovementRecords> movementRecords;
+    public static List<string> locations = new List<string>();
 
     #region Sheets with all information divided by "Categoria"
     public static Sheet adaptadorAC = new Sheet();

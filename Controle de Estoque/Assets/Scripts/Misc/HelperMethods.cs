@@ -12,7 +12,7 @@ public class HelperMethods
     /// <summary>
     /// Get the category "name" based on the value of the dropdown item selected
     /// </summary>
-        public static string GetCategoryString(int value)
+    public static string GetCategoryString(int value)
     {
         switch (InternalDatabase.Instance.currentEstoque)
         {
@@ -83,7 +83,7 @@ public class HelperMethods
     /// <summary>
     /// Get the index of a category based on its name
     /// </summary>
-        public static int GetCategoryInt(string category)
+    public static int GetCategoryInt(string category)
     {
         switch (InternalDatabase.Instance.currentEstoque)
         {
@@ -280,7 +280,7 @@ public class HelperMethods
         }
 
         requestToSend = UnityWebRequest.Post(folder + phpName, form);
-        
+
         return requestToSend;
     }
 
@@ -768,7 +768,7 @@ public class HelperMethods
     /// <summary>
     /// Create a dictionary with all the parameters values and names of a specific item to be shown to the user
     /// </summary>
-        public static Dictionary<string, List<string>> GetParameterValuesAndNames(ItemColumns itemToShow, string category)
+    public static Dictionary<string, List<string>> GetParameterValuesAndNames(ItemColumns itemToShow, string category)
     {
         Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
         dictionary.Add("Names", new List<string>());
@@ -1203,5 +1203,30 @@ public class HelperMethods
         }
         #endregion
         return dictionary;
+    }
+     /// <summary>
+     /// Get the a location string based on the value of the dropdown
+     /// </summary>
+         public static string GetLocationFromDP(int value)
+    {
+        string location = InternalDatabase.locations[value];
+        return location;
+    }
+
+    /// <summary>
+    /// Get the dropdown value based on a string location
+    /// </summary>
+    public static int GetLocationDPValue(string location)
+    {
+        int dpValue = 13;
+        for (int i = 0; i < InternalDatabase.locations.Count; i++)
+        {
+            if(location == InternalDatabase.locations[i])
+            {
+                dpValue = i;
+                break;
+            }
+        }
+        return dpValue;
     }
 }

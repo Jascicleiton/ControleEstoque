@@ -12,9 +12,9 @@ public class MovementManager : MonoBehaviour
     [SerializeField] TMP_Dropdown itemInformationDP;
     [SerializeField] TMP_InputField itemInformationInput;
     [SerializeField] GameObject fromPanel;
-    [SerializeField] TMP_InputField fromInput;
+    [SerializeField] TMP_Dropdown fromDP;
     [SerializeField] GameObject toPanel;
-    [SerializeField] TMP_InputField toInput;
+    [SerializeField] TMP_Dropdown toDP;
     [SerializeField] GameObject whoPanel;
     [SerializeField] TMP_InputField whoInput;
     [SerializeField] private GameObject messagePanel;
@@ -172,7 +172,8 @@ public class MovementManager : MonoBehaviour
         {
             ShouldHidePanels(false);
             
-            fromInput.text = itemToChange.Local;
+            fromDP.value = HelperMethods.GetLocationDPValue(itemToChange.Local);
+            print(HelperMethods.GetLocationDPValue(itemToChange.Local));
             whoInput.text = UsersManager.Instance.currentUser.username;
         }
         else
@@ -193,11 +194,13 @@ public class MovementManager : MonoBehaviour
         {
             moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, 
             itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), 
-            fromInput.text, toInput.text);
+            HelperMethods.GetLocationFromDP(fromDP.value), HelperMethods.GetLocationFromDP(toDP.value));
         }
         else if (itemInformationDP.value == 1)
         {
-            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), fromInput.text, toInput.text);
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text,
+            UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), HelperMethods.GetLocationFromDP(fromDP.value), 
+            HelperMethods.GetLocationFromDP(toDP.value));
         }
      
         UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(moveItemForm, "moveitem.php", 3);
@@ -273,18 +276,18 @@ public class MovementManager : MonoBehaviour
         if (shouldHide)
         {
             fromPanel.GetComponent<CanvasGroup>().alpha = 0;
-            fromInput.enabled = false;
+            fromDP.enabled = false;
             toPanel.GetComponent<CanvasGroup>().alpha = 0;
-            toInput.enabled = false;
+            toDP.enabled = false;
             whoPanel.GetComponent<CanvasGroup>().alpha = 0;
             whoInput.enabled = false;
         }
         else
         {
             fromPanel.GetComponent<CanvasGroup>().alpha = 1;
-            fromInput.enabled = true;
+            fromDP.enabled = true;
             toPanel.GetComponent<CanvasGroup>().alpha = 1;
-            toInput.enabled = true;
+            toDP.enabled = true;
             whoPanel.GetComponent<CanvasGroup>().alpha = 1;
             whoInput.enabled = true;
         }
@@ -297,15 +300,15 @@ public class MovementManager : MonoBehaviour
     {
         movementToRecord = new MovementRecords();
         movementToRecord.fromWhere = item.Local;
-        movementToRecord.toWhere = toInput.text;
+        movementToRecord.toWhere = HelperMethods.GetLocationFromDP(toDP.value);
 
-        itemToChange.Local = toInput.text;
+        itemToChange.Local = HelperMethods.GetLocationFromDP(toDP.value);
         if (itemToChange.Local == "Estoque")
         {
             itemToChange.Entrada = DateTime.Now.ToString("dd/MM/yyyy");
             itemToChange.Saida = "";
         }
-        if (fromInput.text == "Estoque" || fromInput.text == "estoque")
+        if (HelperMethods.GetLocationFromDP(fromDP.value) == "Estoque")
         {
             itemToChange.Entrada = "";
             itemToChange.Saida = DateTime.Now.ToString("dd/MM/yyyy");
@@ -363,8 +366,8 @@ public class MovementManager : MonoBehaviour
     private void ResetInputs()
     {
         itemInformationInput.text = "";
-        fromInput.text = "";
-        toInput.text = "";
+        fromDP.value = 0;
+        toDP.value = 0;
         whoInput.text = "";
         ShouldHidePanels(true);
     }
