@@ -221,7 +221,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3275225312428085108}
         m_TargetAssemblyTypeName: CloseProgram, Assembly-CSharp
         m_MethodName: HandleInputData
         m_Mode: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3275225312428085108}
         m_TargetAssemblyTypeName: CloseProgram, Assembly-CSharp
         m_MethodName: YesButtonClicked
         m_Mode: 1
@@ -1323,7 +1323,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3275225312428085108}
         m_TargetAssemblyTypeName: CloseProgram, Assembly-CSharp
         m_MethodName: NoButtonClicked
         m_Mode: 1

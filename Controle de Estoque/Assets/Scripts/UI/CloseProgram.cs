@@ -28,23 +28,23 @@ public class CloseProgram : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        EventHandler.EnableInput += EnableInput; 
-    }
+    //private void OnEnable()
+    //{
+    //    EventHandler.EnableInput += EnableInput; 
+    //}
 
-    private void OnDisable()
-    {
-        EventHandler.EnableInput -= EnableInput;
-    }
+    //private void OnDisable()
+    //{
+    //    EventHandler.EnableInput -= EnableInput;
+    //}
 
-    /// <summary>
-    /// Enable or disable the button input
-    /// </summary>
-    private void EnableInput(bool enableInput)
-    {
-        closeButton.enabled = enableInput;
-    }
+    ///// <summary>
+    ///// Enable or disable the button input
+    ///// </summary>
+    //private void EnableInput(bool enableInput)
+    //{
+    //    closeButton.enabled = enableInput;
+    //}
 
     /// <summary>
     /// Save the setting of showWarningMessage on the user computer

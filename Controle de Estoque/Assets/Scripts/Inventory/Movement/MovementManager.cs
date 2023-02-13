@@ -332,6 +332,7 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     private void ShowMessage(bool itemFound)
     {
+        inputEnabled = false;
         messagePanel.SetActive(true);
         if (itemFound)
         {
@@ -375,6 +376,13 @@ public class MovementManager : MonoBehaviour
     {
         itemFound = false;
         messagePanel.SetActive(false);
+        StartCoroutine(WaitASecond());
+    }
+
+    private IEnumerator WaitASecond()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        inputEnabled = true;
     }
 
     /// <summary>
