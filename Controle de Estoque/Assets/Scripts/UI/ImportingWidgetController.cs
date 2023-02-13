@@ -8,12 +8,19 @@ public class ImportingWidgetController : MonoBehaviour
 {
     [SerializeField] private GameObject image;
     [SerializeField] private TMP_Text percentageText;
+    [SerializeField] private Canvas canvas;
     private float totalPercentageLoaded;
     private float percentageToLoad;
+   
 
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        if (canvas == null)
+        {
+            canvas = GetComponent<Canvas>();
+        }
+        canvas.worldCamera = FindObjectOfType<Camera>();
     }
 
     private void OnEnable()

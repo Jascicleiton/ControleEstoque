@@ -11,6 +11,7 @@ public class ConsultInventory : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown searchOptionDP; // drop down used to choose search option
     [SerializeField] TMP_Dropdown categoryDP; // drop down used to search for an item category
+    [SerializeField] TMP_Dropdown locationDP;
     [SerializeField] TMP_InputField inputField; // field use to type the item "Patrimônio" or the item "Serial"
     [SerializeField] CanvasGroup numberOfItemsImage;
     [SerializeField] TMP_Text numberOfItensFoundText; // show how many itens were found on the search
@@ -19,18 +20,21 @@ public class ConsultInventory : MonoBehaviour
     [SerializeField] private Transform consultResultTransform;
 
     [SerializeField] private GameObject categorySearchParametersPanel;
-    [SerializeField] private TMP_InputField[] categorySearchInputs;
+    [SerializeField] private List<TMP_InputField> categorySearchInputs;
 
     private ConsultCategory consultCategory = null;
     private bool inputEnabled = true;
-    
+    private TMP_InputField locationInput;
+
     /// <summary>
     /// get the ConsultCategory component
     /// </summary>
     private void Start()
     {
         consultCategory = GetComponent<ConsultCategory>();
-       // InventarioManager.Instance.ImportSheets();
+        // InventarioManager.Instance.ImportSheets();
+        locationInput = inputField;
+        locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
     }
 
     private void OnEnable()
@@ -113,7 +117,7 @@ public class ConsultInventory : MonoBehaviour
                 consultResultTransform.GetChild(i).gameObject.SetActive(false);
             }
         }
-        for (int i = 0; i < categorySearchInputs.Length; i++)
+        for (int i = 0; i < categorySearchInputs.Count; i++)
         {
             if (categorySearchInputs[i].IsActive())
             {
@@ -174,22 +178,21 @@ public class ConsultInventory : MonoBehaviour
     {     
         Sheet foundItens = new Sheet();
         List<int> activeIndexes = new List<int>();
-
-        for (int i = 0; i < categorySearchInputs.Length; i++)
+        GetLocation();
+        for (int i = 0; i < categorySearchInputs.Count; i++)
         {
             if (categorySearchInputs[i].IsActive())
             {
                 if (categorySearchInputs[i].text != "")
                 {
                     activeIndexes.Add(i);
-
                 }
             }
         }
-
+        
         if (activeIndexes.Count > 0)
         {
-            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs, GetCategorySheet(categoryDP.value));
+            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), GetCategorySheet(categoryDP.value));
         }
         RemoveOldSearch();
         if (foundItens != null)
@@ -222,6 +225,25 @@ public class ConsultInventory : MonoBehaviour
 
     }
 
+    private void GetLocation()
+    {
+        locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
+        if (categorySearchInputs[0].IsActive() && categorySearchInputs[1].IsActive())
+        {
+            categorySearchInputs.Insert(2, locationInput);
+        }
+        else if((categorySearchInputs[0].IsActive() && !categorySearchInputs[1].IsActive()) || (!categorySearchInputs[0].IsActive() && categorySearchInputs[1].IsActive()))
+        {
+            categorySearchInputs.Insert(1, locationInput);
+        }
+        else
+        {
+            categorySearchInputs.Insert(0, locationInput);
+        }
+        
+       
+    }
+
     /// <summary>
     /// Get the correct sheet base on the category selected, to guarantee the search only happens for the specific category.
     /// </summary>
@@ -241,6 +263,7 @@ public class ConsultInventory : MonoBehaviour
             case 0:
                 categoryDP.gameObject.SetActive(true);
                 categorySearchParametersPanel.SetActive(true);
+                locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
                 inputField.gameObject.SetActive(false);
                 break;
             case 1:

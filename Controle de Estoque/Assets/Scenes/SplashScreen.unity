@@ -427,11 +427,11 @@ PrefabInstance:
       objectReference: {fileID: 341165363}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_RootOrder
@@ -439,7 +439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_AnchorMax.y
@@ -447,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_AnchorMin.y
@@ -455,11 +455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_LocalPosition.x
@@ -471,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 168
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_LocalRotation.w
@@ -479,15 +479,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -495,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -51.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -617,7 +617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113933705}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23200718, y: 0.037530575, z: -81.01163}
+  m_LocalPosition: {x: 0, y: 0, z: -81.01163}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -636,6 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be1693d02c89f749a41dbec9acfa733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  importingWidget: {fileID: 5384812122129843055, guid: 359a82411e3067e4ba15153114675963, type: 3}
   fullDatabase:
     itens: []
   testingSheet:

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class ImportLocations : MonoBehaviour
+public class ImportLocations : Singleton<ImportLocations>
 {
 
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         StartCoroutine(ImportLocationsRoutine());
     }
 
@@ -51,15 +52,20 @@ public class ImportLocations : MonoBehaviour
             }
             else
             {
+                InternalDatabase.locations.Clear();
                 JSONNode inventario = JSON.Parse(locationRequest.downloadHandler.text);
                 foreach (JSONNode item in inventario)
                 {
                     InternalDatabase.locations.Add(item[0]);
                 }
-                EventHandler.CallImportFinished(false);
             }
         }
         locationRequest.Dispose();    
+    }
+
+    public void ReImport()
+    {
+        StartCoroutine(ImportLocationsRoutine());
     }
 }
 
