@@ -331,12 +331,15 @@ public class HelperMethods
             }
             else if (response == "Patrimônio found")
             {
+                Debug.Log("Patrimônio duplicado");
                 addUpdateResponse = false;
+                EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Patrimônio já existe");
             }
             else if (response == "Serial found")
             {
                 addUpdateResponse = false;
+                EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Serial já existe");
             }
             #region Check if already exists Queries
@@ -435,8 +438,8 @@ public class HelperMethods
             SendWebRequestHandler(createUpdateInventarioRequest);
             if (!addUpdateResponse)
             {
-                EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallOpenMessageEvent("Inventario Failed");
+             //   EventHandler.CallIsOneMessageOnlyEvent(true);
+               // EventHandler.CallOpenMessageEvent("Inventario Failed");
                 yield break;
             }
         }

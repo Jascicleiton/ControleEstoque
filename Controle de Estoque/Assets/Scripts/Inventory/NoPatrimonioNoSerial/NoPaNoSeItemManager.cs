@@ -11,9 +11,8 @@ public class NoPaNoSeItemManager : MonoBehaviour
     [SerializeField] private TMP_Text itemName = null;
     [SerializeField] private TMP_Text itemQuantity = null;
     [SerializeField] private TMP_InputField quantityInput = null;
-    #pragma warning disable CS0219 // Variable is assigned but its value is never used
-    [SerializeField] private TMP_InputField whereToInput = null;
-    #pragma warning restore CS0219 // Variable is assigned but its value is never used
+    [SerializeField] private TMP_Dropdown whereToDP = null;
+   
 
     private NoPaNoSeItem item = new NoPaNoSeItem();
 
@@ -136,31 +135,32 @@ public class NoPaNoSeItemManager : MonoBehaviour
         WWWForm itemForm = new WWWForm();
         if (isAdding)
         {
-             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, quantityInput.text,
-           UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), whereToInput.text, "Estoque");
+             itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, item.ItemName, int.Parse(quantityInput.text),
+           UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), HelperMethods.GetLocationFromDP(whereToDP.value), "Estoque");
         }
         else
         {
-             itemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, item.ItemName, quantityInput.text,
-          UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", whereToInput.text);
+             itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, item.ItemName, int.Parse(quantityInput.text),
+          UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", HelperMethods.GetLocationFromDP(whereToDP.value));
+        
         }
 
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "movenopanose.php", itemForm);
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
-
+        print(item.ItemName + " : " + quantityInput.text);
         if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogWarning("ChangeItemQuantityRoutine: conectionerror");
+            Debug.LogWarning("MoveItem: conectionerror");
         }
         else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            Debug.LogWarning("ChangeItemQuantityRoutine: data processing error");
+            Debug.LogWarning("MoveItem: data processing error");
         }
         else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            Debug.LogWarning("ChangeItemQuantityRoutine: protocol error");
+            Debug.LogWarning("MoveItem: protocol error");
         }
 
         if (createUpdateInventarioRequest.error == null)
@@ -168,25 +168,25 @@ public class NoPaNoSeItemManager : MonoBehaviour
             string response = createUpdateInventarioRequest.downloadHandler.text;
             if (response == "Conection error" || response == "Inventario update failed")
             {
-                Debug.LogWarning("ChangeItemQuantityRoutine: Server error");
+                Debug.LogWarning("MoveItem: Server error");
             }
             else if (response == "Wrong app key")
             {
-                Debug.LogWarning("ChangeItemQuantityRoutine: app key");
+                Debug.LogWarning("MoveItem: app key");
             }
-            else if (response == "Updated")
+            else if (response == "Moved")
             {
-                whereToInput.text = "";
+                whereToDP.value = HelperMethods.GetLocationDPValue("Estoque");
             }
             else
             {
-                Debug.LogWarning("ChangeItemQuantityRoutine: " + response);
+                Debug.LogWarning("MoveItem: " + response);
                 // TODO: send message to user with error and recomendation
             }
         }
         else
         {
-            Debug.LogWarning("ChangeItemQuantityRoutine: " + createUpdateInventarioRequest.error);
+            Debug.LogWarning("MoveItem: " + createUpdateInventarioRequest.error);
             // TODO: send message to user with error and recomendation
         }
         createUpdateInventarioRequest.Dispose();

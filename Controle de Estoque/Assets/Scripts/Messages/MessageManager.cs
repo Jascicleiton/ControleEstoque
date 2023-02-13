@@ -113,6 +113,10 @@ public class MessageManager : MonoBehaviour
                 messageText.text = "Item atualizado no inventário com sucesso.\n" + message2;
             }
         }
+        else if(message1 == "Patrimônio já existe" || message1 == "Serial já existe")
+        {
+            messageText.text = message1;
+        }
         else 
         {
             messageText.text = message1 + "\nContate o administrador sobre este erro";

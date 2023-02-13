@@ -357,6 +357,19 @@ public class CreateForm
         inventario.AddField("paraonde", paraOnde);
         return inventario;
     }
+    public static WWWForm GetMoveNoPaNoSeItemForm(string appPassword, string nome, int quantidade, string usuario, string data,
+        string deOnde, string paraOnde)
+    {
+        WWWForm inventario = new WWWForm();
+        inventario.AddField("apppassword", appPassword);
+        inventario.AddField("itemname", nome);
+        inventario.AddField("itemQuantity", quantidade);
+        inventario.AddField("usuario", usuario);
+        inventario.AddField("data", data);
+        inventario.AddField("deonde", deOnde);
+        inventario.AddField("paraonde", paraOnde);
+        return inventario;
+    }
 
     public static WWWForm GetNoPaNoSeForm(string appPassword, string itemName, int itemQuantity)
     {
