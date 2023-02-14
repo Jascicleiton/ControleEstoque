@@ -21,6 +21,7 @@ public class ConsultInventory : MonoBehaviour
 
     [SerializeField] private GameObject categorySearchParametersPanel;
     [SerializeField] private List<TMP_InputField> categorySearchInputs;
+    [SerializeField] private TMP_Dropdown[] operators;
 
     private ConsultCategory consultCategory = null;
     private bool inputEnabled = true;
@@ -178,6 +179,7 @@ public class ConsultInventory : MonoBehaviour
     {     
         Sheet foundItens = new Sheet();
         List<int> activeIndexes = new List<int>();
+        List<string> activeOperators = new List<string>();
         GetLocation();
         for (int i = 0; i < categorySearchInputs.Count; i++)
         {
@@ -186,13 +188,14 @@ public class ConsultInventory : MonoBehaviour
                 if (categorySearchInputs[i].text != "")
                 {
                     activeIndexes.Add(i);
+                    activeOperators.Add(GetOperatorFromDP(i));
                 }
             }
         }
         
         if (activeIndexes.Count > 0)
         {
-            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), GetCategorySheet(categoryDP.value));
+            foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), GetCategorySheet(categoryDP.value), activeOperators);
         }
         RemoveOldSearch();
         if (foundItens != null)
@@ -225,6 +228,9 @@ public class ConsultInventory : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Add a location string to the search parameters based on the Location dropdown value
+    /// </summary>
     private void GetLocation()
     {
         locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
@@ -242,6 +248,14 @@ public class ConsultInventory : MonoBehaviour
         }
         
        
+    }
+
+    /// <summary>
+    /// Get the string operator from the array of all operators
+    /// </summary>
+    private string GetOperatorFromDP(int index)
+    {
+        return operators[index].itemText.ToString();
     }
 
     /// <summary>

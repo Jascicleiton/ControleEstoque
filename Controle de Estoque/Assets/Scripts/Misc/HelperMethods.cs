@@ -1232,4 +1232,25 @@ public class HelperMethods
         }
         return dpValue;
     }
+
+    public static bool CompareStrings(string parameter1, string parameter2, string Operator)
+    {
+        switch (Operator)
+        {
+            case "=":
+                return parameter1 == parameter2;
+            case "<":
+                return float.Parse(parameter1) < float.Parse(parameter2);
+            case ">":
+                return float.Parse(parameter1) > float.Parse(parameter2);
+            case "!=":
+                return parameter1 != parameter2;
+            case "<=":
+                return float.Parse(parameter1) <= float.Parse(parameter2);
+            case ">=":
+                return float.Parse(parameter1) >= float.Parse(parameter2);
+            default:
+                return false;
+        }
+    }
 }
