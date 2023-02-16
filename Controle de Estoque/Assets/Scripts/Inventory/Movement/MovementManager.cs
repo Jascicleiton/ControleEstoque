@@ -13,8 +13,10 @@ public class MovementManager : MonoBehaviour
     [SerializeField] TMP_InputField itemInformationInput;
     [SerializeField] GameObject fromPanel;
     [SerializeField] TMP_Dropdown fromDP;
+    [SerializeField] TMP_InputField fromInput;
     [SerializeField] GameObject toPanel;
     [SerializeField] TMP_Dropdown toDP;
+    [SerializeField] TMP_InputField toInput;
     [SerializeField] GameObject whoPanel;
     [SerializeField] TMP_InputField whoInput;
     [SerializeField] private GameObject messagePanel;
@@ -173,7 +175,11 @@ public class MovementManager : MonoBehaviour
             ShouldHidePanels(false);
             
             fromDP.value = HelperMethods.GetLocationDPValue(itemToChange.Local);
-            print(HelperMethods.GetLocationDPValue(itemToChange.Local));
+            if (HelperMethods.GetLocationFromDP(fromDP.value) == "Outros")
+            {
+                fromInput.GetComponent<CanvasGroup>().alpha = 1;
+                fromInput.text = itemToChange.Local;
+            }
             whoInput.text = UsersManager.Instance.currentUser.username;
         }
         else
@@ -194,13 +200,12 @@ public class MovementManager : MonoBehaviour
         {
             moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, 
             itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), 
-            HelperMethods.GetLocationFromDP(fromDP.value), HelperMethods.GetLocationFromDP(toDP.value));
+            GetFromLocation(), GetToLocation());
         }
         else if (itemInformationDP.value == 1)
         {
             moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text,
-            UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), HelperMethods.GetLocationFromDP(fromDP.value), 
-            HelperMethods.GetLocationFromDP(toDP.value));
+            UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), GetFromLocation(), GetToLocation());
         }
      
         UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(moveItemForm, "moveitem.php", 3);
@@ -373,6 +378,42 @@ public class MovementManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Get the location from the inputField if the "From" field is "Outros"
+    /// </summary>
+    private string GetFromLocation()
+    {
+        string location = "";
+        if (HelperMethods.GetLocationFromDP(fromDP.value) == "Outros")
+        {
+            location = itemToChange.Local;
+        }
+        else
+        {
+            location = HelperMethods.GetLocationFromDP(fromDP.value);
+        }
+
+            return location;
+    }
+
+    /// <summary>
+    /// Get the location from the inputField if the "To" field is "Outros"
+    /// </summary>
+    private string GetToLocation()
+    {
+        string location = "";
+        if (HelperMethods.GetLocationFromDP(toDP.value) == "Outros")
+        {
+            location = toInput.text;
+        }
+        else
+        {
+            location = HelperMethods.GetLocationFromDP(toDP.value);
+        }
+
+        return location;
+    }
+
+    /// <summary>
     /// Close the message panel. It is public to be used on the button too
     /// </summary>
     public void CloseMessagePanel()
@@ -420,5 +461,35 @@ public class MovementManager : MonoBehaviour
         inputEnabled = true;
         itemFound = false;
         ResetInputs();
+    }
+
+    /// <summary>
+    /// Show a input for "To" field if the location is "Outros"
+    /// </summary>    
+    public void ShowHideToLocationInput(int value)
+    {
+        if(value == HelperMethods.GetLocationDPValue("Outros"))
+        {
+            toInput.GetComponent<CanvasGroup>().alpha = 1;
+        }
+        else
+        {
+            toInput.GetComponent<CanvasGroup>().alpha = 0;
+        }
+    }
+
+    /// <summary>
+    /// Show a input for "From" field if the location is "Outros"
+    /// </summary>    
+    public void ShowHideFromLocationInput(int value)
+    {
+        if (value == HelperMethods.GetLocationDPValue("Outros"))
+        {
+            fromInput.GetComponent<CanvasGroup>().alpha = 1;
+        }
+        else
+        {
+            fromInput.GetComponent<CanvasGroup>().alpha = 0;
+        }
     }
 }

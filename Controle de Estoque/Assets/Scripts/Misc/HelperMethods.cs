@@ -1233,14 +1233,18 @@ public class HelperMethods
         return dpValue;
     }
 
-    public static bool CompareStrings(string parameter1, string parameter2, string Operator)
+    /// <summary>
+    /// Compares two strings using = or < or > or != or <= or >= operators
+    /// </summary>
+        public static bool CompareStrings(string parameter1, string parameter2, string Operator)
     {
+         //Debug.Log(parameter1 + ", " + parameter2 + ", " + Operator);
         switch (Operator)
         {
             case "=":
                 return parameter1 == parameter2;
-            case "<":
-                return float.Parse(parameter1) < float.Parse(parameter2);
+            case "<":              
+                return double.Parse(parameter1) < double.Parse(parameter2);
             case ">":
                 return float.Parse(parameter1) > float.Parse(parameter2);
             case "!=":

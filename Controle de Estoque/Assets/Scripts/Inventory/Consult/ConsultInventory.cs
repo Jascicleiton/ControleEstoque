@@ -34,8 +34,8 @@ public class ConsultInventory : MonoBehaviour
     {
         consultCategory = GetComponent<ConsultCategory>();
         // InventarioManager.Instance.ImportSheets();
-        locationInput = inputField;
-        locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
+        //locationInput = inputField;
+        //locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
     }
 
     private void OnEnable()
@@ -180,7 +180,7 @@ public class ConsultInventory : MonoBehaviour
         Sheet foundItens = new Sheet();
         List<int> activeIndexes = new List<int>();
         List<string> activeOperators = new List<string>();
-        GetLocation();
+       
         for (int i = 0; i < categorySearchInputs.Count; i++)
         {
             if (categorySearchInputs[i].IsActive())
@@ -188,13 +188,15 @@ public class ConsultInventory : MonoBehaviour
                 if (categorySearchInputs[i].text != "")
                 {
                     activeIndexes.Add(i);
-                    activeOperators.Add(GetOperatorFromDP(i));
+                    activeOperators.Add(GetOperatorFromDP(i));                    
                 }
             }
         }
+       // GetLocation(activeIndexes, activeOperators);
         
         if (activeIndexes.Count > 0)
         {
+            //print(activeIndexes.Count);          
             foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), GetCategorySheet(categoryDP.value), activeOperators);
         }
         RemoveOldSearch();
@@ -202,15 +204,24 @@ public class ConsultInventory : MonoBehaviour
         {
             if (foundItens.itens.Count > 0)
             {
-                foreach (ItemColumns foundItem in foundItens.itens)
+                for (int i = 0; i < foundItens.itens.Count; i++)
                 {
-                    if (foundItem.Status != "DEFEITO")
+                    if (foundItens.itens[i].Status != "DEFEITO")
                     {
                         GameObject result = PoolManager.Instance.ReuseObject(consultResult);
                         result.SetActive(true);
-                        result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
+                        result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
                     }
                 }
+                //foreach (ItemColumns foundItem in foundItens.itens)
+                //{
+                //    if (foundItem.Status != "DEFEITO")
+                //    {
+                //        GameObject result = PoolManager.Instance.ReuseObject(consultResult);
+                //        result.SetActive(true);
+                //        result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
+                //    }
+                //}
                 numberOfItemsImage.alpha = 1f;
                 numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
             }
@@ -231,20 +242,26 @@ public class ConsultInventory : MonoBehaviour
     /// <summary>
     /// Add a location string to the search parameters based on the Location dropdown value
     /// </summary>
-    private void GetLocation()
+    private void GetLocation(List<int> activeIndexes, List<string> activeOperators)
     {
         locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
-        if (categorySearchInputs[0].IsActive() && categorySearchInputs[1].IsActive())
+        if (categorySearchInputs[0].text != "" && categorySearchInputs[1].text != "")
         {
             categorySearchInputs.Insert(2, locationInput);
+            activeIndexes.Insert(2, 2);
+            activeOperators.Insert(2, "=");
         }
-        else if((categorySearchInputs[0].IsActive() && !categorySearchInputs[1].IsActive()) || (!categorySearchInputs[0].IsActive() && categorySearchInputs[1].IsActive()))
+        else if((categorySearchInputs[0].text != "" && categorySearchInputs[1].text == "") || (categorySearchInputs[0].text == "" && categorySearchInputs[1].text != ""))
         {
             categorySearchInputs.Insert(1, locationInput);
+            activeIndexes.Insert(1, 1);
+            activeOperators.Insert(1, "=");
         }
         else
         {
             categorySearchInputs.Insert(0, locationInput);
+            activeIndexes.Insert(0, 0);
+            activeOperators.Insert(0, "=");
         }
         
        
@@ -255,7 +272,7 @@ public class ConsultInventory : MonoBehaviour
     /// </summary>
     private string GetOperatorFromDP(int index)
     {
-        return operators[index].itemText.ToString();
+        return operators[index].options[operators[index].value].text;
     }
 
     /// <summary>

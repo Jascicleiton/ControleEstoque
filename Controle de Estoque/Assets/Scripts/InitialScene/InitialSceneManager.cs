@@ -52,11 +52,11 @@ public class InitialSceneManager : MonoBehaviour
             {
                 consultButton.gameObject.SetActive(true);
                 moveButton.gameObject.SetActive(true);
-                addRemoveButton.gameObject.SetActive(false);
-                updateItemButton.gameObject.SetActive(false);
-                exportSheetsButton.gameObject.SetActive(false);
                 logoutButton.gameObject.SetActive(true);
                 noPaNoSeButton.gameObject.SetActive(true);
+                addRemoveButton.gameObject.SetActive(false);
+                updateItemButton.gameObject.SetActive(false);
+                exportSheetsButton.gameObject.SetActive(false);        
                 fullInventoryButton.gameObject.SetActive(false);
                 fullDetailsButton.gameObject.SetActive(false);
                 allMovementsButton.gameObject.SetActive(false);

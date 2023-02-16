@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -10,17 +11,26 @@ public class ConsultCategory : MonoBehaviour
     /// </summary>
     public Sheet FindItens(List<int> activeIndexes, TMP_InputField[] categorySearchInputs, Sheet databaseToConsult, List<string> operators)
     {
+     
+         //   Debug.Log(categorySearchInputs[activeIndexes[0]].text);
+       
         Sheet returnSheet = new Sheet();
         
         switch (activeIndexes.Count)
         {
             case 1:
+                int count = 0;
                 foreach (ItemColumns item in databaseToConsult.itens)
                 {
-                    if (HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[0]].text), categorySearchInputs[activeIndexes[0]].text, operators[0]))
-                    {
-                        returnSheet.itens.Add(item);
-                    }
+                    count++;
+                    print(categorySearchInputs[activeIndexes[0]].text + " - " + count);
+                        if (HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[0]].text), categorySearchInputs[activeIndexes[0]].text, operators[0]))
+                        {
+                            if (!returnSheet.itens.Contains(item))
+                            {
+                                returnSheet.itens.Add(item);
+                            }
+                        }
                 }
                 break;
             case 2:
@@ -29,7 +39,10 @@ public class ConsultCategory : MonoBehaviour
                     if (HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[0]].text), categorySearchInputs[activeIndexes[0]].text, operators[0]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[1]].text), categorySearchInputs[activeIndexes[1]].text, operators[1]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -41,7 +54,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[1]].text), categorySearchInputs[activeIndexes[1]].text, operators[1]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[2]].text), categorySearchInputs[activeIndexes[2]].text, operators[2]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -53,7 +69,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[2]].text), categorySearchInputs[activeIndexes[2]].text, operators[2]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[3]].text), categorySearchInputs[activeIndexes[3]].text, operators[3]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -66,7 +85,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[3]].text), categorySearchInputs[activeIndexes[3]].text, operators[3]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[4]].text), categorySearchInputs[activeIndexes[4]].text, operators[4]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -80,7 +102,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[4]].text), categorySearchInputs[activeIndexes[4]].text, operators[4]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[5]].text), categorySearchInputs[activeIndexes[5]].text, operators[5]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -95,7 +120,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[5]].text), categorySearchInputs[activeIndexes[5]].text, operators[5]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[6]].text), categorySearchInputs[activeIndexes[6]].text, operators[6]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -111,7 +139,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[6]].text), categorySearchInputs[activeIndexes[6]].text, operators[6]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[7]].text), categorySearchInputs[activeIndexes[7]].text, operators[7]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -128,7 +159,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[7]].text), categorySearchInputs[activeIndexes[7]].text, operators[7]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[8]].text), categorySearchInputs[activeIndexes[8]].text, operators[8]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -146,7 +180,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[8]].text), categorySearchInputs[activeIndexes[8]].text, operators[8]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[9]].text), categorySearchInputs[activeIndexes[9]].text, operators[9]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -165,7 +202,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[9]].text), categorySearchInputs[activeIndexes[9]].text, operators[9]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[10]].text), categorySearchInputs[activeIndexes[10]].text, operators[10]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -185,7 +225,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[10]].text), categorySearchInputs[activeIndexes[10]].text, operators[10]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[11]].text), categorySearchInputs[activeIndexes[11]].text, operators[11]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -206,7 +249,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[11]].text), categorySearchInputs[activeIndexes[11]].text, operators[11]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[12]].text), categorySearchInputs[activeIndexes[12]].text, operators[12]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -228,7 +274,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[12]].text), categorySearchInputs[activeIndexes[12]].text, operators[12]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[13]].text), categorySearchInputs[activeIndexes[13]].text, operators[13]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -251,7 +300,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[13]].text), categorySearchInputs[activeIndexes[13]].text, operators[13]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[14]].text), categorySearchInputs[activeIndexes[14]].text, operators[14]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -275,7 +327,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[14]].text), categorySearchInputs[activeIndexes[14]].text, operators[14]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[15]].text), categorySearchInputs[activeIndexes[15]].text, operators[15]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -300,7 +355,10 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[15]].text), categorySearchInputs[activeIndexes[15]].text, operators[15]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[16]].text), categorySearchInputs[activeIndexes[16]].text, operators[16]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
@@ -326,13 +384,20 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[16]].text), categorySearchInputs[activeIndexes[16]].text, operators[16]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[17]].text), categorySearchInputs[activeIndexes[17]].text, operators[17]))
                     {
-                        returnSheet.itens.Add(item);
+                        if (!returnSheet.itens.Contains(item))
+                        {
+                            returnSheet.itens.Add(item);
+                        }
                     }
                 }
                 break;
             default:
                 break;
         }
+
+        //returnSheet.itens.OrderBy(item => int.Parse(item.Patrimonio)).ToList();
+        
         return returnSheet;
     }
+
 }

@@ -425,6 +425,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 341165363}
+    - target: {fileID: 5384812121184875866, guid: 359a82411e3067e4ba15153114675963, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -27.11499
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384812121567954256, guid: 359a82411e3067e4ba15153114675963, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -21.533005
+      objectReference: {fileID: 0}
     - target: {fileID: 5384812122129843040, guid: 359a82411e3067e4ba15153114675963, type: 3}
       propertyPath: m_Pivot.x
       value: 0

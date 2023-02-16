@@ -306,7 +306,7 @@ public class ItemInformationPanelControler : MonoBehaviour
 
         parameterValues[0].text = DateTime.Now.ToString("dd/MM/yyyy");
         parameterValues[1].text = DateTime.Now.ToString("dd/MM/yyyy");
-
+        parameterValues[8].text = "Estoque";
         HideEmptyItemBox();
     }
 
