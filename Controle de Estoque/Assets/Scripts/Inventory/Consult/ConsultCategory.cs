@@ -18,12 +18,11 @@ public class ConsultCategory : MonoBehaviour
         
         switch (activeIndexes.Count)
         {
-            case 1:
-                int count = 0;
+            case 1:           
                 foreach (ItemColumns item in databaseToConsult.itens)
                 {
-                    count++;
-                    print(categorySearchInputs[activeIndexes[0]].text + " - " + count);
+                  
+                  
                         if (HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[0]].text), categorySearchInputs[activeIndexes[0]].text, operators[0]))
                         {
                             if (!returnSheet.itens.Contains(item))
@@ -395,9 +394,10 @@ public class ConsultCategory : MonoBehaviour
                 break;
         }
 
-        //returnSheet.itens.OrderBy(item => int.Parse(item.Patrimonio)).ToList();
+      //  returnSheet = SortResult(returnSheet);
         
         return returnSheet;
     }
 
+  
 }

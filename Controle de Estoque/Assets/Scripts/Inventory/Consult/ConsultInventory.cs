@@ -11,7 +11,7 @@ public class ConsultInventory : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown searchOptionDP; // drop down used to choose search option
     [SerializeField] TMP_Dropdown categoryDP; // drop down used to search for an item category
-    [SerializeField] TMP_Dropdown locationDP;
+    //[SerializeField] TMP_Dropdown locationDP;
     [SerializeField] TMP_InputField inputField; // field use to type the item "Patrimônio" or the item "Serial"
     [SerializeField] CanvasGroup numberOfItemsImage;
     [SerializeField] TMP_Text numberOfItensFoundText; // show how many itens were found on the search
@@ -244,7 +244,7 @@ public class ConsultInventory : MonoBehaviour
     /// </summary>
     private void GetLocation(List<int> activeIndexes, List<string> activeOperators)
     {
-        locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
+       // locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
         if (categorySearchInputs[0].text != "" && categorySearchInputs[1].text != "")
         {
             categorySearchInputs.Insert(2, locationInput);
@@ -294,7 +294,7 @@ public class ConsultInventory : MonoBehaviour
             case 0:
                 categoryDP.gameObject.SetActive(true);
                 categorySearchParametersPanel.SetActive(true);
-                locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
+                //locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
                 inputField.gameObject.SetActive(false);
                 break;
             case 1:
