@@ -170,7 +170,7 @@ public class AddRemoveItem : MonoBehaviour
 
         itemToAddFullDatabase.Aquisicao = parameterValues[0].text;
         itemToAddFullDatabase.Entrada = parameterValues[1].text;
-        itemToAddFullDatabase.Patrimonio = parameterValues[2].text;
+        itemToAddFullDatabase.Patrimonio = int.Parse(parameterValues[2].text);
         itemToAddFullDatabase.Status = parameterValues[3].text;
         itemToAddFullDatabase.Serial = parameterValues[4].text;
         itemToAddFullDatabase.Fabricante = parameterValues[5].text;
@@ -188,16 +188,16 @@ public class AddRemoveItem : MonoBehaviour
 
                 itemToAddFullDatabase.Interface = parameterValues[9].text;
                 itemToAddSplitDatabase.Interface = parameterValues[9].text;
-                itemToAddFullDatabase.Tamanho = parameterValues[10].text;
-                itemToAddSplitDatabase.Tamanho = parameterValues[10].text;
+                itemToAddFullDatabase.Tamanho = float.Parse(parameterValues[10].text);
+                itemToAddSplitDatabase.Tamanho = float.Parse(parameterValues[10].text);
                 itemToAddFullDatabase.FormaDeArmazenamento = parameterValues[11].text;
                 itemToAddSplitDatabase.FormaDeArmazenamento = parameterValues[11].text;
-                itemToAddFullDatabase.CapacidadeEmGB = parameterValues[12].text;
-                itemToAddSplitDatabase.CapacidadeEmGB = parameterValues[12].text;
-                itemToAddFullDatabase.RPM = parameterValues[13].text;
-                itemToAddSplitDatabase.RPM = parameterValues[13].text;
-                itemToAddFullDatabase.VelocidadeDeLeitura = parameterValues[14].text;
-                itemToAddSplitDatabase.VelocidadeDeLeitura = parameterValues[14].text;
+                itemToAddFullDatabase.CapacidadeEmGB = int.Parse(parameterValues[12].text);
+                itemToAddSplitDatabase.CapacidadeEmGB = int.Parse(parameterValues[12].text);
+                itemToAddFullDatabase.RPM = int.Parse(parameterValues[13].text);
+                itemToAddSplitDatabase.RPM = int.Parse(parameterValues[13].text);
+                itemToAddFullDatabase.VelocidadeDeLeitura = float.Parse(parameterValues[14].text);
+                itemToAddSplitDatabase.VelocidadeDeLeitura = float.Parse(parameterValues[14].text);
                 itemToAddFullDatabase.Enterprise = parameterValues[15].text;
                 itemToAddSplitDatabase.Enterprise = parameterValues[15].text;
 
@@ -211,18 +211,18 @@ public class AddRemoveItem : MonoBehaviour
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Tipo = parameterValues[9].text;
                 itemToAddSplitDatabase.Tipo = parameterValues[9].text;
-                itemToAddFullDatabase.CapacidadeEmGB = parameterValues[10].text;
-                itemToAddSplitDatabase.CapacidadeEmGB = parameterValues[10].text;
-                itemToAddFullDatabase.VelocidadeMHz = parameterValues[11].text;
-                itemToAddSplitDatabase.VelocidadeMHz = parameterValues[11].text;
+                itemToAddFullDatabase.CapacidadeEmGB = int.Parse(parameterValues[10].text);
+                itemToAddSplitDatabase.CapacidadeEmGB = int.Parse(parameterValues[10].text);
+                itemToAddFullDatabase.VelocidadeMHz = int.Parse(parameterValues[11].text);
+                itemToAddSplitDatabase.VelocidadeMHz = int.Parse(parameterValues[11].text);
                 itemToAddFullDatabase.LowVoltage = parameterValues[12].text;
                 itemToAddSplitDatabase.LowVoltage = parameterValues[12].text;
                 itemToAddFullDatabase.Rank = parameterValues[13].text;
                 itemToAddSplitDatabase.Rank = parameterValues[13].text;
                 itemToAddFullDatabase.DIMM = parameterValues[14].text;
                 itemToAddSplitDatabase.DIMM = parameterValues[14].text;
-                itemToAddFullDatabase.TaxaDeTransmissao = parameterValues[15].text;
-                itemToAddSplitDatabase.TaxaDeTransmissao = parameterValues[15].text;
+                itemToAddFullDatabase.TaxaDeTransmissao = int.Parse(parameterValues[15].text);
+                itemToAddSplitDatabase.TaxaDeTransmissao = int.Parse(parameterValues[15].text);
                 itemToAddFullDatabase.Simbolo = parameterValues[16].text;
                 itemToAddSplitDatabase.Simbolo = parameterValues[16].text;
 
@@ -235,12 +235,12 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeRede;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Interface = parameterValues[9].text;
-                itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
+                itemToAddFullDatabase.QuantidadeDePortas = int.Parse(parameterValues[10].text);
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[11].text;
                 itemToAddFullDatabase.SuportaFibraOptica = parameterValues[12].text;
                 itemToAddFullDatabase.Desempenho = parameterValues[13].text;
                 itemToAddSplitDatabase.Interface = parameterValues[9].text;
-                itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[10].text;
+                itemToAddSplitDatabase.QuantidadeDePortas = int.Parse(parameterValues[10].text);
                 itemToAddSplitDatabase.QuaisConexoes = parameterValues[11].text;
                 itemToAddSplitDatabase.SuportaFibraOptica = parameterValues[12].text;
                 itemToAddSplitDatabase.Desempenho = parameterValues[13].text;
@@ -254,11 +254,11 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Categoria = ConstStrings.Idrac;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[9].text;
-                itemToAddFullDatabase.VelocidadeGBs = parameterValues[10].text;
+                itemToAddFullDatabase.VelocidadeGBs = float.Parse(parameterValues[10].text);
                 itemToAddFullDatabase.EntradaSD = parameterValues[11].text;
                 itemToAddFullDatabase.ServidoresSuportados = parameterValues[12].text;
                 itemToAddSplitDatabase.QuaisConexoes = parameterValues[9].text;
-                itemToAddSplitDatabase.VelocidadeGBs = parameterValues[10].text;
+                itemToAddSplitDatabase.VelocidadeGBs = float.Parse(parameterValues[10].text);
                 itemToAddSplitDatabase.EntradaSD = parameterValues[11].text;
                 itemToAddSplitDatabase.ServidoresSuportados = parameterValues[12].text;
 
@@ -271,19 +271,19 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaControladora;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[9].text;
-                itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
+                itemToAddFullDatabase.QuantidadeDePortas = int.Parse(parameterValues[10].text);
                 itemToAddFullDatabase.TipoDeRAID = parameterValues[11].text;
                 itemToAddFullDatabase.TipoDeHD = parameterValues[12].text;
                 itemToAddFullDatabase.CapacidadeMaxHD = parameterValues[13].text;
-                itemToAddFullDatabase.AteQuantosHDs = parameterValues[14].text;
+                itemToAddFullDatabase.AteQuantosHDs = int.Parse(parameterValues[14].text);
                 itemToAddFullDatabase.BateriaInclusa = parameterValues[15].text;
                 itemToAddFullDatabase.Barramento = parameterValues[16].text;
                 itemToAddSplitDatabase.QuaisConexoes = parameterValues[9].text;
-                itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[10].text;
+                itemToAddSplitDatabase.QuantidadeDePortas = int.Parse(parameterValues[10].text);
                 itemToAddSplitDatabase.TipoDeRAID = parameterValues[11].text;
                 itemToAddSplitDatabase.TipoDeHD = parameterValues[12].text;
                 itemToAddSplitDatabase.CapacidadeMaxHD = parameterValues[13].text;
-                itemToAddSplitDatabase.AteQuantosHDs = parameterValues[14].text;
+                itemToAddSplitDatabase.AteQuantosHDs = int.Parse(parameterValues[14].text);
                 itemToAddSplitDatabase.BateriaInclusa = parameterValues[15].text;
                 itemToAddSplitDatabase.Barramento = parameterValues[16].text;
 
@@ -296,14 +296,14 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Categoria = ConstStrings.Processador;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Soquete = parameterValues[9].text;
-                itemToAddFullDatabase.NucleosFisicos = parameterValues[10].text;
-                itemToAddFullDatabase.NucleosLogicos = parameterValues[11].text;
+                itemToAddFullDatabase.NucleosFisicos = int.Parse(parameterValues[10].text);
+                itemToAddFullDatabase.NucleosLogicos = int.Parse(parameterValues[11].text);
                 itemToAddFullDatabase.AceitaVirtualizacao = parameterValues[12].text;
                 itemToAddFullDatabase.TurboBoost = parameterValues[13].text;
                 itemToAddFullDatabase.HyperThreading = parameterValues[14].text;
                 itemToAddSplitDatabase.Soquete = parameterValues[9].text;
-                itemToAddSplitDatabase.NucleosFisicos = parameterValues[10].text;
-                itemToAddSplitDatabase.NucleosLogicos = parameterValues[11].text;
+                itemToAddSplitDatabase.NucleosFisicos = int.Parse(parameterValues[10].text);
+                itemToAddSplitDatabase.NucleosLogicos = int.Parse(parameterValues[11].text);
                 itemToAddSplitDatabase.AceitaVirtualizacao = parameterValues[12].text;
                 itemToAddSplitDatabase.TurboBoost = parameterValues[13].text;
                 itemToAddSplitDatabase.HyperThreading = parameterValues[14].text;
@@ -324,7 +324,7 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.PlacaDeRede = parameterValues[14].text;
                 itemToAddFullDatabase.LeitorDeDVD = parameterValues[15].text;
                 itemToAddFullDatabase.Processador = parameterValues[16].text;
-                itemToAddSplitDatabase.Patrimonio = parameterValues[1].text;
+                itemToAddSplitDatabase.Patrimonio = int.Parse(parameterValues[1].text);
                 itemToAddSplitDatabase.ModeloPlacaMae = parameterValues[9].text;
                 itemToAddSplitDatabase.Fonte = parameterValues[10].text;
                 itemToAddSplitDatabase.Memoria = parameterValues[11].text;
@@ -342,10 +342,10 @@ public class AddRemoveItem : MonoBehaviour
             case 7:
                 itemToAddFullDatabase.Categoria = ConstStrings.Fonte;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                itemToAddFullDatabase.Watts = parameterValues[9].text;
+                itemToAddFullDatabase.Watts = int.Parse(parameterValues[9].text);
                 itemToAddFullDatabase.OndeFunciona = parameterValues[10].text;
                 itemToAddFullDatabase.Conectores = parameterValues[11].text;
-                itemToAddSplitDatabase.Watts = parameterValues[9].text;
+                itemToAddSplitDatabase.Watts = int.Parse(parameterValues[9].text);
                 itemToAddSplitDatabase.OndeFunciona = parameterValues[10].text;
                 itemToAddSplitDatabase.Conectores = parameterValues[11].text;
 
@@ -357,9 +357,9 @@ public class AddRemoveItem : MonoBehaviour
             case 8:
                 itemToAddFullDatabase.Categoria = ConstStrings.Switch;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                itemToAddFullDatabase.QuantidadeDePortas = parameterValues[9].text;
+                itemToAddFullDatabase.QuantidadeDePortas = int.Parse(parameterValues[9].text);
                 itemToAddFullDatabase.Desempenho = parameterValues[10].text;
-                itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[9].text;
+                itemToAddSplitDatabase.QuantidadeDePortas = int.Parse(parameterValues[9].text);
                 itemToAddSplitDatabase.Desempenho = parameterValues[10].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Switch].itens.Add(itemToAddSplitDatabase);
@@ -371,13 +371,13 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Categoria = ConstStrings.Roteador;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Wireless = parameterValues[9].text;
-                itemToAddFullDatabase.QuantidadeDePortas = parameterValues[10].text;
-                itemToAddFullDatabase.BandaMaxima = parameterValues[11].text;
-                itemToAddFullDatabase.VoltagemDeSaida = parameterValues[12].text;
+                itemToAddFullDatabase.QuantidadeDePortas = int.Parse(parameterValues[10].text);
+                itemToAddFullDatabase.BandaMaxima = int.Parse(parameterValues[11].text);
+                itemToAddFullDatabase.VoltagemDeSaida = float.Parse(parameterValues[12].text);
                 itemToAddSplitDatabase.Wireless = parameterValues[9].text;
-                itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[10].text;
-                itemToAddSplitDatabase.BandaMaxima = parameterValues[11].text;
-                itemToAddSplitDatabase.VoltagemDeSaida = parameterValues[12].text;
+                itemToAddSplitDatabase.QuantidadeDePortas = int.Parse(parameterValues[10].text);
+                itemToAddSplitDatabase.BandaMaxima = int.Parse(parameterValues[11].text);
+                itemToAddSplitDatabase.VoltagemDeSaida = int.Parse(parameterValues[12].text);
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Roteador].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.roteador.itens.Add(itemToAddFullDatabase);
@@ -388,11 +388,11 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Categoria = ConstStrings.Carregador;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.OndeFunciona = parameterValues[9].text;
-                itemToAddFullDatabase.VoltagemDeSaida = parameterValues[10].text;
-                itemToAddFullDatabase.AmperagemDeSaida = parameterValues[11].text;
+                itemToAddFullDatabase.VoltagemDeSaida = float.Parse(parameterValues[10].text);
+                itemToAddFullDatabase.AmperagemDeSaida = float.Parse(parameterValues[11].text);
                 itemToAddSplitDatabase.OndeFunciona = parameterValues[9].text;
-                itemToAddSplitDatabase.VoltagemDeSaida = parameterValues[10].text;
-                itemToAddSplitDatabase.AmperagemDeSaida = parameterValues[11].text;
+                itemToAddSplitDatabase.VoltagemDeSaida = float.Parse(parameterValues[10].text);
+                itemToAddSplitDatabase.AmperagemDeSaida = float.Parse(parameterValues[11].text);
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Carregador].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.carregador.itens.Add(itemToAddFullDatabase);
@@ -403,11 +403,11 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddFullDatabase.Categoria = ConstStrings.AdaptadorAC;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.OndeFunciona = parameterValues[9].text;
-                itemToAddFullDatabase.VoltagemDeSaida = parameterValues[10].text;
-                itemToAddFullDatabase.AmperagemDeSaida = parameterValues[11].text;
+                itemToAddFullDatabase.VoltagemDeSaida = float.Parse(parameterValues[10].text);
+                itemToAddFullDatabase.AmperagemDeSaida = float.Parse(parameterValues[11].text);
                 itemToAddSplitDatabase.OndeFunciona = parameterValues[9].text;
-                itemToAddSplitDatabase.VoltagemDeSaida = parameterValues[10].text;
-                itemToAddSplitDatabase.AmperagemDeSaida = parameterValues[11].text;
+                itemToAddSplitDatabase.VoltagemDeSaida = float.Parse(parameterValues[10].text);
+                itemToAddSplitDatabase.AmperagemDeSaida = float.Parse(parameterValues[11].text);
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.AdaptadorAC].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.adaptadorAC.itens.Add(itemToAddFullDatabase);
@@ -417,16 +417,16 @@ public class AddRemoveItem : MonoBehaviour
             case 12:
                 itemToAddFullDatabase.Categoria = ConstStrings.StorageNAS;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                itemToAddFullDatabase.Tamanho = parameterValues[9].text;
+                itemToAddFullDatabase.Tamanho = float.Parse(parameterValues[9].text);
                 itemToAddFullDatabase.TipoDeRAID = parameterValues[10].text;
                 itemToAddFullDatabase.TipoDeHD = parameterValues[11].text;
                 itemToAddFullDatabase.CapacidadeMaxHD = parameterValues[12].text;
-                itemToAddFullDatabase.AteQuantosHDs = parameterValues[13].text;
-                itemToAddSplitDatabase.Tamanho = parameterValues[9].text;
+                itemToAddFullDatabase.AteQuantosHDs = int.Parse(parameterValues[13].text);
+                itemToAddSplitDatabase.Tamanho = float.Parse(parameterValues[9].text);
                 itemToAddSplitDatabase.TipoDeRAID = parameterValues[10].text;
                 itemToAddSplitDatabase.TipoDeHD = parameterValues[11].text;
                 itemToAddSplitDatabase.CapacidadeMaxHD = parameterValues[12].text;
-                itemToAddSplitDatabase.AteQuantosHDs = parameterValues[13].text;
+                itemToAddSplitDatabase.AteQuantosHDs = int.Parse(parameterValues[13].text);
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.StorageNAS].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.storageNAS.itens.Add(itemToAddFullDatabase);
@@ -447,9 +447,9 @@ public class AddRemoveItem : MonoBehaviour
             case 14:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeVideo;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                itemToAddFullDatabase.QuantidadeDePortas = parameterValues[9].text;
+                itemToAddFullDatabase.QuantidadeDePortas = int.Parse(parameterValues[9].text);
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[10].text;
-                itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[9].text;
+                itemToAddSplitDatabase.QuantidadeDePortas = int.Parse(parameterValues[9].text);
                 itemToAddSplitDatabase.QuaisConexoes = parameterValues[10].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeVideo].itens.Add(itemToAddSplitDatabase);
@@ -460,8 +460,8 @@ public class AddRemoveItem : MonoBehaviour
             case 15:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeSom;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                itemToAddFullDatabase.QuantosCanais = parameterValues[9].text;
-                itemToAddSplitDatabase.QuantosCanais = parameterValues[9].text;
+                itemToAddFullDatabase.QuantosCanais = int.Parse(parameterValues[9].text);
+                itemToAddSplitDatabase.QuantosCanais = int.Parse(parameterValues[9].text);
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeSom].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaDeSom.itens.Add(itemToAddFullDatabase);
@@ -471,8 +471,8 @@ public class AddRemoveItem : MonoBehaviour
             case 16:
                 itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeCapturaDeVideo;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                itemToAddFullDatabase.QuantidadeDePortas = parameterValues[9].text;
-                itemToAddSplitDatabase.QuantidadeDePortas = parameterValues[9].text;
+                itemToAddFullDatabase.QuantidadeDePortas = int.Parse(parameterValues[9].text);
+                itemToAddSplitDatabase.QuantidadeDePortas = int.Parse(parameterValues[9].text);
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeCapturaDeVideo].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.placaDeCapturaDeVideo.itens.Add(itemToAddFullDatabase);
@@ -500,8 +500,8 @@ public class AddRemoveItem : MonoBehaviour
             case 19:
                 itemToAddFullDatabase.Categoria = ConstStrings.Monitor;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
-                itemToAddFullDatabase.Polegadas = parameterValues[9].text;
-                itemToAddSplitDatabase.Polegadas = parameterValues[9].text;
+                itemToAddFullDatabase.Polegadas = float.Parse(parameterValues[9].text);
+                itemToAddSplitDatabase.Polegadas = float.Parse(parameterValues[9].text);
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[10].text;
                 itemToAddSplitDatabase.QuaisConexoes = parameterValues[10].text;
 

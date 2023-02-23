@@ -782,7 +782,7 @@ public class HelperMethods
             #region Inventário
             dictionary["Values"].Add(itemToShow.Aquisicao);
             dictionary["Values"].Add(itemToShow.Entrada);
-            dictionary["Values"].Add(itemToShow.Patrimonio);
+            dictionary["Values"].Add(itemToShow.Patrimonio.ToString());
             dictionary["Values"].Add(itemToShow.Status);
             dictionary["Values"].Add(itemToShow.Serial);
             dictionary["Values"].Add(itemToShow.Categoria);
@@ -797,15 +797,15 @@ public class HelperMethods
                 #region Adaptador AC
                 case ConstStrings.AdaptadorAC:
                     dictionary["Values"].Add(itemToShow.OndeFunciona);
-                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida);
-                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida);
+                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
+                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
                     break;
                 #endregion
                 #region Carregador
                 case ConstStrings.Carregador:
                     dictionary["Values"].Add(itemToShow.OndeFunciona);
-                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida);
-                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida);
+                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
+                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
                     break;
                 #endregion
                 #region Desktop
@@ -825,7 +825,7 @@ public class HelperMethods
                 #endregion
                 #region Fonte
                 case ConstStrings.Fonte:
-                    dictionary["Values"].Add(itemToShow.Watts);
+                    dictionary["Values"].Add(itemToShow.Watts.ToString());
                     dictionary["Values"].Add(itemToShow.OndeFunciona);
                     dictionary["Values"].Add(itemToShow.Conectores);
                     break;
@@ -838,18 +838,18 @@ public class HelperMethods
                 #region HD
                 case ConstStrings.HD:
                     dictionary["Values"].Add(itemToShow.Interface);
-                    dictionary["Values"].Add(itemToShow.Tamanho);
+                    dictionary["Values"].Add(itemToShow.Tamanho.ToString());
                     dictionary["Values"].Add(itemToShow.FormaDeArmazenamento);
-                    dictionary["Values"].Add(itemToShow.CapacidadeEmGB);
-                    dictionary["Values"].Add(itemToShow.RPM);
-                    dictionary["Values"].Add(itemToShow.VelocidadeDeLeitura);
+                    dictionary["Values"].Add(itemToShow.CapacidadeEmGB.ToString());
+                    dictionary["Values"].Add(itemToShow.RPM.ToString());
+                    dictionary["Values"].Add(itemToShow.VelocidadeDeLeitura.ToString());
                     dictionary["Values"].Add(itemToShow.Enterprise);
                     break;
                 #endregion
                 #region iDrac
                 case ConstStrings.Idrac:
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
-                    dictionary["Values"].Add(itemToShow.VelocidadeGBs);
+                    dictionary["Values"].Add(itemToShow.VelocidadeGBs.ToString());
                     dictionary["Values"].Add(itemToShow.EntradaSD);
                     dictionary["Values"].Add(itemToShow.ServidoresSuportados);
                     break;
@@ -857,18 +857,18 @@ public class HelperMethods
                 #region Memoria
                 case ConstStrings.Memoria:
                     dictionary["Values"].Add(itemToShow.Tipo);
-                    dictionary["Values"].Add(itemToShow.CapacidadeEmGB);
-                    dictionary["Values"].Add(itemToShow.VelocidadeMHz);
+                    dictionary["Values"].Add(itemToShow.CapacidadeEmGB.ToString());
+                    dictionary["Values"].Add(itemToShow.VelocidadeMHz.ToString());
                     dictionary["Values"].Add(itemToShow.LowVoltage);
                     dictionary["Values"].Add(itemToShow.Rank);
                     dictionary["Values"].Add(itemToShow.DIMM);
-                    dictionary["Values"].Add(itemToShow.TaxaDeTransmissao);
+                    dictionary["Values"].Add(itemToShow.TaxaDeTransmissao.ToString());
                     dictionary["Values"].Add(itemToShow.Simbolo);
                     break;
                 #endregion
                 #region Monitor
                 case ConstStrings.Monitor:
-                    dictionary["Values"].Add(itemToShow.Polegadas);
+                    dictionary["Values"].Add(itemToShow.Polegadas.ToString());
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     break;
                 #endregion
@@ -894,23 +894,23 @@ public class HelperMethods
                 #region Placa controladora
                 case ConstStrings.PlacaControladora:
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.TipoDeRAID);
                     dictionary["Values"].Add(itemToShow.CapacidadeMaxHD);
-                    dictionary["Values"].Add(itemToShow.AteQuantosHDs);
+                    dictionary["Values"].Add(itemToShow.AteQuantosHDs.ToString());
                     dictionary["Values"].Add(itemToShow.BateriaInclusa);
                     dictionary["Values"].Add(itemToShow.Barramento);
                     break;
                 #endregion
                 #region Placa de captura de video
                 case ConstStrings.PlacaDeCapturaDeVideo:
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     break;
                 #endregion
                 #region Placa de rede
                 case ConstStrings.PlacaDeRede:
                     dictionary["Values"].Add(itemToShow.Interface);
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     dictionary["Values"].Add(itemToShow.SuportaFibraOptica);
                     dictionary["Values"].Add(itemToShow.Desempenho);
@@ -918,20 +918,20 @@ public class HelperMethods
                 #endregion
                 #region Placa de som
                 case ConstStrings.PlacaDeSom:
-                    dictionary["Values"].Add(itemToShow.QuantosCanais);
+                    dictionary["Values"].Add(itemToShow.QuantosCanais.ToString());
                     break;
                 #endregion
                 #region Placa de Video
                 case ConstStrings.PlacaDeVideo:
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     break;
                 #endregion
                 #region Processador
                 case ConstStrings.Processador:
                     dictionary["Values"].Add(itemToShow.Soquete);
-                    dictionary["Values"].Add(itemToShow.NucleosFisicos);
-                    dictionary["Values"].Add(itemToShow.NucleosLogicos);
+                    dictionary["Values"].Add(itemToShow.NucleosFisicos.ToString());
+                    dictionary["Values"].Add(itemToShow.NucleosLogicos.ToString());
                     dictionary["Values"].Add(itemToShow.AceitaVirtualizacao);
                     dictionary["Values"].Add(itemToShow.TurboBoost);
                     dictionary["Values"].Add(itemToShow.HyperThreading);
@@ -944,8 +944,8 @@ public class HelperMethods
                 #region Roteador
                 case ConstStrings.Roteador:
                     dictionary["Values"].Add(itemToShow.Wireless);
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
-                    dictionary["Values"].Add(itemToShow.BandaMaxima);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
+                    dictionary["Values"].Add(itemToShow.BandaMaxima.ToString());
                     break;
                 #endregion
                 #region Servidor
@@ -958,28 +958,28 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.PlacaDeRede);
                     dictionary["Values"].Add(itemToShow.Processador);
                     dictionary["Values"].Add(itemToShow.MemoriasSuportadas);
-                    dictionary["Values"].Add(itemToShow.QuantasMemorias);
+                    dictionary["Values"].Add(itemToShow.QuantasMemorias.ToString());
                     dictionary["Values"].Add(itemToShow.OrdemDasMemorias);
-                    dictionary["Values"].Add(itemToShow.CapacidadeRAMTotal);
+                    dictionary["Values"].Add(itemToShow.CapacidadeRAMTotal.ToString());
                     dictionary["Values"].Add(itemToShow.Soquete);
                     dictionary["Values"].Add(itemToShow.PlacaControladora);
-                    dictionary["Values"].Add(itemToShow.AteQuantosHDs);
+                    dictionary["Values"].Add(itemToShow.AteQuantosHDs.ToString());
                     dictionary["Values"].Add(itemToShow.TipoDeHD);
                     dictionary["Values"].Add(itemToShow.TipoDeRAID);
                     break;
                 #endregion
                 #region Storage NAS
                 case ConstStrings.StorageNAS:
-                    dictionary["Values"].Add(itemToShow.Tamanho);
+                    dictionary["Values"].Add(itemToShow.Tamanho.ToString());
                     dictionary["Values"].Add(itemToShow.TipoDeRAID);
                     dictionary["Values"].Add(itemToShow.TipoDeHD);
                     dictionary["Values"].Add(itemToShow.CapacidadeMaxHD);
-                    dictionary["Values"].Add(itemToShow.AteQuantosHDs);
+                    dictionary["Values"].Add(itemToShow.AteQuantosHDs.ToString());
                     break;
                 #endregion
                 #region Switch
                 case ConstStrings.Switch:
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas);
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.Desempenho);
                     break;
                 #endregion

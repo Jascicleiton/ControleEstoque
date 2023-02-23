@@ -64,7 +64,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
 
     private void Update()
     {
-         if(Input.GetKeyDown(KeyCode.F5))
+        if (Input.GetKeyDown(KeyCode.F5))
         {
             ReImport();
         }
@@ -137,7 +137,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
         Sheet outrosTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Outros, out outrosTemp);
         #endregion
-        
+
         // Get all itens from "Inventario SnPro into the full database
         if (inventario != null && inventario.itens.Count > 0)
         {
@@ -218,21 +218,20 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     {
                         foreach (ItemColumns desktopItem in desktopTemp.itens)
                         {
-                            if (item.Patrimonio != null && desktopItem.Patrimonio != null)
+
+                            if (item.Patrimonio == desktopItem.Patrimonio)
                             {
-                                if (item.Patrimonio.Trim().Equals(desktopItem.Patrimonio.Trim()))
-                                {
-                                    item.ModeloPlacaMae = desktopItem.ModeloPlacaMae;
-                                    item.Fonte = desktopItem.Fonte;
-                                    item.Memoria = desktopItem.Memoria;
-                                    item.HD = desktopItem.HD;
-                                    item.PlacaDeVideo = desktopItem.PlacaDeVideo;
-                                    item.PlacaDeRede = desktopItem.PlacaDeRede;
-                                    item.LeitorDeDVD = desktopItem.LeitorDeDVD;
-                                    item.Processador = desktopItem.Processador;
-                                    desktop.itens.Add(item);
-                                }
+                                item.ModeloPlacaMae = desktopItem.ModeloPlacaMae;
+                                item.Fonte = desktopItem.Fonte;
+                                item.Memoria = desktopItem.Memoria;
+                                item.HD = desktopItem.HD;
+                                item.PlacaDeVideo = desktopItem.PlacaDeVideo;
+                                item.PlacaDeRede = desktopItem.PlacaDeRede;
+                                item.LeitorDeDVD = desktopItem.LeitorDeDVD;
+                                item.Processador = desktopItem.Processador;
+                                desktop.itens.Add(item);
                             }
+
                         }
 
                     }
@@ -453,19 +452,18 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     {
                         foreach (ItemColumns notebookItem in notebookTemp.itens)
                         {
-                            if (item.Patrimonio != null && notebookItem.Patrimonio != null)
+
+                            if (item.Patrimonio == notebookItem.Patrimonio)
                             {
-                                if (item.Patrimonio.Trim().Equals(notebookItem.Patrimonio.Trim()))
-                                {
-                                    item.HD = notebookItem.HD;
-                                    item.Memoria = notebookItem.Memoria;
-                                    item.EntradaRJ49 = notebookItem.EntradaRJ49;
-                                    item.BateriaInclusa = notebookItem.BateriaInclusa;
-                                    item.AdaptadorAC = notebookItem.AdaptadorAC;
-                                    item.Windows = notebookItem.Windows;
-                                    notebook.itens.Add(item);
-                                }
+                                item.HD = notebookItem.HD;
+                                item.Memoria = notebookItem.Memoria;
+                                item.EntradaRJ49 = notebookItem.EntradaRJ49;
+                                item.BateriaInclusa = notebookItem.BateriaInclusa;
+                                item.AdaptadorAC = notebookItem.AdaptadorAC;
+                                item.Windows = notebookItem.Windows;
+                                notebook.itens.Add(item);
                             }
+
                         }
                     }
                     else
@@ -706,32 +704,31 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     {
                         foreach (ItemColumns servidorItem in servidorTemp.itens)
                         {
-                            if (item.Patrimonio != null && servidorItem.Patrimonio != null)
+
+                            if (item.Patrimonio == servidorItem.Patrimonio)
                             {
-                                if (item.Patrimonio.Trim().Equals(servidorItem.Patrimonio.Trim()))
-                                {
-                                    item.Patrimonio = servidorItem.Patrimonio;
-                                    item.Modelo = servidorItem.Modelo;
-                                    item.Fabricante = servidorItem.Fabricante;
-                                    item.ModeloPlacaMae = servidorItem.ModeloPlacaMae;
-                                    item.Fonte = servidorItem.Fonte;
-                                    item.Memoria = servidorItem.Memoria;
-                                    item.HD = servidorItem.HD;
-                                    item.PlacaDeVideo = servidorItem.PlacaDeVideo;
-                                    item.PlacaDeRede = servidorItem.PlacaDeRede;
-                                    item.Processador = servidorItem.Processador;
-                                    item.MemoriasSuportadas = servidorItem.MemoriasSuportadas;
-                                    item.QuantasMemorias = servidorItem.QuantasMemorias;
-                                    item.OrdemDasMemorias = servidorItem.OrdemDasMemorias;
-                                    item.CapacidadeRAMTotal = servidorItem.CapacidadeRAMTotal;
-                                    item.Soquete = servidorItem.Soquete;
-                                    item.PlacaControladora = servidorItem.PlacaControladora;
-                                    item.AteQuantosHDs = servidorItem.AteQuantosHDs;
-                                    item.TipoDeHD = servidorItem.TipoDeHD;
-                                    item.TipoDeRAID = servidorItem.TipoDeRAID;
-                                    servidor.itens.Add(item);
-                                }
+                                item.Patrimonio = servidorItem.Patrimonio;
+                                item.Modelo = servidorItem.Modelo;
+                                item.Fabricante = servidorItem.Fabricante;
+                                item.ModeloPlacaMae = servidorItem.ModeloPlacaMae;
+                                item.Fonte = servidorItem.Fonte;
+                                item.Memoria = servidorItem.Memoria;
+                                item.HD = servidorItem.HD;
+                                item.PlacaDeVideo = servidorItem.PlacaDeVideo;
+                                item.PlacaDeRede = servidorItem.PlacaDeRede;
+                                item.Processador = servidorItem.Processador;
+                                item.MemoriasSuportadas = servidorItem.MemoriasSuportadas;
+                                item.QuantasMemorias = servidorItem.QuantasMemorias;
+                                item.OrdemDasMemorias = servidorItem.OrdemDasMemorias;
+                                item.CapacidadeRAMTotal = servidorItem.CapacidadeRAMTotal;
+                                item.Soquete = servidorItem.Soquete;
+                                item.PlacaControladora = servidorItem.PlacaControladora;
+                                item.AteQuantosHDs = servidorItem.AteQuantosHDs;
+                                item.TipoDeHD = servidorItem.TipoDeHD;
+                                item.TipoDeRAID = servidorItem.TipoDeRAID;
+                                servidor.itens.Add(item);
                             }
+
                         }
                     }
                     else
@@ -814,13 +811,12 @@ public class InternalDatabase : Singleton<InternalDatabase>
                     {
                         foreach (ItemColumns tecladoItem in tecladoTemp.itens)
                         {
-                            if (item.Patrimonio != null && tecladoItem.Patrimonio != null)
+
+                            if (item.Patrimonio == tecladoItem.Patrimonio)
                             {
-                                if (item.Patrimonio.Trim().Equals(tecladoItem.Patrimonio.Trim()))
-                                {
-                                    teclado.itens.Add(item);
-                                }
+                                teclado.itens.Add(item);
                             }
+
                         }
                     }
                     else
@@ -985,21 +981,20 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns desktopItem in desktopTemp.itens)
                             {
-                                if (item.Patrimonio != null && desktopItem.Patrimonio != null)
+
+                                if (item.Patrimonio == desktopItem.Patrimonio)
                                 {
-                                    if (item.Patrimonio.Trim().Equals(desktopItem.Patrimonio.Trim()))
-                                    {
-                                        item.ModeloPlacaMae = desktopItem.ModeloPlacaMae;
-                                        item.Fonte = desktopItem.Fonte;
-                                        item.Memoria = desktopItem.Memoria;
-                                        item.HD = desktopItem.HD;
-                                        item.PlacaDeVideo = desktopItem.PlacaDeVideo;
-                                        item.PlacaDeRede = desktopItem.PlacaDeRede;
-                                        item.LeitorDeDVD = desktopItem.LeitorDeDVD;
-                                        item.Processador = desktopItem.Processador;
-                                        desktop.itens.Add(item);
-                                    }
+                                    item.ModeloPlacaMae = desktopItem.ModeloPlacaMae;
+                                    item.Fonte = desktopItem.Fonte;
+                                    item.Memoria = desktopItem.Memoria;
+                                    item.HD = desktopItem.HD;
+                                    item.PlacaDeVideo = desktopItem.PlacaDeVideo;
+                                    item.PlacaDeRede = desktopItem.PlacaDeRede;
+                                    item.LeitorDeDVD = desktopItem.LeitorDeDVD;
+                                    item.Processador = desktopItem.Processador;
+                                    desktop.itens.Add(item);
                                 }
+
                             }
 
                         }
@@ -1220,19 +1215,18 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns notebookItem in notebookTemp.itens)
                             {
-                                if (item.Patrimonio != null && notebookItem.Patrimonio != null)
+
+                                if (item.Patrimonio == notebookItem.Patrimonio)
                                 {
-                                    if (item.Patrimonio.Trim().Equals(notebookItem.Patrimonio.Trim()))
-                                    {
-                                        item.HD = notebookItem.HD;
-                                        item.Memoria = notebookItem.Memoria;
-                                        item.EntradaRJ49 = notebookItem.EntradaRJ49;
-                                        item.BateriaInclusa = notebookItem.BateriaInclusa;
-                                        item.AdaptadorAC = notebookItem.AdaptadorAC;
-                                        item.Windows = notebookItem.Windows;
-                                        notebook.itens.Add(item);
-                                    }
+                                    item.HD = notebookItem.HD;
+                                    item.Memoria = notebookItem.Memoria;
+                                    item.EntradaRJ49 = notebookItem.EntradaRJ49;
+                                    item.BateriaInclusa = notebookItem.BateriaInclusa;
+                                    item.AdaptadorAC = notebookItem.AdaptadorAC;
+                                    item.Windows = notebookItem.Windows;
+                                    notebook.itens.Add(item);
                                 }
+
                             }
                         }
                         else
@@ -1473,32 +1467,30 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns servidorItem in servidorTemp.itens)
                             {
-                                if (item.Patrimonio != null && servidorItem.Patrimonio != null)
+                                if (item.Patrimonio == servidorItem.Patrimonio)
                                 {
-                                    if (item.Patrimonio.Trim().Equals(servidorItem.Patrimonio.Trim()))
-                                    {
-                                        item.Patrimonio = servidorItem.Patrimonio;
-                                        item.Modelo = servidorItem.Modelo;
-                                        item.Fabricante = servidorItem.Fabricante;
-                                        item.ModeloPlacaMae = servidorItem.ModeloPlacaMae;
-                                        item.Fonte = servidorItem.Fonte;
-                                        item.Memoria = servidorItem.Memoria;
-                                        item.HD = servidorItem.HD;
-                                        item.PlacaDeVideo = servidorItem.PlacaDeVideo;
-                                        item.PlacaDeRede = servidorItem.PlacaDeRede;
-                                        item.Processador = servidorItem.Processador;
-                                        item.MemoriasSuportadas = servidorItem.MemoriasSuportadas;
-                                        item.QuantasMemorias = servidorItem.QuantasMemorias;
-                                        item.OrdemDasMemorias = servidorItem.OrdemDasMemorias;
-                                        item.CapacidadeRAMTotal = servidorItem.CapacidadeRAMTotal;
-                                        item.Soquete = servidorItem.Soquete;
-                                        item.PlacaControladora = servidorItem.PlacaControladora;
-                                        item.AteQuantosHDs = servidorItem.AteQuantosHDs;
-                                        item.TipoDeHD = servidorItem.TipoDeHD;
-                                        item.TipoDeRAID = servidorItem.TipoDeRAID;
-                                        servidor.itens.Add(item);
-                                    }
+                                    item.Patrimonio = servidorItem.Patrimonio;
+                                    item.Modelo = servidorItem.Modelo;
+                                    item.Fabricante = servidorItem.Fabricante;
+                                    item.ModeloPlacaMae = servidorItem.ModeloPlacaMae;
+                                    item.Fonte = servidorItem.Fonte;
+                                    item.Memoria = servidorItem.Memoria;
+                                    item.HD = servidorItem.HD;
+                                    item.PlacaDeVideo = servidorItem.PlacaDeVideo;
+                                    item.PlacaDeRede = servidorItem.PlacaDeRede;
+                                    item.Processador = servidorItem.Processador;
+                                    item.MemoriasSuportadas = servidorItem.MemoriasSuportadas;
+                                    item.QuantasMemorias = servidorItem.QuantasMemorias;
+                                    item.OrdemDasMemorias = servidorItem.OrdemDasMemorias;
+                                    item.CapacidadeRAMTotal = servidorItem.CapacidadeRAMTotal;
+                                    item.Soquete = servidorItem.Soquete;
+                                    item.PlacaControladora = servidorItem.PlacaControladora;
+                                    item.AteQuantosHDs = servidorItem.AteQuantosHDs;
+                                    item.TipoDeHD = servidorItem.TipoDeHD;
+                                    item.TipoDeRAID = servidorItem.TipoDeRAID;
+                                    servidor.itens.Add(item);
                                 }
+
                             }
                         }
                         else
@@ -1581,13 +1573,12 @@ public class InternalDatabase : Singleton<InternalDatabase>
                         {
                             foreach (ItemColumns tecladoItem in tecladoTemp.itens)
                             {
-                                if (item.Patrimonio != null && tecladoItem.Patrimonio != null)
+
+                                if (item.Patrimonio == tecladoItem.Patrimonio)
                                 {
-                                    if (item.Patrimonio.Trim().Equals(tecladoItem.Patrimonio.Trim()))
-                                    {
-                                        teclado.itens.Add(item);
-                                    }
+                                    teclado.itens.Add(item);
                                 }
+
                             }
                         }
                         else
@@ -1629,7 +1620,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
         }
     }
 
-  
+
 
     /// <summary>
     /// Updates ONE specific item on all relevant sheets in the internal database
@@ -1641,7 +1632,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
         ItemColumns itemToUpdate = new ItemColumns();
         itemToUpdate.Aquisicao = parameters[0];
         itemToUpdate.Entrada = parameters[1];
-        itemToUpdate.Patrimonio = parameters[2];
+        itemToUpdate.Patrimonio = int.Parse(parameters[2]);
         itemToUpdate.Status = parameters[3];
         itemToUpdate.Serial = parameters[4];
         itemToUpdate.Categoria = parameters[5];
@@ -1654,15 +1645,15 @@ public class InternalDatabase : Singleton<InternalDatabase>
         {
             case ConstStrings.AdaptadorAC:
                 itemToUpdate.OndeFunciona = parameters[11];
-                itemToUpdate.VoltagemDeSaida = parameters[12];
-                itemToUpdate.AmperagemDeSaida = parameters[13];
+                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[12]);
+                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[13]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(adaptadorAC, itemToUpdate.Patrimonio);
                 adaptadorAC.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Carregador:
                 itemToUpdate.OndeFunciona = parameters[11];
-                itemToUpdate.VoltagemDeSaida = parameters[12];
-                itemToUpdate.AmperagemDeSaida = parameters[13];
+                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[12]);
+                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[13]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(carregador, itemToUpdate.Patrimonio);
                 carregador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1681,7 +1672,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 foneRamal.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Fonte:
-                itemToUpdate.Watts = parameters[11];
+                itemToUpdate.Watts = int.Parse(parameters[11]);
                 itemToUpdate.OndeFunciona = parameters[12];
                 itemToUpdate.Conectores = parameters[13];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(fonte, itemToUpdate.Patrimonio);
@@ -1694,18 +1685,18 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 break;
             case ConstStrings.HD:
                 itemToUpdate.Interface = parameters[11];
-                itemToUpdate.Tamanho = parameters[12];
+                itemToUpdate.Tamanho = float.Parse(parameters[12]);
                 itemToUpdate.FormaDeArmazenamento = parameters[13];
-                itemToUpdate.CapacidadeEmGB = parameters[14];
-                itemToUpdate.RPM = parameters[15];
-                itemToUpdate.VelocidadeDeLeitura = parameters[16];
+                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[14]);
+                itemToUpdate.RPM = int.Parse(parameters[15]);
+                itemToUpdate.VelocidadeDeLeitura = float.Parse(parameters[16]);
                 itemToUpdate.Enterprise = parameters[17];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(hd, itemToUpdate.Patrimonio);
                 hd.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Idrac:
                 itemToUpdate.QuaisConexoes = parameters[11];
-                itemToUpdate.VelocidadeGBs = parameters[12];
+                itemToUpdate.VelocidadeGBs = float.Parse(parameters[12]);
                 itemToUpdate.EntradaSD = parameters[13];
                 itemToUpdate.ServidoresSuportados = parameters[14];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(idrac, itemToUpdate.Patrimonio);
@@ -1713,25 +1704,23 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 break;
             case ConstStrings.Memoria:
                 itemToUpdate.Tipo = parameters[11];
-                itemToUpdate.CapacidadeEmGB = parameters[12];
-                itemToUpdate.VelocidadeMHz = parameters[13];
+                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[12]);
+                itemToUpdate.VelocidadeMHz = int.Parse(parameters[13]);
                 itemToUpdate.LowVoltage = parameters[14];
                 itemToUpdate.Rank = parameters[15];
                 itemToUpdate.DIMM = parameters[16];
-                itemToUpdate.TaxaDeTransmissao = parameters[17];
+                itemToUpdate.TaxaDeTransmissao = int.Parse(parameters[17]);
                 itemToUpdate.Simbolo = parameters[18];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(memoria, itemToUpdate.Patrimonio);
                 memoria.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Monitor:
-                itemToUpdate.Polegadas = parameters[11];
+                itemToUpdate.Polegadas = float.Parse(parameters[11]);
                 itemToUpdate.QuaisConexoes = parameters[12];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(monitor, itemToUpdate.Patrimonio);
                 monitor.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Mouse:
-                itemToUpdate.Polegadas = parameters[11];
-                itemToUpdate.QuaisConexoes = parameters[12];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(mouse, itemToUpdate.Patrimonio);
                 mouse.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1751,23 +1740,23 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 break;
             case ConstStrings.PlacaControladora:
                 itemToUpdate.QuaisConexoes = parameters[11];
-                itemToUpdate.QuantidadeDePortas = parameters[12];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
                 itemToUpdate.TipoDeRAID = parameters[13];
                 itemToUpdate.CapacidadeMaxHD = parameters[14];
-                itemToUpdate.AteQuantosHDs = parameters[15];
+                itemToUpdate.AteQuantosHDs = int.Parse(parameters[15]);
                 itemToUpdate.BateriaInclusa = parameters[16];
                 itemToUpdate.Barramento = parameters[17];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaControladora, itemToUpdate.Patrimonio);
                 placaControladora.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.PlacaDeCapturaDeVideo:
-                itemToUpdate.QuantidadeDePortas = parameters[11];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[11]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeCapturaDeVideo, itemToUpdate.Patrimonio);
                 placaDeCapturaDeVideo.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.PlacaDeRede:
                 itemToUpdate.Interface = parameters[11];
-                itemToUpdate.QuantidadeDePortas = parameters[12];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
                 itemToUpdate.QuaisConexoes = parameters[13];
                 itemToUpdate.SuportaFibraOptica = parameters[14];
                 itemToUpdate.Desempenho = parameters[15];
@@ -1775,20 +1764,20 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 placaDeRede.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.PlacaDeSom:
-                itemToUpdate.QuantosCanais = parameters[11];
+                itemToUpdate.QuantosCanais = int.Parse(parameters[11]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeSom, itemToUpdate.Patrimonio);
                 placaDeSom.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.PlacaDeVideo:
-                itemToUpdate.QuantidadeDePortas = parameters[11];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[11]);
                 itemToUpdate.QuaisConexoes = parameters[12];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeVideo, itemToUpdate.Patrimonio);
                 placaDeVideo.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Processador:
                 itemToUpdate.Soquete = parameters[11];
-                itemToUpdate.NucleosFisicos = parameters[12];
-                itemToUpdate.NucleosLogicos = parameters[13];
+                itemToUpdate.NucleosFisicos = int.Parse(parameters[12]);
+                itemToUpdate.NucleosLogicos = int.Parse(parameters[13]);
                 itemToUpdate.AceitaVirtualizacao = parameters[14];
                 itemToUpdate.TurboBoost = parameters[15];
                 itemToUpdate.HyperThreading = parameters[16];
@@ -1801,8 +1790,8 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 break;
             case ConstStrings.Roteador:
                 itemToUpdate.Wireless = parameters[11];
-                itemToUpdate.QuantidadeDePortas = parameters[12];
-                itemToUpdate.BandaMaxima = parameters[13];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
+                itemToUpdate.BandaMaxima = int.Parse(parameters[13]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(roteador, itemToUpdate.Patrimonio);
                 roteador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1815,19 +1804,19 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 itemToUpdate.PlacaDeRede = parameters[16];
                 itemToUpdate.Processador = parameters[17];
                 itemToUpdate.MemoriasSuportadas = parameters[18];
-                itemToUpdate.QuantasMemorias = parameters[19];
+                itemToUpdate.QuantasMemorias = int.Parse(parameters[19]);
                 itemToUpdate.OrdemDasMemorias = parameters[20];
-                itemToUpdate.CapacidadeRAMTotal = parameters[21];
+                itemToUpdate.CapacidadeRAMTotal = int.Parse(parameters[21]);
                 itemToUpdate.Soquete = parameters[22];
                 itemToUpdate.PlacaControladora = parameters[23];
-                itemToUpdate.AteQuantosHDs = parameters[24];
+                itemToUpdate.AteQuantosHDs = int.Parse(parameters[24]);
                 itemToUpdate.TipoDeHD = parameters[25];
                 itemToUpdate.TipoDeRAID = parameters[26];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(servidor, itemToUpdate.Patrimonio);
                 servidor.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.StorageNAS:
-                itemToUpdate.Tamanho = parameters[11];
+                itemToUpdate.Tamanho = float.Parse(parameters[11]);
                 itemToUpdate.TipoDeRAID = parameters[12];
                 itemToUpdate.TipoDeHD = parameters[13];
                 itemToUpdate.CapacidadeMaxHD = parameters[14];
@@ -1835,7 +1824,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 storageNAS.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             case ConstStrings.Switch:
-                itemToUpdate.QuantidadeDePortas = parameters[11];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[11]);
                 itemToUpdate.Desempenho = parameters[12];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(Switch, itemToUpdate.Patrimonio);
                 Switch.itens[categoryItemToUpdateIndex] = itemToUpdate;

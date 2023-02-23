@@ -10,13 +10,13 @@ public class ItemColumns
     /// </summary>
     public string GetValue(string valueToGet)
     {
-        string[] allValues= { Itens, Quantidade, Aquisicao, Entrada, Patrimonio, Status, Serial, Categoria, Fabricante, Modelo, Local,
-        Saida, Observacao, Interface, Tamanho, FormaDeArmazenamento, CapacidadeEmGB, RPM, VelocidadeDeLeitura, Enterprise, 
-        EstoqueAtual, Tipo, VelocidadeMHz, LowVoltage, Rank, DIMM, TaxaDeTransmissao, Simbolo, QuantidadeDePortas, 
-        QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs, EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
-        CapacidadeMaxHD, AteQuantosHDs, BateriaInclusa, Barramento, Soquete, NucleosFisicos, NucleosLogicos, AceitaVirtualizacao,
-        TurboBoost, HyperThreading, ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts, 
-        OndeFunciona, Conectores, Wireless, BandaMaxima, VoltagemDeSaida, AmperagemDeSaida, QuantosCanais, Polegadas, Processador};
+        string[] allValues= { Itens, Quantidade.ToString(), Aquisicao, Entrada, Patrimonio.ToString(), Status, Serial, Categoria, Fabricante, Modelo, Local,
+        Saida, Observacao, Interface, Tamanho.ToString("0.0"), FormaDeArmazenamento, CapacidadeEmGB.ToString(), RPM.ToString(), VelocidadeDeLeitura.ToString("0.0"), Enterprise, 
+        EstoqueAtual.ToString(), Tipo, VelocidadeMHz.ToString(), LowVoltage, Rank, DIMM, TaxaDeTransmissao.ToString(), Simbolo, QuantidadeDePortas.ToString(), 
+        QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs.ToString("0.0"), EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
+        CapacidadeMaxHD, AteQuantosHDs.ToString(), BateriaInclusa, Barramento, Soquete, NucleosFisicos.ToString(), NucleosLogicos.ToString(), AceitaVirtualizacao,
+        TurboBoost, HyperThreading, ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts.ToString(), 
+        OndeFunciona, Conectores, Wireless, BandaMaxima.ToString(), VoltagemDeSaida.ToString("0.0"), AmperagemDeSaida.ToString("0.0"), QuantosCanais.ToString(), Polegadas.ToString("0.0"), Processador};
         for (int i = 0; i < allValues.Length; i++)
         {
             if (allValues[i] == valueToGet)
@@ -29,10 +29,10 @@ public class ItemColumns
 
     #region All possible values an item can have
     public string Itens; // sem patrimônio e serial
-    public string Quantidade; // todos
+    public int Quantidade; // todos
     public string Aquisicao; // todos
     public string Entrada; // todos
-    public string Patrimonio; 
+    public int Patrimonio; 
     public string Status; // todos
     public string Serial;
     public string Categoria;
@@ -42,36 +42,36 @@ public class ItemColumns
     public string Saida; // todos
     public string Observacao; // Inventário
     public string Interface; // HD, placa de rede
-    public string Tamanho; // HD, Storage NAS
+    public float Tamanho; // HD, Storage NAS
     public string FormaDeArmazenamento; // HD
-    public string CapacidadeEmGB; // HD, memória
-    public string RPM; //HD
-    public string VelocidadeDeLeitura; //HD
+    public int CapacidadeEmGB; // HD, memória
+    public int RPM; //HD
+    public float VelocidadeDeLeitura; //HD
     public string Enterprise; //HD
-    public string EstoqueAtual; //todos
+    public int EstoqueAtual; //todos
     public string Tipo; // memória
-    public string VelocidadeMHz; // memória
+    public int VelocidadeMHz; // memória
     public string LowVoltage; // memória
     public string Rank; // memória
     public string DIMM; // memória
-    public string TaxaDeTransmissao; // memória
+    public int TaxaDeTransmissao; // memória
     public string Simbolo; // memória
-    public string QuantidadeDePortas; // Placa de rede, Placa controladora, switch, Roteador, Placa de Vídeo, Placa de captura de vídeo
+    public int QuantidadeDePortas; // Placa de rede, Placa controladora, switch, Roteador, Placa de Vídeo, Placa de captura de vídeo
     public string QuaisConexoes; // Placa de rede, Placa de Vídeo, iDrac, Placa controladora
     public string SuportaFibraOptica; // placa de rede
     public string Desempenho; // placa de rede, Switch, GBIC
-    public string VelocidadeGBs; // iDrac
+    public float VelocidadeGBs; // iDrac
     public string EntradaSD; // iDrac
     public string ServidoresSuportados; // iDrac
     public string TipoDeRAID; // placa controladora, Storage NAS
     public string TipoDeHD; // placa controladora, Storage NAS
     public string CapacidadeMaxHD; // placa controladora, Storage NAS
-    public string AteQuantosHDs; // placa controladora, Servidores, Storage NAS
+    public int AteQuantosHDs; // placa controladora, Servidores, Storage NAS
     public string BateriaInclusa; // placa controladora
     public string Barramento; // placa controladora
     public string Soquete; // processador
-    public string NucleosFisicos; // processador
-    public string NucleosLogicos; // processador
+    public int NucleosFisicos; // processador
+    public int NucleosLogicos; // processador
     public string AceitaVirtualizacao; // processador
     public string TurboBoost; // processador
     public string HyperThreading; // processador
@@ -82,20 +82,20 @@ public class ItemColumns
     public string PlacaDeVideo; // Desktop, Servidor
     public string PlacaDeRede; // Desktop, Servidor
     public string LeitorDeDVD; // Desktop, Servidor, Notebook
-    public string Watts; // Fonte
+    public int Watts; // Fonte
     public string OndeFunciona; // Fonte, Carregador
     public string Conectores; // Fonte
     public string Wireless; // Roteador
-    public string BandaMaxima; // Roteador
-    public string VoltagemDeSaida; // Carregador, Adaptador AC
-    public string AmperagemDeSaida; // Carregador, Adaptador AC
-    public string QuantosCanais; // Placa de Som
-    public string Polegadas; // Monitor
+    public int BandaMaxima; // Roteador
+    public float VoltagemDeSaida; // Carregador, Adaptador AC
+    public float AmperagemDeSaida; // Carregador, Adaptador AC
+    public int QuantosCanais; // Placa de Som
+    public float Polegadas; // Monitor
     public string Processador; // Desktop, Servidores
     public string MemoriasSuportadas; // Servidores
-    public string QuantasMemorias; // Servidores
+    public int QuantasMemorias; // Servidores
     public string OrdemDasMemorias; // Servidores
-    public string CapacidadeRAMTotal; // Servidores
+    public int CapacidadeRAMTotal; // Servidores
     public string PlacaControladora; // Servidores
     public string EntradaRJ49;// notebook
     public string AdaptadorAC; // notebook

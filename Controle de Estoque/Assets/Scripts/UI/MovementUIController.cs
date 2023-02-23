@@ -19,7 +19,7 @@ public class MovementUIController : MonoBehaviour
     {
         firstText.text = "Patrimônio";
         secondText.text = "Serial";
-        patrimonioName.text = regularMovementToShow.item.Patrimonio;
+        patrimonioName.text = regularMovementToShow.item.Patrimonio.ToString();
         serialQuantity.text = regularMovementToShow.item.Serial;
         username.text = regularMovementToShow.username;
         date.text = regularMovementToShow.date;

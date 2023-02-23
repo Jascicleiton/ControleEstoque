@@ -30,7 +30,7 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
     /// <summary>
     /// Consult if the item exists on the database using the "Patrimônio"
     /// </summary>
-    public ItemColumns ConsultPatrimonio(string patrimonioToConsult, Sheet databaseToConsult)
+    public ItemColumns ConsultPatrimonio(int patrimonioToConsult, Sheet databaseToConsult)
     {
         itemIndexFullDatabase = 0;
         foreach (ItemColumns item in databaseToConsult.itens)
@@ -59,7 +59,7 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
     /// <summary>
     /// Get the index of the item found during a consult on it's respective category sheet
     /// </summary>
-    public int GetCategoryItemIndex(Sheet categoryToConsult, string patrimonio)
+    public int GetCategoryItemIndex(Sheet categoryToConsult, int patrimonio)
     {
         categoryItemIndex = 0;
         for (int i = 0; i < categoryToConsult.itens.Count; i++)

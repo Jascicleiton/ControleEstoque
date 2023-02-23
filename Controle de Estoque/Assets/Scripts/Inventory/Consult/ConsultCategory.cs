@@ -394,9 +394,10 @@ public class ConsultCategory : MonoBehaviour
                 break;
         }
 
-      //  returnSheet = SortResult(returnSheet);
-        
-        return returnSheet;
+        returnSheet.itens.Sort((x, y) => x.Patrimonio.CompareTo(y.Patrimonio));
+
+
+        return returnSheet; 
     }
 
   

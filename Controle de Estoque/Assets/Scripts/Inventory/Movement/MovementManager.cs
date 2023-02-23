@@ -64,7 +64,7 @@ public class MovementManager : MonoBehaviour
         //print("hi");
         if (itemInformationDP.value == 0)
         {
-            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(itemInformationInput.text,InternalDatabase.Instance.fullDatabase);
+            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(itemInformationInput.text),InternalDatabase.Instance.fullDatabase);
             WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
            
             UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
@@ -173,7 +173,7 @@ public class MovementManager : MonoBehaviour
         if (itemFound)
         {
             ShouldHidePanels(false);
-            
+            print(itemToChange.Local);
             fromDP.value = HelperMethods.GetLocationDPValue(itemToChange.Local);
             if (HelperMethods.GetLocationFromDP(fromDP.value) == "Outros")
             {
@@ -204,7 +204,7 @@ public class MovementManager : MonoBehaviour
         }
         else if (itemInformationDP.value == 1)
         {
-            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio, itemInformationInput.text,
+            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio.ToString(), itemInformationInput.text,
             UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), GetFromLocation(), GetToLocation());
         }
      
@@ -306,8 +306,14 @@ public class MovementManager : MonoBehaviour
         movementToRecord = new MovementRecords();
         movementToRecord.fromWhere = item.Local;
         movementToRecord.toWhere = HelperMethods.GetLocationFromDP(toDP.value);
-
-        itemToChange.Local = HelperMethods.GetLocationFromDP(toDP.value);
+        if (HelperMethods.GetLocationFromDP(toDP.value) != "Outros")
+        {
+            itemToChange.Local = HelperMethods.GetLocationFromDP(toDP.value);
+        }
+        else
+        {
+            itemToChange.Local = toInput.text;
+        }
         if (itemToChange.Local == "Estoque")
         {
             itemToChange.Entrada = DateTime.Now.ToString("dd/MM/yyyy");

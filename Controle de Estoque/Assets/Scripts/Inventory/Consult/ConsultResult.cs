@@ -40,7 +40,7 @@ public class ConsultResult : MonoBehaviour
         {
             if (itemName == 0)
             {
-                this.itemName.text = itemToShow.Patrimonio;
+                this.itemName.text = itemToShow.Patrimonio.ToString();
             }
             else if (itemName == 1)
             {
