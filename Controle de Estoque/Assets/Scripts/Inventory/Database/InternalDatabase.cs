@@ -15,6 +15,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
     //}
 
     [SerializeField] GameObject importingWidget;
+    [SerializeField] GameObject exportManagerPrefab;
 
     public Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
     public Sheet fullDatabase = new Sheet();
@@ -67,6 +68,13 @@ public class InternalDatabase : Singleton<InternalDatabase>
         if (Input.GetKeyDown(KeyCode.F5))
         {
             ReImport();
+        }
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            if (UsersManager.Instance.currentUser.username == "marcelo.fonseca")
+            {
+                Instantiate(exportManagerPrefab);
+            }
         }
     }
 
@@ -1201,7 +1209,11 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Mouse.Trim())
                 {
-                    mouseTemp.itens.Add(item);
+                    mouse.itens.Add(item);
+                    if(currentEstoque == CurrentEstoque.SnPro)
+                    {
+                        outros.itens.Add(item);
+                    }
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Nobreak.Trim())
                 {
@@ -1567,13 +1579,16 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Teclado.Trim())
                 {
+                    if (currentEstoque == CurrentEstoque.SnPro)
+                    {
+                        outros.itens.Add(item);
+                    }
                     if (tecladoTemp != null)
                     {
                         if (tecladoTemp.itens.Count > 0)
                         {
                             foreach (ItemColumns tecladoItem in tecladoTemp.itens)
                             {
-
                                 if (item.Patrimonio == tecladoItem.Patrimonio)
                                 {
                                     teclado.itens.Add(item);

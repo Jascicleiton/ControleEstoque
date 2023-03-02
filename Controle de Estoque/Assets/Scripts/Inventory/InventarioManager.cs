@@ -49,23 +49,8 @@ public class InventarioManager : Singleton<InventarioManager>
     {
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importinventario.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importinventario.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importinventario.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importinventario.php", getInventario);
-                break;
-        }
-       
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importinventario.php", 1);
+        
       //  MouseManager.Instance.SetWaitingCursor();
         yield return getInventarioRequest.SendWebRequest();
 
@@ -151,22 +136,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importhd.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importhd.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importhd.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importhd.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importhd.php", 1);
 
         //MouseManager.Instance.SetWaitingCursor();       
         yield return getInventarioRequest.SendWebRequest();
@@ -247,22 +217,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmemoria.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importmemoria.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importmemoria.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmemoria.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importmemoria.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -342,22 +298,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacaderede.php", getInventario);
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacaderede.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacaderede.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacaderede.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacaderede.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importplacaderede.php", 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -431,22 +372,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importidrac.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importidrac.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importidrac.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importidrac.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importidrac.php", 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -519,22 +445,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacacontroladora.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacacontroladora.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacacontroladora.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacacontroladora.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importplacacontroladora.php", 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -608,22 +519,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importprocessador.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importprocessador.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importprocessador.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importprocessador.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importprocessador.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -694,7 +591,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importdesktop.php", 1);
+
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -784,22 +682,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importfonte.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importfonte.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importfonte.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importfonte.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importfonte.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -868,22 +752,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importswitch.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importswitch.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importswitch.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importswitch.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importswitch.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -951,22 +821,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importroteador.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importroteador.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importroteador.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importroteador.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importroteador.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1036,22 +892,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importcarregador.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importcarregador.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importcarregador.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importcarregador.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importcarregador.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1120,22 +962,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importadaptadorac.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importadaptadorac.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importadaptadorac.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importadaptadorac.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importadaptadorac.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1203,22 +1031,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importstoragenas.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importstoragenas.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importstoragenas.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importstoragenas.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importstoragenas.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1289,22 +1103,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importgbic.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importgbic.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importgbic.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importgbic.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importgbic.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1371,22 +1171,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadevideo.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacadevideo.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacadevideo.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadevideo.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importplacadevideo.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1453,22 +1239,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadesom.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacadesom.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacadesom.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadesom.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importplacadesom.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1535,22 +1307,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadecapturadevideo.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importplacadecapturadevideo.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importplacadecapturadevideo.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importplacadecapturadevideo.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importplacadecapturadevideo.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1616,22 +1374,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importservidor.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importservidor.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importservidor.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importservidor.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importservidor.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1713,22 +1457,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importnotebook.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importnotebook.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importnotebook.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importnotebook.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importnotebook.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -1800,22 +1530,8 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmonitor.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importmonitor.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importmonitor.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importmonitor.php", getInventario);
-                break;
-        }
+        UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importmonitor.php", 1);
+
         yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();

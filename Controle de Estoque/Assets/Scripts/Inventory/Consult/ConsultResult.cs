@@ -40,11 +40,11 @@ public class ConsultResult : MonoBehaviour
         {
             if (itemName == 0)
             {
-                this.itemName.text = itemToShow.Patrimonio.ToString();
+                this.itemName.text = "Patrimônio: " + itemToShow.Patrimonio.ToString();
             }
             else if (itemName == 1)
             {
-                this.itemName.text = itemToShow.Serial;
+                this.itemName.text = "Serial: " + itemToShow.Serial;
             }
             itemInformationPanelControler.ShowItemConsult(itemToShow);
             ChangeSize(itemInformationPanelControler.GetNumberOfActiveBoxes());

@@ -100,7 +100,7 @@ public class ConsultInventory : MonoBehaviour
     /// <summary>
     /// Enables or disables input. Called by Event EnableInput
     /// </summary>
-        private void SetInputEnabled(bool enableInput)
+    private void SetInputEnabled(bool enableInput)
     {
         inputEnabled = enableInput;
     }
@@ -176,11 +176,11 @@ public class ConsultInventory : MonoBehaviour
     /// Consult the inventory using the parameters chosen from each category
     /// </summary>
     private void ConsultWithCategory()
-    {     
+    {
         Sheet foundItens = new Sheet();
         List<int> activeIndexes = new List<int>();
         List<string> activeOperators = new List<string>();
-       
+
         for (int i = 0; i < categorySearchInputs.Count; i++)
         {
             if (categorySearchInputs[i].IsActive())
@@ -188,12 +188,12 @@ public class ConsultInventory : MonoBehaviour
                 if (categorySearchInputs[i].text != "")
                 {
                     activeIndexes.Add(i);
-                    activeOperators.Add(GetOperatorFromDP(i));                    
+                    activeOperators.Add(GetOperatorFromDP(i));
                 }
             }
         }
-       // GetLocation(activeIndexes, activeOperators);
-        
+        // GetLocation(activeIndexes, activeOperators);
+
         if (activeIndexes.Count > 0)
         {
             //print(activeIndexes.Count);          
@@ -244,14 +244,14 @@ public class ConsultInventory : MonoBehaviour
     /// </summary>
     private void GetLocation(List<int> activeIndexes, List<string> activeOperators)
     {
-       // locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
+        // locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
         if (categorySearchInputs[0].text != "" && categorySearchInputs[1].text != "")
         {
             categorySearchInputs.Insert(2, locationInput);
             activeIndexes.Insert(2, 2);
             activeOperators.Insert(2, "=");
         }
-        else if((categorySearchInputs[0].text != "" && categorySearchInputs[1].text == "") || (categorySearchInputs[0].text == "" && categorySearchInputs[1].text != ""))
+        else if ((categorySearchInputs[0].text != "" && categorySearchInputs[1].text == "") || (categorySearchInputs[0].text == "" && categorySearchInputs[1].text != ""))
         {
             categorySearchInputs.Insert(1, locationInput);
             activeIndexes.Insert(1, 1);
@@ -263,8 +263,8 @@ public class ConsultInventory : MonoBehaviour
             activeIndexes.Insert(0, 0);
             activeOperators.Insert(0, "=");
         }
-        
-       
+
+
     }
 
     /// <summary>
@@ -303,16 +303,16 @@ public class ConsultInventory : MonoBehaviour
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
                 numberOfItemsImage.alpha = 0f;
-               
-                                break;
+
+                break;
             case 2:
                 categoryDP.gameObject.SetActive(false);
                 categorySearchParametersPanel.SetActive(false);
                 inputField.gameObject.SetActive(true);
                 inputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Serial";
                 numberOfItemsImage.alpha = 0f;
-               
-                                break;
+
+                break;
             default:
                 break;
         }

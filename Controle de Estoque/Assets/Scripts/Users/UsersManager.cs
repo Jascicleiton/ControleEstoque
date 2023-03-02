@@ -8,6 +8,7 @@ public class UsersManager : Singleton<UsersManager>
     public List<User> usersDatabase;
     private User admin;
     private User admin1;
+    private User admin2;
     public bool adminLogged = false;
     public User currentUser = new User("pessoa","");
 
@@ -21,6 +22,11 @@ public class UsersManager : Singleton<UsersManager>
             usersDatabase.Add(admin);
         }
         admin1 = new User("marcelo.fonseca", "Umsegredo1");
+        if (!usersDatabase.Contains(admin1))
+        {
+            usersDatabase.Add(admin1);
+        }
+        admin1 = new User("admin", "admin");
         if (!usersDatabase.Contains(admin1))
         {
             usersDatabase.Add(admin1);

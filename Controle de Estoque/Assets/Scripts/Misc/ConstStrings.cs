@@ -102,6 +102,15 @@ public class ConstStrings
     public const string PhpNoPaNoSeItemsFolderTesting = "https://sysnetpro.com.br/Testing/NoPaNoSeItems/";
     #endregion
 
+    #region PHP folder URL - Clientes
+    public const string PhpRootFolderClientes = "https://sysnetpro.com.br/Clientes/";
+    public const string PhpImportTablesFolderClientes = "https://sysnetpro.com.br/Clientes/Import/";
+    public const string PhpAdditemsFolderClientes = "https://sysnetpro.com.br/Clientes/AddItems/";
+    public const string PhpMovementsFolderClientes = "https://sysnetpro.com.br/Clientes/Movements/";
+    public const string PhpUpdateItemsFolderClientes = "https://sysnetpro.com.br/Clientes/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolderClientes = "https://sysnetpro.com.br/Clientes/NoPaNoSeItems/";
+    #endregion
+
     #region Save parameters
     public const string showWarningMessage = "ShowWarningMessage";
     #endregion

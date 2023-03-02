@@ -14,7 +14,33 @@ public class ExportCSVController : MonoBehaviour
     private void Start()
     {
         exportCSVs = GetComponent<ExportCSVs>();
-        csvToExportIndex = 0;
+        ExportCSVs();
+    }
+
+    private void ExportCSVs()
+    {
+        exportCSVs.CreateAdaptadorACDetailsSheet();
+        exportCSVs.CreateCarregadorDetailsSheet();
+        exportCSVs.CreateDesktopDetailsSheet();
+        exportCSVs.CreateFonteDetailsSheet();
+        exportCSVs.CreateGbicDetailsSheet();
+        exportCSVs.CreateHDDetailsSheet();
+        exportCSVs.CreateiDracDetailsSheet();
+        exportCSVs.CreateInventarioSheet();
+        exportCSVs.CreateMemoriaDetailsSheet();
+        exportCSVs.CreateMonitorDetailsSheet();
+        exportCSVs.CreateNotebookDetailsSheet();
+        exportCSVs.CreatePlacaControladoraDetailsSheet();
+        exportCSVs.CreatePlacaDeCapturaDeVideoDetailsSheet();
+        exportCSVs.CreatePlacaDeRedeDetailsSheet();
+        exportCSVs.CreatePlacaDeSomDetailsSheet();
+        exportCSVs.CreatePlacaDeVideoDetailsSheet();
+        exportCSVs.CreateProcessadorDetailsSheet();
+        exportCSVs.CreateRoteadorDetailsSheet();
+        exportCSVs.CreateServidorDetailsSheet();
+        exportCSVs.CreateStorageNASDetailsSheet();
+        exportCSVs.CreateSwitchDetailsSheet();
+       // exportCSVs.CreateMovimentacaoSheet();
     }
 
     public void ExportSelectedCSV()

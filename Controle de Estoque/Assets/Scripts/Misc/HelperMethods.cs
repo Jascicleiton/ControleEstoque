@@ -52,10 +52,19 @@ public class HelperMethods
                 {
                     return "Adicionar nova categoria";
                 }
-            default:
-                if (value < ConstStrings.SNPCategories.Length)
+            case CurrentEstoque.Clientes:
+                if (value < ConstStrings.AllCategories.Length)
                 {
-                    return ConstStrings.SNPCategories[value];
+                    return ConstStrings.AllCategories[value];
+                }
+                else
+                {
+                    return "Adicionar nova categoria";
+                }
+            default:
+                if (value < ConstStrings.AllCategories.Length)
+                {
+                    return ConstStrings.AllCategories[value];
                 }
                 else
                 {
@@ -159,6 +168,9 @@ public class HelperMethods
                     case CurrentEstoque.Testing:
                         folder = ConstStrings.PhpRootFolderTesting;
                         break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpRootFolderClientes;
+                        break;
                     default:
                         break;
                 }
@@ -177,6 +189,9 @@ public class HelperMethods
                         break;
                     case CurrentEstoque.Testing:
                         folder = ConstStrings.PhpImportTablesFolderTesting;
+                        break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpImportTablesFolderClientes;
                         break;
                     default:
                         break;
@@ -197,6 +212,9 @@ public class HelperMethods
                     case CurrentEstoque.Testing:
                         folder = ConstStrings.PhpAdditemsFolderTesting;
                         break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpAdditemsFolderClientes;
+                        break;
                     default:
                         break;
                 }
@@ -215,6 +233,9 @@ public class HelperMethods
                         break;
                     case CurrentEstoque.Testing:
                         folder = ConstStrings.PhpMovementsFolderTesting;
+                        break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpMovementsFolderClientes;
                         break;
                     default:
                         break;
@@ -235,6 +256,9 @@ public class HelperMethods
                     case CurrentEstoque.Testing:
                         folder = ConstStrings.PhpUpdateItemsFolderTesting;
                         break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpUpdateItemsFolderClientes;
+                        break;
                     default:
                         break;
                 }
@@ -254,6 +278,9 @@ public class HelperMethods
                     case CurrentEstoque.Testing:
                         folder = ConstStrings.PhpNoPaNoSeItemsFolderTesting;
                         break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpNoPaNoSeItemsFolderClientes;
+                        break;
                     default:
                         break;
                 }
@@ -272,6 +299,9 @@ public class HelperMethods
                         break;
                     case CurrentEstoque.Testing:
                         folder = ConstStrings.PhpRootFolderTesting;
+                        break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpRootFolderClientes;
                         break;
                     default:
                         break;

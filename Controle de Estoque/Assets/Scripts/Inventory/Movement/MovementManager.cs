@@ -380,6 +380,8 @@ public class MovementManager : MonoBehaviour
         fromDP.value = 0;
         toDP.value = 0;
         whoInput.text = "";
+        fromInput.text = "";
+        toInput.text = "";
         ShouldHidePanels(true);
     }
 

@@ -33,8 +33,13 @@ public class DropDownHandler : MonoBehaviour
             case CurrentEstoque.Testing:
                 itemsToInclude = ConstStrings.AllCategories.ToList<string>();
                 break;
-            default:
+            case CurrentEstoque.Clientes:
+                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
                 break;
+            default:
+                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
+                break;
+            
         }
         if (itemsToInclude.Count > 0)
         {
