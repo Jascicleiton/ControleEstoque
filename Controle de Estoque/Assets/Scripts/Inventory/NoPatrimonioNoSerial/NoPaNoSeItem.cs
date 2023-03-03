@@ -10,4 +10,16 @@ public class NoPaNoSeItem
 {
     public string ItemName;
     public int Quantity;
+
+    public NoPaNoSeItem()
+    {
+        ItemName = "";
+        Quantity = 0;
+    }
+
+    public  NoPaNoSeItem(string itemName, int quantity)
+    {
+        this.ItemName = itemName;
+        this.Quantity = quantity;
+    }
 }

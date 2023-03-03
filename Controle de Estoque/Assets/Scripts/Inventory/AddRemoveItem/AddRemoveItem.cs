@@ -176,10 +176,11 @@ public class AddRemoveItem : MonoBehaviour
         itemToAddFullDatabase.Serial = parameterValues[4].text;
         itemToAddFullDatabase.Fabricante = parameterValues[6].text;
         itemToAddFullDatabase.Modelo = parameterValues[7].text;
-        itemToAddSplitDatabase.Modelo = parameterValues[8].text;
-        itemToAddFullDatabase.Local = parameterValues[9].text;
+        itemToAddFullDatabase.Local = parameterValues[8].text;
         itemToAddFullDatabase.Saida = "";
         itemToAddFullDatabase.Observacao = parameterValues[10].text;
+       
+
         switch (HelperMethods.GetCategoryString(categoryDP.value))
         {
             #region HD
@@ -483,6 +484,41 @@ public class AddRemoveItem : MonoBehaviour
             case ConstStrings.Servidor:
                 itemToAddFullDatabase.Categoria = ConstStrings.Servidor;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                itemToAddFullDatabase.ModeloPlacaMae = parameterValues[11].text;
+                itemToAddFullDatabase.Fonte = parameterValues[12].text;
+                itemToAddFullDatabase.Memoria = parameterValues[13].text;
+                itemToAddFullDatabase.HD = parameterValues[14].text;
+                itemToAddFullDatabase.PlacaDeVideo = parameterValues[15].text;
+                itemToAddFullDatabase.PlacaDeRede = parameterValues[16].text;
+                itemToAddFullDatabase.Processador = parameterValues[17].text;
+                itemToAddFullDatabase.MemoriasSuportadas = parameterValues[18].text;
+                itemToAddFullDatabase.QuantasMemorias = int.Parse(parameterValues[19].text);
+                itemToAddFullDatabase.OrdemDasMemorias = parameterValues[20].text;
+                itemToAddFullDatabase.CapacidadeRAMTotal = int.Parse(parameterValues[21].text);
+                itemToAddFullDatabase.Soquete = parameterValues[22].text;
+                itemToAddFullDatabase.PlacaControladora = parameterValues[23].text;
+                itemToAddFullDatabase.AteQuantosHDs = int.Parse(parameterValues[24].text);
+                itemToAddFullDatabase.TipoDeHD = parameterValues[25].text;
+                itemToAddFullDatabase.TipoDeRAID = parameterValues[26].text;
+                itemToAddSplitDatabase.Patrimonio = int.Parse(parameterValues[2].text);
+                itemToAddSplitDatabase.Modelo = parameterValues[7].text;
+                itemToAddSplitDatabase.Fabricante = parameterValues[6].text;
+                itemToAddSplitDatabase.ModeloPlacaMae = parameterValues[11].text;
+                itemToAddSplitDatabase.Fonte = parameterValues[12].text;
+                itemToAddSplitDatabase.Memoria = parameterValues[13].text;
+                itemToAddSplitDatabase.HD = parameterValues[14].text;
+                itemToAddSplitDatabase.PlacaDeVideo = parameterValues[15].text;
+                itemToAddSplitDatabase.PlacaDeRede = parameterValues[16].text;
+                itemToAddSplitDatabase.Processador = parameterValues[17].text;
+                itemToAddSplitDatabase.MemoriasSuportadas = parameterValues[18].text;
+                itemToAddSplitDatabase.QuantasMemorias = int.Parse(parameterValues[19].text);
+                itemToAddSplitDatabase.OrdemDasMemorias = parameterValues[20].text;
+                itemToAddSplitDatabase.CapacidadeRAMTotal = int.Parse(parameterValues[21].text);
+                itemToAddSplitDatabase.Soquete = parameterValues[22].text;
+                itemToAddSplitDatabase.PlacaControladora = parameterValues[23].text;
+                itemToAddSplitDatabase.AteQuantosHDs = int.Parse(parameterValues[24].text);
+                itemToAddSplitDatabase.TipoDeHD = parameterValues[25].text;
+                itemToAddSplitDatabase.TipoDeRAID = parameterValues[26].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Servidor].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.servidor.itens.Add(itemToAddFullDatabase);
@@ -492,6 +528,22 @@ public class AddRemoveItem : MonoBehaviour
             case ConstStrings.Notebook:
                 itemToAddFullDatabase.Categoria = ConstStrings.Notebook;
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
+                itemToAddFullDatabase.HD = parameterValues[11].text;
+                itemToAddFullDatabase.Memoria = parameterValues[12].text;
+                itemToAddFullDatabase.EntradaRJ49 = parameterValues[13].text;
+                itemToAddFullDatabase.BateriaInclusa = parameterValues[14].text;
+                itemToAddFullDatabase.AdaptadorAC = parameterValues[15].text;
+                itemToAddFullDatabase.Windows = parameterValues[16].text;
+
+                itemToAddSplitDatabase.Patrimonio = int.Parse(parameterValues[2].text);
+                itemToAddSplitDatabase.Modelo = parameterValues[7].text;
+                itemToAddSplitDatabase.Fabricante = parameterValues[6].text;
+                itemToAddSplitDatabase.HD = parameterValues[11].text;
+                itemToAddSplitDatabase.Memoria = parameterValues[12].text;
+                itemToAddSplitDatabase.EntradaRJ49 = parameterValues[13].text;
+                itemToAddSplitDatabase.BateriaInclusa = parameterValues[14].text;
+                itemToAddSplitDatabase.AdaptadorAC = parameterValues[15].text;
+                itemToAddSplitDatabase.Windows = parameterValues[16].text;
 
                 InternalDatabase.Instance.splitDatabase[ConstStrings.Notebook].itens.Add(itemToAddSplitDatabase);
                 InternalDatabase.notebook.itens.Add(itemToAddFullDatabase);

@@ -520,7 +520,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
     /// <summary>
-    /// CLose the admin authorization panel and returns to the add new user panel
+    /// Close the admin authorization panel and returns to the add new user panel
     /// </summary>
     public void CloseAdminPanel()
     {

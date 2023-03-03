@@ -21,6 +21,7 @@ public class MovementManager : MonoBehaviour
     [SerializeField] TMP_InputField whoInput;
     [SerializeField] private GameObject messagePanel;
     [SerializeField] private TMP_Text messageText;
+    [SerializeField] private GameObject moveButton;
 
     private int itemToChangeIndex;
     private ItemColumns itemToChange;
@@ -44,11 +45,7 @@ public class MovementManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                if (itemFound)
-                {
-                    StartCoroutine(MoveItem());
-                }
-                else
+                if(!itemFound)
                 {
                     StartCoroutine(CheckIfItemExists());
                 }
@@ -97,6 +94,7 @@ public class MovementManager : MonoBehaviour
                 else if (response == "Item found")
                 {
                     itemFound = true;
+                    EnableDisableMoveButton();
                 }
                 else if (response == "Not found or found duplicate") 
                 {
@@ -422,11 +420,20 @@ public class MovementManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Enable or disable the MoveButton if a item was found or not
+    /// </summary>
+    private void EnableDisableMoveButton()
+    {
+        moveButton.SetActive(itemFound);
+    }
+
+    /// <summary>
     /// Close the message panel. It is public to be used on the button too
     /// </summary>
     public void CloseMessagePanel()
     {
         itemFound = false;
+        EnableDisableMoveButton();
         messagePanel.SetActive(false);
         StartCoroutine(WaitASecond());
     }
@@ -499,5 +506,13 @@ public class MovementManager : MonoBehaviour
         {
             fromInput.GetComponent<CanvasGroup>().alpha = 0;
         }
+    }
+
+    /// <summary>
+    /// Start the move Coroutine when the MoveItem button is clicked
+    /// </summary>
+    public void MoveItemClicked()
+    {
+        StartCoroutine(MoveItem());
     }
 }

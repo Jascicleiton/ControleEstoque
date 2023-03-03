@@ -372,6 +372,10 @@ public class HelperMethods
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Serial já existe");
             }
+            else if (response == "Modelo Found")
+            {
+                EventHandler.CallOpenMessageEvent("Modelo já está detalhado");
+            }
             #region Check if already exists Queries
             else if (response == "Patrimônio query failed")
             {
@@ -406,13 +410,13 @@ public class HelperMethods
             }
             else if (response == "Worked")
             {
-                Debug.Log("Worked");
+               // Debug.Log("Worked");
                 addUpdateResponse = true;
                 EventHandler.CallOpenMessageEvent("Worked");
             }
             else if (response == "Updated")
             {
-                Debug.Log("Updated");
+              //  Debug.Log("Updated");
                 addUpdateResponse = true;
                 EventHandler.CallOpenMessageEvent("Updated");
             }

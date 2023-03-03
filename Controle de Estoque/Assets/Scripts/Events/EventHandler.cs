@@ -95,5 +95,20 @@ public static class EventHandler
             UpdateTabInputs();
         }
     }
+
+    /// <summary>
+    /// Used to let all classes know when an window is closed (not message window)
+    /// </summary>
+    public static event Action WindowClosed;
+
+    public static void CallWindowClosed()
+    {
+        if(WindowClosed != null)
+        {
+            WindowClosed();
+        }
+    }
+        
+
 }
 

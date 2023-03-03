@@ -12,7 +12,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
     [SerializeField] private TMP_Text itemQuantity = null;
     [SerializeField] private TMP_InputField quantityInput = null;
     [SerializeField] private TMP_Dropdown whereToDP = null;
-   
+    [SerializeField] private TMP_InputField locationInput = null;
 
     private NoPaNoSeItem item = new NoPaNoSeItem();
 
@@ -75,7 +75,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
             {
                 SetItemInformation(item.ItemName, itemNewQuantity);
                 quantityInput.text = "";
-                Debug.Log("Worked");               
+                whereToDP.GetComponent<LocationDropDownHandler>().ResetDropDown();
             }
             else
             {
@@ -133,15 +133,24 @@ public class NoPaNoSeItemManager : MonoBehaviour
     private IEnumerator MoveItem(bool isAdding)
     {
         WWWForm itemForm = new WWWForm();
+        string location = "";
+        if(HelperMethods.GetLocationFromDP(whereToDP.value) == "Outros")
+        {
+            location = locationInput.text;
+        }
+        else
+        {
+            location = HelperMethods.GetLocationFromDP(whereToDP.value);
+        }
         if (isAdding)
         {
              itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, item.ItemName, int.Parse(quantityInput.text),
-           UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), HelperMethods.GetLocationFromDP(whereToDP.value), "Estoque");
+           UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), location, "Estoque");
         }
         else
         {
              itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, item.ItemName, int.Parse(quantityInput.text),
-          UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", HelperMethods.GetLocationFromDP(whereToDP.value));
+          UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", location);
         
         }
 
@@ -149,7 +158,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
-        print(item.ItemName + " : " + quantityInput.text);
+    
         if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
             Debug.LogWarning("MoveItem: conectionerror");
@@ -176,7 +185,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
             }
             else if (response == "Moved")
             {
-                whereToDP.value = HelperMethods.GetLocationDPValue("Estoque");
+               
             }
             else
             {
@@ -199,5 +208,18 @@ public class NoPaNoSeItemManager : MonoBehaviour
     public NoPaNoSeItem GetItem()
     {
         return item;
+    }
+
+    public void HandleInputData(int value)
+    {
+        if (HelperMethods.GetLocationFromDP(value) == "Outros")
+        {
+            locationInput.gameObject.SetActive(true);
+            locationInput.text = "";
+        }
+        else
+        {
+            locationInput.gameObject.SetActive(false);
+        }
     }
 }

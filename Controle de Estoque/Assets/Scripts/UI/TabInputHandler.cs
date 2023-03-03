@@ -31,14 +31,13 @@ public class TabInputHandler : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
-        {
-            
+        {        
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 inputIndex--;
                 if (inputIndex < 0)
                 {
-                    inputIndex = activeInputsCount - 1;
+                    inputIndex = activeInputsCount;
                 }
                 CheckIfInputIsActiveAndEnabled();
             }
@@ -48,7 +47,7 @@ public class TabInputHandler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 inputIndex++;
-                if (inputIndex >= activeInputsCount)
+                if (inputIndex > activeInputsCount)
                 {
                     inputIndex = 0;
                 }

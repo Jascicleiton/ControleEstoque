@@ -5,7 +5,7 @@ using TMPro;
 
 public class SearchCategoryDropDownHandler : MonoBehaviour
 {
-    [SerializeField] private TMP_Text[] searchParamenters;
+    [SerializeField] private TMP_Text[] searchParameters;
     [SerializeField] private TMP_InputField[] searchParamentersInput;
 
     List<string> names = new List<string>();
@@ -13,6 +13,12 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
     
     private void Start()
     {
+        StartCoroutine(WaitASecond());
+    }
+
+    private IEnumerator WaitASecond()
+    {
+        yield return new WaitForSecondsRealtime(2f);
         HandleInputData(0);
     }
 
@@ -36,10 +42,10 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
     /// </summary>
     private void ResetParameterNames()
     {
-        for (int i = 3; i < searchParamenters.Length; i++)
+        for (int i = 3; i < searchParameters.Length; i++)
         {
-            searchParamenters[i].text = "";
-        }
+            searchParameters[i].text = "";
+                    }
     }
 
     /// <summary>
@@ -52,13 +58,13 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         {
             for (int i = 11; i < names.Count; i++)
             {
-                searchParamenters[i - 9].text = names[i] + "...";
+                searchParameters[i - 9].text = names[i] + "...";
             }
         }
 
-        for (int i = 0; i < searchParamenters.Length; i++)
+        for (int i = 0; i < searchParameters.Length; i++)
         {
-            if (searchParamenters[i].text == "")
+            if (searchParameters[i].text == "")
             {
                 searchParamentersInput[i].gameObject.SetActive(false);
             }

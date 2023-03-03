@@ -78,15 +78,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
         }
     }
 
-    private void ReImport()
-    {
-        Instantiate(importingWidget);
-        ImportLocations.Instance.ReImport();
-        InventarioManager.Instance.ImportSheets();
-        UpdateFullDatabase();
-    }
-
-    private void UpdateFullDatabase()
+     private void UpdateFullDatabase()
     {
         /// Try to get all sheets that are available on splitdatabase
         #region Sheets
@@ -842,6 +834,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 outros.itens.Add(item);
             }
         }
+    }
+
+    public void ReImport()
+    {
+        Instantiate(importingWidget);
+        ImportLocations.Instance.ReImport();
+        InventarioManager.Instance.ImportSheets();
+        UpdateFullDatabase();
     }
 
     /// <summary>

@@ -257,6 +257,8 @@ public class UpdateItem : MonoBehaviour
     private void UpdateFullDatabase()
     {
         List<string> parameters = new List<string>();
+        parameters.Add(itemToUpdate.Aquisicao);
+        parameters.Add(itemToUpdate.Entrada);
         parameters.AddRange(itemInformationPanelControler.GetInventoryValues());
         parameters.AddRange(itemInformationPanelControler.GetCategoryValues(itemToUpdate.Categoria));
         

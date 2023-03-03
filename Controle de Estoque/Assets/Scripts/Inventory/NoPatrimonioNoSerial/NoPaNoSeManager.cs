@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using SimpleJSON;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
 {
@@ -38,6 +39,18 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         newItemManager.SetItemInformation(itemName, itemQuantity);
         allitems.noPaNoSeItems.Add(newItemManager.GetItem());
         StartCoroutine(ScrollToBottom());
+    }
+
+    /// <summary>
+    /// Sort Alphabetically the imported list of items and show it
+    /// </summary>
+        private void ShowItems(List<NoPaNoSeItem> itemsToShow)
+    {
+        List<NoPaNoSeItem> sortedItemsToShow = itemsToShow.OrderBy(x => x.ItemName).ToList();
+        for (int i = 0; i < itemsToShow.Count; i++)
+        {
+            AddNewItem(sortedItemsToShow[i].ItemName, sortedItemsToShow[i].Quantity);
+        }
     }
 
     /// <summary>
@@ -84,10 +97,12 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
             else
             {
                 JSONNode inventario = JSON.Parse(createUpdateInventarioRequest.downloadHandler.text);
+                List<NoPaNoSeItem> tempItems = new List<NoPaNoSeItem>();
                 foreach (JSONNode item in inventario)
                 {
-                    AddNewItem(item[0], int.Parse(item[1]));
+                    tempItems.Add(new NoPaNoSeItem(item[0], int.Parse(item[1])));
                 }
+                                ShowItems(tempItems);
             }
         }
         else
@@ -156,6 +171,18 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
     }
 
     /// <summary>
+    /// Scroll down to the bottom of the list to show the last added item
+    /// </summary>
+    private IEnumerator ScrollToBottom()
+    {
+        yield return new WaitForEndOfFrame();
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 0f;
+        Canvas.ForceUpdateCanvases();
+    }
+
+
+    /// <summary>
     /// Used by AddNewItem_btn inside newItemPanel
     /// </summary>
     public void AddNewItemClicked()
@@ -174,16 +201,6 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         newItemQuantityInput.text = "";
     }
 
-    /// <summary>
-    /// Scroll down to the bottom of the list to show the last added item
-    /// </summary>
-    private IEnumerator ScrollToBottom()
-    {
-        yield return new WaitForEndOfFrame();
-        Canvas.ForceUpdateCanvases();
-        scrollRect.verticalNormalizedPosition = 0f;
-        Canvas.ForceUpdateCanvases();
-    }
 
     /// <summary>
     /// Returns to InitialScene
