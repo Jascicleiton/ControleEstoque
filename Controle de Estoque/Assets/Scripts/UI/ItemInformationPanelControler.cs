@@ -568,6 +568,7 @@ public class ItemInformationPanelControler : MonoBehaviour
             #region Notebook
             case ConstStrings.Notebook:
                 valuesList.Clear();
+                valuesList.Add(parameterValues[2].text);
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[6].text);
                 valuesList.Add(parameterValues[11].text);

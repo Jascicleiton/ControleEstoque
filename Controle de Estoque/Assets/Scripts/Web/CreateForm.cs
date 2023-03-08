@@ -158,8 +158,8 @@ public class CreateForm
         return inventario;
     }
 
-    public static WWWForm GetNotebookForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria, string entradarj49,
-        string bateria, string adaptadorac, string windows)
+    public static WWWForm GetNotebookForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria,
+        string entradarj49, string bateria, string adaptadorac, string windows)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
