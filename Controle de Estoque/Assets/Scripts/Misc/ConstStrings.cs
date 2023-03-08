@@ -111,6 +111,16 @@ public class ConstStrings
     public const string PhpNoPaNoSeItemsFolderClientes = "https://sysnetpro.com.br/Clientes/NoPaNoSeItems/";
     #endregion
 
+    #region PHP folder URL - Concert
+    public const string PhpRootFolderConcert = "https://sysnetpro.com.br/Concert/";
+    public const string PhpImportTablesFolderConcert = "https://sysnetpro.com.br/Concert/Import/";
+    public const string PhpAdditemsFolderConcert = "https://sysnetpro.com.br/Concert/AddItems/";
+    public const string PhpMovementsFolderConcert = "https://sysnetpro.com.br/Concert/Movements/";
+    public const string PhpUpdateItemsFolderConcert = "https://sysnetpro.com.br/Concert/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolderConcert = "https://sysnetpro.com.br/Concert/NoPaNoSeItems/";
+    #endregion
+
+
     #region Save parameters
     public const string showWarningMessage = "ShowWarningMessage";
     #endregion

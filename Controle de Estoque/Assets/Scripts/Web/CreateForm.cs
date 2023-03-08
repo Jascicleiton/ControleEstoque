@@ -394,4 +394,13 @@ public class CreateForm
 
         return item;
     }
+
+    public static WWWForm GetMovementsForm(string appPassword, string parameter)
+    {
+        WWWForm movementForm = new WWWForm();
+        movementForm.AddField("apppassword", appPassword);
+        movementForm.AddField("parameter", parameter);
+
+        return movementForm;
+    }
 }

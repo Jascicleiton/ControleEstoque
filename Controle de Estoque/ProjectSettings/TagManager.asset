@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ItemResultsParent
   - Canvas
+  - MovementRecord
   layers:
   - Default
   - TransparentFX

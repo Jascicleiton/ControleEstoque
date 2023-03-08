@@ -6,17 +6,9 @@ using UnityEngine;
 
 public class InternalDatabase : Singleton<InternalDatabase>
 {
-    //private class Databases
-    //{
-    //    public Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
-    //    public Sheet fullDatabase = new Sheet();
-    //    public List<Sheet> categoryDatabases = new List<Sheet>();
-    //    public List<MovementRecords> movementRecords = new List<MovementRecords>();
-    //}
-
     [SerializeField] GameObject importingWidget;
     [SerializeField] GameObject exportManagerPrefab;
-    public string currentVersion = "1.0";
+    public string currentVersion = "1.0"; // current program version - it is here for lazy reasons
 
     public Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
     public Sheet fullDatabase = new Sheet();
@@ -1623,12 +1615,11 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 case CurrentEstoque.Funsoft:
                 case CurrentEstoque.ESF:
                 case CurrentEstoque.Testing:
+                default:
                     allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
             carregador, desktop, foneRamal, fonte, gbic, hd, idrac, memoria, monitor, mouse, nobreak,
             notebook, placaControladora, placaDeCapturaDeVideo, placaDeRede, placaDeSom, placaDeVideo,
-            processador, ramal, roteador, servidor, storageNAS, Switch, teclado, outros });
-                    break;
-                default:
+            processador, ramal, roteador, servidor, storageNAS, Switch, teclado, outros });            
                     break;
             }
 

@@ -53,6 +53,7 @@ public class ImportingWidgetController : MonoBehaviour
                 case CurrentEstoque.Testing:
                     break;
                 default:
+                    percentageToLoad = 0.1f;
                     break;
             }
 
@@ -72,6 +73,7 @@ public class ImportingWidgetController : MonoBehaviour
                 case CurrentEstoque.Testing:
                     break;
                 default:
+                    percentageToLoad = 0.1f;
                     break;
             }
         }

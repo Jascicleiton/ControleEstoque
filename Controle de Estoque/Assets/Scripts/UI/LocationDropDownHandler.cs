@@ -33,6 +33,9 @@ public class LocationDropDownHandler : MonoBehaviour
                 break;
             case CurrentEstoque.Clientes:
                 break;
+            case CurrentEstoque.Concert:
+
+                break;
             default:
                 break;
         }

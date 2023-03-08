@@ -99,22 +99,8 @@ public class MainMenuManager : MonoBehaviour
         loginUserInfo.AddField("username", userInput.text);
         loginUserInfo.AddField("password", passwordInput.text);
 
-        UnityWebRequest createPostRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
-                break;
-            case CurrentEstoque.Funsoft:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderFunsoft + "loginuser.php", loginUserInfo);
-                break;
-            case CurrentEstoque.ESF:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderESF + "loginuser.php", loginUserInfo);
-                break;
-            default:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "loginuser.php", loginUserInfo);
-                break;
-        }
+        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(loginUserInfo, "loginuser.php", 0);
+       
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
@@ -182,22 +168,8 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("apppassword", "CheckIfUserExist");
         newUserInfo.AddField("username", addNewUserInput.text);
 
-        UnityWebRequest createPostRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
-                break;
-            case CurrentEstoque.Funsoft:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderFunsoft + "checkuserexist.php", newUserInfo);
-                break;
-            case CurrentEstoque.ESF:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderESF + "checkuserexist.php", newUserInfo);
-                break;
-            default:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "checkuserexist.php", newUserInfo);
-                break;
-        }
+        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(newUserInfo, "checkuserexist.php", 0);
+        
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
@@ -259,22 +231,8 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("username", userToAdd.username);
         newUserInfo.AddField("password", userToAdd.password);
 
-        UnityWebRequest createPostRequest = new UnityWebRequest();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
-                break;
-            case CurrentEstoque.Funsoft:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderFunsoft + "newuser.php", newUserInfo);
-                break;
-            case CurrentEstoque.ESF:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolderESF + "newuser.php", newUserInfo);
-                break;
-            default:
-                createPostRequest = UnityWebRequest.Post(ConstStrings.PhpRootFolder + "newuser.php", newUserInfo);
-                break;
-        }
+        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(newUserInfo, "newuser.php", 0);
+        
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();

@@ -91,3 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   esfSprite: {fileID: 21300000, guid: 6fb09eeed221e1b4e981be18dd64da12, type: 3}
   fumsoftSprite: {fileID: 21300000, guid: 842fc50329ac1274183f2e0c3d424608, type: 3}
+  testingSprite: {fileID: 21300000, guid: 939ec7f62f6d4be47af07f5489e142a5, type: 3}
+  clientesSprite: {fileID: 21300000, guid: 6416d661bf84df24f90ce11240d0b0ae, type: 3}
+  concerttSprite: {fileID: 21300000, guid: 69d417758d8fe754d96dddeea67fb6b0, type: 3}

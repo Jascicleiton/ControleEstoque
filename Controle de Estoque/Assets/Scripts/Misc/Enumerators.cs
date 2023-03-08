@@ -7,7 +7,8 @@ public enum CurrentEstoque
     Funsoft,
     ESF,
     Testing,
-    Clientes
+    Clientes,
+    Concert
 }
 
 /// <summary>

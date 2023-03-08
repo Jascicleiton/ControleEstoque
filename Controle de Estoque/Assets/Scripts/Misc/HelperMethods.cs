@@ -61,6 +61,15 @@ public class HelperMethods
                 {
                     return "Adicionar nova categoria";
                 }
+            case CurrentEstoque.Concert:
+                if(value < ConstStrings.AllCategories.Length)
+                {
+                    return ConstStrings.AllCategories[value];
+                }
+                else
+                {
+                    return "Adicionar nova categoria";
+                }
             default:
                 if (value < ConstStrings.AllCategories.Length)
                 {
@@ -132,6 +141,24 @@ public class HelperMethods
                     }
                 }
                 return 666;
+            case CurrentEstoque.Clientes:
+                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
+                {
+                    if (category == ConstStrings.AllCategories[i])
+                    {
+                        return i;
+                    }
+                }
+                return 666;
+            case CurrentEstoque.Concert:
+                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
+                {
+                    if (category == ConstStrings.AllCategories[i])
+                    {
+                        return i;
+                    }
+                }
+                return 666;
             default:
                 for (int i = 0; i < ConstStrings.SNPCategories.Length; i++)
                 {
@@ -171,6 +198,9 @@ public class HelperMethods
                     case CurrentEstoque.Clientes:
                         folder = ConstStrings.PhpRootFolderClientes;
                         break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRootFolderConcert;
+                        break;
                     default:
                         break;
                 }
@@ -192,6 +222,9 @@ public class HelperMethods
                         break;
                     case CurrentEstoque.Clientes:
                         folder = ConstStrings.PhpImportTablesFolderClientes;
+                        break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRootFolderConcert;
                         break;
                     default:
                         break;
@@ -215,6 +248,9 @@ public class HelperMethods
                     case CurrentEstoque.Clientes:
                         folder = ConstStrings.PhpAdditemsFolderClientes;
                         break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRootFolderConcert;
+                        break;
                     default:
                         break;
                 }
@@ -236,6 +272,9 @@ public class HelperMethods
                         break;
                     case CurrentEstoque.Clientes:
                         folder = ConstStrings.PhpMovementsFolderClientes;
+                        break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRootFolderConcert;
                         break;
                     default:
                         break;
@@ -259,6 +298,9 @@ public class HelperMethods
                     case CurrentEstoque.Clientes:
                         folder = ConstStrings.PhpUpdateItemsFolderClientes;
                         break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRootFolderConcert;
+                        break;
                     default:
                         break;
                 }
@@ -280,6 +322,9 @@ public class HelperMethods
                         break;
                     case CurrentEstoque.Clientes:
                         folder = ConstStrings.PhpNoPaNoSeItemsFolderClientes;
+                        break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRootFolderConcert;
                         break;
                     default:
                         break;

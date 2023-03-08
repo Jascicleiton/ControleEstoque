@@ -593,22 +593,7 @@ public class InventarioManager : Singleton<InventarioManager>
 
         UnityWebRequest getInventarioRequest = HelperMethods.GetPostRequest(getInventario, "importdesktop.php", 1);
 
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importdesktop.php", getInventario);
-                break;
-            case CurrentEstoque.Funsoft:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderFunsoft + "importdesktop.php", getInventario);
-                break;
-            case CurrentEstoque.ESF:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolderESF + "importdesktop.php", getInventario);
-                break;
-            default:
-                getInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpImportTablesFolder + "importdesktop.php", getInventario);
-                break;
-        }
-        yield return getInventarioRequest.SendWebRequest();
+       yield return getInventarioRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
         tempSheet.itens = new List<ItemColumns>();
