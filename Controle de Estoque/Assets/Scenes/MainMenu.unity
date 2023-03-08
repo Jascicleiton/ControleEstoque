@@ -6350,7 +6350,7 @@ MonoBehaviour:
   adminUserInput: {fileID: 1932574633}
   adminPasswordInput: {fileID: 1443093201}
   usersManagerPrefab: {fileID: 6543166999940181047, guid: b5757e98a4c5f1347b555a1a49c12167, type: 3}
-  testingText: {fileID: 0}
+  versionText: {fileID: 888835291}
 --- !u!1 &1900628717
 GameObject:
   m_ObjectHideFlags: 0

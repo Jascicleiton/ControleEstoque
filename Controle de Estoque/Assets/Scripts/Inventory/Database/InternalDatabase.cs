@@ -16,6 +16,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
 
     [SerializeField] GameObject importingWidget;
     [SerializeField] GameObject exportManagerPrefab;
+    public string currentVersion = "1.0";
 
     public Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
     public Sheet fullDatabase = new Sheet();
@@ -1642,7 +1643,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
     /// </summary>
     public void UpdateDatabaseItem(List<string> parameters, int itemIndexFullDatabase)
     {
-        int categoryItemToUpdateIndex = 0;
+             int categoryItemToUpdateIndex = 0;
 
         ItemColumns itemToUpdate = new ItemColumns();
         itemToUpdate.Aquisicao = parameters[0];
@@ -1658,200 +1659,252 @@ public class InternalDatabase : Singleton<InternalDatabase>
         itemToUpdate.Observacao = parameters[10];
         switch (itemToUpdate.Categoria)
         {
+            #region Adaptador AC
             case ConstStrings.AdaptadorAC:
-                itemToUpdate.OndeFunciona = parameters[11];
-                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[12]);
-                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[13]);
+                itemToUpdate.OndeFunciona = parameters[12];
+                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[13]);
+                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[14]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(adaptadorAC, itemToUpdate.Patrimonio);
                 adaptadorAC.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Carregador
             case ConstStrings.Carregador:
-                itemToUpdate.OndeFunciona = parameters[11];
-                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[12]);
-                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[13]);
+                itemToUpdate.OndeFunciona = parameters[12];
+                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[13]);
+                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[14]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(carregador, itemToUpdate.Patrimonio);
                 carregador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Desktop
             case ConstStrings.Desktop:
-                itemToUpdate.ModeloPlacaMae = parameters[11];
-                itemToUpdate.Fonte = parameters[12];
-                itemToUpdate.Memoria = parameters[13];
-                itemToUpdate.HD = parameters[14];
-                itemToUpdate.PlacaDeVideo = parameters[15];
-                itemToUpdate.LeitorDeDVD = parameters[16];
+                itemToUpdate.ModeloPlacaMae = parameters[12];
+                itemToUpdate.Fonte = parameters[13];
+                itemToUpdate.Memoria = parameters[14];
+                itemToUpdate.HD = parameters[15];
+                itemToUpdate.PlacaDeVideo = parameters[16];
+                itemToUpdate.LeitorDeDVD = parameters[17];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(desktop, itemToUpdate.Patrimonio);
                 desktop.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Fone Ramal
             case ConstStrings.FoneRamal:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(foneRamal, itemToUpdate.Patrimonio);
                 foneRamal.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Fonte
             case ConstStrings.Fonte:
-                itemToUpdate.Watts = int.Parse(parameters[11]);
-                itemToUpdate.OndeFunciona = parameters[12];
-                itemToUpdate.Conectores = parameters[13];
+                itemToUpdate.Watts = int.Parse(parameters[12]);
+                itemToUpdate.OndeFunciona = parameters[13];
+                itemToUpdate.Conectores = parameters[14];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(fonte, itemToUpdate.Patrimonio);
                 fonte.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region GBIC
             case ConstStrings.Gbic:
-                itemToUpdate.Desempenho = parameters[11];
+                itemToUpdate.Desempenho = parameters[13];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(gbic, itemToUpdate.Patrimonio);
                 gbic.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region HD
             case ConstStrings.HD:
-                itemToUpdate.Interface = parameters[11];
-                itemToUpdate.Tamanho = float.Parse(parameters[12]);
-                itemToUpdate.FormaDeArmazenamento = parameters[13];
-                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[14]);
-                itemToUpdate.RPM = int.Parse(parameters[15]);
-                itemToUpdate.VelocidadeDeLeitura = float.Parse(parameters[16]);
-                itemToUpdate.Enterprise = parameters[17];
+                itemToUpdate.Interface = parameters[13];
+                itemToUpdate.Tamanho = float.Parse(parameters[14]);
+                itemToUpdate.FormaDeArmazenamento = parameters[15];
+                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[16]);
+                itemToUpdate.RPM = int.Parse(parameters[17]);
+                itemToUpdate.VelocidadeDeLeitura = float.Parse(parameters[18]);
+                itemToUpdate.Enterprise = parameters[19];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(hd, itemToUpdate.Patrimonio);
                 hd.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region iDrac
             case ConstStrings.Idrac:
-                itemToUpdate.QuaisConexoes = parameters[11];
-                itemToUpdate.VelocidadeGBs = float.Parse(parameters[12]);
-                itemToUpdate.EntradaSD = parameters[13];
-                itemToUpdate.ServidoresSuportados = parameters[14];
+                itemToUpdate.QuaisConexoes = parameters[13];
+                itemToUpdate.VelocidadeGBs = float.Parse(parameters[14]);
+                itemToUpdate.EntradaSD = parameters[15];
+                itemToUpdate.ServidoresSuportados = parameters[16];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(idrac, itemToUpdate.Patrimonio);
                 idrac.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Memoria
             case ConstStrings.Memoria:
-                itemToUpdate.Tipo = parameters[11];
-                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[12]);
-                itemToUpdate.VelocidadeMHz = int.Parse(parameters[13]);
-                itemToUpdate.LowVoltage = parameters[14];
-                itemToUpdate.Rank = parameters[15];
-                itemToUpdate.DIMM = parameters[16];
-                itemToUpdate.TaxaDeTransmissao = int.Parse(parameters[17]);
-                itemToUpdate.Simbolo = parameters[18];
+                itemToUpdate.Tipo = parameters[13];
+                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[14]);
+                itemToUpdate.VelocidadeMHz = int.Parse(parameters[15]);
+                itemToUpdate.LowVoltage = parameters[16];
+                itemToUpdate.Rank = parameters[17];
+                itemToUpdate.DIMM = parameters[18];
+                itemToUpdate.TaxaDeTransmissao = int.Parse(parameters[19]);
+                itemToUpdate.Simbolo = parameters[20];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(memoria, itemToUpdate.Patrimonio);
                 memoria.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Monitor
             case ConstStrings.Monitor:
-                itemToUpdate.Polegadas = float.Parse(parameters[11]);
-                itemToUpdate.QuaisConexoes = parameters[12];
+                itemToUpdate.Polegadas = float.Parse(parameters[13]);
+                itemToUpdate.QuaisConexoes = parameters[14];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(monitor, itemToUpdate.Patrimonio);
                 monitor.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Mouse
             case ConstStrings.Mouse:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(mouse, itemToUpdate.Patrimonio);
                 mouse.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region NoBreak
             case ConstStrings.Nobreak:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(nobreak, itemToUpdate.Patrimonio);
                 nobreak.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Notebook
             case ConstStrings.Notebook:
-                itemToUpdate.HD = parameters[12];
-                itemToUpdate.Memoria = parameters[13];
-                itemToUpdate.EntradaRJ49 = parameters[14];
-                itemToUpdate.BateriaInclusa = parameters[15];
-                itemToUpdate.AdaptadorAC = parameters[16];
-                itemToUpdate.Windows = parameters[17];
+                itemToUpdate.HD = parameters[14];
+                itemToUpdate.Memoria = parameters[15];
+                itemToUpdate.EntradaRJ49 = parameters[16];
+                itemToUpdate.BateriaInclusa = parameters[17];
+                itemToUpdate.AdaptadorAC = parameters[18];
+                itemToUpdate.Windows = parameters[19];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(notebook, itemToUpdate.Patrimonio);
                 notebook.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Placa controladora
             case ConstStrings.PlacaControladora:
-                itemToUpdate.QuaisConexoes = parameters[11];
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
-                itemToUpdate.TipoDeRAID = parameters[13];
-                itemToUpdate.CapacidadeMaxHD = parameters[14];
-                itemToUpdate.AteQuantosHDs = int.Parse(parameters[15]);
-                itemToUpdate.BateriaInclusa = parameters[16];
-                itemToUpdate.Barramento = parameters[17];
+                itemToUpdate.QuaisConexoes = parameters[12];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[13]);
+                itemToUpdate.TipoDeRAID = parameters[14];
+                itemToUpdate.CapacidadeMaxHD = parameters[15];
+                itemToUpdate.AteQuantosHDs = int.Parse(parameters[16]);
+                itemToUpdate.BateriaInclusa = parameters[17];
+                itemToUpdate.Barramento = parameters[18];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaControladora, itemToUpdate.Patrimonio);
                 placaControladora.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Placa de captura de vídeo
             case ConstStrings.PlacaDeCapturaDeVideo:
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[11]);
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeCapturaDeVideo, itemToUpdate.Patrimonio);
                 placaDeCapturaDeVideo.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Placa de rede
             case ConstStrings.PlacaDeRede:
-                itemToUpdate.Interface = parameters[11];
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
-                itemToUpdate.QuaisConexoes = parameters[13];
-                itemToUpdate.SuportaFibraOptica = parameters[14];
-                itemToUpdate.Desempenho = parameters[15];
+                itemToUpdate.Interface = parameters[13];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[14]);
+                itemToUpdate.QuaisConexoes = parameters[15];
+                itemToUpdate.SuportaFibraOptica = parameters[16];
+                itemToUpdate.Desempenho = parameters[17];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeRede, itemToUpdate.Patrimonio);
                 placaDeRede.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Placa de som
             case ConstStrings.PlacaDeSom:
-                itemToUpdate.QuantosCanais = int.Parse(parameters[11]);
+                itemToUpdate.QuantosCanais = int.Parse(parameters[12]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeSom, itemToUpdate.Patrimonio);
                 placaDeSom.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Placa de vídeo
             case ConstStrings.PlacaDeVideo:
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[11]);
-                itemToUpdate.QuaisConexoes = parameters[12];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
+                itemToUpdate.QuaisConexoes = parameters[13];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeVideo, itemToUpdate.Patrimonio);
                 placaDeVideo.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Processador
             case ConstStrings.Processador:
-                itemToUpdate.Soquete = parameters[11];
-                itemToUpdate.NucleosFisicos = int.Parse(parameters[12]);
-                itemToUpdate.NucleosLogicos = int.Parse(parameters[13]);
-                itemToUpdate.AceitaVirtualizacao = parameters[14];
-                itemToUpdate.TurboBoost = parameters[15];
-                itemToUpdate.HyperThreading = parameters[16];
+                itemToUpdate.Soquete = parameters[12];
+                itemToUpdate.NucleosFisicos = int.Parse(parameters[13]);
+                itemToUpdate.NucleosLogicos = int.Parse(parameters[14]);
+                itemToUpdate.AceitaVirtualizacao = parameters[15];
+                itemToUpdate.TurboBoost = parameters[16];
+                itemToUpdate.HyperThreading = parameters[17];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(processador, itemToUpdate.Patrimonio);
                 processador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Ramal
             case ConstStrings.Ramal:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(ramal, itemToUpdate.Patrimonio);
                 ramal.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Roteador
             case ConstStrings.Roteador:
-                itemToUpdate.Wireless = parameters[11];
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
-                itemToUpdate.BandaMaxima = int.Parse(parameters[13]);
+                itemToUpdate.Wireless = parameters[12];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[13]);
+                itemToUpdate.BandaMaxima = int.Parse(parameters[14]);
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(roteador, itemToUpdate.Patrimonio);
                 roteador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Servidor
             case ConstStrings.Servidor:
-                itemToUpdate.ModeloPlacaMae = parameters[11];
-                itemToUpdate.Fonte = parameters[12];
-                itemToUpdate.Memoria = parameters[13];
-                itemToUpdate.HD = parameters[14];
-                itemToUpdate.PlacaDeVideo = parameters[15];
-                itemToUpdate.PlacaDeRede = parameters[16];
-                itemToUpdate.Processador = parameters[17];
-                itemToUpdate.MemoriasSuportadas = parameters[18];
-                itemToUpdate.QuantasMemorias = int.Parse(parameters[19]);
-                itemToUpdate.OrdemDasMemorias = parameters[20];
-                itemToUpdate.CapacidadeRAMTotal = int.Parse(parameters[21]);
-                itemToUpdate.Soquete = parameters[22];
-                itemToUpdate.PlacaControladora = parameters[23];
-                itemToUpdate.AteQuantosHDs = int.Parse(parameters[24]);
-                itemToUpdate.TipoDeHD = parameters[25];
-                itemToUpdate.TipoDeRAID = parameters[26];
+                itemToUpdate.ModeloPlacaMae = parameters[14];
+                itemToUpdate.Fonte = parameters[15];
+                itemToUpdate.Memoria = parameters[16];
+                itemToUpdate.HD = parameters[17];
+                itemToUpdate.PlacaDeVideo = parameters[18];
+                itemToUpdate.PlacaDeRede = parameters[19];
+                itemToUpdate.Processador = parameters[20];
+                itemToUpdate.MemoriasSuportadas = parameters[21];
+                itemToUpdate.QuantasMemorias = int.Parse(parameters[22]);
+                itemToUpdate.OrdemDasMemorias = parameters[23];
+                itemToUpdate.CapacidadeRAMTotal = int.Parse(parameters[24]);
+                itemToUpdate.Soquete = parameters[25];
+                itemToUpdate.PlacaControladora = parameters[26];
+                itemToUpdate.AteQuantosHDs = int.Parse(parameters[27]);
+                itemToUpdate.TipoDeHD = parameters[28];
+                itemToUpdate.TipoDeRAID = parameters[29];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(servidor, itemToUpdate.Patrimonio);
                 servidor.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Storage NAS
             case ConstStrings.StorageNAS:
-                itemToUpdate.Tamanho = float.Parse(parameters[11]);
-                itemToUpdate.TipoDeRAID = parameters[12];
-                itemToUpdate.TipoDeHD = parameters[13];
-                itemToUpdate.CapacidadeMaxHD = parameters[14];
+                itemToUpdate.Tamanho = float.Parse(parameters[12]);
+                itemToUpdate.TipoDeRAID = parameters[13];
+                itemToUpdate.TipoDeHD = parameters[14];
+                itemToUpdate.CapacidadeMaxHD = parameters[15];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(storageNAS, itemToUpdate.Patrimonio);
                 storageNAS.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Switch
             case ConstStrings.Switch:
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[11]);
-                itemToUpdate.Desempenho = parameters[12];
+                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
+                itemToUpdate.Desempenho = parameters[13];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(Switch, itemToUpdate.Patrimonio);
                 Switch.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Teclado
             case ConstStrings.Teclado:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(teclado, itemToUpdate.Patrimonio);
                 teclado.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+            #endregion
+            #region Outras categorias
             default:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(outros, itemToUpdate.Patrimonio);
                 outros.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
+                #endregion
         }
         fullDatabase.itens[itemIndexFullDatabase] = itemToUpdate;
     }

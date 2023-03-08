@@ -36,13 +36,14 @@ public class MainMenuManager : MonoBehaviour
     private bool adminAuthorized = false;
     private bool inputEnabled = true;
 
-    [SerializeField] private TMP_Text testingText;
+    [SerializeField] private TMP_Text versionText;
 
     private void Start()
     {
         loginEnabled = true;
         adminAuthorizing = false;
         adminAuthorized = false;
+        versionText.text = InternalDatabase.Instance.currentVersion;
     }
 
     private void Update()
