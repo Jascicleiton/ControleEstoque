@@ -336,7 +336,15 @@ public class ItemInformationPanelControler : MonoBehaviour
         {
             itemBoxes[5].gameObject.SetActive(false);
         }
-        itemBoxes[9].gameObject.SetActive(false);
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.Concert:
+                itemBoxes[11].gameObject.SetActive(false);
+                break;
+            default:
+                itemBoxes[9].gameObject.SetActive(false);
+                break;
+        }       
     }
 
     /// <summary>
@@ -345,13 +353,28 @@ public class ItemInformationPanelControler : MonoBehaviour
     public List<string> GetInventoryValues()
     {
        List<string> valuesList = new List<string>();
-        for (int i = 0; i < 11; i++)
+        switch (InternalDatabase.Instance.currentEstoque)
         {
-            if (parameterValues[i].IsActive())
-            {
-                valuesList.Add(parameterValues[i].text);                
-            }
+            case CurrentEstoque.Concert:
+                for (int i = 0; i < 12; i++)
+                {
+                    if (parameterValues[i].IsActive())
+                    {
+                        valuesList.Add(parameterValues[i].text);
+                    }
+                }
+                break;
+            default:
+                for (int i = 0; i < 11; i++)
+                {
+                    if (parameterValues[i].IsActive())
+                    {
+                        valuesList.Add(parameterValues[i].text);
+                    }
+                }
+                break;
         }
+       
         return valuesList;
     }
 
@@ -444,16 +467,32 @@ public class ItemInformationPanelControler : MonoBehaviour
             #region Desktop
             case ConstStrings.Desktop:
                 valuesList.Clear();
-                valuesList.Add(parameterValues[2].text);
-                valuesList.Add(parameterValues[11].text);
-                valuesList.Add(parameterValues[12].text);
-                valuesList.Add(parameterValues[13].text);
-                valuesList.Add(parameterValues[14].text);
-                valuesList.Add(parameterValues[15].text);
-                valuesList.Add(parameterValues[16].text);
-                valuesList.Add(parameterValues[17].text);
-                valuesList.Add(parameterValues[18].text);
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        valuesList.Add(parameterValues[14].text);
+                        valuesList.Add(parameterValues[15].text);
+                        valuesList.Add(parameterValues[16].text);
+                        valuesList.Add(parameterValues[17].text);
+                        break;
+                    default:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[11].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        valuesList.Add(parameterValues[14].text);
+                        valuesList.Add(parameterValues[15].text);
+                        valuesList.Add(parameterValues[16].text);
+                        valuesList.Add(parameterValues[17].text);
+                        valuesList.Add(parameterValues[18].text);
+                        break;
+                }
+                  break;
             #endregion
             #region Fonte
             case ConstStrings.Fonte:
@@ -467,19 +506,42 @@ public class ItemInformationPanelControler : MonoBehaviour
             #region Switch
             case ConstStrings.Switch:
                 valuesList.Clear();
-                valuesList.Add(parameterValues[7].text);
-                valuesList.Add(parameterValues[11].text);
-                valuesList.Add(parameterValues[12].text);
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[12].text);
+                                                break;
+                    default:
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[11].text);
+                        valuesList.Add(parameterValues[12].text);
+                              break;
+                }
                 break;
             #endregion
             #region Roteador
             case ConstStrings.Roteador:
                 valuesList.Clear();
-                valuesList.Add(parameterValues[7].text);
-                valuesList.Add(parameterValues[11].text);
-                valuesList.Add(parameterValues[12].text);
-                valuesList.Add(parameterValues[13].text);
-                valuesList.Add(parameterValues[14].text);
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        break;
+                    default:
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[11].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        valuesList.Add(parameterValues[14].text);
+                        break;
+                }    
                 break;
             #endregion
             #region Carregador
@@ -544,63 +606,98 @@ public class ItemInformationPanelControler : MonoBehaviour
             #region Servidor
             case ConstStrings.Servidor:
                 valuesList.Clear();
-                valuesList.Add(parameterValues[2].text);
-                valuesList.Add(parameterValues[7].text);
-                valuesList.Add(parameterValues[6].text);
-                valuesList.Add(parameterValues[11].text);
-                valuesList.Add(parameterValues[12].text);
-                valuesList.Add(parameterValues[13].text);
-                valuesList.Add(parameterValues[14].text);
-                valuesList.Add(parameterValues[15].text);
-                valuesList.Add(parameterValues[16].text);
-                valuesList.Add(parameterValues[17].text);
-                valuesList.Add(parameterValues[18].text);
-                valuesList.Add(parameterValues[19].text);
-                valuesList.Add(parameterValues[20].text);
-                valuesList.Add(parameterValues[21].text);
-                valuesList.Add(parameterValues[22].text);
-                valuesList.Add(parameterValues[23].text);
-                valuesList.Add(parameterValues[24].text);
-                valuesList.Add(parameterValues[25].text);
-                valuesList.Add(parameterValues[26].text);
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        valuesList.Add(parameterValues[14].text);
+                        valuesList.Add(parameterValues[15].text);
+                        valuesList.Add(parameterValues[16].text);
+                        valuesList.Add(parameterValues[17].text);
+                        break;
+                    default:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[11].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        valuesList.Add(parameterValues[14].text);
+                        valuesList.Add(parameterValues[15].text);
+                        valuesList.Add(parameterValues[16].text);
+                        valuesList.Add(parameterValues[17].text);
+                        valuesList.Add(parameterValues[18].text);
+                        valuesList.Add(parameterValues[19].text);
+                        valuesList.Add(parameterValues[20].text);
+                        valuesList.Add(parameterValues[21].text);
+                        valuesList.Add(parameterValues[22].text);
+                        valuesList.Add(parameterValues[23].text);
+                        valuesList.Add(parameterValues[24].text);
+                        valuesList.Add(parameterValues[25].text);
+                        valuesList.Add(parameterValues[26].text);
+                        break;
+                }
                 break;
             #endregion
             #region Notebook
             case ConstStrings.Notebook:
                 valuesList.Clear();
-                valuesList.Add(parameterValues[2].text);
-                valuesList.Add(parameterValues[7].text);
-                valuesList.Add(parameterValues[6].text);
-                valuesList.Add(parameterValues[11].text);
-                valuesList.Add(parameterValues[12].text);
-                valuesList.Add(parameterValues[13].text);
-                valuesList.Add(parameterValues[14].text);
-                valuesList.Add(parameterValues[15].text);
-                valuesList.Add(parameterValues[16].text);
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        valuesList.Add(parameterValues[14].text);
+                        valuesList.Add(parameterValues[15].text);
+                        valuesList.Add(parameterValues[16].text);
+                        valuesList.Add(parameterValues[17].text);
+                        break;
+                    default:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[11].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        valuesList.Add(parameterValues[14].text);
+                        valuesList.Add(parameterValues[15].text);
+                        valuesList.Add(parameterValues[16].text);
+                        break;
+                }
+                 break;
             #endregion
             #region Monitor
             case ConstStrings.Monitor:
                 valuesList.Clear();
-                valuesList.Add(parameterValues[7].text);
-                valuesList.Add(parameterValues[6].text);
-                valuesList.Add(parameterValues[11].text);
-                valuesList.Add(parameterValues[12].text);
-                valuesList.Add(parameterValues[13].text);
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        valuesList.Add(parameterValues[2].text);
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        break;
+                    default:
+                        valuesList.Add(parameterValues[7].text);
+                        valuesList.Add(parameterValues[6].text);
+                        valuesList.Add(parameterValues[11].text);
+                        valuesList.Add(parameterValues[12].text);
+                        valuesList.Add(parameterValues[13].text);
+                        break;
+                }    
                 break;
             #endregion
             default:
                 break;
         }
-
         return valuesList;
     }
-
-    //private void Testing (List<string> list)
-    //{
-    //    for (int i = 0; i < list.Count; i++)
-    //    {
-    //        print(list[i]);
-    //    }
-    //}
 }

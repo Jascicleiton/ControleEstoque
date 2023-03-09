@@ -1262,47 +1262,19 @@ MonoBehaviour:
     m_Options:
     - m_Text: "Invent\xE1rio"
       m_Image: {fileID: 0}
-    - m_Text: "Movimenta\xE7\xE3o"
-      m_Image: {fileID: 0}
-    - m_Text: HD
-      m_Image: {fileID: 0}
-    - m_Text: "Mem\xF3ria"
-      m_Image: {fileID: 0}
-    - m_Text: Placa de Rede
-      m_Image: {fileID: 0}
-    - m_Text: iDrac
-      m_Image: {fileID: 0}
-    - m_Text: Placa Controladora
-      m_Image: {fileID: 0}
-    - m_Text: Processador
+    - m_Text: Adaptador AC
       m_Image: {fileID: 0}
     - m_Text: Desktop
       m_Image: {fileID: 0}
-    - m_Text: Fonte
-      m_Image: {fileID: 0}
-    - m_Text: Switch
-      m_Image: {fileID: 0}
-    - m_Text: Roteador
-      m_Image: {fileID: 0}
-    - m_Text: Carregador
-      m_Image: {fileID: 0}
-    - m_Text: Adaptador AC
-      m_Image: {fileID: 0}
-    - m_Text: Storage NAS
-      m_Image: {fileID: 0}
-    - m_Text: GBIC
-      m_Image: {fileID: 0}
-    - m_Text: "Placa de v\xEDdeo"
-      m_Image: {fileID: 0}
-    - m_Text: Placa de som
-      m_Image: {fileID: 0}
-    - m_Text: "Placa de captura de v\xEDdeo"
-      m_Image: {fileID: 0}
-    - m_Text: Servidor
+    - m_Text: Monitor
       m_Image: {fileID: 0}
     - m_Text: Notebook
       m_Image: {fileID: 0}
-    - m_Text: Monitor
+    - m_Text: Roteador
+      m_Image: {fileID: 0}
+    - m_Text: Servidor
+      m_Image: {fileID: 0}
+    - m_Text: Switch
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2617,7 +2589,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 26.83, y: 0}
+  m_AnchoredPosition: {x: 26.830002, y: 0}
   m_SizeDelta: {x: -53.65, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6940953783036989473

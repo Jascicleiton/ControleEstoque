@@ -16,7 +16,7 @@ public class ItemColumns
         QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs.ToString("0.0"), EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
         CapacidadeMaxHD, AteQuantosHDs.ToString(), BateriaInclusa, Barramento, Soquete, NucleosFisicos.ToString(), NucleosLogicos.ToString(), AceitaVirtualizacao,
         TurboBoost, HyperThreading, ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts.ToString(), 
-        OndeFunciona, Conectores, Wireless, BandaMaxima.ToString(), VoltagemDeSaida.ToString("0.0"), AmperagemDeSaida.ToString("0.0"), QuantosCanais.ToString(), Polegadas.ToString("0.0"), Processador};
+        OndeFunciona, Conectores, Wireless, BandaMaxima.ToString(), VoltagemDeSaida.ToString("0.0"), AmperagemDeSaida.ToString("0.0"), QuantosCanais.ToString(), Polegadas.ToString("0.0"), Processador, CentroDeCusto, Pessoa};
         for (int i = 0; i < allValues.Length; i++)
         {
             if (allValues[i] == valueToGet)
@@ -100,5 +100,7 @@ public class ItemColumns
     public string EntradaRJ49;// notebook
     public string AdaptadorAC; // notebook
     public string Windows; // notebook
+    public string Pessoa; // Concert
+    public string CentroDeCusto; // Concert
     #endregion
 }

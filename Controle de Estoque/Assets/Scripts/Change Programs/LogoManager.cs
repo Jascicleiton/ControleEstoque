@@ -15,7 +15,7 @@ public class LogoManager : MonoBehaviour
 
     private void Awake()
     {
-        image = GetComponent<Image>();
+        image = GetComponentInChildren<Image>();
     }
 
     /// <summary>

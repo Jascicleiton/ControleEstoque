@@ -41,7 +41,7 @@ public class InitialSceneManager : MonoBehaviour
                 moveButton.gameObject.SetActive(true);
                 addRemoveButton.gameObject.SetActive(true);
                 updateItemButton.gameObject.SetActive(true);
-                exportSheetsButton.gameObject.SetActive(false);
+                exportSheetsButton.gameObject.SetActive(true);
                 logoutButton.gameObject.SetActive(true);
                 noPaNoSeButton.gameObject.SetActive(true);
                 fullInventoryButton.gameObject.SetActive(false);
@@ -66,6 +66,20 @@ public class InitialSceneManager : MonoBehaviour
         {
             Debug.LogWarning("UsersManager not found on InitialScene");
         }
+        if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
+        {
+            consultButton.gameObject.SetActive(true);
+            moveButton.gameObject.SetActive(true);
+            addRemoveButton.gameObject.SetActive(true);
+            updateItemButton.gameObject.SetActive(true);
+            exportSheetsButton.gameObject.SetActive(true);
+            logoutButton.gameObject.SetActive(true);
+            noPaNoSeButton.gameObject.SetActive(false);
+            fullInventoryButton.gameObject.SetActive(false);
+            fullDetailsButton.gameObject.SetActive(false);
+            allMovementsButton.gameObject.SetActive(true);
+        }
+      
     }
 
     /// <summary>

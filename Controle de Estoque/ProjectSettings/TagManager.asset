@@ -7,6 +7,8 @@ TagManager:
   - ItemResultsParent
   - Canvas
   - MovementRecord
+  - ParameterValue
+  - ParameterName
   layers:
   - Default
   - TransparentFX

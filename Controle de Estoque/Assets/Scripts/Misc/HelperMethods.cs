@@ -62,9 +62,9 @@ public class HelperMethods
                     return "Adicionar nova categoria";
                 }
             case CurrentEstoque.Concert:
-                if(value < ConstStrings.AllCategories.Length)
+                if(value < ConstStrings.ConcertCategories.Length)
                 {
-                    return ConstStrings.AllCategories[value];
+                    return ConstStrings.ConcertCategories[value];
                 }
                 else
                 {
@@ -151,9 +151,9 @@ public class HelperMethods
                 }
                 return 666;
             case CurrentEstoque.Concert:
-                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
+                for (int i = 0; i < ConstStrings.ConcertCategories.Length; i++)
                 {
-                    if (category == ConstStrings.AllCategories[i])
+                    if (category == ConstStrings.ConcertCategories[i])
                     {
                         return i;
                     }
@@ -224,7 +224,7 @@ public class HelperMethods
                         folder = ConstStrings.PhpImportTablesFolderClientes;
                         break;
                     case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpRootFolderConcert;
+                        folder = ConstStrings.PhpImportTablesFolderConcert;
                         break;
                     default:
                         break;
@@ -249,7 +249,7 @@ public class HelperMethods
                         folder = ConstStrings.PhpAdditemsFolderClientes;
                         break;
                     case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpRootFolderConcert;
+                        folder = ConstStrings.PhpAdditemsFolderConcert;
                         break;
                     default:
                         break;
@@ -274,7 +274,7 @@ public class HelperMethods
                         folder = ConstStrings.PhpMovementsFolderClientes;
                         break;
                     case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpRootFolderConcert;
+                        folder = ConstStrings.PhpMovementsFolderConcert;
                         break;
                     default:
                         break;
@@ -299,7 +299,7 @@ public class HelperMethods
                         folder = ConstStrings.PhpUpdateItemsFolderClientes;
                         break;
                     case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpRootFolderConcert;
+                        folder = ConstStrings.PhpUpdateItemsFolderConcert;
                         break;
                     default:
                         break;
@@ -324,7 +324,7 @@ public class HelperMethods
                         folder = ConstStrings.PhpNoPaNoSeItemsFolderClientes;
                         break;
                     case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpRootFolderConcert;
+                        folder = ConstStrings.PhpNoPaNoSeItemsFolderConcert;
                         break;
                     default:
                         break;
@@ -347,6 +347,9 @@ public class HelperMethods
                         break;
                     case CurrentEstoque.Clientes:
                         folder = ConstStrings.PhpRootFolderClientes;
+                        break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRootFolderConcert;
                         break;
                     default:
                         break;
@@ -506,8 +509,27 @@ public class HelperMethods
         }
         if (addInventario)
         {
-            WWWForm itemForm = CreateForm.GetInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-            parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10]);
+            WWWForm itemForm = new WWWForm();
+            switch (InternalDatabase.Instance.currentEstoque)
+            {
+                case CurrentEstoque.SnPro:
+                case CurrentEstoque.Funsoft:
+                case CurrentEstoque.ESF:
+                case CurrentEstoque.Testing:
+                case CurrentEstoque.Clientes:
+                    itemForm = CreateForm.GetInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+          parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10]);
+                    break;
+                case CurrentEstoque.Concert:
+                    itemForm = CreateForm.GetConcertInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+          parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11]);
+                    break;
+                default:
+                    itemForm = CreateForm.GetInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+          parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10]);
+                    break;
+            }
+           
 
             UnityWebRequest createUpdateInventarioRequest = GetPostRequest(itemForm, phpName + "inventario.php", folderID);
             MouseManager.Instance.SetWaitingCursor();
@@ -601,8 +623,26 @@ public class HelperMethods
                 #endregion
                 #region Desktop
                 case ConstStrings.Desktop:
-                    WWWForm desktopForm = CreateForm.GetDesktopForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                    WWWForm desktopForm = new WWWForm();
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.SnPro:
+                                                    case CurrentEstoque.Funsoft:
+                                                    case CurrentEstoque.ESF:
+                                                    case CurrentEstoque.Testing:
+                                                    case CurrentEstoque.Clientes:
+                            desktopForm = CreateForm.GetDesktopForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                   parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
+                            break;
+                        case CurrentEstoque.Concert:
+                            desktopForm = CreateForm.GetConcertDesktopForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                  parameters[4], parameters[5], parameters[6]);
+                            break;
+                        default:
+                            desktopForm = CreateForm.GetDesktopForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                  parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
+                            break;
+                    }                 
 
                     UnityWebRequest createDesktopPostRequest = GetPostRequest(desktopForm, phpName + "desktop.php", folderID);
 
@@ -624,7 +664,24 @@ public class HelperMethods
                 #endregion
                 #region Switch
                 case ConstStrings.Switch:
-                    WWWForm switchForm = CreateForm.GetSwitchForm(appKey, parameters[0], parameters[1], parameters[2]);
+                    WWWForm switchForm = new WWWForm();
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.ESF:
+                        case CurrentEstoque.Testing:
+                        case CurrentEstoque.Clientes:
+                            switchForm = CreateForm.GetSwitchForm(appKey, parameters[0], parameters[1], parameters[2]);
+                            break;
+                        case CurrentEstoque.Concert:
+                            switchForm = CreateForm.GetConcertSwitchForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
+                            break;
+                        default:
+                            switchForm = CreateForm.GetSwitchForm(appKey, parameters[0], parameters[1], parameters[2]);
+                            break;
+                    }
+                   
 
                     UnityWebRequest createSwitchPostRequest = GetPostRequest(switchForm, phpName + "switch.php", folderID);
 
@@ -725,11 +782,30 @@ public class HelperMethods
                 #endregion
                 #region Servidor
                 case ConstStrings.Servidor:
-                    Debug.Log(parameters.Count);
-                    WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+
+                    WWWForm servidorForm = new WWWForm();
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.ESF:
+                        case CurrentEstoque.Testing:
+                        case CurrentEstoque.Clientes:
+                            servidorForm = CreateForm.GetServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11],
                      parameters[12], parameters[13], parameters[14], parameters[15], parameters[16], parameters[17], parameters[18]);
-
+                            break;
+                        case CurrentEstoque.Concert:
+                            CreateForm.GetConcertServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                   parameters[4], parameters[5], parameters[6]);
+                            break;
+                        default:
+                            CreateForm.GetServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                   parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11],
+                    parameters[12], parameters[13], parameters[14], parameters[15], parameters[16], parameters[17], parameters[18]);
+                            break;
+                    }
+                   
                     UnityWebRequest createServidorPostRequest = GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
 
                     yield return createServidorPostRequest.SendWebRequest();
@@ -739,9 +815,27 @@ public class HelperMethods
                 #endregion
                 #region Notebook
                 case ConstStrings.Notebook:
-                    WWWForm notebookForm = CreateForm.GetNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
+                    WWWForm notebookForm = new WWWForm();
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.ESF:
+                        case CurrentEstoque.Testing:
+                        case CurrentEstoque.Clientes:
+                            CreateForm.GetNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
                     parameters[5], parameters[6], parameters[7], parameters[8]);
-
+                            break;
+                        case CurrentEstoque.Concert:
+                            CreateForm.GetConcertNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
+                    parameters[5], parameters[6]);
+                            break;
+                        default:
+                            CreateForm.GetNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
+                    parameters[5], parameters[6], parameters[7], parameters[8]);
+                            break;
+                    }
+                    
                     UnityWebRequest createNotebookPostRequest = GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
 
                     yield return createNotebookPostRequest.SendWebRequest();
@@ -751,7 +845,24 @@ public class HelperMethods
                 #endregion
                 #region Monitor
                 case ConstStrings.Monitor:
-                    WWWForm monitorForm = CreateForm.GetMonitorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
+                    WWWForm monitorForm = new WWWForm();
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.ESF:
+                        case CurrentEstoque.Testing:
+                        case CurrentEstoque.Clientes:
+                            CreateForm.GetMonitorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
+                            break;
+                        case CurrentEstoque.Concert:
+                            CreateForm.GetConcertMonitorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4]);
+                            break;
+                        default:
+                            CreateForm.GetMonitorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
+                            break;
+                    }
+                    
 
                     UnityWebRequest createMonitorPostRequest = GetPostRequest(monitorForm, phpName + "monitor.php", folderID);
 
@@ -859,26 +970,56 @@ public class HelperMethods
         if (itemToShow != null)
         {
             #region Inventário
-            dictionary["Values"].Add(itemToShow.Aquisicao);
-            dictionary["Values"].Add(itemToShow.Entrada);
-            dictionary["Values"].Add(itemToShow.Patrimonio.ToString());
-            dictionary["Values"].Add(itemToShow.Status);
-            dictionary["Values"].Add(itemToShow.Serial);
-            dictionary["Values"].Add(itemToShow.Categoria);
-            dictionary["Values"].Add(itemToShow.Fabricante);
-            dictionary["Values"].Add(itemToShow.Modelo);
-            dictionary["Values"].Add(itemToShow.Local);
-            dictionary["Values"].Add(itemToShow.Saida);
-            dictionary["Values"].Add(itemToShow.Observacao);
+            switch (InternalDatabase.Instance.currentEstoque)
+            {
+                case CurrentEstoque.Concert:
+                    dictionary["Values"].Add(itemToShow.Aquisicao);
+                    dictionary["Values"].Add(itemToShow.Entrada);
+                    dictionary["Values"].Add(itemToShow.Patrimonio.ToString());
+                    dictionary["Values"].Add(itemToShow.Status);
+                    dictionary["Values"].Add(itemToShow.Serial);
+                    dictionary["Values"].Add(itemToShow.Categoria);
+                    dictionary["Values"].Add(itemToShow.Fabricante);
+                    dictionary["Values"].Add(itemToShow.Modelo);
+                    dictionary["Values"].Add(itemToShow.Local);
+                    dictionary["Values"].Add(itemToShow.Pessoa);
+                    dictionary["Values"].Add(itemToShow.CentroDeCusto);
+                    dictionary["Values"].Add(itemToShow.Saida);
+
+                    break;
+                default:
+                    dictionary["Values"].Add(itemToShow.Aquisicao);
+                    dictionary["Values"].Add(itemToShow.Entrada);
+                    dictionary["Values"].Add(itemToShow.Patrimonio.ToString());
+                    dictionary["Values"].Add(itemToShow.Status);
+                    dictionary["Values"].Add(itemToShow.Serial);
+                    dictionary["Values"].Add(itemToShow.Categoria);
+                    dictionary["Values"].Add(itemToShow.Fabricante);
+                    dictionary["Values"].Add(itemToShow.Modelo);
+                    dictionary["Values"].Add(itemToShow.Local);
+                    dictionary["Values"].Add(itemToShow.Saida);
+                    dictionary["Values"].Add(itemToShow.Observacao);
+                    break;
+            }
+           
             #endregion
             switch (itemToShow.Categoria)
             {
                 #region Adaptador AC
                 case ConstStrings.AdaptadorAC:
-                    dictionary["Values"].Add(itemToShow.OndeFunciona);
-                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
-                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
-                    break;
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.Concert:
+                            dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
+                            dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
+                            break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.OndeFunciona);
+                            dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
+                            dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
+                            break;
+                    }
+                                      break;
                 #endregion
                 #region Carregador
                 case ConstStrings.Carregador:
@@ -889,13 +1030,25 @@ public class HelperMethods
                 #endregion
                 #region Desktop
                 case ConstStrings.Desktop:
-                    dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
-                    dictionary["Values"].Add(itemToShow.Fonte);
-                    dictionary["Values"].Add(itemToShow.Memoria);
-                    dictionary["Values"].Add(itemToShow.HD);
-                    dictionary["Values"].Add(itemToShow.PlacaDeVideo);
-                    dictionary["Values"].Add(itemToShow.LeitorDeDVD);
-                    dictionary["Values"].Add(itemToShow.Processador);
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.Concert:                     
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.Processador);
+                            dictionary["Values"].Add(itemToShow.Windows);
+                            break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
+                            dictionary["Values"].Add(itemToShow.Fonte);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.PlacaDeVideo);
+                            dictionary["Values"].Add(itemToShow.LeitorDeDVD);
+                            dictionary["Values"].Add(itemToShow.Processador);
+                            break;
+                    }
+                    
                     break;
                 #endregion
                 #region Fone para ramal
@@ -962,12 +1115,23 @@ public class HelperMethods
                 #endregion
                 #region Notebook
                 case ConstStrings.Notebook:
-                    dictionary["Values"].Add(itemToShow.HD);
-                    dictionary["Values"].Add(itemToShow.Memoria);
-                    dictionary["Values"].Add(itemToShow.EntradaRJ49);
-                    dictionary["Values"].Add(itemToShow.BateriaInclusa);
-                    dictionary["Values"].Add(itemToShow.AdaptadorAC);
-                    dictionary["Values"].Add(itemToShow.Windows);
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.Concert:
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.Processador);
+                            dictionary["Values"].Add(itemToShow.Windows);
+                            break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.EntradaRJ49);
+                            dictionary["Values"].Add(itemToShow.BateriaInclusa);
+                            dictionary["Values"].Add(itemToShow.AdaptadorAC);
+                            dictionary["Values"].Add(itemToShow.Windows);
+                            break;
+                    }          
                     break;
                 #endregion
                 #region Placa controladora
@@ -1022,30 +1186,51 @@ public class HelperMethods
                 #endregion
                 #region Roteador
                 case ConstStrings.Roteador:
-                    dictionary["Values"].Add(itemToShow.Wireless);
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
-                    dictionary["Values"].Add(itemToShow.BandaMaxima.ToString());
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.Concert:
+                            dictionary["Values"].Add(itemToShow.Wireless);
+                            dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
+                            break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.Wireless);
+                            dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
+                            dictionary["Values"].Add(itemToShow.BandaMaxima.ToString());
+                            break;
+                    }
+                    
                     break;
                 #endregion
                 #region Servidor
                 case ConstStrings.Servidor:
-                    dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
-                    dictionary["Values"].Add(itemToShow.Fonte);
-                    dictionary["Values"].Add(itemToShow.Memoria);
-                    dictionary["Values"].Add(itemToShow.HD);
-                    dictionary["Values"].Add(itemToShow.PlacaDeVideo);
-                    dictionary["Values"].Add(itemToShow.PlacaDeRede);
-                    dictionary["Values"].Add(itemToShow.Processador);
-                    dictionary["Values"].Add(itemToShow.MemoriasSuportadas);
-                    dictionary["Values"].Add(itemToShow.QuantasMemorias.ToString());
-                    dictionary["Values"].Add(itemToShow.OrdemDasMemorias);
-                    dictionary["Values"].Add(itemToShow.CapacidadeRAMTotal.ToString());
-                    dictionary["Values"].Add(itemToShow.Soquete);
-                    dictionary["Values"].Add(itemToShow.PlacaControladora);
-                    dictionary["Values"].Add(itemToShow.AteQuantosHDs.ToString());
-                    dictionary["Values"].Add(itemToShow.TipoDeHD);
-                    dictionary["Values"].Add(itemToShow.TipoDeRAID);
-                    break;
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.Concert:
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.Processador);
+                            dictionary["Values"].Add(itemToShow.Windows);
+                            break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
+                            dictionary["Values"].Add(itemToShow.Fonte);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.PlacaDeVideo);
+                            dictionary["Values"].Add(itemToShow.PlacaDeRede);
+                            dictionary["Values"].Add(itemToShow.Processador);
+                            dictionary["Values"].Add(itemToShow.MemoriasSuportadas);
+                            dictionary["Values"].Add(itemToShow.QuantasMemorias.ToString());
+                            dictionary["Values"].Add(itemToShow.OrdemDasMemorias);
+                            dictionary["Values"].Add(itemToShow.CapacidadeRAMTotal.ToString());
+                            dictionary["Values"].Add(itemToShow.Soquete);
+                            dictionary["Values"].Add(itemToShow.PlacaControladora);
+                            dictionary["Values"].Add(itemToShow.AteQuantosHDs.ToString());
+                            dictionary["Values"].Add(itemToShow.TipoDeHD);
+                            dictionary["Values"].Add(itemToShow.TipoDeRAID);
+                            break;
+                    }
+                          break;
                 #endregion
                 #region Storage NAS
                 case ConstStrings.StorageNAS:
@@ -1058,8 +1243,16 @@ public class HelperMethods
                 #endregion
                 #region Switch
                 case ConstStrings.Switch:
-                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
-                    dictionary["Values"].Add(itemToShow.Desempenho);
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.Concert:
+                            dictionary["Values"].Add(itemToShow.QuaisConexoes);
+                            break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
+                            dictionary["Values"].Add(itemToShow.Desempenho);
+                            break;
+                    } 
                     break;
                 #endregion
                 #region Teclado
@@ -1073,26 +1266,54 @@ public class HelperMethods
         #endregion
         #region Names
         #region Inventário
-        dictionary["Names"].Add("Aquisição");
-        dictionary["Names"].Add("Entrada");
-        dictionary["Names"].Add("Patrimônio");
-        dictionary["Names"].Add("Status");
-        dictionary["Names"].Add("Serial");
-        dictionary["Names"].Add("Categoria");
-        dictionary["Names"].Add("Fabricante");
-        dictionary["Names"].Add("Modelo");
-        dictionary["Names"].Add("Local");
-        dictionary["Names"].Add("Saída");
-        dictionary["Names"].Add("Observação");
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+                case CurrentEstoque.Concert:
+                dictionary["Names"].Add("Aquisição");
+                dictionary["Names"].Add("Entrada");
+                dictionary["Names"].Add("Patrimônio");
+                dictionary["Names"].Add("Status");
+                dictionary["Names"].Add("Serial");
+                dictionary["Names"].Add("Categoria");
+                dictionary["Names"].Add("Fabricante");
+                dictionary["Names"].Add("Modelo");
+                dictionary["Names"].Add("Local");
+                dictionary["Names"].Add("Pessoa");
+                dictionary["Names"].Add("Centro de Custo");
+                dictionary["Names"].Add("Saída");
+                break;
+            default:
+                dictionary["Names"].Add("Aquisição");
+                dictionary["Names"].Add("Entrada");
+                dictionary["Names"].Add("Patrimônio");
+                dictionary["Names"].Add("Status");
+                dictionary["Names"].Add("Serial");
+                dictionary["Names"].Add("Categoria");
+                dictionary["Names"].Add("Fabricante");
+                dictionary["Names"].Add("Modelo");
+                dictionary["Names"].Add("Local");
+                dictionary["Names"].Add("Saída");
+                dictionary["Names"].Add("Observação");
+                break;
+        }   
         #endregion
         switch (category)
         {
             #region Adaptador AC
             case ConstStrings.AdaptadorAC:
-                dictionary["Names"].Add("Onde funciona?");
-                dictionary["Names"].Add("Voltagem de saída");
-                dictionary["Names"].Add("Amperagem de saída (A)");
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        dictionary["Names"].Add("Voltagem de saída");
+                        dictionary["Names"].Add("Amperagem de saída (A)");
+                        break;
+                    default:
+                        dictionary["Names"].Add("Onde funciona?");
+                        dictionary["Names"].Add("Voltagem de saída");
+                        dictionary["Names"].Add("Amperagem de saída (A)");
+                        break;
+                }
+                                break;
             #endregion
             #region Carregador
             case ConstStrings.Carregador:
@@ -1103,14 +1324,25 @@ public class HelperMethods
             #endregion
             #region Desktop
             case ConstStrings.Desktop:
-                dictionary["Names"].Add("Modelo de placa mãe");
-                dictionary["Names"].Add("Fonte?");
-                dictionary["Names"].Add("Memória?");
-                dictionary["Names"].Add("HD?");
-                dictionary["Names"].Add("Placa de vídeo?");
-                dictionary["Names"].Add("Leitor de DVD?");
-                dictionary["Names"].Add("Processador");
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        dictionary["Names"].Add("HD?");
+                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("Processador?");
+                        dictionary["Names"].Add("Qual windows?");
+                        break;
+                    default:
+                        dictionary["Names"].Add("Modelo de placa mãe");
+                        dictionary["Names"].Add("Fonte?");
+                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("HD?");
+                        dictionary["Names"].Add("Placa de vídeo?");
+                        dictionary["Names"].Add("Leitor de DVD?");
+                        dictionary["Names"].Add("Processador");
+                        break;
+                }
+                              break;
             #endregion
             #region Fone para ramal
             case ConstStrings.FoneRamal:
@@ -1167,7 +1399,6 @@ public class HelperMethods
             #endregion
             #region Mouse
             case ConstStrings.Mouse:
-
                 break;
             #endregion
             #region No break
@@ -1176,13 +1407,24 @@ public class HelperMethods
             #endregion
             #region Notebook
             case ConstStrings.Notebook:
-                dictionary["Names"].Add("HD");
-                dictionary["Names"].Add("Memória");
-                dictionary["Names"].Add("Entrada RJ49");
-                dictionary["Names"].Add("Bateria");
-                dictionary["Names"].Add("AdaptadorAC");
-                dictionary["Names"].Add("Windows");
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        dictionary["Names"].Add("HD?");
+                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("Processador?");
+                        dictionary["Names"].Add("Qual windows?");
+                        break;
+                    default:
+                        dictionary["Names"].Add("HD");
+                        dictionary["Names"].Add("Memória");
+                        dictionary["Names"].Add("Entrada RJ49");
+                        dictionary["Names"].Add("Bateria");
+                        dictionary["Names"].Add("AdaptadorAC");
+                        dictionary["Names"].Add("Windows");
+                        break;
+                }
+                        break;
             #endregion
             #region Placa controladora
             case ConstStrings.PlacaControladora:
@@ -1236,30 +1478,50 @@ public class HelperMethods
             #endregion
             #region Roteador
             case ConstStrings.Roteador:
-                dictionary["Names"].Add("Wireless?");
-                dictionary["Names"].Add("Quantas entradas?");
-                dictionary["Names"].Add("Banda máx (MB/s)");
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        dictionary["Names"].Add("Wireless?");
+                        dictionary["Names"].Add("Quantas entradas?");
+                        break;
+                    default:
+                        dictionary["Names"].Add("Wireless?");
+                        dictionary["Names"].Add("Quantas entradas?");
+                        dictionary["Names"].Add("Banda máx (MB/s)");
+                        break;
+                }
+                           break;
             #endregion
             #region Servidor
             case ConstStrings.Servidor:
-                dictionary["Names"].Add("Modelo da placa mãe");
-                dictionary["Names"].Add("Fonte");
-                dictionary["Names"].Add("Memórias instaladas");
-                dictionary["Names"].Add("HD instalado");
-                dictionary["Names"].Add("Placa de vídeo");
-                dictionary["Names"].Add("Placa de rede");
-                dictionary["Names"].Add("Processadores instalados");
-                dictionary["Names"].Add("Memórias suportadas");
-                dictionary["Names"].Add("Até quantas memórias");
-                dictionary["Names"].Add("Ordem das memórias");
-                dictionary["Names"].Add("Capacidade RAM total");
-                dictionary["Names"].Add("Soquete do processador");
-                dictionary["Names"].Add("Placa controladora");
-                dictionary["Names"].Add("Até quantos HDs");
-                dictionary["Names"].Add("Tipos de HD");
-                dictionary["Names"].Add("Tipos de RAID");
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        dictionary["Names"].Add("HD?");
+                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("Processador?");
+                        dictionary["Names"].Add("Qual windows?");
+                        break;
+                    default:
+                        dictionary["Names"].Add("Modelo da placa mãe");
+                        dictionary["Names"].Add("Fonte");
+                        dictionary["Names"].Add("Memórias instaladas");
+                        dictionary["Names"].Add("HD instalado");
+                        dictionary["Names"].Add("Placa de vídeo");
+                        dictionary["Names"].Add("Placa de rede");
+                        dictionary["Names"].Add("Processadores instalados");
+                        dictionary["Names"].Add("Memórias suportadas");
+                        dictionary["Names"].Add("Até quantas memórias");
+                        dictionary["Names"].Add("Ordem das memórias");
+                        dictionary["Names"].Add("Capacidade RAM total");
+                        dictionary["Names"].Add("Soquete do processador");
+                        dictionary["Names"].Add("Placa controladora");
+                        dictionary["Names"].Add("Até quantos HDs");
+                        dictionary["Names"].Add("Tipos de HD");
+                        dictionary["Names"].Add("Tipos de RAID");
+                        break;
+                }
+                           break;
             #endregion
             #region Storage NAS
             case ConstStrings.StorageNAS:
@@ -1272,9 +1534,17 @@ public class HelperMethods
             #endregion
             #region Switch
             case ConstStrings.Switch:
-                dictionary["Names"].Add("Quantas entradas");
-                dictionary["Names"].Add("Capacidade máx de cada porta (MB/s)");
-                break;
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.Concert:
+                        dictionary["Names"].Add("Quantas e quais portas");
+                                                break;
+                    default:
+                        dictionary["Names"].Add("Quantas entradas");
+                        dictionary["Names"].Add("Capacidade máx de cada porta (MB/s)");
+                        break;
+                }
+                         break;
             #endregion
             #region Teclado
             case ConstStrings.Teclado:

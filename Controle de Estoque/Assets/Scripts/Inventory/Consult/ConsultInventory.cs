@@ -213,16 +213,7 @@ public class ConsultInventory : MonoBehaviour
                         result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
                     }
                 }
-                //foreach (ItemColumns foundItem in foundItens.itens)
-                //{
-                //    if (foundItem.Status != "DEFEITO")
-                //    {
-                //        GameObject result = PoolManager.Instance.ReuseObject(consultResult);
-                //        result.SetActive(true);
-                //        result.GetComponent<ConsultResult>().ShowResult(foundItem, 0);
-                //    }
-                //}
-                numberOfItemsImage.alpha = 1f;
+                         numberOfItemsImage.alpha = 1f;
                 numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
             }
             else

@@ -37,7 +37,7 @@ public class DropDownHandler : MonoBehaviour
                 itemsToInclude = ConstStrings.AllCategories.ToList<string>();
                 break;
             case CurrentEstoque.Concert:
-                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
+                itemsToInclude = ConstStrings.ConcertCategories.ToList<string>();
                 break;
             default:
                 itemsToInclude = ConstStrings.AllCategories.ToList<string>();

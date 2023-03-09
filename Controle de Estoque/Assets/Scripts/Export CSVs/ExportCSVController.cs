@@ -14,33 +14,6 @@ public class ExportCSVController : MonoBehaviour
     private void Start()
     {
         exportCSVs = GetComponent<ExportCSVs>();
-        ExportCSVs();
-    }
-
-    private void ExportCSVs()
-    {
-        exportCSVs.CreateAdaptadorACDetailsSheet();
-        exportCSVs.CreateCarregadorDetailsSheet();
-        exportCSVs.CreateDesktopDetailsSheet();
-        exportCSVs.CreateFonteDetailsSheet();
-        exportCSVs.CreateGbicDetailsSheet();
-        exportCSVs.CreateHDDetailsSheet();
-        exportCSVs.CreateiDracDetailsSheet();
-        exportCSVs.CreateInventarioSheet();
-        exportCSVs.CreateMemoriaDetailsSheet();
-        exportCSVs.CreateMonitorDetailsSheet();
-        exportCSVs.CreateNotebookDetailsSheet();
-        exportCSVs.CreatePlacaControladoraDetailsSheet();
-        exportCSVs.CreatePlacaDeCapturaDeVideoDetailsSheet();
-        exportCSVs.CreatePlacaDeRedeDetailsSheet();
-        exportCSVs.CreatePlacaDeSomDetailsSheet();
-        exportCSVs.CreatePlacaDeVideoDetailsSheet();
-        exportCSVs.CreateProcessadorDetailsSheet();
-        exportCSVs.CreateRoteadorDetailsSheet();
-        exportCSVs.CreateServidorDetailsSheet();
-        exportCSVs.CreateStorageNASDetailsSheet();
-        exportCSVs.CreateSwitchDetailsSheet();
-       // exportCSVs.CreateMovimentacaoSheet();
     }
 
     public void ExportSelectedCSV()
@@ -52,89 +25,33 @@ public class ExportCSVController : MonoBehaviour
                 ShowMessage("Inventário");
                 break;
             case 1:
-                exportCSVs.CreateMovimentacaoSheet();
-                ShowMessage("Movementação");
-                break;
-            case 2:
-                exportCSVs.CreateHDDetailsSheet();
-                ShowMessage("HD");
-                break;
-            case 3:
-                exportCSVs.CreateMemoriaDetailsSheet();
-                ShowMessage("Memória");
-                break;
-            case 4:
-                exportCSVs.CreatePlacaDeRedeDetailsSheet();
-                ShowMessage("Placa de rede");
-                break;
-            case 5:
-                exportCSVs.CreateiDracDetailsSheet();
-                ShowMessage("iDrac");
-                break;
-            case 6:
-                exportCSVs.CreatePlacaControladoraDetailsSheet();
-                ShowMessage("Placa Controladora");
-                break;
-            case 7:
-                exportCSVs.CreateProcessadorDetailsSheet();
-                ShowMessage("Processador");
-                break;
-            case 8:
-                exportCSVs.CreateDesktopDetailsSheet();
-                ShowMessage("Desktop");
-                break;
-            case 9:
-                exportCSVs.CreateFonteDetailsSheet();
-                ShowMessage("Fonte");
-                break;
-            case 10:
-                exportCSVs.CreateSwitchDetailsSheet();
-                ShowMessage("Switch");
-                break;
-            case 11:
-                exportCSVs.CreateRoteadorDetailsSheet();
-                ShowMessage("Roteador");
-                break;
-            case 12:
-                exportCSVs.CreateCarregadorDetailsSheet();
-                ShowMessage("Carregador");
-                break;
-            case 13:
                 exportCSVs.CreateAdaptadorACDetailsSheet();
                 ShowMessage("Adaptador AC");
                 break;
-            case 14:
-                exportCSVs.CreateStorageNASDetailsSheet();
-                ShowMessage("Storage NAS");
+            case 2:
+                exportCSVs.CreateDesktopDetailsSheet();
+                ShowMessage("Desktop");
                 break;
-            case 15:
-                exportCSVs.CreateGbicDetailsSheet();
-                ShowMessage("GBIC");
-                break;
-            case 16:
-                exportCSVs.CreatePlacaDeVideoDetailsSheet();
-                ShowMessage("Placa de vídeo");
-                break;
-            case 17:
-                exportCSVs.CreatePlacaDeSomDetailsSheet();
-                ShowMessage("Placa de som");
-                break;
-            case 18:
-                exportCSVs.CreatePlacaDeCapturaDeVideoDetailsSheet();
-                ShowMessage("Placa de captura de vídeo");
-                break;
-            case 19:
-                exportCSVs.CreateServidorDetailsSheet();
-                ShowMessage("Servidor");
-                break;
-            case 20:
-                exportCSVs.CreateNotebookDetailsSheet();
-                ShowMessage("Notebook");
-                break;
-            case 21:
+            case 3:
                 exportCSVs.CreateMonitorDetailsSheet();
                 ShowMessage("Monitor");
                 break;
+            case 4:
+                exportCSVs.CreateNotebookDetailsSheet();
+                ShowMessage("Notebook");
+                break;
+            case 5:
+                exportCSVs.CreateRoteadorDetailsSheet();
+                ShowMessage("Roteador");
+                break;
+            case 6:
+                exportCSVs.CreateServidorDetailsSheet();
+                ShowMessage("Servidor");
+                break;
+            case 7:
+                exportCSVs.CreateSwitchDetailsSheet();
+                ShowMessage("Switch");
+                break;           
             default:
                 break;
         }

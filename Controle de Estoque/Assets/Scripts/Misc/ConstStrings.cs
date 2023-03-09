@@ -45,6 +45,7 @@ public class ConstStrings
     public static readonly string[] SNPCategories = { AdaptadorAC, Carregador, Desktop, Fonte, Gbic, HD, Idrac, Memoria, Monitor, Nobreak, 
     Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Servidor, StorageNAS, 
     Switch, Outros };
+    public static readonly string[] ConcertCategories = { AdaptadorAC, Desktop, Monitor, Notebook, Roteador, Servidor, Switch, Outros };
     #endregion
 
     #region Tags

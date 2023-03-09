@@ -1,0 +1,108 @@
+[04-Jan-2023 18:27:16 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[04-Jan-2023 18:27:16 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[05-Jan-2023 12:58:18 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[05-Jan-2023 12:58:18 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:38:03 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:38:03 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:38:10 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:38:10 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:39:26 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:39:26 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:41:25 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[11-Jan-2023 15:41:25 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[17-Jan-2023 12:12:23 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[17-Jan-2023 12:12:23 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[17-Jan-2023 12:12:54 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[17-Jan-2023 12:12:54 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[17-Jan-2023 12:54:00 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[17-Jan-2023 12:54:00 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
+[20-Jan-2023 17:20:16 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:20:16 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:40
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(40): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:27:34 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:27:34 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:40
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(40): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:29:42 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:29:42 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:40
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(40): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:32:44 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:32:44 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:40
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(40): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:34:30 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:34:30 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:40
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(40): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:37:40 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:37:40 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:40
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(40): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 40
+[20-Jan-2023 17:42:15 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 38
+[20-Jan-2023 17:42:15 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:38
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(38): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 38
+[20-Jan-2023 17:44:17 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 39
+[20-Jan-2023 17:44:17 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:39
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(39): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 39
+[20-Jan-2023 17:44:53 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 39
+[20-Jan-2023 17:44:53 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:39
+Stack trace:
+#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(39): mysqli_query(Object(mysqli), '')
+#1 {main}
+  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 39
