@@ -8,7 +8,7 @@ using UnityEngine;
 public class ExportCSVController : MonoBehaviour
 {
     private ExportCSVs exportCSVs = null;
-    private int csvToExportIndex;
+    private int csvToExportIndex = 0;
     [SerializeField] private TMP_Text messageText;
 
     private void Start()
@@ -21,7 +21,7 @@ public class ExportCSVController : MonoBehaviour
         switch (csvToExportIndex)
         {
             case 0:
-                exportCSVs.CreateInventarioSheet();
+                exportCSVs.CreateInventarioSheet2();
                 ShowMessage("Inventário");
                 break;
             case 1:

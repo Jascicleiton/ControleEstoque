@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class ExportCSVs : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern void CreateCsv(string joined, string filename);
+
     private string fileName = "";
 
     /// <summary>
@@ -217,6 +221,86 @@ public class ExportCSVs : MonoBehaviour
             }
         }
         textWriter.Close();
+    }
+
+    public void CreateInventarioSheet2()
+    {
+        List<string[]> rowData = new List<string[]>();
+        List<string> rowDataTemp = new List<string>();
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                rowDataTemp.Add("Aquisição");
+                rowDataTemp.Add("Entrada");
+                rowDataTemp.Add("Patrimônio");
+                rowDataTemp.Add("Status");
+                rowDataTemp.Add("Serial");
+                rowDataTemp.Add("Categoria");
+                rowDataTemp.Add("Fabricante");
+                rowDataTemp.Add("Modelo");
+                rowDataTemp.Add("Local");
+                rowDataTemp.Add("Saída");
+                rowDataTemp.Add("Observação");
+                break;
+            case CurrentEstoque.Funsoft:
+                break;
+            case CurrentEstoque.ESF:
+                break;
+            case CurrentEstoque.Testing:
+                break;
+            case CurrentEstoque.Clientes:
+                break;
+            case CurrentEstoque.Concert:
+                rowDataTemp.Add("Aquisição");
+                rowDataTemp.Add("Entrada");
+                rowDataTemp.Add("Patrimônio");
+                rowDataTemp.Add("Status");
+                rowDataTemp.Add("Serial");
+                rowDataTemp.Add("Categoria");
+                rowDataTemp.Add("Fabricante");
+                rowDataTemp.Add("Modelo");
+                rowDataTemp.Add("Local");
+                rowDataTemp.Add("Pessoa");
+                rowDataTemp.Add("Centro de Custo");
+                rowDataTemp.Add("Saída");
+                break;
+            default:
+                break;
+        }
+        foreach (ItemColumns item in InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens)
+        {
+            rowDataTemp.Add(item.Aquisicao);
+            rowDataTemp.Add(item.Entrada);
+            rowDataTemp.Add(item.Patrimonio.ToString());
+            rowDataTemp.Add(item.Status);
+            rowDataTemp.Add(item.Serial);
+            rowDataTemp.Add(item.Categoria);
+            rowDataTemp.Add(item.Fabricante);
+            rowDataTemp.Add(item.Modelo);
+            rowDataTemp.Add(item.Local);
+            rowDataTemp.Add(item.Saida);
+            rowDataTemp.Add(item.Observacao);
+            rowData.Add(rowDataTemp.ToArray());
+        }
+
+        string joined = "";
+
+        for (int i = 0; i < rowData.Count; i++)
+        {
+            for (int j = 0; j < rowData[i].Length; j++)
+            {
+                joined += rowData[i][j] + "|";
+            }
+            joined += ",";
+        }
+
+        CreateCsv(joined, "Inventário.csv");
+    }
+
+    private IEnumerator Post()
+    {
+        WWWForm form = CreateForm.GetInventarioForm( );
+        form.AddField
     }
 
     ///// <summary>
