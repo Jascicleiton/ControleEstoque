@@ -51,6 +51,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
     private bool fullDatabaseFilled = false;
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
+    public List<string> testing = new List<string>();
 
     private void Start()
     {
@@ -65,6 +66,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
         }
         if (Input.GetKeyDown(KeyCode.F12))
         {
+            testing = locations;
             //if (UsersManager.Instance.currentUser.username == "marcelo.fonseca")
             //{
             //    Instantiate(exportManagerPrefab);

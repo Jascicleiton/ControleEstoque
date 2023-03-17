@@ -108,7 +108,18 @@ public static class EventHandler
             WindowClosed();
         }
     }
-        
+
+    public static event Action<string> PostRequestResponse;
+
+    public static void CallPostRequestResponse(string response)
+    {
+        if(PostRequestResponse != null)
+        {
+            PostRequestResponse(response);
+        }
+    }
+
+
 
 }
 

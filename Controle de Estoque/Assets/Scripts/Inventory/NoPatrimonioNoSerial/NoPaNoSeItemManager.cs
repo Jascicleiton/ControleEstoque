@@ -13,6 +13,8 @@ public class NoPaNoSeItemManager : MonoBehaviour
     [SerializeField] private TMP_InputField quantityInput = null;
     [SerializeField] private TMP_Dropdown whereToDP = null;
     [SerializeField] private TMP_InputField locationInput = null;
+    [SerializeField] private Button minusButton = null;
+    [SerializeField] private Button plusButton = null;
 
     private NoPaNoSeItem item = new NoPaNoSeItem();
 
@@ -100,6 +102,21 @@ public class NoPaNoSeItemManager : MonoBehaviour
         item.ItemName = name;
         item.Quantity = quantity;
         UpdateText();
+        switch (UsersManager.Instance.currentUser.GetAccessLevel())
+        {
+            case 2:
+                minusButton.GetComponent<CanvasGroup>().alpha = 0;
+                minusButton.interactable = false;
+                plusButton.GetComponent<CanvasGroup>().alpha = 0;
+                plusButton.interactable = false;
+                whereToDP.GetComponent<CanvasGroup>().alpha = 0;
+                whereToDP.interactable = false;
+                quantityInput.GetComponent<CanvasGroup>().alpha = 0;
+                quantityInput.interactable = false;
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>

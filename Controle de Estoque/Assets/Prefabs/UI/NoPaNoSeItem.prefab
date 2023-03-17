@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 4645994958175722311}
   - component: {fileID: 4645994958175722308}
   - component: {fileID: 4645994958175722309}
+  - component: {fileID: 4392149423129393255}
   m_Layer: 5
   m_Name: Plus_btn
   m_TagString: Untagged
@@ -394,6 +395,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!225 &4392149423129393255
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645994958175722307}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4645994958200292411
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +590,7 @@ GameObject:
   - component: {fileID: 4645994958817165885}
   - component: {fileID: 4645994958817165882}
   - component: {fileID: 4645994958817165883}
+  - component: {fileID: 2829587419578200494}
   m_Layer: 5
   m_Name: QuantityInputField
   m_TagString: Untagged
@@ -741,6 +755,18 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
+--- !u!225 &2829587419578200494
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645994958817165881}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4645994958823373183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,6 +1721,8 @@ MonoBehaviour:
   quantityInput: {fileID: 4645994958817165883}
   whereToDP: {fileID: 442249009759675526}
   locationInput: {fileID: 1234606312881000600}
+  minusButton: {fileID: 4645994959744388226}
+  plusButton: {fileID: 4645994958175722309}
 --- !u!1 &4645994959744388224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1735,7 @@ GameObject:
   - component: {fileID: 4645994959744388228}
   - component: {fileID: 4645994959744388229}
   - component: {fileID: 4645994959744388226}
+  - component: {fileID: 7846683559916256695}
   m_Layer: 5
   m_Name: Minus_btn
   m_TagString: Untagged
@@ -1829,6 +1858,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &7846683559916256695
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645994959744388224}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6654108861722149037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,12 +2331,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53233430f7ca5154ab7708f8913578d0, type: 3}
+--- !u!1 &442249009759675524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3317656563322056686, guid: 53233430f7ca5154ab7708f8913578d0, type: 3}
+  m_PrefabInstance: {fileID: 2893985181749971818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &7427152286498223496
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442249009759675524}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &442249009759675526 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3317656563322056684, guid: 53233430f7ca5154ab7708f8913578d0, type: 3}
   m_PrefabInstance: {fileID: 2893985181749971818}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 442249009759675524}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}

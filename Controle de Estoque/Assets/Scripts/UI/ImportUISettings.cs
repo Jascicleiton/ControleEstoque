@@ -58,7 +58,7 @@ public class ImportUISettings : Singleton<ImportUISettings>
                 {
                     InternalDatabase.locations.Add(item[0]);
                 }
-                InternalDatabase.locations.Sort();
+               InternalDatabase.locations.Sort();
             }
         }
         locationRequest.Dispose();    
@@ -101,7 +101,7 @@ public class ImportUISettings : Singleton<ImportUISettings>
             }
             else
             {
-                InternalDatabase.locations.Clear();
+                InternalDatabase.categories.Clear();
                 JSONNode inventario = JSON.Parse(categoriesRequest.downloadHandler.text);
                 foreach (JSONNode item in inventario)
                 {

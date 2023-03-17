@@ -20,21 +20,19 @@ $password = $_POST["password"];
 
 $usernamecheckquery = "SELECT * from users WHERE username = '" .$usernameClean. "';";
 $usernamecheckresult = mysqli_query($con, $usernamecheckquery) or die ("username query ran into an error");
+$userinfo = mysqli_fetch_assoc($usernamecheckresult);
 
 if($usernamecheckresult->num_rows != 1)
 {
     echo("Username does not exist or there is more than one in the table");
     exit();
 }
-
-$row = mysqli_fetch_array($usernamecheckresult, MYSQLI_NUM);
-
 else
 {
-    $fetchedpassword = mysqli_fetch_assoc($usernamecheckresult)["password"];
+    $fetchedpassword = $userinfo["password"];
     if(password_verify(($password), $fetchedpassword))
     {
-        echo("Success");
+        echo($userinfo["AccessLevel"]);
     }
     else
     {

@@ -36,6 +36,7 @@ public class MainMenuManager : MonoBehaviour
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
     private bool inputEnabled = true;
+    private int authorizationAccessLevel; // used to check if the person authorizing the creation of a new user have high enough access level
 
     [SerializeField] private TMP_Text versionText;
 
@@ -45,6 +46,16 @@ public class MainMenuManager : MonoBehaviour
         adminAuthorizing = false;
         adminAuthorized = false;
         versionText.text = InternalDatabase.Instance.currentVersion;
+    }
+
+    private void OnEnable()
+    {
+        EventHandler.PostRequestResponse += GetUserAccessLevel;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.PostRequestResponse -= GetUserAccessLevel;
     }
 
     private void Update()
@@ -67,6 +78,11 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    private void GetUserAccessLevel(string accessLevel)
+    {
+        authorizationAccessLevel = int.Parse(accessLevel);
+    }
+
     private IEnumerator CheckIfAdmin()
     {
         WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
@@ -76,9 +92,17 @@ public class MainMenuManager : MonoBehaviour
         yield return createPostRequest.SendWebRequest();
         if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            adminAuthorized = true;
-            User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
-            StartCoroutine(AddNewUser(userToAdd));
+            if (authorizationAccessLevel == 2 || authorizationAccessLevel > 4)
+            {
+                adminAuthorized = true;
+                User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
+                StartCoroutine(AddNewUser(userToAdd));
+            }
+            else
+            {
+                SetErrorMessage(8);
+                yield break;
+            }
         }
         else
         {
@@ -139,8 +163,6 @@ public class MainMenuManager : MonoBehaviour
             }
             else
             {
-                Debug.Log(response);
-
                 UsersManager.Instance.currentUser = new User(userInput.text, int.Parse(response));
                 LoadScreen();
             }
@@ -330,6 +352,9 @@ public class MainMenuManager : MonoBehaviour
                     break;
                 case 7:
                     errorText.text = "Login e/ou senha incorretos. Tente novamente";
+                    break;
+                case 8:
+                    errorText.text = "Usuário não possui autorização para liberar criação de novo usuário";
                     break;
                 default:
                     break;

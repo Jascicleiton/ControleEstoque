@@ -92,12 +92,19 @@ public class HandlePostRequestResponse
                 // Debug.Log("Worked");
                 requestWorked = true;
                 EventHandler.CallOpenMessageEvent("Worked");
+                EventHandler.CallPostRequestResponse(response);
             }
             else if (response == "Updated")
             {
                 //  Debug.Log("Updated");
                 requestWorked = true;
                 EventHandler.CallOpenMessageEvent("Updated");
+                EventHandler.CallPostRequestResponse(response);
+            }
+            else if(response == "1" || response == "2" || response == "3" || response == "5" || response == "10")
+            {
+                requestWorked = true;
+                EventHandler.CallPostRequestResponse(response);
             }
             else
             {

@@ -3100,7 +3100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Consulta do invent\xE1rio sem patrim\xF4nio e serial"
+  m_text: "Invent\xE1rio sem patrim\xF4nio e serial"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3882,3 +3882,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 4645994959563129997, guid: dbd31a135cbb32642b249e8332698060, type: 3}
   scrollRect: {fileID: 6915215405666083190}
   inputEnabled: 1
+  addNewItemButton: {fileID: 1449984368}

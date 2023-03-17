@@ -22,11 +22,20 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
     [SerializeField] private GameObject itemPrefab = null;
     [SerializeField] private ScrollRect scrollRect;
     [HideInInspector] public bool inputEnabled = true;
+    [SerializeField] private Button addNewItemButton = null;
 
     private void Start()
     {
         allitems = new NoPaNoSeAll();
         StartCoroutine(StartListRoutine());
+        switch (UsersManager.Instance.currentUser.GetAccessLevel())
+        {
+            case 2:
+                addNewItemButton.gameObject.SetActive(false);
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
