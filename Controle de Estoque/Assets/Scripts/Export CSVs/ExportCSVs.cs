@@ -297,11 +297,11 @@ public class ExportCSVs : MonoBehaviour
         CreateCsv(joined, "Inventário.csv");
     }
 
-    private IEnumerator Post()
-    {
-        WWWForm form = CreateForm.GetInventarioForm( );
-        form.AddField
-    }
+    //private IEnumerator Post()
+    //{
+    //    WWWForm form = CreateForm.GetInventarioForm( );
+    //    //form.AddField
+    //}
 
     ///// <summary>
     ///// Creates a Memoria CSV file

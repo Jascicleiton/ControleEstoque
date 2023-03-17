@@ -504,4 +504,14 @@ public class CreateForm
 
         return movementForm;
     }
+
+    public static WWWForm GetCheckAccessLevelForm(string appPassword, string username, string password)
+    {
+        WWWForm checkAccesssLevelForm = new WWWForm();
+        checkAccesssLevelForm.AddField("apppassword", appPassword);
+        checkAccesssLevelForm.AddField("username", username);
+        checkAccesssLevelForm.AddField("password", password);
+
+        return checkAccesssLevelForm;
+    }
 }

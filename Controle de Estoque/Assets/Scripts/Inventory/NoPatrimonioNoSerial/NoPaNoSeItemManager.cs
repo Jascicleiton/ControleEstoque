@@ -145,12 +145,12 @@ public class NoPaNoSeItemManager : MonoBehaviour
         if (isAdding)
         {
              itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, item.ItemName, int.Parse(quantityInput.text),
-           UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), location, "Estoque");
+           UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), location, "Estoque");
         }
         else
         {
              itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, item.ItemName, int.Parse(quantityInput.text),
-          UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", location);
+          UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), "Estoque", location);
         
         }
 

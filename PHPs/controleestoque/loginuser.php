@@ -20,23 +20,22 @@ $password = $_POST["password"];
 
 $usernamecheckquery = "SELECT * from users WHERE username = '" .$usernameClean. "';";
 $usernamecheckresult = mysqli_query($con, $usernamecheckquery) or die ("username query ran into an error");
+$userinfo = mysqli_fetch_assoc($usernamecheckresult);
 
 if($usernamecheckresult->num_rows != 1)
 {
     echo("Username does not exist or there is more than one in the table");
     exit();
 }
-
 else
 {
-    $fetchedpassword = mysqli_fetch_assoc($usernamecheckresult)["password"];
+   
+    $fetchedpassword = $userinfo["password"];
+    
     if(password_verify(($password), $fetchedpassword))
-    {
-        $userInfo = "SELECT * from users WHERE username = '" .$usernameClean. "';";
-        $userInfoResult = mysqli_query($con, $userInfo) or die ("playerinfo query failed");
-        $existingUserInfo = mysqli_fetch_assoc($userInfoResult);
-        $Username = $existingUserInfo["username"];
-        echo($Username);
+    {         
+        $accesslevel = $userinfo["AccessLevel"];
+        echo $accesslevel;
     }
     else
     {

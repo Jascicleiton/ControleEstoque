@@ -32,7 +32,7 @@ public class GetMovementRecords : MonoBehaviour
     {
         WWWForm movementsForm = CreateForm.GetMovementsForm(ConstStrings.ImportDatabaseKey, parameterInput.text);
 
-        UnityWebRequest createMovementRequest = HelperMethods.GetPostRequest(movementsForm, "importpatrimoniomovements.php", 3);
+        UnityWebRequest createMovementRequest = CreatePostRequest.GetPostRequest(movementsForm, "importpatrimoniomovements.php", 3);
 
         MouseManager.Instance.SetWaitingCursor();
         yield return createMovementRequest.SendWebRequest();
@@ -95,7 +95,7 @@ public class GetMovementRecords : MonoBehaviour
     {
         WWWForm movementsForm = CreateForm.GetMovementsForm(ConstStrings.ImportDatabaseKey, parameterInput.text);
 
-        UnityWebRequest createMovementRequest = HelperMethods.GetPostRequest(movementsForm, "importnopanosemovements.php", 3);
+        UnityWebRequest createMovementRequest = CreatePostRequest.GetPostRequest(movementsForm, "importnopanosemovements.php", 3);
 
         MouseManager.Instance.SetWaitingCursor();
         yield return createMovementRequest.SendWebRequest();

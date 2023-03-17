@@ -16,6 +16,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
     public Sheet testingSheet = new Sheet();
     public static List<MovementRecords> movementRecords;
     public static List<string> locations = new List<string>();
+    public static List<string> categories = new List<string>();
 
     #region Sheets with all information divided by "Categoria"
     public static Sheet adaptadorAC = new Sheet();
@@ -64,10 +65,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
         }
         if (Input.GetKeyDown(KeyCode.F12))
         {
-            if (UsersManager.Instance.currentUser.username == "marcelo.fonseca")
-            {
-                Instantiate(exportManagerPrefab);
-            }
+            //if (UsersManager.Instance.currentUser.username == "marcelo.fonseca")
+            //{
+            //    Instantiate(exportManagerPrefab);
+            //}
         }
     }
 
@@ -832,7 +833,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
     public void ReImport()
     {
         Instantiate(importingWidget);
-        ImportLocations.Instance.ReImport();
+        ImportUISettings.Instance.ReImport();
         InventarioManager.Instance.ImportSheets();
         UpdateFullDatabase();
     }
@@ -1626,8 +1627,6 @@ public class InternalDatabase : Singleton<InternalDatabase>
             fullDatabaseFilled = true;
         }
     }
-
-
 
     /// <summary>
     /// Updates ONE specific item on all relevant sheets in the internal database

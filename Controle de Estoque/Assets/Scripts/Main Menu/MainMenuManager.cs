@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using SimpleJSON;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -54,35 +55,32 @@ public class MainMenuManager : MonoBehaviour
             {
                 if (loginEnabled)
                 {
+                    inputEnabled = false;
                     StartCoroutine(Login());
-                }
+                                    }
                 if (adminAuthorizing)
                 {
-                    CheckAdminAuthorization();
+                    inputEnabled = false;
+                    StartCoroutine(CheckIfAdmin());            
                 }
             }
         }
     }
 
-    /// <summary>
-    /// Check if admin login and password are correct to allow the creation of a new user
-    /// </summary>
-    private void CheckAdminAuthorization()
+    private IEnumerator CheckIfAdmin()
     {
-        adminAuthorized = false;
-        foreach (User user in UsersManager.Instance.usersDatabase)
+        WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
+
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(checkAccesssLevelForm, "checkaccesslevel.php", 0);
+
+        yield return createPostRequest.SendWebRequest();
+        if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            if (adminUserInput.text == user.username && adminPasswordInput.text == user.password)
-            {
-                User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
-                adminAuthorized = true;
-
-                StartCoroutine(AddNewUser(userToAdd));
-
-                break;
-            }
+            adminAuthorized = true;
+            User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
+            StartCoroutine(AddNewUser(userToAdd));
         }
-        if (!adminAuthorized)
+        else
         {
             SetErrorMessage(6);
         }
@@ -99,7 +97,7 @@ public class MainMenuManager : MonoBehaviour
         loginUserInfo.AddField("username", userInput.text);
         loginUserInfo.AddField("password", passwordInput.text);
 
-        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(loginUserInfo, "loginuser.php", 0);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(loginUserInfo, "loginuser.php", 0);
        
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
@@ -141,8 +139,9 @@ public class MainMenuManager : MonoBehaviour
             }
             else
             {
-                CheckIfAdminLogging();
-                createPostRequest.Dispose();
+                Debug.Log(response);
+
+                UsersManager.Instance.currentUser = new User(userInput.text, int.Parse(response));
                 LoadScreen();
             }
 
@@ -168,7 +167,7 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("apppassword", "CheckIfUserExist");
         newUserInfo.AddField("username", addNewUserInput.text);
 
-        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(newUserInfo, "checkuserexist.php", 0);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, "checkuserexist.php", 0);
         
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
@@ -228,10 +227,10 @@ public class MainMenuManager : MonoBehaviour
     {
         WWWForm newUserInfo = new WWWForm();
         newUserInfo.AddField("apppassword", "InsertNewUser");
-        newUserInfo.AddField("username", userToAdd.username);
-        newUserInfo.AddField("password", userToAdd.password);
+        newUserInfo.AddField("username", userToAdd.GetUsername());
+        newUserInfo.AddField("password", userToAdd.GetPassword());
 
-        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(newUserInfo, "newuser.php", 0);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, "newuser.php", 0);
         
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
@@ -273,6 +272,7 @@ public class MainMenuManager : MonoBehaviour
                 SetErrorMessage(2);
                 newUserPanel.SetActive(false);
                 adminAuthorizing = false;
+                
                 loginPanel.SetActive(true);
                 loginEnabled = true;
             }
@@ -287,23 +287,6 @@ public class MainMenuManager : MonoBehaviour
         createPostRequest.Dispose();
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;
-    }
-
-    /// <summary>
-    /// Check to see if it is an admin logging to enable more features
-    /// </summary>
-    private void CheckIfAdminLogging()
-    {
-        UsersManager.Instance.adminLogged = false;
-        foreach (User user in UsersManager.Instance.usersDatabase)
-        {
-            if (userInput.text == user.username)
-            {
-                UsersManager.Instance.adminLogged = true;
-                break;
-            }
-        }
-        UsersManager.Instance.currentUser.username = userInput.text;
     }
 
     /// <summary>

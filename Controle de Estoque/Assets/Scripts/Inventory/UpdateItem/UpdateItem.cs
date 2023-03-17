@@ -106,12 +106,12 @@ public class UpdateItem : MonoBehaviour
         if (parameterToSearchDP.value == 0)
         {
             itemForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemToUpdateParameter.text);
-            createItemUpdatePostRequest = HelperMethods.GetPostRequest(itemForm, "getitempatrimoniotoupdate.php", 4);
+            createItemUpdatePostRequest = CreatePostRequest.GetPostRequest(itemForm, "getitempatrimoniotoupdate.php", 4);
         }
         if (parameterToSearchDP.value == 1)
         {
             itemForm = CreateForm.GetConsultSerialForm(ConstStrings.ConsultKey, itemToUpdateParameter.text);
-            createItemUpdatePostRequest = HelperMethods.GetPostRequest(itemForm, "getitemserialtoupdate.php", 4);
+            createItemUpdatePostRequest = CreatePostRequest.GetPostRequest(itemForm, "getitemserialtoupdate.php", 4);
         }
 
         MouseManager.Instance.SetWaitingCursor();

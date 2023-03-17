@@ -64,7 +64,7 @@ public class MovementManager : MonoBehaviour
             itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(itemInformationInput.text),InternalDatabase.Instance.fullDatabase);
             WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
            
-            UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
+            UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
           
             MouseManager.Instance.SetWaitingCursor();
             inputEnabled = false;
@@ -117,7 +117,7 @@ public class MovementManager : MonoBehaviour
             itemToChange = ConsultDatabase.Instance.ConsultSerial(itemInformationInput.text, InternalDatabase.Instance.fullDatabase);
             WWWForm consultSerialForm = CreateForm.GetConsultSerialForm(ConstStrings.ConsultKey, itemInformationInput.text);
 
-            UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(consultSerialForm, "consultserial.php", 3);
+            UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultSerialForm, "consultserial.php", 3);
             MouseManager.Instance.SetWaitingCursor();
             inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
@@ -178,7 +178,7 @@ public class MovementManager : MonoBehaviour
                 fromInput.GetComponent<CanvasGroup>().alpha = 1;
                 fromInput.text = itemToChange.Local;
             }
-            whoInput.text = UsersManager.Instance.currentUser.username;
+            whoInput.text = UsersManager.Instance.currentUser.GetUsername();
         }
         else
         {
@@ -197,16 +197,16 @@ public class MovementManager : MonoBehaviour
         if (itemInformationDP.value == 0)
         {
             moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, 
-            itemToChange.Serial, UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), 
+            itemToChange.Serial, UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), 
             GetFromLocation(), GetToLocation());
         }
         else if (itemInformationDP.value == 1)
         {
             moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemToChange.Patrimonio.ToString(), itemInformationInput.text,
-            UsersManager.Instance.currentUser.username, DateTime.Now.ToString("dd/MM/yyyy"), GetFromLocation(), GetToLocation());
+            UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), GetFromLocation(), GetToLocation());
         }
      
-        UnityWebRequest createPostRequest = HelperMethods.GetPostRequest(moveItemForm, "moveitem.php", 3);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(moveItemForm, "moveitem.php", 3);
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
@@ -324,7 +324,7 @@ public class MovementManager : MonoBehaviour
         }
 
 
-        movementToRecord.username = UsersManager.Instance.currentUser.username;
+        movementToRecord.username = UsersManager.Instance.currentUser.GetUsername();
         movementToRecord.date = DateTime.Now.ToString("dd/MM/yyyy");
         movementToRecord.item = item;
     }

@@ -171,318 +171,8 @@ public class HelperMethods
         }
     }
 
-    /// <summary>
-    /// Root = 0, Import = 1, AddItem = 2, Movements = 3, Update = 4, NoPaNoSe = 5
-    /// </summary>
-    public static UnityWebRequest GetPostRequest(WWWForm form, string phpName, int folderID)
-    {
-        UnityWebRequest requestToSend = new UnityWebRequest();
-        string folder = "";
-        switch (folderID)
-        {
-            case 0:
-                switch (InternalDatabase.Instance.currentEstoque)
-                {
-                    case CurrentEstoque.SnPro:
-                        folder = ConstStrings.PhpRootFolder;
-                        break;
-                    case CurrentEstoque.Funsoft:
-                        folder = ConstStrings.PhpRootFolderFunsoft;
-                        break;
-                    case CurrentEstoque.ESF:
-                        folder = ConstStrings.PhpRootFolderESF;
-                        break;
-                    case CurrentEstoque.Testing:
-                        folder = ConstStrings.PhpRootFolderTesting;
-                        break;
-                    case CurrentEstoque.Clientes:
-                        folder = ConstStrings.PhpRootFolderClientes;
-                        break;
-                    case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpRootFolderConcert;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 1:
-                switch (InternalDatabase.Instance.currentEstoque)
-                {
-                    case CurrentEstoque.SnPro:
-                        folder = ConstStrings.PhpImportTablesFolder;
-                        break;
-                    case CurrentEstoque.Funsoft:
-                        folder = ConstStrings.PhpImportTablesFolderFunsoft;
-                        break;
-                    case CurrentEstoque.ESF:
-                        folder = ConstStrings.PhpImportTablesFolderESF;
-                        break;
-                    case CurrentEstoque.Testing:
-                        folder = ConstStrings.PhpImportTablesFolderTesting;
-                        break;
-                    case CurrentEstoque.Clientes:
-                        folder = ConstStrings.PhpImportTablesFolderClientes;
-                        break;
-                    case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpImportTablesFolderConcert;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 2:
-                switch (InternalDatabase.Instance.currentEstoque)
-                {
-                    case CurrentEstoque.SnPro:
-                        folder = ConstStrings.PhpAdditemsFolder;
-                        break;
-                    case CurrentEstoque.Funsoft:
-                        folder = ConstStrings.PhpAdditemsFolderFunsoft;
-                        break;
-                    case CurrentEstoque.ESF:
-                        folder = ConstStrings.PhpAdditemsFolderESF;
-                        break;
-                    case CurrentEstoque.Testing:
-                        folder = ConstStrings.PhpAdditemsFolderTesting;
-                        break;
-                    case CurrentEstoque.Clientes:
-                        folder = ConstStrings.PhpAdditemsFolderClientes;
-                        break;
-                    case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpAdditemsFolderConcert;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 3:
-                switch (InternalDatabase.Instance.currentEstoque)
-                {
-                    case CurrentEstoque.SnPro:
-                        folder = ConstStrings.PhpMovementsFolder;
-                        break;
-                    case CurrentEstoque.Funsoft:
-                        folder = ConstStrings.PhpMovementsFolderFunsoft;
-                        break;
-                    case CurrentEstoque.ESF:
-                        folder = ConstStrings.PhpMovementsFolderESF;
-                        break;
-                    case CurrentEstoque.Testing:
-                        folder = ConstStrings.PhpMovementsFolderTesting;
-                        break;
-                    case CurrentEstoque.Clientes:
-                        folder = ConstStrings.PhpMovementsFolderClientes;
-                        break;
-                    case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpMovementsFolderConcert;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 4:
-                switch (InternalDatabase.Instance.currentEstoque)
-                {
-                    case CurrentEstoque.SnPro:
-                        folder = ConstStrings.PhpUpdateItemsFolder;
-                        break;
-                    case CurrentEstoque.Funsoft:
-                        folder = ConstStrings.PhpUpdateItemsFolderFunsoft;
-                        break;
-                    case CurrentEstoque.ESF:
-                        folder = ConstStrings.PhpUpdateItemsFolderESF;
-                        break;
-                    case CurrentEstoque.Testing:
-                        folder = ConstStrings.PhpUpdateItemsFolderTesting;
-                        break;
-                    case CurrentEstoque.Clientes:
-                        folder = ConstStrings.PhpUpdateItemsFolderClientes;
-                        break;
-                    case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpUpdateItemsFolderConcert;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case 5:
-                switch (InternalDatabase.Instance.currentEstoque)
-                {
-                    case CurrentEstoque.SnPro:
-                        folder = ConstStrings.PhpNoPaNoSeItemsFolder;
-                        break;
-                    case CurrentEstoque.Funsoft:
-                        folder = ConstStrings.PhpNoPaNoSeItemsFolderFunsoft;
-                        break;
-                    case CurrentEstoque.ESF:
-                        folder = ConstStrings.PhpNoPaNoSeItemsFolderESF;
-                        break;
-                    case CurrentEstoque.Testing:
-                        folder = ConstStrings.PhpNoPaNoSeItemsFolderTesting;
-                        break;
-                    case CurrentEstoque.Clientes:
-                        folder = ConstStrings.PhpNoPaNoSeItemsFolderClientes;
-                        break;
-                    case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpNoPaNoSeItemsFolderConcert;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                switch (InternalDatabase.Instance.currentEstoque)
-                {
-                    case CurrentEstoque.SnPro:
-                        folder = ConstStrings.PhpRootFolder;
-                        break;
-                    case CurrentEstoque.Funsoft:
-                        folder = ConstStrings.PhpRootFolderFunsoft;
-                        break;
-                    case CurrentEstoque.ESF:
-                        folder = ConstStrings.PhpRootFolderESF;
-                        break;
-                    case CurrentEstoque.Testing:
-                        folder = ConstStrings.PhpRootFolderTesting;
-                        break;
-                    case CurrentEstoque.Clientes:
-                        folder = ConstStrings.PhpRootFolderClientes;
-                        break;
-                    case CurrentEstoque.Concert:
-                        folder = ConstStrings.PhpRootFolderConcert;
-                        break;
-                    default:
-                        break;
-                }
-                break;
-        }
+    
 
-        requestToSend = UnityWebRequest.Post(folder + phpName, form);
-
-        return requestToSend;
-    }
-
-    /// <summary>
-    /// Handles what happens after a web request is sent
-    /// </summary>
-    private static void SendWebRequestHandler(UnityWebRequest requestToHandle)
-    {
-        if (requestToHandle.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.LogWarning("AddUpdate: conectionerror");
-            EventHandler.CallOpenMessageEvent("Server error: 1");
-            addUpdateResponse = false;
-        }
-        else if (requestToHandle.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("AddUpdate: data processing error");
-            addUpdateResponse = false;
-            EventHandler.CallOpenMessageEvent("Server error: 2");
-        }
-        else if (requestToHandle.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("AddUpdate: protocol error");
-            addUpdateResponse = false;
-            EventHandler.CallOpenMessageEvent("Server error: 3");
-        }
-
-        if (requestToHandle.error == null)
-        {
-            string response = requestToHandle.downloadHandler.text;
-            if (response == "Conection error")
-            {
-                Debug.LogWarning("AddUpdate: Server error");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 4");
-            }
-            else if (response == "Update failed")
-            {
-                Debug.LogWarning("Update: UpdateQuery failed");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 5");
-            }
-            else if (response == "insert item failed")
-            {
-                Debug.LogWarning("Insert: InsertQuery failed");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 6");
-            }
-            else if (response == "Patrimônio found")
-            {
-                Debug.Log("Patrimônio duplicado");
-                addUpdateResponse = false;
-                EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallOpenMessageEvent("Patrimônio já existe");
-            }
-            else if (response == "Serial found")
-            {
-                addUpdateResponse = false;
-                EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallOpenMessageEvent("Serial já existe");
-            }
-            else if (response == "Modelo Found")
-            {
-                EventHandler.CallOpenMessageEvent("Modelo já está detalhado");
-            }
-            #region Check if already exists Queries
-            else if (response == "Patrimônio query failed")
-            {
-                Debug.LogWarning("Insert inventario: Patrimonio query failed");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 7.1");
-            }
-            else if (response == "Serial query failed")
-            {
-                Debug.LogWarning("Insert Inventario: Serial query failed");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 7.2");
-            }
-            else if (response == "Desktop Patrimonio query failed")
-            {
-                Debug.LogWarning("Insert Desktop: Patrimonio query failed");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 7.3");
-            }
-            else if (response == "Modelo query failed")
-            {
-                Debug.LogWarning("Insert: Modelo query failed");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 7.4");
-            }
-            #endregion
-            else if (response == "Wrong app key")
-            {
-                Debug.LogWarning("AddUpdate: app key");
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 8");
-            }
-            else if (response == "Worked")
-            {
-               // Debug.Log("Worked");
-                addUpdateResponse = true;
-                EventHandler.CallOpenMessageEvent("Worked");
-            }
-            else if (response == "Updated")
-            {
-              //  Debug.Log("Updated");
-                addUpdateResponse = true;
-                EventHandler.CallOpenMessageEvent("Updated");
-            }
-            else
-            {
-                Debug.LogWarning("AddUpdate: " + response);
-                addUpdateResponse = false;
-                EventHandler.CallOpenMessageEvent("Server error: 9");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("AddUpdate: " + requestToHandle.error);
-            addUpdateResponse = false;
-            EventHandler.CallOpenMessageEvent("Server error: 10");
-        }
-        requestToHandle.Dispose();
-    }
 
     /// <summary>
     /// Root = 0, Import = 1, AddItem = 2, Movements = 3, Update = 4, NoPaNoSe = 5
@@ -531,12 +221,12 @@ public class HelperMethods
             }
            
 
-            UnityWebRequest createUpdateInventarioRequest = GetPostRequest(itemForm, phpName + "inventario.php", folderID);
+            UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, phpName + "inventario.php", folderID);
             MouseManager.Instance.SetWaitingCursor();
 
             yield return createUpdateInventarioRequest.SendWebRequest();
 
-            SendWebRequestHandler(createUpdateInventarioRequest);
+           addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createUpdateInventarioRequest);
             if (!addUpdateResponse)
             {
              //   EventHandler.CallIsOneMessageOnlyEvent(true);
@@ -553,11 +243,11 @@ public class HelperMethods
                     WWWForm hdForm = CreateForm.GetHDForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
 
-                    UnityWebRequest createHDPostRequest = GetPostRequest(hdForm, phpName + "hd.php", folderID);
+                    UnityWebRequest createHDPostRequest = CreatePostRequest.GetPostRequest(hdForm, phpName + "hd.php", folderID);
 
                     yield return createHDPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createHDPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createHDPostRequest);
                     break;
                 #endregion
                 #region Memoria
@@ -565,11 +255,11 @@ public class HelperMethods
                     WWWForm memoriaForm = CreateForm.GetMemoriaForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9]);
 
-                    UnityWebRequest createMemoriaPostRequest = GetPostRequest(memoriaForm, phpName + "memoria.php", folderID);
+                    UnityWebRequest createMemoriaPostRequest = CreatePostRequest.GetPostRequest(memoriaForm, phpName + "memoria.php", folderID);
 
                     yield return createMemoriaPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createMemoriaPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createMemoriaPostRequest);
 
                     break;
                 #endregion
@@ -578,11 +268,11 @@ public class HelperMethods
                     WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6]);
 
-                    UnityWebRequest createPlacaDeRedePostRequest = GetPostRequest(placaDeRedeForm, phpName + "placarede.php", folderID);
+                    UnityWebRequest createPlacaDeRedePostRequest = CreatePostRequest.GetPostRequest(placaDeRedeForm, phpName + "placarede.php", folderID);
 
                     yield return createPlacaDeRedePostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createPlacaDeRedePostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeRedePostRequest);
                     break;
                 #endregion
                 #region iDrac
@@ -590,11 +280,11 @@ public class HelperMethods
                     WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                    parameters[4], parameters[5]);
 
-                    UnityWebRequest createIdracPostRequest = GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
+                    UnityWebRequest createIdracPostRequest = CreatePostRequest.GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
 
                     yield return createIdracPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createIdracPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createIdracPostRequest);
                     break;
                 #endregion
                 #region Placa controladora
@@ -602,11 +292,11 @@ public class HelperMethods
                     WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(appKey, parameters[0], parameters[1], parameters[2],
                     parameters[3], parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
 
-                    UnityWebRequest createPlacaControladoraPostRequest = GetPostRequest(placaControladoraForm, phpName + "placacontroladora.php", folderID);
+                    UnityWebRequest createPlacaControladoraPostRequest = CreatePostRequest.GetPostRequest(placaControladoraForm, phpName + "placacontroladora.php", folderID);
 
                     yield return createPlacaControladoraPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createPlacaControladoraPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaControladoraPostRequest);
                     break;
                 #endregion
                 #region Processador
@@ -614,11 +304,11 @@ public class HelperMethods
                     WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                   parameters[4], parameters[5], parameters[6]);
 
-                    UnityWebRequest createProcessadorPostRequest = GetPostRequest(processadorForm, phpName + "processador.php", folderID);
+                    UnityWebRequest createProcessadorPostRequest = CreatePostRequest.GetPostRequest(processadorForm, phpName + "processador.php", folderID);
 
                     yield return createProcessadorPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createProcessadorPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createProcessadorPostRequest);
                     break;
                 #endregion
                 #region Desktop
@@ -644,22 +334,22 @@ public class HelperMethods
                             break;
                     }                 
 
-                    UnityWebRequest createDesktopPostRequest = GetPostRequest(desktopForm, phpName + "desktop.php", folderID);
+                    UnityWebRequest createDesktopPostRequest = CreatePostRequest.GetPostRequest(desktopForm, phpName + "desktop.php", folderID);
 
                     yield return createDesktopPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createDesktopPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createDesktopPostRequest);
                     break;
                 #endregion
                 #region Fonte
                 case ConstStrings.Fonte:
                     WWWForm fonteForm = CreateForm.GetFonteForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
-                    UnityWebRequest createFontePostRequest = GetPostRequest(fonteForm, phpName + "fonte.php", folderID);
+                    UnityWebRequest createFontePostRequest = CreatePostRequest.GetPostRequest(fonteForm, phpName + "fonte.php", folderID);
 
                     yield return createFontePostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createFontePostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createFontePostRequest);
                     break;
                 #endregion
                 #region Switch
@@ -683,11 +373,11 @@ public class HelperMethods
                     }
                    
 
-                    UnityWebRequest createSwitchPostRequest = GetPostRequest(switchForm, phpName + "switch.php", folderID);
+                    UnityWebRequest createSwitchPostRequest = CreatePostRequest.GetPostRequest(switchForm, phpName + "switch.php", folderID);
 
                     yield return createSwitchPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createSwitchPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createSwitchPostRequest);
                     break;
                 #endregion
                 #region Roteador
@@ -695,33 +385,33 @@ public class HelperMethods
                     WWWForm roteadorForm = CreateForm.GetRoteadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                   parameters[4]);
 
-                    UnityWebRequest createRoteadorPostRequest = GetPostRequest(roteadorForm, phpName + "roteador.php", folderID);
+                    UnityWebRequest createRoteadorPostRequest = CreatePostRequest.GetPostRequest(roteadorForm, phpName + "roteador.php", folderID);
 
                     yield return createRoteadorPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createRoteadorPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createRoteadorPostRequest);
                     break;
                 #endregion
                 #region Carregador
                 case ConstStrings.Carregador:
                     WWWForm carregadorForm = CreateForm.GetCarregadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
-                    UnityWebRequest createCarregadorPostRequest = GetPostRequest(carregadorForm, phpName + "carregador.php", folderID);
+                    UnityWebRequest createCarregadorPostRequest = CreatePostRequest.GetPostRequest(carregadorForm, phpName + "carregador.php", folderID);
 
                     yield return createCarregadorPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createCarregadorPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createCarregadorPostRequest);
                     break;
                 #endregion
                 #region Adaptador AC
                 case ConstStrings.AdaptadorAC:
                     WWWForm adaptadorAcForm = CreateForm.GetAdaptadorACForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
-                    UnityWebRequest createAdaptadorACPostRequest = GetPostRequest(adaptadorAcForm, phpName + "adaptadorac.php", folderID);
+                    UnityWebRequest createAdaptadorACPostRequest = CreatePostRequest.GetPostRequest(adaptadorAcForm, phpName + "adaptadorac.php", folderID);
 
                     yield return createAdaptadorACPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createAdaptadorACPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createAdaptadorACPostRequest);
                     break;
                 #endregion
                 #region Storage Nas
@@ -729,55 +419,55 @@ public class HelperMethods
                     WWWForm storageNasForm = CreateForm.GetStorageNASForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                   parameters[4], parameters[5]);
 
-                    UnityWebRequest createStorageNasPostRequest = GetPostRequest(storageNasForm, phpName + "storagenas.php", folderID);
+                    UnityWebRequest createStorageNasPostRequest = CreatePostRequest.GetPostRequest(storageNasForm, phpName + "storagenas.php", folderID);
 
                     yield return createStorageNasPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createStorageNasPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createStorageNasPostRequest);
                     break;
                 #endregion
                 #region GBIC
                 case ConstStrings.Gbic:
                     WWWForm gbicForm = CreateForm.GetGBICForm(appKey, parameters[0], parameters[1], parameters[2]);
 
-                    UnityWebRequest createGBICPostRequest = GetPostRequest(gbicForm, phpName + "gbic.php", folderID);
+                    UnityWebRequest createGBICPostRequest = CreatePostRequest.GetPostRequest(gbicForm, phpName + "gbic.php", folderID);
 
                     yield return createGBICPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createGBICPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createGBICPostRequest);
                     break;
                 #endregion
                 #region Placa de vídeo
                 case ConstStrings.PlacaDeVideo:
                     WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
 
-                    UnityWebRequest createPlacaDeVideoPostRequest = GetPostRequest(placaDeVideoForm, phpName + "placadevideo.php", folderID);
+                    UnityWebRequest createPlacaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeVideoForm, phpName + "placadevideo.php", folderID);
 
                     yield return createPlacaDeVideoPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createPlacaDeVideoPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeVideoPostRequest);
                     break;
                 #endregion
                 #region Placa de som
                 case ConstStrings.PlacaDeSom:
                     WWWForm placaDeSomForm = CreateForm.GetPlacaSomForm(appKey, parameters[0], parameters[1]);
 
-                    UnityWebRequest createPlacaDeSomPostRequest = GetPostRequest(placaDeSomForm, phpName + "placadesom.php", folderID);
+                    UnityWebRequest createPlacaDeSomPostRequest = CreatePostRequest.GetPostRequest(placaDeSomForm, phpName + "placadesom.php", folderID);
 
                     yield return createPlacaDeSomPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createPlacaDeSomPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeSomPostRequest);
                     break;
                 #endregion
                 #region Placa de captura de vídeo
                 case ConstStrings.PlacaDeCapturaDeVideo:
                     WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaDeCapturaDeVideoForm(appKey, parameters[0], parameters[1]);
 
-                    UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = GetPostRequest(placaDeCapturaDeVideoForm, phpName + "placacapturavideo.php", folderID);
+                    UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeCapturaDeVideoForm, phpName + "placacapturavideo.php", folderID);
 
                     yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createPlacaDeCapturaDeVideoPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeCapturaDeVideoPostRequest);
                     break;
                 #endregion
                 #region Servidor
@@ -806,11 +496,11 @@ public class HelperMethods
                             break;
                     }
                    
-                    UnityWebRequest createServidorPostRequest = GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
+                    UnityWebRequest createServidorPostRequest = CreatePostRequest.GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
 
                     yield return createServidorPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createServidorPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createServidorPostRequest);
                     break;
                 #endregion
                 #region Notebook
@@ -836,11 +526,11 @@ public class HelperMethods
                             break;
                     }
                     
-                    UnityWebRequest createNotebookPostRequest = GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
+                    UnityWebRequest createNotebookPostRequest = CreatePostRequest.GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
 
                     yield return createNotebookPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createNotebookPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createNotebookPostRequest);
                     break;
                 #endregion
                 #region Monitor
@@ -864,11 +554,11 @@ public class HelperMethods
                     }
                     
 
-                    UnityWebRequest createMonitorPostRequest = GetPostRequest(monitorForm, phpName + "monitor.php", folderID);
+                    UnityWebRequest createMonitorPostRequest = CreatePostRequest.GetPostRequest(monitorForm, phpName + "monitor.php", folderID);
 
                     yield return createMonitorPostRequest.SendWebRequest();
 
-                    SendWebRequestHandler(createMonitorPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createMonitorPostRequest);
                     break;
                 #endregion
                 #region Mouse
@@ -1606,4 +1296,5 @@ public class HelperMethods
                 return false;
         }
     }
+
 }

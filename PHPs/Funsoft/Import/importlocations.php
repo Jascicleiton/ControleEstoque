@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_controleestoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");
@@ -14,9 +14,6 @@ if($appkey != "ImportDatabase")
     exit();
 }
 
-$tablequery = "SELECT * FROM Inventario;";
-$result = $con->query($tablequery) or die("Query failed");
-
 function utf8ize($d)
 {
     if (is_array($d)) {
@@ -29,14 +26,15 @@ function utf8ize($d)
     return $d;
 }
 
+$tablequery = "SELECT * FROM Locais;";
+$result = $con->query($tablequery) or die("Query failed");
 if($result->num_rows > 0)
-{ 
+{
     $json_array = array();
     while($row = mysqli_fetch_assoc($result))
     {
         $json_array[] = $row;
     }
-            
     echo json_encode(utf8ize($json_array));
 }
 else
@@ -45,8 +43,4 @@ else
 }
 
 $con->close();
-// Error codes
-// 1 - Database connection error
-// 2 - Table query ran into an error
-// 3 - Result came empty
 ?>

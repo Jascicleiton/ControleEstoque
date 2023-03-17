@@ -14,8 +14,6 @@ public class InitialSceneManager : MonoBehaviour
     [SerializeField] private Button exportSheetsButton;
     [SerializeField] private Button logoutButton;
     [SerializeField] private Button noPaNoSeButton;
-    [SerializeField] private Button fullInventoryButton;
-    [SerializeField] private Button fullDetailsButton;
     [SerializeField] private Button allMovementsButton;
 
     [SerializeField] TMP_Text helloMessage;
@@ -23,7 +21,7 @@ public class InitialSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        helloMessage.text = "Olá " + UsersManager.Instance.currentUser.username + ". \nO que você deseja fazer agora?";
+        helloMessage.text = "Olá " + UsersManager.Instance.currentUser.GetUsername() + ". \nO que você deseja fazer agora?";
         ShowHideButtons();
         InternalDatabase.Instance.FillFullDatabase();
     }
@@ -35,51 +33,46 @@ public class InitialSceneManager : MonoBehaviour
     {
         if(UsersManager.Instance != null)
         {
-            if(UsersManager.Instance.adminLogged)
+            switch (UsersManager.Instance.currentUser.GetAccessLevel())
             {
-                consultButton.gameObject.SetActive(true);
-                moveButton.gameObject.SetActive(true);
-                addRemoveButton.gameObject.SetActive(true);
-                updateItemButton.gameObject.SetActive(true);
-                exportSheetsButton.gameObject.SetActive(true);
-                logoutButton.gameObject.SetActive(true);
-                noPaNoSeButton.gameObject.SetActive(true);
-                fullInventoryButton.gameObject.SetActive(false);
-                fullDetailsButton.gameObject.SetActive(false);
-                allMovementsButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                consultButton.gameObject.SetActive(true);
-                moveButton.gameObject.SetActive(true);
-                logoutButton.gameObject.SetActive(true);
-                noPaNoSeButton.gameObject.SetActive(true);
-                addRemoveButton.gameObject.SetActive(false);
-                updateItemButton.gameObject.SetActive(false);
-                exportSheetsButton.gameObject.SetActive(false);        
-                fullInventoryButton.gameObject.SetActive(false);
-                fullDetailsButton.gameObject.SetActive(false);
-                allMovementsButton.gameObject.SetActive(false);
+                case 1:
+                    addRemoveButton.gameObject.SetActive(false);
+                    updateItemButton.gameObject.SetActive(false);
+                    exportSheetsButton.gameObject.SetActive(false);
+                    allMovementsButton.gameObject.SetActive(false);
+                    break;
+                case 2:
+                    addRemoveButton.gameObject.SetActive(false);
+                    updateItemButton.gameObject.SetActive(false);
+                    moveButton.gameObject.SetActive(false);
+                    break;
+                case 3:
+                    updateItemButton.gameObject.SetActive(false);
+                    exportSheetsButton.gameObject.SetActive(false);
+                    noPaNoSeButton.gameObject.SetActive(false);
+                    allMovementsButton.gameObject.SetActive(false);
+                    break;
+                case 5:
+                    updateItemButton.gameObject.SetActive(false);
+                    break;
+                case 10:
+
+                    break;
+                default:
+                    consultButton.gameObject.SetActive(true);
+                    moveButton.gameObject.SetActive(false);
+                    addRemoveButton.gameObject.SetActive(false);
+                    updateItemButton.gameObject.SetActive(false);
+                    exportSheetsButton.gameObject.SetActive(false);
+                    noPaNoSeButton.gameObject.SetActive(false);
+                    allMovementsButton.gameObject.SetActive(false);
+                    break;
             }
         }
         else
         {
             Debug.LogWarning("UsersManager not found on InitialScene");
-        }
-        if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
-        {
-            consultButton.gameObject.SetActive(true);
-            moveButton.gameObject.SetActive(true);
-            addRemoveButton.gameObject.SetActive(true);
-            updateItemButton.gameObject.SetActive(true);
-            exportSheetsButton.gameObject.SetActive(true);
-            logoutButton.gameObject.SetActive(true);
-            noPaNoSeButton.gameObject.SetActive(false);
-            fullInventoryButton.gameObject.SetActive(false);
-            fullDetailsButton.gameObject.SetActive(false);
-            allMovementsButton.gameObject.SetActive(true);
-        }
-      
+        }    
     }
 
     /// <summary>
@@ -151,7 +144,7 @@ public class InitialSceneManager : MonoBehaviour
     /// </summary>
     public void LogoutClicked()
     {
-        UsersManager.Instance.currentUser = new User("pessoa", "");
+        UsersManager.Instance.currentUser = new User("pessoa", "", 1);
         SceneManager.LoadScene(ConstStrings.SceneMainMenu);
     }
 }

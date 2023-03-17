@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_controleestoque');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");
@@ -34,14 +34,7 @@ else
     $fetchedpassword = mysqli_fetch_assoc($usernamecheckresult)["password"];
     if(password_verify(($password), $fetchedpassword))
     {
-        $userInfo = "SELECT * from users WHERE username = '" .$usernameClean. "';";
-        $userInfoResult = mysqli_query($con, $userInfo) or die ("playerinfo query failed");
-        $existingUserInfo = mysqli_fetch_assoc($userInfoResult);
-        $Username = $existingUserInfo["username"];
-        if($row[2] != null)
-        {
-        echo($row[2]);
-        }
+        echo("Success");
     }
     else
     {

@@ -17,28 +17,7 @@ public class LocationDropDownHandler : MonoBehaviour
             dropdown = GetComponent<TMP_Dropdown>();
         }
         dropdown.ClearOptions();
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                break;
-            case CurrentEstoque.Funsoft:
-                break;
-            case CurrentEstoque.ESF:
-                InternalDatabase.locations.Clear();
-                InternalDatabase.locations.Add("Estoque");
-                InternalDatabase.locations.Add("Estoque de itens defeituosos");
-                InternalDatabase.locations.Add("Em uso");
-                break;
-            case CurrentEstoque.Testing:
-                break;
-            case CurrentEstoque.Clientes:
-                break;
-            case CurrentEstoque.Concert:
-
-                break;
-            default:
-                break;
-        }
+        
         if (InternalDatabase.locations.Count > 0)
         {
             dropdown.AddOptions(InternalDatabase.locations);
