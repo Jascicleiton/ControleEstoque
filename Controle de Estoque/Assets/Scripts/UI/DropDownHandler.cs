@@ -7,7 +7,6 @@ using UnityEngine;
 public class DropDownHandler : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown dropdown;
-    List<string> itemsToInclude;
 
     /// <summary>
     /// Handle which items are available on the category dropdown based on which "estoque" is selected
@@ -19,34 +18,12 @@ public class DropDownHandler : MonoBehaviour
             dropdown = GetComponent<TMP_Dropdown>();
         }
         dropdown.ClearOptions();
-        switch (InternalDatabase.Instance.currentEstoque)
+
+        if (InternalDatabase.categories.Count > 0)
         {
-            case CurrentEstoque.SnPro:
-                itemsToInclude = ConstStrings.SNPCategories.ToList<string>();
-                break;
-            case CurrentEstoque.Funsoft:
-                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
-                break;
-            case CurrentEstoque.ESF:
-                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
-                break;
-            case CurrentEstoque.Testing:
-                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
-                break;
-            case CurrentEstoque.Clientes:
-                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
-                break;
-            case CurrentEstoque.Concert:
-                itemsToInclude = ConstStrings.ConcertCategories.ToList<string>();
-                break;
-            default:
-                itemsToInclude = ConstStrings.AllCategories.ToList<string>();
-                break;
-            
+            dropdown.AddOptions(InternalDatabase.categories);          
         }
-        if (itemsToInclude.Count > 0)
-        {
-            dropdown.AddOptions(itemsToInclude);          
-        }
-    }    
+    }  
+    
+    
 }

@@ -14,71 +14,13 @@ public class HelperMethods
     /// </summary>
     public static string GetCategoryString(int value)
     {
-        switch (InternalDatabase.Instance.currentEstoque)
+        if(value < InternalDatabase.categories.Count)
         {
-            case CurrentEstoque.SnPro:
-                if (value < ConstStrings.SNPCategories.Length)
-                {
-                    return ConstStrings.SNPCategories[value];
-                }
-                else
-                {
-                    return "Adicionar nova categoria";
-                }
-            case CurrentEstoque.Funsoft:
-                if (value < ConstStrings.AllCategories.Length)
-                {
-                    return ConstStrings.AllCategories[value];
-                }
-                else
-                {
-                    return "Adicionar nova categoria";
-                }
-            case CurrentEstoque.ESF:
-                if (value < ConstStrings.AllCategories.Length)
-                {
-                    return ConstStrings.AllCategories[value];
-                }
-                else
-                {
-                    return "Adicionar nova categoria";
-                }
-            case CurrentEstoque.Testing:
-                if (value < ConstStrings.AllCategories.Length)
-                {
-                    return ConstStrings.AllCategories[value];
-                }
-                else
-                {
-                    return "Adicionar nova categoria";
-                }
-            case CurrentEstoque.Clientes:
-                if (value < ConstStrings.AllCategories.Length)
-                {
-                    return ConstStrings.AllCategories[value];
-                }
-                else
-                {
-                    return "Adicionar nova categoria";
-                }
-            case CurrentEstoque.Concert:
-                if(value < ConstStrings.ConcertCategories.Length)
-                {
-                    return ConstStrings.ConcertCategories[value];
-                }
-                else
-                {
-                    return "Adicionar nova categoria";
-                }
-            default:
-                if (value < ConstStrings.AllCategories.Length)
-                {
-                    return ConstStrings.AllCategories[value];
-                }
-                else
-                {
-                    return "Adicionar nova categoria";
-                }
+            return InternalDatabase.categories[value];
+        }
+        else
+        {
+            return "Adicionar nova categoria";
         }
     }
 
@@ -103,77 +45,16 @@ public class HelperMethods
     /// </summary>
     public static int GetCategoryInt(string category)
     {
-        switch (InternalDatabase.Instance.currentEstoque)
+        for (int i = 0; i < InternalDatabase.categories.Count; i++)
         {
-            case CurrentEstoque.SnPro:
-                for (int i = 0; i < ConstStrings.SNPCategories.Length; i++)
-                {
-                    if (category == ConstStrings.SNPCategories[i])
-                    {
-                        return i;
-                    }
-                }
-                return 666;
-            case CurrentEstoque.Funsoft:
-                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
-                {
-                    if (category == ConstStrings.AllCategories[i])
-                    {
-                        return i;
-                    }
-                }
-                return 666;
-            case CurrentEstoque.ESF:
-                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
-                {
-                    if (category == ConstStrings.AllCategories[i])
-                    {
-                        return i;
-                    }
-                }
-                return 666;
-            case CurrentEstoque.Testing:
-                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
-                {
-                    if (category == ConstStrings.AllCategories[i])
-                    {
-                        return i;
-                    }
-                }
-                return 666;
-            case CurrentEstoque.Clientes:
-                for (int i = 0; i < ConstStrings.AllCategories.Length; i++)
-                {
-                    if (category == ConstStrings.AllCategories[i])
-                    {
-                        return i;
-                    }
-                }
-                return 666;
-            case CurrentEstoque.Concert:
-                for (int i = 0; i < ConstStrings.ConcertCategories.Length; i++)
-                {
-                    if (category == ConstStrings.ConcertCategories[i])
-                    {
-                        return i;
-                    }
-                }
-                return 666;
-            default:
-                for (int i = 0; i < ConstStrings.SNPCategories.Length; i++)
-                {
-                    if (category == ConstStrings.SNPCategories[i])
-                    {
-                        return i;
-                    }
-                }
-                return 666;
+            if (category == ConstStrings.SNPCategories[i])
+            {
+                return i;
+            }
         }
+        return 666;
     }
-
     
-
-
     /// <summary>
     /// Root = 0, Import = 1, AddItem = 2, Movements = 3, Update = 4, NoPaNoSe = 5
     /// </summary>
