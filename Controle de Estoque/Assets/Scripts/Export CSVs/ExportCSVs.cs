@@ -242,7 +242,7 @@ public class ExportCSVs : MonoBehaviour
                 rowDataTemp.Add("Saída");
                 rowDataTemp.Add("Observação");
                 break;
-            case CurrentEstoque.Funsoft:
+            case CurrentEstoque.Fumsoft:
                 break;
             case CurrentEstoque.ESF:
                 break;

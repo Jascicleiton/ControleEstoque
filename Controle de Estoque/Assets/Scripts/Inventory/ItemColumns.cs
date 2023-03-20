@@ -97,7 +97,7 @@ public class ItemColumns
     public string OrdemDasMemorias; // Servidores
     public int CapacidadeRAMTotal; // Servidores
     public string PlacaControladora; // Servidores
-    public string EntradaRJ49;// notebook
+    public string EntradaRJ45;// notebook
     public string AdaptadorAC; // notebook
     public string Windows; // notebook
     public string Pessoa; // Concert

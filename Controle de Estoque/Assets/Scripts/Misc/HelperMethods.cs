@@ -84,7 +84,7 @@ public class HelperMethods
             switch (InternalDatabase.Instance.currentEstoque)
             {
                 case CurrentEstoque.SnPro:
-                case CurrentEstoque.Funsoft:
+                case CurrentEstoque.Fumsoft:
                 case CurrentEstoque.ESF:
                 case CurrentEstoque.Testing:
                 case CurrentEstoque.Clientes:
@@ -198,7 +198,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
-                                                    case CurrentEstoque.Funsoft:
+                                                    case CurrentEstoque.Fumsoft:
                                                     case CurrentEstoque.ESF:
                                                     case CurrentEstoque.Testing:
                                                     case CurrentEstoque.Clientes:
@@ -239,7 +239,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.Fumsoft:
                         case CurrentEstoque.ESF:
                         case CurrentEstoque.Testing:
                         case CurrentEstoque.Clientes:
@@ -358,7 +358,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.Fumsoft:
                         case CurrentEstoque.ESF:
                         case CurrentEstoque.Testing:
                         case CurrentEstoque.Clientes:
@@ -390,7 +390,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.Fumsoft:
                         case CurrentEstoque.ESF:
                         case CurrentEstoque.Testing:
                         case CurrentEstoque.Clientes:
@@ -420,7 +420,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Funsoft:
+                        case CurrentEstoque.Fumsoft:
                         case CurrentEstoque.ESF:
                         case CurrentEstoque.Testing:
                         case CurrentEstoque.Clientes:
@@ -572,7 +572,6 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.Observacao);
                     break;
             }
-           
             #endregion
             switch (itemToShow.Categoria)
             {
@@ -580,36 +579,39 @@ public class HelperMethods
                 case ConstStrings.AdaptadorAC:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
-                        case CurrentEstoque.Concert:
-                            dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
-                            dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
-                            break;
-                        default:
+                        case CurrentEstoque.SnPro:
                             dictionary["Values"].Add(itemToShow.OndeFunciona);
                             dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
                             dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
                             break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
+                            dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
+                            break;
                     }
-                                      break;
+                    break;
                 #endregion
                 #region Carregador
                 case ConstStrings.Carregador:
-                    dictionary["Values"].Add(itemToShow.OndeFunciona);
-                    dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
-                    dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
+                    switch (InternalDatabase.Instance.currentEstoque)
+                    {
+                        case CurrentEstoque.SnPro:
+                            dictionary["Values"].Add(itemToShow.OndeFunciona);
+                            dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
+                            dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
+                            break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
+                            dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
+                            break;
+                    }
                     break;
                 #endregion
                 #region Desktop
                 case ConstStrings.Desktop:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
-                        case CurrentEstoque.Concert:                     
-                            dictionary["Values"].Add(itemToShow.HD);
-                            dictionary["Values"].Add(itemToShow.Memoria);
-                            dictionary["Values"].Add(itemToShow.Processador);
-                            dictionary["Values"].Add(itemToShow.Windows);
-                            break;
-                        default:
+                        case CurrentEstoque.SnPro:
                             dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
                             dictionary["Values"].Add(itemToShow.Fonte);
                             dictionary["Values"].Add(itemToShow.Memoria);
@@ -618,12 +620,13 @@ public class HelperMethods
                             dictionary["Values"].Add(itemToShow.LeitorDeDVD);
                             dictionary["Values"].Add(itemToShow.Processador);
                             break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.Processador);
+                            dictionary["Values"].Add(itemToShow.Windows);
+                            break;
                     }
-                    
-                    break;
-                #endregion
-                #region Fone para ramal
-                case ConstStrings.FoneRamal:
                     break;
                 #endregion
                 #region Fonte
@@ -675,34 +678,25 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     break;
                 #endregion
-                #region Mouse
-                case ConstStrings.Mouse:
-
-                    break;
-                #endregion
-                #region No break
-                case ConstStrings.Nobreak:
-                    break;
-                #endregion
                 #region Notebook
                 case ConstStrings.Notebook:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
-                        case CurrentEstoque.Concert:
+                        case CurrentEstoque.SnPro:
                             dictionary["Values"].Add(itemToShow.HD);
                             dictionary["Values"].Add(itemToShow.Memoria);
-                            dictionary["Values"].Add(itemToShow.Processador);
+                            dictionary["Values"].Add(itemToShow.EntradaRJ45);
+                            dictionary["Values"].Add(itemToShow.BateriaInclusa);
+                            dictionary["Values"].Add(itemToShow.AdaptadorAC);
                             dictionary["Values"].Add(itemToShow.Windows);
                             break;
                         default:
                             dictionary["Values"].Add(itemToShow.HD);
                             dictionary["Values"].Add(itemToShow.Memoria);
-                            dictionary["Values"].Add(itemToShow.EntradaRJ49);
-                            dictionary["Values"].Add(itemToShow.BateriaInclusa);
-                            dictionary["Values"].Add(itemToShow.AdaptadorAC);
+                            dictionary["Values"].Add(itemToShow.Processador);
                             dictionary["Values"].Add(itemToShow.Windows);
                             break;
-                    }          
+                    }
                     break;
                 #endregion
                 #region Placa controladora
@@ -751,38 +745,27 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.HyperThreading);
                     break;
                 #endregion
-                #region Ramal
-                case ConstStrings.Ramal:
-                    break;
-                #endregion
                 #region Roteador
                 case ConstStrings.Roteador:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
-                        case CurrentEstoque.Concert:
-                            dictionary["Values"].Add(itemToShow.Wireless);
-                            dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
-                            break;
-                        default:
+                        case CurrentEstoque.SnPro:
                             dictionary["Values"].Add(itemToShow.Wireless);
                             dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                             dictionary["Values"].Add(itemToShow.BandaMaxima.ToString());
                             break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.Wireless);
+                            dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
+                            break;
                     }
-                    
                     break;
                 #endregion
                 #region Servidor
                 case ConstStrings.Servidor:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
-                        case CurrentEstoque.Concert:
-                            dictionary["Values"].Add(itemToShow.HD);
-                            dictionary["Values"].Add(itemToShow.Memoria);
-                            dictionary["Values"].Add(itemToShow.Processador);
-                            dictionary["Values"].Add(itemToShow.Windows);
-                            break;
-                        default:
+                        case CurrentEstoque.SnPro:
                             dictionary["Values"].Add(itemToShow.ModeloPlacaMae);
                             dictionary["Values"].Add(itemToShow.Fonte);
                             dictionary["Values"].Add(itemToShow.Memoria);
@@ -800,8 +783,14 @@ public class HelperMethods
                             dictionary["Values"].Add(itemToShow.TipoDeHD);
                             dictionary["Values"].Add(itemToShow.TipoDeRAID);
                             break;
+                        default:
+                            dictionary["Values"].Add(itemToShow.HD);
+                            dictionary["Values"].Add(itemToShow.Memoria);
+                            dictionary["Values"].Add(itemToShow.Processador);
+                            dictionary["Values"].Add(itemToShow.Windows);
+                            break;
                     }
-                          break;
+                    break;
                 #endregion
                 #region Storage NAS
                 case ConstStrings.StorageNAS:
@@ -816,18 +805,14 @@ public class HelperMethods
                 case ConstStrings.Switch:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
-                        case CurrentEstoque.Concert:
-                            dictionary["Values"].Add(itemToShow.QuaisConexoes);
-                            break;
-                        default:
+                        case CurrentEstoque.SnPro:
                             dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                             dictionary["Values"].Add(itemToShow.Desempenho);
                             break;
-                    } 
-                    break;
-                #endregion
-                #region Teclado
-                case ConstStrings.Teclado:
+                        default:
+                            dictionary["Values"].Add(itemToShow.QuaisConexoes);
+                            break;
+                    }
                     break;
                 #endregion
                 default:
@@ -839,7 +824,7 @@ public class HelperMethods
         #region Inventário
         switch (InternalDatabase.Instance.currentEstoque)
         {
-                case CurrentEstoque.Concert:
+            case CurrentEstoque.Concert:
                 dictionary["Names"].Add("Aquisição");
                 dictionary["Names"].Add("Entrada");
                 dictionary["Names"].Add("Patrimônio");
@@ -866,7 +851,7 @@ public class HelperMethods
                 dictionary["Names"].Add("Saída");
                 dictionary["Names"].Add("Observação");
                 break;
-        }   
+        }
         #endregion
         switch (category)
         {
@@ -874,36 +859,39 @@ public class HelperMethods
             case ConstStrings.AdaptadorAC:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
-                    case CurrentEstoque.Concert:
-                        dictionary["Names"].Add("Voltagem de saída");
-                        dictionary["Names"].Add("Amperagem de saída (A)");
-                        break;
-                    default:
+                    case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("Onde funciona?");
                         dictionary["Names"].Add("Voltagem de saída");
                         dictionary["Names"].Add("Amperagem de saída (A)");
                         break;
+                    default:
+                        dictionary["Names"].Add("Voltagem de saída");
+                        dictionary["Names"].Add("Amperagem de saída (A)");
+                        break;
                 }
-                                break;
+                break;
             #endregion
             #region Carregador
             case ConstStrings.Carregador:
-                dictionary["Names"].Add("Onde funciona?");
-                dictionary["Names"].Add("Voltagem de saída");
-                dictionary["Names"].Add("Amperagem de saída (mA)");
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        dictionary["Names"].Add("Onde funciona?");
+                        dictionary["Names"].Add("Voltagem de saída");
+                        dictionary["Names"].Add("Amperagem de saída (mA)");
+                        break;
+                    default:
+                        dictionary["Names"].Add("Voltagem de saída");
+                        dictionary["Names"].Add("Amperagem de saída (mA)");
+                        break;
+                }
                 break;
             #endregion
             #region Desktop
             case ConstStrings.Desktop:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
-                    case CurrentEstoque.Concert:
-                        dictionary["Names"].Add("HD?");
-                        dictionary["Names"].Add("Memória?");
-                        dictionary["Names"].Add("Processador?");
-                        dictionary["Names"].Add("Qual windows?");
-                        break;
-                    default:
+                    case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("Modelo de placa mãe");
                         dictionary["Names"].Add("Fonte?");
                         dictionary["Names"].Add("Memória?");
@@ -912,11 +900,13 @@ public class HelperMethods
                         dictionary["Names"].Add("Leitor de DVD?");
                         dictionary["Names"].Add("Processador");
                         break;
+                    default:
+                        dictionary["Names"].Add("HD?");
+                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("Processador?");
+                        dictionary["Names"].Add("Qual windows?");
+                        break;
                 }
-                              break;
-            #endregion
-            #region Fone para ramal
-            case ConstStrings.FoneRamal:
                 break;
             #endregion
             #region Fonte
@@ -968,10 +958,6 @@ public class HelperMethods
                 dictionary["Names"].Add("Quais entradas?");
                 break;
             #endregion
-            #region Mouse
-            case ConstStrings.Mouse:
-                break;
-            #endregion
             #region No break
             case ConstStrings.Nobreak:
                 break;
@@ -980,13 +966,7 @@ public class HelperMethods
             case ConstStrings.Notebook:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
-                    case CurrentEstoque.Concert:
-                        dictionary["Names"].Add("HD?");
-                        dictionary["Names"].Add("Memória?");
-                        dictionary["Names"].Add("Processador?");
-                        dictionary["Names"].Add("Qual windows?");
-                        break;
-                    default:
+                    case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("HD");
                         dictionary["Names"].Add("Memória");
                         dictionary["Names"].Add("Entrada RJ49");
@@ -994,8 +974,14 @@ public class HelperMethods
                         dictionary["Names"].Add("AdaptadorAC");
                         dictionary["Names"].Add("Windows");
                         break;
-                }
+                    default:
+                        dictionary["Names"].Add("HD?");
+                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("Processador?");
+                        dictionary["Names"].Add("Qual windows?");
                         break;
+                }
+                break;
             #endregion
             #region Placa controladora
             case ConstStrings.PlacaControladora:
@@ -1043,37 +1029,27 @@ public class HelperMethods
                 dictionary["Names"].Add("Hyper-Threading?");
                 break;
             #endregion
-            #region Ramal
-            case ConstStrings.Ramal:
-                break;
-            #endregion
             #region Roteador
             case ConstStrings.Roteador:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
-                    case CurrentEstoque.Concert:
-                        dictionary["Names"].Add("Wireless?");
-                        dictionary["Names"].Add("Quantas entradas?");
-                        break;
-                    default:
+                    case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("Wireless?");
                         dictionary["Names"].Add("Quantas entradas?");
                         dictionary["Names"].Add("Banda máx (MB/s)");
                         break;
+                    default:
+                        dictionary["Names"].Add("Wireless?");
+                        dictionary["Names"].Add("Quantas entradas?");
+                        break;
                 }
-                           break;
+                break;
             #endregion
             #region Servidor
             case ConstStrings.Servidor:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
-                    case CurrentEstoque.Concert:
-                        dictionary["Names"].Add("HD?");
-                        dictionary["Names"].Add("Memória?");
-                        dictionary["Names"].Add("Processador?");
-                        dictionary["Names"].Add("Qual windows?");
-                        break;
-                    default:
+                    case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("Modelo da placa mãe");
                         dictionary["Names"].Add("Fonte");
                         dictionary["Names"].Add("Memórias instaladas");
@@ -1091,8 +1067,14 @@ public class HelperMethods
                         dictionary["Names"].Add("Tipos de HD");
                         dictionary["Names"].Add("Tipos de RAID");
                         break;
+                    default:
+                        dictionary["Names"].Add("HD?");
+                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("Processador?");
+                        dictionary["Names"].Add("Qual windows?");
+                        break;
                 }
-                           break;
+                break;
             #endregion
             #region Storage NAS
             case ConstStrings.StorageNAS:
@@ -1107,18 +1089,14 @@ public class HelperMethods
             case ConstStrings.Switch:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
-                    case CurrentEstoque.Concert:
-                        dictionary["Names"].Add("Quantas e quais portas");
-                                                break;
-                    default:
+                    case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("Quantas entradas");
                         dictionary["Names"].Add("Capacidade máx de cada porta (MB/s)");
                         break;
+                    default:
+                        dictionary["Names"].Add("Quantas e quais portas");
+                        break;
                 }
-                         break;
-            #endregion
-            #region Teclado
-            case ConstStrings.Teclado:
                 break;
             #endregion
             default:

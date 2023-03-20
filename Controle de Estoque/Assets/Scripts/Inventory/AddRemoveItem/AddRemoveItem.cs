@@ -530,7 +530,7 @@ public class AddRemoveItem : MonoBehaviour
                 InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.HD = parameterValues[11].text;
                 itemToAddFullDatabase.Memoria = parameterValues[12].text;
-                itemToAddFullDatabase.EntradaRJ49 = parameterValues[13].text;
+                itemToAddFullDatabase.EntradaRJ45 = parameterValues[13].text;
                 itemToAddFullDatabase.BateriaInclusa = parameterValues[14].text;
                 itemToAddFullDatabase.AdaptadorAC = parameterValues[15].text;
                 itemToAddFullDatabase.Windows = parameterValues[16].text;
@@ -540,7 +540,7 @@ public class AddRemoveItem : MonoBehaviour
                 itemToAddSplitDatabase.Fabricante = parameterValues[6].text;
                 itemToAddSplitDatabase.HD = parameterValues[11].text;
                 itemToAddSplitDatabase.Memoria = parameterValues[12].text;
-                itemToAddSplitDatabase.EntradaRJ49 = parameterValues[13].text;
+                itemToAddSplitDatabase.EntradaRJ45 = parameterValues[13].text;
                 itemToAddSplitDatabase.BateriaInclusa = parameterValues[14].text;
                 itemToAddSplitDatabase.AdaptadorAC = parameterValues[15].text;
                 itemToAddSplitDatabase.Windows = parameterValues[16].text;

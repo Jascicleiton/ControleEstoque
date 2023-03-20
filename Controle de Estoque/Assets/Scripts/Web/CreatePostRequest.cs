@@ -21,7 +21,7 @@ public class CreatePostRequest
                     case CurrentEstoque.SnPro:
                         folder = ConstStrings.PhpRootFolder;
                         break;
-                    case CurrentEstoque.Funsoft:
+                    case CurrentEstoque.Fumsoft:
                         folder = ConstStrings.PhpRootFolderFunsoft;
                         break;
                     case CurrentEstoque.ESF:
@@ -46,7 +46,7 @@ public class CreatePostRequest
                     case CurrentEstoque.SnPro:
                         folder = ConstStrings.PhpImportTablesFolder;
                         break;
-                    case CurrentEstoque.Funsoft:
+                    case CurrentEstoque.Fumsoft:
                         folder = ConstStrings.PhpImportTablesFolderFunsoft;
                         break;
                     case CurrentEstoque.ESF:
@@ -71,7 +71,7 @@ public class CreatePostRequest
                     case CurrentEstoque.SnPro:
                         folder = ConstStrings.PhpAdditemsFolder;
                         break;
-                    case CurrentEstoque.Funsoft:
+                    case CurrentEstoque.Fumsoft:
                         folder = ConstStrings.PhpAdditemsFolderFunsoft;
                         break;
                     case CurrentEstoque.ESF:
@@ -96,7 +96,7 @@ public class CreatePostRequest
                     case CurrentEstoque.SnPro:
                         folder = ConstStrings.PhpMovementsFolder;
                         break;
-                    case CurrentEstoque.Funsoft:
+                    case CurrentEstoque.Fumsoft:
                         folder = ConstStrings.PhpMovementsFolderFunsoft;
                         break;
                     case CurrentEstoque.ESF:
@@ -121,7 +121,7 @@ public class CreatePostRequest
                     case CurrentEstoque.SnPro:
                         folder = ConstStrings.PhpUpdateItemsFolder;
                         break;
-                    case CurrentEstoque.Funsoft:
+                    case CurrentEstoque.Fumsoft:
                         folder = ConstStrings.PhpUpdateItemsFolderFunsoft;
                         break;
                     case CurrentEstoque.ESF:
@@ -146,7 +146,7 @@ public class CreatePostRequest
                     case CurrentEstoque.SnPro:
                         folder = ConstStrings.PhpNoPaNoSeItemsFolder;
                         break;
-                    case CurrentEstoque.Funsoft:
+                    case CurrentEstoque.Fumsoft:
                         folder = ConstStrings.PhpNoPaNoSeItemsFolderFunsoft;
                         break;
                     case CurrentEstoque.ESF:
@@ -171,7 +171,7 @@ public class CreatePostRequest
                     case CurrentEstoque.SnPro:
                         folder = ConstStrings.PhpRootFolder;
                         break;
-                    case CurrentEstoque.Funsoft:
+                    case CurrentEstoque.Fumsoft:
                         folder = ConstStrings.PhpRootFolderFunsoft;
                         break;
                     case CurrentEstoque.ESF:

@@ -4,7 +4,7 @@
 public enum CurrentEstoque
 {
     SnPro,
-    Funsoft,
+    Fumsoft,
     ESF,
     Testing,
     Clientes,

@@ -28,7 +28,7 @@ public class LogoManager : MonoBehaviour
             case CurrentEstoque.SnPro:
                 image.color = new Color(0f, 0f, 0f, 0f);
                 break;
-            case CurrentEstoque.Funsoft:
+            case CurrentEstoque.Fumsoft:
                 image.sprite = fumsoftSprite;
                 break;
             case CurrentEstoque.ESF:

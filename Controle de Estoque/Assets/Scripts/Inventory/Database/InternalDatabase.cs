@@ -453,7 +453,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                             {
                                 item.HD = notebookItem.HD;
                                 item.Memoria = notebookItem.Memoria;
-                                item.EntradaRJ49 = notebookItem.EntradaRJ49;
+                                item.EntradaRJ45 = notebookItem.EntradaRJ45;
                                 item.BateriaInclusa = notebookItem.BateriaInclusa;
                                 item.AdaptadorAC = notebookItem.AdaptadorAC;
                                 item.Windows = notebookItem.Windows;
@@ -1228,7 +1228,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
                                 {
                                     item.HD = notebookItem.HD;
                                     item.Memoria = notebookItem.Memoria;
-                                    item.EntradaRJ49 = notebookItem.EntradaRJ49;
+                                    item.EntradaRJ45 = notebookItem.EntradaRJ45;
                                     item.BateriaInclusa = notebookItem.BateriaInclusa;
                                     item.AdaptadorAC = notebookItem.AdaptadorAC;
                                     item.Windows = notebookItem.Windows;
@@ -1615,7 +1615,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
             notebook, placaControladora, placaDeCapturaDeVideo, placaDeRede, placaDeSom, placaDeVideo,
             processador,roteador, servidor, storageNAS, Switch, outros});
                     break;
-                case CurrentEstoque.Funsoft:
+                case CurrentEstoque.Fumsoft:
                 case CurrentEstoque.ESF:
                 case CurrentEstoque.Testing:
                 default:
@@ -1764,7 +1764,7 @@ public class InternalDatabase : Singleton<InternalDatabase>
             case ConstStrings.Notebook:
                 itemToUpdate.HD = parameters[14];
                 itemToUpdate.Memoria = parameters[15];
-                itemToUpdate.EntradaRJ49 = parameters[16];
+                itemToUpdate.EntradaRJ45 = parameters[16];
                 itemToUpdate.BateriaInclusa = parameters[17];
                 itemToUpdate.AdaptadorAC = parameters[18];
                 itemToUpdate.Windows = parameters[19];
