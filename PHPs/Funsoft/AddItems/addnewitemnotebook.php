@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -8,8 +8,13 @@ if(mysqli_connect_errno())
 }
 
 $appkey = $_POST ["apppassword"];
+$patrimonio = $_POST["patrimonio"];
 $modelo = $_POST["modelo"];
 $fabricante = $_POST["fabricante"];
+$hd = $_POST["hd"];
+$memoria = $_POST["memoria"];
+$processador = $_POST["processador"];
+$windows = $_POST["windows"];
 
 if($appkey != "AddNewItem")
 {
@@ -17,7 +22,7 @@ if($appkey != "AddNewItem")
     exit();
 }
 
-$modelocheckquery = "SELECT * from Notebook WHERE Modelo = '" .$modelo. "';";
+$modelocheckquery = "SELECT * from Notebook WHERE Patrimonio = '" .$patrimonio. "';";
 $modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Modelo query failed");
 
 if($modelocheckresult->num_rows > 0)
@@ -26,15 +31,9 @@ if($modelocheckresult->num_rows > 0)
     exit();
 }
 
-$insertuserquery= "INSERT INTO Notebook(Modelo, Fabricante) VALUES('". $modelo ."','". $fabricante ."');";
+$insertuserquery= "INSERT INTO Notebook(Patrimonio, Modelo, Fabricante, HD, Memoria, Processador, Windows) VALUES('". $patrimonio ."', '". utf8_decode($modelo) ."', '". utf8_decode($fabricante) ."', '". utf8_decode($hd) ."', '". utf8_decode($memoria) ."', '". utf8_decode($processador) ."', '". utf8_decode($windows) ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Item added");
-
+ echo("Worked");
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

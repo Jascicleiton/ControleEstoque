@@ -1,6 +1,0 @@
-[04-Jan-2023 18:27:16 UTC] PHP Warning:  Undefined variable $updatedataquery in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41
-[04-Jan-2023 18:27:16 UTC] PHP Fatal error:  Uncaught ValueError: mysqli_query(): Argument #2 ($query) cannot be empty in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php:41
-Stack trace:
-#0 /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php(41): mysqli_query(Object(mysqli), '')
-#1 {main}
-  thrown in /home/sysnetpro/public_html/controleestoque/Movements/moveitem.php on line 41

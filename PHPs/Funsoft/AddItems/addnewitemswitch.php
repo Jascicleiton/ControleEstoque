@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -8,9 +8,10 @@ if(mysqli_connect_errno())
 }
 
 $appkey = $_POST ["apppassword"];
+$patrimonio = $_POST["patrimonio"];
 $modelo = $_POST["modelo"];
-$quantasentradas = $_POST["quantasentradas"];
-$capacidademaxporta = $_POST["capacidademaxporta"];
+$fabricante = $_POST["fabricante"];
+$quantasquaisportas = $_POST["quantasquaisportas"];
 
 if($appkey != "AddNewItem")
 {
@@ -18,7 +19,7 @@ if($appkey != "AddNewItem")
     exit();
 }
 
-$modelocheckquery = "SELECT * from Switch WHERE Modelo = '" .$modelo. "';";
+$modelocheckquery = "SELECT * from Switch WHERE Patrimonio = '" .$patrimonio. "';";
 $modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Modelo query failed");
 
 if($modelocheckresult->num_rows > 0)
@@ -27,10 +28,9 @@ if($modelocheckresult->num_rows > 0)
     exit();
 }
 
-$insertuserquery= "INSERT INTO Switch(Modelo, Quantas_entradas, Capacidade_max) VALUES('". $modelo ."', '". $quantasentradas ."', '". $capacidademaxporta ."');";
+$insertuserquery= "INSERT INTO Switch(Patrimonio, Modelo, Fabricante, QuantasQuaisPortas) VALUES('". $patrimonio ."', '". $modelo ."', '". $fabricante ."', '". $quantasquaisportas ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Item added");
-
+ echo("Worked");
 
 $con->close();
 

@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -8,9 +8,10 @@ if(mysqli_connect_errno())
 }
 
 $appkey = $_POST ["apppassword"];
+$patrimonio = $_POST["patrimonio"];
 $modelo = $_POST["modelo"];
-$quantasentradas = $_POST["quantasentradas"];
-$capacidademaxporta = $_POST["capacidademaxporta"];
+$fabricante = $_POST["fabricante"];
+$quantasquaisportas = $_POST["quantasquaisportas"];
 
 if($appkey != "UpdateItem")
 {
@@ -18,7 +19,7 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Memoria SET Modelo = '".$modelo."', Quantas_entradas = '".$quantasentradas."', Capacidade_max  = '".$capacidademaxporta."';";
+$updateQuery = "UPDATE Switch SET Patrimonio = '".$patrimonio."', Modelo = '".$modelo."', Fabricante = '".$fabricante."', QuantasQuaisPortas  = '".$quantasquaisportas."' WHERE Patrimonio = '".$patrimonio."';";
 mysqli_query($con, $updateQuery) or die("Update failed");
 echo("Updated");
 

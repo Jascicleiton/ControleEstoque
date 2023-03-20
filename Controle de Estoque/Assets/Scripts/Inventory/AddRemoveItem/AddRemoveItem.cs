@@ -85,25 +85,24 @@ public class AddRemoveItem : MonoBehaviour
         {
             #region Add new item to Inventario
             parameters.Clear();
-            parameters.Add(parameterValues[0].text);
-            parameters.Add(parameterValues[1].text);
-            parameters.Add(parameterValues[2].text);
-            parameters.Add(parameterValues[3].text);
-            parameters.Add(parameterValues[4].text);
-            if (HelperMethods.GetCategoryString(categoryDP.value) == ConstStrings.Outros)
+            parameters = itemInformationPanelController.GetInventoryValues();
+                if (HelperMethods.GetCategoryString(categoryDP.value) == ConstStrings.Outros)
             {
-                parameters.Add(parameterValues[5].text);
+                parameters.Insert(5, parameterValues[5].text);
             }
             else
             {
-                parameters.Add(HelperMethods.GetCategoryString(categoryDP.value));
+                parameters.Insert(5, HelperMethods.GetCategoryString(categoryDP.value));
             }
-            parameters.Add(parameterValues[6].text);
-            parameters.Add(parameterValues[7].text);
-            parameters.Add(parameterValues[8].text);
-            parameters.Add("");
-            parameters.Add(parameterValues[10].text);
-
+            if(InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
+            {
+                parameters.Add("");
+            }
+            else
+            {
+                parameters.Insert(9, "");
+            }
+            
             yield return HelperMethods.AddUpdateItem(categoryDP.value, 2, parameters, true);
 
             if (HelperMethods.GetAddUpdateResponse())
@@ -141,7 +140,7 @@ public class AddRemoveItem : MonoBehaviour
             }
             if (addInventario)
             {
-                AddItem();
+              //  AddItem();
             }
         }
         if (!addInventario)

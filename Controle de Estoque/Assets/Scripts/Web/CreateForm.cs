@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -6,110 +8,125 @@ using UnityEngine.Networking;
 /// </summary>
 public class CreateForm
 {
-    public static WWWForm GetInventarioForm(string appPassword, string aquisicao, string entrada, string patrimonio, string status, string serial,
-        string categoria, string fabricante, string modelo, string local, string saida, string observacao)
+    public static WWWForm GetInventarioForm(string appPassword, List<string> parameters)
     {
-
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("aquisicao", aquisicao);
-        inventario.AddField("entrada", entrada);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("status", status);
-        inventario.AddField("serial", serial);
-        inventario.AddField("categoria", categoria);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("local", local);
-        inventario.AddField("saida", saida);
-        inventario.AddField("observacao", observacao);
-
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.Concert:
+                inventario.AddField("aquisicao", parameters[0]);
+                inventario.AddField("entrada", parameters[1]);
+                inventario.AddField("patrimonio", parameters[2]);
+                inventario.AddField("status", parameters[3]);
+                inventario.AddField("serial", parameters[4]);
+                inventario.AddField("categoria", parameters[5]);
+                inventario.AddField("fabricante", parameters[6]);
+                inventario.AddField("modelo", parameters[7]);
+                inventario.AddField("local", parameters[8]);
+                inventario.AddField("Pessoa", parameters[9]);
+                inventario.AddField("Centro_de_Custo", parameters[10]);
+                inventario.AddField("saida", parameters[11]);
+                break;
+            default:
+                inventario.AddField("aquisicao", parameters[0]);
+                inventario.AddField("entrada", parameters[1]);
+                inventario.AddField("patrimonio", parameters[2]);
+                inventario.AddField("status", parameters[3]);
+                inventario.AddField("serial", parameters[4]);
+                inventario.AddField("categoria", parameters[5]);
+                inventario.AddField("fabricante", parameters[6]);
+                inventario.AddField("modelo", parameters[7]);
+                inventario.AddField("local", parameters[8]);
+                inventario.AddField("saida", parameters[9]);
+                inventario.AddField("observacao", parameters[10]);
+                break;
+        }
         return inventario;
     }
 
-    public static WWWForm GetConcertInventarioForm(string appPassword, string aquisicao, string entrada, string patrimonio, string status, string serial,
-        string categoria, string fabricante, string modelo, string local, string pessoa, string centrocusto, string saida)
+    public static WWWForm GetExportInventoryForm()
     {
-
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("aquisicao", aquisicao);
-        inventario.AddField("entrada", entrada);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("status", status);
-        inventario.AddField("serial", serial);
-        inventario.AddField("categoria", categoria);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("local", local);
-        inventario.AddField("Pessoa", pessoa);
-        inventario.AddField("Centro_de_Custo", centrocusto);
-        inventario.AddField("saida", saida);
-        
-
-        return inventario;
+        WWWForm exportForm = new WWWForm();
+        //exportForm.AddField("", Intern)
+        return exportForm;
     }
+
     #region Categories Forms
-    /// <summary>
-    /// Para Concert os valores são: appPassword, Patrimonio, Modelo, voltagem, amperagem - nessa ordem
-    /// </summary>
-    public static WWWForm GetAdaptadorACForm(string appPassword, string modelo, string ondefunciona,
-        string voltagem, string amperagem)
+
+    public static WWWForm GetAdaptadorACForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("ondefunciona", ondefunciona);
-        inventario.AddField("voltagem", voltagem);
-        inventario.AddField("amperagem", amperagem);
-
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                inventario.AddField("modelo", parameters[0]);
+                inventario.AddField("ondefunciona", parameters[1]);
+                inventario.AddField("voltagem", parameters[2]);
+                inventario.AddField("amperagem", parameters[3]);
+                break;
+            default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("voltagem", parameters[2]);
+                inventario.AddField("amperagem", parameters[3]);
+                break;
+        }
         return inventario;
     }
 
-    public static WWWForm GetCarregadorForm(string appPassword, string modelo, string ondefunciona,
-       string voltagem, string amperagem)
+    public static WWWForm GetCarregadorForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("ondefunciona", ondefunciona);
-        inventario.AddField("voltagem", voltagem);
-        inventario.AddField("amperagem", amperagem);
 
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                inventario.AddField("modelo", parameters[0]);
+                inventario.AddField("ondefunciona", parameters[1]);
+                inventario.AddField("voltagem", parameters[2]);
+                inventario.AddField("amperagem", parameters[3]);
+                break;
+            default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("voltagem", parameters[2]);
+                inventario.AddField("amperagem", parameters[3]);
+                break;
+        }
         return inventario;
     }
 
-    public static WWWForm GetDesktopForm(string appPassword, string patrimonio, string modeloplacamae, string fonte, string memoria,
-   string hd, string placavideo, string placarede, string leitordvd, string processador)
+    public static WWWForm GetDesktopForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modeloplacamae", modeloplacamae);
-        inventario.AddField("fonte", fonte);
-        inventario.AddField("memoria", memoria);
-        inventario.AddField("hd", hd);
-        inventario.AddField("placavideo", placavideo);
-        inventario.AddField("placarede", placarede);
-        inventario.AddField("leitordvd", leitordvd);
-        inventario.AddField("processador", processador);
-
-        return inventario;
-    }
-
-    public static WWWForm GetConcertDesktopForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd,
-    string memoria, string processador, string windows)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("hd", hd);
-        inventario.AddField("memoria", memoria);
-        inventario.AddField("processador", processador);
-        inventario.AddField("windows", windows);
-
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+            case CurrentEstoque.Testing:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modeloplacamae", parameters[1]);
+                inventario.AddField("fonte", parameters[2]);
+                inventario.AddField("memoria", parameters[3]);
+                inventario.AddField("hd", parameters[4]);
+                inventario.AddField("placavideo", parameters[5]);
+                inventario.AddField("placarede", parameters[6]);
+                inventario.AddField("leitordvd", parameters[7]);
+                inventario.AddField("processador", parameters[8]);
+                break;
+            default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("hd", parameters[3]);
+                inventario.AddField("memoria", parameters[4]);
+                inventario.AddField("processador", parameters[5]);
+                inventario.AddField("windows", parameters[6]);
+                break;
+        }
         return inventario;
     }
 
@@ -188,60 +205,56 @@ public class CreateForm
         return inventario;
     }
 
-    public static WWWForm GetMonitorForm(string appPassword, string modelo, string fabricante, string polegadas, string tiposentradas)
+    public static WWWForm GetMonitorForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("polegadas", polegadas);
-        inventario.AddField("tiposentradas", tiposentradas);
-
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                inventario.AddField("modelo", parameters[0]);
+                inventario.AddField("fabricante", parameters[1]);
+                inventario.AddField("polegadas", parameters[2]);
+                inventario.AddField("tiposentradas", parameters[3]);
+                break;
+            default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("polegadas", parameters[3]);
+                inventario.AddField("tiposentradas", parameters[4]);
+                break;
+        }
         return inventario;
     }
 
-    public static WWWForm GetConcertMonitorForm(string appPassword, string patrimonio, string modelo, string fabricante, string polegadas, string tiposentradas)
+    public static WWWForm GetNotebookForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("polegadas", polegadas);
-        inventario.AddField("tiposentradas", tiposentradas);
-
-        return inventario;
-    }
-
-    public static WWWForm GetNotebookForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria,
-        string entradarj49, string bateria, string adaptadorac, string windows)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("hd", hd);
-        inventario.AddField("memoria", memoria);
-        inventario.AddField("entradarj49", entradarj49);
-        inventario.AddField("bateria", bateria);
-        inventario.AddField("adaptadorac", adaptadorac);
-        inventario.AddField("windows", windows);
-        return inventario;
-    }
-
-    public static WWWForm GetConcertNotebookForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria,
-    string processador, string windows)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("hd", hd);
-        inventario.AddField("memoria", memoria);
-        inventario.AddField("processador", processador);
-        inventario.AddField("windows", windows);
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("hd", parameters[3]);
+                inventario.AddField("memoria", parameters[4]);
+                inventario.AddField("entradarj49", parameters[5]);
+                inventario.AddField("bateria", parameters[6]);
+                inventario.AddField("adaptadorac", parameters[7]);
+                inventario.AddField("windows", parameters[8]);
+                break;
+            default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("hd", parameters[3]);
+                inventario.AddField("memoria", parameters[4]);
+                inventario.AddField("processador", parameters[5]);
+                inventario.AddField("windows", parameters[6]);
+                break;
+        }
         return inventario;
     }
 
@@ -326,65 +339,67 @@ public class CreateForm
         return inventario;
     }
 
-    /// <summary>
-    /// Para Concert os parâmetros são: appPassword, patrimonio, modelo, fabricante, wireless, quantasentradas
-    /// </summary>
-        public static WWWForm GetRoteadorForm(string appPassword, string modelo, string wireless, string quantasentradas,
-    string bandamax, string voltagem)
+    public static WWWForm GetRoteadorForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("wireless", wireless);
-        inventario.AddField("quantasentradas", quantasentradas);
-        inventario.AddField("bandamax", bandamax);
-        inventario.AddField("voltagem", voltagem);
-
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                inventario.AddField("modelo", parameters[0]);
+                inventario.AddField("wireless", parameters[1]);
+                inventario.AddField("quantasentradas", parameters[2]);
+                inventario.AddField("bandamax", parameters[3]);
+                inventario.AddField("voltagem", parameters[4]);
+                break;
+            default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("wireless", parameters[3]);
+                inventario.AddField("quantasentradas", parameters[4]);
+                break;
+        }
         return inventario;
     }
 
-    public static WWWForm GetServidorForm(string appPassword, string patrimonio, string modelo, string fabricante, string modeloplacamae, string fonte, string memoria,
-        string hd, string placadevideo, string placaderede, string processador, string memoriassuportadas, string quantasmemorias,
-        string ordemdasmemorias, string capacidaderamtotal, string soquete, string placacontroladora, string atequantoshds, string tiposdehd,
-        string tiposderaid)
+    public static WWWForm GetServidorForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("modeloplacamae", modeloplacamae);
-        inventario.AddField("fonte", fonte);
-        inventario.AddField("memoria", memoria);
-        inventario.AddField("hd", hd);
-        inventario.AddField("placadevideo", placadevideo);
-        inventario.AddField("placaderede", placaderede);
-        inventario.AddField("processador", processador);
-        inventario.AddField("memoriassuportadas", memoriassuportadas);
-        inventario.AddField("quantasmemorias", quantasmemorias);
-        inventario.AddField("ordemdasmemorias", ordemdasmemorias);
-        inventario.AddField("capacidaderamtotal", capacidaderamtotal);
-        inventario.AddField("soquete", soquete);
-        inventario.AddField("placacontroladora", placacontroladora);
-        inventario.AddField("atequantoshds", atequantoshds);
-        inventario.AddField("tiposdehd", tiposdehd);
-        inventario.AddField("tiposderaid", tiposderaid);
-        return inventario;
-    }
-
-    public static WWWForm GetConcertServidorForm(string appPassword, string patrimonio, string modelo, string fabricante, string hd, string memoria,
-       string processador, string windows)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("hd", hd);
-        inventario.AddField("memoria", memoria);
-        inventario.AddField("processador", processador);
-        inventario.AddField("windows", windows);
-
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("modeloplacamae", parameters[3]);
+                inventario.AddField("fonte", parameters[4]);
+                inventario.AddField("memoria", parameters[5]);
+                inventario.AddField("hd", parameters[6]);
+                inventario.AddField("placadevideo", parameters[7]);
+                inventario.AddField("placaderede", parameters[8]);
+                inventario.AddField("processador", parameters[9]);
+                inventario.AddField("memoriassuportadas", parameters[10]);
+                inventario.AddField("quantasmemorias", parameters[11]);
+                inventario.AddField("ordemdasmemorias", parameters[12]);
+                inventario.AddField("capacidaderamtotal", parameters[13]);
+                inventario.AddField("soquete", parameters[14]);
+                inventario.AddField("placacontroladora", parameters[15]);
+                inventario.AddField("atequantoshds", parameters[16]);
+                inventario.AddField("tiposdehd", parameters[17]);
+                inventario.AddField("tiposderaid", parameters[18]);
+                break;
+                       default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("hd", parameters[3]);
+                inventario.AddField("memoria", parameters[4]);
+                inventario.AddField("processador", parameters[5]);
+                inventario.AddField("windows", parameters[6]);
+                break;
+        }        
         return inventario;
     }
 
@@ -403,26 +418,24 @@ public class CreateForm
         return inventario;
     }
 
-    public static WWWForm GetSwitchForm(string appPassword, string modelo, string quantasentradas, string capacidademaxporta)
+    public static WWWForm GetSwitchForm(string appPassword, List<string> parameters)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("quantasentradas", quantasentradas);
-        inventario.AddField("capacidademaxporta", capacidademaxporta);
-
-        return inventario;
-    }
-
-    public static WWWForm GetConcertSwitchForm(string appPassword, string patrimonio, string modelo, string fabricante, string quantasquaisportas)
-    {
-        WWWForm inventario = new WWWForm();
-        inventario.AddField("apppassword", appPassword);
-        inventario.AddField("patrimonio", patrimonio);
-        inventario.AddField("modelo", modelo);
-        inventario.AddField("fabricante", fabricante);
-        inventario.AddField("quantasquaisportas", quantasquaisportas);
-
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                inventario.AddField("modelo", parameters[0]);
+                inventario.AddField("quantasentradas", parameters[1]);
+                inventario.AddField("capacidademaxporta", parameters[2]);
+                break;                          
+            default:
+                inventario.AddField("patrimonio", parameters[0]);
+                inventario.AddField("modelo", parameters[1]);
+                inventario.AddField("fabricante", parameters[2]);
+                inventario.AddField("quantasquaisportas", parameters[3]);
+                break;
+        }
         return inventario;
     }
     #endregion

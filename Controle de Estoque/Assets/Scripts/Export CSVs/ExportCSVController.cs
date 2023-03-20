@@ -18,43 +18,44 @@ public class ExportCSVController : MonoBehaviour
 
     public void ExportSelectedCSV()
     {
-        switch (csvToExportIndex)
-        {
-            case 0:
-                exportCSVs.CreateInventarioSheet2();
-                ShowMessage("Inventário");
-                break;
-            case 1:
-                exportCSVs.CreateAdaptadorACDetailsSheet();
-                ShowMessage("Adaptador AC");
-                break;
-            case 2:
-                exportCSVs.CreateDesktopDetailsSheet();
-                ShowMessage("Desktop");
-                break;
-            case 3:
-                exportCSVs.CreateMonitorDetailsSheet();
-                ShowMessage("Monitor");
-                break;
-            case 4:
-                exportCSVs.CreateNotebookDetailsSheet();
-                ShowMessage("Notebook");
-                break;
-            case 5:
-                exportCSVs.CreateRoteadorDetailsSheet();
-                ShowMessage("Roteador");
-                break;
-            case 6:
-                exportCSVs.CreateServidorDetailsSheet();
-                ShowMessage("Servidor");
-                break;
-            case 7:
-                exportCSVs.CreateSwitchDetailsSheet();
-                ShowMessage("Switch");
-                break;           
-            default:
-                break;
-        }
+        exportCSVs.CreateInventarioSheet();
+        //switch (csvToExportIndex)
+        //{
+        //    case 0:
+        //        exportCSVs.CreateInventarioSheet2();
+        //        ShowMessage("Inventário");
+        //        break;
+        //    case 1:
+        //        exportCSVs.CreateAdaptadorACDetailsSheet();
+        //        ShowMessage("Adaptador AC");
+        //        break;
+        //    case 2:
+        //        exportCSVs.CreateDesktopDetailsSheet();
+        //        ShowMessage("Desktop");
+        //        break;
+        //    case 3:
+        //        exportCSVs.CreateMonitorDetailsSheet();
+        //        ShowMessage("Monitor");
+        //        break;
+        //    case 4:
+        //        exportCSVs.CreateNotebookDetailsSheet();
+        //        ShowMessage("Notebook");
+        //        break;
+        //    case 5:
+        //        exportCSVs.CreateRoteadorDetailsSheet();
+        //        ShowMessage("Roteador");
+        //        break;
+        //    case 6:
+        //        exportCSVs.CreateServidorDetailsSheet();
+        //        ShowMessage("Servidor");
+        //        break;
+        //    case 7:
+        //        exportCSVs.CreateSwitchDetailsSheet();
+        //        ShowMessage("Switch");
+        //        break;           
+        //    default:
+        //        break;
+        //}
         StartCoroutine(CloseMessageRoutine());
     }
 

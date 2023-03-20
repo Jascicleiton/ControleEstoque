@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -8,11 +8,11 @@ if(mysqli_connect_errno())
 }
 
 $appkey = $_POST ["apppassword"];
+$patrimonio = $_POST["patrimonio"];
 $modelo = $_POST["modelo"];
+$fabricante = $_POST["fabricante"];
 $wireless = $_POST["wireless"];
 $quantasentradas = $_POST["quantasentradas"];
-$bandamax = $_POST["bandamax"];
-$voltagem = $_POST["voltagem"];
 
 if($appkey != "UpdateItem")
 {
@@ -20,7 +20,7 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Roteador SET Modelo = '".$modelo."', Wireless = '".$wireless."', Quantas_entradas  = '".$quantasentradas."', Banda_max = '".$bandamax."', Voltagem = '".$voltagem."';";
+$updateQuery = "UPDATE Roteador SET Patrimonio = '".$patrimonio."', Modelo = '".$modelo."', Fabricante = '".utf8_decode($fabricante)."', Wireless = '".utf8_decode($wireless)."', Quantas_entradas  = '".$quantasentradas."' WHERE Patrimonio = '".$patrimonio."';";
 mysqli_query($con, $updateQuery) or die("Update failed");
 echo("Updated");
 

@@ -133,9 +133,9 @@ public class InventarioManager : Singleton<InventarioManager>
 
     #region Import all tables to internal database
 
-    ///// <summary>
-    ///// Import Adaptador AC.csv into the internal database
-    ///// </summary>
+    /// <summary>
+    /// Import Adaptador AC.csv into the internal database
+    /// </summary>
     private IEnumerator ImportAdaptadorAcToDatabase()
     {
         WWWForm getInventario = new WWWForm();
@@ -174,9 +174,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportAdaptadorAC(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.AdaptadorAC))
@@ -189,9 +190,9 @@ public class InventarioManager : Singleton<InventarioManager>
         }
     }
 
-    ///// <summary>
-    ///// Import Carregador.csv into the internal database
-    ///// </summary>
+    /// <summary>
+    /// Import Carregador.csv into the internal database
+    /// </summary>
     private IEnumerator ImportCarregadorToDatabase()
     {
         WWWForm getInventario = new WWWForm();
@@ -230,10 +231,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportCarregador(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Carregador))
@@ -287,10 +288,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportDesktop(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Desktop))
@@ -345,10 +346,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportFonte(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Fonte))
@@ -402,9 +403,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportGBIC(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Gbic))
@@ -459,14 +461,14 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportHD(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
         else
         {
             Debug.LogWarning("hd \n" + getInventarioRequest.error);
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.HD))
@@ -520,10 +522,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportIdrac(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Idrac))
@@ -576,14 +578,14 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportInventory(inventario, out tempSheet);
-                EventHandler.CallImportFinished(true);
+                
             }
         }
         else
         {
             Debug.LogWarning("inventario\n " + getInventarioRequest.error);
         }
-
+        EventHandler.CallImportFinished(true);
         getInventarioRequest.Dispose();
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.InventarioSnPro))
         {
@@ -636,14 +638,14 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportMemoria(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
         else
         {
             Debug.LogWarning("memoria \n" + getInventarioRequest.error);
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Memoria))
@@ -697,10 +699,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportMonitor(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Monitor))
@@ -754,10 +756,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportNotebook(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Notebook))
@@ -811,10 +813,11 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportPlacaControladora(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
         getInventarioRequest.Dispose();
+        EventHandler.CallImportFinished(false);
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaControladora))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaControladora, tempSheet);
@@ -867,9 +870,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportPlacaDeCapturaDeVideo(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeCapturaDeVideo))
@@ -923,10 +927,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportPlacaDeRede(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeRede))
@@ -981,10 +985,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportPlacaDeSom(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeSom))
@@ -1038,9 +1042,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportPlacaDeVideo(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaDeVideo))
@@ -1094,9 +1099,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportProcessador(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Processador))
         {
@@ -1150,10 +1156,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportRoteador(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Roteador))
@@ -1207,10 +1213,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportServidor(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Servidor))
@@ -1264,10 +1270,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportStorageNas(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.StorageNAS))
@@ -1321,10 +1327,10 @@ public class InventarioManager : Singleton<InventarioManager>
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
                 ImportingInventoryFunctions.ImportSwitch(inventario, out tempSheet);
-                EventHandler.CallImportFinished(false);
+                
             }
         }
-
+        EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
 
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Switch))

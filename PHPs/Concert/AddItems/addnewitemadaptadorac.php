@@ -32,6 +32,5 @@ $insertuserquery= "INSERT INTO Adaptador_AC(Patrimonio, Modelo, Voltagem, Ampera
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Worked");
 
-
 $con->close();
 ?>

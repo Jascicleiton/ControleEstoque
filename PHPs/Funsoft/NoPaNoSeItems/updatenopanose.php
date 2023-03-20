@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -17,7 +17,7 @@ if($appkey != "UpdateItem")
 $itemname = $_POST["itemname"];
 $itemQuantity = $_POST["itemQuantity"];
 
-$updateQuery = "UPDATE NoPaNoSe SET Name = '".$itemname."', Quantity = '".$itemQuantity."' WHERE Name = '".$itemname."';";
+$updateQuery = "UPDATE NoPaNoSe SET Name = '".utf8_decode($itemname)."', Quantity = '".$itemQuantity."' WHERE Name = '".utf8_decode($itemname)."';";
 mysqli_query($con, $updateQuery) or die("Inventario update failed");
 echo("Updated");
 

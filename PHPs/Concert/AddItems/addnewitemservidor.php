@@ -35,11 +35,5 @@ $insertuserquery= "INSERT INTO Servidor(Patrimonio, Modelo, Fabricante, HD, Memo
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Worked");
 
-
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

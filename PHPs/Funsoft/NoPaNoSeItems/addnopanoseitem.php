@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -17,7 +17,7 @@ if($appkey != "AddNewItem")
     exit();
 }
 
-$insertuserquery= "INSERT INTO NoPaNoSe(Name, Quantity) VALUES('". $itemname ."', '". $itemQuantity ."');";
+$insertuserquery= "INSERT INTO NoPaNoSe(Name, Quantity) VALUES('". utf8_decode($itemname) ."', '". $itemQuantity ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
 echo("Item added");
 

@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -28,7 +28,6 @@ if(mysqli_num_rows($usernamecheck) > 0)
     echo("Username already exists");
     exit();
 }
-
 
 $insertuserquery= "INSERT INTO users(username, password) VALUES('". $usernameclean ."', '". $passwordhash ."');";
 mysqli_query($con, $insertuserquery) or die("insert user failed");

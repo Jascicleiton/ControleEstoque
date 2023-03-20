@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -9,14 +9,12 @@ if(mysqli_connect_errno())
 
 $appkey = $_POST ["apppassword"];
 $patrimonio = $_POST["patrimonio"];
-$modeloplacamae = $_POST["modeloplacamae"];
-$fonte = $_POST["fonte"];
-$memoria = $_POST["memoria"];
+$modelo = $_POST["modelo"];
+$fabricante = $_POST["fabricante"];
 $hd = $_POST["hd"];
-$placavideo = $_POST["placavideo"];
-$placarede = $_POST["placarede"];
-$leitordvd = $_POST["leitordvd"];
+$memoria = $_POST["memoria"];
 $processador = $_POST["processador"];
+$windows = $_POST["windows"];
 
 if($appkey != "AddNewItem")
 {
@@ -24,16 +22,16 @@ if($appkey != "AddNewItem")
     exit();
 }
 
-$modelocheckquery = "SELECT * from Desktop WHERE Modelo = '" .$modelo. "';";
-$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Modelo query failed");
+$modelocheckquery = "SELECT * from Desktop WHERE Patrimonio = '" .$patrimonio. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Desktop Patrimonio query failed");
 
 if($modelocheckresult->num_rows > 0)
 {
-    echo("Modelo found");
+    echo("Desktop patrimonio found");
     exit();
 }
 
-$insertuserquery= "INSERT INTO Desktop(Patrimonio, Modelo_placa_mae, Fonte, Memoria, HD, Placa_de_video, Placa_de_rede, Leitor_de_DVD, Processador) VALUES('". $patrimonio ."', '". $modeloplacamae ."', '". $fonte ."', '". $memoria ."', '". $hd ."', '". $placavideo ."', '". $placarede ."', '". $leitordvd ."', '". $processador ."');";
+$insertuserquery= "INSERT INTO Desktop(Patrimonio, Modelo, Fabricante, HD, Memoria, Processador, Windows) VALUES('". $patrimonio ."', '". utf8_decode($modelo) ."', '". utf8_decode($fabricante) ."', '". utf8_decode($hd) ."', '". utf8_decode($memoria) ."', '". utf8_decode($processador) ."', '". utf8_decode($windows) ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Item added");
 

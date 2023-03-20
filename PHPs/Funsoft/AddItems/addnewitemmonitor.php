@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -8,6 +8,7 @@ if(mysqli_connect_errno())
 }
 
 $appkey = $_POST ["apppassword"];
+$patrimonio = $_POST["patrimonio"];
 $modelo = $_POST["modelo"];
 $fabricante = $_POST["fabricante"];
 $polegadas = $_POST["polegadas"];
@@ -19,7 +20,7 @@ if($appkey != "AddNewItem")
     exit();
 }
 
-$modelocheckquery = "SELECT * from Monitor WHERE Modelo = '" .$modelo. "';";
+$modelocheckquery = "SELECT * from Monitor WHERE Patrimonio = '" .$patrimonio. "';";
 $modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Modelo query failed");
 
 if($modelocheckresult->num_rows > 0)
@@ -28,7 +29,7 @@ if($modelocheckresult->num_rows > 0)
     exit();
 }
 
-$insertuserquery= "INSERT INTO Monitor(Modelo, Fabricante, Polegadas, Tipos_de_entrada) VALUES('". $modelo ."', '". $fabricante ."', '". $polegadas ."', '". $tiposentradas ."');";
+$insertuserquery= "INSERT INTO Monitor(Patrimonio, Modelo, Fabricante, Polegadas, Tipos_de_entrada) VALUES('". $patrimonio ."', '". utf8_decode($modelo) ."', '". utf8_decode($fabricante) ."', '". $polegadas ."', '". $tiposentradas ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
 echo("Item added");
 

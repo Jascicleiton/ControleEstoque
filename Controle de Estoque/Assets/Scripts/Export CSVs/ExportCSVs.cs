@@ -11,32 +11,37 @@ public class ExportCSVs : MonoBehaviour
 
     private string fileName = "";
 
-    /// <summary>
-    /// Creates an Adaptador AC CSV file
-    /// </summary>
-    public void CreateAdaptadorACDetailsSheet()
+    public void ExportInventory()
     {
-        Sheet tempSheet = new Sheet();
-        fileName = Application.dataPath + "/" + ConstStrings.AdaptadorAC + ".csv";
-        TextWriter textWriter = new StreamWriter(fileName, false); // It is false to create an empty file with the first line being what is typed below
-        textWriter.WriteLine("Patrimônio, Modelo, Voltagem de saída, Amperagem de saída (A)");
-        textWriter.Close();
-        if (InternalDatabase.Instance != null)
-        {
-            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.AdaptadorAC];
-            InternalDatabase.Instance.testingSheet = tempSheet;
-            if (tempSheet != null)
-            {
-                foreach (ItemColumns item in tempSheet.itens)
-                {
-                    textWriter = new StreamWriter(fileName, true); // it is true to add new lines to the already created file
-                    textWriter.WriteLine(item.Patrimonio + "," + item.Modelo + "," + item.VoltagemDeSaida + "," +
-                        item.AmperagemDeSaida);
-                }
-            }
-        }
-        textWriter.Close();
+        WWWForm form = CreateForm.GetExportInventoryForm();
     }
+
+    ///// <summary>
+    ///// Creates an Adaptador AC CSV file
+    ///// </summary>
+    //public void CreateAdaptadorACDetailsSheet()
+    //{
+    //    Sheet tempSheet = new Sheet();
+    //    fileName = Application.dataPath + "/" + ConstStrings.AdaptadorAC + ".csv";
+    //    TextWriter textWriter = new StreamWriter(fileName, false); // It is false to create an empty file with the first line being what is typed below
+    //    textWriter.WriteLine("Patrimônio, Modelo, Voltagem de saída, Amperagem de saída (A)");
+    //    textWriter.Close();
+    //    if (InternalDatabase.Instance != null)
+    //    {
+    //        tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.AdaptadorAC];
+    //        InternalDatabase.Instance.testingSheet = tempSheet;
+    //        if (tempSheet != null)
+    //        {
+    //            foreach (ItemColumns item in tempSheet.itens)
+    //            {
+    //                textWriter = new StreamWriter(fileName, true); // it is true to add new lines to the already created file
+    //                textWriter.WriteLine(item.Patrimonio + "," + item.Modelo + "," + item.VoltagemDeSaida + "," +
+    //                    item.AmperagemDeSaida);
+    //            }
+    //        }
+    //    }
+    //    textWriter.Close();
+    //}
 
     ///// <summary>
     ///// Creates an Carregador CSV file
@@ -64,31 +69,31 @@ public class ExportCSVs : MonoBehaviour
     //    textWriter.Close();
     //}
 
-    /// <summary>
-    /// Creates an Desktop CSV file
-    /// </summary>
-    public void CreateDesktopDetailsSheet()
-    {
-        Sheet tempSheet = new Sheet();
-        fileName = Application.dataPath + "/" + ConstStrings.Desktop + ".csv";
-        TextWriter textWriter = new StreamWriter(fileName, false); // It is false to create an empty file with the first line being what is typed below
-        textWriter.WriteLine("Patrimônio, Modelo, Fabricante, HD, Memória, Procesador, Qual Windows");
-        textWriter.Close();
-        if (InternalDatabase.Instance != null)
-        {
-            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.Desktop];
-            if (tempSheet != null)
-            {
-                foreach (ItemColumns item in tempSheet.itens)
-                {
-                    textWriter = new StreamWriter(fileName, true); // it is true to add new lines to the already created file
-                    textWriter.WriteLine(item.Patrimonio + "," + item.Modelo + "," + item.Fabricante + item.HD + "," +
-                   item.Memoria + "," + item.Processador + "," + item.Windows);
-                }
-            }
-        }
-        textWriter.Close();
-    }
+    ///// <summary>
+    ///// Creates an Desktop CSV file
+    ///// </summary>
+    //public void CreateDesktopDetailsSheet()
+    //{
+    //    Sheet tempSheet = new Sheet();
+    //    fileName = Application.dataPath + "/" + ConstStrings.Desktop + ".csv";
+    //    TextWriter textWriter = new StreamWriter(fileName, false); // It is false to create an empty file with the first line being what is typed below
+    //    textWriter.WriteLine("Patrimônio, Modelo, Fabricante, HD, Memória, Procesador, Qual Windows");
+    //    textWriter.Close();
+    //    if (InternalDatabase.Instance != null)
+    //    {
+    //        tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.Desktop];
+    //        if (tempSheet != null)
+    //        {
+    //            foreach (ItemColumns item in tempSheet.itens)
+    //            {
+    //                textWriter = new StreamWriter(fileName, true); // it is true to add new lines to the already created file
+    //                textWriter.WriteLine(item.Patrimonio + "," + item.Modelo + "," + item.Fabricante + item.HD + "," +
+    //               item.Memoria + "," + item.Processador + "," + item.Windows);
+    //            }
+    //        }
+    //    }
+    //    textWriter.Close();
+    //}
 
     ///// <summary>
     ///// Creates an Fonte CSV file
@@ -201,11 +206,12 @@ public class ExportCSVs : MonoBehaviour
     public void CreateInventarioSheet()
     {
         Sheet tempSheet = new Sheet();
-        fileName = Application.dataPath + "/" + ConstStrings.InventarioSnPro + ".csv";
+        fileName = Application.persistentDataPath + "/Inventario.csv";
         TextWriter textWriter = new StreamWriter(fileName, false); // It is false to create an empty file with the first line being what is typed below
         textWriter.WriteLine("Aquisição, Entrada, Patrimônio, Status, Serial, Categoria, " +
                         "Fabricante, Modelo, Local, Pessoa, Centro de Custo, Saída");
         textWriter.Close();
+        textWriter.Dispose();
         if (InternalDatabase.Instance != null)
         {
             tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro];

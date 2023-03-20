@@ -246,9 +246,7 @@ public class UpdateItem : MonoBehaviour
         if(updateInventarioSuccess)
         {
             UpdateFullDatabase();
-        }
-        
-        
+        }      
     }
 
     /// <summary>

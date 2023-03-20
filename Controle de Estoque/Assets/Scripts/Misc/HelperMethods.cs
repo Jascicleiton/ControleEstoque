@@ -80,28 +80,8 @@ public class HelperMethods
         }
         if (addInventario)
         {
-            WWWForm itemForm = new WWWForm();
-            switch (InternalDatabase.Instance.currentEstoque)
-            {
-                case CurrentEstoque.SnPro:
-                case CurrentEstoque.Fumsoft:
-                case CurrentEstoque.ESF:
-                case CurrentEstoque.Testing:
-                case CurrentEstoque.Clientes:
-                    itemForm = CreateForm.GetInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-          parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10]);
-                    break;
-                case CurrentEstoque.Concert:
-                    itemForm = CreateForm.GetConcertInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-          parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11]);
-                    break;
-                default:
-                    itemForm = CreateForm.GetInventarioForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-          parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10]);
-                    break;
-            }
-           
-
+            WWWForm itemForm = CreateForm.GetInventarioForm(appKey, parameters);
+                       
             UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, phpName + "inventario.php", folderID);
             MouseManager.Instance.SetWaitingCursor();
 
@@ -110,8 +90,8 @@ public class HelperMethods
            addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createUpdateInventarioRequest);
             if (!addUpdateResponse)
             {
-             //   EventHandler.CallIsOneMessageOnlyEvent(true);
-               // EventHandler.CallOpenMessageEvent("Inventario Failed");
+                //EventHandler.CallIsOneMessageOnlyEvent(true);
+                //EventHandler.CallOpenMessageEvent("Inventario Failed");
                 yield break;
             }
         }
@@ -119,102 +99,32 @@ public class HelperMethods
         {
             switch (GetCategoryString(catedoryDpValue))
             {
-                #region HD
-                case ConstStrings.HD:
-                    WWWForm hdForm = CreateForm.GetHDForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
+                #region Adaptador AC
+                case ConstStrings.AdaptadorAC:
+                    WWWForm adaptadorAcForm = CreateForm.GetAdaptadorACForm(appKey, parameters);
 
-                    UnityWebRequest createHDPostRequest = CreatePostRequest.GetPostRequest(hdForm, phpName + "hd.php", folderID);
+                    UnityWebRequest createAdaptadorACPostRequest = CreatePostRequest.GetPostRequest(adaptadorAcForm, phpName + "adaptadorac.php", folderID);
 
-                    yield return createHDPostRequest.SendWebRequest();
+                    yield return createAdaptadorACPostRequest.SendWebRequest();
 
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createHDPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createAdaptadorACPostRequest);
                     break;
                 #endregion
-                #region Memoria
-                case ConstStrings.Memoria:
-                    WWWForm memoriaForm = CreateForm.GetMemoriaForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9]);
+                #region Carregador
+                case ConstStrings.Carregador:
+                    WWWForm carregadorForm = CreateForm.GetCarregadorForm(appKey, parameters);
 
-                    UnityWebRequest createMemoriaPostRequest = CreatePostRequest.GetPostRequest(memoriaForm, phpName + "memoria.php", folderID);
+                    UnityWebRequest createCarregadorPostRequest = CreatePostRequest.GetPostRequest(carregadorForm, phpName + "carregador.php", folderID);
 
-                    yield return createMemoriaPostRequest.SendWebRequest();
+                    yield return createCarregadorPostRequest.SendWebRequest();
 
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createMemoriaPostRequest);
-
-                    break;
-                #endregion
-                #region Placa de rede
-                case ConstStrings.PlacaDeRede:
-                    WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    parameters[4], parameters[5], parameters[6]);
-
-                    UnityWebRequest createPlacaDeRedePostRequest = CreatePostRequest.GetPostRequest(placaDeRedeForm, phpName + "placarede.php", folderID);
-
-                    yield return createPlacaDeRedePostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeRedePostRequest);
-                    break;
-                #endregion
-                #region iDrac
-                case ConstStrings.Idrac:
-                    WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                   parameters[4], parameters[5]);
-
-                    UnityWebRequest createIdracPostRequest = CreatePostRequest.GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
-
-                    yield return createIdracPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createIdracPostRequest);
-                    break;
-                #endregion
-                #region Placa controladora
-                case ConstStrings.PlacaControladora:
-                    WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(appKey, parameters[0], parameters[1], parameters[2],
-                    parameters[3], parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
-
-                    UnityWebRequest createPlacaControladoraPostRequest = CreatePostRequest.GetPostRequest(placaControladoraForm, phpName + "placacontroladora.php", folderID);
-
-                    yield return createPlacaControladoraPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaControladoraPostRequest);
-                    break;
-                #endregion
-                #region Processador
-                case ConstStrings.Processador:
-                    WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                  parameters[4], parameters[5], parameters[6]);
-
-                    UnityWebRequest createProcessadorPostRequest = CreatePostRequest.GetPostRequest(processadorForm, phpName + "processador.php", folderID);
-
-                    yield return createProcessadorPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createProcessadorPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createCarregadorPostRequest);
                     break;
                 #endregion
                 #region Desktop
                 case ConstStrings.Desktop:
-                    WWWForm desktopForm = new WWWForm();
-                    switch (InternalDatabase.Instance.currentEstoque)
-                    {
-                        case CurrentEstoque.SnPro:
-                                                    case CurrentEstoque.Fumsoft:
-                                                    case CurrentEstoque.ESF:
-                                                    case CurrentEstoque.Testing:
-                                                    case CurrentEstoque.Clientes:
-                            desktopForm = CreateForm.GetDesktopForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                  parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
-                            break;
-                        case CurrentEstoque.Concert:
-                            desktopForm = CreateForm.GetConcertDesktopForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                  parameters[4], parameters[5], parameters[6]);
-                            break;
-                        default:
-                            desktopForm = CreateForm.GetDesktopForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                  parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
-                            break;
-                    }                 
-
+                    WWWForm desktopForm = CreateForm.GetDesktopForm(appKey, parameters);
+                    
                     UnityWebRequest createDesktopPostRequest = CreatePostRequest.GetPostRequest(desktopForm, phpName + "desktop.php", folderID);
 
                     yield return createDesktopPostRequest.SendWebRequest();
@@ -233,38 +143,148 @@ public class HelperMethods
                     addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createFontePostRequest);
                     break;
                 #endregion
-                #region Switch
-                case ConstStrings.Switch:
-                    WWWForm switchForm = new WWWForm();
-                    switch (InternalDatabase.Instance.currentEstoque)
-                    {
-                        case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Fumsoft:
-                        case CurrentEstoque.ESF:
-                        case CurrentEstoque.Testing:
-                        case CurrentEstoque.Clientes:
-                            switchForm = CreateForm.GetSwitchForm(appKey, parameters[0], parameters[1], parameters[2]);
-                            break;
-                        case CurrentEstoque.Concert:
-                            switchForm = CreateForm.GetConcertSwitchForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
-                            break;
-                        default:
-                            switchForm = CreateForm.GetSwitchForm(appKey, parameters[0], parameters[1], parameters[2]);
-                            break;
-                    }
+                #region GBIC
+                case ConstStrings.Gbic:
+                    WWWForm gbicForm = CreateForm.GetGBICForm(appKey, parameters[0], parameters[1], parameters[2]);
+
+                    UnityWebRequest createGBICPostRequest = CreatePostRequest.GetPostRequest(gbicForm, phpName + "gbic.php", folderID);
+
+                    yield return createGBICPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createGBICPostRequest);
+                    break;
+                #endregion
+                #region HD
+                case ConstStrings.HD:
+                    WWWForm hdForm = CreateForm.GetHDForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                    parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
+
+                    UnityWebRequest createHDPostRequest = CreatePostRequest.GetPostRequest(hdForm, phpName + "hd.php", folderID);
+
+                    yield return createHDPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createHDPostRequest);
+                    break;
+                #endregion
+                #region iDrac
+                case ConstStrings.Idrac:
+                    WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                   parameters[4], parameters[5]);
+
+                    UnityWebRequest createIdracPostRequest = CreatePostRequest.GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
+
+                    yield return createIdracPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createIdracPostRequest);
+                    break;
+                #endregion
+                #region Memoria
+                case ConstStrings.Memoria:
+                    WWWForm memoriaForm = CreateForm.GetMemoriaForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                    parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9]);
+
+                    UnityWebRequest createMemoriaPostRequest = CreatePostRequest.GetPostRequest(memoriaForm, phpName + "memoria.php", folderID);
+
+                    yield return createMemoriaPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createMemoriaPostRequest);
+
+                    break;
+                #endregion
+                #region Monitor
+                case ConstStrings.Monitor:
+                    WWWForm monitorForm = CreateForm.GetMonitorForm(appKey, parameters);
                    
+                    UnityWebRequest createMonitorPostRequest = CreatePostRequest.GetPostRequest(monitorForm, phpName + "monitor.php", folderID);
 
-                    UnityWebRequest createSwitchPostRequest = CreatePostRequest.GetPostRequest(switchForm, phpName + "switch.php", folderID);
+                    yield return createMonitorPostRequest.SendWebRequest();
 
-                    yield return createSwitchPostRequest.SendWebRequest();
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createMonitorPostRequest);
+                    break;
+                #endregion
+                #region Notebook
+                case ConstStrings.Notebook:
+                    WWWForm notebookForm = CreateForm.GetNotebookForm(appKey, parameters);
+                    
+                    UnityWebRequest createNotebookPostRequest = CreatePostRequest.GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
 
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createSwitchPostRequest);
+                    yield return createNotebookPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createNotebookPostRequest);
+                    break;
+                #endregion
+                #region Placa controladora
+                case ConstStrings.PlacaControladora:
+                    WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(appKey, parameters[0], parameters[1], parameters[2],
+                    parameters[3], parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
+
+                    UnityWebRequest createPlacaControladoraPostRequest = CreatePostRequest.GetPostRequest(placaControladoraForm, phpName + "placacontroladora.php", folderID);
+
+                    yield return createPlacaControladoraPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaControladoraPostRequest);
+                    break;
+                #endregion
+                #region Placa de captura de vídeo
+                case ConstStrings.PlacaDeCapturaDeVideo:
+                    WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaDeCapturaDeVideoForm(appKey, parameters[0], parameters[1]);
+
+                    UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeCapturaDeVideoForm, phpName + "placacapturavideo.php", folderID);
+
+                    yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeCapturaDeVideoPostRequest);
+                    break;
+                #endregion
+                #region Placa de rede
+                case ConstStrings.PlacaDeRede:
+                    WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                    parameters[4], parameters[5], parameters[6]);
+
+                    UnityWebRequest createPlacaDeRedePostRequest = CreatePostRequest.GetPostRequest(placaDeRedeForm, phpName + "placarede.php", folderID);
+
+                    yield return createPlacaDeRedePostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeRedePostRequest);
+                    break;
+                #endregion
+                #region Placa de som
+                case ConstStrings.PlacaDeSom:
+                    WWWForm placaDeSomForm = CreateForm.GetPlacaSomForm(appKey, parameters[0], parameters[1]);
+
+                    UnityWebRequest createPlacaDeSomPostRequest = CreatePostRequest.GetPostRequest(placaDeSomForm, phpName + "placadesom.php", folderID);
+
+                    yield return createPlacaDeSomPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeSomPostRequest);
+                    break;
+                #endregion
+                #region Placa de vídeo
+                case ConstStrings.PlacaDeVideo:
+                    WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
+
+                    UnityWebRequest createPlacaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeVideoForm, phpName + "placadevideo.php", folderID);
+
+                    yield return createPlacaDeVideoPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeVideoPostRequest);
+                    break;
+                #endregion
+                #region Processador
+                case ConstStrings.Processador:
+                    WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
+                  parameters[4], parameters[5], parameters[6]);
+
+                    UnityWebRequest createProcessadorPostRequest = CreatePostRequest.GetPostRequest(processadorForm, phpName + "processador.php", folderID);
+
+                    yield return createProcessadorPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createProcessadorPostRequest);
                     break;
                 #endregion
                 #region Roteador
                 case ConstStrings.Roteador:
-                    WWWForm roteadorForm = CreateForm.GetRoteadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                  parameters[4]);
+                    WWWForm roteadorForm = CreateForm.GetRoteadorForm(appKey, parameters);
 
                     UnityWebRequest createRoteadorPostRequest = CreatePostRequest.GetPostRequest(roteadorForm, phpName + "roteador.php", folderID);
 
@@ -273,26 +293,16 @@ public class HelperMethods
                     addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createRoteadorPostRequest);
                     break;
                 #endregion
-                #region Carregador
-                case ConstStrings.Carregador:
-                    WWWForm carregadorForm = CreateForm.GetCarregadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
+                #region Servidor
+                case ConstStrings.Servidor:
 
-                    UnityWebRequest createCarregadorPostRequest = CreatePostRequest.GetPostRequest(carregadorForm, phpName + "carregador.php", folderID);
+                    WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters);
+                   
+                    UnityWebRequest createServidorPostRequest = CreatePostRequest.GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
 
-                    yield return createCarregadorPostRequest.SendWebRequest();
+                    yield return createServidorPostRequest.SendWebRequest();
 
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createCarregadorPostRequest);
-                    break;
-                #endregion
-                #region Adaptador AC
-                case ConstStrings.AdaptadorAC:
-                    WWWForm adaptadorAcForm = CreateForm.GetAdaptadorACForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
-
-                    UnityWebRequest createAdaptadorACPostRequest = CreatePostRequest.GetPostRequest(adaptadorAcForm, phpName + "adaptadorac.php", folderID);
-
-                    yield return createAdaptadorACPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createAdaptadorACPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createServidorPostRequest);
                     break;
                 #endregion
                 #region Storage Nas
@@ -307,209 +317,15 @@ public class HelperMethods
                     addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createStorageNasPostRequest);
                     break;
                 #endregion
-                #region GBIC
-                case ConstStrings.Gbic:
-                    WWWForm gbicForm = CreateForm.GetGBICForm(appKey, parameters[0], parameters[1], parameters[2]);
-
-                    UnityWebRequest createGBICPostRequest = CreatePostRequest.GetPostRequest(gbicForm, phpName + "gbic.php", folderID);
-
-                    yield return createGBICPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createGBICPostRequest);
-                    break;
-                #endregion
-                #region Placa de vídeo
-                case ConstStrings.PlacaDeVideo:
-                    WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
-
-                    UnityWebRequest createPlacaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeVideoForm, phpName + "placadevideo.php", folderID);
-
-                    yield return createPlacaDeVideoPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeVideoPostRequest);
-                    break;
-                #endregion
-                #region Placa de som
-                case ConstStrings.PlacaDeSom:
-                    WWWForm placaDeSomForm = CreateForm.GetPlacaSomForm(appKey, parameters[0], parameters[1]);
-
-                    UnityWebRequest createPlacaDeSomPostRequest = CreatePostRequest.GetPostRequest(placaDeSomForm, phpName + "placadesom.php", folderID);
-
-                    yield return createPlacaDeSomPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeSomPostRequest);
-                    break;
-                #endregion
-                #region Placa de captura de vídeo
-                case ConstStrings.PlacaDeCapturaDeVideo:
-                    WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaDeCapturaDeVideoForm(appKey, parameters[0], parameters[1]);
-
-                    UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeCapturaDeVideoForm, phpName + "placacapturavideo.php", folderID);
-
-                    yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeCapturaDeVideoPostRequest);
-                    break;
-                #endregion
-                #region Servidor
-                case ConstStrings.Servidor:
-
-                    WWWForm servidorForm = new WWWForm();
-                    switch (InternalDatabase.Instance.currentEstoque)
-                    {
-                        case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Fumsoft:
-                        case CurrentEstoque.ESF:
-                        case CurrentEstoque.Testing:
-                        case CurrentEstoque.Clientes:
-                            servidorForm = CreateForm.GetServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11],
-                     parameters[12], parameters[13], parameters[14], parameters[15], parameters[16], parameters[17], parameters[18]);
-                            break;
-                        case CurrentEstoque.Concert:
-                            CreateForm.GetConcertServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                   parameters[4], parameters[5], parameters[6]);
-                            break;
-                        default:
-                            CreateForm.GetServidorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                   parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9], parameters[10], parameters[11],
-                    parameters[12], parameters[13], parameters[14], parameters[15], parameters[16], parameters[17], parameters[18]);
-                            break;
-                    }
-                   
-                    UnityWebRequest createServidorPostRequest = CreatePostRequest.GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
-
-                    yield return createServidorPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createServidorPostRequest);
-                    break;
-                #endregion
-                #region Notebook
-                case ConstStrings.Notebook:
-                    WWWForm notebookForm = new WWWForm();
-                    switch (InternalDatabase.Instance.currentEstoque)
-                    {
-                        case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Fumsoft:
-                        case CurrentEstoque.ESF:
-                        case CurrentEstoque.Testing:
-                        case CurrentEstoque.Clientes:
-                            CreateForm.GetNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
-                    parameters[5], parameters[6], parameters[7], parameters[8]);
-                            break;
-                        case CurrentEstoque.Concert:
-                            CreateForm.GetConcertNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
-                    parameters[5], parameters[6]);
-                            break;
-                        default:
-                            CreateForm.GetNotebookForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4],
-                    parameters[5], parameters[6], parameters[7], parameters[8]);
-                            break;
-                    }
+                #region Switch
+                case ConstStrings.Switch:
+                    WWWForm switchForm = CreateForm.GetSwitchForm(appKey, parameters);
                     
-                    UnityWebRequest createNotebookPostRequest = CreatePostRequest.GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
+                    UnityWebRequest createSwitchPostRequest = CreatePostRequest.GetPostRequest(switchForm, phpName + "switch.php", folderID);
 
-                    yield return createNotebookPostRequest.SendWebRequest();
+                    yield return createSwitchPostRequest.SendWebRequest();
 
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createNotebookPostRequest);
-                    break;
-                #endregion
-                #region Monitor
-                case ConstStrings.Monitor:
-                    WWWForm monitorForm = new WWWForm();
-                    switch (InternalDatabase.Instance.currentEstoque)
-                    {
-                        case CurrentEstoque.SnPro:
-                        case CurrentEstoque.Fumsoft:
-                        case CurrentEstoque.ESF:
-                        case CurrentEstoque.Testing:
-                        case CurrentEstoque.Clientes:
-                            CreateForm.GetMonitorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
-                            break;
-                        case CurrentEstoque.Concert:
-                            CreateForm.GetConcertMonitorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3], parameters[4]);
-                            break;
-                        default:
-                            CreateForm.GetMonitorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
-                            break;
-                    }
-                    
-
-                    UnityWebRequest createMonitorPostRequest = CreatePostRequest.GetPostRequest(monitorForm, phpName + "monitor.php", folderID);
-
-                    yield return createMonitorPostRequest.SendWebRequest();
-
-                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createMonitorPostRequest);
-                    break;
-                #endregion
-                #region Mouse
-                case ConstStrings.Mouse:
-                    addUpdateResponse = true;
-                    EventHandler.CallOpenMessageEvent("Worked");
-                    //  WWWForm mouseForm = CreateForm.GetMouseForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    //parameters[4], parameters[5]);
-
-                    //  UnityWebRequest createMousePostRequest = GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
-
-                    //  yield return createMousePostRequest.SendWebRequest();
-
-                    //  SendWebRequestHandler(createMousePostRequest);
-                    break;
-                #endregion
-                #region Teclado
-                case ConstStrings.Teclado:
-                    addUpdateResponse = true;
-                    EventHandler.CallOpenMessageEvent("Worked");
-                    //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    //parameters[4], parameters[5]);
-
-                    //  UnityWebRequest createIdracPostRequest = GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
-
-                    //  yield return createIdracPostRequest.SendWebRequest();
-
-                    //  SendWebRequestHandler(createIdracPostRequest);
-                    break;
-                #endregion
-                #region Fone ramal
-                case ConstStrings.FoneRamal:
-                    addUpdateResponse = true;
-                    EventHandler.CallOpenMessageEvent("Worked");
-                    //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    //parameters[4], parameters[5]);
-
-                    //  UnityWebRequest createIdracPostRequest = GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
-
-                    //  yield return createIdracPostRequest.SendWebRequest();
-
-                    //  SendWebRequestHandler(createIdracPostRequest);
-                    break;
-                #endregion
-                #region Ramal
-                case ConstStrings.Ramal:
-                    addUpdateResponse = true;
-                    EventHandler.CallOpenMessageEvent("Worked");
-                    //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    //parameters[4], parameters[5]);
-
-                    //  UnityWebRequest createIdracPostRequest = GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
-
-                    //  yield return createIdracPostRequest.SendWebRequest();
-
-                    //  SendWebRequestHandler(createIdracPostRequest);
-                    break;
-                #endregion
-                #region Nobreak
-                case ConstStrings.Nobreak:
-                    addUpdateResponse = true;
-                    EventHandler.CallOpenMessageEvent("Worked");
-                    //  WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                    //parameters[4], parameters[5]);
-
-                    //  UnityWebRequest createIdracPostRequest = GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
-
-                    //  yield return createIdracPostRequest.SendWebRequest();
-
-                    //  SendWebRequestHandler(createIdracPostRequest);
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createSwitchPostRequest);
                     break;
                 #endregion
                 default:

@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Funsoft_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Fumsoft_estoque');
 
 if(mysqli_connect_errno())
 {
@@ -9,14 +9,12 @@ if(mysqli_connect_errno())
 
 $appkey = $_POST ["apppassword"];
 $patrimonio = $_POST["patrimonio"];
-$modeloplacamae = $_POST["modeloplacamae"];
-$fonte = $_POST["fonte"];
-$memoria = $_POST["memoria"];
+$modelo = $_POST["modelo"];
+$fabricante = $_POST["fabricante"];
 $hd = $_POST["hd"];
-$placavideo = $_POST["placavideo"];
-$placarede = $_POST["placarede"];
-$leitordvd = $_POST["leitordvd"];
+$memoria = $_POST["memoria"];
 $processador = $_POST["processador"];
+$windows = $_POST["windows"];
 
 if($appkey != "UpdateItem")
 {
@@ -24,10 +22,9 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Desktop SET Patrimonio = '".$patrimonio."', Modelo_placa_mae = '".$modeloplacamae."', Fonte  = '".$fonte."', Memoria = '".$memoria."', HD = '".$hd."',Placa_de_video = '".$placavideo."',Placa_de_rede = '".$placarede."',Leitor_de_DVD = '".$leitordvd."',Processador = '".$processador."';";
+$updateQuery = "UPDATE Desktop SET Patrimonio = '".$patrimonio."', Modelo = '".$modelo."', Fabricante  = '".utf8_decode($fabricante)."', HD = '".utf8_decode($hd)."', Memoria = '".utf8_decode($memoria)."', Processador = '".utf8_decode($processador)."', Windows = '".utf8_decode($windows)."' WHERE Patrimonio = '".$patrimonio."';";
 mysqli_query($con, $updateQuery) or die("Update failed");
 echo("Updated");
-
 $con->close();
 
 ?>

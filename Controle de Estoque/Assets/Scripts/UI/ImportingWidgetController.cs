@@ -46,6 +46,8 @@ public class ImportingWidgetController : MonoBehaviour
                     percentageToLoad = 0.0480f;
                     break;
                 case CurrentEstoque.Fumsoft:
+                case CurrentEstoque.Concert:
+                    percentageToLoad = 0.125f;
                     break;
                 case CurrentEstoque.ESF:
                     percentageToLoad = 0.16f;
@@ -66,6 +68,8 @@ public class ImportingWidgetController : MonoBehaviour
                     percentageToLoad = 0.0476f;
                     break;
                 case CurrentEstoque.Fumsoft:
+                case CurrentEstoque.Concert:
+                    percentageToLoad = 0.125f;
                     break;
                 case CurrentEstoque.ESF:
                     percentageToLoad = 0.14f;
