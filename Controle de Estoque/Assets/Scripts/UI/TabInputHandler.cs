@@ -8,8 +8,9 @@ public class TabInputHandler : MonoBehaviour
     [SerializeField] TMP_InputField[] inputFields;
 
     private int inputIndex = 0;
-    private int activeInputsCount;
+   // private int activeInputsCount;
     public bool isWithItemInformationPanelController = false;
+    private List<int> activeIndexes = new List<int>();
 
     private void Start()
     {      
@@ -20,6 +21,7 @@ public class TabInputHandler : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.UpdateTabInputs += GetActiveInputs;
+        GetActiveInputs();
     }
 
     private void OnDisable()
@@ -37,7 +39,7 @@ public class TabInputHandler : MonoBehaviour
                 inputIndex--;
                 if (inputIndex < 0)
                 {
-                    inputIndex = activeInputsCount;
+                    inputIndex = activeIndexes.Count -1;
                 }
                 CheckIfInputIsActiveAndEnabled();
             }
@@ -47,7 +49,7 @@ public class TabInputHandler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 inputIndex++;
-                if (inputIndex > activeInputsCount)
+                if (inputIndex >= activeIndexes.Count)
                 {
                     inputIndex = 0;
                 }
@@ -57,26 +59,22 @@ public class TabInputHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Loops through all inputs and and selects the first one that is active, enabled and interactable
+    /// Loops through all inputs and selects the first one that is active, enabled and interactable
     /// </summary>
     public void CheckIfInputIsActiveAndEnabled()
     {
-        if (inputFields[inputIndex] != null && inputFields[inputIndex].isActiveAndEnabled && inputFields[inputIndex].interactable)
+        if (inputFields[activeIndexes[inputIndex]] == null || !inputFields[activeIndexes[inputIndex]].isActiveAndEnabled || !inputFields[activeIndexes[inputIndex]].interactable)
         {
-            inputFields[inputIndex].Select();
+            inputIndex++;
+            if(inputIndex >= activeIndexes.Count)
+            {
+                inputIndex = 0;
+            }
+            CheckIfInputIsActiveAndEnabled();
         }
         else
         {
-            inputIndex++;
-            if (inputIndex < activeInputsCount)
-            {
-                CheckIfInputIsActiveAndEnabled();
-            }
-            else
-            {
-                inputIndex = 0;
-                CheckIfInputIsActiveAndEnabled();
-            }
+            inputFields[activeIndexes[inputIndex]].Select();
         }
     }
 
@@ -87,12 +85,13 @@ public class TabInputHandler : MonoBehaviour
     public void GetActiveInputs()
     {
         inputIndex = 0;
-        activeInputsCount = 0;
+      //  activeInputsCount = 0;
         for (int i = 0; i < inputFields.Length; i++)
         {
             if (inputFields[i] != null && inputFields[i].IsActive())
             {
-                activeInputsCount++;
+                //activeInputsCount++;
+                activeIndexes.Add(i);
             }
         }
         CheckIfInputIsActiveAndEnabled();
@@ -107,7 +106,14 @@ public class TabInputHandler : MonoBehaviour
         {
             if (inputSelected == inputFields[i])
             {
-                inputIndex = i;
+                for (int j = 0; j < activeIndexes.Count; j++)
+                {
+                    if(i == activeIndexes[j])
+                    {
+                        inputIndex = j;
+                        return;
+                    }
+                }
             }
         }
     }

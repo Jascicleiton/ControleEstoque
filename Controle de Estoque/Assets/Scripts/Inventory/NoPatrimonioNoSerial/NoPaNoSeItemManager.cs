@@ -34,13 +34,22 @@ public class NoPaNoSeItemManager : MonoBehaviour
     private IEnumerator ChangeItemQuantityRoutine(bool add)
     {
         int itemNewQuantity = 0;
-        if (add)
+        int tempQuantity = 0;
+        if(int.Parse(quantityInput.text) < 0)
         {
-            itemNewQuantity = item.Quantity + int.Parse(quantityInput.text);
+            tempQuantity = -(int.Parse(quantityInput.text));
         }
         else
         {
-            itemNewQuantity = item.Quantity - int.Parse(quantityInput.text);
+            tempQuantity = int.Parse(quantityInput.text);
+        }
+        if (add)
+        {
+            itemNewQuantity = item.Quantity + tempQuantity;
+        }
+        else
+        {
+            itemNewQuantity = item.Quantity - tempQuantity;
         }
 
         item.Quantity = itemNewQuantity;
