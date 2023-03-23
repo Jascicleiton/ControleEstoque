@@ -17,6 +17,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
     [SerializeField] private Button plusButton = null;
 
     private NoPaNoSeItem item = new NoPaNoSeItem();
+    private int tempInt = 0;
 
     /// <summary>
     /// Update the item informations
@@ -33,7 +34,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
     private IEnumerator ChangeItemQuantityRoutine(bool add)
     {
         int itemNewQuantity = 0;
-        if(add)
+        if (add)
         {
             itemNewQuantity = item.Quantity + int.Parse(quantityInput.text);
         }
@@ -41,12 +42,13 @@ public class NoPaNoSeItemManager : MonoBehaviour
         {
             itemNewQuantity = item.Quantity - int.Parse(quantityInput.text);
         }
+
         item.Quantity = itemNewQuantity;
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.UpdateItemKey, item.ItemName, itemNewQuantity);
 
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "updatenopanose.php", itemForm);
         MouseManager.Instance.SetWaitingCursor();
-        
+
         yield return createUpdateInventarioRequest.SendWebRequest();
 
         if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -131,14 +133,21 @@ public class NoPaNoSeItemManager : MonoBehaviour
         }
         else
         {
-            if (item.Quantity - int.Parse(quantityInput.text) < 0)
+            if (int.TryParse(quantityInput.text, out tempInt))
             {
-                //TODO: Show message saying that the user is trying to remove more items than there are available
+                if (item.Quantity - tempInt < 0)
+                {
+                    //TODO: Show message saying that the user is trying to remove more items than there are available
+                }
+                else
+                {
+                    StartCoroutine(ChangeItemQuantityRoutine(add));
+                    StartCoroutine(MoveItem(add));
+                }
             }
             else
             {
-                StartCoroutine(ChangeItemQuantityRoutine(add));
-                StartCoroutine(MoveItem(add));
+                //TODO: show apropriate error message
             }
         }    
     }

@@ -27,6 +27,7 @@ public class MovementManager : MonoBehaviour
     private ItemColumns itemToChange;
     private bool itemFound = false;
     private bool inputEnabled = true;
+    private int tempInt = 0; // used for all int.TryParse
 
     MovementRecords movementToRecord;
 
@@ -58,10 +59,19 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     private IEnumerator CheckIfItemExists()
     {
-        //print("hi");
+        itemFound = false;
         if (itemInformationDP.value == 0)
         {
-            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(itemInformationInput.text),InternalDatabase.Instance.fullDatabase);
+            if (int.TryParse(itemInformationInput.text, out tempInt))
+            {
+                itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase);
+            }
+            else
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
+                yield break;
+            }
             WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
            
             UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
@@ -99,7 +109,6 @@ public class MovementManager : MonoBehaviour
                 else if (response == "Not found or found duplicate") 
                 {
                     Debug.LogWarning("Item not found or found duplicate");
-                    // TODO: show message to user
                 }
                 else
                 {
@@ -150,7 +159,6 @@ public class MovementManager : MonoBehaviour
                 else if (response == "Not found or found duplicate")
                 {
                     Debug.LogWarning("Item not found or found duplicate");
-                    // TODO: show message to user
                 }
                 else
                 {
@@ -159,9 +167,7 @@ public class MovementManager : MonoBehaviour
             }
             else
             {
-
                 Debug.LogWarning("CheckIfItemExists: " + createPostRequest.error);
-
             }
             createPostRequest.Dispose();
         }
@@ -183,7 +189,9 @@ public class MovementManager : MonoBehaviour
         else
         {
             itemFound = false;
-            ShowMessage(itemFound);
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Item not found");
+            //ShowMessage(itemFound);
         }
 
     }
@@ -193,6 +201,7 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     private IEnumerator MoveItem()
     {
+        EventHandler.CallIsOneMessageOnlyEvent(true);
         WWWForm moveItemForm = new WWWForm();
         if (itemInformationDP.value == 0)
         {
@@ -254,7 +263,12 @@ public class MovementManager : MonoBehaviour
                 itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
                 UpdateItemToChange(itemToChange);
                 UpdateDatabase();
-                ShowMessage(true);
+                //ShowMessage(true);
+                EventHandler.CallOpenMessageEvent("Item moved");
+                createPostRequest.Dispose();
+                MouseManager.Instance.SetDefaultCursor();
+                inputEnabled = true;
+                yield break;
             }
             else
             {
@@ -266,6 +280,7 @@ public class MovementManager : MonoBehaviour
         {
             Debug.LogWarning(createPostRequest.error);
         }
+        EventHandler.CallOpenMessageEvent("Unable to move");
         createPostRequest.Dispose();
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;       
@@ -513,6 +528,18 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     public void MoveItemClicked()
     {
-        StartCoroutine(MoveItem());
+        EventHandler.CallIsOneMessageOnlyEvent(true);
+        if (GetFromLocation() == GetToLocation())
+        {
+            EventHandler.CallOpenMessageEvent("Duplicate locations");
+        }
+        else if (GetToLocation() == "" || GetFromLocation() == "")
+        {
+            EventHandler.CallOpenMessageEvent("Empty location");
+        }
+        else
+        {
+            StartCoroutine(MoveItem());
+        }
     }
 }

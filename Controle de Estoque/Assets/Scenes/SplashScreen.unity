@@ -679,7 +679,7 @@ MonoBehaviour:
     itens: []
   testingSheet:
     itens: []
-  currentEstoque: 1
+  currentEstoque: 0
   testing: []
 --- !u!114 &2113933708
 MonoBehaviour:

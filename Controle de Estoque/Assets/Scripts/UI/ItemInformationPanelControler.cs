@@ -135,6 +135,24 @@ public class ItemInformationPanelControler : MonoBehaviour
     } 
 
     /// <summary>
+    /// Fill the placeholders of input fields
+    /// </summary>
+    private void FillPlaceHolders(List<string> values)
+    {
+        for (int i = 0; i < parameterValuesText.Length; i++)
+        {
+            if (i < values.Count)
+            {
+                parameterValuesText[i].text = values[i] + "...";
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    /// <summary>
     /// Change the size of the panel based on the number of active item boxes
     /// </summary>
     private void ChangeSize()
@@ -306,7 +324,7 @@ public class ItemInformationPanelControler : MonoBehaviour
         List<string> values = new List<string>();
         dictionary.TryGetValue("Names", out names);
         FillNames(names);
-
+        FillPlaceHolders(names);
         parameterValues[0].text = DateTime.Now.ToString("dd/MM/yyyy");
         parameterValues[1].text = DateTime.Now.ToString("dd/MM/yyyy");
         parameterValues[8].text = "Estoque";
@@ -665,10 +683,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
                 valuesList.Add(parameterValues[12].text);
-                valuesList.Add(parameterValues[13].text);
-                valuesList.Add(parameterValues[14].text);
-                valuesList.Add(parameterValues[15].text);
-                valuesList.Add(parameterValues[16].text);
+                valuesList.Add(parameterValues[13].text);       
                 break;
             #endregion
             #region Roteador

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -272,8 +273,7 @@ public class HelperMethods
                 #endregion
                 #region Processador
                 case ConstStrings.Processador:
-                    WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
-                  parameters[4], parameters[5], parameters[6]);
+                    WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
                     UnityWebRequest createProcessadorPostRequest = CreatePostRequest.GetPostRequest(processadorForm, phpName + "processador.php", folderID);
 
@@ -556,10 +556,7 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.Soquete);
                     dictionary["Values"].Add(itemToShow.NucleosFisicos.ToString());
                     dictionary["Values"].Add(itemToShow.NucleosLogicos.ToString());
-                    dictionary["Values"].Add(itemToShow.AceitaVirtualizacao);
-                    dictionary["Values"].Add(itemToShow.TurboBoost);
-                    dictionary["Values"].Add(itemToShow.HyperThreading);
-                    break;
+                                   break;
                 #endregion
                 #region Roteador
                 case ConstStrings.Roteador:
@@ -840,9 +837,6 @@ public class HelperMethods
                 dictionary["Names"].Add("Soquete");
                 dictionary["Names"].Add("Nº núcleos físicos");
                 dictionary["Names"].Add("Nº núcleos lógicos");
-                dictionary["Names"].Add("Aceita virtualização?");
-                dictionary["Names"].Add("Turbo boost?");
-                dictionary["Names"].Add("Hyper-Threading?");
                 break;
             #endregion
             #region Roteador
@@ -960,16 +954,31 @@ public class HelperMethods
             case "<":              
                 return double.Parse(parameter1) < double.Parse(parameter2);
             case ">":
-                return float.Parse(parameter1) > float.Parse(parameter2);
+                //return float.TryParse(parameter1) > float.TryParse(parameter2);
             case "!=":
                 return parameter1 != parameter2;
             case "<=":
-                return float.Parse(parameter1) <= float.Parse(parameter2);
+                //return float.TryParse(parameter1) <= float.TryParse(parameter2);
             case ">=":
-                return float.Parse(parameter1) >= float.Parse(parameter2);
+               // return float.TryParse(parameter1) >= float.TryParse(parameter2);
             default:
                 return false;
         }
     }
 
+    public static void RemoveWhiteSpacesFromSingleString(string singleString, out string trimmedString)
+    {
+        trimmedString = Regex.Replace(singleString, @"\s+", "");
+    }
+
+    public static void RemoveWhiteSpacesFromMultipleStrings(List<string> multipleStrings, out List<string> trimmedList)
+    {
+        string tempString = "";
+        trimmedList = new List<string>();
+        foreach (string item in multipleStrings)
+        {
+            tempString = Regex.Replace(item, @"\s+", "");
+            trimmedList.Add(tempString);
+        }
+    }
 }

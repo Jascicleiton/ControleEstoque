@@ -24,6 +24,8 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
     [HideInInspector] public bool inputEnabled = true;
     [SerializeField] private Button addNewItemButton = null;
 
+    private int tempInt = 0; // Used for all int.TryParse
+
     private void Start()
     {
         allitems = new NoPaNoSeAll();
@@ -127,8 +129,14 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
     /// Add a new item to the online database
     /// </summary>
     private IEnumerator AddNewItemRoutine()
-    {     
-        WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, int.Parse(newItemQuantityInput.text));
+    {
+        if (!int.TryParse(newItemQuantityInput.text, out tempInt))
+        {
+            //Show error message
+            yield break;
+        }
+
+        WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, tempInt);
 
         UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, "addnopanoseitem.php", 5);
         MouseManager.Instance.SetWaitingCursor();

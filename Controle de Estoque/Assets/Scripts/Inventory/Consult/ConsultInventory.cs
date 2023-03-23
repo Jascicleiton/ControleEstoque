@@ -26,6 +26,7 @@ public class ConsultInventory : MonoBehaviour
     private ConsultCategory consultCategory = null;
     private bool inputEnabled = true;
     private TMP_InputField locationInput;
+    private int tempInt = 0; // used for all int.TryParse
 
     /// <summary>
     /// get the ConsultCategory component
@@ -61,15 +62,18 @@ public class ConsultInventory : MonoBehaviour
                 {
                     if (searchOptionDP.value == 1)
                     {
-                        if (ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(inputField.text), InternalDatabase.Instance.fullDatabase) != null)
+                        if (int.TryParse(inputField.text, out tempInt))
                         {
-                            RemoveOldSearch();
-                            GameObject result = Instantiate(consultResult, consultResultTransform);
-                            result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(inputField.text), InternalDatabase.Instance.fullDatabase), 0);
-                        }
-                        else
-                        {
-                            RemoveOldSearch();
+                            if (ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase) != null)
+                            {
+                                RemoveOldSearch();
+                                GameObject result = Instantiate(consultResult, consultResultTransform);
+                                result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase), 0);
+                            }
+                            else
+                            {
+                                RemoveOldSearch();
+                            }
                         }
                     }
                     else if (searchOptionDP.value == 2)
@@ -141,22 +145,21 @@ public class ConsultInventory : MonoBehaviour
             numberOfItemsImage.alpha = 1f;
             switch (searchOptionDP.value)
             {
-                case 0:
-
-                    break;
                 case 1:
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(inputField.text), InternalDatabase.Instance.fullDatabase) == null)
-                    {
-                        numberOfItensFoundText.text = "Patrimônio não encontrado";
+                    if (int.TryParse(inputField.text, out tempInt))
+                        {
+                        if (ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase) == null)
+                        {
+                            numberOfItensFoundText.text = "Patrimônio não encontrado";
+                        }
+                        else
+                        {
+                            numberOfItensFoundText.text = "1 item encontrado";
+                        }
                     }
-                    else
-                    {
-                        numberOfItensFoundText.text = "1 item encontrado";
-                    }
-
                     break;
                 case 2:
-                    if (ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(inputField.text), InternalDatabase.Instance.fullDatabase) == null)
+                    if (ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase) == null)
                     {
                         numberOfItensFoundText.text = "Serial não encontrado";
                     }
@@ -164,7 +167,6 @@ public class ConsultInventory : MonoBehaviour
                     {
                         numberOfItensFoundText.text = "1 item encontrado";
                     }
-
                     break;
                 default:
                     break;

@@ -1640,7 +1640,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
         ItemColumns itemToUpdate = new ItemColumns();
         itemToUpdate.Aquisicao = parameters[0];
         itemToUpdate.Entrada = parameters[1];
-        itemToUpdate.Patrimonio = int.Parse(parameters[2]);
+        if(!int.TryParse(parameters[2], out itemToUpdate.Patrimonio))
+        {
+            itemToUpdate.Patrimonio = -666;
+        }
         itemToUpdate.Status = parameters[3];
         itemToUpdate.Serial = parameters[4];
         itemToUpdate.Categoria = parameters[5];
@@ -1654,8 +1657,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region Adaptador AC
             case ConstStrings.AdaptadorAC:
                 itemToUpdate.OndeFunciona = parameters[12];
-                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[13]);
-                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[14]);
+                if(!float.TryParse(parameters[13], out itemToUpdate.VoltagemDeSaida))
+                {
+                    itemToUpdate.VoltagemDeSaida = 0f;
+                }
+                if(!float.TryParse(parameters[14], out itemToUpdate.AmperagemDeSaida))
+                {
+                    itemToUpdate.AmperagemDeSaida = 0f;
+                }
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(adaptadorAC, itemToUpdate.Patrimonio);
                 adaptadorAC.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1663,8 +1672,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region Carregador
             case ConstStrings.Carregador:
                 itemToUpdate.OndeFunciona = parameters[12];
-                itemToUpdate.VoltagemDeSaida = float.Parse(parameters[13]);
-                itemToUpdate.AmperagemDeSaida = float.Parse(parameters[14]);
+                if (!float.TryParse(parameters[13], out itemToUpdate.VoltagemDeSaida))
+                {
+                    itemToUpdate.VoltagemDeSaida = 0f;
+                }
+                if (!float.TryParse(parameters[14], out itemToUpdate.AmperagemDeSaida))
+                {
+                    itemToUpdate.AmperagemDeSaida = 0f;
+                }
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(carregador, itemToUpdate.Patrimonio);
                 carregador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1689,7 +1704,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #endregion
             #region Fonte
             case ConstStrings.Fonte:
-                itemToUpdate.Watts = int.Parse(parameters[12]);
+                if(!int.TryParse(parameters[12], out itemToUpdate.Watts))
+                {
+                    itemToUpdate.Watts = 0;
+                }
                 itemToUpdate.OndeFunciona = parameters[13];
                 itemToUpdate.Conectores = parameters[14];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(fonte, itemToUpdate.Patrimonio);
@@ -1706,11 +1724,23 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region HD
             case ConstStrings.HD:
                 itemToUpdate.Interface = parameters[13];
-                itemToUpdate.Tamanho = float.Parse(parameters[14]);
+                if(!float.TryParse(parameters[14], out itemToUpdate.Tamanho))
+                {
+                    itemToUpdate.Tamanho = 0f;
+                }
                 itemToUpdate.FormaDeArmazenamento = parameters[15];
-                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[16]);
-                itemToUpdate.RPM = int.Parse(parameters[17]);
-                itemToUpdate.VelocidadeDeLeitura = float.Parse(parameters[18]);
+                if(!int.TryParse(parameters[16], out itemToUpdate.CapacidadeEmGB))
+                {
+                    itemToUpdate.CapacidadeEmGB = 0;
+                }
+                if(!int.TryParse(parameters[17], out itemToUpdate.RPM))
+                {
+                    itemToUpdate.RPM = 0;
+                }
+                if(!float.TryParse(parameters[18], out itemToUpdate.VelocidadeDeLeitura))
+                {
+                    itemToUpdate.VelocidadeDeLeitura = 0f;
+                }
                 itemToUpdate.Enterprise = parameters[19];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(hd, itemToUpdate.Patrimonio);
                 hd.itens[categoryItemToUpdateIndex] = itemToUpdate;
@@ -1719,7 +1749,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region iDrac
             case ConstStrings.Idrac:
                 itemToUpdate.QuaisConexoes = parameters[13];
-                itemToUpdate.VelocidadeGBs = float.Parse(parameters[14]);
+                if(!float.TryParse(parameters[14], out itemToUpdate.VelocidadeGBs))
+                {
+                    itemToUpdate.VelocidadeGBs = 0f;
+                }
                 itemToUpdate.EntradaSD = parameters[15];
                 itemToUpdate.ServidoresSuportados = parameters[16];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(idrac, itemToUpdate.Patrimonio);
@@ -1729,12 +1762,21 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region Memoria
             case ConstStrings.Memoria:
                 itemToUpdate.Tipo = parameters[13];
-                itemToUpdate.CapacidadeEmGB = int.Parse(parameters[14]);
-                itemToUpdate.VelocidadeMHz = int.Parse(parameters[15]);
+                if(!int.TryParse(parameters[14], out itemToUpdate.CapacidadeEmGB))
+                {
+                    itemToUpdate.CapacidadeEmGB = 0;
+                }
+                if(!int.TryParse(parameters[15], out itemToUpdate.VelocidadeMHz))
+                {
+                    itemToUpdate.VelocidadeMHz = 0;
+                }
                 itemToUpdate.LowVoltage = parameters[16];
                 itemToUpdate.Rank = parameters[17];
                 itemToUpdate.DIMM = parameters[18];
-                itemToUpdate.TaxaDeTransmissao = int.Parse(parameters[19]);
+                if(int.TryParse(parameters[19], out itemToUpdate.TaxaDeTransmissao))
+                {
+                    itemToUpdate.TaxaDeTransmissao = 0;
+                }
                 itemToUpdate.Simbolo = parameters[20];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(memoria, itemToUpdate.Patrimonio);
                 memoria.itens[categoryItemToUpdateIndex] = itemToUpdate;
@@ -1742,7 +1784,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #endregion
             #region Monitor
             case ConstStrings.Monitor:
-                itemToUpdate.Polegadas = float.Parse(parameters[13]);
+                if(!float.TryParse(parameters[13], out itemToUpdate.Polegadas))
+                {
+                    itemToUpdate.Polegadas = 0;
+                }
                 itemToUpdate.QuaisConexoes = parameters[14];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(monitor, itemToUpdate.Patrimonio);
                 monitor.itens[categoryItemToUpdateIndex] = itemToUpdate;
@@ -1775,10 +1820,16 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region Placa controladora
             case ConstStrings.PlacaControladora:
                 itemToUpdate.QuaisConexoes = parameters[12];
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[13]);
+                if(!int.TryParse(parameters[13], out itemToUpdate.QuantidadeDePortas))
+                {
+                    itemToUpdate.QuantidadeDePortas = 0;
+                }
                 itemToUpdate.TipoDeRAID = parameters[14];
                 itemToUpdate.CapacidadeMaxHD = parameters[15];
-                itemToUpdate.AteQuantosHDs = int.Parse(parameters[16]);
+                if(!int.TryParse(parameters[16], out itemToUpdate.AteQuantosHDs))
+                {
+                    itemToUpdate.AteQuantosHDs = 0;
+                }
                 itemToUpdate.BateriaInclusa = parameters[17];
                 itemToUpdate.Barramento = parameters[18];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaControladora, itemToUpdate.Patrimonio);
@@ -1787,7 +1838,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #endregion
             #region Placa de captura de vídeo
             case ConstStrings.PlacaDeCapturaDeVideo:
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
+                if(!int.TryParse(parameters[12], out itemToUpdate.QuantidadeDePortas))
+                {
+                    itemToUpdate.QuantidadeDePortas = 0;
+                }
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeCapturaDeVideo, itemToUpdate.Patrimonio);
                 placaDeCapturaDeVideo.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1795,7 +1849,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region Placa de rede
             case ConstStrings.PlacaDeRede:
                 itemToUpdate.Interface = parameters[13];
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[14]);
+                if(!int.TryParse(parameters[14], out itemToUpdate.QuantidadeDePortas))
+                {
+                    itemToUpdate.QuantidadeDePortas = 0;
+                }
                 itemToUpdate.QuaisConexoes = parameters[15];
                 itemToUpdate.SuportaFibraOptica = parameters[16];
                 itemToUpdate.Desempenho = parameters[17];
@@ -1805,14 +1862,20 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #endregion
             #region Placa de som
             case ConstStrings.PlacaDeSom:
-                itemToUpdate.QuantosCanais = int.Parse(parameters[12]);
+                if(!int.TryParse(parameters[12], out itemToUpdate.QuantosCanais))
+                {
+                    itemToUpdate.QuantosCanais = 0;
+                }
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeSom, itemToUpdate.Patrimonio);
                 placaDeSom.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             #endregion
             #region Placa de vídeo
             case ConstStrings.PlacaDeVideo:
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
+                if(!int.TryParse(parameters[12], out itemToUpdate.QuantidadeDePortas))
+                {
+                    itemToUpdate.QuantidadeDePortas = 0;
+                }
                 itemToUpdate.QuaisConexoes = parameters[13];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(placaDeVideo, itemToUpdate.Patrimonio);
                 placaDeVideo.itens[categoryItemToUpdateIndex] = itemToUpdate;
@@ -1821,11 +1884,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region Processador
             case ConstStrings.Processador:
                 itemToUpdate.Soquete = parameters[12];
-                itemToUpdate.NucleosFisicos = int.Parse(parameters[13]);
-                itemToUpdate.NucleosLogicos = int.Parse(parameters[14]);
-                itemToUpdate.AceitaVirtualizacao = parameters[15];
-                itemToUpdate.TurboBoost = parameters[16];
-                itemToUpdate.HyperThreading = parameters[17];
+                if(!int.TryParse(parameters[13], out itemToUpdate.NucleosFisicos))
+                {
+                    itemToUpdate.NucleosFisicos = 0;
+                }
+                if(!int.TryParse(parameters[14], out itemToUpdate.NucleosLogicos))
+                {
+                    itemToUpdate.NucleosLogicos = 0;
+                }
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(processador, itemToUpdate.Patrimonio);
                 processador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1839,8 +1905,14 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #region Roteador
             case ConstStrings.Roteador:
                 itemToUpdate.Wireless = parameters[12];
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[13]);
-                itemToUpdate.BandaMaxima = int.Parse(parameters[14]);
+                if(!int.TryParse(parameters[13], out itemToUpdate.QuantidadeDePortas))
+                {
+                    itemToUpdate.QuantidadeDePortas = 0;
+                }
+                if(!int.TryParse(parameters[14], out itemToUpdate.BandaMaxima))
+                {
+                    itemToUpdate.BandaMaxima = 0;
+                }
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(roteador, itemToUpdate.Patrimonio);
                 roteador.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
@@ -1855,12 +1927,21 @@ public class InternalDatabase : Singleton<InternalDatabase>
                 itemToUpdate.PlacaDeRede = parameters[19];
                 itemToUpdate.Processador = parameters[20];
                 itemToUpdate.MemoriasSuportadas = parameters[21];
-                itemToUpdate.QuantasMemorias = int.Parse(parameters[22]);
+                if(!int.TryParse(parameters[22], out itemToUpdate.QuantasMemorias))
+                {
+                    itemToUpdate.QuantasMemorias = 0;
+                }
                 itemToUpdate.OrdemDasMemorias = parameters[23];
-                itemToUpdate.CapacidadeRAMTotal = int.Parse(parameters[24]);
+                if(!int.TryParse(parameters[24], out itemToUpdate.CapacidadeRAMTotal))
+                {
+                    itemToUpdate.CapacidadeRAMTotal = 0;
+                }
                 itemToUpdate.Soquete = parameters[25];
                 itemToUpdate.PlacaControladora = parameters[26];
-                itemToUpdate.AteQuantosHDs = int.Parse(parameters[27]);
+                if(!int.TryParse(parameters[27], out itemToUpdate.AteQuantosHDs))
+                {
+                    itemToUpdate.AteQuantosHDs = 0;
+                }
                 itemToUpdate.TipoDeHD = parameters[28];
                 itemToUpdate.TipoDeRAID = parameters[29];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(servidor, itemToUpdate.Patrimonio);
@@ -1869,7 +1950,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #endregion
             #region Storage NAS
             case ConstStrings.StorageNAS:
-                itemToUpdate.Tamanho = float.Parse(parameters[12]);
+                if(!float.TryParse(parameters[12], out itemToUpdate.Tamanho))
+                {
+                    itemToUpdate.Tamanho = 0f;
+                }
                 itemToUpdate.TipoDeRAID = parameters[13];
                 itemToUpdate.TipoDeHD = parameters[14];
                 itemToUpdate.CapacidadeMaxHD = parameters[15];
@@ -1879,7 +1963,10 @@ public class InternalDatabase : Singleton<InternalDatabase>
             #endregion
             #region Switch
             case ConstStrings.Switch:
-                itemToUpdate.QuantidadeDePortas = int.Parse(parameters[12]);
+                if(!int.TryParse(parameters[12], out itemToUpdate.QuantidadeDePortas))
+                {
+                    itemToUpdate.QuantidadeDePortas = 0;
+                }
                 itemToUpdate.Desempenho = parameters[13];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(Switch, itemToUpdate.Patrimonio);
                 Switch.itens[categoryItemToUpdateIndex] = itemToUpdate;

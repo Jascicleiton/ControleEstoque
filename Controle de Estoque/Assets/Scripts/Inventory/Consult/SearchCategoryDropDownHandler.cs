@@ -58,7 +58,7 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         {
             for (int i = 11; i < names.Count; i++)
             {
-                searchParameters[i - 9].text = names[i] + "...";
+                searchParameters[i - 8].text = names[i] + "...";
             }
         }
 

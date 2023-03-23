@@ -58,6 +58,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -80,7 +81,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
-
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -103,6 +104,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -133,6 +135,10 @@ public class CreateForm
     public static WWWForm GetFonteForm(string appPassword, string modelo, string watts, string ondefunciona, string conectores)
     {
         WWWForm inventario = new WWWForm();
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(watts, out watts);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(ondefunciona, out ondefunciona);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(conectores, out conectores);
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("modelo", modelo);
         inventario.AddField("watts", watts);
@@ -146,6 +152,9 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(fabricante, out fabricante);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(desempenho, out desempenho);
         inventario.AddField("modelo", modelo);
         inventario.AddField("fabricante", fabricante);
         inventario.AddField("desempenho", desempenho);
@@ -158,14 +167,23 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(fabricante, out fabricante);
         inventario.AddField("fabricante", fabricante);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(Interface, out Interface);
         inventario.AddField("interface", Interface);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tamanho, out tamanho);
         inventario.AddField("tamanho", tamanho);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(formaDeArmazenamento, out formaDeArmazenamento);
         inventario.AddField("formaarmazenamento", formaDeArmazenamento);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(Capacidade, out Capacidade);
         inventario.AddField("capacidade", Capacidade);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(RPM, out RPM);
         inventario.AddField("rpm", RPM);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(VelocidadeLeitura, out VelocidadeLeitura);
         inventario.AddField("velocidade", VelocidadeLeitura);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(Enterprise, out Enterprise);
         inventario.AddField("enterprise", Enterprise);
 
         return inventario;
@@ -176,11 +194,17 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(fabricante, out fabricante);
         inventario.AddField("fabricante", fabricante);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(porta, out porta);
         inventario.AddField("porta", porta);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(velocidade, out velocidade);
         inventario.AddField("velocidade", velocidade);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(entradasd, out entradasd);
         inventario.AddField("entradasd", entradasd);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(servidoressuportados, out servidoressuportados);
         inventario.AddField("servidoressuportados", servidoressuportados);
 
         return inventario;
@@ -191,15 +215,25 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(fabricante, out fabricante);
         inventario.AddField("fabricante", fabricante);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tipo, out tipo);
         inventario.AddField("tipo", tipo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(capacidade, out capacidade);
         inventario.AddField("capacidade", capacidade);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(velocidade, out velocidade);
         inventario.AddField("velocidade", velocidade);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(lowvoltage, out lowvoltage);
         inventario.AddField("lowvoltage", lowvoltage);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(rank, out rank);
         inventario.AddField("rank", rank);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(dimm, out dimm);
         inventario.AddField("dimm", dimm);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(taxatransmissao, out taxatransmissao);
         inventario.AddField("taxatransmissao", taxatransmissao);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(simbolo, out simbolo);
         inventario.AddField("simbolo", simbolo);
 
         return inventario;
@@ -209,6 +243,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -232,6 +267,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -263,14 +299,23 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tipoconexao, out tipoconexao);
         inventario.AddField("tipoconexao", tipoconexao);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quantidadeportas, out quantidadeportas);
         inventario.AddField("quantidadeportas", quantidadeportas);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tiporaid, out tiporaid);
         inventario.AddField("tiporaid", tiporaid);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tipohd, out tipohd);
         inventario.AddField("tipohd", tipohd);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(capacidademaxhd, out capacidademaxhd);
         inventario.AddField("capacidademaxhd", capacidademaxhd);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quantoshd, out quantoshd);
         inventario.AddField("quantoshd", quantoshd);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(bateriainclusa, out bateriainclusa);
         inventario.AddField("bateriainclusa", bateriainclusa);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(barramento, out barramento);
         inventario.AddField("barramento", barramento);
 
         return inventario;
@@ -280,7 +325,9 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quantasentradas, out quantasentradas);
         inventario.AddField("quantasentradas", quantasentradas);
 
         return inventario;
@@ -291,12 +338,19 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(fabricante, out fabricante);
         inventario.AddField("fabricante", fabricante);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(Interface, out Interface);
         inventario.AddField("interface", Interface);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quantidadeportas, out quantidadeportas);
         inventario.AddField("quantidadeportas", quantidadeportas);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quaisconexoes, out quaisconexoes);
         inventario.AddField("quaisconexoes", quaisconexoes);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(suportafibraoptica, out suportafibraoptica);
         inventario.AddField("suportafibraoptica", suportafibraoptica);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(desempenho, out desempenho);
         inventario.AddField("desempenho", desempenho);
 
         return inventario;
@@ -306,7 +360,9 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quantoscanais, out quantoscanais);
         inventario.AddField("quantoscanais", quantoscanais);
 
         return inventario;
@@ -316,25 +372,27 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(modelo, out modelo);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quantasentradas, out quantasentradas);
         inventario.AddField("quantasentradas", quantasentradas);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quaisentradas, out quaisentradas);
         inventario.AddField("quaisentradas", quaisentradas);
 
         return inventario;
     }
 
-    public static WWWForm GetProcessadorForm(string appPassword, string modelo, string soquete, string nucleosfisicos, string nucleoslogicos,
-    string aceitavirtualizacao, string turboboost, string hyperthreading)
+    public static WWWForm GetProcessadorForm(string appPassword, string modelo, string soquete, string nucleosfisicos, string nucleoslogicos)
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(soquete, out soquete);
         inventario.AddField("soquete", soquete);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(nucleosfisicos, out nucleosfisicos);
         inventario.AddField("nucleosfisicos", nucleosfisicos);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(nucleoslogicos, out nucleoslogicos);
         inventario.AddField("nucleoslogicos", nucleoslogicos);
-        inventario.AddField("aceitavirtualizacao", aceitavirtualizacao);
-        inventario.AddField("turboboost", turboboost);
-        inventario.AddField("hyperthreading", hyperthreading);
 
         return inventario;
     }
@@ -343,6 +401,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -367,6 +426,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
@@ -409,10 +469,15 @@ public class CreateForm
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
         inventario.AddField("modelo", modelo);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tamanhohd, out tamanhohd);
         inventario.AddField("tamanhohd", tamanhohd);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tiporaid, out tiporaid);
         inventario.AddField("tiporaid", tiporaid);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(tipohd, out tipohd);
         inventario.AddField("tipohd", tipohd);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(capacidademaxhd, out capacidademaxhd);
         inventario.AddField("capacidademaxhd", capacidademaxhd);
+        HelperMethods.RemoveWhiteSpacesFromSingleString(quantoshd, out quantoshd);
         inventario.AddField("quantoshd", quantoshd);
 
         return inventario;
@@ -422,6 +487,7 @@ public class CreateForm
     {
         WWWForm inventario = new WWWForm();
         inventario.AddField("apppassword", appPassword);
+        HelperMethods.RemoveWhiteSpacesFromMultipleStrings(parameters, out parameters);
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:

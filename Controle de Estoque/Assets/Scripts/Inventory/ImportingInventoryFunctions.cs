@@ -706,9 +706,6 @@ public class ImportingInventoryFunctions
             newRow.Soquete = item[1];
             newRow.NucleosFisicos = item[2];
             newRow.NucleosLogicos = item[3];
-            newRow.AceitaVirtualizacao = item[4];
-            newRow.TurboBoost = item[5];
-            newRow.HyperThreading = item[6];
             newRow.Categoria = ConstStrings.Processador;
             importSheet.itens.Add(newRow);
         }
