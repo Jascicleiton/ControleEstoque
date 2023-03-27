@@ -44,7 +44,6 @@ public class ConsultDatabase : Singleton<ConsultDatabase>
                 itemIndexFullDatabase++;
             }
         }
-
         return null;
     }
 

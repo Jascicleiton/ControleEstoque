@@ -13,20 +13,20 @@ public class ConsultInventoryAll : MonoBehaviour
     {
        if(InternalDatabase.Instance != null)
         {
-            if (InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Count > 0)
+            if (InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Count > 0)
             {
-                for (int i = 0; i < InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Count; i++)
+                for (int i = 0; i < InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Count; i++)
                 {
                     if (i < allresults.Length)
                     {
-                        allresults[i].ShowResult(InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens[i], 0);
+                        allresults[i].ShowResult(InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens[i], 0);
                     }
                 }
             }
         }
         for (int i = 0; i < allresults.Length; i++)
         {
-            if (i >= InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens.Count)
+            if (i >= InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Count)
             {
                 allresults[i].gameObject.SetActive(false);
             }

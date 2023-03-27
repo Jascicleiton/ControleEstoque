@@ -8,7 +8,7 @@ public class ConstStrings
     #endregion
 
     #region Sheets names
-    public const string InventarioSnPro = "Inventário SnPro";
+    public const string Inventario = "Inventário";
     public const string HD = "HD";
     public const string Memoria = "Memória";
     public const string PlacaDeRede = "Placa de rede";

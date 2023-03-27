@@ -577,8 +577,7 @@ public class InventarioManager : Singleton<InventarioManager>
             else
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                ImportingInventoryFunctions.ImportInventory(inventario, out tempSheet);
-                
+                ImportingInventoryFunctions.ImportInventory(inventario, out tempSheet);              
             }
         }
         else
@@ -587,13 +586,13 @@ public class InventarioManager : Singleton<InventarioManager>
         }
         EventHandler.CallImportFinished(true);
         getInventarioRequest.Dispose();
-        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.InventarioSnPro))
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Inventario))
         {
-            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.InventarioSnPro, tempSheet);
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Inventario, tempSheet);
         }
         else
         {
-            InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro] = tempSheet;
+            InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario] = tempSheet;
         }
     }
     

@@ -966,6 +966,67 @@ public class HelperMethods
         }
     }
 
+    public static Sheet GetCategoryDatabaseToConsult(string category)
+    {
+        switch (category)
+        {
+            case ConstStrings.AdaptadorAC:
+                return InternalDatabase.adaptadorAC;
+            case ConstStrings.Carregador:
+                return InternalDatabase.carregador;
+            case ConstStrings.Desktop:
+                return InternalDatabase.desktop;
+            case ConstStrings.FoneRamal:
+                return InternalDatabase.foneRamal;
+            case ConstStrings.Fonte:
+                return InternalDatabase.fonte;
+            case ConstStrings.Gbic:
+                return InternalDatabase.gbic;
+            case ConstStrings.HD:
+                return InternalDatabase.hd;
+            case ConstStrings.Idrac:
+                return InternalDatabase.idrac;
+            case ConstStrings.Memoria:
+                return InternalDatabase.memoria;
+            case ConstStrings.Monitor:
+                return InternalDatabase.monitor;
+            case ConstStrings.Mouse:
+                return InternalDatabase.mouse;
+            case ConstStrings.Nobreak:
+                return InternalDatabase.nobreak;
+            case ConstStrings.Notebook:
+                return InternalDatabase.notebook;
+            case ConstStrings.PlacaControladora:
+                return InternalDatabase.placaControladora;
+            case ConstStrings.PlacaDeCapturaDeVideo:
+                return InternalDatabase.placaDeCapturaDeVideo;
+            case ConstStrings.PlacaDeRede:
+                return InternalDatabase.placaDeRede;
+            case ConstStrings.PlacaDeSom:
+                return InternalDatabase.placaDeSom;
+            case ConstStrings.PlacaDeVideo:
+                return InternalDatabase.placaDeVideo;
+            case ConstStrings.Processador:
+                return InternalDatabase.processador;
+            case ConstStrings.Ramal:
+                return InternalDatabase.ramal;
+            case ConstStrings.Roteador:
+                return InternalDatabase.roteador;
+            case ConstStrings.Servidor:
+                return InternalDatabase.servidor;
+            case ConstStrings.StorageNAS:
+                return InternalDatabase.storageNAS;
+            case ConstStrings.Switch:
+                return InternalDatabase.Switch;
+            case ConstStrings.Teclado:
+                return InternalDatabase.teclado;
+            case ConstStrings.Outros:
+                return InternalDatabase.outros;
+            default:
+                return InternalDatabase.Instance.fullDatabase;
+        }
+    }
+
     public static void RemoveWhiteSpacesFromSingleString(string singleString, out string trimmedString)
     {
         trimmedString = Regex.Replace(singleString, @"\s+", "");

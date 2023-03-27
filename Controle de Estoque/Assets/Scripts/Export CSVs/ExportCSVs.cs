@@ -214,7 +214,7 @@ public class ExportCSVs : MonoBehaviour
         textWriter.Dispose();
         if (InternalDatabase.Instance != null)
         {
-            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro];
+            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario];
             if (tempSheet != null)
             {
                 foreach (ItemColumns item in tempSheet.itens)
@@ -273,7 +273,7 @@ public class ExportCSVs : MonoBehaviour
             default:
                 break;
         }
-        foreach (ItemColumns item in InternalDatabase.Instance.splitDatabase[ConstStrings.InventarioSnPro].itens)
+        foreach (ItemColumns item in InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens)
         {
             rowDataTemp.Add(item.Aquisicao);
             rowDataTemp.Add(item.Entrada);

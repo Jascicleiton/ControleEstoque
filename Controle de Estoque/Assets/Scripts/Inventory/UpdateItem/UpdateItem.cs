@@ -160,21 +160,9 @@ public class UpdateItem : MonoBehaviour
             else
             {
                 JSONNode inventario = JSON.Parse(createItemUpdatePostRequest.downloadHandler.text);
-                foreach (JSONNode item in inventario)
-                {
-                    itemToUpdate.Entrada = item[0];
-                    itemToUpdate.Patrimonio = item[1];
-                    itemToUpdate.Status = item[2];
-                    itemToUpdate.Serial = item[3];
-                    itemToUpdate.Categoria = item[4];
-                    itemToUpdate.Fabricante = item[5];
-                    itemToUpdate.Modelo = item[6];
-                    itemToUpdate.Local = item[7];
-                    itemToUpdate.Saida = item[8];
-                    itemToUpdate.Observacao = item[9];
-                    itemToUpdate.Aquisicao = item[10];
-                    
-                }
+                Sheet tempSheet = new Sheet();
+                ImportingInventoryFunctions.ImportInventory(inventario, out tempSheet);
+                itemToUpdate = tempSheet.itens[0];
                 if (inventario == null)
                 {
                     Debug.LogWarning("CheckIfItemExists: " + response);
@@ -216,9 +204,15 @@ public class UpdateItem : MonoBehaviour
         #region Update inventario
         parameters.Clear();
         parameters = itemInformationPanelControler.GetInventoryValues();
-        parameters.Insert(0, itemToUpdate.Aquisicao);
-        parameters.Insert(1, itemToUpdate.Entrada);
-    
+        if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.SnPro)
+        {
+            parameters.Insert(0, itemToUpdate.Aquisicao);
+            parameters.Insert(1, itemToUpdate.Entrada);
+        }
+        else
+        {
+            parameters.Insert(0, itemToUpdate.Entrada);
+        }  
         yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(itemToUpdate.Categoria), 4, parameters, true);
         if (HelperMethods.GetAddUpdateResponse())
         {
@@ -255,12 +249,15 @@ public class UpdateItem : MonoBehaviour
     private void UpdateFullDatabase()
     {
         List<string> parameters = new List<string>();
-        parameters.Add(itemToUpdate.Aquisicao);
+        if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.SnPro)
+        {
+            parameters.Add(itemToUpdate.Aquisicao);
+        }
         parameters.Add(itemToUpdate.Entrada);
         parameters.AddRange(itemInformationPanelControler.GetInventoryValues());
         parameters.AddRange(itemInformationPanelControler.GetCategoryValues(itemToUpdate.Categoria));
         
-        InternalDatabase.Instance.UpdateDatabaseItem(parameters, itemToUpdateIndex);     
+        UpdateDatabaseItem.UpdateItem(parameters, itemToUpdateIndex);     
     }
 
     /// <summary>
@@ -268,10 +265,11 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     private void ShowUpdateItem()
     {
-        ItemColumns tempItem = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdate.Patrimonio, InternalDatabase.Instance.fullDatabase);
+        ItemColumns tempItem = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdate.Patrimonio, HelperMethods.GetCategoryDatabaseToConsult(itemToUpdate.Categoria));
         if (tempItem != null)
         {
             itemToUpdate = tempItem;
+            tempItem = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdate.Patrimonio, InternalDatabase.Instance.fullDatabase);
             itemToUpdateIndex = ConsultDatabase.Instance.GetItemIndex();
         }
         else
@@ -279,7 +277,7 @@ public class UpdateItem : MonoBehaviour
             //TODO: update the internal database and try again
         }
         inputsPanel.SetActive(true);
-        itemInformationPanelControler.ShowItem(tempItem);
+        itemInformationPanelControler.ShowItem(itemToUpdate);
         itemInformationPanelControler.DisableInputForUpdate();
         EventHandler.CallUpdateTabInputs();
     }

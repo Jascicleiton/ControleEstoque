@@ -25,66 +25,20 @@ public class ImportingInventoryFunctions
                 }
                 break;
             case CurrentEstoque.Fumsoft:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-
-                    newRow.Modelo = item[0];
-                    newRow.VoltagemDeSaida = item[2];
-                    newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.AdaptadorAC;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
             case CurrentEstoque.ESF:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-
-                    newRow.Modelo = item[0];
-                    newRow.VoltagemDeSaida = item[2];
-                    newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.AdaptadorAC;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Testing:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-
-                    newRow.Modelo = item[0];
-                    newRow.OndeFunciona = item[1];
-                    newRow.VoltagemDeSaida = item[2];
-                    newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.AdaptadorAC;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
             case CurrentEstoque.Clientes:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-
-                    newRow.Modelo = item[0];
-                    newRow.VoltagemDeSaida = item[2];
-                    newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.AdaptadorAC;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
             case CurrentEstoque.Concert:
                 foreach (JSONNode item in inventario)
                 {
                     ItemColumns newRow = new ItemColumns();
-
-                    newRow.Modelo = item[0];
+                    newRow.Patrimonio = item[0];
+                    newRow.Modelo = item[1];
                     newRow.VoltagemDeSaida = item[2];
                     newRow.AmperagemDeSaida = item[3];
                     newRow.Categoria = ConstStrings.AdaptadorAC;
                     importSheet.itens.Add(newRow);
-                }
-                break;
+                }                                         
+                break;                                    
             default:
                 foreach (JSONNode item in inventario)
                 {
@@ -104,78 +58,15 @@ public class ImportingInventoryFunctions
     public static void ImportCarregador(JSONNode inventario, out Sheet importSheet)
     {
         importSheet = new Sheet();
-        switch (InternalDatabase.Instance.currentEstoque)
+        foreach (JSONNode item in inventario)
         {
-            case CurrentEstoque.SnPro:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                                        newRow.Modelo = item[0];
-                    newRow.OndeFunciona = item[1];
-                    newRow.VoltagemDeSaida = item[2];
-                    newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.Carregador;
-                                        importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Fumsoft:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.VoltagemDeSaida = item[1];
-                    newRow.AmperagemDeSaida = item[2];
-                    newRow.Categoria = ConstStrings.Carregador;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.ESF:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.VoltagemDeSaida = item[1];
-                    newRow.AmperagemDeSaida = item[2];
-                    newRow.Categoria = ConstStrings.Carregador;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Testing:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.OndeFunciona = item[1];
-                    newRow.VoltagemDeSaida = item[2];
-                    newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.Carregador;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Clientes:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.VoltagemDeSaida = item[1];
-                    newRow.AmperagemDeSaida = item[2];
-                    newRow.Categoria = ConstStrings.Carregador;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Concert:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.VoltagemDeSaida = item[1];
-                    newRow.AmperagemDeSaida = item[2];
-                    newRow.Categoria = ConstStrings.Carregador;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            default:
-                break;
+            ItemColumns newRow = new ItemColumns();
+            newRow.Modelo = item[0];
+            newRow.OndeFunciona = item[1];
+            newRow.VoltagemDeSaida = item[2];
+            newRow.AmperagemDeSaida = item[3];
+            newRow.Categoria = ConstStrings.Carregador;
+            importSheet.itens.Add(newRow);
         }
     }
 
@@ -244,79 +135,16 @@ public class ImportingInventoryFunctions
     {
         importSheet = new Sheet();
 
-        switch (InternalDatabase.Instance.currentEstoque)
+        foreach (JSONNode item in inventario)
         {
-            case CurrentEstoque.SnPro:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.Watts = item[1];
-                    newRow.OndeFunciona = item[2];
-                    newRow.Conectores = item[3];
-                    newRow.Categoria = ConstStrings.Fonte;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Fumsoft:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.Watts = item[1];
-                    newRow.Conectores = item[3];
-                    newRow.Categoria = ConstStrings.Fonte;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.ESF:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.Watts = item[1];
-                    newRow.Conectores = item[3];
-                    newRow.Categoria = ConstStrings.Fonte;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Testing:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.Watts = item[1];
-                    newRow.OndeFunciona = item[2];
-                    newRow.Conectores = item[3];
-                    newRow.Categoria = ConstStrings.Fonte;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Clientes:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.Watts = item[1];
-                    newRow.Conectores = item[3];
-                    newRow.Categoria = ConstStrings.Fonte;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Concert:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.Watts = item[1];
-                    newRow.Conectores = item[3];
-                    newRow.Categoria = ConstStrings.Fonte;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            default:
-                break;
-        }  
+            ItemColumns newRow = new ItemColumns();
+            newRow.Modelo = item[0];
+            newRow.Watts = item[1];
+            newRow.OndeFunciona = item[2];
+            newRow.Conectores = item[3];
+            newRow.Categoria = ConstStrings.Fonte;
+            importSheet.itens.Add(newRow);
+        }
     }
 
     public static void ImportGBIC(JSONNode inventario, out Sheet importSheet)
@@ -378,29 +206,7 @@ public class ImportingInventoryFunctions
         if (inventario != null)
         {
             switch (InternalDatabase.Instance.currentEstoque)
-            {
-                case CurrentEstoque.SnPro:
-                                   case CurrentEstoque.Fumsoft:
-                case CurrentEstoque.ESF:
-                case CurrentEstoque.Testing:
-                case CurrentEstoque.Clientes:
-                    foreach (JSONNode item in inventario)
-                    {
-                        ItemColumns newRow = new ItemColumns();
-                        newRow.Aquisicao = item[0];
-                        newRow.Entrada = item[1];
-                        newRow.Patrimonio = item[2];
-                        newRow.Status = item[3];
-                        newRow.Serial = item[4];
-                        newRow.Categoria = item[5];
-                        newRow.Fabricante = item[6];
-                        newRow.Modelo = item[7];
-                        newRow.Local = item[8];
-                        newRow.Saida = item[9];
-                        newRow.Observacao = item[10];
-                        importSheet.itens.Add(newRow);
-                    }
-                    break;
+            {               
                 case CurrentEstoque.Concert:
                     foreach (JSONNode item in inventario)
                     {
@@ -488,7 +294,7 @@ public class ImportingInventoryFunctions
                     importSheet.itens.Add(newRow);
                 }
                 break;
-            case CurrentEstoque.Fumsoft:
+                      default:
                 foreach (JSONNode item in inventario)
                 {
                     ItemColumns newRow = new ItemColumns();
@@ -500,59 +306,6 @@ public class ImportingInventoryFunctions
                     newRow.Categoria = ConstStrings.Monitor;
                     importSheet.itens.Add(newRow);
                 }
-                break;
-            case CurrentEstoque.ESF:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Patrimonio = item[0];
-                    newRow.Modelo = item[1];
-                    newRow.Fabricante = item[2];
-                    newRow.Polegadas = item[3];
-                    newRow.QuaisConexoes = item[4];
-                    newRow.Categoria = ConstStrings.Monitor;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Testing:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Modelo = item[0];
-                    newRow.Fabricante = item[1];
-                    newRow.Polegadas = item[2];
-                    newRow.QuaisConexoes = item[3];
-                    newRow.Categoria = ConstStrings.Monitor;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Clientes:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Patrimonio = item[0];
-                    newRow.Modelo = item[1];
-                    newRow.Fabricante = item[2];
-                    newRow.Polegadas = item[3];
-                    newRow.QuaisConexoes = item[4];
-                    newRow.Categoria = ConstStrings.Monitor;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            case CurrentEstoque.Concert:
-                foreach (JSONNode item in inventario)
-                {
-                    ItemColumns newRow = new ItemColumns();
-                    newRow.Patrimonio = item[0];
-                    newRow.Modelo = item[1];
-                    newRow.Fabricante = item[2];
-                    newRow.Polegadas = item[3];
-                    newRow.QuaisConexoes = item[4];
-                    newRow.Categoria = ConstStrings.Monitor;
-                    importSheet.itens.Add(newRow);
-                }
-                break;
-            default:
                 break;
         }
     }
