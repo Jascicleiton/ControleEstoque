@@ -56,6 +56,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
     public List<string> testing = new List<string>();
+    public Sheet sheetToSave = new Sheet();
     
     private void Start()
     {
@@ -314,9 +315,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
 
     public JToken CaptureAsJToken()
     {
-        JObject state = new JObject();
-        IDictionary<string, JToken> stateDict = state;
-
+        JArray state = CreateListFromSheetToSave.GetJObject(sheetToSave);   
 
         return state;
     }

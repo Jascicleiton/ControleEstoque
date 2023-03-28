@@ -10,12 +10,11 @@ public class ItemColumns
     /// </summary>
     public string GetValue(string valueToGet)
     {
-        string[] allValues= { Itens, Quantidade.ToString(), Aquisicao, Entrada, Patrimonio.ToString(), Status, Serial, Categoria, Fabricante, Modelo, Local,
+        string[] allValues= { Aquisicao, Entrada, Patrimonio.ToString(), Status, Serial, Categoria, Fabricante, Modelo, Local,
         Saida, Observacao, Interface, Tamanho.ToString("0.0"), FormaDeArmazenamento, CapacidadeEmGB.ToString(), RPM.ToString(), VelocidadeDeLeitura.ToString("0.0"), Enterprise, 
         EstoqueAtual.ToString(), Tipo, VelocidadeMHz.ToString(), LowVoltage, Rank, DIMM, TaxaDeTransmissao.ToString(), Simbolo, QuantidadeDePortas.ToString(), 
         QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs.ToString("0.0"), EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
-        CapacidadeMaxHD, AteQuantosHDs.ToString(), BateriaInclusa, Barramento, Soquete, NucleosFisicos.ToString(), NucleosLogicos.ToString(), AceitaVirtualizacao,
-        TurboBoost, HyperThreading, ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts.ToString(), 
+        CapacidadeMaxHD, AteQuantosHDs.ToString(), BateriaInclusa, Barramento, Soquete, NucleosFisicos.ToString(), NucleosLogicos.ToString(), ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts.ToString(), 
         OndeFunciona, Conectores, Wireless, BandaMaxima.ToString(), VoltagemDeSaida.ToString("0.0"), AmperagemDeSaida.ToString("0.0"), QuantosCanais.ToString(), Polegadas.ToString("0.0"), Processador, CentroDeCusto, Pessoa};
         for (int i = 0; i < allValues.Length; i++)
         {
@@ -28,8 +27,8 @@ public class ItemColumns
     }
 
     #region All possible values an item can have
-    public string Itens; // sem patrimônio e serial
-    public int Quantidade; // todos
+    //public string Itens; // sem patrimônio e serial
+    //public int Quantidade; // todos
     public string Aquisicao; // todos
     public string Entrada; // todos
     public int Patrimonio; 
@@ -72,9 +71,6 @@ public class ItemColumns
     public string Soquete; // processador
     public int NucleosFisicos; // processador
     public int NucleosLogicos; // processador
-    public string AceitaVirtualizacao; // processador
-    public string TurboBoost; // processador
-    public string HyperThreading; // processador
     public string ModeloPlacaMae; // Desktop, Notebook
     public string Fonte; // Desktop, Notebook, Servidor
     public string Memoria; // Desktop, Notebook, Servidor
