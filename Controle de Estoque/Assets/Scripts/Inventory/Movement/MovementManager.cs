@@ -28,6 +28,8 @@ public class MovementManager : MonoBehaviour
     private bool itemFound = false;
     private bool inputEnabled = true;
     private int tempInt = 0; // used for all int.TryParse
+    private bool fromInputEnabled = false;
+    private bool toInputEnabled = false;
 
     MovementRecords movementToRecord;
 
@@ -65,8 +67,14 @@ public class MovementManager : MonoBehaviour
             if (int.TryParse(itemInformationInput.text, out tempInt))
             {
                 itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase);
-            }
+                            }
             else
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
+                yield break;
+            }
+            if(itemToChange == null)
             {
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
@@ -177,7 +185,6 @@ public class MovementManager : MonoBehaviour
         if (itemFound)
         {
             ShouldHidePanels(false);
-            print(itemToChange.Local);
             fromDP.value = HelperMethods.GetLocationDPValue(itemToChange.Local);
             if (HelperMethods.GetLocationFromDP(fromDP.value) == "Outros")
             {
@@ -533,7 +540,7 @@ public class MovementManager : MonoBehaviour
         {
             EventHandler.CallOpenMessageEvent("Duplicate locations");
         }
-        else if (GetToLocation() == "" || GetFromLocation() == "")
+        else if ((toInputEnabled  && GetToLocation() == "" ) ||(fromInputEnabled && GetFromLocation() == ""))
         {
             EventHandler.CallOpenMessageEvent("Empty location");
         }

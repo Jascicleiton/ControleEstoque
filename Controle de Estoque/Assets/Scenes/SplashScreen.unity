@@ -638,6 +638,7 @@ GameObject:
   - component: {fileID: 2113933706}
   - component: {fileID: 2113933707}
   - component: {fileID: 2113933708}
+  - component: {fileID: 2113933709}
   m_Layer: 0
   m_Name: InternalDatabase
   m_TagString: Untagged
@@ -679,7 +680,7 @@ MonoBehaviour:
     itens: []
   testingSheet:
     itens: []
-  currentEstoque: 0
+  currentEstoque: 1
   testing: []
 --- !u!114 &2113933708
 MonoBehaviour:
@@ -693,6 +694,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6496bf5eb4ddda3499b745f84675b39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2113933709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113933705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: c640ffc8-0094-4e73-9664-9eb82d5b0557
 --- !u!4 &6255793906835813499
 Transform:
   m_ObjectHideFlags: 0

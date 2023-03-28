@@ -3,11 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Saving;
 
-public class InternalDatabase : Singleton<InternalDatabase>
+public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
 {
     [SerializeField] GameObject importingWidget;
     [SerializeField] GameObject exportManagerPrefab;
+    
     public string currentVersion = "1.0"; // current program version - it is here for lazy reasons
 
     public Dictionary<string, Sheet> splitDatabase = new Dictionary<string, Sheet>();
@@ -49,13 +51,15 @@ public class InternalDatabase : Singleton<InternalDatabase>
     public static List<Sheet> allFullDetailsSheets = new List<Sheet>();
 
     private bool fullDatabaseFilled = false;
+    private OfflineProgram offlineProgram = null;
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
     public List<string> testing = new List<string>();
-
+    
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        offlineProgram = GetComponent<OfflineProgram>();
     }
 
     private void Update()
@@ -147,12 +151,13 @@ public class InternalDatabase : Singleton<InternalDatabase>
             Sheet outrosTemp = new Sheet();
             splitDatabase.TryGetValue(ConstStrings.Outros, out outrosTemp);
             #endregion
+            testingSheet = inventarioTemp;
             // Get all itens from "Inventario SnPro into the full database
             if (inventarioTemp != null && inventarioTemp.itens.Count > 0)
             {
-                for (int i = 0; i < fullDatabase.itens.Count; i++)
+                for (int i = 0; i < inventarioTemp.itens.Count; i++)
                 {
-                    fullDatabase.itens[i] = inventarioTemp.itens[i];
+                    fullDatabase.itens.Add(inventarioTemp.itens[i]);
                 }
             }
             // Get the values of the detail sheet based on the "modelo" of the item on Inventario SnPro
@@ -286,5 +291,27 @@ public class InternalDatabase : Singleton<InternalDatabase>
         fullDatabaseFilled = true;
     }
 
-    
+    private void CreateAllSheetsDictionary()
+    {
+
+    }
+
+    public object CaptureState()
+    {
+        List<Sheet> returnSheets = new List<Sheet>();
+        returnSheets.Add(fullDatabase);
+        foreach (Sheet item in allFullDetailsSheets)
+        {
+            returnSheets.Add(item);
+        }
+        return returnSheets;
+    }
+
+    public void RestoreState(object state)
+    {
+        List<Sheet> savedSheets = (List<Sheet>)state;
+        fullDatabase = savedSheets[0];
+        savedSheets.RemoveAt(0);
+        allFullDetailsSheets = savedSheets;
+    }
 }
