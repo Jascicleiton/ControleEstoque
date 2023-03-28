@@ -1042,4 +1042,63 @@ public class HelperMethods
             trimmedList.Add(tempString);
         }
     }
+
+    public static void LoadDataToAllFullDetailsSHeets(List<Sheet> loadedSheets)
+    {
+        switch (InternalDatabase.Instance.currentEstoque)
+        {
+            case CurrentEstoque.SnPro:
+                InternalDatabase.adaptadorAC = loadedSheets[0];
+                                InternalDatabase.carregador = loadedSheets[1];
+                InternalDatabase.desktop = loadedSheets[2];
+                InternalDatabase.fonte = loadedSheets[3];
+                InternalDatabase.gbic = loadedSheets[4];
+                InternalDatabase.hd = loadedSheets[5];
+                InternalDatabase.idrac = loadedSheets[6];
+                InternalDatabase.memoria = loadedSheets[7];
+                InternalDatabase.monitor = loadedSheets[8];
+                InternalDatabase.nobreak = loadedSheets[9];
+                InternalDatabase.notebook = loadedSheets[10];
+                 InternalDatabase.placaControladora = loadedSheets[11];
+                InternalDatabase.placaDeCapturaDeVideo = loadedSheets[12];
+                InternalDatabase.placaDeRede = loadedSheets[13];
+                InternalDatabase.placaDeSom = loadedSheets[14];
+                InternalDatabase.placaDeVideo = loadedSheets[15];
+                            InternalDatabase.processador = loadedSheets[16];
+                InternalDatabase.roteador = loadedSheets[17];
+                InternalDatabase.servidor = loadedSheets[18];
+                InternalDatabase.storageNAS = loadedSheets[19]; 
+                InternalDatabase.Switch = loadedSheets[20];
+                InternalDatabase.outros = loadedSheets[21];
+                break;           
+            default:
+                InternalDatabase.adaptadorAC = loadedSheets[0];
+                InternalDatabase.carregador = loadedSheets[1];
+                InternalDatabase.desktop = loadedSheets[2];
+                InternalDatabase.foneRamal = loadedSheets[3];
+                InternalDatabase.fonte = loadedSheets[4];
+                InternalDatabase.gbic = loadedSheets[5];
+                InternalDatabase.hd = loadedSheets[6];
+                InternalDatabase.idrac = loadedSheets[7];
+                InternalDatabase.memoria = loadedSheets[8];
+                InternalDatabase.monitor = loadedSheets[9];
+                InternalDatabase.mouse = loadedSheets[10];
+                InternalDatabase.nobreak = loadedSheets[11];
+                InternalDatabase.notebook = loadedSheets[12];
+                InternalDatabase.placaControladora = loadedSheets[13];
+                InternalDatabase.placaDeCapturaDeVideo = loadedSheets[14];
+                InternalDatabase.placaDeRede = loadedSheets[15];
+                InternalDatabase.placaDeSom = loadedSheets[16];
+                InternalDatabase.placaDeVideo = loadedSheets[17];
+                InternalDatabase.processador = loadedSheets[18];
+                InternalDatabase.ramal = loadedSheets[19];
+                InternalDatabase.roteador = loadedSheets[20];
+                InternalDatabase.servidor = loadedSheets[21];
+                InternalDatabase.storageNAS = loadedSheets[22];
+                InternalDatabase.Switch = loadedSheets[23];
+                InternalDatabase.teclado = loadedSheets[24];
+                InternalDatabase.outros = loadedSheets[25];
+                break;
+        }
+    }
 }

@@ -4,8 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Saving;
+using Newtonsoft.Json.Linq;
 
-public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
+public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
 {
     [SerializeField] GameObject importingWidget;
     [SerializeField] GameObject exportManagerPrefab;
@@ -291,11 +292,6 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         fullDatabaseFilled = true;
     }
 
-    private void CreateAllSheetsDictionary()
-    {
-
-    }
-
     public object CaptureState()
     {
         List<Sheet> returnSheets = new List<Sheet>();
@@ -313,5 +309,20 @@ public class InternalDatabase : Singleton<InternalDatabase>, ISaveable
         fullDatabase = savedSheets[0];
         savedSheets.RemoveAt(0);
         allFullDetailsSheets = savedSheets;
+        HelperMethods.LoadDataToAllFullDetailsSHeets(savedSheets);
+    }
+
+    public JToken CaptureAsJToken()
+    {
+        JObject state = new JObject();
+        IDictionary<string, JToken> stateDict = state;
+
+
+        return state;
+    }
+
+    public void RestoreFromJToken(JToken state)
+    {
+        throw new NotImplementedException();
     }
 }

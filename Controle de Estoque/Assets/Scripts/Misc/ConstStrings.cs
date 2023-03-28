@@ -5,6 +5,7 @@ public class ConstStrings
     #region Save files
     public const string DataDatabaseSaveFile = "InventoryDatabase";
     public const string UserDatabaseSaveFile = "UserDatabase";
+    public const string extension = ".json";
     #endregion
 
     #region Sheets names

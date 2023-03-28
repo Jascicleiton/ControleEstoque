@@ -2,47 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Saving;
+using System;
 
 namespace Saving
 {
     public class SavingWrapper : Singleton<SavingWrapper>
     {
-        private SavingSystem saving;
+        private JsonSavingSystem saving;
         const string defaultSaveFile = "save";
         // Update is called once per frame
         private void Start()
         {
-            saving = GetComponent<SavingSystem>();
+            saving = GetComponent<JsonSavingSystem>();
             DontDestroyOnLoad(this.gameObject);
-            StartCoroutine(LoadUserDatabaseRoutine());
         }
-
-        private void OnEnable()
+        private void Update()
         {
-            EventHandler.DatabaseUpdatedEvent += Save;
-        }
-
-        private void OnDisable()
-        {
-            EventHandler.DatabaseUpdatedEvent -= Save;
-        }
-
-
-        /// <summary>
-        /// This coroutine waits two seconds to make sure everything is active on the scene
-        /// before loading the UserDatabase
-        /// </summary>
-        private IEnumerator LoadUserDatabaseRoutine()
-        {
-            yield return new WaitForSeconds(2);
-            Load(ConstStrings.UserDatabaseSaveFile);
+            if(Input.GetKeyDown(KeyCode.F12))
+            {
+                Save("BKP " + DateTime.Now);
+            }
         }
 
         public void Save(string saveFileName)
         {
             if (saving == null)
             {
-                saving = GetComponent<SavingSystem>();
+                saving = GetComponent<JsonSavingSystem>();
             }
             saving.Save(saveFileName);
         }
@@ -51,7 +37,7 @@ namespace Saving
         {
             if (saving == null)
             {
-                saving = GetComponent<SavingSystem>();
+                saving = GetComponent<JsonSavingSystem>();
             }
             saving.Load(saveFileName);
         }
