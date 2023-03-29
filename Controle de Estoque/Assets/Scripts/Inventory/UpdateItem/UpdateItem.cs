@@ -279,7 +279,14 @@ public class UpdateItem : MonoBehaviour
         inputsPanel.SetActive(true);
         itemInformationPanelControler.ShowItem(itemToUpdate);
         itemInformationPanelControler.DisableInputForUpdate();
+        StartCoroutine(WaitATick());
+    }
+
+    private IEnumerator WaitATick()
+    {
+        yield return new WaitForSeconds(0.5f);
         EventHandler.CallUpdateTabInputs();
+        itemInformationPanelControler.GetTabActiveInputs();
     }
 
     /// <summary>

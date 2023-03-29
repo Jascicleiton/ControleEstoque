@@ -1,8 +1,0 @@
-[28-Dec-2022 14:11:57 UTC] PHP Warning:  Undefined array key "username" in /home/sysnetpro/public_html/controleestoque/htdocs/newuser.php on line 11
-[28-Dec-2022 14:11:57 UTC] PHP Warning:  Undefined array key "password" in /home/sysnetpro/public_html/controleestoque/htdocs/newuser.php on line 13
-[28-Dec-2022 14:11:57 UTC] PHP Warning:  Undefined array key "apppassword" in /home/sysnetpro/public_html/controleestoque/htdocs/newuser.php on line 15
-[28-Dec-2022 14:12:09 UTC] PHP Warning:  Undefined array key "apppassword" in /home/sysnetpro/public_html/controleestoque/htdocs/loginuser.php on line 10
-[28-Dec-2022 14:18:29 UTC] PHP Warning:  Undefined array key "apppassword" in /home/sysnetpro/public_html/controleestoque/loginuser.php on line 10
-[28-Dec-2022 14:19:00 UTC] PHP Warning:  Undefined array key "username" in /home/sysnetpro/public_html/controleestoque/newuser.php on line 11
-[28-Dec-2022 14:19:00 UTC] PHP Warning:  Undefined array key "password" in /home/sysnetpro/public_html/controleestoque/newuser.php on line 13
-[28-Dec-2022 14:19:00 UTC] PHP Warning:  Undefined array key "apppassword" in /home/sysnetpro/public_html/controleestoque/newuser.php on line 15

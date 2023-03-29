@@ -277,13 +277,8 @@ public class ItemInformationPanelControler : MonoBehaviour
             print("Item to show is null");
         }
         HideEmptyItemBox();
-        if (tabInputHandler != null)
-        {
-            tabInputHandler.GetActiveInputs();
-            tabInputHandler.CheckIfInputIsActiveAndEnabled();
-        }
-        ChangeSize();
 
+        ChangeSize();
     }
 
     /// <summary>
@@ -806,5 +801,13 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
         }
         return valuesList;
+    }
+    public void GetTabActiveInputs()
+    {
+        if (tabInputHandler != null)
+        {
+            tabInputHandler.GetActiveInputs();
+            //tabInputHandler.SelectInput();
+        }
     }
 }

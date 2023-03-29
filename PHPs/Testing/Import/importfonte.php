@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_controleestoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Testing');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");

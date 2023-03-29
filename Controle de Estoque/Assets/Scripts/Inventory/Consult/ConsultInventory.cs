@@ -214,6 +214,10 @@ public class ConsultInventory : MonoBehaviour
                         result.SetActive(true);
                         result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
                     }
+                    else
+                    {
+                        foundItens.itens.Remove(foundItens.itens[i]);
+                    }
                 }
                          numberOfItemsImage.alpha = 1f;
                 numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";

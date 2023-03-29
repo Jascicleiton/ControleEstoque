@@ -20,7 +20,11 @@ namespace Saving
         {
             if(Input.GetKeyDown(KeyCode.F12))
             {
-                Save("BKP " + DateTime.Now);
+                Save("BKP ");
+            }
+            if(Input.GetKeyDown(KeyCode.F11))
+            {
+                Load("BKP ");
             }
         }
 

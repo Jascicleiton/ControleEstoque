@@ -35,11 +35,4 @@ mysqli_query($con, $insertuserquery) or die("insert user failed");
 
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 2 - username query ran into an error
-// 3 - Username already exists
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

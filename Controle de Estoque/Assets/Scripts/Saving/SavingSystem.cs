@@ -65,6 +65,7 @@ namespace Saving
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, state);
             }
+            print("saved");
         }
 
         private void CaptureState(Dictionary<string, object> state)

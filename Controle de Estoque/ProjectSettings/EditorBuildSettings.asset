@@ -32,13 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NoPaNoSeScene.unity
     guid: 32b2ca77b812004439c6dea56473c02b
-  - enabled: 1
-    path: Assets/Scenes/ConsultSceneAllDetails.unity
-    guid: a814d93320a5e254f8f2181400f3e116
-  - enabled: 1
-    path: Assets/Scenes/ConsultSceneAllinventory.unity
-    guid: 0541394d4941cf2499ba9922001867fa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ShowAllMovementsScene.unity
     guid: 70caaf3c9d2232c4ba43ce2c9e0c594a
   m_configObjects: {}

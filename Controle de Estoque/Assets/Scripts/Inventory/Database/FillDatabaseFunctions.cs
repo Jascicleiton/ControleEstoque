@@ -314,7 +314,7 @@ public class FillDatabaseFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
+                        if (item.Patrimonio == itemToAdd.Patrimonio)
                         {
                             item.HD = itemToAdd.HD;
                             item.Memoria = itemToAdd.Memoria;

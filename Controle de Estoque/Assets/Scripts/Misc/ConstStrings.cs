@@ -51,6 +51,7 @@ public class ConstStrings
 
     #region Tags
     public const string ItemResultsParent = "ItemResultsParent";
+    public const string TabTarget = "TabTarget";
     #endregion
 
     #region Scene names

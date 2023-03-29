@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_controleestoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Testing');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");
@@ -31,10 +31,4 @@ else
 }
 
 $con->close();
-
-// Error codes
-// 1 - Database connection error
-// 2 - username query ran into an error
-// 3 - Username does not exist or there is more than one in the table
-// 4 - Username already exist
 ?>

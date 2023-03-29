@@ -2797,7 +2797,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2859,8 +2859,6 @@ MonoBehaviour:
   exportSheetsButton: {fileID: 1820150522}
   logoutButton: {fileID: 501444525}
   noPaNoSeButton: {fileID: 1173208512}
-  fullInventoryButton: {fileID: 0}
-  fullDetailsButton: {fileID: 0}
   allMovementsButton: {fileID: 32777495}
   helloMessage: {fileID: 6706794779251686}
 --- !u!222 &6706793730650359

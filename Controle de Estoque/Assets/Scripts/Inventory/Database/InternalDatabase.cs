@@ -215,7 +215,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
                 }
                 else if (item.Categoria.Trim() == ConstStrings.Notebook.Trim())
                 {
-                    FillDatabaseFunctions.Monitor(item, notebookTemp);
+                    FillDatabaseFunctions.Notebook(item, notebookTemp);
                 }
                 else if (item.Categoria.Trim() == ConstStrings.PlacaControladora.Trim())
                 {

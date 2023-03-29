@@ -658,9 +658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4079dbe5b5e494f892791591e03625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputFields:
-  - {fileID: 810753875}
-  - {fileID: 212939546}
   isWithItemInformationPanelController: 0
 --- !u!114 &540010663
 MonoBehaviour:
@@ -3805,7 +3802,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

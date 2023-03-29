@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class TabInputHandler : MonoBehaviour
 {
-    [SerializeField] TMP_InputField[] inputFields;
+    List<TMP_InputField> inputFields = new List<TMP_InputField>();
 
     private int inputIndex = 0;
-   // private int activeInputsCount;
-    public bool isWithItemInformationPanelController = false;
-    private List<int> activeIndexes = new List<int>();
-
+       public bool isWithItemInformationPanelController = false;
+    
     private void Start()
     {      
             GetActiveInputs();
@@ -21,7 +20,7 @@ public class TabInputHandler : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.UpdateTabInputs += GetActiveInputs;
-        GetActiveInputs();
+        //GetActiveInputs();
     }
 
     private void OnDisable()
@@ -39,9 +38,9 @@ public class TabInputHandler : MonoBehaviour
                 inputIndex--;
                 if (inputIndex < 0)
                 {
-                    inputIndex = activeIndexes.Count -1;
+                    inputIndex = inputFields.Count -1;
                 }
-                CheckIfInputIsActiveAndEnabled();
+                inputFields[inputIndex].Select();
             }
         }
         else
@@ -49,32 +48,12 @@ public class TabInputHandler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 inputIndex++;
-                if (inputIndex >= activeIndexes.Count)
+                if (inputIndex >= inputFields.Count)
                 {
                     inputIndex = 0;
                 }
-                CheckIfInputIsActiveAndEnabled();
+                inputFields[inputIndex].Select();
             }
-        }
-    }
-
-    /// <summary>
-    /// Loops through all inputs and selects the first one that is active, enabled and interactable
-    /// </summary>
-    public void CheckIfInputIsActiveAndEnabled()
-    {
-        if (inputFields[activeIndexes[inputIndex]] == null || !inputFields[activeIndexes[inputIndex]].isActiveAndEnabled || !inputFields[activeIndexes[inputIndex]].interactable)
-        {
-            inputIndex++;
-            if(inputIndex >= activeIndexes.Count)
-            {
-                inputIndex = 0;
-            }
-            CheckIfInputIsActiveAndEnabled();
-        }
-        else
-        {
-            inputFields[activeIndexes[inputIndex]].Select();
         }
     }
 
@@ -84,17 +63,24 @@ public class TabInputHandler : MonoBehaviour
     /// </summary>
     public void GetActiveInputs()
     {
-        inputIndex = 0;
-      //  activeInputsCount = 0;
-        for (int i = 0; i < inputFields.Length; i++)
+        inputFields.Clear();
+        inputFields = FindObjectsOfType<TMP_InputField>().ToList();
+        for (int i = 0; i < inputFields.Count; i++)
         {
-            if (inputFields[i] != null && inputFields[i].IsActive())
+            if (!inputFields[i].interactable)
             {
-                //activeInputsCount++;
-                activeIndexes.Add(i);
+                print(inputFields[i].gameObject.name);
+                inputFields.Remove(inputFields[i]);
+                continue;
+            }
+            if (inputFields[i].tag != ConstStrings.TabTarget)
+            {
+                inputFields.Remove(inputFields[i]);
+                continue;
             }
         }
-        CheckIfInputIsActiveAndEnabled();
+        inputFields.Sort((x, y) => x.GetComponent<InputNumber>().number.CompareTo(y.GetComponent<InputNumber>().number));
+        inputFields[0].Select();
     }
 
     /// <summary>
@@ -102,18 +88,11 @@ public class TabInputHandler : MonoBehaviour
     /// </summary>
     public void InputSelected(TMP_InputField inputSelected)
     {
-        for (int i = 0; i < inputFields.Length; i++)
+        for (int i = 0; i < inputFields.Count; i++)
         {
             if (inputSelected == inputFields[i])
             {
-                for (int j = 0; j < activeIndexes.Count; j++)
-                {
-                    if(i == activeIndexes[j])
-                    {
-                        inputIndex = j;
-                        return;
-                    }
-                }
+                inputIndex = i;
             }
         }
     }

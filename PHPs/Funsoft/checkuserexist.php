@@ -31,10 +31,4 @@ else
 }
 
 $con->close();
-
-// Error codes
-// 1 - Database connection error
-// 2 - username query ran into an error
-// 3 - Username does not exist or there is more than one in the table
-// 4 - Username already exist
 ?>

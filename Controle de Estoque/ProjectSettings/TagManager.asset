@@ -9,6 +9,7 @@ TagManager:
   - MovementRecord
   - ParameterValue
   - ParameterName
+  - TabTarget
   layers:
   - Default
   - TransparentFX

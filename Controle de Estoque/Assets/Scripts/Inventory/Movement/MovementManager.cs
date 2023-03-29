@@ -274,6 +274,7 @@ public class MovementManager : MonoBehaviour
                 EventHandler.CallOpenMessageEvent("Item moved");
                 createPostRequest.Dispose();
                 MouseManager.Instance.SetDefaultCursor();
+                ResetInputs();
                 inputEnabled = true;
                 yield break;
             }
@@ -535,18 +536,21 @@ public class MovementManager : MonoBehaviour
     /// </summary>
     public void MoveItemClicked()
     {
-        EventHandler.CallIsOneMessageOnlyEvent(true);
-        if (GetFromLocation() == GetToLocation())
+        if (itemFound)
         {
-            EventHandler.CallOpenMessageEvent("Duplicate locations");
-        }
-        else if ((toInputEnabled  && GetToLocation() == "" ) ||(fromInputEnabled && GetFromLocation() == ""))
-        {
-            EventHandler.CallOpenMessageEvent("Empty location");
-        }
-        else
-        {
-            StartCoroutine(MoveItem());
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            if (fromInputEnabled && toInputEnabled && (GetFromLocation() == GetToLocation()))
+            {
+                EventHandler.CallOpenMessageEvent("Duplicate locations");
+            }
+            else if ((toInputEnabled && GetToLocation() == "") || (fromInputEnabled && GetFromLocation() == ""))
+            {
+                EventHandler.CallOpenMessageEvent("Empty location");
+            }
+            else
+            {
+                StartCoroutine(MoveItem());
+            }
         }
     }
 }
