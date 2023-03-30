@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 127584085}
   - component: {fileID: 127584084}
+  - component: {fileID: 127584086}
   m_Layer: 0
-  m_Name: ImportLocations
+  m_Name: ImportUISettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,6 +168,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &127584086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127584083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f075cd9cd8931c24993d900211ee1d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: a07e8b4c-fe43-4465-ba25-f66f2e5e4c72
 --- !u!1 &241899093
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,9 +764,9 @@ MonoBehaviour:
     itens: []
   testingSheet:
     itens: []
-  currentEstoque: 0
+  currentEstoque: 2
   testing: []
-  sheetToSave:
+  sheetToLoad:
     itens: []
 --- !u!114 &2113933708
 MonoBehaviour:
@@ -775,10 +789,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2113933705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Script: {fileID: 11500000, guid: f075cd9cd8931c24993d900211ee1d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueIdentifier: c640ffc8-0094-4e73-9664-9eb82d5b0557
+  uniqueIdentifier: 01e2bbd9-c199-465b-8d87-3731c6407819
 --- !u!4 &6255793906835813499
 Transform:
   m_ObjectHideFlags: 0
@@ -806,7 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619abe11d31d98f43bb025f4bac6ed51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testingEstoque: 0
+  testingEstoque: 2
 --- !u!1 &6255793906835813501
 GameObject:
   m_ObjectHideFlags: 0

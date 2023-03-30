@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,10 +23,18 @@ public class CloseProgram : MonoBehaviour
 
     private void Start()
     {
-        if(closeButton == null)
+        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
         {
-            closeButton = GetComponentInChildren<Button>();
+            Destroy(this.gameObject);
         }
+        else
+        {
+            if (closeButton == null)
+            {
+                closeButton = GetComponentInChildren<Button>();
+            }
+        }
+        
     }
 
     /// <summary>
@@ -46,6 +55,15 @@ public class CloseProgram : MonoBehaviour
     }
 
     /// <summary>
+    /// Waits half a second to allow the database to be saved
+    /// </summary>
+    private IEnumerator WaitATick()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Application.Quit();
+    }
+
+    /// <summary>
     /// If showWarningMessage is true, open the warning message panel. If it is false, close the program
     /// </summary>
     public void ButtonClicked()
@@ -56,7 +74,8 @@ public class CloseProgram : MonoBehaviour
         }
         else
         {
-            Application.Quit();
+            EventHandler.CallDatabaseUpdatedEvent();
+            StartCoroutine(WaitATick());
         }
     }
 
@@ -65,7 +84,8 @@ public class CloseProgram : MonoBehaviour
     /// </summary>
     public void YesButtonClicked()
     {
-        Application.Quit();
+        EventHandler.CallDatabaseUpdatedEvent();
+        StartCoroutine(WaitATick());
     }
 
     /// <summary>

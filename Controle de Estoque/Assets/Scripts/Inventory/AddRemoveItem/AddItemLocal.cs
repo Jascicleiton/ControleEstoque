@@ -850,7 +850,7 @@ public class AddItemLocal
         }
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
         // ShowMessage();
-        // EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
+         EventHandler.CallDatabaseUpdatedEvent();
     }
 
 }

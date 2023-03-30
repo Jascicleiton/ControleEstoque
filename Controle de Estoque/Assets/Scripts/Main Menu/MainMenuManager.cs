@@ -83,6 +83,26 @@ public class MainMenuManager : MonoBehaviour
         authorizationAccessLevel = int.Parse(accessLevel);
     }
 
+    private bool CheckCurrentPlatformIsWindows()
+    {
+        bool isWindows = false;
+        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            isWindows = true;
+        }
+
+        return isWindows;
+    }
+
+    private void LoginOffline()
+    {
+        if(userInput.text == UsersManager.Instance.admin.GetUsername() && passwordInput.text == UsersManager.Instance.admin.GetPassword())
+        {
+            UsersManager.Instance.currentUser = new User(userInput.text, 4);
+            LoadScreen();
+        }
+    }
+
     private IEnumerator CheckIfAdmin()
     {
         WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
@@ -129,14 +149,26 @@ public class MainMenuManager : MonoBehaviour
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
+            if (CheckCurrentPlatformIsWindows())
+            {
+                LoginOffline();
+            }
             Debug.LogWarning("Login: conectionerror");
         }
         else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
+            if (CheckCurrentPlatformIsWindows())
+            {
+                LoginOffline();
+            }
             Debug.LogWarning("Login: data processing error");
         }
         else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
         {
+            if (CheckCurrentPlatformIsWindows())
+            {
+                LoginOffline();
+            }
             Debug.LogWarning("Login: protocol error");
         }
 
@@ -145,21 +177,42 @@ public class MainMenuManager : MonoBehaviour
             string response = createPostRequest.downloadHandler.text;
             if (response == "Database connection error" || response == "username query ran into an error" || response == "playerinfo query failed" || response == "wrong appkey")
             {
-                errorPanel.SetActive(true);
-                StartCoroutine(ErrorPanelRoutine());
-                SetErrorMessage(3);
+                if (CheckCurrentPlatformIsWindows())
+                {
+                    LoginOffline();
+                }
+                else
+                {
+                    errorPanel.SetActive(true);
+                    StartCoroutine(ErrorPanelRoutine());
+                    SetErrorMessage(3);
+                }
             }
             else if (response == "Username does not exist or there is more than one in the table")
             {
-                errorPanel.SetActive(true);
-                StartCoroutine(ErrorPanelRoutine());
-                SetErrorMessage(0);
+                if (CheckCurrentPlatformIsWindows())
+                {
+                    LoginOffline();
+                }
+                else
+                {
+                    errorPanel.SetActive(true);
+                    StartCoroutine(ErrorPanelRoutine());
+                    SetErrorMessage(0);
+                }
             }
             else if (response == "password was not able to be verified")
             {
-                errorPanel.SetActive(true);
-                StartCoroutine(ErrorPanelRoutine());
-                SetErrorMessage(5);
+                if (CheckCurrentPlatformIsWindows())
+                {
+                    LoginOffline();
+                }
+                else
+                {
+                    errorPanel.SetActive(true);
+                    StartCoroutine(ErrorPanelRoutine());
+                    SetErrorMessage(5);
+                }
             }
             else
             {
@@ -170,10 +223,17 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            errorPanel.SetActive(true);
-            Debug.LogWarning(createPostRequest.error);
-            errorText.text = createPostRequest.error;
-            StartCoroutine(ErrorPanelRoutine());
+            if (CheckCurrentPlatformIsWindows())
+            {
+                LoginOffline();
+            }
+            else
+            {
+                errorPanel.SetActive(true);
+                Debug.LogWarning(createPostRequest.error);
+                errorText.text = createPostRequest.error;
+                StartCoroutine(ErrorPanelRoutine());
+            }
         }
         createPostRequest.Dispose();
         MouseManager.Instance.SetDefaultCursor();
@@ -211,6 +271,7 @@ public class MainMenuManager : MonoBehaviour
         if (createPostRequest.error == null)
         {
             string response = createPostRequest.downloadHandler.text;
+            print(response);
             if (response == "Database connection error" || response == "username query ran into an error")
             {
                 SetErrorMessage(3);

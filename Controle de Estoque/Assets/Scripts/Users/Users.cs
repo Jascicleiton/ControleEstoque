@@ -10,6 +10,7 @@ public class User
     /// 1: só consulta (consult e NoPaNoSe) e movimentação
     /// 2: somente consulta (consult e NoPaNoSe [sem movimentação]), exportar csv, verificar os movimentos
     /// 3: consultar (consult e NoPaNoSe), adicionar e mover
+    /// 4: somente consulta (consult e NoPaNoSe [sem movimentação])
     /// 5: tudo menos atualizar
     /// 10: tudo e mais um pouco
     /// </summary>

@@ -72,7 +72,7 @@ public class ImportingWidgetController : MonoBehaviour
                     percentageToLoad = 0.125f;
                     break;
                 case CurrentEstoque.ESF:
-                    percentageToLoad = 0.14f;
+                    percentageToLoad = 0.25f;
                     break;
                 case CurrentEstoque.Testing:
                     break;

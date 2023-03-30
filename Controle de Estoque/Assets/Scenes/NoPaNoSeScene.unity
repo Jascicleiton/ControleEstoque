@@ -3736,6 +3736,7 @@ GameObject:
   - component: {fileID: 6991438805378844798}
   - component: {fileID: 6991438805378844793}
   - component: {fileID: 6991438805378844800}
+  - component: {fileID: 6991438805378844801}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3849,3 +3850,16 @@ MonoBehaviour:
   scrollRect: {fileID: 6915215405666083190}
   inputEnabled: 1
   addNewItemButton: {fileID: 1449984368}
+--- !u!114 &6991438805378844801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991438805378844792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f075cd9cd8931c24993d900211ee1d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 3e52c414-566e-4fb4-b6de-6750d5546d5d

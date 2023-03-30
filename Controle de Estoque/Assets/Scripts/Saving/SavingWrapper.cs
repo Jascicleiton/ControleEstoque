@@ -9,41 +9,51 @@ namespace Saving
     public class SavingWrapper : Singleton<SavingWrapper>
     {
         private JsonSavingSystem saving;
-        const string defaultSaveFile = "save";
+        const string defaultSaveFile = "BKP";
+
         // Update is called once per frame
         private void Start()
         {
             saving = GetComponent<JsonSavingSystem>();
-            DontDestroyOnLoad(this.gameObject);
-        }
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.F12))
+            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
             {
-                Save("BKP ");
+                DontDestroyOnLoad(this.gameObject);           
             }
-            if(Input.GetKeyDown(KeyCode.F11))
+            else
             {
-                Load("BKP ");
+                Destroy(this.gameObject);
             }
         }
 
-        public void Save(string saveFileName)
+        private void OnEnable()
+        {
+            EventHandler.DatabaseUpdatedEvent += Save;
+            EventHandler.DisconectedFromInternet += Load;
+        }
+
+        private void OnDisable()
+        {
+            EventHandler.DatabaseUpdatedEvent -= Save;
+            EventHandler.DisconectedFromInternet -= Load;
+        }
+
+        public void Save()
         {
             if (saving == null)
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Save(saveFileName);
+            saving.Save(defaultSaveFile);
         }
 
-        public void Load(string saveFileName)
+        public void Load()
         {
+            Debug.Log("Event called");
             if (saving == null)
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Load(saveFileName);
+            saving.Load(defaultSaveFile);
         }
     }
 }

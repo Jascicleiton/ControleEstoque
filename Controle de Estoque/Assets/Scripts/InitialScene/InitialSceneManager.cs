@@ -55,6 +55,13 @@ public class InitialSceneManager : MonoBehaviour
                 case 5:
                     updateItemButton.gameObject.SetActive(false);
                     break;
+                case 4:
+                    addRemoveButton.gameObject.SetActive(false);
+                    updateItemButton.gameObject.SetActive(false);
+                    exportSheetsButton.gameObject.SetActive(false);
+                    allMovementsButton.gameObject.SetActive(false);
+                    moveButton.gameObject.SetActive(false);
+                    break;
                 case 10:
 
                     break;

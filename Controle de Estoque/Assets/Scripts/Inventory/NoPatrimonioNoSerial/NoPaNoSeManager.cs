@@ -7,8 +7,10 @@ using SimpleJSON;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Saving;
+using Newtonsoft.Json.Linq;
 
-public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
+public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
 {
     private NoPaNoSeAll allitems = new NoPaNoSeAll();
 
@@ -79,14 +81,17 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
 
         if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
+            EventHandler.CallDisconectedFromInternet();
             Debug.LogWarning("StartListRoutine: conectionerror");
         }
         else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
+            EventHandler.CallDisconectedFromInternet();
             Debug.LogWarning("StartListRoutine: data processing error");
         }
         else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
+            EventHandler.CallDisconectedFromInternet();
             Debug.LogWarning("StartListRoutine: protocol error");
         }
 
@@ -95,14 +100,17 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
             string response = createUpdateInventarioRequest.downloadHandler.text;
             if (response == "Conection error" || response == "Query failed")
             {
+                EventHandler.CallDisconectedFromInternet();
                 Debug.LogWarning("StartListRoutine: Server error");
             }
             else if (response == "Wrong app key")
             {
+                EventHandler.CallDisconectedFromInternet();
                 Debug.LogWarning("StartListRoutine: app key");
             }
             else if(response == "Result came empty")
             {
+                EventHandler.CallDisconectedFromInternet();
                 // do nothing
             }
             else
@@ -118,6 +126,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         }
         else
         {
+            EventHandler.CallDisconectedFromInternet();
             Debug.LogWarning("StartListRoutine: " + createUpdateInventarioRequest.error);
             // TODO: send message to user with error and recomendation
         }
@@ -170,6 +179,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
             else if (response == "Item added")
             {
                 AddNewItem(newItemNameInput.text, int.Parse(newItemQuantityInput.text));
+                EventHandler.CallDatabaseUpdatedEvent();
                 Debug.Log("Worked");
             }
             else
@@ -225,5 +235,17 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
     public void ReturnToInitialScene()
     {
         SceneManager.LoadScene(ConstStrings.SceneInitial);
+    }
+
+    public JToken CaptureAsJToken()
+    {
+        JArray state = HandleNoPaNoSeItemForSaveAndLoad.SaveObject(allitems);
+        return state;
+    }
+
+    public void RestoreFromJToken(JToken state)
+    {
+        HandleNoPaNoSeItemForSaveAndLoad.LoadJObject(state, out allitems);
+        ShowItems(allitems.noPaNoSeItems);
     }
 }

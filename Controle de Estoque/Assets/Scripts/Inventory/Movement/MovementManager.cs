@@ -270,12 +270,12 @@ public class MovementManager : MonoBehaviour
                 itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
                 UpdateItemToChange(itemToChange);
                 UpdateDatabase();
-                //ShowMessage(true);
                 EventHandler.CallOpenMessageEvent("Item moved");
                 createPostRequest.Dispose();
                 MouseManager.Instance.SetDefaultCursor();
                 ResetInputs();
                 inputEnabled = true;
+                itemFound = false;
                 yield break;
             }
             else
@@ -359,7 +359,7 @@ public class MovementManager : MonoBehaviour
     {       
         InternalDatabase.Instance.fullDatabase.itens[itemToChangeIndex] = itemToChange;
        // InternalDatabase.movementRecords.Add(movementToRecord);
-        EventHandler.CallDatabaseUpdatedEvent(ConstStrings.DataDatabaseSaveFile);
+        EventHandler.CallDatabaseUpdatedEvent();
     }
 
     /// <summary>

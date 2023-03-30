@@ -257,7 +257,8 @@ public class UpdateItem : MonoBehaviour
         parameters.AddRange(itemInformationPanelControler.GetInventoryValues());
         parameters.AddRange(itemInformationPanelControler.GetCategoryValues(itemToUpdate.Categoria));
         
-        UpdateDatabaseItem.UpdateItem(parameters, itemToUpdateIndex);     
+        UpdateDatabaseItem.UpdateItem(parameters, itemToUpdateIndex);
+        EventHandler.CallDatabaseUpdatedEvent();
     }
 
     /// <summary>

@@ -56,7 +56,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
     public List<string> testing = new List<string>();
-    public Sheet sheetToSave = new Sheet();
+    public Sheet sheetToLoad = new Sheet();
     
     private void Start()
     {
@@ -70,13 +70,172 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         {
             ReImport();
         }
-        if (Input.GetKeyDown(KeyCode.F12))
+    }
+
+    private void FillCategoryDatabases()
+    {
+        /// Try to get all sheets that are available on splitdatabase
+        #region Sheets    
+        Sheet adaptadorACTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.AdaptadorAC, out adaptadorACTemp);
+        Sheet carregadorTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Carregador, out carregadorTemp);
+        Sheet desktopTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Desktop, out desktopTemp);
+        Sheet foneRamalTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.FoneRamal, out foneRamalTemp);
+        Sheet fonteTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Fonte, out fonteTemp);
+        Sheet gbicTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Gbic, out gbicTemp);
+        Sheet hdTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.HD, out hdTemp);
+        Sheet idracTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Idrac, out idracTemp);
+        Sheet memoriaTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Memoria, out memoriaTemp);
+        Sheet monitorTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Monitor, out monitorTemp);
+        Sheet mouseTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Monitor, out mouseTemp);
+        Sheet nobreakTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Monitor, out nobreakTemp);
+        Sheet notebookTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Notebook, out notebookTemp);
+        Sheet placaControladoraTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaControladora, out placaControladoraTemp);
+        Sheet placaDeCapturaDeVideoTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeCapturaDeVideo, out placaDeCapturaDeVideoTemp);
+        Sheet placaDeRedeTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeRede, out placaDeRedeTemp);
+        Sheet placaDeSomTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeSom, out placaDeSomTemp);
+        Sheet placaDeVideoTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaDeVideo, out placaDeVideoTemp);
+        Sheet processadorTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Processador, out processadorTemp);
+        Sheet roteadorTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Roteador, out roteadorTemp);
+        Sheet ramalTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Roteador, out ramalTemp);
+        Sheet servidorTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Servidor, out servidorTemp);
+        Sheet storageNASTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.StorageNAS, out storageNASTemp);
+        Sheet switchTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Switch, out switchTemp);
+        Sheet tecladoTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.StorageNAS, out tecladoTemp);
+        Sheet outrosTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.Outros, out outrosTemp);
+        #endregion
+
+        foreach (ItemColumns item in fullDatabase.itens)
         {
-            testing = locations;
-            //if (UsersManager.Instance.currentUser.username == "marcelo.fonseca")
-            //{
-            //    Instantiate(exportManagerPrefab);
-            //}
+            if (item.Categoria.Trim() == ConstStrings.AdaptadorAC.Trim())
+            {
+                FillCategoryDatabasesFunctions.AdaptadorAC(item, adaptadorACTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Carregador.Trim())
+            {
+                FillCategoryDatabasesFunctions.Carregador(item, carregadorTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Desktop.Trim())
+            {
+                FillCategoryDatabasesFunctions.Desktop(item, desktopTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.FoneRamal.Trim())
+            {
+                foneRamal.itens.Add(item);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Fonte.Trim())
+            {
+                FillCategoryDatabasesFunctions.Fonte(item, fonteTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Gbic.Trim())
+            {
+                FillCategoryDatabasesFunctions.Gbic(item, gbicTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.HD.Trim())
+            {
+                FillCategoryDatabasesFunctions.HD(item, hdTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Idrac.Trim())
+            {
+                FillCategoryDatabasesFunctions.Idrac(item, idracTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Memoria.Trim())
+            {
+                FillCategoryDatabasesFunctions.Memoria(item, memoriaTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Monitor.Trim())
+            {
+                FillCategoryDatabasesFunctions.Monitor(item, monitorTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Mouse.Trim())
+            {
+                mouseTemp.itens.Add(item);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Nobreak.Trim())
+            {
+                nobreak.itens.Add(item);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Notebook.Trim())
+            {
+                FillCategoryDatabasesFunctions.Notebook(item, notebookTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.PlacaControladora.Trim())
+            {
+                FillCategoryDatabasesFunctions.PlacaControladora(item, placaControladoraTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.PlacaDeCapturaDeVideo.Trim())
+            {
+                FillCategoryDatabasesFunctions.PlacaDeCapturaDeVideo(item, placaDeCapturaDeVideoTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.PlacaDeRede.Trim())
+            {
+                FillCategoryDatabasesFunctions.PlacaDeRede(item, placaDeRedeTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.PlacaDeSom.Trim())
+            {
+                FillCategoryDatabasesFunctions.PlacaDeSom(item, placaDeSomTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.PlacaDeVideo.Trim())
+            {
+                FillCategoryDatabasesFunctions.PlacaDeVideo(item, placaDeVideoTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Processador.Trim())
+            {
+                FillCategoryDatabasesFunctions.Processador(item, processadorTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Ramal.Trim())
+            {
+                ramal.itens.Add(item);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Roteador.Trim())
+            {
+                FillCategoryDatabasesFunctions.Roteador(item, roteadorTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Servidor.Trim())
+            {
+                FillCategoryDatabasesFunctions.Servidor(item, servidorTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.StorageNAS.Trim())
+            {
+                FillCategoryDatabasesFunctions.StorageNas(item, storageNASTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Switch.Trim())
+            {
+                FillCategoryDatabasesFunctions.Switch(item, switchTemp);
+            }
+            else if (item.Categoria.Trim() == ConstStrings.Teclado.Trim())
+            {
+                teclado.itens.Add(item);
+            }
+            else
+            {
+                outros.itens.Add(item);
+            }
         }
     }
 
@@ -96,63 +255,8 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     {
         if (!fullDatabaseFilled)
         {
-            /// Try to get all sheets that are available on splitdatabase
-            #region Sheets
             Sheet inventarioTemp = new Sheet();
             splitDatabase.TryGetValue(ConstStrings.Inventario, out inventarioTemp);
-            Sheet adaptadorACTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.AdaptadorAC, out adaptadorACTemp);
-            Sheet carregadorTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Carregador, out carregadorTemp);
-            Sheet desktopTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Desktop, out desktopTemp);
-            Sheet foneRamalTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.FoneRamal, out foneRamalTemp);
-            Sheet fonteTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Fonte, out fonteTemp);
-            Sheet gbicTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Gbic, out gbicTemp);
-            Sheet hdTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.HD, out hdTemp);
-            Sheet idracTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Idrac, out idracTemp);
-            Sheet memoriaTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Memoria, out memoriaTemp);
-            Sheet monitorTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Monitor, out monitorTemp);
-            Sheet mouseTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Monitor, out mouseTemp);
-            Sheet nobreakTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Monitor, out nobreakTemp);
-            Sheet notebookTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Notebook, out notebookTemp);
-            Sheet placaControladoraTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.PlacaControladora, out placaControladoraTemp);
-            Sheet placaDeCapturaDeVideoTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.PlacaDeCapturaDeVideo, out placaDeCapturaDeVideoTemp);
-            Sheet placaDeRedeTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.PlacaDeRede, out placaDeRedeTemp);
-            Sheet placaDeSomTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.PlacaDeSom, out placaDeSomTemp);
-            Sheet placaDeVideoTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.PlacaDeVideo, out placaDeVideoTemp);
-            Sheet processadorTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Processador, out processadorTemp);
-            Sheet roteadorTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Roteador, out roteadorTemp);
-            Sheet ramalTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Roteador, out ramalTemp);
-            Sheet servidorTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Servidor, out servidorTemp);
-            Sheet storageNASTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.StorageNAS, out storageNASTemp);
-            Sheet switchTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Switch, out switchTemp);
-            Sheet tecladoTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.StorageNAS, out tecladoTemp);
-            Sheet outrosTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Outros, out outrosTemp);
-            #endregion
             testingSheet = inventarioTemp;
             // Get all itens from "Inventario SnPro into the full database
             if (inventarioTemp != null && inventarioTemp.itens.Count > 0)
@@ -163,113 +267,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
                 }
             }
             // Get the values of the detail sheet based on the "modelo" of the item on Inventario SnPro
-            foreach (ItemColumns item in fullDatabase.itens)
-            {
-                if (item.Categoria.Trim() == ConstStrings.AdaptadorAC.Trim())
-                {
-                    FillDatabaseFunctions.AdaptadorAC(item, adaptadorACTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Carregador.Trim())
-                {
-                    FillDatabaseFunctions.Carregador(item, carregadorTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Desktop.Trim())
-                {
-                    FillDatabaseFunctions.Desktop(item, desktopTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.FoneRamal.Trim())
-                {
-                    foneRamal.itens.Add(item);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Fonte.Trim())
-                {
-                    FillDatabaseFunctions.Fonte(item, fonteTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Gbic.Trim())
-                {
-                    FillDatabaseFunctions.Gbic(item, gbicTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.HD.Trim())
-                {
-                    FillDatabaseFunctions.HD(item, hdTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Idrac.Trim())
-                {
-                    FillDatabaseFunctions.Idrac(item, idracTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Memoria.Trim())
-                {
-                    FillDatabaseFunctions.Memoria(item, memoriaTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Monitor.Trim())
-                {
-                    FillDatabaseFunctions.Monitor(item, monitorTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Mouse.Trim())
-                {
-                    mouseTemp.itens.Add(item);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Nobreak.Trim())
-                {
-                    nobreak.itens.Add(item);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Notebook.Trim())
-                {
-                    FillDatabaseFunctions.Notebook(item, notebookTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.PlacaControladora.Trim())
-                {
-                    FillDatabaseFunctions.PlacaControladora(item, placaControladoraTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.PlacaDeCapturaDeVideo.Trim())
-                {
-                    FillDatabaseFunctions.PlacaDeCapturaDeVideo(item, placaDeCapturaDeVideoTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.PlacaDeRede.Trim())
-                {
-                    FillDatabaseFunctions.PlacaDeRede(item, placaDeRedeTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.PlacaDeSom.Trim())
-                {
-                    FillDatabaseFunctions.PlacaDeSom(item, placaDeSomTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.PlacaDeVideo.Trim())
-                {
-                    FillDatabaseFunctions.PlacaDeVideo(item, placaDeVideoTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Processador.Trim())
-                {
-                    FillDatabaseFunctions.Processador(item, processadorTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Ramal.Trim())
-                {
-                    ramal.itens.Add(item);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Roteador.Trim())
-                {
-                    FillDatabaseFunctions.Roteador(item, roteadorTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Servidor.Trim())
-                {
-                    FillDatabaseFunctions.Servidor(item, servidorTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.StorageNAS.Trim())
-                {
-                    FillDatabaseFunctions.StorageNas(item, storageNASTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Switch.Trim())
-                {
-                    FillDatabaseFunctions.Switch(item, switchTemp);
-                }
-                else if (item.Categoria.Trim() == ConstStrings.Teclado.Trim())
-                {
-                    teclado.itens.Add(item);
-                }
-                else
-                {
-                    outros.itens.Add(item);
-                }
-            }
+            FillCategoryDatabases();
         }
         switch (currentEstoque)
         {
@@ -293,35 +291,17 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         fullDatabaseFilled = true;
     }
 
-    public object CaptureState()
-    {
-        List<Sheet> returnSheets = new List<Sheet>();
-        returnSheets.Add(fullDatabase);
-        foreach (Sheet item in allFullDetailsSheets)
-        {
-            returnSheets.Add(item);
-        }
-        return returnSheets;
-    }
-
-    public void RestoreState(object state)
-    {
-        List<Sheet> savedSheets = (List<Sheet>)state;
-        fullDatabase = savedSheets[0];
-        savedSheets.RemoveAt(0);
-        allFullDetailsSheets = savedSheets;
-        HelperMethods.LoadDataToAllFullDetailsSHeets(savedSheets);
-    }
-
     public JToken CaptureAsJToken()
     {
-        JArray state = CreateListFromSheetToSave.GetJObject(sheetToSave);   
+        JArray state = HandleSheetsForSaveAndLoad.GetJObject(fullDatabase);   
 
         return state;
     }
 
     public void RestoreFromJToken(JToken state)
     {
-        throw new NotImplementedException();
+        HandleSheetsForSaveAndLoad.LoadJObject(state, out sheetToLoad);
+        fullDatabase = sheetToLoad;
+        FillCategoryDatabases();
     }
 }

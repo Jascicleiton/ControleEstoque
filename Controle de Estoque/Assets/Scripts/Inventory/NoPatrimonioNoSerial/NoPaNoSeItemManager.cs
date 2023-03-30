@@ -89,6 +89,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
                 SetItemInformation(item.ItemName, itemNewQuantity);
                 quantityInput.text = "";
                 whereToDP.GetComponent<LocationDropDownHandler>().ResetDropDown();
+                EventHandler.CallDatabaseUpdatedEvent();
             }
             else
             {
@@ -116,6 +117,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
         switch (UsersManager.Instance.currentUser.GetAccessLevel())
         {
             case 2:
+            case 4:
                 minusButton.GetComponent<CanvasGroup>().alpha = 0;
                 minusButton.interactable = false;
                 plusButton.GetComponent<CanvasGroup>().alpha = 0;
@@ -146,7 +148,8 @@ public class NoPaNoSeItemManager : MonoBehaviour
             {
                 if (item.Quantity - tempInt < 0)
                 {
-                    //TODO: Show message saying that the user is trying to remove more items than there are available
+                    EventHandler.CallIsOneMessageOnlyEvent(true);
+                    EventHandler.CallOpenMessageEvent("Negative number");
                 }
                 else
                 {
@@ -156,7 +159,8 @@ public class NoPaNoSeItemManager : MonoBehaviour
             }
             else
             {
-                //TODO: show apropriate error message
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Invalid number");
             }
         }    
     }

@@ -1,18 +1,23 @@
+using Newtonsoft.Json.Linq;
 using SimpleJSON;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Saving;
 
-public class ImportUISettings : Singleton<ImportUISettings>
+public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
 {
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        StartCoroutine(ImportLocationsRoutine());
-        StartCoroutine(ImportCategoriesRoutine());
+        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
+        {
+            StartCoroutine(ImportLocationsRoutine());
+            StartCoroutine(ImportCategoriesRoutine());
+        }        
     }
    
     private IEnumerator ImportLocationsRoutine()
@@ -117,6 +122,49 @@ public class ImportUISettings : Singleton<ImportUISettings>
     {
         StartCoroutine(ImportLocationsRoutine());
         StartCoroutine(ImportCategoriesRoutine());
+    }
+
+    public JToken CaptureAsJToken()
+    {
+        JArray state = new JArray();
+        IList<JToken> stateList = state;
+        foreach (var item in InternalDatabase.locations)
+        {
+            JObject jObjectToReturn = new JObject();
+            IDictionary<string, JToken> stateDict = jObjectToReturn;
+            stateDict["Location"] = item;
+            stateList.Add(jObjectToReturn);
+        }
+        foreach (var item in InternalDatabase.categories)
+        {
+            JObject jObjectToReturn = new JObject();
+            IDictionary<string, JToken> stateDict = jObjectToReturn;
+            stateDict["Category"] = item;
+            stateList.Add(jObjectToReturn);
+        }
+
+        return state;
+    }
+
+    public void RestoreFromJToken(JToken state)
+    {
+         if(state is JArray stateArray)
+        {
+            IList<JToken> stateList = stateArray;
+            foreach (var item in stateList)
+            {
+                if (item is JObject itemState)
+                {
+                    string locationToLoad = "";
+                    string categoryToLoad = "";
+                    IDictionary<string, JToken> itemStateDict = itemState;
+                    locationToLoad = itemStateDict["Location"].ToObject<string>();
+                    categoryToLoad = itemStateDict["Category"].ToObject<string>();
+                    InternalDatabase.locations.Add(locationToLoad);
+                    InternalDatabase.categories.Add(categoryToLoad);
+                }
+            }         
+        }
     }
 }
 

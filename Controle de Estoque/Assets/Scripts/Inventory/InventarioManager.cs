@@ -554,14 +554,18 @@ public class InventarioManager : Singleton<InventarioManager>
         if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
             Debug.LogWarning("inventario conectionerror");
+            EventHandler.CallDisconectedFromInternet();
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
             Debug.LogWarning("inventario data processing error");
+            EventHandler.CallDisconectedFromInternet();
+            
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
             Debug.LogWarning("inventario protocol error");
+            EventHandler.CallDisconectedFromInternet();
         }
         if (getInventarioRequest.error == null)
         {
@@ -569,6 +573,7 @@ public class InventarioManager : Singleton<InventarioManager>
             if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
             {
                 Debug.LogWarning("inventario: Server error");
+                EventHandler.CallDisconectedFromInternet();
             }
             else if (response == "Result came empty")
             {
@@ -583,6 +588,7 @@ public class InventarioManager : Singleton<InventarioManager>
         else
         {
             Debug.LogWarning("inventario\n " + getInventarioRequest.error);
+            EventHandler.CallDisconectedFromInternet();
         }
         EventHandler.CallImportFinished(true);
         getInventarioRequest.Dispose();

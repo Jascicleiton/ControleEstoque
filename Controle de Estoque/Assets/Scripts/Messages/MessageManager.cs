@@ -141,6 +141,14 @@ public class MessageManager : MonoBehaviour
         {
             messageText.text = "Patrimônio consiste somente de números. Tente novamente";
         }
+        else if (message1 == "Negative number")
+        {
+            messageText.text = "O estoque é menor que o valor que você quer mover. Altere o valor e tente novamente.";
+        }
+        else if( message1 == "Invalid number")
+        {
+            messageText.text = "Use apenas algarismos para determinar a quantidade a ser movida";
+        }
         else
         {
             messageText.text = message1 + "\nContate o administrador sobre este erro";

@@ -6,9 +6,8 @@ using Saving;
 public class UsersManager : Singleton<UsersManager>
 {
     public List<User> usersDatabase;
-    private User admin;
-    private User admin1;
-    private User admin2;
+    public User admin;
+
     public bool adminLogged = false;
     public User currentUser = new User("pessoa","");
 
@@ -16,20 +15,10 @@ public class UsersManager : Singleton<UsersManager>
     {
         base.Awake();
         usersDatabase = new List<User>();
-        admin = new User("pedro.neto", "Sysnetpr0");
+        admin = new User("admin", "admin");
         if (!usersDatabase.Contains(admin))
         {
             usersDatabase.Add(admin);
-        }
-        admin1 = new User("marcelo.fonseca", "Umsegredo1");
-        if (!usersDatabase.Contains(admin1))
-        {
-            usersDatabase.Add(admin1);
-        }
-        admin1 = new User("admin", "admin");
-        if (!usersDatabase.Contains(admin1))
-        {
-            usersDatabase.Add(admin1);
         }
     }
 
