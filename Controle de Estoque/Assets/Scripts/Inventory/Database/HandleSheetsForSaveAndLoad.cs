@@ -81,6 +81,7 @@ public class HandleSheetsForSaveAndLoad
             stateDict["AdaptadorAC"] = item.AdaptadorAC;
             stateDict["Windows"] = item.Windows;
             stateDict["CapacidadeRAMTotal"] = item.CapacidadeRAMTotal;
+            stateDict["Pessoa"] = item.Pessoa;
             stateDict["CentroDeCusto"] = item.CentroDeCusto;
             stateList.Add(jObjectToReturn);
         }
