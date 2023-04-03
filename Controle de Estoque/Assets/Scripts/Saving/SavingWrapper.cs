@@ -9,7 +9,7 @@ namespace Saving
     public class SavingWrapper : Singleton<SavingWrapper>
     {
         private JsonSavingSystem saving;
-        const string defaultSaveFile = "BKP";
+        const string defaultSaveFile = "BKP - ";
 
         // Update is called once per frame
         private void Start()
@@ -37,13 +37,21 @@ namespace Saving
             EventHandler.DisconectedFromInternet -= Load;
         }
 
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.F10))
+            {
+                Save();
+            }
+        }
+
         public void Save()
         {
             if (saving == null)
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Save(defaultSaveFile);
+            saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque);
         }
 
         public void Load()
@@ -53,7 +61,7 @@ namespace Saving
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Load(defaultSaveFile);
+            saving.Load(defaultSaveFile + InternalDatabase.Instance.currentEstoque);
         }
     }
 }

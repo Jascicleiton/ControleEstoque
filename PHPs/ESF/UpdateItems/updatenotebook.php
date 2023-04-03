@@ -8,8 +8,13 @@ if(mysqli_connect_errno())
 }
 
 $appkey = $_POST ["apppassword"];
+$patrimonio = $_POST["patrimonio"];
 $modelo = $_POST["modelo"];
 $fabricante = $_POST["fabricante"];
+$hd = $_POST["hd"];
+$memoria = $_POST["memoria"];
+$processador = $_POST["processador"];
+$windows = $_POST["windows"];
 
 if($appkey != "UpdateItem")
 {
@@ -17,7 +22,7 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Notebook SET Modelo = '".$modelo."', Fabricante = '".$fabricante."';";
+$updateQuery = "UPDATE Notebook SET Patrimonio = '".$patrimonio."', Modelo = '".$modelo."', Fabricante  = '".utf8_decode($fabricante)."', HD = '".utf8_decode($hd)."', Memoria = '".utf8_decode($memoria)."', Processador = '".utf8_decode($processador)."', Windows = '".utf8_decode($windows)."' WHERE Patrimonio = '".$patrimonio."';";
 mysqli_query($con, $updateQuery) or die("Update failed");
 echo("Updated");
 $con->close();

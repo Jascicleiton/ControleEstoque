@@ -17,7 +17,12 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
         {
             StartCoroutine(ImportLocationsRoutine());
             StartCoroutine(ImportCategoriesRoutine());
-        }        
+        }
+        else if( Application.isEditor)
+        {
+            StartCoroutine(ImportLocationsRoutine());
+            StartCoroutine(ImportCategoriesRoutine());
+        }
     }
    
     private IEnumerator ImportLocationsRoutine()

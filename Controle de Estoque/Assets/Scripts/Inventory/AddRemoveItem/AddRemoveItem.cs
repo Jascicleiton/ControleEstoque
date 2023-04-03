@@ -22,6 +22,11 @@ public class AddRemoveItem : MonoBehaviour
     [SerializeField] ItemInformationPanelControler itemInformationPanelController;
     private List<string> parameters = new List<string>();
 
+
+    bool addDetalheSuccess = false;
+
+    bool addInventarioSuccess = false;
+
     private void Start()
     {
         if(itemInformationPanelController == null)
@@ -29,6 +34,10 @@ public class AddRemoveItem : MonoBehaviour
             itemInformationPanelController = FindObjectOfType<ItemInformationPanelControler>();
         }
         UpdateNames();
+        if(UsersManager.Instance.currentUser.GetAccessLevel() < 10)
+        {
+            addDetailsButton.gameObject.SetActive(false);
+        }
     }
 
     private void OnEnable()
@@ -77,10 +86,7 @@ public class AddRemoveItem : MonoBehaviour
     /// </summary>
     private IEnumerator AddNewItemRoutine(bool addInventario)
     {
-#pragma warning disable CS0219 // Variable is assigned but its value is never used
-        bool addDetalheSuccess = false;
-#pragma warning restore CS0219 // Variable is assigned but its value is never used
-        bool addInventarioSuccess = false;
+
         if (addInventario)
         {
             #region Add new item to Inventario

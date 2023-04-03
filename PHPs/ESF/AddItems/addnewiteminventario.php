@@ -47,7 +47,7 @@ if($serialcheckresult->num_rows > 0)
 
 $insertuserquery= "INSERT INTO Inventario(Entrada_no_estoque, Patrimonio, Status, Serial, Categoria, Fabricante, Modelo, Local, Saida_do_estoque, Observacao, Aquisicao) VALUES('". $entrada ."', '". $patrimonio ."', '". utf8_decode($status) ."', '". $serial ."', '". utf8_decode($categoria) ."', '". utf8_decode($fabricante) ."', '". $modelo ."', '". utf8_decode($local) ."', '". $saida ."', '". utf8_decode($observacao) ."', '".$aquisicao."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Item added");
+ echo("Worked");
 
 $con->close();
 
