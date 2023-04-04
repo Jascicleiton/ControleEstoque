@@ -161,6 +161,7 @@ public class GetMovementRecords : MonoBehaviour
         MouseManager.Instance.SetWaitingCursor();
         if (regularItemMovementRecords.Count > 0)
         {
+            regularItemMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
             if (regularItemMovementRecords.Count < 51)
             {
                 for (int i = 0; i < regularItemMovementRecords.Count; i++)
@@ -237,13 +238,16 @@ public class GetMovementRecords : MonoBehaviour
                     instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
                     movementRecordsPrefabs.Add(instance);
                 }
-            }        
+            }
+
+            MouseManager.Instance.SetDefaultCursor();
+            parameterInput.text = "";
+            yield break;
         }
 
-        yield return new WaitForSecondsRealtime(1f);
-
-        if (noPaNoSeMovementRecords.Count > 0)
+       if (noPaNoSeMovementRecords.Count > 0)
         {
+            noPaNoSeMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
             if (noPaNoSeMovementRecords.Count < 51)
             {
                 for (int i = 0; i < noPaNoSeMovementRecords.Count; i++)

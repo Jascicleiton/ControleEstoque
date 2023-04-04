@@ -8,7 +8,8 @@ using Saving;
 
 public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
 {
-
+    [SerializeField] List<string> categories = new List<string>();
+    [SerializeField] List<string> locations = new List<string>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,20 +19,20 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
             StartCoroutine(ImportLocationsRoutine());
             StartCoroutine(ImportCategoriesRoutine());
         }
-        else if( Application.isEditor)
+        else if (Application.isEditor)
         {
             StartCoroutine(ImportLocationsRoutine());
             StartCoroutine(ImportCategoriesRoutine());
         }
     }
-   
+
     private IEnumerator ImportLocationsRoutine()
     {
         WWWForm locationsForm = new WWWForm();
         locationsForm.AddField("apppassword", "ImportDatabase");
 
         UnityWebRequest locationRequest = CreatePostRequest.GetPostRequest(locationsForm, "importlocations.php", 1);
-       
+
         yield return locationRequest.SendWebRequest();
 
         Sheet tempSheet = new Sheet();
@@ -68,10 +69,10 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
                 {
                     InternalDatabase.locations.Add(item[0]);
                 }
-               InternalDatabase.locations.Sort();
+                InternalDatabase.locations.Sort();
             }
         }
-        locationRequest.Dispose();    
+        locationRequest.Dispose();
     }
 
     private IEnumerator ImportCategoriesRoutine()
@@ -133,6 +134,7 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
     {
         JArray state = new JArray();
         IList<JToken> stateList = state;
+        int cont = 0;
         foreach (var item in InternalDatabase.locations)
         {
             JObject jObjectToReturn = new JObject();
@@ -153,7 +155,8 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
 
     public void RestoreFromJToken(JToken state)
     {
-         if(state is JArray stateArray)
+        print("ok");
+        if (state is JArray stateArray)
         {
             IList<JToken> stateList = stateArray;
             foreach (var item in stateList)
@@ -163,13 +166,23 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
                     string locationToLoad = "";
                     string categoryToLoad = "";
                     IDictionary<string, JToken> itemStateDict = itemState;
-                    locationToLoad = itemStateDict["Location"].ToObject<string>();
-                    categoryToLoad = itemStateDict["Category"].ToObject<string>();
-                    InternalDatabase.locations.Add(locationToLoad);
-                    InternalDatabase.categories.Add(categoryToLoad);
+                    if (itemStateDict["Location"] != null)
+                    {
+                        locationToLoad = itemStateDict["Location"].ToObject<string>();
+                        InternalDatabase.locations.Add(locationToLoad);
+                    }
+                    if (itemStateDict["Category"] != null)
+                    {
+                        categoryToLoad = itemStateDict["Category"].ToObject<string>();
+                        InternalDatabase.categories.Add(categoryToLoad);
+                    }
                 }
-            }         
+            }
+            InternalDatabase.locations.Sort();
+            InternalDatabase.categories.Sort();
         }
+        categories = InternalDatabase.categories;
+        locations = InternalDatabase.locations;
     }
 }
 

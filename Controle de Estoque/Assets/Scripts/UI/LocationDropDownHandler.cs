@@ -25,6 +25,18 @@ public class LocationDropDownHandler : MonoBehaviour
         dropdown.value = HelperMethods.GetLocationDPValue("Estoque");
     }
 
+    private void OnEnable()
+    {
+        if (dropdown == null)
+        {
+            dropdown = GetComponent<TMP_Dropdown>();
+        }
+        if(dropdown.options.Count == 0)
+        {
+            dropdown.AddOptions(InternalDatabase.locations);
+        }
+    }
+
     public void ResetDropDown()
     {
         dropdown.value = HelperMethods.GetLocationDPValue("Estoque");
