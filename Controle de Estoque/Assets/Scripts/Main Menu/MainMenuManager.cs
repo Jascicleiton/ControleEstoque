@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
-using SimpleJSON;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -31,33 +30,48 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private TMP_InputField adminPasswordInput;
     #endregion
 
-    [SerializeField] private GameObject usersManagerPrefab;
     private bool loginEnabled = true; // enable or disable the Enter key press to login
     private bool adminAuthorizing = false;
     private bool adminAuthorized = false;
     private bool inputEnabled = true;
     private int authorizationAccessLevel; // used to check if the person authorizing the creation of a new user have high enough access level
+    private bool isWindows = false;
 
     [SerializeField] private TMP_Text versionText;
 
+    /// <summary>
+    /// Initializes the varibles
+    /// </summary>
     private void Start()
     {
         loginEnabled = true;
         adminAuthorizing = false;
         adminAuthorized = false;
-        versionText.text = InternalDatabase.Instance.currentVersion;
+         inputEnabled = true;
+        authorizationAccessLevel = 0;
+    versionText.text = InternalDatabase.Instance.currentVersion;
+        CheckIfCurrentPlatformIsWindows();
     }
 
+    /// <summary>
+    /// Subscribes to the event PostRequestResponse
+    /// </summary>
     private void OnEnable()
     {
         EventHandler.PostRequestResponse += GetUserAccessLevel;
     }
 
+    /// <summary>
+    /// Unsubscribes to the event PostRequestResponse
+    /// </summary>
     private void OnDisable()
     {
         EventHandler.PostRequestResponse -= GetUserAccessLevel;
     }
 
+    /// <summary>
+    /// Handles what happens if enter is pressed
+    /// </summary>
     private void Update()
     {
         if (inputEnabled)
@@ -78,20 +92,27 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get the user Accces level when it try to login or atuthorize the creation of a new user
+    /// </summary>
     private void GetUserAccessLevel(string accessLevel)
     {
         authorizationAccessLevel = int.Parse(accessLevel);
     }
 
-    private bool CheckCurrentPlatformIsWindows()
-    {
-        bool isWindows = false;
+    /// <summary>
+    /// Check if the current platform that the program is running is Windows or not.
+    /// </summary>
+    private void CheckIfCurrentPlatformIsWindows()
+    {     
         if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
         {
             isWindows = true;
         }
-
-        return isWindows;
+        else
+        {
+            isWindows = false;
+        }
     }
 
     private void LoginOffline()
@@ -149,7 +170,7 @@ public class MainMenuManager : MonoBehaviour
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
         {
-            if (CheckCurrentPlatformIsWindows())
+            if (isWindows)
             {
                 LoginOffline();
             }
@@ -157,7 +178,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
-            if (CheckCurrentPlatformIsWindows())
+            if (isWindows)
             {
                 LoginOffline();
             }
@@ -165,7 +186,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
         {
-            if (CheckCurrentPlatformIsWindows())
+            if (isWindows)
             {
                 LoginOffline();
             }
@@ -177,7 +198,7 @@ public class MainMenuManager : MonoBehaviour
             string response = createPostRequest.downloadHandler.text;
             if (response == "Database connection error" || response == "username query ran into an error" || response == "playerinfo query failed" || response == "wrong appkey")
             {
-                if (CheckCurrentPlatformIsWindows())
+                if (isWindows)
                 {
                     LoginOffline();
                 }
@@ -190,7 +211,7 @@ public class MainMenuManager : MonoBehaviour
             }
             else if (response == "Username does not exist or there is more than one in the table")
             {
-                if (CheckCurrentPlatformIsWindows())
+                if (isWindows)
                 {
                     LoginOffline();
                 }
@@ -203,7 +224,7 @@ public class MainMenuManager : MonoBehaviour
             }
             else if (response == "password was not able to be verified")
             {
-                if (CheckCurrentPlatformIsWindows())
+                if (isWindows)
                 {
                     LoginOffline();
                 }
@@ -223,7 +244,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            if (CheckCurrentPlatformIsWindows())
+            if (isWindows)
             {
                 LoginOffline();
             }

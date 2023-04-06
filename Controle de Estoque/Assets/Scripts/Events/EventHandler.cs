@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public static class EventHandler
 {
@@ -101,6 +99,9 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Event used to get the response from a PostRequest
+    /// </summary>
     public static event Action<string> PostRequestResponse;
         public static void CallPostRequestResponse(string response)
     {

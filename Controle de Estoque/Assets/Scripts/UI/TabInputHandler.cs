@@ -14,13 +14,11 @@ public class TabInputHandler : MonoBehaviour
     private void Start()
     {      
             GetActiveInputs();
-       //     CheckIfInputIsActiveAndEnabled();
     }
 
     private void OnEnable()
     {
         EventHandler.UpdateTabInputs += GetActiveInputs;
-        //GetActiveInputs();
     }
 
     private void OnDisable()

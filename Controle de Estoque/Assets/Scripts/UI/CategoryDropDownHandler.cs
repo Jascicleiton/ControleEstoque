@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class DropDownHandler : MonoBehaviour
+public class CategoryDropDownHandler : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown dropdown;
 
@@ -25,6 +22,9 @@ public class DropDownHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handle which items are available on the category dropdown - also called on Enable to prevent a bug on offline version
+    /// </summary>
     private void OnEnable()
     {
          if (dropdown == null)

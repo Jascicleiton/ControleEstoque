@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -18,7 +16,6 @@ public class InitialSceneManager : MonoBehaviour
 
     [SerializeField] TMP_Text helloMessage;
 
-    // Start is called before the first frame update
     void Start()
     {
         helloMessage.text = "Olá " + UsersManager.Instance.currentUser.GetUsername() + ". \nO que você deseja fazer agora?";

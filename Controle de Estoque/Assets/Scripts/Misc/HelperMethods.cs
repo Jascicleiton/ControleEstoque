@@ -15,7 +15,7 @@ public class HelperMethods
     /// </summary>
     public static string GetCategoryString(int value)
     {
-        if(value < InternalDatabase.categories.Count)
+        if (value < InternalDatabase.categories.Count)
         {
             return InternalDatabase.categories[value];
         }
@@ -55,7 +55,7 @@ public class HelperMethods
         }
         return 666;
     }
-    
+
     /// <summary>
     /// Root = 0, Import = 1, AddItem = 2, Movements = 3, Update = 4, NoPaNoSe = 5
     /// </summary>
@@ -82,13 +82,13 @@ public class HelperMethods
         if (addInventario)
         {
             WWWForm itemForm = CreateForm.GetInventarioForm(appKey, parameters);
-                       
+
             UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, phpName + "inventario.php", folderID);
             MouseManager.Instance.SetWaitingCursor();
 
             yield return createUpdateInventarioRequest.SendWebRequest();
 
-           addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createUpdateInventarioRequest);
+            addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createUpdateInventarioRequest);
             if (!addUpdateResponse)
             {
                 //EventHandler.CallIsOneMessageOnlyEvent(true);
@@ -125,7 +125,7 @@ public class HelperMethods
                 #region Desktop
                 case ConstStrings.Desktop:
                     WWWForm desktopForm = CreateForm.GetDesktopForm(appKey, parameters);
-                    
+
                     UnityWebRequest createDesktopPostRequest = CreatePostRequest.GetPostRequest(desktopForm, phpName + "desktop.php", folderID);
 
                     yield return createDesktopPostRequest.SendWebRequest();
@@ -195,7 +195,7 @@ public class HelperMethods
                 #region Monitor
                 case ConstStrings.Monitor:
                     WWWForm monitorForm = CreateForm.GetMonitorForm(appKey, parameters);
-                   
+
                     UnityWebRequest createMonitorPostRequest = CreatePostRequest.GetPostRequest(monitorForm, phpName + "monitor.php", folderID);
 
                     yield return createMonitorPostRequest.SendWebRequest();
@@ -206,7 +206,7 @@ public class HelperMethods
                 #region Notebook
                 case ConstStrings.Notebook:
                     WWWForm notebookForm = CreateForm.GetNotebookForm(appKey, parameters);
-                    
+
                     UnityWebRequest createNotebookPostRequest = CreatePostRequest.GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
 
                     yield return createNotebookPostRequest.SendWebRequest();
@@ -297,7 +297,7 @@ public class HelperMethods
                 case ConstStrings.Servidor:
 
                     WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters);
-                   
+
                     UnityWebRequest createServidorPostRequest = CreatePostRequest.GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
 
                     yield return createServidorPostRequest.SendWebRequest();
@@ -320,7 +320,7 @@ public class HelperMethods
                 #region Switch
                 case ConstStrings.Switch:
                     WWWForm switchForm = CreateForm.GetSwitchForm(appKey, parameters);
-                    
+
                     UnityWebRequest createSwitchPostRequest = CreatePostRequest.GetPostRequest(switchForm, phpName + "switch.php", folderID);
 
                     yield return createSwitchPostRequest.SendWebRequest();
@@ -556,7 +556,7 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.Soquete);
                     dictionary["Values"].Add(itemToShow.NucleosFisicos.ToString());
                     dictionary["Values"].Add(itemToShow.NucleosLogicos.ToString());
-                                   break;
+                    break;
                 #endregion
                 #region Roteador
                 case ConstStrings.Roteador:
@@ -915,10 +915,11 @@ public class HelperMethods
         #endregion
         return dictionary;
     }
-     /// <summary>
-     /// Get the a location string based on the value of the dropdown
-     /// </summary>
-         public static string GetLocationFromDP(int value)
+
+    /// <summary>
+    /// Get the a location string based on the value of the dropdown
+    /// </summary>
+    public static string GetLocationFromDP(int value)
     {
         string location = InternalDatabase.locations[value];
         return location;
@@ -932,7 +933,7 @@ public class HelperMethods
         int dpValue = 13;
         for (int i = 0; i < InternalDatabase.locations.Count; i++)
         {
-            if(location == InternalDatabase.locations[i])
+            if (location == InternalDatabase.locations[i])
             {
                 dpValue = i;
                 break;
@@ -944,28 +945,30 @@ public class HelperMethods
     /// <summary>
     /// Compares two strings using = or < or > or != or <= or >= operators
     /// </summary>
-        public static bool CompareStrings(string parameter1, string parameter2, string Operator)
+    public static bool CompareStrings(string parameter1, string parameter2, string Operator)
     {
-         //Debug.Log(parameter1 + ", " + parameter2 + ", " + Operator);
+        //Debug.Log(parameter1 + ", " + parameter2 + ", " + Operator);
         switch (Operator)
         {
             case "=":
                 return parameter1 == parameter2;
-            case "<":              
+            case "<":
                 return double.Parse(parameter1) < double.Parse(parameter2);
             case ">":
-                //return float.TryParse(parameter1) > float.TryParse(parameter2);
+            //return float.TryParse(parameter1) > float.TryParse(parameter2);
             case "!=":
                 return parameter1 != parameter2;
             case "<=":
-                //return float.TryParse(parameter1) <= float.TryParse(parameter2);
+            //return float.TryParse(parameter1) <= float.TryParse(parameter2);
             case ">=":
-               // return float.TryParse(parameter1) >= float.TryParse(parameter2);
+            // return float.TryParse(parameter1) >= float.TryParse(parameter2);
             default:
                 return false;
         }
     }
-
+    /// <summary>
+    /// Get the category Sheet based on it's name (string value)
+    /// </summary>
     public static Sheet GetCategoryDatabaseToConsult(string category)
     {
         switch (category)
@@ -1027,11 +1030,17 @@ public class HelperMethods
         }
     }
 
+    /// <summary>
+    /// Removes all the white spaces from a single string
+    /// </summary>
     public static void RemoveWhiteSpacesFromSingleString(string singleString, out string trimmedString)
     {
         trimmedString = Regex.Replace(singleString, @"\s+", "");
     }
 
+    /// <summary>
+    /// Removes all the white spaces from multiple strings
+    /// </summary>
     public static void RemoveWhiteSpacesFromMultipleStrings(List<string> multipleStrings, out List<string> trimmedList)
     {
         string tempString = "";
@@ -1042,64 +1051,4 @@ public class HelperMethods
             trimmedList.Add(tempString);
         }
     }
-
-    public static void LoadDataToAllFullDetailsSHeets(List<Sheet> loadedSheets)
-    {
-        switch (InternalDatabase.Instance.currentEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                InternalDatabase.adaptadorAC = loadedSheets[0];
-                                InternalDatabase.carregador = loadedSheets[1];
-                InternalDatabase.desktop = loadedSheets[2];
-                InternalDatabase.fonte = loadedSheets[3];
-                InternalDatabase.gbic = loadedSheets[4];
-                InternalDatabase.hd = loadedSheets[5];
-                InternalDatabase.idrac = loadedSheets[6];
-                InternalDatabase.memoria = loadedSheets[7];
-                InternalDatabase.monitor = loadedSheets[8];
-                InternalDatabase.nobreak = loadedSheets[9];
-                InternalDatabase.notebook = loadedSheets[10];
-                 InternalDatabase.placaControladora = loadedSheets[11];
-                InternalDatabase.placaDeCapturaDeVideo = loadedSheets[12];
-                InternalDatabase.placaDeRede = loadedSheets[13];
-                InternalDatabase.placaDeSom = loadedSheets[14];
-                InternalDatabase.placaDeVideo = loadedSheets[15];
-                            InternalDatabase.processador = loadedSheets[16];
-                InternalDatabase.roteador = loadedSheets[17];
-                InternalDatabase.servidor = loadedSheets[18];
-                InternalDatabase.storageNAS = loadedSheets[19]; 
-                InternalDatabase.Switch = loadedSheets[20];
-                InternalDatabase.outros = loadedSheets[21];
-                break;           
-            default:
-                InternalDatabase.adaptadorAC = loadedSheets[0];
-                InternalDatabase.carregador = loadedSheets[1];
-                InternalDatabase.desktop = loadedSheets[2];
-                InternalDatabase.foneRamal = loadedSheets[3];
-                InternalDatabase.fonte = loadedSheets[4];
-                InternalDatabase.gbic = loadedSheets[5];
-                InternalDatabase.hd = loadedSheets[6];
-                InternalDatabase.idrac = loadedSheets[7];
-                InternalDatabase.memoria = loadedSheets[8];
-                InternalDatabase.monitor = loadedSheets[9];
-                InternalDatabase.mouse = loadedSheets[10];
-                InternalDatabase.nobreak = loadedSheets[11];
-                InternalDatabase.notebook = loadedSheets[12];
-                InternalDatabase.placaControladora = loadedSheets[13];
-                InternalDatabase.placaDeCapturaDeVideo = loadedSheets[14];
-                InternalDatabase.placaDeRede = loadedSheets[15];
-                InternalDatabase.placaDeSom = loadedSheets[16];
-                InternalDatabase.placaDeVideo = loadedSheets[17];
-                InternalDatabase.processador = loadedSheets[18];
-                InternalDatabase.ramal = loadedSheets[19];
-                InternalDatabase.roteador = loadedSheets[20];
-                InternalDatabase.servidor = loadedSheets[21];
-                InternalDatabase.storageNAS = loadedSheets[22];
-                InternalDatabase.Switch = loadedSheets[23];
-                InternalDatabase.teclado = loadedSheets[24];
-                InternalDatabase.outros = loadedSheets[25];
-                break;
-        }
-    }
-
-    }
+}

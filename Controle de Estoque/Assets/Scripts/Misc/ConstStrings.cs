@@ -123,7 +123,6 @@ public class ConstStrings
     public const string PhpNoPaNoSeItemsFolderConcert = "https://sysnetpro.com.br/Concert/NoPaNoSeItems/";
     #endregion
 
-
     #region Save parameters
     public const string showWarningMessage = "ShowWarningMessage";
     #endregion

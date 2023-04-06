@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -802,12 +801,15 @@ public class ItemInformationPanelControler : MonoBehaviour
         }
         return valuesList;
     }
+
+    /// <summary>
+    /// Force the TabInputHandler to get the active inputs, to prevent bugs where the active inputs are incorrectly set
+    /// </summary>
     public void GetTabActiveInputs()
     {
         if (tabInputHandler != null)
         {
             tabInputHandler.GetActiveInputs();
-            //tabInputHandler.SelectInput();
         }
     }
 }

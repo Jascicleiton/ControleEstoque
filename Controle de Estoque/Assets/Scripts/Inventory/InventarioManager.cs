@@ -14,7 +14,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import all sheets to internal database
+    /// Import all sheets to internal database. Import different sheets depending of the currentEstoque variable
     /// </summary>
     public void ImportSheets()
     {
@@ -44,6 +44,9 @@ public class InventarioManager : Singleton<InventarioManager>
         }      
     }
 
+    /// <summary>
+    /// Call the imports for all categories that exists on the Concert database
+    /// </summary>
     private void ImportConcert()
     {
         StartCoroutine(ImportAdaptadorAcToDatabase());
@@ -55,6 +58,9 @@ public class InventarioManager : Singleton<InventarioManager>
         StartCoroutine(ImportSwitchToDatabase());
     }
 
+    /// <summary>
+    /// Call the imports for all categories that exists on the Clientes database
+    /// </summary>
     private void ImportClientes()
     {
         StartCoroutine(ImportHDSheetToDatabase());
@@ -63,6 +69,9 @@ public class InventarioManager : Singleton<InventarioManager>
         StartCoroutine(ImportSwitchToDatabase());
     }
 
+    /// <summary>
+    /// Call the imports for all categories that exists on the Testing database
+    /// </summary>
     private void ImportTesting()
     {
         switch (testingEstoque)
@@ -88,6 +97,9 @@ public class InventarioManager : Singleton<InventarioManager>
         }
     }
 
+    /// <summary>
+    /// Call the imports for all categories that exists on the ESF database
+    /// </summary>
     private void ImportESF()
     {
         StartCoroutine(ImportDesktopToDatabase());
@@ -96,6 +108,9 @@ public class InventarioManager : Singleton<InventarioManager>
         StartCoroutine(ImportSwitchToDatabase());
     }
 
+    /// <summary>
+    /// Call the imports for all categories that exists on the Fumsoft database
+    /// </summary>
     private void ImportFumsoft()
     {
         StartCoroutine(ImportAdaptadorAcToDatabase());
@@ -107,6 +122,9 @@ public class InventarioManager : Singleton<InventarioManager>
         StartCoroutine(ImportSwitchToDatabase());
     }
 
+    /// <summary>
+    /// Call the imports for all categories that exists on the SnPro database
+    /// </summary>
     private void ImportSnPro()
     {
         StartCoroutine(ImportAdaptadorAcToDatabase());
@@ -134,7 +152,7 @@ public class InventarioManager : Singleton<InventarioManager>
     #region Import all tables to internal database
 
     /// <summary>
-    /// Import Adaptador AC.csv into the internal database
+    /// Import Adaptador AC from server into the internal database
     /// </summary>
     private IEnumerator ImportAdaptadorAcToDatabase()
     {
@@ -191,7 +209,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Carregador.csv into the internal database
+    /// Import Carregador from server into the internal database
     /// </summary>
     private IEnumerator ImportCarregadorToDatabase()
     {
@@ -248,7 +266,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Desktop.csv into the internal database
+    /// Import Desktop from server into the internal database
     /// </summary>
     private IEnumerator ImportDesktopToDatabase()
     {
@@ -306,7 +324,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Fonte.csv into the internal database
+    /// Import Fonte from server into the internal database
     /// </summary>
     private IEnumerator ImportFonteToDatabase()
     {
@@ -363,7 +381,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Gbic.csv into the internal database
+    /// Import Gbic from server into the internal database
     /// </summary>
     private IEnumerator ImportGBICToDatabase()
     {
@@ -482,7 +500,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import iDrac.csv into the internal database
+    /// Import iDrac from server into the internal database
     /// </summary>
     private IEnumerator ImportiDracToDatabase()
     {
@@ -601,9 +619,9 @@ public class InventarioManager : Singleton<InventarioManager>
             InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario] = tempSheet;
         }
     }
-    
+
     /// <summary>
-    /// Import Memória.csv into the internal database
+    /// Import Memória from server into the internal database
     /// </summary>
     private IEnumerator ImportMemoriaToDatabase()
     {
@@ -664,7 +682,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Monitor.csv into the internal database
+    /// Import Monitor from server into the internal database
     /// </summary>
     private IEnumerator ImportMonitorToDatabase()
     {
@@ -721,7 +739,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Notebook.csv into the internal database
+    /// Import Notebook from server into the internal database
     /// </summary>
     private IEnumerator ImportNotebookToDatabase()
     {
@@ -778,7 +796,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Placa controladora.csv into the internal database
+    /// Import Placa controladora from server into the internal database
     /// </summary>
     private IEnumerator ImportPlacaControladoraToDatabase()
     {
@@ -835,7 +853,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Placa de captura de video.csv into the internal database
+    /// Import Placa de captura de video from server into the internal database
     /// </summary>
     private IEnumerator ImportPlacaDeCapturaDeVideoToDatabase()
     {
@@ -892,7 +910,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Placa de Rede.csv into the internal database
+    /// Import Placa de Rede from server into the internal database
     /// </summary>
     private IEnumerator ImportPlacaDeRedeToDatabase()
     {
@@ -950,7 +968,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import PlacaDeSom.csv into the internal database
+    /// Import PlacaDeSom from server into the internal database
     /// </summary>
     private IEnumerator ImportPlacaDeSomToDatabase()
     {
@@ -1007,7 +1025,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import PlacaDeVideo.csv into the internal database
+    /// Import PlacaDeVideo from server into the internal database
     /// </summary>
     private IEnumerator ImportPlacaDeVideoToDatabase()
     {
@@ -1064,7 +1082,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Processador.csv into the internal database
+    /// Import Processador from server into the internal database
     /// </summary>
     private IEnumerator ImportProcessadorToDatabase()
     {
@@ -1121,7 +1139,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Roteador.csv into the internal database
+    /// Import Roteador from server into the internal database
     /// </summary>
     private IEnumerator ImportRoteadorToDatabase()
     {
@@ -1178,7 +1196,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Servidor.csv into the internal database
+    /// Import Servidor from server into the internal database
     /// </summary>
     private IEnumerator ImportServidorToDatabase()
     {
@@ -1235,7 +1253,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import StorageNas.csv into the internal database
+    /// Import StorageNas from server into the internal database
     /// </summary>
     private IEnumerator ImportStorageNASToDatabase()
     {
@@ -1292,7 +1310,7 @@ public class InventarioManager : Singleton<InventarioManager>
     }
 
     /// <summary>
-    /// Import Switch.csv into the internal database
+    /// Import Switch from server into the internal database
     /// </summary>
     private IEnumerator ImportSwitchToDatabase()
     {

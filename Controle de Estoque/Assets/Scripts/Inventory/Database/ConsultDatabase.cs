@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ConsultDatabase : Singleton<ConsultDatabase>
 {
     private int itemIndexFullDatabase = 0;
     private int categoryItemIndex = 0;
+
     /// <summary>
     /// Consult if the item exists on the database using the "Serial"
     /// </summary>

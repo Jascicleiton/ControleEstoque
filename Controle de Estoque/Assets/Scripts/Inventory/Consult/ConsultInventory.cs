@@ -132,7 +132,8 @@ public class ConsultInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// If true, sets the text invisible, if false set it to be visible
+    /// If true, sets the text invisible, if false set it to be visible. For consults using either "Patrimônio" or 
+    /// "Serial", also set the text of the ItensFound text box if it is to be visible
     /// </summary>
     private void SetItensFoundText(bool isInvisible)
     {
@@ -237,35 +238,8 @@ public class ConsultInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Add a location string to the search parameters based on the Location dropdown value
-    /// </summary>
-    private void GetLocation(List<int> activeIndexes, List<string> activeOperators)
-    {
-        // locationInput.text = HelperMethods.GetLocationFromDP(locationDP.value);
-        if (categorySearchInputs[0].text != "" && categorySearchInputs[1].text != "")
-        {
-            categorySearchInputs.Insert(2, locationInput);
-            activeIndexes.Insert(2, 2);
-            activeOperators.Insert(2, "=");
-        }
-        else if ((categorySearchInputs[0].text != "" && categorySearchInputs[1].text == "") || (categorySearchInputs[0].text == "" && categorySearchInputs[1].text != ""))
-        {
-            categorySearchInputs.Insert(1, locationInput);
-            activeIndexes.Insert(1, 1);
-            activeOperators.Insert(1, "=");
-        }
-        else
-        {
-            categorySearchInputs.Insert(0, locationInput);
-            activeIndexes.Insert(0, 0);
-            activeOperators.Insert(0, "=");
-        }
-
-
-    }
-
-    /// <summary>
-    /// Get the string operator from the array of all operators
+    /// Get the string operator from the array of all operators to determine how the search for the parameter(s)
+    /// should be
     /// </summary>
     private string GetOperatorFromDP(int index)
     {

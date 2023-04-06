@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+/// <summary>
+/// Class used to fill all category databases locally. Either for saving or for consult
+/// </summary>
 public class FillCategoryDatabasesFunctions
 {
     #region adaptadorAC

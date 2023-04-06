@@ -16,18 +16,27 @@ public class User
     /// </summary>
     private int accessLevel;
 
+    /// <summary>
+    /// Constructor that uses a nusername and an access level
+    /// </summary>
     public User(string username, int accessLevel)
     {
         this.username = username;
         this.accessLevel = accessLevel;
     }
 
+    /// <summary>
+    /// Constructor that uses an username and a password
+    /// </summary>
     public User(string username, string password)
     {
         this.username = username;
         this.password = password;
     }
 
+    /// <summary>
+    /// Constructor that uses an username, a password and an access level
+    /// </summary>
     public User(string username, string password, int accessLevel)
     {
         this.username = username;

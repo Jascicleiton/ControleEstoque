@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -133,7 +132,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Changes the quantity value of an item
+    /// Trye to change the quantity value of an item. It won't change nor move the item if the quantity drops below 0
     /// </summary>
     public void ChangeItemQuantity(bool add)
     {
@@ -249,6 +248,10 @@ public class NoPaNoSeItemManager : MonoBehaviour
         return item;
     }
 
+    /// <summary>
+    /// Show the locationInput if the location is "Outros" and hide the location input if the location is something
+    /// else
+    /// </summary>
     public void HandleInputData(int value)
     {
         if (HelperMethods.GetLocationFromDP(value) == "Outros")

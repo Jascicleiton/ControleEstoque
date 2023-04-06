@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 public class HandleSheetsForSaveAndLoad
 {
+    /// <summary>
+    /// Get all the informations from every item in a specific Database (sheet) to be used by the saving system
+    /// </summary>
     public static JArray GetJObject(Sheet sheetToConvert)
     {
         JArray state = new JArray();
@@ -88,6 +91,9 @@ public class HandleSheetsForSaveAndLoad
         return state;
     }
 
+    /// <summary>
+    /// Load all items from a specific Database (sheet)
+    /// </summary>
     public static void LoadJObject(JToken state, out Sheet sheetToLoad)
     {
         sheetToLoad = new Sheet();

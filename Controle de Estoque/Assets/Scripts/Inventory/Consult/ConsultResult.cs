@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,15 +8,10 @@ public class ConsultResult : MonoBehaviour
     [SerializeField] private Image[] itemBoxes;
     [SerializeField] private ItemInformationPanelControler itemInformationPanelControler;
 
-    private void Awake()
-    {
-        if(itemInformationPanelControler == null)
-        {
-            itemInformationPanelControler = GetComponent<ItemInformationPanelControler>();
-        }
-    }
-
-    private void Start()
+    /// <summary>
+    /// Makes sure that when the gameObject is enabled, the itemInformationPanelControler variable is not null
+    /// </summary>
+    private void OnEnable()
     {
         if (itemInformationPanelControler == null)
         {

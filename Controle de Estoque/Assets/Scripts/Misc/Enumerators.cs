@@ -29,15 +29,3 @@ public enum Scenes
     SceneNoPaNoSe,
     SceneShowAllMovements
 }
-
-/// <summary>
-/// Determines the access level on the program
-/// </summary>
-public enum AccessLevels
-{
-    Level1,
-    Level2,
-    Level3,
-    Level10
-}
-

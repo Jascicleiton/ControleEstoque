@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -174,12 +171,6 @@ public class AddRemoveItem : MonoBehaviour
         StartCoroutine(AddNewItemRoutine(true));
     }
 
-    // MAYBE will be implemented
-    public void RemoveItem()
-    {
-
-    }
-
     /// <summary>
     /// Call UpdateNames whenever a new category is selected
     /// </summary>
@@ -204,10 +195,12 @@ public class AddRemoveItem : MonoBehaviour
         UpdateNames();
     }
 
-    #region TEsting
+    /// <summary>
+    /// Add an item only to the detaisl table. Only users with access level greater or equal to 10 can use this
+    /// </summary>
     public void AddDetailsItem()
     {
         StartCoroutine(AddNewItemRoutine(false));
     }
-    #endregion
+    
 }

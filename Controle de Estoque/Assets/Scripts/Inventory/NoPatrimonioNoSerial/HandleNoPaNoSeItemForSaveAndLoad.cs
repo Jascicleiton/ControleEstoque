@@ -3,6 +3,9 @@ using Newtonsoft.Json.Linq;
 
 public class HandleNoPaNoSeItemForSaveAndLoad
 {
+    /// <summary>
+    /// Save all the NoPaNoSeItem for offline use of the program
+    /// </summary>
     public static JArray SaveObject(NoPaNoSeAll allItems)
     {
         JArray state = new JArray();
@@ -19,6 +22,9 @@ public class HandleNoPaNoSeItemForSaveAndLoad
         return state;
     }
 
+    /// <summary>
+    /// Load all the NoPaNoSeItem for offline use of the program
+    /// </summary>
     public static void LoadJObject(JToken state, out NoPaNoSeAll itemsToLoad)
     {
         itemsToLoad = new NoPaNoSeAll();

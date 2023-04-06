@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
+/// <summary>
+/// Updates a specific item on the fullDatabase (internal database)
+/// </summary>
 public class UpdateDatabaseItem
 {
     public static void UpdateItem(List<string> parameters, int itemIndexFullDatabase)

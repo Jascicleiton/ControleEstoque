@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
@@ -57,7 +55,8 @@ public class MovementManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if the item that is trying to move exists on the fulldatabase
+    /// Checks if the item that is trying to move exists on the online database and get it's information from the 
+    /// local database
     /// </summary>
     private IEnumerator CheckIfItemExists()
     {
@@ -74,12 +73,12 @@ public class MovementManager : MonoBehaviour
                 EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
                 yield break;
             }
-            if(itemToChange == null)
-            {
-                EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
-                yield break;
-            }
+            //if(itemToChange == null)
+            //{
+            //    EventHandler.CallIsOneMessageOnlyEvent(true);
+            //    EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
+            //    yield break;
+            //}
             WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
            
             UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
@@ -358,38 +357,7 @@ public class MovementManager : MonoBehaviour
     private void UpdateDatabase()
     {       
         InternalDatabase.Instance.fullDatabase.itens[itemToChangeIndex] = itemToChange;
-       // InternalDatabase.movementRecords.Add(movementToRecord);
         EventHandler.CallDatabaseUpdatedEvent();
-    }
-
-    /// <summary>
-    /// Shows a message if the item was not found or if it was moved
-    /// </summary>
-    private void ShowMessage(bool itemFound)
-    {
-        inputEnabled = false;
-        messagePanel.SetActive(true);
-        if (itemFound)
-        {
-            messageText.text = "Item movido com sucesso";
-            ResetInputs();
-            itemFound = false;
-        }
-        else
-        {
-            messageText.text = "Item não encontrado";
-            ResetInputs();
-        }
-        StartCoroutine(CloseRoutine());
-    }
-
-    /// <summary>
-    /// Wait a few seconds before closing the message panel
-    /// </summary>
-    private IEnumerator CloseRoutine()
-    {
-        yield return new WaitForSeconds(5f);
-        CloseMessagePanel();
     }
 
     /// <summary>
@@ -448,23 +416,6 @@ public class MovementManager : MonoBehaviour
     private void EnableDisableMoveButton()
     {
         moveButton.SetActive(itemFound);
-    }
-
-    /// <summary>
-    /// Close the message panel. It is public to be used on the button too
-    /// </summary>
-    public void CloseMessagePanel()
-    {
-        itemFound = false;
-        EnableDisableMoveButton();
-        messagePanel.SetActive(false);
-        StartCoroutine(WaitASecond());
-    }
-
-    private IEnumerator WaitASecond()
-    {
-        yield return new WaitForSecondsRealtime(1f);
-        inputEnabled = true;
     }
 
     /// <summary>

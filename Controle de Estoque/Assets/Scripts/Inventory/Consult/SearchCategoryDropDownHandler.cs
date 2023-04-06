@@ -13,12 +13,15 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
     
     private void Start()
     {
-        StartCoroutine(WaitASecond());
+        StartCoroutine(WaitATick());
     }
 
-    private IEnumerator WaitASecond()
+    /// <summary>
+    /// Wait half a second before initializing, to guarantee everythin is loaded
+    /// </summary>
+    private IEnumerator WaitATick()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(0.5f);
         HandleInputData(0);
     }
 

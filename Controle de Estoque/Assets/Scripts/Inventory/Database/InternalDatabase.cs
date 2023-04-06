@@ -1,9 +1,5 @@
-using Mono.Cecil;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Saving;
 using Newtonsoft.Json.Linq;
 
 public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
@@ -55,7 +51,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     private OfflineProgram offlineProgram = null;
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
-    public List<string> testing = new List<string>();
+   // public List<string> testing = new List<string>();
     public Sheet sheetToLoad = new Sheet();
     
     private void Start()
@@ -64,14 +60,9 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         offlineProgram = GetComponent<OfflineProgram>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            ReImport();
-        }
-    }
-
+    /// <summary>
+    /// Fills all internal category databases
+    /// </summary>
     private void FillCategoryDatabases()
     {
         /// Try to get all sheets that are available on splitdatabase
@@ -239,15 +230,6 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         }
     }
 
-    public void ReImport()
-    {
-        Instantiate(importingWidget);
-        ImportUISettings.Instance.ReImport();
-        InventarioManager.Instance.ImportSheets();
-        fullDatabaseFilled = false;
-        FillFullDatabase();
-    }
-
     /// <summary>
     /// Get all Sheet classes saved on splitDatabase and join them into a single Sheet class
     /// </summary>
@@ -291,6 +273,9 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         fullDatabaseFilled = true;
     }
 
+    /// <summary>
+    /// Used by the save system to save the pertinent information from this class
+    /// </summary>
     public JToken CaptureAsJToken()
     {
         JArray state = HandleSheetsForSaveAndLoad.GetJObject(fullDatabase);   
@@ -298,6 +283,9 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         return state;
     }
 
+    /// <summary>
+    /// Used by the save system to load the pertinent information from this class
+    /// </summary>
     public void RestoreFromJToken(JToken state)
     {
         HandleSheetsForSaveAndLoad.LoadJObject(state, out sheetToLoad);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +13,9 @@ public class MovementUIController : MonoBehaviour
     [SerializeField] TMP_Text firstText;
     [SerializeField] TMP_Text secondText;
 
+    /// <summary>
+    /// Used to set the information of an item that is going to be moved and have a "Patrimônio"
+    /// </summary>
     public void SetMovementInfo(MovementRecords regularMovementToShow)
     {
         firstText.text = "Patrimônio";
@@ -27,6 +28,9 @@ public class MovementUIController : MonoBehaviour
         toWhere.text = regularMovementToShow.toWhere;
     }
 
+    /// <summary>
+    /// Used to set the information of an item that is going to be moved and does not have a "Patrimônio"
+    /// </summary>
     public void SetMovementInfo(NoPaNoSeMovementRecords noPaNoSeMovementToShow)
     {
         firstText.text = "Nome";

@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using SimpleJSON;
 
+/// <summary>
+/// Class used to fill the sheet from a specific inventory table that was imported and generated a JSONNode
+/// </summary>
 public class ImportingInventoryFunctions
 {
     public static void ImportAdaptadorAC(JSONNode inventario, out Sheet importSheet)

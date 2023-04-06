@@ -26,6 +26,9 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
         }
     }
 
+    /// <summary>
+    /// Import all locations from the online database to InternalDatabase
+    /// </summary>
     private IEnumerator ImportLocationsRoutine()
     {
         WWWForm locationsForm = new WWWForm();
@@ -75,6 +78,9 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
         locationRequest.Dispose();
     }
 
+    /// <summary>
+    /// Import all categories from the online database to InternalDatabase
+    /// </summary>
     private IEnumerator ImportCategoriesRoutine()
     {
         WWWForm categoriesForm = new WWWForm();
@@ -124,12 +130,18 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
         categoriesRequest.Dispose();
     }
 
+    /// <summary>
+    /// Reimport all locations and categories
+    /// </summary>
     public void ReImport()
     {
         StartCoroutine(ImportLocationsRoutine());
         StartCoroutine(ImportCategoriesRoutine());
     }
 
+    /// <summary>
+    /// Save all categories and locations for offline version
+    /// </summary>
     public JToken CaptureAsJToken()
     {
         JArray state = new JArray();
@@ -153,6 +165,9 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
         return state;
     }
 
+    /// <summary>
+    /// Load all categories and locations for offline version
+    /// </summary>
     public void RestoreFromJToken(JToken state)
     {
         print("ok");

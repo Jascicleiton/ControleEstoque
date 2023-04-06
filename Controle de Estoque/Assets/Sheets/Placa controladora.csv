@@ -1,7 +1,0 @@
-﻿Modelo,Tipo de conexão,Quantidade de Portas,Tipos de RAID,Tipo de HD,Capacidade máxima do HD,Até quantos HDs,Bateria inclusa,Barramento,Estoque atual
-AOC-SAS2LP-H8IR,SAS,2,0; 1; 5; 6; 10; 50; 60,"SAS, SATA1, SATA2",> 2Tb,240,sim,PCI-E x8,#REF!
-UCSA-801 - H310,SAS,2,0; 1; 5; 10; 50,"SAS, SATA, SSD",> 2Tb,32,não,PCI-E x8,#REF!
-SAS9220-8i,SAS,2,0; 1; 5; 10,"SAS, SATA",> 2Tb,16,não,PCI-E x8,#REF!
-UCS-71 - H200,SAS,2,0; 1; 10,SAS,> 2Tb,16,não,PCI-E x8,#REF!
-0JW063,SAS,4,0; 1,"SAS, SATA",2Tb,32,não,PCI-E x8,#REF!
-PCI3124-4IR,SATA,4,0; 1; 5; 10,SATA,2Tb,,não,PCI-E x1,#REF!

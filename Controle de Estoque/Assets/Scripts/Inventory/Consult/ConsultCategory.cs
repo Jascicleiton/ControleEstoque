@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -10,19 +8,14 @@ public class ConsultCategory : MonoBehaviour
     /// Find all itens from a specific category that match the search parameters
     /// </summary>
     public Sheet FindItens(List<int> activeIndexes, TMP_InputField[] categorySearchInputs, Sheet databaseToConsult, List<string> operators)
-    {
-     
-         //   Debug.Log(categorySearchInputs[activeIndexes[0]].text);
-       
+    {     
         Sheet returnSheet = new Sheet();
         
         switch (activeIndexes.Count)
         {
             case 1:           
                 foreach (ItemColumns item in databaseToConsult.itens)
-                {
-                  
-                  
+                {        
                         if (HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[0]].text), categorySearchInputs[activeIndexes[0]].text, operators[0]))
                         {
                             if (!returnSheet.itens.Contains(item))
@@ -48,7 +41,6 @@ public class ConsultCategory : MonoBehaviour
             case 3:
                 foreach (ItemColumns item in databaseToConsult.itens)
                 {
-
                     if (HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[0]].text), categorySearchInputs[activeIndexes[0]].text, operators[0]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[1]].text), categorySearchInputs[activeIndexes[1]].text, operators[1]) &&
                         HelperMethods.CompareStrings(item.GetValue(categorySearchInputs[activeIndexes[2]].text), categorySearchInputs[activeIndexes[2]].text, operators[2]))
@@ -393,9 +385,7 @@ public class ConsultCategory : MonoBehaviour
             default:
                 break;
         }
-
         returnSheet.itens.Sort((x, y) => x.Patrimonio.CompareTo(y.Patrimonio));
-
 
         return returnSheet; 
     }

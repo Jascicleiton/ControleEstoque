@@ -2,7 +2,6 @@ using SimpleJSON;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -12,11 +11,6 @@ public class UpdateItem : MonoBehaviour
 {
     [SerializeField] private TMP_InputField itemToUpdateParameter;
     [SerializeField] private TMP_Dropdown parameterToSearchDP;
-
-    //[SerializeField] GameObject[] parameterItems;
-    //[SerializeField] TMP_InputField[] parameterInputs;
-    //[SerializeField] TMP_Text[] placeholders;
-    //[SerializeField] TMP_Text[] parameterNames;
 
     [SerializeField] private GameObject inputsPanel;
     [SerializeField] private GameObject messagePanel;
@@ -32,9 +26,7 @@ public class UpdateItem : MonoBehaviour
 
     private List<string> parameters = new List<string>();
     private ItemColumns itemToUpdate;
-    private ItemColumns itemToUpdateCategory;
     private int itemToUpdateIndex;
-    private int itemToUpdateCategoryIndex;
 
     private bool updateInventarioSuccess = false;
 #pragma warning disable CS0219
@@ -45,16 +37,21 @@ public class UpdateItem : MonoBehaviour
     {
         ResetInputs();
         itemToUpdate = new ItemColumns();
-        inputEnabled = true;
-        
+        inputEnabled = true;       
     }
 
+    /// <summary>
+    /// Subscribes to MessageClosed and SetInputEnabled events
+    /// </summary>
     private void OnEnable()
     {
         EventHandler.MessageClosed += MessageClosed;
         EventHandler.EnableInput += SetInputEnabled;
     }
 
+    /// <summary>
+    /// Unsubscribes to MessageClosed and SetInputEnabled events
+    /// </summary>
     private void OnDisable()
     {
         EventHandler.MessageClosed -= MessageClosed;
@@ -262,7 +259,7 @@ public class UpdateItem : MonoBehaviour
     }
 
     /// <summary>
-    /// Shows the itemToUpdate values on the placeholder of all the inputs
+    /// Shows the itemToUpdate values on the text of all the inputs
     /// </summary>
     private void ShowUpdateItem()
     {
@@ -283,6 +280,9 @@ public class UpdateItem : MonoBehaviour
         StartCoroutine(WaitATick());
     }
 
+    /// <summary>
+    /// Wait half a second before updating the TabInputs, to allow all the inputs to be loaded
+    /// </summary>
     private IEnumerator WaitATick()
     {
         yield return new WaitForSeconds(0.5f);

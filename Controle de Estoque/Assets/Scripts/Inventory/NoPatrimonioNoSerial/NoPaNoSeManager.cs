@@ -28,13 +28,19 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
 
     private int tempInt = 0; // Used for all int.TryParse
 
+    /// <summary>
+    /// Show all the available items on the online database, if any, and hide the option to add a new item if the
+    /// access level is equal to 1, 2 or 4 - no adding allowed
+    /// </summary>
     private void Start()
     {
         allitems = new NoPaNoSeAll();
         StartCoroutine(StartListRoutine());
         switch (UsersManager.Instance.currentUser.GetAccessLevel())
         {
+            case 1:
             case 2:
+            case 4:
                 addNewItemButton.gameObject.SetActive(false);
                 break;
             default:
@@ -111,7 +117,6 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
             else if(response == "Result came empty")
             {
                 EventHandler.CallDisconectedFromInternet();
-                // do nothing
             }
             else
             {
@@ -135,13 +140,14 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
     }
 
     /// <summary>
-    /// Add a new item to the online database
+    /// Try to add a new item to the online database and shows it on the screen
     /// </summary>
     private IEnumerator AddNewItemRoutine()
     {
         if (!int.TryParse(newItemQuantityInput.text, out tempInt))
         {
-            //Show error message
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Invalid number format");
             yield break;
         }
 
@@ -180,7 +186,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
             {
                 AddNewItem(newItemNameInput.text, int.Parse(newItemQuantityInput.text));
                 EventHandler.CallDatabaseUpdatedEvent();
-                Debug.Log("Worked");
+                newItemPanel.SetActive(false);
             }
             else
             {
@@ -208,14 +214,13 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
         Canvas.ForceUpdateCanvases();
     }
 
-
     /// <summary>
     /// Used by AddNewItem_btn inside newItemPanel
     /// </summary>
     public void AddNewItemClicked()
     {
         StartCoroutine(AddNewItemRoutine());
-        newItemPanel.SetActive(false);
+        
     }
 
     /// <summary>
@@ -228,7 +233,6 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
         newItemQuantityInput.text = "";
     }
 
-
     /// <summary>
     /// Returns to InitialScene
     /// </summary>
@@ -237,12 +241,18 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
         SceneManager.LoadScene(ConstStrings.SceneInitial);
     }
 
+    /// <summary>
+    /// Save all the NoPaNoSe items for the use of the offline program
+    /// </summary>
     public JToken CaptureAsJToken()
     {
         JArray state = HandleNoPaNoSeItemForSaveAndLoad.SaveObject(allitems);
         return state;
     }
 
+    /// <summary>
+    /// Load all the NoPaNoSe items for the use of the offline program
+    /// </summary>
     public void RestoreFromJToken(JToken state)
     {
         HandleNoPaNoSeItemForSaveAndLoad.LoadJObject(state, out allitems);

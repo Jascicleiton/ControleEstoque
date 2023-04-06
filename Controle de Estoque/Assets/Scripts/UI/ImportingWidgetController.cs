@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ImportingWidgetController : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class ImportingWidgetController : MonoBehaviour
     [SerializeField] private Canvas canvas;
     private float totalPercentageLoaded;
     private float percentageToLoad;
-   
+    private bool coroutineCalled = false;
 
     private void Start()
     {
@@ -26,6 +24,7 @@ public class ImportingWidgetController : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.ImportFinished += UpdateInformations;
+        coroutineCalled = false;
     }
 
     private void OnDisable()
@@ -38,6 +37,11 @@ public class ImportingWidgetController : MonoBehaviour
     /// </summary>
     private void UpdateInformations(bool isInventory)
     {
+        if(!coroutineCalled)
+        {
+            StartCoroutine(WaitAMinute());
+            coroutineCalled = true;
+        }
         if (isInventory)
         {
             switch (InternalDatabase.Instance.currentEstoque)
@@ -88,5 +92,11 @@ public class ImportingWidgetController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private IEnumerator WaitAMinute()
+    {
+        yield return new WaitForSecondsRealtime(60f);
+        Destroy(this.gameObject);
     }
 }

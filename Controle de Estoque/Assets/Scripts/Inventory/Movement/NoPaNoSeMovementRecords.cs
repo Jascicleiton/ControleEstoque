@@ -1,5 +1,6 @@
 /// <summary>
-/// Class used to store all the pertinent informations about a specific item that is being moved
+/// Class used to store all the pertinent informations about a specific item, that does not have a "patrimônio",
+/// that is being moved
 /// </summary>
 [System.Serializable]
 public class NoPaNoSeMovementRecords

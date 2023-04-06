@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -100,7 +99,9 @@ public class MessageManager : MonoBehaviour
                 messageText.text = "Item atualizado com sucesso.";
             }
 
-            //full success
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if ((message1 == "Worked" && message2 != "Worked") || (message1 == "Updated" && message2 != "Updated") )
         {
@@ -116,54 +117,92 @@ public class MessageManager : MonoBehaviour
             {
                 messageText.text = "Item atualizado no inventário com sucesso.\n" + message2;
             }
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Patrimônio já existe" || message1 == "Serial já existe")
         {
             messageText.text = message1;
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Duplicate locations")
         {
             messageText.text = "Não é possível mover um item para o mesmo local atual";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Empty location")
         {
             messageText.text = "Um dos locais está em branco. Coloque um local válido para a movimentação";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Item not found")
         {
             messageText.text = "Item não encontrado, verifique o identificador do item foi digitado corretamente";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Item moved") 
         {
             messageText.text = "Item movido com sucesso";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Unable to move")
         {
             messageText.text = "Item não pôde ser movido. Tente novamente e, se o problema persistir contate o suporte do programa";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Invalid patrimonio format")
         {
             messageText.text = "Patrimônio consiste somente de números. Tente novamente";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if (message1 == "Negative number")
         {
             messageText.text = "O estoque é menor que o valor que você quer mover. Altere o valor e tente novamente.";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if( message1 == "Invalid number")
         {
             messageText.text = "Use apenas algarismos para determinar a quantidade a ser movida";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else if(message1 == "No movement found")
         {
             messageText.text = "Nenhuma movimentação encontrada para este item.";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
+        }
+        else if(message1 == "Invalid number format")
+        {
+            messageText.text = "Use apenas algarismos para determinar a quantidade do item a ser adicionado";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else
         {
             messageText.text = message1 + "\nContate o administrador sobre este erro";
         }
         StartCoroutine(CloseMessageRoutine());
-        message1 = "";
-        message2 = "";
         inputEnabled = true;
     }
 

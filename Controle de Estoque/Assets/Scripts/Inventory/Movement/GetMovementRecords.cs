@@ -15,6 +15,10 @@ public class GetMovementRecords : MonoBehaviour
      [SerializeField] private TMP_InputField parameterInput;
     bool isSearchingPatrimonio = true;
 
+    /// <summary>
+    /// Disables all  movementObjectPrefab from the Pool Manager that were used in the previous search (if it 
+    /// actually happened)
+    /// </summary>
     private void DeleteOldSearch()
     {
         if (instantiateTransform.childCount > 0)
@@ -28,6 +32,9 @@ public class GetMovementRecords : MonoBehaviour
         noPaNoSeMovementRecords.Clear();
     }
 
+    /// <summary>
+    /// Try to get all movements of a specific "Patrimonio" from the Online database
+    /// </summary>
     private IEnumerator ImportPatrimonioMovementsRoutine()
     {
         WWWForm movementsForm = CreateForm.GetMovementsForm(ConstStrings.ImportDatabaseKey, parameterInput.text);
@@ -80,7 +87,7 @@ public class GetMovementRecords : MonoBehaviour
 
                     regularItemMovementRecords.Add(record);
                 }
-                StartCoroutine(ShowMovementsRoutine());
+               ShowMovements();
             }
         }
         else
@@ -92,6 +99,9 @@ public class GetMovementRecords : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
     }
 
+    /// <summary>
+    /// Try to get all movements of a specific "NoPaNoSe" item from the Online database
+    /// </summary>
     private IEnumerator ImportNoPaNoSeMovementsRoutine()
     {
         WWWForm movementsForm = CreateForm.GetMovementsForm(ConstStrings.ImportDatabaseKey, parameterInput.text);
@@ -145,7 +155,7 @@ public class GetMovementRecords : MonoBehaviour
 
                     noPaNoSeMovementRecords.Add(record);
                 }
-                StartCoroutine(ShowMovementsRoutine());
+                ShowMovements();
             }
         }
         else
@@ -157,8 +167,10 @@ public class GetMovementRecords : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
     }
 
-
-    private IEnumerator ShowMovementsRoutine()
+    /// <summary>
+    /// Show all the movements that were found
+    /// </summary>
+    private void ShowMovements()
     {
         MouseManager.Instance.SetWaitingCursor();
         if (regularItemMovementRecords.Count > 0)
@@ -175,7 +187,7 @@ public class GetMovementRecords : MonoBehaviour
           
             MouseManager.Instance.SetDefaultCursor();
             parameterInput.text = "";
-            yield break;
+            return;
         }
         if (noPaNoSeMovementRecords.Count > 0)
         {
@@ -189,11 +201,16 @@ public class GetMovementRecords : MonoBehaviour
             }
             MouseManager.Instance.SetDefaultCursor();
             parameterInput.text = "";
-            yield break;
+            return;
         }
        
     }
 
+    /// <summary>
+    /// Set the isSearchingPatriomonio variable and the placeholder text of the parameterInput according to what
+    /// the user wants to search. 0 = search an item based on it's "patrimônio"; 1 = search an item based on it's 
+    /// name - no patrimônio item
+    /// </summary>
     public void HandleDP(int value)
     {
         if (value == 0)
@@ -209,6 +226,9 @@ public class GetMovementRecords : MonoBehaviour
         parameterInput.text = "";
     }
 
+    /// <summary>
+    /// Search for all the movements of the desired item
+    /// </summary>
     public void SearchClicked()
     {
         if (parameterInput.text != "")
