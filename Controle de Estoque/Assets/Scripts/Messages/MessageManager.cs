@@ -102,13 +102,17 @@ public class MessageManager : MonoBehaviour
 
             //full success
         }
-        else if ((message1 == "Worked" && message2 != "Worked") || (message1 == "Updated" && (message2 != "Updated" || message2 != "Worked")))
+        else if ((message1 == "Worked" && message2 != "Worked") || (message1 == "Updated" && message2 != "Updated") )
         {
             if (message1 == "Worked")
             {
                 messageText.text = "Item adicionado no inventário com sucesso.\n" + message2;
             }
-            else if (message1 == "Updated")
+            else if (message1 == "Updated" && message2 == "Worked")
+            {
+                messageText.text = "Item atualizado no inventário com sucesso.";
+            }
+            else
             {
                 messageText.text = "Item atualizado no inventário com sucesso.\n" + message2;
             }
@@ -148,6 +152,10 @@ public class MessageManager : MonoBehaviour
         else if( message1 == "Invalid number")
         {
             messageText.text = "Use apenas algarismos para determinar a quantidade a ser movida";
+        }
+        else if(message1 == "No movement found")
+        {
+            messageText.text = "Nenhuma movimentação encontrada para este item.";
         }
         else
         {

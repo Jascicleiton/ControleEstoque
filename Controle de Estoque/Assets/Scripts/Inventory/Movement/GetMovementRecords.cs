@@ -14,16 +14,16 @@ public class GetMovementRecords : MonoBehaviour
     [SerializeField] private Transform instantiateTransform;
      [SerializeField] private TMP_InputField parameterInput;
     bool isSearchingPatrimonio = true;
-    private List<GameObject> movementRecordsPrefabs = new List<GameObject>();
-
 
     private void DeleteOldSearch()
     {
-        for (int i = 0; i < movementRecordsPrefabs.Count; i++)
+        if (instantiateTransform.childCount > 0)
         {
-            Destroy(movementRecordsPrefabs[i]);           
+            for (int i = 0; i < instantiateTransform.childCount; i++)
+            {
+                instantiateTransform.GetChild(i).gameObject.SetActive(false);
+            }
         }
-        movementRecordsPrefabs.Clear();
         regularItemMovementRecords.Clear();
         noPaNoSeMovementRecords.Clear();
     }
@@ -63,7 +63,8 @@ public class GetMovementRecords : MonoBehaviour
             }
             else if (response == "Result came empty")
             {
-                // do nothing
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("No movement found");
             }
             else
             {
@@ -126,7 +127,8 @@ public class GetMovementRecords : MonoBehaviour
             }
             else if (response == "Result came empty")
             {
-                // do nothing
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("No movement found");
             }
             else
             {
@@ -162,173 +164,34 @@ public class GetMovementRecords : MonoBehaviour
         if (regularItemMovementRecords.Count > 0)
         {
             regularItemMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
-            if (regularItemMovementRecords.Count < 51)
-            {
+            
                 for (int i = 0; i < regularItemMovementRecords.Count; i++)
                 {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
+                    GameObject instance = PoolManager.Instance.ReuseObject(movementObjectPrefab);
+                    instance.gameObject.SetActive(true);
+                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);               
                 }              
-            }
-            else if (regularItemMovementRecords.Count < 101)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 50; i < regularItemMovementRecords.Count; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }            
-            }
-            else if (regularItemMovementRecords.Count < 151)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 50; i < 100; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 100; i < regularItemMovementRecords.Count; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                } 
-            }
-            else if(regularItemMovementRecords.Count < 201)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 50; i < 100; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 100; i < 150; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                for (int i = 150; i < regularItemMovementRecords.Count; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-            }
-
+            
+          
             MouseManager.Instance.SetDefaultCursor();
             parameterInput.text = "";
             yield break;
         }
-
-       if (noPaNoSeMovementRecords.Count > 0)
+        if (noPaNoSeMovementRecords.Count > 0)
         {
             noPaNoSeMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
-            if (noPaNoSeMovementRecords.Count < 51)
+
+            for (int i = 0; i < noPaNoSeMovementRecords.Count; i++)
             {
-                for (int i = 0; i < noPaNoSeMovementRecords.Count; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
+                GameObject instance = PoolManager.Instance.ReuseObject(movementObjectPrefab);
+                instance.gameObject.SetActive(true);
+                instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
             }
-            else if (noPaNoSeMovementRecords.Count < 101)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 50; i < noPaNoSeMovementRecords.Count; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-            }
-            else if (noPaNoSeMovementRecords.Count < 151)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 50; i < 100; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 100; i < noPaNoSeMovementRecords.Count; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-            }
-            else if (noPaNoSeMovementRecords.Count < 201)
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 50; i < 100; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                yield return new WaitForSecondsRealtime(1f);
-                for (int i = 100; i < 150; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-                for (int i = 150; i < noPaNoSeMovementRecords.Count; i++)
-                {
-                    GameObject instance = Instantiate(movementObjectPrefab, instantiateTransform);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
-                    movementRecordsPrefabs.Add(instance);
-                }
-            }
+            MouseManager.Instance.SetDefaultCursor();
+            parameterInput.text = "";
+            yield break;
         }
-        
-        MouseManager.Instance.SetDefaultCursor();
-        parameterInput.text = "";
+       
     }
 
     public void HandleDP(int value)
