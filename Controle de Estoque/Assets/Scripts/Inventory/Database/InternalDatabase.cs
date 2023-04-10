@@ -174,7 +174,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
             }
             else if (item.Categoria.Trim() == ConstStrings.Mouse.Trim())
             {
-                mouseTemp.itens.Add(item);
+                mouse.itens.Add(item);
             }
             else if (item.Categoria.Trim() == ConstStrings.Nobreak.Trim())
             {

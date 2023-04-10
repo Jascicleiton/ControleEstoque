@@ -194,7 +194,6 @@ public class ConsultInventory : MonoBehaviour
                 }
             }
         }
-        // GetLocation(activeIndexes, activeOperators);
 
         if (activeIndexes.Count > 0)
         {
@@ -277,7 +276,8 @@ public class ConsultInventory : MonoBehaviour
     /// </summary>
     private Sheet GetCategorySheet(int value)
     {
-        return InternalDatabase.allFullDetailsSheets[value];
+        print(HelperMethods.GetCategoryDatabaseToConsult(HelperMethods.GetCategoryString(value)).itens.Count);
+        return HelperMethods.GetCategoryDatabaseToConsult(HelperMethods.GetCategoryString(value));
     }
 
     /// <summary>

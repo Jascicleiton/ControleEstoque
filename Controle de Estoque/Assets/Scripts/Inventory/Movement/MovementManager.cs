@@ -37,6 +37,7 @@ public class MovementManager : MonoBehaviour
     {
         itemInformationDP.value = 0;
         ShouldHidePanels(true);
+        toDP.value = HelperMethods.GetLocationDPValue("Estoque");
     }
 
     /// <summary>
