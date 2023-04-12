@@ -88,9 +88,9 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         Sheet monitorTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Monitor, out monitorTemp);
         Sheet mouseTemp = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Mouse, out mouseTemp);
+        splitDatabase.TryGetValue(ConstStrings.Monitor, out mouseTemp);
         Sheet nobreakTemp = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Nobreak, out nobreakTemp);
+        splitDatabase.TryGetValue(ConstStrings.Monitor, out nobreakTemp);
         Sheet notebookTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Notebook, out notebookTemp);
         Sheet placaControladoraTemp = new Sheet();
@@ -116,7 +116,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         Sheet switchTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Switch, out switchTemp);
         Sheet tecladoTemp = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.Teclado, out tecladoTemp);
+        splitDatabase.TryGetValue(ConstStrings.StorageNAS, out tecladoTemp);
         Sheet outrosTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Outros, out outrosTemp);
         #endregion
