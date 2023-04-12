@@ -263,7 +263,7 @@ public class ItemInformationPanelControler : MonoBehaviour
         if (itemToShow != null)
         {
             Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-            dictionary = HelperMethods.GetParameterValuesAndNames(itemToShow, itemToShow.Categoria);
+            dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(itemToShow, itemToShow.Categoria);
             List<string> names = new List<string>();
             List<string> values = new List<string>();
             dictionary.TryGetValue("Names", out names);
@@ -289,7 +289,7 @@ public class ItemInformationPanelControler : MonoBehaviour
         if (itemToShow != null)
         {
             Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-            dictionary = HelperMethods.GetParameterValuesAndNames(itemToShow, itemToShow.Categoria);
+            dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(itemToShow, itemToShow.Categoria);
             List<string> names = new List<string>();
             List<string> values = new List<string>();
             dictionary.TryGetValue("Names", out names);
@@ -313,12 +313,13 @@ public class ItemInformationPanelControler : MonoBehaviour
         ResetNames();
         ResetValues();
         Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-        dictionary = HelperMethods.GetParameterValuesAndNames(null, category);
+        dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, category);
         List<string> names = new List<string>();
-        List<string> values = new List<string>();
+        List<string> placeholders = new List<string>();
         dictionary.TryGetValue("Names", out names);
+        dictionary.TryGetValue("Placeholders", out placeholders);
         FillNames(names);
-        FillPlaceHolders(names);
+        FillPlaceHolders(placeholders);
         parameterValues[0].text = DateTime.Now.ToString("dd/MM/yyyy");
         parameterValues[1].text = DateTime.Now.ToString("dd/MM/yyyy");
        parameterValues[8].text = "Estoque";

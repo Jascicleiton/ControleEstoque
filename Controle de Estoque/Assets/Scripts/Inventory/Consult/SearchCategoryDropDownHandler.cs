@@ -35,7 +35,7 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
             item.gameObject.SetActive(true);
         }
         names.Clear();       
-        dictionary = HelperMethods.GetParameterValuesAndNames(null, HelperMethods.GetCategoryString(value));
+        dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, HelperMethods.GetCategoryString(value));
         dictionary.TryGetValue("Names", out names);
         SetParameterPlaceholders();
     }
