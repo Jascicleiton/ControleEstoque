@@ -619,7 +619,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
-                            dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
+                            dictionary["Values"].Add(itemToShow.QuaisConexoes);
                             dictionary["Values"].Add(itemToShow.Desempenho);
                             break;
                         default:
@@ -900,7 +900,7 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        dictionary["Names"].Add("Quantas entradas");
+                        dictionary["Names"].Add("Quantas e quais portas");
                         dictionary["Names"].Add("Capacidade máx de cada porta (MB/s)");
                         break;
                     default:

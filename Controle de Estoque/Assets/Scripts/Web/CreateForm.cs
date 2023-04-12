@@ -492,7 +492,7 @@ public class CreateForm
         {
             case CurrentEstoque.SnPro:
                 inventario.AddField("modelo", parameters[0]);
-                inventario.AddField("quantasentradas", parameters[1]);
+                inventario.AddField("quantasquaisportas", parameters[1]);
                 inventario.AddField("capacidademaxporta", parameters[2]);
                 break;                          
             default:

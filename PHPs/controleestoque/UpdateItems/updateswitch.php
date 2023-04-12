@@ -9,7 +9,7 @@ if(mysqli_connect_errno())
 
 $appkey = $_POST ["apppassword"];
 $modelo = $_POST["modelo"];
-$quantasentradas = $_POST["quantasentradas"];
+$quantasquaisportas = $_POST["quantasquaisportas"];
 $capacidademaxporta = $_POST["capacidademaxporta"];
 
 if($appkey != "UpdateItem")
@@ -18,10 +18,9 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Switch SET Modelo = '".$modelo."', Quantas_entradas = '".$quantasentradas."', Capacidade_max  = '".$capacidademaxporta."' WHERE Modelo = '".$modelo."';";
+$updateQuery = "UPDATE Switch SET Modelo = '".$modelo."', Quantas_quais_entradas = '".$quantasquaisportas."', Capacidade_max  = '".$capacidademaxporta."' WHERE Modelo = '".$modelo."';";
 mysqli_query($con, $updateQuery) or die("Update failed");
 echo("Updated");
 
 $con->close();
-
 ?>

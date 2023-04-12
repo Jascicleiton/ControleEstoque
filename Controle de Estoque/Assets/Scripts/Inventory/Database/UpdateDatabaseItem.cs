@@ -468,10 +468,7 @@ public class UpdateDatabaseItem
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        if (!int.TryParse(parameters[11], out itemToUpdate.QuantidadeDePortas))
-                        {
-                            itemToUpdate.QuantidadeDePortas = 0;
-                        }
+                        itemToUpdate.QuaisConexoes = parameters[11];
                         itemToUpdate.Desempenho = parameters[12];
                         break;
                     case CurrentEstoque.Concert:                        

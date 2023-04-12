@@ -627,7 +627,7 @@ public class ImportingInventoryFunctions
                 {
                     ItemColumns newRow = new ItemColumns();
                     newRow.Modelo = item[0];
-                    newRow.QuantidadeDePortas = item[1];
+                    newRow.QuaisConexoes = item[1];
                     newRow.Desempenho = item[2];
                     newRow.Categoria = ConstStrings.Switch;
                     importSheet.itens.Add(newRow);
@@ -653,7 +653,7 @@ public class ImportingInventoryFunctions
                 {
                     ItemColumns newRow = new ItemColumns();
                     newRow.Modelo = item[0];
-                    newRow.QuantidadeDePortas = item[1];
+                    newRow.QuaisConexoes = item[1];
                     newRow.Desempenho = item[2];
                     newRow.Categoria = ConstStrings.Switch;
                     importSheet.itens.Add(newRow);

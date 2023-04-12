@@ -652,7 +652,7 @@ public class FillCategoryDatabasesFunctions
                     case CurrentEstoque.SnPro:
                         if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
-                                                       item.QuantidadeDePortas = itemToAdd.QuantidadeDePortas;
+                                                       item.QuaisConexoes = itemToAdd.QuaisConexoes;
                             item.Desempenho = itemToAdd.Desempenho;
                         }
                         break;

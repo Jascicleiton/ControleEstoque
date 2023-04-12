@@ -9,7 +9,7 @@ if(mysqli_connect_errno())
 
 $appkey = $_POST ["apppassword"];
 $modelo = $_POST["modelo"];
-$quantasentradas = $_POST["quantasentradas"];
+$quantasquaisportas = $_POST["quantasquaisportas"];
 $capacidademaxporta = $_POST["capacidademaxporta"];
 
 if($appkey != "AddNewItem")
@@ -27,15 +27,10 @@ if($modelocheckresult->num_rows > 0)
     exit();
 }
 
-$insertuserquery= "INSERT INTO Switch(Modelo, Quantas_entradas, Capacidade_max) VALUES('". $modelo ."', '". $quantasentradas ."', '". $capacidademaxporta ."');";
+$insertuserquery= "INSERT INTO Switch(Modelo, Quantas_quais_entradas, Capacidade_max) VALUES('". $modelo ."', '". $quantasquaisportas ."', '". $capacidademaxporta ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Worked");
 
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>
