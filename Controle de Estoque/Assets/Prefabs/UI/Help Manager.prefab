@@ -182,7 +182,7 @@ RectTransform:
   - {fileID: 7306062569202266630}
   - {fileID: 4943493516530957578}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -205,6 +205,8 @@ MonoBehaviour:
   buttonImage: {fileID: 991049038909987694}
   litSprite: {fileID: 21300000, guid: 772b14eaf86c6f94fb2fe4fb7354a928, type: 3}
   unlitSprite: {fileID: 21300000, guid: 38dad7f224c41b046a55cb14196f4891, type: 3}
+  animator: {fileID: 6402909603548119227}
+  animationToPlay: 
 --- !u!1 &1376418100717779062
 GameObject:
   m_ObjectHideFlags: 0
