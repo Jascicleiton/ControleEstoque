@@ -21,8 +21,8 @@ public class ChangeScreenManager : MonoBehaviour
             case Scenes.SceneConsult:
                 SceneManager.LoadScene(ConstStrings.SceneConsult);
                 break;
-            case Scenes.SceneAddRemoveItem:
-                SceneManager.LoadScene(ConstStrings.SceneAddRemoveItem);
+            case Scenes.SceneAddItem:
+                SceneManager.LoadScene(ConstStrings.SceneAddItem);
                 break;
             case Scenes.SceneInitial:
                 SceneManager.LoadScene(ConstStrings.SceneInitial);
@@ -36,8 +36,8 @@ public class ChangeScreenManager : MonoBehaviour
             case Scenes.SceneUpdateItem:
                 SceneManager.LoadScene(ConstStrings.SceneUpdateItem);
                 break;
-            case Scenes.SceneExportSchets:
-                SceneManager.LoadScene(ConstStrings.SceneExportSheets);
+            case Scenes.ExportTablesScene:
+                SceneManager.LoadScene(ConstStrings.SceneExportTables);
                 break;
             case Scenes.SceneConsultInventoryAll:
                 SceneManager.LoadScene(ConstStrings.SceneConsultInventoryAll);

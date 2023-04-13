@@ -100,7 +100,7 @@ public class InitialSceneManager : MonoBehaviour
     /// </summary>
     public void AddClicked()
     {
-        SceneManager.LoadScene(ConstStrings.SceneAddRemoveItem);
+        SceneManager.LoadScene(ConstStrings.SceneAddItem);
     }
 
     /// <summary>
@@ -116,7 +116,7 @@ public class InitialSceneManager : MonoBehaviour
     /// </summary>
     public void ExportSheetsClicked()
     {
-        SceneManager.LoadScene(ConstStrings.SceneExportSheets);
+        SceneManager.LoadScene(ConstStrings.SceneExportTables);
     }
 
     /// <summary>

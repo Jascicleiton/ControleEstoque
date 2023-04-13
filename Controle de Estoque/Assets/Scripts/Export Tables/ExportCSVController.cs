@@ -18,6 +18,7 @@ public class ExportCSVController : MonoBehaviour
     public void ExportSelectedCSV()
     {
         exportCSVs.CreateInventarioSheet();
+        ShowMessage("Inventário");
         //switch (csvToExportIndex)
         //{
         //    case 0:

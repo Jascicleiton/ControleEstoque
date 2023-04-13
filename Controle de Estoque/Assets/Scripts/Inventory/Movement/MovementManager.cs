@@ -113,6 +113,7 @@ public class MovementManager : MonoBehaviour
                 {
                     itemFound = true;
                     EnableDisableMoveButton();
+                    EventHandler.CallChangeAnimation("HelpMovement2");
                 }
                 else if (response == "Not found or found duplicate") 
                 {
@@ -276,6 +277,7 @@ public class MovementManager : MonoBehaviour
                 ResetInputs();
                 inputEnabled = true;
                 itemFound = false;
+                EventHandler.CallChangeAnimation("HelpMovement");
                 yield break;
             }
             else
@@ -373,6 +375,7 @@ public class MovementManager : MonoBehaviour
         fromInput.text = "";
         toInput.text = "";
         ShouldHidePanels(true);
+        EventHandler.CallChangeAnimation("HelpMovement");
     }
 
     /// <summary>

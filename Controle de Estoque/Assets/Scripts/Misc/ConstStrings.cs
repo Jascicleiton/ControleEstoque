@@ -57,12 +57,12 @@ public class ConstStrings
     #region Scene names
     public const string SceneMainMenu = "MainMenu";
     public const string SceneConsult = "ConsultScene";
-    public const string SceneAddRemoveItem = "AddRemoveItemScene";
+    public const string SceneAddItem = "AddItemScene";
     public const string SceneInitial = "InitialScene";
     public const string SceneMovement = "MovementScene";
     public const string SceneSplash = "SplashScreen";
     public const string SceneUpdateItem = "UpdateItemScene";
-    public const string SceneExportSheets = "ExportCSVsScene";
+    public const string SceneExportTables = "ExportTablesScene";
     public const string SceneConsultInventoryAll = "ConsultSceneAllinventory";
     public const string SceneConsultDetailsAll = "ConsultSceneAllDetails";
     public const string SceneNoPaNoSe = "NoPaNoSeScene";

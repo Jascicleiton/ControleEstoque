@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ConsultScene.unity
     guid: 7543f8e942d25e642a24ca868e0058e0
   - enabled: 1
-    path: Assets/Scenes/AddRemoveItemScene.unity
+    path: Assets/Scenes/AddItemScene.unity
     guid: 251be0b059b086940bb573c53cfb57e4
   - enabled: 1
     path: Assets/Scenes/MovementScene.unity
@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UpdateItemScene.unity
     guid: e5ced2b616fdc9645995a27b0524e325
   - enabled: 1
-    path: Assets/Scenes/ExportCSVsScene.unity
+    path: Assets/Scenes/ExportTablesScene.unity
     guid: 0be4870c74ebdad4481d5d93c79c9a97
   - enabled: 1
     path: Assets/Scenes/NoPaNoSeScene.unity

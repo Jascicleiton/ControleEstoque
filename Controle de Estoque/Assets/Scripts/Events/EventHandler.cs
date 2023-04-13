@@ -123,5 +123,16 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Used to change animation to play for the HelpButtonManager
+    /// </summary>
+    public static event Action<string> ChangeAnimation;
+    public static void CallChangeAnimation(string animationName)
+    {
+        if(ChangeAnimation != null)
+        {
+            ChangeAnimation(animationName);
+        }
+    }
 }
 
