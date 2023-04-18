@@ -8,7 +8,8 @@ public enum CurrentEstoque
     ESF,
     Testing,
     Clientes,
-    Concert
+    Concert,
+    Quisto
 }
 
 /// <summary>

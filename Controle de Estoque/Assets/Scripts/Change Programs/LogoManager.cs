@@ -8,6 +8,7 @@ public class LogoManager : MonoBehaviour
     [SerializeField] private Sprite testingSprite;
     [SerializeField] private Sprite clientesSprite;
     [SerializeField] private Sprite concerttSprite;
+    [SerializeField] private Sprite quistoSprite;
 
     private Image image;
 
@@ -40,6 +41,9 @@ public class LogoManager : MonoBehaviour
                 break;
             case CurrentEstoque.Concert:
                 image.sprite = concerttSprite;
+                break;
+            case CurrentEstoque.Quisto:
+                image.sprite = quistoSprite;
                 break;
             default:
                 this.gameObject.SetActive(false);
