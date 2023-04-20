@@ -65,20 +65,18 @@ public class TabInputHandler : MonoBehaviour
         inputFields = FindObjectsOfType<TMP_InputField>().ToList();
         for (int i = 0; i < inputFields.Count; i++)
         {
-            if (!inputFields[i].interactable)
+            if (!inputFields[i].interactable || inputFields[i].tag != ConstStrings.TabTarget || inputFields[i].GetComponent<InputNumber>() == null)
             {
-                print(inputFields[i].gameObject.name);
-                inputFields.Remove(inputFields[i]);
-                continue;
-            }
-            if (inputFields[i].tag != ConstStrings.TabTarget)
-            {
-                inputFields.Remove(inputFields[i]);
+                inputFields.RemoveAt(i);
                 continue;
             }
         }
-        inputFields.Sort((x, y) => x.GetComponent<InputNumber>().number.CompareTo(y.GetComponent<InputNumber>().number));
-        inputFields[0].Select();
+       // print(inputFields.Count);
+        if (inputFields != null && inputFields.Count > 2)
+        {
+            inputFields.Sort((x, y) => x.GetComponent<InputNumber>().number.CompareTo(y.GetComponent<InputNumber>().number));
+            inputFields[0].Select();
+        }
     }
 
     /// <summary>

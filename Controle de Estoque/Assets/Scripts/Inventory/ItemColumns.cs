@@ -18,10 +18,10 @@ public class ItemColumns
         OndeFunciona, Conectores, Wireless, BandaMaxima.ToString(), VoltagemDeSaida.ToString("0.0"), AmperagemDeSaida.ToString("0.0"), QuantosCanais.ToString(), Polegadas.ToString("0.0"), Processador, CentroDeCusto, Pessoa};
         for (int i = 0; i < allValues.Length; i++)
         {
-            if (allValues[i] == valueToGet)
-            {
-                return allValues[i];
-            }
+            if (string.Compare(allValues[i], valueToGet, true) == 0)
+                {
+                    return allValues[i];
+                }           
         }
         return null;
     }

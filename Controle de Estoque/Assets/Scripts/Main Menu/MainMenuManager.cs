@@ -38,6 +38,7 @@ public class MainMenuManager : MonoBehaviour
     private bool isWindows = false;
 
     [SerializeField] private TMP_Text versionText;
+    [SerializeField] private TMP_Text testText;
 
     /// <summary>
     /// Initializes the varibles
@@ -51,6 +52,7 @@ public class MainMenuManager : MonoBehaviour
         authorizationAccessLevel = 0;
     versionText.text = InternalDatabase.Instance.currentVersion;
         CheckIfCurrentPlatformIsWindows();
+       // testText.text = string.Compare("estoque", "Estoque", true).ToString();
     }
 
     /// <summary>

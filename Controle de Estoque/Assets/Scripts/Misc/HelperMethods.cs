@@ -920,7 +920,7 @@ public class HelperMethods
         {
             case CurrentEstoque.Concert:
                 dictionary["Placeholders"].Add("Data de aquisição...");
-                dictionary["Placeholders"].Add("Entrada no estoque...");
+                dictionary["Placeholders"].Add("Data de entrada no estoque");
                 dictionary["Placeholders"].Add("Patrimônio...");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO...");
                 dictionary["Placeholders"].Add("Serial...");
@@ -932,9 +932,22 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("Centro de Custo...");
                 dictionary["Placeholders"].Add("Saída do estoque...");
                 break;
+            case CurrentEstoque.ESF:
+                dictionary["Placeholders"].Add("Data de aquisição");
+                dictionary["Placeholders"].Add("Data de entrada no estoque");
+                dictionary["Placeholders"].Add("Patrimônio");
+                dictionary["Placeholders"].Add("Funciona, DEFEITO, Não testado...");
+                dictionary["Placeholders"].Add("Serial");
+                dictionary["Placeholders"].Add("Desktop, Servidor, Roteador....");
+                dictionary["Placeholders"].Add("Fabricante");
+                dictionary["Placeholders"].Add("Modelo");
+                dictionary["Placeholders"].Add("Estoque, Em uso, Estoque de itens defeituosos, outros");
+                dictionary["Placeholders"].Add("Saída do estoque");
+                dictionary["Placeholders"].Add("Informações adicionais");
+                break;
             default:
                 dictionary["Placeholders"].Add("Data de aquisição...");
-                dictionary["Placeholders"].Add("Entrada no estoque...");
+                dictionary["Placeholders"].Add("Data de entrada no estoque");
                 dictionary["Placeholders"].Add("Patrimônio...");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO...");
                 dictionary["Placeholders"].Add("Serial...");
@@ -1231,17 +1244,32 @@ public class HelperMethods
     /// </summary>
     public static bool CompareStrings(string parameter1, string parameter2, string Operator)
     {
-        //Debug.Log(parameter1 + ", " + parameter2 + ", " + Operator);
+        string parameterToCheck1 = "";
+        string parameterToCheck2 = "";
+        if (parameter1 != null)
+        {
+            parameterToCheck1 = parameter1.ToLower();
+        }
+        if(parameter2 != null)
+        {
+            parameterToCheck2 = parameter2.ToLower();
+        }
+        else
+        {
+            parameter2 = "";
+        }
+        
         switch (Operator)
         {
             case "=":
-                return parameter1 == parameter2;
+
+                return string.Equals(parameterToCheck1, parameterToCheck2);
             case "<":
-                return double.Parse(parameter1) < double.Parse(parameter2);
+            //   return double.Parse(parameter1) < double.Parse(parameter2);
             case ">":
             //return float.TryParse(parameter1) > float.TryParse(parameter2);
             case "!=":
-                return parameter1 != parameter2;
+                return !string.Equals(parameterToCheck1, parameterToCheck2);
             case "<=":
             //return float.TryParse(parameter1) <= float.TryParse(parameter2);
             case ">=":

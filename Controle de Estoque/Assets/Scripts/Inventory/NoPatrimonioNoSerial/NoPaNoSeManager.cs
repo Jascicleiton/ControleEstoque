@@ -231,6 +231,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
         newItemPanel.SetActive(true);
         newItemNameInput.text = "";
         newItemQuantityInput.text = "";
+      //  EventHandler.CallUpdateTabInputs();
     }
 
     /// <summary>

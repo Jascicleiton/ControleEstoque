@@ -10,6 +10,7 @@ public class ConsultCategory : MonoBehaviour
     public Sheet FindItens(List<int> activeIndexes, TMP_InputField[] categorySearchInputs, Sheet databaseToConsult, List<string> operators)
     {     
         Sheet returnSheet = new Sheet();
+        returnSheet.itens.Clear();
         
         switch (activeIndexes.Count)
         {

@@ -36,7 +36,7 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         }
         names.Clear();       
         dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, HelperMethods.GetCategoryString(value));
-        dictionary.TryGetValue("Names", out names);
+        dictionary.TryGetValue("Placeholders", out names);
         SetParameterPlaceholders();
     }
 
@@ -59,9 +59,12 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
         ResetParameterNames();
         if(names != null && names.Count > 0)
         {
+            searchParameters[0].text = names[3];
+            searchParameters[1].text = names[7];
+            searchParameters[2].text = names[8];
             for (int i = 11; i < names.Count; i++)
             {
-                searchParameters[i - 8].text = names[i] + "...";
+                searchParameters[i - 8].text = names[i];
             }
         }
 

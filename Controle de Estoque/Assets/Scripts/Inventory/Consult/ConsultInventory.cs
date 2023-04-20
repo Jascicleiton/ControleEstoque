@@ -208,15 +208,24 @@ public class ConsultInventory : MonoBehaviour
             {
                 for (int i = 0; i < foundItens.itens.Count; i++)
                 {
-                    if (foundItens.itens[i].Status != "DEFEITO")
+                    if (InternalDatabase.Instance.currentEstoque != CurrentEstoque.ESF)
+                    {
+                        if (foundItens.itens[i].Status != "DEFEITO")
+                        {
+                            GameObject result = PoolManager.Instance.ReuseObject(consultResult);
+                            result.SetActive(true);
+                            result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
+                        }
+                        else
+                        {
+                            foundItens.itens.RemoveAt(i);
+                        }
+                    }
+                    else
                     {
                         GameObject result = PoolManager.Instance.ReuseObject(consultResult);
                         result.SetActive(true);
                         result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
-                    }
-                    else
-                    {
-                        foundItens.itens.Remove(foundItens.itens[i]);
                     }
                 }
                          numberOfItemsImage.alpha = 1f;
