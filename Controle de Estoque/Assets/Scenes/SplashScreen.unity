@@ -765,7 +765,7 @@ MonoBehaviour:
     itens: []
   testingSheet:
     itens: []
-  currentEstoque: 2
+  currentEstoque: 0
   sheetToLoad:
     itens: []
 --- !u!114 &2113933708

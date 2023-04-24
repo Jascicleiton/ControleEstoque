@@ -266,10 +266,13 @@ public class ItemInformationPanelControler : MonoBehaviour
             dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(itemToShow, itemToShow.Categoria);
             List<string> names = new List<string>();
             List<string> values = new List<string>();
+            List<string> placeholders = new List<string>();
             dictionary.TryGetValue("Names", out names);
             dictionary.TryGetValue("Values", out values);
+            dictionary.TryGetValue("Placeholders", out placeholders);
             FillNames(names);
             FillValues(values);
+            FillPlaceHolders(placeholders);
         }
         else
         {

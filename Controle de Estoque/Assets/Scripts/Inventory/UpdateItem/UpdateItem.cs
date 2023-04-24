@@ -29,9 +29,6 @@ public class UpdateItem : MonoBehaviour
     private int itemToUpdateIndex;
 
     private bool updateInventarioSuccess = false;
-#pragma warning disable CS0219
-    private bool updateDetailsSuccess = false;
-#pragma warning restore CS0219
 
     void Start()
     {
@@ -342,5 +339,23 @@ public class UpdateItem : MonoBehaviour
     {
         ResetInputs();
         searchingItem = true;
+    }
+
+    public void HandleInput(int value)
+    {
+        if(value == 0)
+        {
+            if(itemToUpdateParameter.placeholder.GetComponent<TMP_Text>().text != null)
+            {
+                itemToUpdateParameter.placeholder.GetComponent<TMP_Text>().text = "Digite o número do patrimônio do item a ser atualizado";
+            }
+        }
+        else if (value == 1)
+        {
+            if (itemToUpdateParameter.placeholder.GetComponent<TMP_Text>().text != null)
+            {
+                itemToUpdateParameter.placeholder.GetComponent<TMP_Text>().text = "Digite o número do serial do item a ser atualizado";
+            }
+        }
     }
 }

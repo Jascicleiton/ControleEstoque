@@ -921,21 +921,21 @@ public class HelperMethods
             case CurrentEstoque.Concert:
                 dictionary["Placeholders"].Add("Data de aquisição...");
                 dictionary["Placeholders"].Add("Data de entrada no estoque");
-                dictionary["Placeholders"].Add("Patrimônio...");
-                dictionary["Placeholders"].Add("Funciona, DEFEITO...");
-                dictionary["Placeholders"].Add("Serial...");
+                dictionary["Placeholders"].Add("Número do patrimônio");
+                dictionary["Placeholders"].Add("Funciona, DEFEITO");
+                dictionary["Placeholders"].Add("Serial");
                 dictionary["Placeholders"].Add("Desktop, Servidor....");
-                dictionary["Placeholders"].Add("Fabricante...");
-                dictionary["Placeholders"].Add("Modelo...");
-                dictionary["Placeholders"].Add("Estoque, Descarte...");
-                dictionary["Placeholders"].Add("Pessoa alocada ao item...");
-                dictionary["Placeholders"].Add("Centro de Custo...");
-                dictionary["Placeholders"].Add("Saída do estoque...");
+                dictionary["Placeholders"].Add("Fabricante");
+                dictionary["Placeholders"].Add("Modelo");
+                dictionary["Placeholders"].Add("Estoque, Descarte, SNP02...");
+                dictionary["Placeholders"].Add("Pessoa alocada ao item");
+                dictionary["Placeholders"].Add("Centro de Custo");
+                dictionary["Placeholders"].Add("Data de saída do estoque");
                 break;
             case CurrentEstoque.ESF:
                 dictionary["Placeholders"].Add("Data de aquisição");
                 dictionary["Placeholders"].Add("Data de entrada no estoque");
-                dictionary["Placeholders"].Add("Patrimônio");
+                dictionary["Placeholders"].Add("Número do patrimônio");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO, Não testado...");
                 dictionary["Placeholders"].Add("Serial");
                 dictionary["Placeholders"].Add("Desktop, Servidor, Roteador....");
@@ -946,17 +946,17 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("Informações adicionais");
                 break;
             default:
-                dictionary["Placeholders"].Add("Data de aquisição...");
+                dictionary["Placeholders"].Add("Data de aquisição");
                 dictionary["Placeholders"].Add("Data de entrada no estoque");
-                dictionary["Placeholders"].Add("Patrimônio...");
+                dictionary["Placeholders"].Add("Número do patrimônio");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO...");
-                dictionary["Placeholders"].Add("Serial...");
+                dictionary["Placeholders"].Add("Serial");
                 dictionary["Placeholders"].Add("Desktop, Servidor....");
-                dictionary["Placeholders"].Add("Fabricante...");
-                dictionary["Placeholders"].Add("Modelo...");
+                dictionary["Placeholders"].Add("Fabricante");
+                dictionary["Placeholders"].Add("Modelo");
                 dictionary["Placeholders"].Add("Estoque, Descarte...");
-                dictionary["Placeholders"].Add("Saída do estoque...");
-                dictionary["Placeholders"].Add("Informações adicionais...");
+                dictionary["Placeholders"].Add("Data de saída do estoque");
+                dictionary["Placeholders"].Add("Informações adicionais");
                 break;
         }
         #endregion

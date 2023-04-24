@@ -1472,11 +1472,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1037788647}
   - {fileID: 649149396}
   - {fileID: 1363475224}
   - {fileID: 1004374133}
   - {fileID: 280122708}
-  - {fileID: 1037788647}
   - {fileID: 479330770}
   - {fileID: 747433390}
   m_Father: {fileID: 716746141}
@@ -3328,8 +3328,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.98999023, y: -83.76999}
-  m_SizeDelta: {x: -53.3, y: 125.94}
+  m_AnchoredPosition: {x: -0.98999023, y: -106.25}
+  m_SizeDelta: {x: -53.3, y: 170.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &992973526
 MonoBehaviour:
@@ -3351,8 +3351,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Digite login e senha do administrador para autorizar a adi\xE7\xE3o do
-    novo usu\xE1rio"
+  m_text: "Digite login e senha do administrador e pressione Enter  para autorizar
+    a adi\xE7\xE3o do novo usu\xE1rio"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3379,10 +3379,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.9
+  m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3974,7 +3974,7 @@ GameObject:
   - component: {fileID: 1037788649}
   - component: {fileID: 1037788648}
   m_Layer: 5
-  m_Name: Message
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4020,8 +4020,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Digite o novo usu\xE1rio e senha, e aperte no bot\xE3o abaixo para adicionar
-    novo usu\xE1rio."
+  m_text: "Digite o nome e senha do novo usu\xE1rio a ser adicionado e clique no
+    bot\xE3o Admin autorizar.\nSomente usu\xE1rios com n\xEDvel de acesso adequado
+    podem autorizar a adi\xE7\xE3o de novo usu\xE1rio.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4048,8 +4049,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4806,7 +4807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Digite o usu\xE1rio\n"
+  m_text: "Digite o usu\xE1rio as ser adicionado\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7573,7 +7574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Digite a senha
+  m_text: "Digite a senha do novo usu\xE1rio"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
