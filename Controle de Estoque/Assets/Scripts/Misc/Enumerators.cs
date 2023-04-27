@@ -17,16 +17,15 @@ public enum CurrentEstoque
 /// </summary>
 public enum Scenes
 {
-    SceneMainMenu,
-    SceneConsult,
-    SceneAddItem,
-    SceneInitial,
-    SceneMovement,
-    SceneSplash,
-    SceneUpdateItem,
+    AddItemScene,
+    ConsultScene,
     ExportTablesScene,
-    SceneConsultInventoryAll,
-    SceneConsultDetailsAll,
-    SceneNoPaNoSe,
-    SceneShowAllMovements
+    InitialScene,
+    MainMenu,
+    MovementScene,
+    NoPaNoSeScene,
+    RecoverBKP,
+    ShowAllMovementsScene,
+    SplashScreen,
+    UpdateItemScene
 }

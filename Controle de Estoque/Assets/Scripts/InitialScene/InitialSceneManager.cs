@@ -13,6 +13,7 @@ public class InitialSceneManager : MonoBehaviour
     [SerializeField] private Button logoutButton;
     [SerializeField] private Button noPaNoSeButton;
     [SerializeField] private Button allMovementsButton;
+    [SerializeField] private Button recoverBKPButton;
 
     [SerializeField] TMP_Text helloMessage;
 
@@ -20,7 +21,8 @@ public class InitialSceneManager : MonoBehaviour
     {
         helloMessage.text = "Olá " + UsersManager.Instance.currentUser.GetUsername() + ". \nO que você deseja fazer agora?";
         ShowHideButtons();
-        InternalDatabase.Instance.FillFullDatabase();
+      
+       // InternalDatabase.Instance.FillFullDatabase();
     }
 
     /// <summary>
@@ -37,20 +39,24 @@ public class InitialSceneManager : MonoBehaviour
                     updateItemButton.gameObject.SetActive(false);
                     exportSheetsButton.gameObject.SetActive(false);
                     allMovementsButton.gameObject.SetActive(false);
+                    recoverBKPButton.gameObject.SetActive(false);
                     break;
                 case 2:
                     addRemoveButton.gameObject.SetActive(false);
                     updateItemButton.gameObject.SetActive(false);
                     moveButton.gameObject.SetActive(false);
+                    recoverBKPButton.gameObject.SetActive(false);
                     break;
                 case 3:
                     updateItemButton.gameObject.SetActive(false);
                     exportSheetsButton.gameObject.SetActive(false);
                     noPaNoSeButton.gameObject.SetActive(false);
                     allMovementsButton.gameObject.SetActive(false);
+                    recoverBKPButton.gameObject.SetActive(false);
                     break;
                 case 5:
                     updateItemButton.gameObject.SetActive(false);
+                    recoverBKPButton.gameObject.SetActive(false);
                     break;
                 case 4:
                     addRemoveButton.gameObject.SetActive(false);
@@ -58,6 +64,7 @@ public class InitialSceneManager : MonoBehaviour
                     exportSheetsButton.gameObject.SetActive(false);
                     allMovementsButton.gameObject.SetActive(false);
                     moveButton.gameObject.SetActive(false);
+                    recoverBKPButton.gameObject.SetActive(false);
                     break;
                 case 10:
 
@@ -70,6 +77,7 @@ public class InitialSceneManager : MonoBehaviour
                     exportSheetsButton.gameObject.SetActive(false);
                     noPaNoSeButton.gameObject.SetActive(false);
                     allMovementsButton.gameObject.SetActive(false);
+                    recoverBKPButton.gameObject.SetActive(false);
                     break;
             }
         }
@@ -79,76 +87,5 @@ public class InitialSceneManager : MonoBehaviour
         }    
     }
 
-    /// <summary>
-    /// Go to ConsultScene
-    /// </summary>
-    public void ConsultClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneConsult);
-    }
-
-    /// <summary>
-    /// Goes to MovementScene
-    /// </summary>
-    public void MoveClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneMovement);
-    }
-
-    /// <summary>
-    /// Go to AddRemoveItemScene
-    /// </summary>
-    public void AddClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneAddItem);
-    }
-
-    /// <summary>
-    /// Goes to UpdateItemScene
-    /// </summary>
-    public void UpdateItemClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneUpdateItem);
-    }
-
-    /// <summary>
-    /// Go to ExportSheetsScene
-    /// </summary>
-    public void ExportSheetsClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneExportTables);
-    }
-
-    /// <summary>
-    /// Go to NoPaNoSeScene
-    /// </summary>
-    public void NoPaNoSeClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneNoPaNoSe);
-    }
-
-    /// <summary>
-    /// Go to ConsultSceneAllinventory
-    /// </summary>
-    public void ShowAllInventoryClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneConsultInventoryAll);
-    }
-
-    /// <summary>
-    /// Go to ConsultSceneAllDetails
-    /// </summary>
-    public void ShowAllDetailsClicked()
-    {
-        SceneManager.LoadScene(ConstStrings.SceneConsultDetailsAll);
-    }
-
-    /// <summary>
-    /// logout the current user and go to MainMenu
-    /// </summary>
-    public void LogoutClicked()
-    {
-        UsersManager.Instance.currentUser = new User("pessoa", "", 1);
-        SceneManager.LoadScene(ConstStrings.SceneMainMenu);
-    }
+  
 }

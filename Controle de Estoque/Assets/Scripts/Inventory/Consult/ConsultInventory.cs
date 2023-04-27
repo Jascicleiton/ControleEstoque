@@ -37,6 +37,7 @@ public class ConsultInventory : MonoBehaviour
         // InventarioManager.Instance.ImportSheets();
         //locationInput = inputField;
         //locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
+        InternalDatabase.Instance.testingSheet.itens = InternalDatabase.adaptadorAC.itens;
     }
 
     private void OnEnable()
@@ -259,7 +260,6 @@ public class ConsultInventory : MonoBehaviour
     /// </summary>
     private Sheet GetCategorySheet(int value)
     {
-        print(HelperMethods.GetCategoryDatabaseToConsult(HelperMethods.GetCategoryString(value)).itens.Count);
         return HelperMethods.GetCategoryDatabaseToConsult(HelperMethods.GetCategoryString(value));
     }
 
@@ -299,10 +299,10 @@ public class ConsultInventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns to InitialScene
+    /// Goes to InitialScene
     /// </summary>
     public void ReturnToPreviousScreen()
     {
-        SceneManager.LoadScene(ConstStrings.SceneInitial);
+        ChangeScreenManager.Instance.OpenScene(Scenes.ConsultScene, Scenes.InitialScene);
     }
 }

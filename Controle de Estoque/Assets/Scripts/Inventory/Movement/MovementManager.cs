@@ -439,13 +439,12 @@ public class MovementManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns to InitialScene
+    /// Goes to InitialScene
     /// </summary>
     public void ReturnToPreviousScreen()
     {
-        SceneManager.LoadScene(ConstStrings.SceneInitial);
+        ChangeScreenManager.Instance.OpenScene(Scenes.MovementScene, Scenes.InitialScene);
     }
-
     /// <summary>
     /// Resets all inputs to default values
     /// </summary>

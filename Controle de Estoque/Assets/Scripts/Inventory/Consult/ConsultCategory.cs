@@ -5,6 +5,13 @@ using UnityEngine;
 public class ConsultCategory : MonoBehaviour
 {
     /// <summary>
+    /// Get the correct sheet base on the category selected, to guarantee the search only happens for the specific category.
+    /// </summary>
+    private Sheet GetCategorySheet(int value)
+    {
+        return HelperMethods.GetCategoryDatabaseToConsult(HelperMethods.GetCategoryString(value));
+    }
+    /// <summary>
     /// Find all itens from a specific category that match the search parameters
     /// </summary>
     public Sheet FindItens(List<int> activeIndexes, TMP_InputField[] categorySearchInputs, Sheet databaseToConsult, List<string> operators)

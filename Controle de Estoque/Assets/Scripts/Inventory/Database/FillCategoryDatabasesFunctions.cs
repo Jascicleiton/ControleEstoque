@@ -13,7 +13,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        if(item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
+                        if(item.Modelo.Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.OndeFunciona = itemToAdd.OndeFunciona;
                             item.VoltagemDeSaida = itemToAdd.VoltagemDeSaida;

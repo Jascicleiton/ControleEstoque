@@ -82,4 +82,12 @@ public class ExportCSVController : MonoBehaviour
         CloseMessage();
     }
 
+    /// <summary>
+    /// Goes to InitialScene
+    /// </summary>
+    public void ReturnToPreviousScreen()
+    {
+        ChangeScreenManager.Instance.OpenScene(Scenes.ExportTablesScene, Scenes.InitialScene);
+    }
+
 }

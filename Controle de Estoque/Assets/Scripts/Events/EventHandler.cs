@@ -134,5 +134,16 @@ public static class EventHandler
             ChangeAnimation(animationName);
         }
     }
-}
 
+    /// <summary>
+    /// Used to tell tell the internal database when to fill itself
+    /// </summary>
+    public static event Action FillInternalDatabase;
+    public static void CallFillInternalDatabase()
+    {
+        if(FillInternalDatabase != null)
+        {
+            FillInternalDatabase();
+        }
+    }      
+}

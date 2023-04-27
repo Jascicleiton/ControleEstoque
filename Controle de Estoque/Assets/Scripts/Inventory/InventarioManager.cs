@@ -9,7 +9,7 @@ public class InventarioManager : Singleton<InventarioManager>
     [SerializeField] private CurrentEstoque testingEstoque = CurrentEstoque.SnPro;
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+     //   DontDestroyOnLoad(this.gameObject);
         ImportSheets();
     }
 
@@ -197,7 +197,7 @@ public class InventarioManager : Singleton<InventarioManager>
         }
         EventHandler.CallImportFinished(false);
         getInventarioRequest.Dispose();
-
+        
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.AdaptadorAC))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.AdaptadorAC, tempSheet);
@@ -578,7 +578,7 @@ public class InventarioManager : Singleton<InventarioManager>
         {
             Debug.LogWarning("inventario data processing error");
             EventHandler.CallDisconectedFromInternet();
-            
+
         }
         else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
@@ -600,7 +600,7 @@ public class InventarioManager : Singleton<InventarioManager>
             else
             {
                 JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                ImportingInventoryFunctions.ImportInventory(inventario, out tempSheet);              
+                ImportingInventoryFunctions.ImportInventory(inventario, out tempSheet);
             }
         }
         else
@@ -610,6 +610,7 @@ public class InventarioManager : Singleton<InventarioManager>
         }
         EventHandler.CallImportFinished(true);
         getInventarioRequest.Dispose();
+
         if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.Inventario))
         {
             InternalDatabase.Instance.splitDatabase.Add(ConstStrings.Inventario, tempSheet);

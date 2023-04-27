@@ -17,7 +17,7 @@ namespace Saving
             saving = GetComponent<JsonSavingSystem>();
             if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
             {
-                DontDestroyOnLoad(this.gameObject);           
+                //DontDestroyOnLoad(this.gameObject);           
             }
             else
             {

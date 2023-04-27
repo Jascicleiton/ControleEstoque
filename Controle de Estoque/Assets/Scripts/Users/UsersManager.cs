@@ -24,7 +24,7 @@ public class UsersManager : Singleton<UsersManager>
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
     }
 
     /// <summary>

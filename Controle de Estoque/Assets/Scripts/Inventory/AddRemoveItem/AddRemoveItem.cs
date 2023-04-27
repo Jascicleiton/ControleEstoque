@@ -184,7 +184,7 @@ public class AddRemoveItem : MonoBehaviour
     /// </summary>
     public void ReturnToPreviousScreen()
     {
-        SceneManager.LoadScene(ConstStrings.SceneInitial);
+        ChangeScreenManager.Instance.OpenScene(Scenes.AddItemScene, Scenes.InitialScene);
     }
 
     /// <summary>

@@ -52,7 +52,8 @@ public class MainMenuManager : MonoBehaviour
         authorizationAccessLevel = 0;
     versionText.text = InternalDatabase.Instance.currentVersion;
         CheckIfCurrentPlatformIsWindows();
-       // testText.text = string.Compare("estoque", "Estoque", true).ToString();
+        // testText.text = string.Compare("estoque", "Estoque", true).ToString();
+    //    InternalDatabase.Instance.testingSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario];
     }
 
     /// <summary>
@@ -400,7 +401,8 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     private void LoadScreen()
     {
-        SceneManager.LoadScene(ConstStrings.SceneInitial);
+        EventHandler.CallFillInternalDatabase();
+        ChangeScreenManager.Instance.OpenScene(Scenes.MainMenu ,Scenes.InitialScene);
     }
 
     /// <summary>

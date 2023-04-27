@@ -235,11 +235,11 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
     }
 
     /// <summary>
-    /// Returns to InitialScene
+    /// Goes to InitialScene
     /// </summary>
-    public void ReturnToInitialScene()
+    public void ReturnToPreviousScreen()
     {
-        SceneManager.LoadScene(ConstStrings.SceneInitial);
+        ChangeScreenManager.Instance.OpenScene(Scenes.NoPaNoSeScene, Scenes.InitialScene);
     }
 
     /// <summary>

@@ -68,8 +68,8 @@ public class SplashScreen : MonoBehaviour
 
         // Stop the CanvasGroup from blocking raycasts so input is no longer ignored
         backgroundImage.blocksRaycasts = false;
-              
 
-        SceneManager.LoadScene(ConstStrings.SceneMainMenu);
+
+        ChangeScreenManager.Instance.OpenScene(Scenes.SplashScreen, Scenes.MainMenu);
     }
 }

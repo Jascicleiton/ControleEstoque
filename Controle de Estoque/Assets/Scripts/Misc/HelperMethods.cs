@@ -1262,7 +1262,6 @@ public class HelperMethods
         switch (Operator)
         {
             case "=":
-
                 return string.Equals(parameterToCheck1, parameterToCheck2);
             case "<":
             //   return double.Parse(parameter1) < double.Parse(parameter2);

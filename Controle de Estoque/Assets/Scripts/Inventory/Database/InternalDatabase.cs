@@ -51,13 +51,23 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     private OfflineProgram offlineProgram = null;
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
-   // public List<string> testing = new List<string>();
+    public List<string> testing = new List<string>();
     public Sheet sheetToLoad = new Sheet();
     
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
         offlineProgram = GetComponent<OfflineProgram>();
+    }
+
+    private void OnEnable()
+    {
+        EventHandler.FillInternalDatabase += FillFullDatabase;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.FillInternalDatabase -= FillFullDatabase;
     }
 
     /// <summary>
@@ -228,18 +238,18 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
                 outros.itens.Add(item);
             }
         }
+       
     }
 
     /// <summary>
     /// Get all Sheet classes saved on splitDatabase and join them into a single Sheet class
     /// </summary>
-    public void FillFullDatabase()
+    private void FillFullDatabase()
     {
-        if (!fullDatabaseFilled)
-        {
+        print("Hello");
             Sheet inventarioTemp = new Sheet();
-            splitDatabase.TryGetValue(ConstStrings.Inventario, out inventarioTemp);
-            testingSheet = inventarioTemp;
+           splitDatabase.TryGetValue(ConstStrings.Inventario, out inventarioTemp);
+           // testingSheet = inventarioTemp;
             // Get all itens from "Inventario SnPro into the full database
             if (inventarioTemp != null && inventarioTemp.itens.Count > 0)
             {
@@ -249,8 +259,9 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
                 }
             }
             // Get the values of the detail sheet based on the "modelo" of the item on Inventario SnPro
+            testingSheet = adaptadorAC;
             FillCategoryDatabases();
-        }
+       
         switch (currentEstoque)
         {
             case CurrentEstoque.SnPro:

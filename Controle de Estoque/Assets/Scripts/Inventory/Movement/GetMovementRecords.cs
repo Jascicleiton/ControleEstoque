@@ -244,4 +244,12 @@ public class GetMovementRecords : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Goes to InitialScene
+    /// </summary>
+    public void ReturnToPreviousScreen()
+    {
+        ChangeScreenManager.Instance.OpenScene(Scenes.ShowAllMovementsScene, Scenes.InitialScene);
+    }
 }

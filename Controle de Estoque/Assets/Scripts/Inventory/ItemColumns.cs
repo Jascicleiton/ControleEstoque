@@ -11,11 +11,14 @@ public class ItemColumns
     public string GetValue(string valueToGet)
     {
         string[] allValues= { Aquisicao, Entrada, Patrimonio.ToString(), Status, Serial, Categoria, Fabricante, Modelo, Local,
-        Saida, Observacao, Interface, Tamanho.ToString("0.0"), FormaDeArmazenamento, CapacidadeEmGB.ToString(), RPM.ToString(), VelocidadeDeLeitura.ToString("0.0"), Enterprise, 
-        EstoqueAtual.ToString(), Tipo, VelocidadeMHz.ToString(), LowVoltage, Rank, DIMM, TaxaDeTransmissao.ToString(), Simbolo, QuantidadeDePortas.ToString(), 
-        QuaisConexoes, SuportaFibraOptica, Desempenho, VelocidadeGBs.ToString("0.0"), EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD,
-        CapacidadeMaxHD, AteQuantosHDs.ToString(), BateriaInclusa, Barramento, Soquete, NucleosFisicos.ToString(), NucleosLogicos.ToString(), ModeloPlacaMae, Fonte, Memoria, HD, PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts.ToString(), 
-        OndeFunciona, Conectores, Wireless, BandaMaxima.ToString(), VoltagemDeSaida.ToString("0.0"), AmperagemDeSaida.ToString("0.0"), QuantosCanais.ToString(), Polegadas.ToString("0.0"), Processador, CentroDeCusto, Pessoa};
+        Saida, Observacao, Interface, Tamanho.ToString("0.0"), FormaDeArmazenamento, CapacidadeEmGB.ToString(), RPM.ToString(), 
+        VelocidadeDeLeitura.ToString("0.0"), Enterprise, EstoqueAtual.ToString(), Tipo, VelocidadeMHz.ToString(), LowVoltage, Rank, DIMM, 
+        TaxaDeTransmissao.ToString(), Simbolo, QuantidadeDePortas.ToString(), QuaisConexoes, SuportaFibraOptica, Desempenho, 
+        VelocidadeGBs.ToString("0.0"), EntradaSD, ServidoresSuportados, TipoDeRAID, TipoDeHD, CapacidadeMaxHD, AteQuantosHDs.ToString(), 
+        BateriaInclusa, Barramento, Soquete, NucleosFisicos.ToString(), NucleosLogicos.ToString(), ModeloPlacaMae, Fonte, Memoria, HD, 
+        PlacaDeVideo, PlacaDeRede, LeitorDeDVD, Watts.ToString(), OndeFunciona, Conectores, Wireless, BandaMaxima.ToString(), 
+        VoltagemDeSaida.ToString("0.0"), AmperagemDeSaida.ToString("0.0"), QuantosCanais.ToString(), Polegadas.ToString("0.0"), 
+        Processador, CentroDeCusto, Pessoa};
         for (int i = 0; i < allValues.Length; i++)
         {
             if (string.Compare(allValues[i], valueToGet, true) == 0)

@@ -13,7 +13,7 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+      //  DontDestroyOnLoad(this.gameObject);
         if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
         {
             StartCoroutine(ImportLocationsRoutine());

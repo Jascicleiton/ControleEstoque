@@ -8,7 +8,7 @@ public class MouseManager : Singleton<MouseManager>
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+      //  DontDestroyOnLoad(this.gameObject);
     }
 
     /// <summary>
