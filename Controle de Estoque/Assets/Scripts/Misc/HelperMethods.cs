@@ -83,7 +83,7 @@ public class HelperMethods
         {
             WWWForm itemForm = CreateForm.GetInventarioForm(appKey, parameters);
 
-            UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, phpName + "inventario.php", folderID);
+            UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, phpName + ConstStrings.AddNewInventario, folderID);
             MouseManager.Instance.SetWaitingCursor();
 
             yield return createUpdateInventarioRequest.SendWebRequest();
@@ -104,7 +104,8 @@ public class HelperMethods
                 case ConstStrings.AdaptadorAC:
                     WWWForm adaptadorAcForm = CreateForm.GetAdaptadorACForm(appKey, parameters);
 
-                    UnityWebRequest createAdaptadorACPostRequest = CreatePostRequest.GetPostRequest(adaptadorAcForm, phpName + "adaptadorac.php", folderID);
+                    UnityWebRequest createAdaptadorACPostRequest = CreatePostRequest.GetPostRequest(adaptadorAcForm, phpName + 
+                    ConstStrings.AddNewAdaptadorAC, folderID);
 
                     yield return createAdaptadorACPostRequest.SendWebRequest();
 
@@ -115,7 +116,8 @@ public class HelperMethods
                 case ConstStrings.Carregador:
                     WWWForm carregadorForm = CreateForm.GetCarregadorForm(appKey, parameters);
 
-                    UnityWebRequest createCarregadorPostRequest = CreatePostRequest.GetPostRequest(carregadorForm, phpName + "carregador.php", folderID);
+                    UnityWebRequest createCarregadorPostRequest = CreatePostRequest.GetPostRequest(carregadorForm, phpName +
+                    ConstStrings.AddNewCarregador, folderID);
 
                     yield return createCarregadorPostRequest.SendWebRequest();
 
@@ -126,7 +128,8 @@ public class HelperMethods
                 case ConstStrings.Desktop:
                     WWWForm desktopForm = CreateForm.GetDesktopForm(appKey, parameters);
 
-                    UnityWebRequest createDesktopPostRequest = CreatePostRequest.GetPostRequest(desktopForm, phpName + "desktop.php", folderID);
+                    UnityWebRequest createDesktopPostRequest = CreatePostRequest.GetPostRequest(desktopForm, phpName +
+                    ConstStrings.AddNewDesktop, folderID);
 
                     yield return createDesktopPostRequest.SendWebRequest();
 
@@ -137,7 +140,8 @@ public class HelperMethods
                 case ConstStrings.Fonte:
                     WWWForm fonteForm = CreateForm.GetFonteForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
-                    UnityWebRequest createFontePostRequest = CreatePostRequest.GetPostRequest(fonteForm, phpName + "fonte.php", folderID);
+                    UnityWebRequest createFontePostRequest = CreatePostRequest.GetPostRequest(fonteForm, phpName + 
+                    ConstStrings.AddNewFonte, folderID);
 
                     yield return createFontePostRequest.SendWebRequest();
 
@@ -148,7 +152,8 @@ public class HelperMethods
                 case ConstStrings.Gbic:
                     WWWForm gbicForm = CreateForm.GetGBICForm(appKey, parameters[0], parameters[1], parameters[2]);
 
-                    UnityWebRequest createGBICPostRequest = CreatePostRequest.GetPostRequest(gbicForm, phpName + "gbic.php", folderID);
+                    UnityWebRequest createGBICPostRequest = CreatePostRequest.GetPostRequest(gbicForm, phpName +
+                    ConstStrings.AddNewGbic, folderID);
 
                     yield return createGBICPostRequest.SendWebRequest();
 
@@ -160,7 +165,8 @@ public class HelperMethods
                     WWWForm hdForm = CreateForm.GetHDForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
 
-                    UnityWebRequest createHDPostRequest = CreatePostRequest.GetPostRequest(hdForm, phpName + "hd.php", folderID);
+                    UnityWebRequest createHDPostRequest = CreatePostRequest.GetPostRequest(hdForm, phpName +
+                    ConstStrings.AddNewHd, folderID);
 
                     yield return createHDPostRequest.SendWebRequest();
 
@@ -172,7 +178,8 @@ public class HelperMethods
                     WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                    parameters[4], parameters[5]);
 
-                    UnityWebRequest createIdracPostRequest = CreatePostRequest.GetPostRequest(iDracForm, phpName + "idrac.php", folderID);
+                    UnityWebRequest createIdracPostRequest = CreatePostRequest.GetPostRequest(iDracForm, phpName +
+                    ConstStrings.AddNewIdrac, folderID);
 
                     yield return createIdracPostRequest.SendWebRequest();
 
@@ -184,7 +191,8 @@ public class HelperMethods
                     WWWForm memoriaForm = CreateForm.GetMemoriaForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9]);
 
-                    UnityWebRequest createMemoriaPostRequest = CreatePostRequest.GetPostRequest(memoriaForm, phpName + "memoria.php", folderID);
+                    UnityWebRequest createMemoriaPostRequest = CreatePostRequest.GetPostRequest(memoriaForm, phpName +
+                    ConstStrings.AddNewMemoria, folderID);
 
                     yield return createMemoriaPostRequest.SendWebRequest();
 
@@ -196,7 +204,8 @@ public class HelperMethods
                 case ConstStrings.Monitor:
                     WWWForm monitorForm = CreateForm.GetMonitorForm(appKey, parameters);
 
-                    UnityWebRequest createMonitorPostRequest = CreatePostRequest.GetPostRequest(monitorForm, phpName + "monitor.php", folderID);
+                    UnityWebRequest createMonitorPostRequest = CreatePostRequest.GetPostRequest(monitorForm, phpName +
+                        ConstStrings.AddNewMonitor, folderID);
 
                     yield return createMonitorPostRequest.SendWebRequest();
 
@@ -207,7 +216,8 @@ public class HelperMethods
                 case ConstStrings.Notebook:
                     WWWForm notebookForm = CreateForm.GetNotebookForm(appKey, parameters);
 
-                    UnityWebRequest createNotebookPostRequest = CreatePostRequest.GetPostRequest(notebookForm, phpName + "notebook.php", folderID);
+                    UnityWebRequest createNotebookPostRequest = CreatePostRequest.GetPostRequest(notebookForm, phpName +
+                        ConstStrings.AddNewNotebook, folderID);
 
                     yield return createNotebookPostRequest.SendWebRequest();
 
@@ -219,7 +229,8 @@ public class HelperMethods
                     WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(appKey, parameters[0], parameters[1], parameters[2],
                     parameters[3], parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
 
-                    UnityWebRequest createPlacaControladoraPostRequest = CreatePostRequest.GetPostRequest(placaControladoraForm, phpName + "placacontroladora.php", folderID);
+                    UnityWebRequest createPlacaControladoraPostRequest = CreatePostRequest.GetPostRequest(placaControladoraForm, phpName +
+                        ConstStrings.AddNewPlacaControladora, folderID);
 
                     yield return createPlacaControladoraPostRequest.SendWebRequest();
 
@@ -230,7 +241,8 @@ public class HelperMethods
                 case ConstStrings.PlacaDeCapturaDeVideo:
                     WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaDeCapturaDeVideoForm(appKey, parameters[0], parameters[1]);
 
-                    UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeCapturaDeVideoForm, phpName + "placacapturavideo.php", folderID);
+                    UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeCapturaDeVideoForm, 
+                    phpName + ConstStrings.AddNewPlacaDeCapturaDeVideo, folderID);
 
                     yield return createPlacaDeCapturaDeVideoPostRequest.SendWebRequest();
 
@@ -242,7 +254,8 @@ public class HelperMethods
                     WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6]);
 
-                    UnityWebRequest createPlacaDeRedePostRequest = CreatePostRequest.GetPostRequest(placaDeRedeForm, phpName + "placarede.php", folderID);
+                    UnityWebRequest createPlacaDeRedePostRequest = CreatePostRequest.GetPostRequest(placaDeRedeForm, phpName +
+                        ConstStrings.AddNewPlacaDeRede, folderID);
 
                     yield return createPlacaDeRedePostRequest.SendWebRequest();
 
@@ -253,7 +266,8 @@ public class HelperMethods
                 case ConstStrings.PlacaDeSom:
                     WWWForm placaDeSomForm = CreateForm.GetPlacaSomForm(appKey, parameters[0], parameters[1]);
 
-                    UnityWebRequest createPlacaDeSomPostRequest = CreatePostRequest.GetPostRequest(placaDeSomForm, phpName + "placadesom.php", folderID);
+                    UnityWebRequest createPlacaDeSomPostRequest = CreatePostRequest.GetPostRequest(placaDeSomForm, phpName +
+                        ConstStrings.AddNewPlacaDeSom, folderID);
 
                     yield return createPlacaDeSomPostRequest.SendWebRequest();
 
@@ -264,7 +278,8 @@ public class HelperMethods
                 case ConstStrings.PlacaDeVideo:
                     WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
 
-                    UnityWebRequest createPlacaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeVideoForm, phpName + "placadevideo.php", folderID);
+                    UnityWebRequest createPlacaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeVideoForm, phpName +
+                        ConstStrings.AddNewPlacaDeVideo, folderID);
 
                     yield return createPlacaDeVideoPostRequest.SendWebRequest();
 
@@ -275,7 +290,8 @@ public class HelperMethods
                 case ConstStrings.Processador:
                     WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
-                    UnityWebRequest createProcessadorPostRequest = CreatePostRequest.GetPostRequest(processadorForm, phpName + "processador.php", folderID);
+                    UnityWebRequest createProcessadorPostRequest = CreatePostRequest.GetPostRequest(processadorForm, phpName +
+                        ConstStrings.AddNewProcessador, folderID);
 
                     yield return createProcessadorPostRequest.SendWebRequest();
 
@@ -286,7 +302,8 @@ public class HelperMethods
                 case ConstStrings.Roteador:
                     WWWForm roteadorForm = CreateForm.GetRoteadorForm(appKey, parameters);
 
-                    UnityWebRequest createRoteadorPostRequest = CreatePostRequest.GetPostRequest(roteadorForm, phpName + "roteador.php", folderID);
+                    UnityWebRequest createRoteadorPostRequest = CreatePostRequest.GetPostRequest(roteadorForm, phpName +
+                        ConstStrings.AddNewRoteador, folderID);
 
                     yield return createRoteadorPostRequest.SendWebRequest();
 
@@ -298,7 +315,8 @@ public class HelperMethods
 
                     WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters);
 
-                    UnityWebRequest createServidorPostRequest = CreatePostRequest.GetPostRequest(servidorForm, phpName + "servidor.php", folderID);
+                    UnityWebRequest createServidorPostRequest = CreatePostRequest.GetPostRequest(servidorForm, phpName +
+                        ConstStrings.AddNewServidor, folderID);
 
                     yield return createServidorPostRequest.SendWebRequest();
 
@@ -310,7 +328,8 @@ public class HelperMethods
                     WWWForm storageNasForm = CreateForm.GetStorageNASForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                   parameters[4], parameters[5]);
 
-                    UnityWebRequest createStorageNasPostRequest = CreatePostRequest.GetPostRequest(storageNasForm, phpName + "storagenas.php", folderID);
+                    UnityWebRequest createStorageNasPostRequest = CreatePostRequest.GetPostRequest(storageNasForm, phpName +
+                        ConstStrings.AddNewStorageNas, folderID);
 
                     yield return createStorageNasPostRequest.SendWebRequest();
 
@@ -321,7 +340,8 @@ public class HelperMethods
                 case ConstStrings.Switch:
                     WWWForm switchForm = CreateForm.GetSwitchForm(appKey, parameters);
 
-                    UnityWebRequest createSwitchPostRequest = CreatePostRequest.GetPostRequest(switchForm, phpName + "switch.php", folderID);
+                    UnityWebRequest createSwitchPostRequest = CreatePostRequest.GetPostRequest(switchForm, phpName +
+                        ConstStrings.AddNewSwitch, folderID);
 
                     yield return createSwitchPostRequest.SendWebRequest();
 

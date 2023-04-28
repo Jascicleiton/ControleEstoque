@@ -122,7 +122,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if(userInput.text == UsersManager.Instance.admin.GetUsername() && passwordInput.text == UsersManager.Instance.admin.GetPassword())
         {
-            UsersManager.Instance.currentUser = new User(userInput.text, 4);
+            UsersManager.Instance.currentUser = new User(userInput.text, 10);
             LoadScreen();
         }
     }
@@ -131,7 +131,7 @@ public class MainMenuManager : MonoBehaviour
     {
         WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
 
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(checkAccesssLevelForm, "checkaccesslevel.php", 0);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(checkAccesssLevelForm, ConstStrings.CheckAccessLevel, 0);
 
         yield return createPostRequest.SendWebRequest();
         if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
@@ -165,7 +165,7 @@ public class MainMenuManager : MonoBehaviour
         loginUserInfo.AddField("username", userInput.text);
         loginUserInfo.AddField("password", passwordInput.text);
 
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(loginUserInfo, "loginuser.php", 0);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(loginUserInfo, ConstStrings.CheckLoginUser, 0);
        
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
@@ -175,7 +175,11 @@ public class MainMenuManager : MonoBehaviour
         {
             if (isWindows)
             {
+                createPostRequest.Dispose();
+                MouseManager.Instance.SetDefaultCursor();
+                inputEnabled = true;
                 LoginOffline();
+                yield break;
             }
             Debug.LogWarning("Login: conectionerror");
         }
@@ -183,7 +187,11 @@ public class MainMenuManager : MonoBehaviour
         {
             if (isWindows)
             {
+                createPostRequest.Dispose();
+                MouseManager.Instance.SetDefaultCursor();
+                inputEnabled = true;
                 LoginOffline();
+                yield break;
             }
             Debug.LogWarning("Login: data processing error");
         }
@@ -191,7 +199,11 @@ public class MainMenuManager : MonoBehaviour
         {
             if (isWindows)
             {
+                createPostRequest.Dispose();
+                MouseManager.Instance.SetDefaultCursor();
+                inputEnabled = true;
                 LoginOffline();
+                yield break;
             }
             Debug.LogWarning("Login: protocol error");
         }
@@ -203,7 +215,11 @@ public class MainMenuManager : MonoBehaviour
             {
                 if (isWindows)
                 {
+                    createPostRequest.Dispose();
+                    MouseManager.Instance.SetDefaultCursor();
+                    inputEnabled = true;
                     LoginOffline();
+                    yield break;
                 }
                 else
                 {
@@ -216,7 +232,11 @@ public class MainMenuManager : MonoBehaviour
             {
                 if (isWindows)
                 {
+                    createPostRequest.Dispose();
+                    MouseManager.Instance.SetDefaultCursor();
+                    inputEnabled = true;
                     LoginOffline();
+                    yield break;
                 }
                 else
                 {
@@ -229,7 +249,11 @@ public class MainMenuManager : MonoBehaviour
             {
                 if (isWindows)
                 {
+                    createPostRequest.Dispose();
+                    MouseManager.Instance.SetDefaultCursor();
+                    inputEnabled = true;
                     LoginOffline();
+                    yield break;
                 }
                 else
                 {
@@ -249,7 +273,11 @@ public class MainMenuManager : MonoBehaviour
         {
             if (isWindows)
             {
+                createPostRequest.Dispose();
+                MouseManager.Instance.SetDefaultCursor();
+                inputEnabled = true;
                 LoginOffline();
+                yield break;
             }
             else
             {
@@ -273,7 +301,7 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("apppassword", "CheckIfUserExist");
         newUserInfo.AddField("username", addNewUserInput.text);
 
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, "checkuserexist.php", 0);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckUserExist, 0);
         
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
@@ -337,7 +365,7 @@ public class MainMenuManager : MonoBehaviour
         newUserInfo.AddField("username", userToAdd.GetUsername());
         newUserInfo.AddField("password", userToAdd.GetPassword());
 
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, "newuser.php", 0);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckNewUser, 0);
         
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;

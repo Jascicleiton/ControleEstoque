@@ -76,15 +76,17 @@ public class ConstStrings
     public const string PhpMovementsFolder = "https://sysnetpro.com.br/controleestoque/Movements/";
     public const string PhpUpdateItemsFolder = "https://sysnetpro.com.br/controleestoque/UpdateItems/";
     public const string PhpNoPaNoSeItemsFolder = "https://sysnetpro.com.br/controleestoque/NoPaNoSeItems/";
+    public const string PhpRecoverBKPFolder = "https://sysnetpro.com.br/controleestoque/RecoverBKP/";
     #endregion
 
     #region PHP folder URL - Controle de estoque Funsoft
-    public const string PhpRootFolderFunsoft = "https://sysnetpro.com.br/Funsoft/";
-    public const string PhpImportTablesFolderFunsoft = "https://sysnetpro.com.br/Funsoft/Import/";
-    public const string PhpAdditemsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/AddItems/";
-    public const string PhpMovementsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/Movements/";
-    public const string PhpUpdateItemsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/UpdateItems/";
-    public const string PhpNoPaNoSeItemsFolderFunsoft = "https://sysnetpro.com.br/Funsoft/NoPaNoSeItems/";
+    public const string PhpRootFolderFumsoft = "https://sysnetpro.com.br/Fumsoft/";
+    public const string PhpImportTablesFolderFumsoft = "https://sysnetpro.com.br/Fumsoft/Import/";
+    public const string PhpAdditemsFolderFumsoft = "https://sysnetpro.com.br/Fumsoft/AddItems/";
+    public const string PhpMovementsFolderFumsoft = "https://sysnetpro.com.br/Fumsoft/Movements/";
+    public const string PhpUpdateItemsFolderFumsoft = "https://sysnetpro.com.br/Fumsoft/UpdateItems/";
+    public const string PhpNoPaNoSeItemsFolderFumsoft = "https://sysnetpro.com.br/Fumsoft/NoPaNoSeItems/";
+    public const string PhpRecoverBKPFolderFumsoft = "https://sysnetpro.com.br/Fumsoft/RecoverBKP/";
     #endregion
 
     #region PHP folder URL - Controle de estoque ESF - Encontre sua franquia
@@ -94,6 +96,7 @@ public class ConstStrings
     public const string PhpMovementsFolderESF = "https://sysnetpro.com.br/ESF/Movements/";
     public const string PhpUpdateItemsFolderESF = "https://sysnetpro.com.br/ESF/UpdateItems/";
     public const string PhpNoPaNoSeItemsFolderESF = "https://sysnetpro.com.br/ESF/NoPaNoSeItems/";
+    public const string PhpRecoverBKPFolderESF = "https://sysnetpro.com.br/ESF/RecoverBKP/";
     #endregion
 
     #region PHP folder URL - Testing server
@@ -103,6 +106,7 @@ public class ConstStrings
     public const string PhpMovementsFolderTesting = "https://sysnetpro.com.br/Testing/Movements/";
     public const string PhpUpdateItemsFolderTesting = "https://sysnetpro.com.br/Testing/UpdateItems/";
     public const string PhpNoPaNoSeItemsFolderTesting = "https://sysnetpro.com.br/Testing/NoPaNoSeItems/";
+    public const string PhpRecoverBKPFolderTesting = "https://sysnetpro.com.br/Testing/RecoverBKP/";
     #endregion
 
     #region PHP folder URL - Clientes
@@ -112,6 +116,7 @@ public class ConstStrings
     public const string PhpMovementsFolderClientes = "https://sysnetpro.com.br/Clientes/Movements/";
     public const string PhpUpdateItemsFolderClientes = "https://sysnetpro.com.br/Clientes/UpdateItems/";
     public const string PhpNoPaNoSeItemsFolderClientes = "https://sysnetpro.com.br/Clientes/NoPaNoSeItems/";
+    public const string PhpRecoverBKPFolderClientes = "https://sysnetpro.com.br/Clientes/RecoverBKP/";
     #endregion
 
     #region PHP folder URL - Concert
@@ -121,6 +126,7 @@ public class ConstStrings
     public const string PhpMovementsFolderConcert = "https://sysnetpro.com.br/Concert/Movements/";
     public const string PhpUpdateItemsFolderConcert = "https://sysnetpro.com.br/Concert/UpdateItems/";
     public const string PhpNoPaNoSeItemsFolderConcert = "https://sysnetpro.com.br/Concert/NoPaNoSeItems/";
+    public const string PhpRecoverBKPFolderConcert = "https://sysnetpro.com.br/Concert/RecoverBKP/";
     #endregion
 
     #region Save parameters
@@ -137,7 +143,85 @@ public class ConstStrings
     public const string MoveItemKey = "MoveItem";
     public const string ExportDatabaseKey = "ExportDatabase";
     public const string UpdateItemKey = "UpdateItem";
-
+    public const string RecoverBKPKey = "RecoverBackup";
     #endregion
 
+    #region PHPs names
+    #region Add Items
+    public const string AddNewAdaptadorAC = "adaptadorac.php";
+    public const string AddNewCarregador = "carregador.php";
+    public const string AddNewDesktop = "desktop.php";
+    public const string AddNewFonte = "fonte.php";
+    public const string AddNewGbic = "gbic.php";
+    public const string AddNewHd = "hd.php";
+    public const string AddNewIdrac = "idrac.php";
+    public const string AddNewInventario = "inventario.php";
+    public const string AddNewMemoria = "memoria.php";
+    public const string AddNewMonitor = "monitor.php";
+    public const string AddNewNotebook = "tebook.php";
+    public const string AddNewPlacaControladora = "placacontroladora.php";
+    public const string AddNewPlacaDeCapturaDeVideo = "placadecapturadevideo.php";
+    public const string AddNewPlacaDeRede = "placaderede.php";
+    public const string AddNewPlacaDeSom = "placadesom.php";
+    public const string AddNewPlacaDeVideo = "placadevideo.php";
+    public const string AddNewProcessador = "processador.php";
+    public const string AddNewRoteador = "roteador.php";
+    public const string AddNewServidor = "servidor.php";
+    public const string AddNewStorageNas = "storagenas.php";
+    public const string AddNewSwitch = "switch.php";
+    #endregion
+    #region Import
+    public const string ImportAdaptadorAC = "importadaptadorac.php";
+    public const string ImportAllNoPaNoSeItems = "importallnopanoseitems.php";
+    public const string ImportCarregador = "importcarregador.php";
+    public const string ImportCategories = "importcategories.php";
+    public const string ImportDesktop = "importdesktop.php";
+    public const string ImportFonte = "importfonte.php";
+    public const string ImportGbic = "importgbic.php";
+    public const string ImportHd = "importhd.php";
+    public const string ImportIdrac = "importidrac.php";
+    public const string ImportInventario = "importinventario.php";
+    public const string ImportLocations = "importlocations.php";
+    public const string ImportMemoria = "importmemoria.php";
+    public const string ImportMonitor = "importmonitor.php";
+    public const string ImportNoPaNoSeMovements = "importnopanosemovements.php";
+    public const string ImportNotebook = "importnotebook.php";
+    public const string ImportPlacaControladora = "importplacacontroladora.php";
+    public const string ImportPlacaDeCapturaDeVideo = "importplacadecapturadevideo.php";
+    public const string ImportPlacaDeRede = "importplacaderede.php";
+    public const string ImportPlacaDeSom = "importplacadesom.php";
+    public const string ImportPlacaDeVideo = "importplacadevideo.php";
+    public const string ImportProcessador = "importprocessador.php";
+    public const string ImportRegularMovements = "importregularmovements.php";
+    public const string ImportRoteador = "importroteador.php";
+    public const string ImportServidor = "importservidor.php";
+    public const string ImportStorageNas = "importstoragenas.php";
+    public const string ImportSwitch = "importswitch.php";
+    #endregion
+    #region Movements
+    public const string ConsultPatrimonio = "consultpatrimonio.php";
+    public const string ConsultSerial = "consultserial.php";
+    public const string GetNoPaNoSeMovements = "getnopanosemovements.php";
+    public const string GetPatrimonioMovements = "getpatrimoniomovements.php";
+    public const string MoveItem = "moveitem.php";
+    #endregion
+    #region NoPaNoSe
+    public const string AddNoPaNoSe = "addnopanoseitem.php";  
+    public const string MoveNoPaNoSe = "movenopanose.php";
+    public const string UpdateNoPaNoSe = "updatenopanose.php";
+    #endregion
+    #region Recover BKP
+    public const string RecoverBKPPHP = "recoverinventory.php";
+    #endregion
+    #region Update Items
+    public const string GetItemPatrimonioToUpdate = "getitempatrimoniotoupdate.php";
+    public const string GetItemSerialToUpdate = "getitemserialtoupdate.php";
+    #endregion
+    #region Root
+    public const string CheckAccessLevel = "checkaccesslevel.php";
+    public const string CheckUserExist = "checkuserexist.php";
+    public const string CheckLoginUser = "loginuser.php";
+    public const string CheckNewUser = "newuser.php";
+    #endregion
+    #endregion
 }

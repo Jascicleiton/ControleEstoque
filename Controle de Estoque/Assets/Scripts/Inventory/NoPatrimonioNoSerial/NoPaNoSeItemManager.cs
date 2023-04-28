@@ -54,7 +54,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
         item.Quantity = itemNewQuantity;
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.UpdateItemKey, item.ItemName, itemNewQuantity);
 
-        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "updatenopanose.php", itemForm);
+        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + ConstStrings.UpdateNoPaNoSe, itemForm);
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
@@ -192,7 +192,7 @@ public class NoPaNoSeItemManager : MonoBehaviour
         
         }
 
-        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + "movenopanose.php", itemForm);
+        UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + ConstStrings.MoveNoPaNoSe, itemForm);
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();

@@ -145,5 +145,20 @@ public static class EventHandler
         {
             FillInternalDatabase();
         }
-    }      
+    }
+
+    /// <summary>
+    /// Used to notify NoPaNoSeManager that the scene was loaded, and it should show all the items
+    /// </summary>
+    public static event Action NoPaNoSeLoaded;
+    public static void CallNoPaNoSeLoaded()
+    {
+        if(NoPaNoSeLoaded != null)
+        {
+            NoPaNoSeLoaded();
+        }
+    }
+
+
+
 }

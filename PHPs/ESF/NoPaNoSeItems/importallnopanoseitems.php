@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_ESF_estoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_ESF_estoque');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");

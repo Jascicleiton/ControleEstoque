@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_Testing');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Testing');
 
 if(mysqli_connect_errno())
 {
@@ -13,7 +13,7 @@ $modelo = $_POST["modelo"];
 $fabricante = $_POST["fabricante"];
 $hd = $_POST["hd"];
 $memoria = $_POST["memoria"];
-$entradarj49 = $_POST["entradarj49"];
+$EntradaRJ45 = $_POST["EntradaRJ45"];
 $bateria = $_POST["bateria"];
 $adaptadorac = $_POST["adaptadorac"];
 $windows = $_POST["windows"];
@@ -33,7 +33,7 @@ if($modelocheckresult->num_rows > 0)
     exit();
 }
 
-$insertuserquery= "INSERT INTO Notebook(Patrimonio, Modelo, Fabricante, HD, Memoria, EntradaRJ49, Bateria, AdaptdadorAC, Windows) VALUES('". $patrimonio ."','". utf8_decode($modelo) ."','". utf8_decode($fabricante) ."','". utf8_decode($hd) ."','". utf8_decode($memoria) ."','". utf8_decode($entradarj49) ."','". utf8_decode($bateria) ."','". utf8_decode($adaptadorac) ."','". utf8_decode($windows) ."');";
+$insertuserquery= "INSERT INTO Notebook(Patrimonio, Modelo, Fabricante, HD, Memoria, EntradaRJ45, Bateria, AdaptdadorAC, Windows) VALUES('". $patrimonio ."','". utf8_decode($modelo) ."','". utf8_decode($fabricante) ."','". utf8_decode($hd) ."','". utf8_decode($memoria) ."','". utf8_decode($EntradaRJ45) ."','". utf8_decode($bateria) ."','". utf8_decode($adaptadorac) ."','". utf8_decode($windows) ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Worked");
 

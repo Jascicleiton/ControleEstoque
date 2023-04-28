@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
+using Saving;
 
 public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
 {
@@ -48,7 +49,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     public static List<Sheet> allFullDetailsSheets = new List<Sheet>();
 
     private bool fullDatabaseFilled = false;
-    private OfflineProgram offlineProgram = null;
+    [SerializeField] private bool offlineProgram = false;
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
     public List<string> testing = new List<string>();
@@ -56,8 +57,10 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     
     private void Start()
     {
-       // DontDestroyOnLoad(this.gameObject);
-        offlineProgram = GetComponent<OfflineProgram>();
+       if(offlineProgram)
+        {
+            SavingWrapper.Instance.Load();
+        }
     }
 
     private void OnEnable()

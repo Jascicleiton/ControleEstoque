@@ -51,7 +51,7 @@ namespace Saving
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque);
+            saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
         }
 
         public void Load()
@@ -61,7 +61,7 @@ namespace Saving
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Load(defaultSaveFile + InternalDatabase.Instance.currentEstoque);
+            saving.Load(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
         }
     }
 }

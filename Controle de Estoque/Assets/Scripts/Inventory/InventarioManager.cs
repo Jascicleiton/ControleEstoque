@@ -159,7 +159,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importadaptadorac.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportAdaptadorAC, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -216,7 +216,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importcarregador.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportCarregador, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -273,7 +273,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importdesktop.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportDesktop, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -331,7 +331,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importfonte.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportFonte, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -388,7 +388,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importgbic.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportGbic, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -445,7 +445,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importhd.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportHd, 1);
 
         //MouseManager.Instance.SetWaitingCursor();       
         yield return getInventarioRequest.SendWebRequest();
@@ -507,7 +507,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importidrac.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportIdrac, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -563,7 +563,7 @@ public class InventarioManager : Singleton<InventarioManager>
     {
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importinventario.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportInventario, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -629,7 +629,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importmemoria.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportMemoria, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -690,7 +690,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importmonitor.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportMonitor, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -747,7 +747,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importnotebook.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportNotebook, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -804,7 +804,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importplacacontroladora.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportPlacaControladora, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -861,7 +861,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importplacadecapturadevideo.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportPlacaDeCapturaDeVideo, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -918,7 +918,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importplacaderede.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportPlacaDeRede, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -976,7 +976,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importplacadesom.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportPlacaDeSom, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -1033,7 +1033,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importplacadevideo.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportPlacaDeVideo, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -1090,7 +1090,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importprocessador.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportProcessador, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -1147,7 +1147,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importroteador.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportRoteador, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -1204,7 +1204,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importservidor.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportServidor, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -1261,7 +1261,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importstoragenas.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportStorageNas, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 
@@ -1318,7 +1318,7 @@ public class InventarioManager : Singleton<InventarioManager>
         WWWForm getInventario = new WWWForm();
         getInventario.AddField("apppassword", "ImportDatabase");
 
-        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, "importswitch.php", 1);
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportSwitch, 1);
 
         yield return getInventarioRequest.SendWebRequest();
 

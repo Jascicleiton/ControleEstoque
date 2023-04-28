@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_controleestoque');
+$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_controleestoque');
 
 if(mysqli_connect_errno())
 {
@@ -8,7 +8,7 @@ if(mysqli_connect_errno())
 }
 
 $appkey = $_POST ["apppassword"];
-if($appkey != "UpdateItem")
+if($appkey != "RecoverBackup")
 {
     echo("Wrong app key");
     exit();

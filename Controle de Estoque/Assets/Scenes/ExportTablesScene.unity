@@ -338,7 +338,6 @@ GameObject:
   - component: {fileID: 1103269992}
   - component: {fileID: 1103269991}
   - component: {fileID: 1103269990}
-  - component: {fileID: 1103269993}
   m_Layer: 5
   m_Name: Voltar ao menu anterior
   m_TagString: Untagged
@@ -411,9 +410,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1103269993}
-        m_TargetAssemblyTypeName: ChangeScreenManager, Assembly-CSharp
-        m_MethodName: ButtonClicked
+      - m_Target: {fileID: 1392465469}
+        m_TargetAssemblyTypeName: ExportCSVController, Assembly-CSharp
+        m_MethodName: ReturnToPreviousScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -461,18 +460,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103269988}
   m_CullTransparentMesh: 1
---- !u!114 &1103269993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103269988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf11f4e3897a5b544be214bf7f8f2d0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1392465467
 GameObject:
   m_ObjectHideFlags: 0

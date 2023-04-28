@@ -276,7 +276,7 @@ public class CreateForm
                 inventario.AddField("fabricante", parameters[2]);
                 inventario.AddField("hd", parameters[3]);
                 inventario.AddField("memoria", parameters[4]);
-                inventario.AddField("entradarj49", parameters[5]);
+                inventario.AddField("EntradaRJ45", parameters[5]);
                 inventario.AddField("bateria", parameters[6]);
                 inventario.AddField("adaptadorac", parameters[7]);
                 inventario.AddField("windows", parameters[8]);
@@ -506,6 +506,7 @@ public class CreateForm
     }
     #endregion
 
+    #region Consult Forms
     public static WWWForm GetConsultPatrimonioForm(string appPassword, string patrimonio)
     {
         WWWForm inventario = new WWWForm();
@@ -523,7 +524,9 @@ public class CreateForm
 
         return inventario;
     }
+    #endregion
 
+    #region Movements
     public static WWWForm GetMoveItemForm(string appPassword, string patrimonio, string serial, string usuario, string data,
         string deOnde, string paraOnde)
     {
@@ -575,6 +578,9 @@ public class CreateForm
         return item;
     }
 
+    /// <summary>
+    /// Form used to get all the movements from a specific item for both NoPaNoSe item and regular item
+    /// </summary>
     public static WWWForm GetMovementsForm(string appPassword, string parameter)
     {
         WWWForm movementForm = new WWWForm();
@@ -583,6 +589,17 @@ public class CreateForm
 
         return movementForm;
     }
+
+    /// <summary>
+    /// Form used to get all the movements for both NoPaNoSe items and regular items
+    /// </summary>
+    public static WWWForm GetAllMovements(string appPassword)
+    {
+        WWWForm item = new WWWForm();
+        item.AddField("apppassword", appPassword);        
+        return item;
+    }
+    #endregion
 
     public static WWWForm GetCheckAccessLevelForm(string appPassword, string username, string password)
     {

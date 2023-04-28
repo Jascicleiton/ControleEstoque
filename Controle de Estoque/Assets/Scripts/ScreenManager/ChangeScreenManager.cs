@@ -4,10 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScreenManager : Singleton<ChangeScreenManager>
 {
+    private void Start()
+    {
+        StartCoroutine(LoadSplashScreenRoutine());    
+    }
+
+    private IEnumerator LoadSplashScreenRoutine()
+    {
+        yield return SceneManager.LoadSceneAsync(Scenes.SplashScreen.ToString(), LoadSceneMode.Additive);
+        
+        // Find the scene that was most recently loaded (the one at the last index of the loaded scenes).
+        Scene newlyLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
+
+        // Set the newly loaded scene as the active scene (this marks it as the one to ben unloaded next).
+        SceneManager.SetActiveScene(newlyLoadedScene);
+    }
     /// <summary>
     /// Open a specific scene
     /// </summary>
-        public void OpenScene(Scenes sceneToUnload, Scenes sceneToOpen)
+    public void OpenScene(Scenes sceneToUnload, Scenes sceneToOpen)
     {
         StartCoroutine(OpenSceneRoutine(sceneToUnload, sceneToOpen));
     }   

@@ -223,7 +223,7 @@ public class MovementManager : MonoBehaviour
             UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), GetFromLocation(), GetToLocation());
         }
      
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(moveItemForm, "moveitem.php", 3);
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(moveItemForm, ConstStrings.MoveItem, 3);
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();

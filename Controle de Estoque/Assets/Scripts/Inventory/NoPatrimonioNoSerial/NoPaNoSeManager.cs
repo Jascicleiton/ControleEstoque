@@ -9,10 +9,12 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using Saving;
 using Newtonsoft.Json.Linq;
+using Unity.VisualScripting;
 
-public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
+public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
 {
     private NoPaNoSeAll allitems = new NoPaNoSeAll();
+   
 
     #region New item
     [SerializeField] private GameObject newItemPanel = null;
@@ -35,7 +37,15 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
     private void Start()
     {
         allitems = new NoPaNoSeAll();
-        StartCoroutine(StartListRoutine());
+        Initialize();
+          
+    }
+
+      /// <summary>
+    /// Called when NoPaNoSeScene is loaded to initialize some values and update the UI
+    /// </summary>
+    private void Initialize()
+    {
         switch (UsersManager.Instance.currentUser.GetAccessLevel())
         {
             case 1:
@@ -46,6 +56,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
             default:
                 break;
         }
+        ShowItems(NoPaNoSeImporter.Instance.itemsList.noPaNoSeItems);
     }
 
     /// <summary>
@@ -57,86 +68,20 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
         NoPaNoSeItemManager newItemManager = newItem.GetComponent<NoPaNoSeItemManager>();
         newItemManager.SetItemInformation(itemName, itemQuantity);
         allitems.noPaNoSeItems.Add(newItemManager.GetItem());
+        NoPaNoSeImporter.Instance.AddNewItem(newItemManager.GetItem());
         StartCoroutine(ScrollToBottom());
     }
 
     /// <summary>
     /// Sort Alphabetically the imported list of items and show it
     /// </summary>
-        private void ShowItems(List<NoPaNoSeItem> itemsToShow)
-    {
+    private void ShowItems(List<NoPaNoSeItem> itemsToShow)
+    {     
         List<NoPaNoSeItem> sortedItemsToShow = itemsToShow.OrderBy(x => x.ItemName).ToList();
         for (int i = 0; i < itemsToShow.Count; i++)
         {
             AddNewItem(sortedItemsToShow[i].ItemName, sortedItemsToShow[i].Quantity);
         }
-    }
-
-    /// <summary>
-    /// Import all items stored on the online database
-    /// </summary>
-    private IEnumerator StartListRoutine()
-    {
-        WWWForm itemForm = new WWWForm();
-        itemForm.AddField("apppassword", ConstStrings.ImportDatabaseKey);
-
-        UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, "importallnopanoseitems.php", 5);
-        MouseManager.Instance.SetWaitingCursor();
-
-        yield return createUpdateInventarioRequest.SendWebRequest();
-
-        if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: conectionerror");
-        }
-        else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: data processing error");
-        }
-        else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: protocol error");
-        }
-
-        if (createUpdateInventarioRequest.error == null)
-        {
-            string response = createUpdateInventarioRequest.downloadHandler.text;
-            if (response == "Conection error" || response == "Query failed")
-            {
-                EventHandler.CallDisconectedFromInternet();
-                Debug.LogWarning("StartListRoutine: Server error");
-            }
-            else if (response == "Wrong app key")
-            {
-                EventHandler.CallDisconectedFromInternet();
-                Debug.LogWarning("StartListRoutine: app key");
-            }
-            else if(response == "Result came empty")
-            {
-                EventHandler.CallDisconectedFromInternet();
-            }
-            else
-            {
-                JSONNode inventario = JSON.Parse(createUpdateInventarioRequest.downloadHandler.text);
-                List<NoPaNoSeItem> tempItems = new List<NoPaNoSeItem>();
-                foreach (JSONNode item in inventario)
-                {
-                    tempItems.Add(new NoPaNoSeItem(item[0], int.Parse(item[1])));
-                }
-                                ShowItems(tempItems);
-            }
-        }
-        else
-        {
-            EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: " + createUpdateInventarioRequest.error);
-            // TODO: send message to user with error and recomendation
-        }
-        createUpdateInventarioRequest.Dispose();
-        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -153,7 +98,7 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
 
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, tempInt);
 
-        UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, "addnopanoseitem.php", 5);
+        UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, ConstStrings.AddNoPaNoSe, 5);
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createUpdateInventarioRequest.SendWebRequest();
@@ -242,21 +187,5 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>, IJsonSaveable
         ChangeScreenManager.Instance.OpenScene(Scenes.NoPaNoSeScene, Scenes.InitialScene);
     }
 
-    /// <summary>
-    /// Save all the NoPaNoSe items for the use of the offline program
-    /// </summary>
-    public JToken CaptureAsJToken()
-    {
-        JArray state = HandleNoPaNoSeItemForSaveAndLoad.SaveObject(allitems);
-        return state;
-    }
-
-    /// <summary>
-    /// Load all the NoPaNoSe items for the use of the offline program
-    /// </summary>
-    public void RestoreFromJToken(JToken state)
-    {
-        HandleNoPaNoSeItemForSaveAndLoad.LoadJObject(state, out allitems);
-        ShowItems(allitems.noPaNoSeItems);
-    }
+    
 }

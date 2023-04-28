@@ -7,7 +7,7 @@ using UnityEngine;
 public class CreatePostRequest 
 {
     /// <summary>
-    /// Root = 0, Import = 1, AddItem = 2, Movements = 3, Update = 4, NoPaNoSe = 5
+    /// Root = 0, Import = 1, AddItem = 2, Movements = 3, Update = 4, NoPaNoSe = 5, RecoverBKP = 6,
     /// </summary>
     public static UnityWebRequest GetPostRequest(WWWForm form, string phpName, int folderID)
     {
@@ -22,7 +22,7 @@ public class CreatePostRequest
                         folder = ConstStrings.PhpRootFolder;
                         break;
                     case CurrentEstoque.Fumsoft:
-                        folder = ConstStrings.PhpRootFolderFunsoft;
+                        folder = ConstStrings.PhpRootFolderFumsoft;
                         break;
                     case CurrentEstoque.ESF:
                         folder = ConstStrings.PhpRootFolderESF;
@@ -47,7 +47,7 @@ public class CreatePostRequest
                         folder = ConstStrings.PhpImportTablesFolder;
                         break;
                     case CurrentEstoque.Fumsoft:
-                        folder = ConstStrings.PhpImportTablesFolderFunsoft;
+                        folder = ConstStrings.PhpImportTablesFolderFumsoft;
                         break;
                     case CurrentEstoque.ESF:
                         folder = ConstStrings.PhpImportTablesFolderESF;
@@ -72,7 +72,7 @@ public class CreatePostRequest
                         folder = ConstStrings.PhpAdditemsFolder;
                         break;
                     case CurrentEstoque.Fumsoft:
-                        folder = ConstStrings.PhpAdditemsFolderFunsoft;
+                        folder = ConstStrings.PhpAdditemsFolderFumsoft;
                         break;
                     case CurrentEstoque.ESF:
                         folder = ConstStrings.PhpAdditemsFolderESF;
@@ -97,7 +97,7 @@ public class CreatePostRequest
                         folder = ConstStrings.PhpMovementsFolder;
                         break;
                     case CurrentEstoque.Fumsoft:
-                        folder = ConstStrings.PhpMovementsFolderFunsoft;
+                        folder = ConstStrings.PhpMovementsFolderFumsoft;
                         break;
                     case CurrentEstoque.ESF:
                         folder = ConstStrings.PhpMovementsFolderESF;
@@ -122,7 +122,7 @@ public class CreatePostRequest
                         folder = ConstStrings.PhpUpdateItemsFolder;
                         break;
                     case CurrentEstoque.Fumsoft:
-                        folder = ConstStrings.PhpUpdateItemsFolderFunsoft;
+                        folder = ConstStrings.PhpUpdateItemsFolderFumsoft;
                         break;
                     case CurrentEstoque.ESF:
                         folder = ConstStrings.PhpUpdateItemsFolderESF;
@@ -147,7 +147,7 @@ public class CreatePostRequest
                         folder = ConstStrings.PhpNoPaNoSeItemsFolder;
                         break;
                     case CurrentEstoque.Fumsoft:
-                        folder = ConstStrings.PhpNoPaNoSeItemsFolderFunsoft;
+                        folder = ConstStrings.PhpNoPaNoSeItemsFolderFumsoft;
                         break;
                     case CurrentEstoque.ESF:
                         folder = ConstStrings.PhpNoPaNoSeItemsFolderESF;
@@ -165,6 +165,31 @@ public class CreatePostRequest
                         break;
                 }
                 break;
+                case 6:
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        folder = ConstStrings.PhpRecoverBKPFolder;
+                        break;
+                    case CurrentEstoque.Fumsoft:
+                        folder = ConstStrings.PhpRecoverBKPFolderFumsoft;
+                        break;
+                    case CurrentEstoque.ESF:
+                        folder = ConstStrings.PhpRecoverBKPFolderESF;
+                        break;
+                    case CurrentEstoque.Testing:
+                        folder = ConstStrings.PhpRecoverBKPFolderTesting;
+                        break;
+                    case CurrentEstoque.Clientes:
+                        folder = ConstStrings.PhpRecoverBKPFolderClientes;
+                        break;
+                    case CurrentEstoque.Concert:
+                        folder = ConstStrings.PhpRecoverBKPFolderConcert;
+                        break;
+                    default:
+                        break;
+                }
+                break;
             default:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -172,7 +197,7 @@ public class CreatePostRequest
                         folder = ConstStrings.PhpRootFolder;
                         break;
                     case CurrentEstoque.Fumsoft:
-                        folder = ConstStrings.PhpRootFolderFunsoft;
+                        folder = ConstStrings.PhpRootFolderFumsoft;
                         break;
                     case CurrentEstoque.ESF:
                         folder = ConstStrings.PhpRootFolderESF;
