@@ -336,10 +336,10 @@ public class ItemInformationPanelControler : MonoBehaviour
     {
         itemBoxes[0].gameObject.SetActive(false);
         itemBoxes[1].gameObject.SetActive(false);
-        parameterValues[5].interactable = false;
-        parameterValues[7].interactable = false;
-        parameterValues[8].interactable = false;
-        parameterValues[9].interactable = false;
+       // parameterValues[5].interactable = false;
+       // parameterValues[7].interactable = false;
+       // parameterValues[8].interactable = false;
+      //  parameterValues[9].interactable = false;
     }
 
     /// <summary>

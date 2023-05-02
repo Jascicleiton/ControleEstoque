@@ -164,6 +164,8 @@ public class MovementManager : MonoBehaviour
                 else if (response == "Item found")
                 {
                     itemFound = true;
+                    EnableDisableMoveButton();
+                    EventHandler.CallChangeAnimation("HelpMovement2");
                 }
                 else if (response == "Not found or found duplicate")
                 {
@@ -274,9 +276,9 @@ public class MovementManager : MonoBehaviour
                 EventHandler.CallOpenMessageEvent("Item moved");
                 createPostRequest.Dispose();
                 MouseManager.Instance.SetDefaultCursor();
-                ResetInputs();
-                inputEnabled = true;
                 itemFound = false;
+                ResetInputs();
+                inputEnabled = true;           
                 EventHandler.CallChangeAnimation("HelpMovement");
                 yield break;
             }
@@ -375,6 +377,7 @@ public class MovementManager : MonoBehaviour
         fromInput.text = "";
         toInput.text = "";
         ShouldHidePanels(true);
+        EnableDisableMoveButton();
         EventHandler.CallChangeAnimation("HelpMovement");
     }
 
@@ -453,6 +456,7 @@ public class MovementManager : MonoBehaviour
         inputEnabled = true;
         itemFound = false;
         ResetInputs();
+        EnableDisableMoveButton();        
     }
 
     /// <summary>

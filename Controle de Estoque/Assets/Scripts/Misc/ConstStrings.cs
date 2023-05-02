@@ -37,6 +37,7 @@ public class ConstStrings
     public const string Ramal = "Ramal";
     public const string Nobreak = "No break";
     public const string Outros = "Outros";
+    public const string USB = "USB";
     #endregion
 
     #region Categories arrays

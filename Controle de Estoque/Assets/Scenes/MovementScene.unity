@@ -1488,7 +1488,6 @@ GameObject:
   - component: {fileID: 523074805}
   - component: {fileID: 523074804}
   - component: {fileID: 523074803}
-  - component: {fileID: 523074802}
   m_Layer: 5
   m_Name: MoveItem_btn
   m_TagString: Untagged
@@ -1517,18 +1516,6 @@ RectTransform:
   m_AnchoredPosition: {x: -960, y: 219}
   m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &523074802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523074800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf11f4e3897a5b544be214bf7f8f2d0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &523074803
 MonoBehaviour:
   m_ObjectHideFlags: 0

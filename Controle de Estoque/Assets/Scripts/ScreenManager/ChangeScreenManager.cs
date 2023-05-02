@@ -11,8 +11,9 @@ public class ChangeScreenManager : Singleton<ChangeScreenManager>
 
     private IEnumerator LoadSplashScreenRoutine()
     {
+        MouseManager.Instance.SetWaitingCursor();
         yield return SceneManager.LoadSceneAsync(Scenes.SplashScreen.ToString(), LoadSceneMode.Additive);
-        
+        MouseManager.Instance.SetDefaultCursor();
         // Find the scene that was most recently loaded (the one at the last index of the loaded scenes).
         Scene newlyLoadedScene = SceneManager.GetSceneAt(SceneManager.sceneCount - 1);
 

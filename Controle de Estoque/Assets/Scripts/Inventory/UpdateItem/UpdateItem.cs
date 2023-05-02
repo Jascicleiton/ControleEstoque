@@ -329,7 +329,7 @@ public class UpdateItem : MonoBehaviour
     /// </summary>
     public void ReturnToPreviousScreen()
     {
-        SceneManager.LoadScene(ConstStrings.SceneInitial);
+        ChangeScreenManager.Instance.OpenScene(Scenes.UpdateItemScene, Scenes.InitialScene);
     }
 
     /// <summary>

@@ -33,17 +33,17 @@ public class NoPaNoSeImporter : Singleton<NoPaNoSeImporter>, IJsonSaveable
         if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
         {
             EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: conectionerror");
+            Debug.LogWarning("NoPaNoSeImporter: conectionerror");
         }
         else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
         {
             EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: data processing error");
+            Debug.LogWarning("NoPaNoSeImporter: data processing error");
         }
         else if (createUpdateInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
         {
             EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: protocol error");
+            Debug.LogWarning("NoPaNoSeImporter: protocol error");
         }
 
         if (createUpdateInventarioRequest.error == null)
@@ -52,12 +52,12 @@ public class NoPaNoSeImporter : Singleton<NoPaNoSeImporter>, IJsonSaveable
             if (response == "Conection error" || response == "Query failed")
             {
                 EventHandler.CallDisconectedFromInternet();
-                Debug.LogWarning("StartListRoutine: Server error");
+                Debug.LogWarning("NoPaNoSeImporter: Server error");
             }
             else if (response == "Wrong app key")
             {
                 EventHandler.CallDisconectedFromInternet();
-                Debug.LogWarning("StartListRoutine: app key");
+                Debug.LogWarning("NoPaNoSeImporter: app key");
             }
             else if (response == "Result came empty")
             {
@@ -77,7 +77,7 @@ public class NoPaNoSeImporter : Singleton<NoPaNoSeImporter>, IJsonSaveable
         else
         {
             EventHandler.CallDisconectedFromInternet();
-            Debug.LogWarning("StartListRoutine: " + createUpdateInventarioRequest.error);
+            Debug.LogWarning("NoPaNoSeImporter: " + createUpdateInventarioRequest.error);
             // TODO: send message to user with error and recomendation
         }
         createUpdateInventarioRequest.Dispose();
