@@ -58,22 +58,25 @@ public class MovementSaver : Singleton<MovementSaver>, IJsonSaveable
             }
             else if (response == "Query failed")
             {
-                Debug.LogWarning("MovementSaver: Query failed");
+                Debug.LogWarning("MovementSaver regular: Query failed");
             }
             else
             {
                 JSONNode movements = JSON.Parse(createPostRequest.downloadHandler.text);
                 foreach (JSONNode item in movements)
                 {
-                    MovementRecords newMovement = new MovementRecords();
-                    newMovement.item.Patrimonio = item[1];
-                    newMovement.item.Serial = item[2];
-                    newMovement.username = item[3];
-                    newMovement.date = item[4];
-                    newMovement.fromWhere = item[5];
-                    newMovement.toWhere = item[6];
+                    if (item.Count > 0)
+                    {
+                        MovementRecords newMovement = new MovementRecords();
+                        newMovement.item.Patrimonio = item[1];
+                        newMovement.item.Serial = item[2];
+                        newMovement.username = item[3];
+                        newMovement.date = item[4];
+                        newMovement.fromWhere = item[5];
+                        newMovement.toWhere = item[6];
 
-                    regularRecords.Add(newMovement);
+                        regularRecords.Add(newMovement);
+                    }
                 }
             }
         }
@@ -178,7 +181,7 @@ public class MovementSaver : Singleton<MovementSaver>, IJsonSaveable
 
     public void RestoreFromJToken(JToken state)
     {
-       if(state is JArray stateArray)
+        if (state is JArray stateArray)
         {
             IList<JToken> stateList = stateArray;
             foreach (var item in stateList)

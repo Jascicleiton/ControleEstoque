@@ -54,7 +54,7 @@ public class HandlePostRequestResponse
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Serial já existe");
             }
-            else if (response == "Modelo Found")
+            else if (response == "Modelo found")
             {
                 EventHandler.CallOpenMessageEvent("Modelo já está detalhado");
             }

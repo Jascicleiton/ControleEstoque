@@ -88,7 +88,7 @@ public class JsonSavingSystem : MonoBehaviour
     private void SaveFileAsJSon(string saveFile, JObject state)
     {
         string path = GetPathFromSaveFile(saveFile);
-        print("Saving to " + path);
+       // print("Saving to " + path);
         using (var textWriter = File.CreateText(path))
         {
             using (var writer = new JsonTextWriter(textWriter))
@@ -128,7 +128,7 @@ public class JsonSavingSystem : MonoBehaviour
 
     private string GetPathFromSaveFile(string saveFile)
     {
-        return Path.Combine(Application.persistentDataPath, saveFile + ConstStrings.extension);
+        return Path.Combine(ConstStrings.SavePath, saveFile + ConstStrings.extension);
     }
 }
 

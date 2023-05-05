@@ -34,10 +34,6 @@ public class ConsultInventory : MonoBehaviour
     private void Start()
     {
         consultCategory = GetComponent<ConsultCategory>();
-        // InventarioManager.Instance.ImportSheets();
-        //locationInput = inputField;
-        //locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
-        InternalDatabase.Instance.testingSheet.itens = InternalDatabase.adaptadorAC.itens;
     }
 
     private void OnEnable()

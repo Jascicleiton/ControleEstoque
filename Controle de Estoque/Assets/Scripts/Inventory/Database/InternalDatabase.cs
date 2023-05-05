@@ -44,12 +44,13 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     public static Sheet storageNAS = new Sheet();
     public static Sheet Switch = new Sheet();
     public static Sheet teclado = new Sheet();
+    public static Sheet placaSAS = new Sheet();
     public static Sheet outros = new Sheet();
     #endregion
     public static List<Sheet> allFullDetailsSheets = new List<Sheet>();
 
     private bool fullDatabaseFilled = false;
-    [SerializeField] private bool offlineProgram = false;
+    public bool offlineProgram = false;
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
     public List<string> testing = new List<string>();
@@ -61,6 +62,8 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         {
             SavingWrapper.Instance.Load();
         }
+        placaSAS = new Sheet();
+        placaSAS.itens = new List<ItemColumns>();
     }
 
     private void OnEnable()
@@ -116,6 +119,8 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         splitDatabase.TryGetValue(ConstStrings.PlacaDeSom, out placaDeSomTemp);
         Sheet placaDeVideoTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.PlacaDeVideo, out placaDeVideoTemp);
+        Sheet placaSASTemp = new Sheet();
+        splitDatabase.TryGetValue(ConstStrings.PlacaSAS, out placaSAS);
         Sheet processadorTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Processador, out processadorTemp);
         Sheet roteadorTemp = new Sheet();
@@ -208,6 +213,11 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
             {
                 FillCategoryDatabasesFunctions.PlacaDeVideo(item, placaDeVideoTemp);
             }
+            else if(item.Categoria.Trim() == ConstStrings.PlacaSAS.Trim())
+            {
+                //  placaSAS.itens.Add(item);              
+               
+            }
             else if (item.Categoria.Trim() == ConstStrings.Processador.Trim())
             {
                 FillCategoryDatabasesFunctions.Processador(item, processadorTemp);
@@ -249,8 +259,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     /// </summary>
     private void FillFullDatabase()
     {
-        print("Hello");
-            Sheet inventarioTemp = new Sheet();
+           Sheet inventarioTemp = new Sheet();
            splitDatabase.TryGetValue(ConstStrings.Inventario, out inventarioTemp);
            // testingSheet = inventarioTemp;
             // Get all itens from "Inventario SnPro into the full database

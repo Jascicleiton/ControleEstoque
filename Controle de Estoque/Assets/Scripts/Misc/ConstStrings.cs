@@ -6,6 +6,7 @@ public class ConstStrings
     public const string DataDatabaseSaveFile = "InventoryDatabase";
     public const string UserDatabaseSaveFile = "UserDatabase";
     public const string extension = ".json";
+    public const string SavePath = "C:/Controle de estoque/ControleEstoque/Saves/";
     #endregion
 
     #region Sheets names
@@ -38,15 +39,16 @@ public class ConstStrings
     public const string Nobreak = "No break";
     public const string Outros = "Outros";
     public const string USB = "USB";
+    public const string PlacaSAS = "Placa SAS";
     #endregion
 
     #region Categories arrays
     public static readonly string[] AllCategories = { AdaptadorAC, Carregador, Desktop, FoneRamal, Fonte, Gbic, HD, Idrac, Memoria, Monitor, 
     Mouse, Nobreak, Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Ramal,Roteador,
     Servidor, StorageNAS, Switch, Teclado, Outros };
-    public static readonly string[] SNPCategories = { AdaptadorAC, Carregador, Desktop, Fonte, Gbic, HD, Idrac, Memoria, Monitor, Nobreak, 
-    Notebook, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Servidor, StorageNAS, 
-    Switch, Outros };
+    public static readonly string[] SNPCategories = { AdaptadorAC, Carregador, Desktop, Fonte, Gbic, HD, Idrac, Memoria, Monitor, Mouse, Nobreak, 
+    Notebook, Outros, PlacaControladora, PlacaDeCapturaDeVideo, PlacaDeRede, PlacaDeSom, PlacaDeVideo, Processador, Roteador, Servidor, StorageNAS, 
+    Switch, Teclado, USB };
     public static readonly string[] ConcertCategories = { AdaptadorAC, Desktop, Monitor, Notebook, Roteador, Servidor, Switch, Outros };
     #endregion
 
@@ -198,6 +200,7 @@ public class ConstStrings
     public const string ImportServidor = "importservidor.php";
     public const string ImportStorageNas = "importstoragenas.php";
     public const string ImportSwitch = "importswitch.php";
+    public const string ImportUsers = "importusers.php";
     #endregion
     #region Movements
     public const string ConsultPatrimonio = "consultpatrimonio.php";

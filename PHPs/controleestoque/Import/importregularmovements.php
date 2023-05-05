@@ -26,7 +26,7 @@ function utf8ize($d)
     return $d;
 }
 
-$tablequery = "SELECT * FROM Movements;";
+$tablequery = "SELECT * FROM movements;";
 $result = $con->query($tablequery) or die("Query failed");
 if($result->num_rows > 0)
 {

@@ -17,6 +17,14 @@ public class User
     private int accessLevel;
 
     /// <summary>
+    /// Constructor to generate a new empty user
+    /// </summary>
+    public User()
+    {
+
+    }
+
+    /// <summary>
     /// Constructor that uses a nusername and an access level
     /// </summary>
     public User(string username, int accessLevel)

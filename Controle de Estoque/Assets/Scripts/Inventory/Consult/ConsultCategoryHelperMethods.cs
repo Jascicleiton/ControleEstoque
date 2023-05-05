@@ -42,6 +42,9 @@ public class ConsultCategoryHelperMethods
             case ConstStrings.Notebook:
                 return GetNotebook(item, inputindex);
 
+            case ConstStrings.Outros:
+                return GetOutros(item, inputindex);
+
             case ConstStrings.PlacaControladora:
                 return GetPlacaControladora(item, inputindex);
 

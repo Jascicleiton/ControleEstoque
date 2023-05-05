@@ -601,7 +601,8 @@ public class CreateForm
     }
     #endregion
 
-    public static WWWForm GetCheckAccessLevelForm(string appPassword, string username, string password)
+    #region Users
+        public static WWWForm GetCheckAccessLevelForm(string appPassword, string username, string password)
     {
         WWWForm checkAccesssLevelForm = new WWWForm();
         checkAccesssLevelForm.AddField("apppassword", appPassword);
@@ -610,4 +611,12 @@ public class CreateForm
 
         return checkAccesssLevelForm;
     }
+
+    public static WWWForm GetUsersForm(string appPassword) 
+    {
+        WWWForm user = new WWWForm();
+        user.AddField("apppassword", appPassword);
+        return user;
+    }
+    #endregion
 }

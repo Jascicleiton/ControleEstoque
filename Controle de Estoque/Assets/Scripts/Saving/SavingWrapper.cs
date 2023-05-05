@@ -17,7 +17,8 @@ namespace Saving
             saving = GetComponent<JsonSavingSystem>();
             if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
             {
-                //DontDestroyOnLoad(this.gameObject);           
+                //DontDestroyOnLoad(this.gameObject);
+               // Load();
             }
             else
             {
@@ -28,13 +29,13 @@ namespace Saving
         private void OnEnable()
         {
             EventHandler.DatabaseUpdatedEvent += Save;
-            EventHandler.DisconectedFromInternet += Load;
+  //          EventHandler.DisconectedFromInternet += Load;
         }
 
         private void OnDisable()
         {
             EventHandler.DatabaseUpdatedEvent -= Save;
-            EventHandler.DisconectedFromInternet -= Load;
+    //        EventHandler.DisconectedFromInternet -= Load;
         }
 
         private void Update()
@@ -56,7 +57,7 @@ namespace Saving
 
         public void Load()
         {
-            Debug.Log("Event called");
+            //Debug.Log("Event called");
             if (saving == null)
             {
                 saving = GetComponent<JsonSavingSystem>();

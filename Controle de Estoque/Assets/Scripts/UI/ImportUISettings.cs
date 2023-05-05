@@ -130,15 +130,7 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
         categoriesRequest.Dispose();
     }
 
-    /// <summary>
-    /// Reimport all locations and categories
-    /// </summary>
-    public void ReImport()
-    {
-        StartCoroutine(ImportLocationsRoutine());
-        StartCoroutine(ImportCategoriesRoutine());
-    }
-
+   
     /// <summary>
     /// Save all categories and locations for offline version
     /// </summary>
@@ -170,9 +162,10 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
     /// </summary>
     public void RestoreFromJToken(JToken state)
     {
-        print("ok");
-        if (state is JArray stateArray)
+        print("hi");
+            if (state is JArray stateArray)
         {
+            print("statearray");
             IList<JToken> stateList = stateArray;
             foreach (var item in stateList)
             {
@@ -183,11 +176,13 @@ public class ImportUISettings : Singleton<ImportUISettings>, IJsonSaveable
                     IDictionary<string, JToken> itemStateDict = itemState;
                     if (itemStateDict["Location"] != null)
                     {
+                        print("locations");
                         locationToLoad = itemStateDict["Location"].ToObject<string>();
                         InternalDatabase.locations.Add(locationToLoad);
                     }
                     if (itemStateDict["Category"] != null)
                     {
+                        print("category");
                         categoryToLoad = itemStateDict["Category"].ToObject<string>();
                         InternalDatabase.categories.Add(categoryToLoad);
                     }

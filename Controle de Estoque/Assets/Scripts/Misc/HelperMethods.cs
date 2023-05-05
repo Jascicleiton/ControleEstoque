@@ -48,7 +48,7 @@ public class HelperMethods
     {
         for (int i = 0; i < InternalDatabase.categories.Count; i++)
         {
-            if (category == ConstStrings.SNPCategories[i])
+            if (category == InternalDatabase.categories[i])
             {
                 return i;
             }
@@ -971,7 +971,7 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("Número do patrimônio");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO...");
                 dictionary["Placeholders"].Add("Serial");
-                dictionary["Placeholders"].Add("Desktop, Servidor....");
+                dictionary["Placeholders"].Add("Desktop, Servidor, HD....");
                 dictionary["Placeholders"].Add("Fabricante");
                 dictionary["Placeholders"].Add("Modelo");
                 dictionary["Placeholders"].Add("Estoque, Descarte...");
