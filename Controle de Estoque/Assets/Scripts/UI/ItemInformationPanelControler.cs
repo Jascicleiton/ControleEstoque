@@ -675,6 +675,14 @@ public class ItemInformationPanelControler : MonoBehaviour
                 valuesList.Add(parameterValues[12].text);
                 break;
             #endregion
+            #region Placa SAS
+            case ConstStrings.PlacaSAS:
+                valuesList.Clear();
+                valuesList.Add(parameterValues[7].text);
+                valuesList.Add(parameterValues[11].text);
+                valuesList.Add(parameterValues[12].text);
+                break;
+            #endregion
             #region Processador
             case ConstStrings.Processador:
                 valuesList.Clear();

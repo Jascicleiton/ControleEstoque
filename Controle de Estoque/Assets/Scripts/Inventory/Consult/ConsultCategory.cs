@@ -11,6 +11,19 @@ public class ConsultCategory : MonoBehaviour
     {
         return HelperMethods.GetCategoryDatabaseToConsult(HelperMethods.GetCategoryString(value));
     }
+
+    private bool CheckIfItemWasAlreadyFound(Sheet sheetToCheck, ItemColumns itemToCheck)
+    {
+        foreach (var item in sheetToCheck.itens)
+        {
+            if(itemToCheck.Patrimonio == item.Patrimonio)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /// <summary>
     /// Find all itens from a specific category that match the search parameters
     /// </summary>
@@ -26,7 +39,7 @@ public class ConsultCategory : MonoBehaviour
                 {        
                         if (HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[0]), categorySearchInputs[activeIndexes[0]].text, operators[0]))
                         {
-                            if (!returnSheet.itens.Contains(item))
+                            if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                             {
                                 returnSheet.itens.Add(item);
                             }

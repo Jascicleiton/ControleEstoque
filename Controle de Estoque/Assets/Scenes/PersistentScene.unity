@@ -860,7 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   importingWidget: {fileID: 5384812122129843055, guid: 359a82411e3067e4ba15153114675963, type: 3}
   exportManagerPrefab: {fileID: 2105073642229525601, guid: c2aebfcd608769d449c9b11318651ee5, type: 3}
-  currentVersion: 0.7.4
+  currentVersion: 0.7.4.1
   fullDatabase:
     itens: []
   testingSheet:

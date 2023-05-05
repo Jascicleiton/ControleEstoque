@@ -62,9 +62,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         {
             SavingWrapper.Instance.Load();
         }
-        placaSAS = new Sheet();
-        placaSAS.itens = new List<ItemColumns>();
-    }
+            }
 
     private void OnEnable()
     {
@@ -120,7 +118,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         Sheet placaDeVideoTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.PlacaDeVideo, out placaDeVideoTemp);
         Sheet placaSASTemp = new Sheet();
-        splitDatabase.TryGetValue(ConstStrings.PlacaSAS, out placaSAS);
+        splitDatabase.TryGetValue(ConstStrings.PlacaSAS, out placaSASTemp);
         Sheet processadorTemp = new Sheet();
         splitDatabase.TryGetValue(ConstStrings.Processador, out processadorTemp);
         Sheet roteadorTemp = new Sheet();
@@ -215,8 +213,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
             }
             else if(item.Categoria.Trim() == ConstStrings.PlacaSAS.Trim())
             {
-                //  placaSAS.itens.Add(item);              
-               
+                               FillCategoryDatabasesFunctions.PlacaSAS(item, placaSASTemp);                           
             }
             else if (item.Categoria.Trim() == ConstStrings.Processador.Trim())
             {

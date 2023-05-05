@@ -13,7 +13,21 @@ public class GetMovementRecords : MonoBehaviour
     [SerializeField] private GameObject movementObjectPrefab;
     [SerializeField] private Transform instantiateTransform;
      [SerializeField] private TMP_InputField parameterInput;
+    [SerializeField] private TMP_Dropdown nameDP;
     bool isSearchingPatrimonio = true;
+
+    private void FillNameDP()
+    {
+        if (nameDP.options.Count < 1)
+        {
+            List<string> names = new List<string>();
+            foreach (var item in NoPaNoSeImporter.Instance.itemsList.noPaNoSeItems)
+            {
+                names.Add(item.ItemName);
+            }
+            nameDP.AddOptions(names);
+        }
+    }
 
     /// <summary>
     /// Disables all  movementObjectPrefab from the Pool Manager that were used in the previous search (if it 
@@ -102,9 +116,9 @@ public class GetMovementRecords : MonoBehaviour
     /// <summary>
     /// Try to get all movements of a specific "NoPaNoSe" item from the Online database
     /// </summary>
-    private IEnumerator ImportNoPaNoSeMovementsRoutine()
+    private IEnumerator ImportNoPaNoSeMovementsRoutine(string itemName)
     {
-        WWWForm movementsForm = CreateForm.GetMovementsForm(ConstStrings.ImportDatabaseKey, parameterInput.text);
+        WWWForm movementsForm = CreateForm.GetMovementsForm(ConstStrings.ImportDatabaseKey, itemName);
 
         UnityWebRequest createMovementRequest = CreatePostRequest.GetPostRequest(movementsForm, ConstStrings.GetNoPaNoSeMovements, 3);
 
@@ -216,12 +230,16 @@ public class GetMovementRecords : MonoBehaviour
         if (value == 0)
         {
             isSearchingPatrimonio = true;
+            parameterInput.gameObject.SetActive(true);
             parameterInput.placeholder.GetComponent<TMP_Text>().text = "Digite patrimônio para busca....";
+            nameDP.gameObject.SetActive(false);            
         }
         if(value == 1)
         {
             isSearchingPatrimonio = false;
-            parameterInput.placeholder.GetComponent<TMP_Text>().text = "Digite nome do item para busca....";
+            nameDP.gameObject.SetActive(true);
+            FillNameDP();
+            parameterInput.gameObject.SetActive(false);
         }
         parameterInput.text = "";
     }
@@ -231,17 +249,17 @@ public class GetMovementRecords : MonoBehaviour
     /// </summary>
     public void SearchClicked()
     {
-        if (parameterInput.text != "")
-        {
-            DeleteOldSearch();
-            if (isSearchingPatrimonio)
+        if(isSearchingPatrimonio)
+        { 
+            if (parameterInput.text != "")
             {
-                StartCoroutine(ImportPatrimonioMovementsRoutine());
+                DeleteOldSearch();                              
+                    StartCoroutine(ImportPatrimonioMovementsRoutine());                             
             }
-            else
-            {
-                StartCoroutine(ImportNoPaNoSeMovementsRoutine());
-            }
+        }
+        else 
+        {            
+            StartCoroutine(ImportNoPaNoSeMovementsRoutine(nameDP.captionText.text));
         }
     }
 

@@ -142,6 +142,7 @@ public class InventarioManager : Singleton<InventarioManager>
         StartCoroutine(ImportPlacaDeRedeToDatabase());
         StartCoroutine(ImportPlacaDeSomToDatabase());
         StartCoroutine(ImportPlacaDeVideoToDatabase());
+        StartCoroutine(ImportPlacaSASToDatabase());
         StartCoroutine(ImportProcessadorToDatabase());
         StartCoroutine(ImportRoteadorToDatabase());
         StartCoroutine(ImportServidorToDatabase());
@@ -1079,6 +1080,63 @@ public class InventarioManager : Singleton<InventarioManager>
         else
         {
             InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaDeVideo] = tempSheet;
+        }
+    }
+
+    /// <summary>
+    /// Import PlacaSAS from server into the internal database
+    /// </summary>
+    private IEnumerator ImportPlacaSASToDatabase()
+    {
+        WWWForm getInventario = new WWWForm();
+        getInventario.AddField("apppassword", "ImportDatabase");
+
+        UnityWebRequest getInventarioRequest = CreatePostRequest.GetPostRequest(getInventario, ConstStrings.ImportPlacaSAS, 1);
+
+        yield return getInventarioRequest.SendWebRequest();
+
+        Sheet tempSheet = new Sheet();
+
+        if (getInventarioRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("Placa SAS: conection error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("Placa SAS: data processing error");
+        }
+        else if (getInventarioRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("Placa SAS: protocol error");
+        }
+        if (getInventarioRequest.error == null)
+        {
+            string response = getInventarioRequest.downloadHandler.text;
+            if (response == "Database connection error" || response == "wrong appkey" || response == "Query failed")
+            {
+                Debug.LogWarning("Placa SAS: Server error");
+            }
+            else if (response == "Result came empty")
+            {
+                Debug.LogWarning("Placa SAS: Result came empty");
+            }
+            else
+            {
+                JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
+                ImportingInventoryFunctions.ImportPlacaSAS(inventario, out tempSheet);
+
+            }
+        }
+        EventHandler.CallImportFinished(false);
+        getInventarioRequest.Dispose();
+
+        if (!InternalDatabase.Instance.splitDatabase.ContainsKey(ConstStrings.PlacaSAS))
+        {
+            InternalDatabase.Instance.splitDatabase.Add(ConstStrings.PlacaSAS, tempSheet);
+        }
+        else
+        {
+            InternalDatabase.Instance.splitDatabase[ConstStrings.PlacaSAS] = tempSheet;
         }
     }
 

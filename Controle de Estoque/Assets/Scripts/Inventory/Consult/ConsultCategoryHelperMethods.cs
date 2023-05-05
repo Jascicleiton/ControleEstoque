@@ -60,6 +60,9 @@ public class ConsultCategoryHelperMethods
             case ConstStrings.PlacaDeVideo:
                 return GetPlacaDeVideo(item, inputindex);
 
+                case ConstStrings.PlacaSAS:
+                return GetPlacaSAS(item, inputindex);
+
             case ConstStrings.Processador:
                 return GetProcessador(item, inputindex);
 
@@ -525,6 +528,25 @@ public class ConsultCategoryHelperMethods
                 return item.QuantidadeDePortas.ToString();
             case 4:
                 return item.QuaisConexoes;
+            default:
+                return null;
+        }
+    }
+
+    private static string GetPlacaSAS(ItemColumns item, int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return item.Status;
+            case 1:
+                return item.Modelo;
+            case 2:
+                return item.Local;
+            case 3:
+                return item.QuantidadeDePortas.ToString();
+            case 4:
+                return item.VelocidadeGBs.ToString();
             default:
                 return null;
         }

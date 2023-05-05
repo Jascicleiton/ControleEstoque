@@ -159,6 +159,16 @@ public static class EventHandler
         }
     }
 
-
+    /// <summary>
+    /// Used to notify GetMovementRecords to fill the NoPaNoSe names dropdown
+    /// </summary>
+    public static event Action FillNamesDP;
+    public static void CallFillNamesDP()
+    {
+        if(FillNamesDP != null)
+        {
+            FillNamesDP();
+        }
+    }
 
 }

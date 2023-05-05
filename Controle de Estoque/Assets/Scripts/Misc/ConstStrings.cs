@@ -167,6 +167,7 @@ public class ConstStrings
     public const string AddNewPlacaDeRede = "placaderede.php";
     public const string AddNewPlacaDeSom = "placadesom.php";
     public const string AddNewPlacaDeVideo = "placadevideo.php";
+    public const string AddNewPlacaSAS = "placasas.php";
     public const string AddNewProcessador = "processador.php";
     public const string AddNewRoteador = "roteador.php";
     public const string AddNewServidor = "servidor.php";
@@ -194,6 +195,7 @@ public class ConstStrings
     public const string ImportPlacaDeRede = "importplacaderede.php";
     public const string ImportPlacaDeSom = "importplacadesom.php";
     public const string ImportPlacaDeVideo = "importplacadevideo.php";
+    public const string ImportPlacaSAS = "importplacasas.php";
     public const string ImportProcessador = "importprocessador.php";
     public const string ImportRegularMovements = "importregularmovements.php";
     public const string ImportRoteador = "importroteador.php";

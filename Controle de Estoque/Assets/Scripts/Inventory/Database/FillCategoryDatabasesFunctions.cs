@@ -497,6 +497,35 @@ public class FillCategoryDatabasesFunctions
         InternalDatabase.placaDeVideo.itens.Add(item);
     }
     #endregion
+    #region placa SAS
+    public static void PlacaSAS(ItemColumns item, Sheet tempSheet)
+    {
+        if (tempSheet != null && tempSheet.itens.Count > 0)
+        {
+            foreach (ItemColumns itemToAdd in tempSheet.itens)
+            {
+                switch (InternalDatabase.Instance.currentEstoque)
+                {
+                    case CurrentEstoque.SnPro:
+                        if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
+                        {
+                            item.QuantidadeDePortas = itemToAdd.QuantidadeDePortas;
+                            item.VelocidadeGBs = itemToAdd.VelocidadeGBs;
+                        }
+                        break;
+                    default:
+                        if (item.Patrimonio == itemToAdd.Patrimonio)
+                        {
+                            item.QuantidadeDePortas = itemToAdd.QuantidadeDePortas;
+                            item.VelocidadeGBs = itemToAdd.VelocidadeGBs;
+                        }
+                        break;
+                }
+            }
+        }
+        InternalDatabase.placaSAS.itens.Add(item);
+    }
+    #endregion
     #region processador
     public static void Processador(ItemColumns item, Sheet tempSheet)
     {

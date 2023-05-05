@@ -449,6 +449,23 @@ public class ImportingInventoryFunctions
         }
     }
 
+    public static void ImportPlacaSAS(JSONNode inventario, out Sheet importSheet)
+    {
+        importSheet = new Sheet();
+        if (inventario.Count > 0)
+        {
+            foreach (JSONNode item in inventario)
+            {
+                ItemColumns newRow = new ItemColumns();
+                newRow.Modelo = item[0];
+                newRow.QuantidadeDePortas = item[1];
+                newRow.VelocidadeGBs = item[2];
+                newRow.Categoria = ConstStrings.PlacaSAS;
+                importSheet.itens.Add(newRow);
+            }
+        }
+    }
+
     public static void ImportProcessador(JSONNode inventario, out Sheet importSheet)
     {
         importSheet = new Sheet();

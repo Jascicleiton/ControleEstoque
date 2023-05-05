@@ -286,6 +286,18 @@ public class HelperMethods
                     addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeVideoPostRequest);
                     break;
                 #endregion
+                #region Placa SAS
+                case ConstStrings.PlacaSAS:
+                    WWWForm placaSASForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
+
+                    UnityWebRequest createPlacaSASPostRequest = CreatePostRequest.GetPostRequest(placaSASForm, phpName +
+                        ConstStrings.AddNewPlacaSAS, folderID);
+
+                    yield return createPlacaSASPostRequest.SendWebRequest();
+
+                    addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaSASPostRequest);
+                    break;
+                #endregion
                 #region Processador
                 case ConstStrings.Processador:
                     WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
@@ -572,6 +584,12 @@ public class HelperMethods
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     break;
                 #endregion
+                #region Placa de Video
+                case ConstStrings.PlacaSAS:
+                    dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
+                    dictionary["Values"].Add(itemToShow.VelocidadeGBs.ToString());
+                    break;
+                #endregion
                 #region Processador
                 case ConstStrings.Processador:
                     dictionary["Values"].Add(itemToShow.Soquete);
@@ -851,6 +869,12 @@ public class HelperMethods
             case ConstStrings.PlacaDeVideo:
                 dictionary["Names"].Add("Quantas entradas?");
                 dictionary["Names"].Add("Quais entradas?");
+                break;
+            #endregion
+            #region Placa SAS
+            case ConstStrings.PlacaSAS:
+                dictionary["Names"].Add("Quantas entradas?");
+                dictionary["Names"].Add("Velocidade de transmissão");
                 break;
             #endregion
             #region Processador
@@ -1147,6 +1171,12 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("Quais entradas?...");
                 break;
             #endregion
+            #region Placa de Video
+            case ConstStrings.PlacaSAS:
+                dictionary["Placeholders"].Add("Quantas entradas?");
+                dictionary["Placeholders"].Add("Velocidade de transmissão");
+                break;
+            #endregion
             #region Processador
             case ConstStrings.Processador:
                 dictionary["Placeholders"].Add("Soquete...");
@@ -1340,6 +1370,8 @@ public class HelperMethods
                 return InternalDatabase.placaDeSom;
             case ConstStrings.PlacaDeVideo:
                 return InternalDatabase.placaDeVideo;
+            case ConstStrings.PlacaSAS:
+                return InternalDatabase.placaSAS;
             case ConstStrings.Processador:
                 return InternalDatabase.processador;
             case ConstStrings.Ramal:
