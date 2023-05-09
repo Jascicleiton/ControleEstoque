@@ -43,8 +43,4 @@ else
 }
 
 $con->close();
-// Error codes
-// 1 - Database connection error
-// 2 - Table query ran into an error
-// 3 - Result came empty
 ?>

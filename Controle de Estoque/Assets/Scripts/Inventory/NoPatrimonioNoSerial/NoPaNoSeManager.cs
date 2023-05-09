@@ -78,10 +78,11 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
     private void ShowItems(List<NoPaNoSeItem> itemsToShow)
     {     
         List<NoPaNoSeItem> sortedItemsToShow = itemsToShow.OrderBy(x => x.ItemName).ToList();
-        for (int i = 0; i < itemsToShow.Count; i++)
+        for (int i = 0; i < sortedItemsToShow.Count; i++)
         {
             AddNewItem(sortedItemsToShow[i].ItemName, sortedItemsToShow[i].Quantity);
         }
+        NoPaNoSeImporter.Instance.SaveItems();
     }
 
     /// <summary>

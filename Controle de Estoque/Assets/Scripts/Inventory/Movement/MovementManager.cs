@@ -372,7 +372,7 @@ public class MovementManager : MonoBehaviour
     {
         itemInformationInput.text = "";
         fromDP.value = 0;
-        toDP.value = 0;
+        toDP.value = HelperMethods.GetLocationDPValue("Estoque");
         whoInput.text = "";
         fromInput.text = "";
         toInput.text = "";
@@ -382,7 +382,7 @@ public class MovementManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Get the location from the inputField if the "From" field is "Outros"
+    /// Get the location for the "From" field
     /// </summary>
     private string GetFromLocation()
     {
@@ -400,7 +400,7 @@ public class MovementManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Get the location from the inputField if the "To" field is "Outros"
+    /// Get the location for the "To" field
     /// </summary>
     private string GetToLocation()
     {

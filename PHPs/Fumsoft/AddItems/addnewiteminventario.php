@@ -50,9 +50,4 @@ mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Item added");
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert item failed
-// 5 - wrong appkey
 ?>

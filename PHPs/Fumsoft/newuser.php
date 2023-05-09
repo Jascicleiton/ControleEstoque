@@ -33,6 +33,5 @@ $insertuserquery= "INSERT INTO users(username, password) VALUES('". $usernamecle
 mysqli_query($con, $insertuserquery) or die("insert user failed");
  echo("User added");
 
-
 $con->close();
 ?>

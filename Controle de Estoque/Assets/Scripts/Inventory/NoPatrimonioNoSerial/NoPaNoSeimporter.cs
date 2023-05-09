@@ -87,6 +87,11 @@ public class NoPaNoSeImporter : Singleton<NoPaNoSeImporter>, IJsonSaveable
     public void AddNewItem(NoPaNoSeItem newItem)
     {
         itemsList.noPaNoSeItems.Add(newItem);
+       
+    }
+
+    public void SaveItems()
+    {
         if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
         {
             SavingWrapper.Instance.Save();
