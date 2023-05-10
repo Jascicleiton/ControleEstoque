@@ -72,6 +72,8 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         StartCoroutine(ScrollToBottom());
     }
 
+    
+
     /// <summary>
     /// Sort Alphabetically the imported list of items and show it
     /// </summary>
@@ -80,9 +82,14 @@ public class NoPaNoSeManager : Singleton<NoPaNoSeManager>
         List<NoPaNoSeItem> sortedItemsToShow = itemsToShow.OrderBy(x => x.ItemName).ToList();
         for (int i = 0; i < sortedItemsToShow.Count; i++)
         {
-            AddNewItem(sortedItemsToShow[i].ItemName, sortedItemsToShow[i].Quantity);
+            GameObject newItem = Instantiate(itemPrefab, itemParentTransform);
+            NoPaNoSeItemManager newItemManager = newItem.GetComponent<NoPaNoSeItemManager>();
+            newItemManager.SetItemInformation(sortedItemsToShow[i].ItemName, sortedItemsToShow[i].Quantity);
+            allitems.noPaNoSeItems.Add(newItemManager.GetItem());
+            StartCoroutine(ScrollToBottom());
+            //AddNewItem(sortedItemsToShow[i].ItemName, sortedItemsToShow[i].Quantity);
         }
-        NoPaNoSeImporter.Instance.SaveItems();
+        //NoPaNoSeImporter.Instance.SaveItems();
     }
 
     /// <summary>

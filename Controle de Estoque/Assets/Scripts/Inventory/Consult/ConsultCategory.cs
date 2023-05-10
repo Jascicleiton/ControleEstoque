@@ -52,7 +52,7 @@ public class ConsultCategory : MonoBehaviour
                     if (HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[0]), categorySearchInputs[activeIndexes[0]].text, operators[0]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[1]), categorySearchInputs[activeIndexes[1]].text, operators[1]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -66,7 +66,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[1]), categorySearchInputs[activeIndexes[1]].text, operators[1]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[2]), categorySearchInputs[activeIndexes[2]].text, operators[2]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -81,7 +81,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[2]), categorySearchInputs[activeIndexes[2]].text, operators[2]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[3]), categorySearchInputs[activeIndexes[3]].text, operators[3]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -97,7 +97,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[3]), categorySearchInputs[activeIndexes[3]].text, operators[3]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[4]), categorySearchInputs[activeIndexes[4]].text, operators[4]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -114,7 +114,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[4]), categorySearchInputs[activeIndexes[4]].text, operators[4]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[5]), categorySearchInputs[activeIndexes[5]].text, operators[5]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -132,7 +132,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[5]), categorySearchInputs[activeIndexes[5]].text, operators[5]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[6]), categorySearchInputs[activeIndexes[6]].text, operators[6]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -151,7 +151,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[6]), categorySearchInputs[activeIndexes[6]].text, operators[6]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[7]), categorySearchInputs[activeIndexes[7]].text, operators[7]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -171,7 +171,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[7]), categorySearchInputs[activeIndexes[7]].text, operators[7]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[8]), categorySearchInputs[activeIndexes[8]].text, operators[8]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -192,7 +192,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[8]), categorySearchInputs[activeIndexes[8]].text, operators[8]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[9]), categorySearchInputs[activeIndexes[9]].text, operators[9]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -214,7 +214,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[9]), categorySearchInputs[activeIndexes[9]].text, operators[9]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[10]), categorySearchInputs[activeIndexes[10]].text, operators[10]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -237,7 +237,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[10]), categorySearchInputs[activeIndexes[10]].text, operators[10]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[11]), categorySearchInputs[activeIndexes[11]].text, operators[11]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -261,7 +261,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[11]), categorySearchInputs[activeIndexes[11]].text, operators[11]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[12]), categorySearchInputs[activeIndexes[12]].text, operators[12]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -286,7 +286,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[12]), categorySearchInputs[activeIndexes[12]].text, operators[12]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[13]), categorySearchInputs[activeIndexes[13]].text, operators[13]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -312,7 +312,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[13]), categorySearchInputs[activeIndexes[13]].text, operators[13]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[14]), categorySearchInputs[activeIndexes[14]].text, operators[14]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -339,7 +339,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[14]), categorySearchInputs[activeIndexes[14]].text, operators[14]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[15]), categorySearchInputs[activeIndexes[15]].text, operators[15])) 
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -367,7 +367,7 @@ public class ConsultCategory : MonoBehaviour
                          HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[15]), categorySearchInputs[activeIndexes[15]].text, operators[15]) &&
                          HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[16]), categorySearchInputs[activeIndexes[16]].text, operators[16]))                       
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }
@@ -396,7 +396,7 @@ public class ConsultCategory : MonoBehaviour
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[16]), categorySearchInputs[activeIndexes[16]].text, operators[16]) &&
                         HelperMethods.CompareStrings(ConsultCategoryHelperMethods.GetItemValue(item, activeIndexes[17]), categorySearchInputs[activeIndexes[17]].text, operators[17]))
                     {
-                        if (!returnSheet.itens.Contains(item))
+                        if (!CheckIfItemWasAlreadyFound(returnSheet, item))
                         {
                             returnSheet.itens.Add(item);
                         }

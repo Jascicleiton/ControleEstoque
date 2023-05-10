@@ -15,6 +15,7 @@ public class NoPaNoSeImporter : Singleton<NoPaNoSeImporter>, IJsonSaveable
     void Start()
     {
         StartCoroutine(StartListRoutine());
+        itemsList.noPaNoSeItems.Clear();
     }
 
     /// <summary>

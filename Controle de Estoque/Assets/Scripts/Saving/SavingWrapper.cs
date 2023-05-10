@@ -53,7 +53,6 @@ namespace Saving
                 saving = GetComponent<JsonSavingSystem>();
             }
             saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
-            print("Saved");
         }
 
         public void Load()
