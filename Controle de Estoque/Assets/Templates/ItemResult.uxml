@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 200px; height: 80px;">
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+        <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

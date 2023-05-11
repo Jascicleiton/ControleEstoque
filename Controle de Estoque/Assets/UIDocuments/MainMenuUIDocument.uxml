@@ -1,0 +1,68 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Button" src="project://database/Assets/Templates/Button.uxml?fileID=9197481963319205126&amp;guid=cc2323eb63c2af64e829b45049ffe687&amp;type=3#Button" />
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgb(50, 178, 113);">
+        <ui:VisualElement name="Top" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-items: center; padding-top: 50px; padding-bottom: 50px;">
+            <ui:Label tabindex="-1" text="Controle de estoque" display-tooltip-when-elided="true" style="font-size: 60px;" />
+            <ui:VisualElement name="SnProLogo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 200px; height: 100px;" />
+            <ui:VisualElement name="ExtraLogo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 200px; height: 100px; display: none;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Middle" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: center; flex-basis: 30%;">
+            <ui:Label tabindex="-1" text="Digite seu usuário e senha, e pressione enter para entrar" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; font-size: 35px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Bottom" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; flex-direction: row; height: 70%;">
+            <ui:VisualElement name="Left" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: 15%; margin-left: 50px; margin-right: 50px; justify-content: flex-end; padding-bottom: 30px;">
+                <ui:Label tabindex="-1" text="Versão 0.8" display-tooltip-when-elided="true" name="Version" style="font-size: 30px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Center" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center; justify-content: center; padding-bottom: 50px;">
+                <ui:VisualElement name="LoginContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center; width: 100%; height: 100%; display: flex;">
+                    <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" name="UserLabel" style="font-size: 35px;" />
+                    <ui:TextField picking-mode="Ignore" value="Digite seu usuário" name="UserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
+                    <ui:Label tabindex="-1" text="Senha" display-tooltip-when-elided="true" name="PasswordLabel" style="font-size: 35px; margin-top: 50px;" />
+                    <ui:TextField picking-mode="Ignore" value="Digite sua senha" name="PasswordTextField" style="width: 60%; font-size: 30px; margin-top: 15px;">
+                        <ui:Button display-tooltip-when-elided="true" name="LoginShowHidePassword" style="position: absolute; align-self: flex-end; top: 0; left: 625px; background-image: url(&apos;project://database/Assets/Images/Icons/EyeClosed.png?fileID=21300000&amp;guid=0f12cab07c7012c4b80d38f65b45c411&amp;type=3#EyeClosed&apos;); width: 50px; height: 50px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+                    </ui:TextField>
+                </ui:VisualElement>
+                <ui:VisualElement name="NewUserContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center; width: 100%; height: 100%; visibility: visible; display: none; background-image: url(&apos;project://database/Assets/Images/ActivityPanel.png?fileID=21300000&amp;guid=d47d174721987ca44902d8d3d0f4527c&amp;type=3#ActivityPanel&apos;);">
+                    <ui:VisualElement name="NewUserTop" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; padding-left: 15px; padding-top: 15px; padding-right: 15px; align-items: center;">
+                        <ui:Label tabindex="-1" text="Digite o nome e senha do novo usuário a ser adicionado e clique no botão Admin autorizar.&#10;Somente usuários com nível de acesso adequado podem autorizar a adição de novo usuário." display-tooltip-when-elided="true" style="font-size: 30px; white-space: normal; -unity-text-align: upper-center; width: 90%;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="NewUsermiddle" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; padding-left: 15px; padding-right: 15px; align-items: center; justify-content: center;">
+                        <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" name="UserLabel" style="font-size: 35px;" />
+                        <ui:TextField picking-mode="Ignore" value="Digite o usuário a ser adicionado" name="NewUserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
+                        <ui:Label tabindex="-1" text="Senha" display-tooltip-when-elided="true" name="PasswordLabel" style="font-size: 35px; margin-top: 50px;" />
+                        <ui:TextField picking-mode="Ignore" value="Digite a senha do novo usuário" name="NewPasswordTextField" style="width: 60%; font-size: 30px; margin-top: 15px;">
+                            <ui:Button display-tooltip-when-elided="true" name="LoginShowHidePassword" style="position: absolute; align-self: flex-end; top: 0; left: 625px; background-image: url(&apos;project://database/Assets/Images/Icons/EyeClosed.png?fileID=21300000&amp;guid=0f12cab07c7012c4b80d38f65b45c411&amp;type=3#EyeClosed&apos;); width: 50px; height: 50px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+                        </ui:TextField>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="NewUserBottom" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 100%; flex-direction: row; padding-left: 15px; padding-bottom: 15px; padding-right: 15px; align-items: center; justify-content: center;">
+                        <ui:Instance template="Button" name="CancelNewuserButton" style="width: 15%; margin-right: 50px;">
+                            <AttributeOverrides element-name="Button" text="Cancelar" />
+                        </ui:Instance>
+                        <ui:Instance template="Button" name="OpenAdminAuthorizeButton" style="width: 15%;">
+                            <AttributeOverrides element-name="Button" text="Admin autorizar" />
+                        </ui:Instance>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="AdminAuthorizationContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center; width: 100%; height: 100%; visibility: visible; display: none; background-image: url(&apos;project://database/Assets/Images/ActivityPanel2.png?fileID=21300000&amp;guid=ea0d57b4af37bac499156585c849b7a5&amp;type=3#ActivityPanel2&apos;);">
+                    <ui:VisualElement name="AdminTop" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; align-items: center; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0; padding-left: 15px; padding-right: 15px; padding-top: 25px;">
+                        <ui:Label tabindex="-1" text="Digite login e senha do administrador, e pressione enter para autorizar a adição do novo usuário" display-tooltip-when-elided="true" style="font-size: 30px; white-space: normal; -unity-text-align: upper-center; width: 90%;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="AdminMiddle" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 100%; align-items: center; margin-left: 0; margin-right: 0; padding-left: 15px; margin-top: 15px; margin-bottom: 0; padding-right: 15px;">
+                        <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" name="UserLabel" style="font-size: 35px;" />
+                        <ui:TextField picking-mode="Ignore" value="Digite seu usuário" name="AdminUserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
+                        <ui:Label tabindex="-1" text="Senha" display-tooltip-when-elided="true" name="PasswordLabel" style="font-size: 35px; margin-top: 50px;" />
+                        <ui:TextField picking-mode="Ignore" value="Digite sua senha" name="AdminPasswordTextField" style="width: 60%; font-size: 30px; margin-top: 15px;">
+                            <ui:Button display-tooltip-when-elided="true" name="LoginShowHidePassword" style="position: absolute; align-self: flex-end; top: 0; left: 625px; background-image: url(&apos;project://database/Assets/Images/Icons/EyeClosed.png?fileID=21300000&amp;guid=0f12cab07c7012c4b80d38f65b45c411&amp;type=3#EyeClosed&apos;); width: 50px; height: 50px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+                        </ui:TextField>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="AdminBottom" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; align-items: flex-start; padding-bottom: 30px;">
+                        <ui:Button text="Cancelar" display-tooltip-when-elided="true" name="Button" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: scale-to-fit; width: 30%; font-size: 30px; padding-right: 30px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Right" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); margin-right: 50px; margin-left: 50px; flex-basis: 15%; padding-bottom: 30px; justify-content: flex-end;">
+                <ui:Button text="Adicionar novo usuário" display-tooltip-when-elided="true" name="AddNewUserButton" style="background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); color: rgb(255, 255, 255); font-size: 25px; white-space: normal; -unity-text-align: middle-center; padding-left: 60px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); -unity-background-scale-mode: stretch-to-fill;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
