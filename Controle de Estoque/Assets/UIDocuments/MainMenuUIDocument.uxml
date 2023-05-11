@@ -65,4 +65,8 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="ErrorContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; width: 30%; height: 30%; top: 563px; left: 670px; justify-content: space-between; align-items: center; background-image: url(&apos;project://database/Assets/Images/ErrorPanel.png?fileID=21300000&amp;guid=651e6ce93cd48934bbc4f25ee5f6f693&amp;type=3#ErrorPanel&apos;); display: flex;">
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" style="margin-top: 50px; font-size: 30px;" />
+        <ui:Button text="OK" display-tooltip-when-elided="true" name="ErrorButton" style="margin-bottom: 50px; height: 70px; width: 70px; font-size: 25px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px;" />
+    </ui:VisualElement>
 </ui:UXML>
