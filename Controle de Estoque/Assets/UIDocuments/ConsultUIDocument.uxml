@@ -1,0 +1,44 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="TitleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; align-items: center; height: 10%; margin-top: 30px;">
+            <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px; margin-left: 50px; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+            <ui:Label tabindex="-1" text="Consulta do inventário&#10;" display-tooltip-when-elided="true" style="font-size: 50px; -unity-text-align: upper-center; align-self: center; align-items: center; justify-content: center; margin-top: 0.5%;" />
+            <ui:Button display-tooltip-when-elided="true" name="HelpButton" style="margin-right: 50px; width: 70px; height: 70px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Icons/unlitLightBulb.png?fileID=21300000&amp;guid=38dad7f224c41b046a55cb14196f4891&amp;type=3#unlitLightBulb&apos;); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; margin-left: 50px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SearchOptionsContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 8%; flex-direction: row;">
+            <ui:Label tabindex="-1" text="Procurar por:" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: middle-left; margin-left: 20px;" />
+            <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="SearchOptionsDP" style="font-size: 20px; width: 25%; margin-right: 15px;" />
+            <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="CategoryDP" style="font-size: 20px; width: 25%; margin-left: 15px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" name="PatrimonioTextField" style="font-size: 20px; width: 25%; display: none; margin-left: 15px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SearchParametersContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 25%; flex-direction: row; flex-wrap: wrap;">
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO..." style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="Modelo" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="Local: Estoque, Descarte..." style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ResultContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 55%;">
+            <ui:ListView focusable="true" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

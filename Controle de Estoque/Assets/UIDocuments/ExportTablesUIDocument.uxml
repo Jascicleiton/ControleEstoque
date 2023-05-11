@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="TitleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 15%; align-items: center; justify-content: space-between;">
+            <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px; margin-left: 50px;" />
+            <ui:Label tabindex="-1" text="Exportar tabelas" display-tooltip-when-elided="true" style="-unity-text-align: middle-left; font-size: 50px;" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 250px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="MiddleContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; align-items: center;">
+            <ui:Label tabindex="-1" text="Selecione qual planilha você quer exportar" display-tooltip-when-elided="true" style="font-size: 30px;" />
+            <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="CategoryDP" style="width: 20%; height: 15%; font-size: 20px;" />
+            <ui:Button text="Exportar" display-tooltip-when-elided="true" name="ExportButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; font-size: 20px; width: 10%; height: 10%; padding-left: 2%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="MessageContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 30%; align-items: center; justify-content: center; width: 70%; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="MessageLabel" style="font-size: 20px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

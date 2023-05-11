@@ -1,0 +1,165 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-start;">
+        <ui:VisualElement name="TitleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; flex-direction: row; justify-content: space-between; align-items: center;">
+            <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px; margin-left: 50px;" />
+            <ui:Label tabindex="-1" text="Atualiar um item" display-tooltip-when-elided="true" style="font-size: 50px;" />
+            <ui:Button display-tooltip-when-elided="true" name="HelpButton" style="margin-right: 50px; width: 70px; height: 70px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Icons/unlitLightBulb.png?fileID=21300000&amp;guid=38dad7f224c41b046a55cb14196f4891&amp;type=3#unlitLightBulb&apos;); margin-left: 130px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SearchParameterContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; justify-content: center; align-items: center;">
+            <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ParameterToSearchDP" style="flex-grow: 0; width: 15%; height: 70px; font-size: 20px;" />
+            <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterTextField" style="width: 30%; height: 70px; font-size: 20px; margin-left: 20px; margin-right: 100px;" />
+            <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="width: 100px; height: 50px; font-size: 20px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ParametersContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 60%; flex-direction: row; flex-wrap: wrap; align-items: stretch; justify-content: flex-start;">
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 50px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 50px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 50px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 50px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 50px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 50px; margin-right: 0;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px; margin-right: 0;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px; margin-right: 0;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px; margin-right: 0;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px; margin-right: 0;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 15px; margin-top: 20px;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage.png?fileID=21300000&amp;guid=e9d32e23126a78747bc04229e10294cb&amp;type=3#ItemResultImage&apos;); -unity-background-scale-mode: stretch-to-fill; width: 300px; height: 80px; margin-left: 20px; margin-top: 20px; margin-right: 0;">
+                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 6px; margin-right: 6px;" />
+                <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; align-items: center; justify-content: center;">
+            <ui:VisualElement name="MessageContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 60%; justify-content: center; align-items: center;">
+                <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="MessageLabel" style="-unity-text-align: upper-center; font-size: 20px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

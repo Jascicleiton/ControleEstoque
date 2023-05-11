@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgb(50, 178, 113); color: rgb(56, 56, 56);">
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); color: rgb(56, 56, 56);">
         <ui:VisualElement name="TopContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 20%; align-items: stretch; margin-top: 50px;">
             <ui:VisualElement name="SnProLogo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 200px; height: 100px; padding-left: 0; margin-left: 50px;" />
             <ui:VisualElement name="ExtraLogo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 200px; height: 100px; margin-left: 10px;" />

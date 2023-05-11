@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="Button" src="project://database/Assets/Templates/Button.uxml?fileID=9197481963319205126&amp;guid=cc2323eb63c2af64e829b45049ffe687&amp;type=3#Button" />
-    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgb(50, 178, 113);">
+    <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(50, 178, 113, 0);">
         <ui:VisualElement name="Top" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-items: center; padding-top: 50px; padding-bottom: 50px;">
             <ui:Label tabindex="-1" text="Controle de estoque" display-tooltip-when-elided="true" style="font-size: 60px;" />
             <ui:VisualElement name="SnProLogo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 200px; height: 100px;" />
