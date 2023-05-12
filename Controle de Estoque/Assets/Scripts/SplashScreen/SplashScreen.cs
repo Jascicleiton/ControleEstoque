@@ -70,7 +70,7 @@ public class SplashScreen : MonoBehaviour
         backgroundImage.blocksRaycasts = false;
 
 
-        //ChangeScreenManager.Instance.OpenScene(Scenes.SplashScreen, Scenes.MainMenu);
-        ChangeScreenManager.Instance.OpenScene(Scenes.SplashScreen, Scenes.TestScene);
+        ChangeScreenManager.Instance.OpenScene(Scenes.SplashScreen, Scenes.MainMenu);
+        //ChangeScreenManager.Instance.OpenScene(Scenes.SplashScreen, Scenes.TestScene);
     }
 }

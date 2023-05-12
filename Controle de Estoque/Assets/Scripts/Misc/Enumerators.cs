@@ -25,7 +25,7 @@ public enum Scenes
     MovementScene,
     NoPaNoSeScene,
     RecoverBKP,
-    ShowAllMovementsScene,
+    MovementRecordsScene,
     SplashScreen,
     UpdateItemScene,
     TestScene

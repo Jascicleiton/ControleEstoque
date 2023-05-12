@@ -15,9 +15,9 @@
             <ui:VisualElement name="Center" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center; justify-content: center; padding-bottom: 50px;">
                 <ui:VisualElement name="LoginContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center; width: 100%; height: 100%; display: flex;">
                     <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" name="UserLabel" style="font-size: 35px;" />
-                    <ui:TextField picking-mode="Ignore" value="Digite seu usuário" name="UserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
+                    <ui:TextField picking-mode="Ignore" name="UserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
                     <ui:Label tabindex="-1" text="Senha" display-tooltip-when-elided="true" name="PasswordLabel" style="font-size: 35px; margin-top: 50px;" />
-                    <ui:TextField picking-mode="Ignore" value="Digite sua senha" name="PasswordTextField" password="true" style="width: 60%; font-size: 30px; margin-top: 15px;">
+                    <ui:TextField picking-mode="Ignore" name="PasswordTextField" password="true" style="width: 60%; font-size: 30px; margin-top: 15px;">
                         <ui:Button display-tooltip-when-elided="true" name="LoginShowHidePassword" style="position: absolute; align-self: flex-end; top: 0; left: 625px; background-image: url(&apos;project://database/Assets/Images/Icons/EyeClosed.png?fileID=21300000&amp;guid=0f12cab07c7012c4b80d38f65b45c411&amp;type=3#EyeClosed&apos;); width: 50px; height: 50px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; overflow: hidden;" />
                     </ui:TextField>
                 </ui:VisualElement>
@@ -27,9 +27,9 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="NewUsermiddle" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; padding-left: 15px; padding-right: 15px; align-items: center; justify-content: center;">
                         <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" name="UserLabel" style="font-size: 35px;" />
-                        <ui:TextField picking-mode="Ignore" value="Digite o usuário a ser adicionado" name="NewUserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
+                        <ui:TextField picking-mode="Ignore" name="NewUserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
                         <ui:Label tabindex="-1" text="Senha" display-tooltip-when-elided="true" name="PasswordLabel" style="font-size: 35px; margin-top: 50px;" />
-                        <ui:TextField picking-mode="Ignore" value="Digite a senha do novo usuário" name="NewPasswordTextField" password="true" style="width: 60%; font-size: 30px; margin-top: 15px;">
+                        <ui:TextField picking-mode="Ignore" name="NewPasswordTextField" password="true" style="width: 60%; font-size: 30px; margin-top: 15px;">
                             <ui:Button display-tooltip-when-elided="true" name="NewUserShowHidePassword" style="position: absolute; align-self: flex-end; top: 0; left: 625px; background-image: url(&apos;project://database/Assets/Images/Icons/EyeClosed.png?fileID=21300000&amp;guid=0f12cab07c7012c4b80d38f65b45c411&amp;type=3#EyeClosed&apos;); width: 50px; height: 50px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
                         </ui:TextField>
                     </ui:VisualElement>
@@ -44,9 +44,9 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="AdminMiddle" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 100%; align-items: center; margin-left: 0; margin-right: 0; padding-left: 15px; margin-top: 15px; margin-bottom: 0; padding-right: 15px;">
                         <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" name="UserLabel" style="font-size: 35px;" />
-                        <ui:TextField picking-mode="Ignore" value="Digite seu usuário" name="AdminUserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
+                        <ui:TextField picking-mode="Ignore" name="AdminUserTextField" style="width: 60%; font-size: 30px; margin-top: 15px;" />
                         <ui:Label tabindex="-1" text="Senha" display-tooltip-when-elided="true" name="PasswordLabel" style="font-size: 35px; margin-top: 50px;" />
-                        <ui:TextField picking-mode="Ignore" value="Digite sua senha" name="AdminPasswordTextField" password="true" style="width: 60%; font-size: 30px; margin-top: 15px;">
+                        <ui:TextField picking-mode="Ignore" name="AdminPasswordTextField" password="true" style="width: 60%; font-size: 30px; margin-top: 15px;">
                             <ui:Button display-tooltip-when-elided="true" name="AdminShowHidePassword" style="position: absolute; align-self: flex-end; top: 0; left: 625px; background-image: url(&apos;project://database/Assets/Images/Icons/EyeClosed.png?fileID=21300000&amp;guid=0f12cab07c7012c4b80d38f65b45c411&amp;type=3#EyeClosed&apos;); width: 50px; height: 50px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
                         </ui:TextField>
                     </ui:VisualElement>
@@ -61,7 +61,7 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="ErrorContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; width: 30%; height: 30%; top: 563px; left: 670px; justify-content: space-between; align-items: center; background-image: url(&apos;project://database/Assets/Images/ErrorPanel.png?fileID=21300000&amp;guid=651e6ce93cd48934bbc4f25ee5f6f693&amp;type=3#ErrorPanel&apos;); display: none;">
-        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" style="margin-top: 0; font-size: 30px; flex-wrap: wrap; white-space: normal; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 0;" />
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ErrorLabel" style="margin-top: 0; font-size: 30px; flex-wrap: wrap; white-space: normal; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 0; color: rgb(255, 255, 255);" />
         <ui:Button text="OK" display-tooltip-when-elided="true" name="ErrorButton" style="margin-bottom: 20px; height: 70px; width: 70px; font-size: 25px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px;" />
     </ui:VisualElement>
 </ui:UXML>

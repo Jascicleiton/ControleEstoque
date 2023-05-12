@@ -38,7 +38,7 @@ public class ChangeScene : MonoBehaviour
             case Scenes.NoPaNoSeScene:
                 ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, sceneToLoad);
                 break;
-            case Scenes.ShowAllMovementsScene:
+            case Scenes.MovementRecordsScene:
                 ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, sceneToLoad);
                 break;
             default:

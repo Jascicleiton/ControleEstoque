@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Scenes/NoPaNoSeScene.unity
     guid: 32b2ca77b812004439c6dea56473c02b
   - enabled: 1
-    path: Assets/Scenes/ShowAllMovementsScene.unity
+    path: Assets/Scenes/MovementRecordsScene.unity
     guid: 70caaf3c9d2232c4ba43ce2c9e0c594a
   - enabled: 0
     path: Assets/Scenes/RecoverBKP.unity

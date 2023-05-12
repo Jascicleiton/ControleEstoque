@@ -268,6 +268,6 @@ public class GetMovementRecords : MonoBehaviour
     /// </summary>
     public void ReturnToPreviousScreen()
     {
-        ChangeScreenManager.Instance.OpenScene(Scenes.ShowAllMovementsScene, Scenes.InitialScene);
+        ChangeScreenManager.Instance.OpenScene(Scenes.MovementRecordsScene, Scenes.InitialScene);
     }
 }

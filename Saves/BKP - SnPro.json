@@ -3,7 +3,13 @@
     "ImportCategories": []
   },
   "35aac1d1-9605-4002-aa5c-4f219df57d60": {
-    "UsersManager": []
+    "UsersManager": [
+      {
+        "username": "admin",
+        "password": "admin",
+        "accesslevel": 10
+      }
+    ]
   },
   "994252a3-6a96-404b-b86a-e4b1a09ef0c6": {
     "NoPaNoSeImporter": []
@@ -20,5 +26,5 @@
   "01e2bbd9-c199-465b-8d87-3731c6407819": {
     "InternalDatabase": []
   },
-  "lastSceneBuildIndex": 1
+  "lastSceneBuildIndex": 0
 }

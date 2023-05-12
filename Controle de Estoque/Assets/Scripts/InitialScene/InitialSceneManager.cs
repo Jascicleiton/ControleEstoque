@@ -1,91 +1,188 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.UIElements;
 
-public class InitialSceneManager : MonoBehaviour
+namespace InitialScene
 {
-    [SerializeField] private Button consultButton;
-    [SerializeField] private Button moveButton;
-    [SerializeField] private Button addRemoveButton;
-    [SerializeField] private Button updateItemButton;
-    [SerializeField] private Button exportSheetsButton;
-    [SerializeField] private Button logoutButton;
-    [SerializeField] private Button noPaNoSeButton;
-    [SerializeField] private Button allMovementsButton;
-    [SerializeField] private Button recoverBKPButton;
-
-    [SerializeField] TMP_Text helloMessage;
-
-    void Start()
+    public class InitialSceneManager : MonoBehaviour
     {
-        helloMessage.text = "Olá " + UsersManager.Instance.currentUser.GetUsername() + ". \nO que você deseja fazer agora?";
-        ShowHideButtons();
-      
-       // InternalDatabase.Instance.FillFullDatabase();
-    }
+        private VisualElement root;
 
-    /// <summary>
-    /// Hides the buttons that the user is not allowed to use
-    /// </summary>
-    private void ShowHideButtons()
-    {
-        if(UsersManager.Instance != null)
+        private Button consultButton;
+        private Button moveButton;
+        private Button addRemoveButton;
+        private Button updateItemButton;
+        private Button exportSheetsButton;
+        private Button logoutButton;
+        private Button noPaNoSeButton;
+        private Button showMovementRecordsButton;
+        private Button recoverBKPButton;
+
+        private Label helloMessage;
+
+        void Start()
         {
-            switch (UsersManager.Instance.currentUser.GetAccessLevel())
-            {
-                case 1:
-                    addRemoveButton.gameObject.SetActive(false);
-                    updateItemButton.gameObject.SetActive(false);
-                    exportSheetsButton.gameObject.SetActive(false);
-                    allMovementsButton.gameObject.SetActive(false);
-                    recoverBKPButton.gameObject.SetActive(false);
-                    break;
-                case 2:
-                    addRemoveButton.gameObject.SetActive(false);
-                    updateItemButton.gameObject.SetActive(false);
-                    moveButton.gameObject.SetActive(false);
-                    recoverBKPButton.gameObject.SetActive(false);
-                    break;
-                case 3:
-                    updateItemButton.gameObject.SetActive(false);
-                    exportSheetsButton.gameObject.SetActive(false);
-                    noPaNoSeButton.gameObject.SetActive(false);
-                    allMovementsButton.gameObject.SetActive(false);
-                    recoverBKPButton.gameObject.SetActive(false);
-                    break;
-                case 5:
-                    updateItemButton.gameObject.SetActive(false);
-                    recoverBKPButton.gameObject.SetActive(false);
-                    break;
-                case 4:
-                    addRemoveButton.gameObject.SetActive(false);
-                    updateItemButton.gameObject.SetActive(false);
-                    exportSheetsButton.gameObject.SetActive(false);
-                    allMovementsButton.gameObject.SetActive(false);
-                    moveButton.gameObject.SetActive(false);
-                    recoverBKPButton.gameObject.SetActive(false);
-                    break;
-                case 10:
+            helloMessage.text = "Olá " + UsersManager.Instance.currentUser.GetUsername() + ". \nO que você deseja fazer agora?";
+            ShowHideButtons();
+        }
 
-                    break;
-                default:
-                    consultButton.gameObject.SetActive(true);
-                    moveButton.gameObject.SetActive(false);
-                    addRemoveButton.gameObject.SetActive(false);
-                    updateItemButton.gameObject.SetActive(false);
-                    exportSheetsButton.gameObject.SetActive(false);
-                    noPaNoSeButton.gameObject.SetActive(false);
-                    allMovementsButton.gameObject.SetActive(false);
-                    recoverBKPButton.gameObject.SetActive(false);
-                    break;
+        private void OnEnable()
+        {
+            GetUiElementsReferences();
+        }
+
+        private void OnDisable()
+        {
+            UnsubscribeUIElementsToEvents();
+        }
+
+        private void GetUiElementsReferences()
+        {
+            root = GetComponent<UIDocument>().rootVisualElement;
+            consultButton = root.Q<Button>("ConsultButton");
+            moveButton = root.Q<Button>("MoveButton");
+            addRemoveButton = root.Q<Button>("AddButton");
+            updateItemButton = root.Q<Button>("UpdateButton");
+            exportSheetsButton = root.Q<Button>("ExportSheetsButton");
+            logoutButton = root.Q<Button>("LogoutButton");
+            noPaNoSeButton = root.Q<Button>("NoPaNoSeButton");
+            showMovementRecordsButton = root.Q<Button>("ShowMovementsRecordsButton");
+            recoverBKPButton = root.Q<Button>("RecoberBKPButton");
+            helloMessage = root.Q<Label>("GrettingLabel");
+            SubscribeUIElementsToEvents();
+        }
+
+        private void SubscribeUIElementsToEvents()
+        {
+            consultButton.clicked += () => { ConsultClicked(); };
+            moveButton.clicked += () => { MoveClicked(); };
+            addRemoveButton.clicked += () => { AddClicked(); };
+            updateItemButton.clicked += () => { UpdateClicked(); };
+            exportSheetsButton.clicked += () => { ExportClicked(); };
+            logoutButton.clicked += () => { LogoutClicked(); };
+            noPaNoSeButton.clicked += () => { NoPaNoSeClicked(); };
+            showMovementRecordsButton.clicked += () => { MovementRecordsClicked(); };
+            recoverBKPButton.clicked += () => { RecoverBKPClicked(); };
+        }
+
+        private void UnsubscribeUIElementsToEvents()
+        {
+            consultButton.clicked -= () => { ConsultClicked(); };
+            moveButton.clicked -= () => { MoveClicked(); };
+            addRemoveButton.clicked -= () => { AddClicked(); };
+            updateItemButton.clicked -= () => { UpdateClicked(); };
+            exportSheetsButton.clicked -= () => { ExportClicked(); };
+            logoutButton.clicked -= () => { LogoutClicked(); };
+            noPaNoSeButton.clicked -= () => { NoPaNoSeClicked(); };
+            showMovementRecordsButton.clicked -= () => { MovementRecordsClicked(); };
+            recoverBKPButton.clicked -= () => { RecoverBKPClicked(); };
+        }
+
+        /// <summary>
+        /// Hides the buttons that the user is not allowed to use
+        /// </summary>
+        private void ShowHideButtons()
+        {
+            if (UsersManager.Instance != null)
+            {
+                switch (UsersManager.Instance.currentUser.GetAccessLevel())
+                {
+                    case 1:
+                        addRemoveButton.style.display = DisplayStyle.None;
+                        updateItemButton.style.display = DisplayStyle.None;
+                        exportSheetsButton.style.display = DisplayStyle.None;
+                        showMovementRecordsButton.style.display = DisplayStyle.None;
+                        recoverBKPButton.style.display = DisplayStyle.None;
+                        break;
+                    case 2:
+                        addRemoveButton.style.display = DisplayStyle.None;
+                        updateItemButton.style.display = DisplayStyle.None;
+                        moveButton.style.display = DisplayStyle.None;
+                        recoverBKPButton.style.display = DisplayStyle.None;
+                        break;
+                    case 3:
+                        updateItemButton.style.display = DisplayStyle.None;
+                        exportSheetsButton.style.display = DisplayStyle.None;
+                        noPaNoSeButton.style.display = DisplayStyle.None;
+                        showMovementRecordsButton.style.display = DisplayStyle.None;
+                        recoverBKPButton.style.display = DisplayStyle.None;
+                        break;
+                    case 5:
+                        updateItemButton.style.display = DisplayStyle.None;
+                        recoverBKPButton.style.display = DisplayStyle.None;
+                        break;
+                    case 4:
+                        addRemoveButton.style.display = DisplayStyle.None;
+                        updateItemButton.style.display = DisplayStyle.None;
+                        exportSheetsButton.style.display = DisplayStyle.None;
+                        showMovementRecordsButton.style.display = DisplayStyle.None;
+                        moveButton.style.display = DisplayStyle.None;
+                        recoverBKPButton.style.display = DisplayStyle.None;
+                        break;
+                    case 10:
+
+                        break;
+                    default:
+                        consultButton.style.display = DisplayStyle.None;
+                        moveButton.style.display = DisplayStyle.None;
+                        addRemoveButton.style.display = DisplayStyle.None;
+                        updateItemButton.style.display = DisplayStyle.None;
+                        exportSheetsButton.style.display = DisplayStyle.None;
+                        noPaNoSeButton.style.display = DisplayStyle.None;
+                        showMovementRecordsButton.style.display = DisplayStyle.None;
+                        recoverBKPButton.style.display = DisplayStyle.None;
+                        break;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("UsersManager not found on InitialScene");
             }
         }
-        else
-        {
-            Debug.LogWarning("UsersManager not found on InitialScene");
-        }    
-    }
 
-  
+        private void ConsultClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.ConsultScene);
+        }
+
+        private void MoveClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.MovementScene);
+        }
+
+        private void AddClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.AddItemScene);
+        }
+
+        private void UpdateClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.UpdateItemScene);
+        }
+
+        private void ExportClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.ExportTablesScene);
+        }
+
+        private void MovementRecordsClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.MovementRecordsScene);
+        }
+
+        private void NoPaNoSeClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.NoPaNoSeScene);
+        }
+
+        private void RecoverBKPClicked()
+        {
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.RecoverBKP);
+        }
+
+        private void LogoutClicked()
+        {
+            UsersManager.Instance.currentUser = new User("pessoa", "");
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.MainMenu);
+        }
+    }
 }

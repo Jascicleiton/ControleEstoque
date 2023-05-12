@@ -1,614 +1,415 @@
 using System.Collections;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
-public class MainMenuManager : MonoBehaviour
+namespace MainMenu
 {
-    #region Login
-    [SerializeField] private GameObject loginPanel = null;
-    [SerializeField] private TMP_InputField userInput;
-    [SerializeField] private TMP_InputField passwordInput;
-    #endregion
-    #region Error
-    [SerializeField] private GameObject errorPanel;
-    [SerializeField] private TMP_Text errorText;
-    #endregion
-    #region NewUser
-    [SerializeField] private GameObject newUserPanel;
-    [SerializeField] private TMP_Text newUserMessage;
-    [SerializeField] private TMP_InputField addNewUserInput;
-    [SerializeField] private TMP_InputField addNewPasswordInput;
-    [SerializeField] private Button openAddNewUserPanelButton;
-    [SerializeField] private TMP_Text addNewUserButtonText;
-    #endregion
-    #region Admin
-    [SerializeField] private GameObject adminAuthorizationPanel;
-    [SerializeField] private TMP_InputField adminUserInput;
-    [SerializeField] private TMP_InputField adminPasswordInput;
-    #endregion
-
-    private bool loginEnabled = true; // enable or disable the Enter key press to login
-    private bool adminAuthorizing = false;
-    private bool adminAuthorized = false;
-    private bool inputEnabled = true;
-    private int authorizationAccessLevel; // used to check if the person authorizing the creation of a new user have high enough access level
-    private bool isWindows = false;
-
-    [SerializeField] private TMP_Text versionText;
-    [SerializeField] private TMP_Text testText;
-
-    /// <summary>
-    /// Initializes the varibles
-    /// </summary>
-    private void Start()
+    public class MainMenuManager : MonoBehaviour
     {
-        loginEnabled = true;
-        adminAuthorizing = false;
-        adminAuthorized = false;
-         inputEnabled = true;
-        authorizationAccessLevel = 0;
-    versionText.text = InternalDatabase.Instance.currentVersion;
-        CheckIfCurrentPlatformIsWindows();
-        // testText.text = string.Compare("estoque", "Estoque", true).ToString();
-    //    InternalDatabase.Instance.testingSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario];
-    }
+        #region Login
+        private VisualElement loginPanel;
+        private TextField userInput;
+        private TextField passwordInput;
+        private Button loginShowHidePasswordButton;
+        #endregion
+        #region NewUser
+        private VisualElement newUserPanel;
+        private TextField addNewUserInput;
+        private TextField addNewPasswordInput;
+        private Button closeNewUserPanelButton;
+        private Button openAdminAuthorizationPanelButton;
+        private Button newUserShowHidePasswordButton;
+        #endregion
+        #region Admin
+        private VisualElement adminAuthorizationPanel;
+        private TextField adminUserInput;
+        private TextField adminPasswordInput;
+        private Button closeAdminAuthorizationPanelButton;
+        private Button adminShowHidePasswordButton;
+        #endregion
+        private Button openAddNewUserPanelButton;
+        private VisualElement root;
 
-    /// <summary>
-    /// Subscribes to the event PostRequestResponse
-    /// </summary>
-    private void OnEnable()
-    {
-        EventHandler.PostRequestResponse += GetUserAccessLevel;
-    }
+        private bool loginEnabled = true; // enable or disable the Enter key press to login
+        private bool adminAuthorizing = false;
+        private bool inputEnabled = true;
+        private int authorizationAccessLevel; // used to check if the person authorizing the creation of a new user have high enough access level
+        private bool isWindows = false;
 
-    /// <summary>
-    /// Unsubscribes to the event PostRequestResponse
-    /// </summary>
-    private void OnDisable()
-    {
-        EventHandler.PostRequestResponse -= GetUserAccessLevel;
-    }
+        private Label versionLabel;
 
-    /// <summary>
-    /// Handles what happens if enter is pressed
-    /// </summary>
-    private void Update()
-    {
-        if (inputEnabled)
+        [SerializeField] private Texture2D image1; // eye closed image
+        [SerializeField] private Texture2D image2; // eye open image
+
+        /// <summary>
+        /// Initializes the varibles
+        /// </summary>
+        private void Start()
         {
-            if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+            loginEnabled = true;
+            adminAuthorizing = false;
+            inputEnabled = true;
+            authorizationAccessLevel = 0;
+
+            CheckIfCurrentPlatformIsWindows();
+        }
+
+        private void OnEnable()
+        {
+            EventHandler.PostRequestResponse += GetUserAccessLevel;
+            GetUiElementsReferences();
+            versionLabel.text = InternalDatabase.Instance.currentVersion;
+        }
+
+        private void OnDisable()
+        {
+            EventHandler.PostRequestResponse -= GetUserAccessLevel;
+            UnsubscribeUIElementsToEvents();
+        }
+
+        /// <summary>
+        /// Handles what happens if enter is pressed
+        /// </summary>
+        private void Update()
+        {
+            if (inputEnabled)
             {
-                if (loginEnabled)
+                if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
                 {
-                    inputEnabled = false;
-                    StartCoroutine(Login());
-                                    }
-                if (adminAuthorizing)
-                {
-                    inputEnabled = false;
-                    StartCoroutine(CheckIfAdmin());            
+                    if (loginEnabled)
+                    {
+                        inputEnabled = false;
+                        if (InternalDatabase.Instance.offlineProgram)
+                        {
+                            LoginOffline();
+                        }
+                        else
+                        {
+                            StartCoroutine(Login());
+                        }
+                    }
+                    if (adminAuthorizing)
+                    {
+                        inputEnabled = false;
+                        StartCoroutine(CheckIfAdmin());
+                    }
                 }
             }
         }
-    }
 
-    /// <summary>
-    /// Get the user Accces level when it try to login or atuthorize the creation of a new user
-    /// </summary>
-    private void GetUserAccessLevel(string accessLevel)
-    {
-        authorizationAccessLevel = int.Parse(accessLevel);
-    }
-
-    /// <summary>
-    /// Check if the current platform that the program is running is Windows or not.
-    /// </summary>
-    private void CheckIfCurrentPlatformIsWindows()
-    {     
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        /// <summary>
+        /// Get the references of all UI elements that will have some functionality
+        /// </summary>
+        private void GetUiElementsReferences()
         {
-            isWindows = true;
+            root = GetComponent<UIDocument>().rootVisualElement;
+            loginPanel = root.Q<VisualElement>("LoginContainer");
+            userInput = root.Q<TextField>("UserTextField");
+            passwordInput = root.Q<TextField>("PasswordTextField");
+            newUserPanel = root.Q<VisualElement>("NewUserContainer");
+            addNewUserInput = root.Q<TextField>("NewUserTextField");
+            addNewPasswordInput = root.Q<TextField>("NewPasswordTextField");
+            openAddNewUserPanelButton = root.Q<Button>("AddNewUserButton");
+            adminAuthorizationPanel = root.Q<VisualElement>("AdminAuthorizationContainer");
+            adminUserInput = root.Q<TextField>("AdminUserTextField");
+            adminPasswordInput = root.Q<TextField>("AdminPasswordTextField");
+            closeAdminAuthorizationPanelButton = root.Q<Button>("AdminCancelButton");
+            closeNewUserPanelButton = root.Q<Button>("CancelNewuserButton");
+            openAdminAuthorizationPanelButton = root.Q<Button>("OpenAdminAuthorizeButton");
+            loginShowHidePasswordButton = root.Q<Button>("LoginShowHidePassword");
+            newUserShowHidePasswordButton = root.Q<Button>("NewUserShowHidePassword");
+            adminShowHidePasswordButton = root.Q<Button>("AdminShowHidePassword");
+            versionLabel = root.Q<Label>("Version");
+            SubscribeUIElementsToEvents();
         }
-        else
+
+        private void SubscribeUIElementsToEvents()
         {
-            isWindows = false;
+            openAddNewUserPanelButton.clicked += () => { ShowAddNewUserPanel(); };
+            closeAdminAuthorizationPanelButton.clicked += () => { CloseAdminPanel(); };
+            closeNewUserPanelButton.clicked += () => { CancelAddNewUser(); };
+            openAdminAuthorizationPanelButton.clicked += () => { AdminAuthorizeAddNewUserClicked(); };
+            loginShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+            newUserShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+            adminShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
         }
-    }
 
-    private void LoginOffline()
-    {
-        if(userInput.text == UsersManager.Instance.admin.GetUsername() && passwordInput.text == UsersManager.Instance.admin.GetPassword())
+        private void UnsubscribeUIElementsToEvents()
         {
-            UsersManager.Instance.currentUser = new User(userInput.text, 10);
-            LoadScreen();
+            openAddNewUserPanelButton.clicked -= () => { ShowAddNewUserPanel(); };
+            closeAdminAuthorizationPanelButton.clicked -= () => { CloseAdminPanel(); };
+            closeNewUserPanelButton.clicked -= () => { CancelAddNewUser(); };
+            openAdminAuthorizationPanelButton.clicked -= () => { AdminAuthorizeAddNewUserClicked(); };
+            loginShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+            newUserShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+            adminShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
         }
-    }
 
-    private IEnumerator CheckIfAdmin()
-    {
-        WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
-
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(checkAccesssLevelForm, ConstStrings.CheckAccessLevel, 0);
-
-        yield return createPostRequest.SendWebRequest();
-        if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
+        /// <summary>
+        /// Get the user Accces level when it try to login or atuthorize the creation of a new user
+        /// </summary>
+        private void GetUserAccessLevel(string accessLevel)
         {
-            if (authorizationAccessLevel == 2 || authorizationAccessLevel > 4)
+            authorizationAccessLevel = int.Parse(accessLevel);
+        }
+
+        /// <summary>
+        /// Check if the current platform that the program is running is Windows or not.
+        /// </summary>
+        private void CheckIfCurrentPlatformIsWindows()
+        {
+            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
             {
-                adminAuthorized = true;
-                User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
-                StartCoroutine(AddNewUser(userToAdd));
+                isWindows = true;
             }
             else
             {
-                SetErrorMessage(8);
-                yield break;
+                isWindows = false;
             }
         }
-        else
+
+        private void LoginOffline()
         {
-            SetErrorMessage(6);
-        }
-    }
-
-    /// <summary>
-    /// Login into the system. Different users have different access
-    /// </summary>
-    private IEnumerator Login()
-    {
-
-        WWWForm loginUserInfo = new WWWForm();
-        loginUserInfo.AddField("apppassword", "LoginUser");
-        loginUserInfo.AddField("username", userInput.text);
-        loginUserInfo.AddField("password", passwordInput.text);
-
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(loginUserInfo, ConstStrings.CheckLoginUser, 0);
-       
-        MouseManager.Instance.SetWaitingCursor();
-        inputEnabled = false;
-        yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            if (isWindows)
+            if (userInput.text == UsersManager.Instance.admin.GetUsername() && passwordInput.text == UsersManager.Instance.admin.GetPassword())
             {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
+                UsersManager.Instance.currentUser = new User(userInput.text, 10);
+                LoadScreen();
+            }
+        }
+
+        /// <summary>
+        /// Check if the person authorazing the creation of a new user have the correct authorization acces level
+        /// </summary>
+        private IEnumerator CheckIfAdmin()
+        {
+            if ((adminUserInput.text == "" || adminUserInput.text == "Digite seu usuário") || (adminPasswordInput.text == "" || adminPasswordInput.text == "Digite sua senha"))
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Empty values");
                 yield break;
             }
-            Debug.LogWarning("Login: conectionerror");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            if (isWindows)
-            {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
-                yield break;
-            }
-            Debug.LogWarning("Login: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            if (isWindows)
-            {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
-                yield break;
-            }
-            Debug.LogWarning("Login: protocol error");
-        }
 
-        if (createPostRequest.error == null)
-        {
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "username query ran into an error" || response == "playerinfo query failed" || response == "wrong appkey")
+            WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
+
+            UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(checkAccesssLevelForm, ConstStrings.CheckAccessLevel, 0);
+
+            yield return createPostRequest.SendWebRequest();
+            if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                if (isWindows)
+                if (authorizationAccessLevel == 2 || authorizationAccessLevel > 4)
                 {
-                    createPostRequest.Dispose();
-                    MouseManager.Instance.SetDefaultCursor();
-                    inputEnabled = true;
-                    LoginOffline();
-                    yield break;
+                    User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
+                    StartCoroutine(AddNewUser(userToAdd));
                 }
                 else
                 {
-                    errorPanel.SetActive(true);
-                    StartCoroutine(ErrorPanelRoutine());
-                    SetErrorMessage(3);
-                }
-            }
-            else if (response == "Username does not exist or there is more than one in the table")
-            {
-                if (isWindows)
-                {
-                    createPostRequest.Dispose();
-                    MouseManager.Instance.SetDefaultCursor();
-                    inputEnabled = true;
-                    LoginOffline();
+                    EventHandler.CallIsOneMessageOnlyEvent(true);
+                    EventHandler.CallOpenMessageEvent("Wrong authorization access level");
                     yield break;
                 }
-                else
-                {
-                    errorPanel.SetActive(true);
-                    StartCoroutine(ErrorPanelRoutine());
-                    SetErrorMessage(0);
-                }
             }
-            else if (response == "password was not able to be verified")
+        }
+
+        /// <summary>
+        /// Login into the system. Different users have different access
+        /// </summary>
+        private IEnumerator Login()
+        {
+            if ((userInput.text == "" || userInput.text == "Digite seu usuário") || (passwordInput.text == "" || passwordInput.text == "Digite sua senha"))
             {
-                if (isWindows)
-                {
-                    createPostRequest.Dispose();
-                    MouseManager.Instance.SetDefaultCursor();
-                    inputEnabled = true;
-                    LoginOffline();
-                    yield break;
-                }
-                else
-                {
-                    errorPanel.SetActive(true);
-                    StartCoroutine(ErrorPanelRoutine());
-                    SetErrorMessage(5);
-                }
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Empty values");
+                yield break;
             }
-            else
+            WWWForm loginUserInfo = new WWWForm();
+            loginUserInfo.AddField("apppassword", "LoginUser");
+            loginUserInfo.AddField("username", userInput.text);
+            loginUserInfo.AddField("password", passwordInput.text);
+
+            UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(loginUserInfo, ConstStrings.CheckLoginUser, 0);
+
+            MouseManager.Instance.SetWaitingCursor();
+            inputEnabled = false;
+            yield return createPostRequest.SendWebRequest();
+
+            if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                UsersManager.Instance.currentUser = new User(userInput.text, int.Parse(response));
+                UsersManager.Instance.currentUser = new User(userInput.text, authorizationAccessLevel);
                 LoadScreen();
             }
 
-        }
-        else
-        {
-            if (isWindows)
-            {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
-                yield break;
-            }
-            else
-            {
-                errorPanel.SetActive(true);
-                Debug.LogWarning(createPostRequest.error);
-                errorText.text = createPostRequest.error;
-                StartCoroutine(ErrorPanelRoutine());
-            }
-        }
-        createPostRequest.Dispose();
-        MouseManager.Instance.SetDefaultCursor();
-        inputEnabled = true;
-    }
-
-    /// <summary>
-    /// Checks on the online database if the user already exists
-    /// </summary>
-    private IEnumerator CheckIfUserAlreadyExists()
-    {
-        WWWForm newUserInfo = new WWWForm();
-        newUserInfo.AddField("apppassword", "CheckIfUserExist");
-        newUserInfo.AddField("username", addNewUserInput.text);
-
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckUserExist, 0);
-        
-        MouseManager.Instance.SetWaitingCursor();
-        inputEnabled = false;
-        yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: conectionerror");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: protocol error");
+            MouseManager.Instance.SetDefaultCursor();
+            inputEnabled = true;
         }
 
-        if (createPostRequest.error == null)
+        /// <summary>
+        /// Checks on the online database if the user already exists
+        /// </summary>
+        private IEnumerator CheckIfUserAlreadyExists()
         {
-            string response = createPostRequest.downloadHandler.text;
-            print(response);
-            if (response == "Database connection error" || response == "username query ran into an error")
+            WWWForm newUserInfo = new WWWForm();
+            newUserInfo.AddField("apppassword", "CheckIfUserExist");
+            newUserInfo.AddField("username", addNewUserInput.text);
+
+            UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckUserExist, 0);
+
+            MouseManager.Instance.SetWaitingCursor();
+            inputEnabled = false;
+            yield return createPostRequest.SendWebRequest();
+
+            if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                SetErrorMessage(3);
-            }
-            else if (response == "Username does not exist or there is more than one in the table")
-            {
-                newUserPanel.SetActive(false);
-                adminAuthorizationPanel.SetActive(true);
+                newUserPanel.style.display = DisplayStyle.None;
+                adminAuthorizationPanel.style.display = DisplayStyle.Flex;
                 adminAuthorizing = true;
             }
-            else if (response == "Username already exist")
-            {
-                SetErrorMessage(1);
-            }
-            else
-            {
-                Debug.Log(response);
-            }
-        }
-        else
-        {
-            errorPanel.SetActive(true);
-            Debug.LogWarning(createPostRequest.error);
-            errorText.text = createPostRequest.error;
-            StartCoroutine(ErrorPanelRoutine());
-        }
-        createPostRequest.Dispose();
-        MouseManager.Instance.SetDefaultCursor();
-        inputEnabled = true;
-    }
 
-    /// <summary>
-    /// Adds a new user to the online user database
-    /// </summary>
-    private IEnumerator AddNewUser(User userToAdd)
-    {
-        WWWForm newUserInfo = new WWWForm();
-        newUserInfo.AddField("apppassword", "InsertNewUser");
-        newUserInfo.AddField("username", userToAdd.GetUsername());
-        newUserInfo.AddField("password", userToAdd.GetPassword());
-
-        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckNewUser, 0);
-        
-        MouseManager.Instance.SetWaitingCursor();
-        inputEnabled = false;
-        yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
-        {
-            Debug.LogWarning("AddNewUser: conectionerror");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("AddNewUser: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("AddNewUser: protocol error");
+            MouseManager.Instance.SetDefaultCursor();
+            inputEnabled = true;
         }
 
-        if (createPostRequest.error == null)
+        /// <summary>
+        /// Adds a new user to the online user database
+        /// </summary>
+        private IEnumerator AddNewUser(User userToAdd)
         {
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "username query ran into an error" || response == "insert user failed")
-            {
-                SetErrorMessage(3);
+            WWWForm newUserInfo = new WWWForm();
+            newUserInfo.AddField("apppassword", "InsertNewUser");
+            newUserInfo.AddField("username", userToAdd.GetUsername());
+            newUserInfo.AddField("password", userToAdd.GetPassword());
 
-            }
-            else if (response == "Username already exists")
-            {
-                SetErrorMessage(1);
+            UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckNewUser, 0);
 
-            }
-            else if (response == "wrong appkey")
+            MouseManager.Instance.SetWaitingCursor();
+            inputEnabled = false;
+            yield return createPostRequest.SendWebRequest();
+            if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                SetErrorMessage(4);
-            }
-            else if (response == "User added")
-            {
-                Debug.Log(response);
-                SetErrorMessage(2);
-                newUserPanel.SetActive(false);
+                newUserPanel.style.display = DisplayStyle.None;
                 adminAuthorizing = false;
-                
-                loginPanel.SetActive(true);
+                loginPanel.style.display = DisplayStyle.Flex;
+                openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
                 loginEnabled = true;
             }
+
+            MouseManager.Instance.SetDefaultCursor();
+            inputEnabled = true;
         }
-        else
+
+        /// <summary>
+        /// Loads the next screen. What will be available on this next screen is dependent if it is an admin loging in or not
+        /// </summary>
+        private void LoadScreen()
         {
-            errorPanel.SetActive(true);
-            Debug.LogWarning(createPostRequest.error);
-            errorText.text = createPostRequest.error;
-            StartCoroutine(ErrorPanelRoutine());
+            EventHandler.CallFillInternalDatabase();
+            ChangeScreenManager.Instance.OpenScene(Scenes.MainMenu, Scenes.InitialScene);
         }
-        createPostRequest.Dispose();
-        MouseManager.Instance.SetDefaultCursor();
-        inputEnabled = true;
-    }
 
-    /// <summary>
-    /// Loads the next screen. What will be available on this next screen is dependent if it is an admin loging in or not
-    /// </summary>
-    private void LoadScreen()
-    {
-        EventHandler.CallFillInternalDatabase();
-        ChangeScreenManager.Instance.OpenScene(Scenes.MainMenu ,Scenes.InitialScene);
-    }
-
-    /// <summary>
-    /// 0 = Username/Password error, 1 = Username already exists, 2 = New user added
-    /// </summary>
-    private void SetErrorMessage(int errorID)
-    {
-        errorPanel.SetActive(true);
-        if (errorText.isActiveAndEnabled)
+        /// <summary>
+        /// Show the panel to add a new user
+        /// </summary>
+        private void ShowAddNewUserPanel()
         {
-            switch (errorID)
-            {
-                case 0:
-                    errorText.text = "Usuário incorreto. Tente novamente.";
-                    break;
-                case 1:
-                    errorText.text = "Usuário já existe. Tente adicionar outro usuário";
-                    break;
-                case 2:
-                    errorText.text = "Usuário cadastrado com sucesso.";
-                    break;
-                case 3:
-                    errorText.text = "Erro no acesso ao banco de dados";
-                    break;
-                case 4:
-                    errorText.text = "Erro na autorização do aplicativo";
-                    break;
-                case 5:
-                    errorText.text = "Senha incorreta. Tente novamente.";
-                    break;
-                case 6:
-                    errorText.text = "Login e/ou senha do admin não reconhecido.";
-                    break;
-                case 7:
-                    errorText.text = "Login e/ou senha incorretos. Tente novamente";
-                    break;
-                case 8:
-                    errorText.text = "Usuário não possui autorização para liberar criação de novo usuário";
-                    break;
-                default:
-                    break;
-            }
-        }
-        StartCoroutine(ErrorPanelRoutine());
-    }
+            openAddNewUserPanelButton.style.display = DisplayStyle.None;
+            loginPanel.style.display = DisplayStyle.None;
+            newUserPanel.style.display = DisplayStyle.Flex;
 
-    /// <summary>
-    /// After 5 seconds close the error panel and enables Enter input
-    /// </summary>
-    private IEnumerator ErrorPanelRoutine()
-    {
-        yield return new WaitForSeconds(10);
-        loginEnabled = true;
-        CloseErrorPanel();
-    }
-
-    /// <summary>
-    /// Closes the ErrorPanel
-    /// </summary>
-    public void CloseErrorPanel()
-    {
-        StopAllCoroutines();
-        errorPanel.SetActive(false);
-        if (adminAuthorizing)
-        {
-          //  adminAuthorizationPanel.SetActive(false);
             adminAuthorizing = false;
         }
-        if (adminAuthorized)
+
+        /// <summary>
+        /// Opens screen to enter admin username and password to authorize the adition of the 
+        /// new user if the user does not exist
+        /// </summary>
+        private void AdminAuthorizeAddNewUserClicked()
         {
-           // newUserPanel.SetActive(false);
-            adminAuthorizationPanel.SetActive(false);
-        }
-        openAddNewUserPanelButton.enabled = true;
-        openAddNewUserPanelButton.interactable = true;
-    }
-
-    /// <summary>
-    /// Show the panel to add a new user
-    /// </summary>
-    public void ShowAddNewUserPanel()
-    {
-        openAddNewUserPanelButton.interactable = false;
-        openAddNewUserPanelButton.enabled = false;
-        newUserPanel.SetActive(true);
-        loginPanel.SetActive(false);
-        newUserMessage.text = "Digite o novo usuário e senha, e aperte no botão abaixo para adicionar novo usuário.";
-        addNewUserButtonText.text = "Adicionar novo usuário";
-        adminAuthorizing = false;
-    }
-
-    /// <summary>
-    /// Opens screen to enter admin username and password to authorize the adition of the 
-    /// new user if the user does not exist
-    /// </summary>
-    public void AddNewUserClicked()
-    {
-        loginEnabled = false;
-
-        StartCoroutine(CheckIfUserAlreadyExists());
-    } 
-
-    /// <summary>
-    /// Called by the OK button inside the error panel to close the panel and enable enter input
-    /// </summary>
-    public void SetInputEnabled(bool isEnabled)
-    {
-        errorPanel.SetActive(false);
-        loginEnabled = isEnabled;
-        inputEnabled = isEnabled;
-    }
-
-    /// <summary>
-    /// show or hide the password
-    /// </summary>
-    public void ShowHidePassword()
-    {
-        if (newUserPanel.activeInHierarchy)
-        {
-            if (addNewPasswordInput.contentType == TMP_InputField.ContentType.Password)
+            if ((addNewUserInput.text == "" || addNewUserInput.text == "Digite o usuário a ser adicionado") || (addNewPasswordInput.text == "" || addNewPasswordInput.text == "Digite a senha do novo usuário"))
             {
-                addNewPasswordInput.contentType = TMP_InputField.ContentType.Standard;
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Empty values");
+                return;
             }
             else
             {
-                addNewPasswordInput.contentType = TMP_InputField.ContentType.Password;
+                loginEnabled = false;
+
+
+                StartCoroutine(CheckIfUserAlreadyExists());
             }
-            addNewPasswordInput.ForceLabelUpdate();
         }
-        if (adminAuthorizationPanel.activeInHierarchy)
+
+        /// <summary>
+        /// show or hide the password
+        /// </summary>
+        private void ShowHidePassword()
         {
-            if (adminPasswordInput.contentType == TMP_InputField.ContentType.Password)
+            if (newUserPanel.style.display == DisplayStyle.Flex)
             {
-                adminPasswordInput.contentType = TMP_InputField.ContentType.Standard;
+                if (addNewPasswordInput.isPasswordField)
+                {
+                    addNewPasswordInput.isPasswordField = false;
+                    newUserShowHidePasswordButton.style.backgroundImage = image2;
+                }
+                else
+                {
+                    addNewPasswordInput.isPasswordField = true;
+                    newUserShowHidePasswordButton.style.backgroundImage = image1;
+                }
+            }
+            if (adminAuthorizationPanel.style.display == DisplayStyle.Flex)
+            {
+                if (adminPasswordInput.isPasswordField)
+                {
+                    adminPasswordInput.isPasswordField = false;
+                    adminShowHidePasswordButton.style.backgroundImage = image2;
+                }
+                else
+                {
+                    adminPasswordInput.isPasswordField = true;
+                    adminShowHidePasswordButton.style.backgroundImage = image1;
+                }
             }
             else
             {
-                adminPasswordInput.contentType = TMP_InputField.ContentType.Password;
+                if (passwordInput.isPasswordField)
+                {
+                    passwordInput.isPasswordField = false;
+                    loginShowHidePasswordButton.style.backgroundImage = image2;
+                }
+                else
+                {
+                    passwordInput.isPasswordField = true;
+                    loginShowHidePasswordButton.style.backgroundImage = image1;
+                }
             }
-            adminPasswordInput.ForceLabelUpdate();
         }
-        if (!adminAuthorizing && !adminAuthorized && !newUserPanel.activeInHierarchy)
+
+        /// <summary>
+        /// Cancel the adition of a new user and returns to login panel
+        /// </summary>
+        private void CancelAddNewUser()
         {
-            if (passwordInput.contentType == TMP_InputField.ContentType.Password)
-            {
-                passwordInput.contentType = TMP_InputField.ContentType.Standard;
-            }
-            else
-            {
-                passwordInput.contentType = TMP_InputField.ContentType.Password;
-            }
-            passwordInput.ForceLabelUpdate();
+            addNewPasswordInput.SetValueWithoutNotify("Digite a senha do novo usuário");
+            addNewUserInput.SetValueWithoutNotify("Digite o usuário a ser adicionado");
+            newUserPanel.style.display = DisplayStyle.None;
+            loginPanel.style.display = DisplayStyle.Flex;
+            openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
+            loginEnabled = true;
+            adminAuthorizing = false;
+            inputEnabled = true;
         }
-    }
 
-    /// <summary>
-    /// Cancel the adition of a new user and returns to login panel
-    /// </summary>
-    public void CancelAddNewUser()
-    {
-        addNewPasswordInput.text = "";
-        addNewUserInput.text = "";
-        newUserPanel.SetActive(false);
-        loginPanel.SetActive(true);
-        loginEnabled = true;
-        adminAuthorizing = false;
-        inputEnabled = true;
-    }
-
-    /// <summary>
-    /// Close the admin authorization panel and returns to the add new user panel
-    /// </summary>
-    public void CloseAdminPanel()
-    {
-        adminUserInput.text = "";
-        adminPasswordInput.text = "";
-        adminAuthorizationPanel.SetActive(false);
-        adminAuthorizing = false;
-        newUserPanel.SetActive(true);
+        /// <summary>
+        /// Close the admin authorization panel and returns to the add new user panel
+        /// </summary>
+        private void CloseAdminPanel()
+        {
+            adminUserInput.SetValueWithoutNotify("");
+            adminPasswordInput.SetValueWithoutNotify("");
+            adminAuthorizationPanel.style.display = DisplayStyle.None;
+            adminAuthorizing = false;
+            newUserPanel.style.display = DisplayStyle.Flex;
+        }
     }
 }
