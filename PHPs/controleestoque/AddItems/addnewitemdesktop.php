@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_controleestoque');
+$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_controleestoque');
 
 if(mysqli_connect_errno())
 {
@@ -25,7 +25,7 @@ if($appkey != "AddNewItem")
 }
 
 $modelocheckquery = "SELECT * from Desktop WHERE Patrimonio = '" .$patrimonio. "';";
-$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Desktop Patrimonio query failed");
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Patrimonio query failed");
 
 if($modelocheckresult->num_rows > 0)
 {
@@ -39,9 +39,4 @@ mysqli_query($con, $insertuserquery) or die("insert item failed");
 
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

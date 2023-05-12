@@ -2,43 +2,33 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Networking;
+using UnityEditor.PackageManager;
 
 public class MainMenuManager1 : MonoBehaviour
 {
-    private void GetUiElementsReferences()
-    {
-        root  = GetComponent<UIDocument>().rootVisualElement;
-        loginPanel = root.Q<VisualElement>("LoginContainer");
-        userInput = root.Q<TextField>("UserTextField");
-        passwordInput = root.Q<TextField>("PasswordTextField");
-        errorPanel = root.Q<VisualElement>("ErrorContainer");
-        errorText = root.Q<Label>("ErrorLabel");
-        newUserPanel = root.Q<VisualElement>("NewUserContainer");
-        addNewUserInput = root.Q<TextField>("NewUserTextField");
-        addNewPasswordInput = root.Q<TextField>("NewPasswordTextField");
-        openAddNewUserPanelButton = root.Q<Button>("AddNewUserButton");
-    }
+    
     #region Login
     private VisualElement loginPanel;
     private TextField userInput;
     private TextField passwordInput;
-    #endregion
-    #region Error
-    private VisualElement errorPanel;
-    private Label errorText;
+    private Button loginShowHidePasswordButton;
     #endregion
     #region NewUser
     private VisualElement newUserPanel;
     private TextField addNewUserInput;
     private TextField addNewPasswordInput;
-    private Button openAddNewUserPanelButton;
+    private Button closeNewUserPanelButton;
+    private Button openAdminAuthorizationPanelButton;
+    private Button newUserShowHidePasswordButton;
     #endregion
     #region Admin
     private VisualElement adminAuthorizationPanel;
     private TextField adminUserInput;
     private TextField adminPasswordInput;
+    private Button closeAdminAuthorizationPanelButton;
+    private Button adminShowHidePasswordButton;
     #endregion
-
+    private Button openAddNewUserPanelButton;
     private VisualElement root;
 
     private bool loginEnabled = true; // enable or disable the Enter key press to login
@@ -70,11 +60,15 @@ public class MainMenuManager1 : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.PostRequestResponse += GetUserAccessLevel;
+        GetUiElementsReferences();
+               versionLabel.text = InternalDatabase.Instance.currentVersion;
+
     }
 
     private void OnDisable()
     {
         EventHandler.PostRequestResponse -= GetUserAccessLevel;
+        UnsubscribeUIElementsToEvents();
     }
 
     /// <summary>
@@ -89,18 +83,71 @@ public class MainMenuManager1 : MonoBehaviour
                 if (loginEnabled)
                 {
                     inputEnabled = false;
-                    StartCoroutine(Login());
-                                    }
+                    if (InternalDatabase.Instance.offlineProgram)
+                    {
+                        LoginOffline();
+                    }
+                    else
+                    {
+                        StartCoroutine(Login());
+                    }
+                }
                 if (adminAuthorizing)
                 {
                     inputEnabled = false;
-                    StartCoroutine(CheckIfAdmin());            
+                    StartCoroutine(CheckIfAdmin());
                 }
             }
         }
     }
 
-   
+    /// <summary>
+    /// Get the references of all UI elements that will have some functionality
+    /// </summary>
+    private void GetUiElementsReferences()
+    {
+        root = GetComponent<UIDocument>().rootVisualElement;
+        loginPanel = root.Q<VisualElement>("LoginContainer");
+        userInput = root.Q<TextField>("UserTextField");
+        passwordInput = root.Q<TextField>("PasswordTextField");
+        newUserPanel = root.Q<VisualElement>("NewUserContainer");
+        addNewUserInput = root.Q<TextField>("NewUserTextField");
+        addNewPasswordInput = root.Q<TextField>("NewPasswordTextField");
+        openAddNewUserPanelButton = root.Q<Button>("AddNewUserButton");
+        adminAuthorizationPanel = root.Q<VisualElement>("AdminAuthorizationContainer");
+        adminUserInput = root.Q<TextField>("AdminUserTextField");
+        adminPasswordInput = root.Q<TextField>("AdminPasswordTextField");
+        closeAdminAuthorizationPanelButton = root.Q<Button>("AdminCancelButton");
+        closeNewUserPanelButton = root.Q<Button>("CancelNewuserButton");
+        openAdminAuthorizationPanelButton = root.Q<Button>("OpenAdminAuthorizeButton");
+        loginShowHidePasswordButton = root.Q<Button>("LoginShowHidePassword");
+        newUserShowHidePasswordButton = root.Q<Button>("NewUserShowHidePassword");
+        adminShowHidePasswordButton = root.Q<Button>("AdminShowHidePassword");
+        versionLabel = root.Q<Label>("Version");
+        SubscribeUIElementsToEvents();
+    }
+
+    private void SubscribeUIElementsToEvents()
+    {
+        openAddNewUserPanelButton.clicked += () => { ShowAddNewUserPanel(); };
+        closeAdminAuthorizationPanelButton.clicked += () => { CloseAdminPanel(); };
+        closeNewUserPanelButton.clicked += () => { CancelAddNewUser(); };
+        openAdminAuthorizationPanelButton.clicked += () => { AdminAuthorizeAddNewUserClicked(); };
+        loginShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+        newUserShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+        adminShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+    }
+
+    private void UnsubscribeUIElementsToEvents()
+    {
+        openAddNewUserPanelButton.clicked -= () => { ShowAddNewUserPanel(); };
+        closeAdminAuthorizationPanelButton.clicked -= () => { CloseAdminPanel(); };
+        closeNewUserPanelButton.clicked -= () => { CancelAddNewUser(); };
+        openAdminAuthorizationPanelButton.clicked -= () => { AdminAuthorizeAddNewUserClicked(); };
+        loginShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+        newUserShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+        adminShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+    }
 
     /// <summary>
     /// Get the user Accces level when it try to login or atuthorize the creation of a new user
@@ -134,8 +181,18 @@ public class MainMenuManager1 : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if the person authorazing the creation of a new user have the correct authorization acces level
+    /// </summary>
     private IEnumerator CheckIfAdmin()
     {
+        if ((adminUserInput.text == "" || adminUserInput.text == "Digite seu usuário") || (adminPasswordInput.text == "" || adminPasswordInput.text == "Digite sua senha"))
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Empty values");
+            yield break;
+        }
+
         WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
 
         UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(checkAccesssLevelForm, ConstStrings.CheckAccessLevel, 0);
@@ -151,14 +208,11 @@ public class MainMenuManager1 : MonoBehaviour
             }
             else
             {
-                SetErrorMessage(8);
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Wrong authorization access level");
                 yield break;
             }
-        }
-        else
-        {
-            SetErrorMessage(6);
-        }
+        }        
     }
 
     /// <summary>
@@ -166,7 +220,12 @@ public class MainMenuManager1 : MonoBehaviour
     /// </summary>
     private IEnumerator Login()
     {
-
+        if((userInput.text == "" || userInput.text == "Digite seu usuário") ||(passwordInput.text == "" || passwordInput.text == "Digite sua senha"))
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Empty values");
+            yield break;
+        }
         WWWForm loginUserInfo = new WWWForm();
         loginUserInfo.AddField("apppassword", "LoginUser");
         loginUserInfo.AddField("username", userInput.text);
@@ -178,123 +237,12 @@ public class MainMenuManager1 : MonoBehaviour
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        if(HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            if (isWindows)
-            {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
-                yield break;
-            }
-            Debug.LogWarning("Login: conectionerror");
+            UsersManager.Instance.currentUser = new User(userInput.text, authorizationAccessLevel);
+            LoadScreen();
         }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            if (isWindows)
-            {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
-                yield break;
-            }
-            Debug.LogWarning("Login: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            if (isWindows)
-            {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
-                yield break;
-            }
-            Debug.LogWarning("Login: protocol error");
-        }
-
-        if (createPostRequest.error == null)
-        {
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "username query ran into an error" || response == "playerinfo query failed" || response == "wrong appkey")
-            {
-                if (isWindows)
-                {
-                    createPostRequest.Dispose();
-                    MouseManager.Instance.SetDefaultCursor();
-                    inputEnabled = true;
-                    LoginOffline();
-                    yield break;
-                }
-                else
-                {
-                  //  errorPanel.SetActive(true);
-                    StartCoroutine(ErrorPanelRoutine());
-                    SetErrorMessage(3);
-                }
-            }
-            else if (response == "Username does not exist or there is more than one in the table")
-            {
-                if (isWindows)
-                {
-                    createPostRequest.Dispose();
-                    MouseManager.Instance.SetDefaultCursor();
-                    inputEnabled = true;
-                    LoginOffline();
-                    yield break;
-                }
-                else
-                {
-                  //  errorPanel.SetActive(true);
-                    StartCoroutine(ErrorPanelRoutine());
-                    SetErrorMessage(0);
-                }
-            }
-            else if (response == "password was not able to be verified")
-            {
-                if (isWindows)
-                {
-                    createPostRequest.Dispose();
-                    MouseManager.Instance.SetDefaultCursor();
-                    inputEnabled = true;
-                    LoginOffline();
-                    yield break;
-                }
-                else
-                {
-                //    errorPanel.SetActive(true);
-                    StartCoroutine(ErrorPanelRoutine());
-                    SetErrorMessage(5);
-                }
-            }
-            else
-            {
-                UsersManager.Instance.currentUser = new User(userInput.text, int.Parse(response));
-                LoadScreen();
-            }
-
-        }
-        else
-        {
-            if (isWindows)
-            {
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                inputEnabled = true;
-                LoginOffline();
-                yield break;
-            }
-            else
-            {
-            //    errorPanel.SetActive(true);
-                Debug.LogWarning(createPostRequest.error);
-                errorText.text = createPostRequest.error;
-                StartCoroutine(ErrorPanelRoutine());
-            }
-        }
-        createPostRequest.Dispose();
+       
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;
     }
@@ -313,51 +261,14 @@ public class MainMenuManager1 : MonoBehaviour
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        
+        if(HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            Debug.LogWarning("CheckIfUserAlreadyExists: conectionerror");
+            newUserPanel.style.display = DisplayStyle.None;
+            adminAuthorizationPanel.style.display = DisplayStyle.Flex;
+            adminAuthorizing = true;
         }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("CheckIfUserAlreadyExists: protocol error");
-        }
-
-        if (createPostRequest.error == null)
-        {
-            string response = createPostRequest.downloadHandler.text;
-            print(response);
-            if (response == "Database connection error" || response == "username query ran into an error")
-            {
-                SetErrorMessage(3);
-            }
-            else if (response == "Username does not exist or there is more than one in the table")
-            {
-             //   newUserPanel.SetActive(false);
-             //   adminAuthorizationPanel.SetActive(true);
-                adminAuthorizing = true;
-            }
-            else if (response == "Username already exist")
-            {
-                SetErrorMessage(1);
-            }
-            else
-            {
-                Debug.Log(response);
-            }
-        }
-        else
-        {
-         //   errorPanel.SetActive(true);
-            Debug.LogWarning(createPostRequest.error);
-            errorText.text = createPostRequest.error;
-            StartCoroutine(ErrorPanelRoutine());
-        }
-        createPostRequest.Dispose();
+  
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;
     }
@@ -377,56 +288,15 @@ public class MainMenuManager1 : MonoBehaviour
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        if(HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            Debug.LogWarning("AddNewUser: conectionerror");
+            newUserPanel.style.display = DisplayStyle.None;
+            adminAuthorizing = false;
+            loginPanel.style.display = DisplayStyle.Flex;
+            openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
+            loginEnabled = true;
         }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("AddNewUser: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("AddNewUser: protocol error");
-        }
-
-        if (createPostRequest.error == null)
-        {
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "username query ran into an error" || response == "insert user failed")
-            {
-                SetErrorMessage(3);
-
-            }
-            else if (response == "Username already exists")
-            {
-                SetErrorMessage(1);
-
-            }
-            else if (response == "wrong appkey")
-            {
-                SetErrorMessage(4);
-            }
-            else if (response == "User added")
-            {
-                Debug.Log(response);
-                SetErrorMessage(2);
-            //    newUserPanel.SetActive(false);
-                adminAuthorizing = false;
-                
-            //    loginPanel.SetActive(true);
-                loginEnabled = true;
-            }
-        }
-        else
-        {
-          //  errorPanel.SetActive(true);
-            Debug.LogWarning(createPostRequest.error);
-            errorText.text = createPostRequest.error;
-            StartCoroutine(ErrorPanelRoutine());
-        }
-        createPostRequest.Dispose();
+       
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;
     }
@@ -439,93 +309,16 @@ public class MainMenuManager1 : MonoBehaviour
         EventHandler.CallFillInternalDatabase();
         ChangeScreenManager.Instance.OpenScene(Scenes.MainMenu ,Scenes.InitialScene);
     }
-
-    /// <summary>
-    /// 0 = Username/Password error, 1 = Username already exists, 2 = New user added
-    /// </summary>
-    private void SetErrorMessage(int errorID)
-    {
-       // errorPanel.SetActive(true);
-        //if (errorText.isActiveAndEnabled)
-        //{
-        //    switch (errorID)
-        //    {
-        //        case 0:
-        //            errorText.text = "Usuário incorreto. Tente novamente.";
-        //            break;
-        //        case 1:
-        //            errorText.text = "Usuário já existe. Tente adicionar outro usuário";
-        //            break;
-        //        case 2:
-        //            errorText.text = "Usuário cadastrado com sucesso.";
-        //            break;
-        //        case 3:
-        //            errorText.text = "Erro no acesso ao banco de dados";
-        //            break;
-        //        case 4:
-        //            errorText.text = "Erro na autorização do aplicativo";
-        //            break;
-        //        case 5:
-        //            errorText.text = "Senha incorreta. Tente novamente.";
-        //            break;
-        //        case 6:
-        //            errorText.text = "Login e/ou senha do admin não reconhecido.";
-        //            break;
-        //        case 7:
-        //            errorText.text = "Login e/ou senha incorretos. Tente novamente";
-        //            break;
-        //        case 8:
-        //            errorText.text = "Usuário não possui autorização para liberar criação de novo usuário";
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
-        StartCoroutine(ErrorPanelRoutine());
-    }
-
-    /// <summary>
-    /// After 5 seconds close the error panel and enables Enter input
-    /// </summary>
-    private IEnumerator ErrorPanelRoutine()
-    {
-        yield return new WaitForSeconds(10);
-        loginEnabled = true;
-        CloseErrorPanel();
-    }
-
-    /// <summary>
-    /// Closes the ErrorPanel
-    /// </summary>
-    public void CloseErrorPanel()
-    {
-        StopAllCoroutines();
-     //   errorPanel.SetActive(false);
-        if (adminAuthorizing)
-        {
-          //  adminAuthorizationPanel.SetActive(false);
-            adminAuthorizing = false;
-        }
-        if (adminAuthorized)
-        {
-           // newUserPanel.SetActive(false);
-     //       adminAuthorizationPanel.SetActive(false);
-        }
-     //   openAddNewUserPanelButton.enabled = true;
-    //    openAddNewUserPanelButton.interactable = true;
-    }
-
+   
     /// <summary>
     /// Show the panel to add a new user
     /// </summary>
-    public void ShowAddNewUserPanel()
+    private void ShowAddNewUserPanel()
     {
-    //    openAddNewUserPanelButton.interactable = false;
-   //     openAddNewUserPanelButton.enabled = false;
-    //    newUserPanel.SetActive(true);
-   //     loginPanel.SetActive(false);
-    //    newUserMessage.text = "Digite o novo usuário e senha, e aperte no botão abaixo para adicionar novo usuário.";
-   //     addNewUserButtonText.text = "Adicionar novo usuário";
+        openAddNewUserPanelButton.style.display = DisplayStyle.None;
+        loginPanel.style.display = DisplayStyle.None;
+        newUserPanel.style.display = DisplayStyle.Flex;
+        
         adminAuthorizing = false;
     }
 
@@ -533,75 +326,73 @@ public class MainMenuManager1 : MonoBehaviour
     /// Opens screen to enter admin username and password to authorize the adition of the 
     /// new user if the user does not exist
     /// </summary>
-    public void AddNewUserClicked()
+    private void AdminAuthorizeAddNewUserClicked()
     {
-        loginEnabled = false;
+        if((addNewUserInput.text == "" || addNewUserInput.text == "Digite o usuário a ser adicionado") ||(addNewPasswordInput.text == "" ||addNewPasswordInput.text == "Digite a senha do novo usuário"))
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Empty values");
+            return;
+        }
+        else
+        {
+            loginEnabled = false;
 
-        StartCoroutine(CheckIfUserAlreadyExists());
+
+            StartCoroutine(CheckIfUserAlreadyExists());
+        }      
     } 
-
-    /// <summary>
-    /// Called by the OK button inside the error panel to close the panel and enable enter input
-    /// </summary>
-    public void SetInputEnabled(bool isEnabled)
-    {
-  //      errorPanel.SetActive(false);
-        loginEnabled = isEnabled;
-        inputEnabled = isEnabled;
-    }
 
     /// <summary>
     /// show or hide the password
     /// </summary>
-    public void ShowHidePassword()
-    {
-        //if (newUserPanel.activeInHierarchy)
-        //{
-        //    if (addNewPasswordInput.contentType == TMP_InputField.ContentType.Password)
-        //    {
-        //        addNewPasswordInput.contentType = TMP_InputField.ContentType.Standard;
-        //    }
-        //    else
-        //    {
-        //        addNewPasswordInput.contentType = TMP_InputField.ContentType.Password;
-        //    }
-        //    addNewPasswordInput.ForceLabelUpdate();
-        //}
-        //if (adminAuthorizationPanel.activeInHierarchy)
-        //{
-        //    if (adminPasswordInput.contentType == TMP_InputField.ContentType.Password)
-        //    {
-        //        adminPasswordInput.contentType = TMP_InputField.ContentType.Standard;
-        //    }
-        //    else
-        //    {
-        //        adminPasswordInput.contentType = TMP_InputField.ContentType.Password;
-        //    }
-        //    adminPasswordInput.ForceLabelUpdate();
-        //}
-        //if (!adminAuthorizing && !adminAuthorized && !newUserPanel.activeInHierarchy)
-        //{
-        //    if (passwordInput.contentType == TMP_InputField.ContentType.Password)
-        //    {
-        //        passwordInput.contentType = TMP_InputField.ContentType.Standard;
-        //    }
-        //    else
-        //    {
-        //        passwordInput.contentType = TMP_InputField.ContentType.Password;
-        //    }
-        //    passwordInput.ForceLabelUpdate();
-        //}
+    private void ShowHidePassword()
+    {      
+        if (newUserPanel.style.display == DisplayStyle.Flex)
+        {
+            if (addNewPasswordInput.isPasswordField)
+            {
+                addNewPasswordInput.isPasswordField = false;
+            }
+            else
+            {
+                addNewPasswordInput.isPasswordField = true;
+            }            
+        }
+        if (adminAuthorizationPanel.style.display == DisplayStyle.Flex)
+        {
+            if (adminPasswordInput.isPasswordField)
+            {
+                adminPasswordInput.isPasswordField = false;
+            }
+            else
+            {
+                adminPasswordInput.isPasswordField = true;
+            }            
+        }
+        else
+        {
+            if (passwordInput.isPasswordField)
+            {
+                passwordInput.isPasswordField = false;
+            }
+            else
+            {
+                passwordInput.isPasswordField = true;
+            }            
+        }
     }
 
     /// <summary>
     /// Cancel the adition of a new user and returns to login panel
     /// </summary>
-    public void CancelAddNewUser()
+    private void CancelAddNewUser()
     {
-      //  addNewPasswordInput.text = "";
-    //    addNewUserInput.text = "";
-    //    newUserPanel.SetActive(false);
-    //    loginPanel.SetActive(true);
+        addNewPasswordInput.SetValueWithoutNotify("Digite a senha do novo usuário");
+        addNewUserInput.SetValueWithoutNotify("Digite o usuário a ser adicionado");
+        newUserPanel.style.display = DisplayStyle.None;
+        loginPanel.style.display = DisplayStyle.Flex;
+        openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
         loginEnabled = true;
         adminAuthorizing = false;
         inputEnabled = true;
@@ -610,12 +401,12 @@ public class MainMenuManager1 : MonoBehaviour
     /// <summary>
     /// Close the admin authorization panel and returns to the add new user panel
     /// </summary>
-    public void CloseAdminPanel()
+    private void CloseAdminPanel()
     {
-   //     adminUserInput.text = "";
-  //      adminPasswordInput.text = "";
-  //      adminAuthorizationPanel.SetActive(false);
+        adminUserInput.SetValueWithoutNotify("");
+        adminPasswordInput.SetValueWithoutNotify("");
+        adminAuthorizationPanel.style.display = DisplayStyle.None;
         adminAuthorizing = false;
- //       newUserPanel.SetActive(true);
+        newUserPanel.style.display = DisplayStyle.Flex;
     }
 }

@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
-public class MessageManager : MonoBehaviour
+public class MessageManager1 : MonoBehaviour
 {
-    [SerializeField] TMP_Text messageText;
-    [SerializeField] GameObject messagePanel;
+    private VisualElement root;
+    private Label messageText;
+    private VisualElement messagePanel;
+    private Button closeMessageButton;
 
     private string message1 = "";
     private string message2 = "";
@@ -17,7 +20,7 @@ public class MessageManager : MonoBehaviour
         if (inputEnabled)
         {
             
-            if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && messagePanel.activeInHierarchy)
+            if ((Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) && messagePanel.style.display == DisplayStyle.Flex)
             {
                 CloseMessage();
             }
@@ -26,9 +29,14 @@ public class MessageManager : MonoBehaviour
 
     private void OnEnable()
     {
+        root = GetComponent<UIDocument>().rootVisualElement;
+        messageText = root.Q<Label>("ErrorLabel");
+        messagePanel = root.Q<VisualElement>("ErrorContainer");
+        closeMessageButton = root.Q<Button>("ErrorButton");
         EventHandler.OpenMessageEvent += MessageReceived;
         EventHandler.EnableInput += SetInputEnabled;
         EventHandler.IsOneMessageOnlyEvent += SetIsOneMessageOnly;
+        closeMessageButton.clicked += () => { CloseMessage(); };
     }
 
     private void OnDisable()
@@ -87,7 +95,7 @@ public class MessageManager : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
         EventHandler.CallEnableInput(false);
         inputEnabled = true;
-        messagePanel.SetActive(true);
+        messagePanel.style.display = DisplayStyle.Flex;
         if ((message1 == "Worked" && message2 == "Worked") || (message1 == "Updated" && message2 == "Updated"))
         {
             if (message1 == "Worked")
@@ -261,7 +269,7 @@ public class MessageManager : MonoBehaviour
         messageText.text = "";
         message1 = "";
         message2 = "";
-        messagePanel.SetActive(false);
+        messagePanel.style.display = DisplayStyle.None;
         StopAllCoroutines();
         
         EventHandler.CallMessageClosed();

@@ -27,5 +27,6 @@ public enum Scenes
     RecoverBKP,
     ShowAllMovementsScene,
     SplashScreen,
-    UpdateItemScene
+    UpdateItemScene,
+    TestScene
 }

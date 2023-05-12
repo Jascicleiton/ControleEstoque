@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_controleestoque');
+$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_controleestoque');
 
 if(mysqli_connect_errno())
 {
@@ -21,7 +21,7 @@ if($appkey != "InsertNewUser")
 }
 
 $usernamecheckquery = "SELECT username FROM users WHERE username = '" . $usernameclean . "';";
-$usernamecheck = mysqli_query($con, $usernamecheckquery) or die("username query ran into an error");
+$usernamecheck = mysqli_query($con, $usernamecheckquery) or die("Username query ran into an error");
 
 if(mysqli_num_rows($usernamecheck) > 0)
 {
@@ -29,12 +29,9 @@ if(mysqli_num_rows($usernamecheck) > 0)
     exit();
 }
 
-
 $insertuserquery= "INSERT INTO users(username, password) VALUES('". $usernameclean ."', '". $passwordhash ."');";
-mysqli_query($con, $insertuserquery) or die("insert user failed");
+mysqli_query($con, $insertuserquery) or die("Insert user failed");
  echo("User added");
 
-
 $con->close();
-
 ?>

@@ -134,8 +134,9 @@ GameObject:
   - component: {fileID: 105296376}
   - component: {fileID: 105296377}
   - component: {fileID: 105296378}
+  - component: {fileID: 105296379}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MainMenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,19 +185,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07c70dc1a4a09845896ebe93a43209d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginPanel: {fileID: 0}
-  userInput: {fileID: 0}
-  passwordInput: {fileID: 0}
-  errorPanel: {fileID: 0}
-  errorText: {fileID: 0}
-  newUserPanel: {fileID: 0}
-  newUserMessage: {fileID: 0}
-  addNewUserInput: {fileID: 0}
-  addNewPasswordInput: {fileID: 0}
-  openAddNewUserPanelButton: {fileID: 0}
-  addNewUserButtonText: {fileID: 0}
-  adminAuthorizationPanel: {fileID: 0}
-  adminUserInput: {fileID: 0}
-  adminPasswordInput: {fileID: 0}
-  versionText: {fileID: 0}
-  testText: {fileID: 0}
+--- !u!114 &105296379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105296375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4215a7d8f02414c47a53b4a81b2381e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageText: {fileID: 0}
+  messagePanel: {fileID: 0}
