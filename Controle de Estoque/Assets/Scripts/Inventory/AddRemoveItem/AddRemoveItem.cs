@@ -143,7 +143,7 @@ public class AddRemoveItem : MonoBehaviour
             }
             if (addInventario)
             {
-                AddItemLocal.AddItem(parameterValues, HelperMethods.GetCategoryString(categoryDP.value));
+                //AddItemLocal.AddItem(parameterValues, HelperMethods.GetCategoryString(categoryDP.value));
             }
         }
         if (!addInventario)

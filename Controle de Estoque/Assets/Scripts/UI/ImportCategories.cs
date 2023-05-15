@@ -19,7 +19,7 @@ public class ImportCategories : MonoBehaviour, IJsonSaveable
         {
             StartCoroutine(ImportCategoriesRoutine());
         }
-      //  GambiarraParaCarregarCategorias();
+        GambiarraParaCarregarCategorias();
     }
 
     /// <summary>

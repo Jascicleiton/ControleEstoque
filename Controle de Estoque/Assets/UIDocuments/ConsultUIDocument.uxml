@@ -10,34 +10,83 @@
             <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="SearchOptionsDP" style="font-size: 20px; width: 25%; margin-right: 15px;" />
             <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="CategoryDP" style="font-size: 20px; width: 25%; margin-left: 15px;" />
             <ui:TextField picking-mode="Ignore" value="filler text" name="PatrimonioTextField" style="font-size: 20px; width: 25%; display: none; margin-left: 15px;" />
+            <ui:Label tabindex="-1" text="50 Itens encontrados" display-tooltip-when-elided="true" name="NumberOfItemsFound" style="font-size: 20px; -unity-text-align: middle-center; margin-left: 100px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="SearchParametersContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 25%; flex-direction: row; flex-wrap: wrap;">
-            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO..." style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="Modelo" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="Local: Estoque, Descarte..." style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
-            <ui:TextField picking-mode="Ignore" value="filler text" style="height: 20%; width: 16%; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px;" />
+        <ui:VisualElement name="SearchParametersContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; flex-direction: row; flex-wrap: wrap; flex-basis: auto; flex-shrink: 1;">
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
+            <ui:TextField picking-mode="Ignore" value="Satus: Funciona, DEFEITO, etc." style="height: 55px; width: 305px; margin-right: 6px; margin-left: 6px; margin-top: 6px; margin-bottom: 6px; flex-wrap: wrap; white-space: normal;">
+                <ui:DropdownField index="-1" name="OperatorsDropdownField" style="width: 10%; height: 55%; align-self: center;" />
+            </ui:TextField>
         </ui:VisualElement>
-        <ui:VisualElement name="ResultContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 55%;">
+        <ui:VisualElement name="ResultContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 55%;">
             <ui:ListView focusable="true" style="flex-grow: 1;" />
         </ui:VisualElement>
     </ui:VisualElement>

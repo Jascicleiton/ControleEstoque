@@ -1,11 +1,11 @@
-using TMPro;
+using UnityEngine.UIElements;
 
 public class AddItemLocal 
 {
     /// <summary>
     /// Add a new item to all internal databases
     /// </summary>
-    public static void AddItem(TMP_InputField[] parameterValues, string category)
+    public static void AddItem(TextField[] parameterValues, string category)
     {
         ItemColumns itemToAddFullDatabase = new ItemColumns();
         ItemColumns itemToAddCategoryDatabase = new ItemColumns();

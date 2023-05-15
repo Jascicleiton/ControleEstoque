@@ -1,6 +1,907 @@
 {
   "d5670d65-04ae-4c09-a653-30cc4effad22": {
-    "ImportCategories": []
+    "ImportCategories": [
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
+      }
+    ]
   },
   "35aac1d1-9605-4002-aa5c-4f219df57d60": {
     "UsersManager": [
