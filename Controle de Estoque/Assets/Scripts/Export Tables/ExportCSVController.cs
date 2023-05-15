@@ -2,22 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(ExportCSVs))]
 public class ExportCSVController : MonoBehaviour
 {
     private ExportCSVs exportCSVs = null;
     private int csvToExportIndex = 0;
-    [SerializeField] private TMP_Text messageText;
+    private Label messageText;
+
+    private VisualElement root;
+    private Button returnButton;
+    private Button exportButon;
+    private DropdownField dropdownField;
 
     private void Start()
     {
         exportCSVs = GetComponent<ExportCSVs>();
     }
 
+    private void OnEnable()
+    {
+        root = GetComponent<UIDocument>().rootVisualElement;
+        returnButton = root.Q<Button>("ReturnButton");
+        exportButon = root.Q<Button>("ExportButton");
+        dropdownField = root.Q<DropdownField>("CategoryDP");
+        messageText = root.Q<Label>("MessageLabel");
+        returnButton.clicked += () => { ReturnToPreviousScreen(); };
+        exportButon.clicked += () => { ExportSelectedCSV(); };
+        dropdownField.RegisterCallback<ChangeEvent<string>>(HandleInputData);
+    }
+
+    private void OnDisable()
+    {
+        returnButton.clicked -= () => { ReturnToPreviousScreen(); };
+        exportButon.clicked -= () => { ExportSelectedCSV(); };
+        dropdownField.UnregisterCallback<ChangeEvent<string>>(HandleInputData);
+    }
+
     public void ExportSelectedCSV()
     {
-        exportCSVs.CreateInventarioSheet();
+       // exportCSVs.CreateInventarioSheet();
         ShowMessage("Inventário");
         //switch (csvToExportIndex)
         //{
@@ -59,9 +84,8 @@ public class ExportCSVController : MonoBehaviour
         StartCoroutine(CloseMessageRoutine());
     }
 
-    public void HandleInputData(int value)
+    public void HandleInputData(ChangeEvent<string> evt)
     {
-        csvToExportIndex = value;
         CloseMessage();
         StopCoroutine(CloseMessageRoutine());
     }

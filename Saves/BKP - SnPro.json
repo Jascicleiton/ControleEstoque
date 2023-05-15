@@ -38,7 +38,10 @@
         "Category": "Adaptador AC"
       },
       {
-        "Category": "Carregador"
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Adaptador AC"
       },
       {
         "Category": "Carregador"
@@ -72,6 +75,21 @@
       },
       {
         "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Desktop"
       },
       {
         "Category": "Desktop"
@@ -146,7 +164,10 @@
         "Category": "Fonte"
       },
       {
-        "Category": "Gbic"
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Fonte"
       },
       {
         "Category": "Gbic"
@@ -180,6 +201,21 @@
       },
       {
         "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "HD"
       },
       {
         "Category": "HD"
@@ -254,7 +290,10 @@
         "Category": "iDrac"
       },
       {
-        "Category": "Memória"
+        "Category": "iDrac"
+      },
+      {
+        "Category": "iDrac"
       },
       {
         "Category": "Memória"
@@ -288,6 +327,21 @@
       },
       {
         "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Monitor"
       },
       {
         "Category": "Monitor"
@@ -362,7 +416,10 @@
         "Category": "Mouse"
       },
       {
-        "Category": "No break"
+        "Category": "Mouse"
+      },
+      {
+        "Category": "Mouse"
       },
       {
         "Category": "No break"
@@ -396,6 +453,21 @@
       },
       {
         "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Notebook"
       },
       {
         "Category": "Notebook"
@@ -470,7 +542,10 @@
         "Category": "Outros"
       },
       {
-        "Category": "Placa controladora"
+        "Category": "Outros"
+      },
+      {
+        "Category": "Outros"
       },
       {
         "Category": "Placa controladora"
@@ -504,6 +579,21 @@
       },
       {
         "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
       },
       {
         "Category": "Placa de captura de vídeo"
@@ -578,7 +668,10 @@
         "Category": "Placa de rede"
       },
       {
-        "Category": "Placa de som"
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de rede"
       },
       {
         "Category": "Placa de som"
@@ -612,6 +705,21 @@
       },
       {
         "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa de vídeo"
       },
       {
         "Category": "Placa de vídeo"
@@ -686,7 +794,10 @@
         "Category": "Processador"
       },
       {
-        "Category": "Roteador"
+        "Category": "Processador"
+      },
+      {
+        "Category": "Processador"
       },
       {
         "Category": "Roteador"
@@ -720,6 +831,21 @@
       },
       {
         "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Servidor"
       },
       {
         "Category": "Servidor"
@@ -794,6 +920,18 @@
         "Category": "Storage NAS"
       },
       {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
         "Category": "Switch"
       },
       {
@@ -864,6 +1002,18 @@
       },
       {
         "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "USB"
+      },
+      {
+        "Category": "USB"
       },
       {
         "Category": "USB"
