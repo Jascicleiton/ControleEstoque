@@ -1,0 +1,10 @@
+.labelStyle {
+    font-size: 16px;
+    height: 50%;
+    -unity-text-align: middle-center;
+}
+
+.parameterImage {
+    background-image: url('project://database/Assets/Images/ItemResultImage.png?fileID=21300000&guid=e9d32e23126a78747bc04229e10294cb&type=3#ItemResultImage');
+    width: 16%;
+}

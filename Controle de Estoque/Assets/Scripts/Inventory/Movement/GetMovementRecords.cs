@@ -3,30 +3,89 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
-using TMPro;
+using UnityEngine.UIElements;
+
 
 public class GetMovementRecords : MonoBehaviour
 {
-    public List<MovementRecords> regularItemMovementRecords = new List<MovementRecords>();
-    public List<NoPaNoSeMovementRecords> noPaNoSeMovementRecords = new List<NoPaNoSeMovementRecords>();
-    [SerializeField] private GameObject movementObjectPrefab;
-    [SerializeField] private Transform instantiateTransform;
-     [SerializeField] private TMP_InputField parameterInput;
-    [SerializeField] private TMP_Dropdown nameDP;
+    [HideInInspector] public List<MovementRecords> regularItemMovementRecords = new List<MovementRecords>();
+    [HideInInspector] public List<NoPaNoSeMovementRecords> noPaNoSeMovementRecords = new List<NoPaNoSeMovementRecords>();
+    private VisualElement root;
+    private VisualTreeAsset movementObjectTemplate;
+    private ListView listView;
+    private TextField parameterInput;
+    private DropdownField searchOptionsDP;
+    private DropdownField nameDP;
+    private Button returnButton;
+    private Button consultButton;
     bool isSearchingPatrimonio = true;
+
+    private void OnEnable()
+    {
+        GetUIReferences();
+        StartCoroutine(WaitATick());        
+    }
+
+    private void OnDisable()
+    {
+        UnsubscribeToEvents();   
+    }
+
+    private IEnumerator WaitATick()
+    {
+        yield return new WaitForSeconds(0.2f);
+        FillNameDP();
+        FillSearchOptionsDP();
+        
+    }
+
+    private void GetUIReferences()
+    {
+        root = GetComponent<UIDocument>().rootVisualElement;
+        movementObjectTemplate = Resources.Load<VisualTreeAsset>("Templates/MovementRecord");
+        listView = root.Q<ListView>();
+        parameterInput = root.Q<TextField>("ParameterTextField");
+        searchOptionsDP = root.Q<DropdownField>("ParameterDP");
+        nameDP = root.Q<DropdownField>("NameDP");
+        returnButton = root.Q<Button>("ReturnButton");
+        consultButton = root.Q<Button>("ConsultButton");
+        SubscribeToEvents();      
+    }
+
+    private void SubscribeToEvents()
+    {
+        searchOptionsDP.RegisterCallback<ChangeEvent<string>>(HandleSearchOptionsDP);
+               returnButton.clicked += () => { ReturnToPreviousScreen(); };
+        consultButton.clicked += () => { SearchClicked(); };
+    } 
+
+    private void UnsubscribeToEvents()
+    {
+        searchOptionsDP.UnregisterCallback<ChangeEvent<string>>(HandleSearchOptionsDP);
+        returnButton.clicked -= () => { ReturnToPreviousScreen(); };
+        consultButton.clicked -= () => { SearchClicked(); };
+    }
 
     private void FillNameDP()
     {
-        if (nameDP.options.Count < 1)
+        List<string> names = new List<string>();
+        foreach (var item in NoPaNoSeImporter.Instance.itemsList.noPaNoSeItems)
         {
-            List<string> names = new List<string>();
-            foreach (var item in NoPaNoSeImporter.Instance.itemsList.noPaNoSeItems)
-            {
-                names.Add(item.ItemName);
-            }
-            nameDP.AddOptions(names);
+            names.Add(item.ItemName);
         }
+        nameDP.choices = names;
+        //nameDP.formatListItemCallback = (element) => element.ToString();
+        //nameDP.formatSelectedValueCallback = (element) => element.ToString();
+        nameDP.style.display = DisplayStyle.None;
+    }
+
+    private void FillSearchOptionsDP()
+    {
+        List<string> choices = new List<string>() { "Patrimônio", "Nome"};
+        searchOptionsDP.choices = choices;
+        //searchOptionsDP.formatListItemCallback = (element) => element.ToString();
+       // searchOptionsDP.formatSelectedValueCallback = (element) => element.ToString();
+        searchOptionsDP.value = choices[0];
     }
 
     /// <summary>
@@ -35,11 +94,11 @@ public class GetMovementRecords : MonoBehaviour
     /// </summary>
     private void DeleteOldSearch()
     {
-        if (instantiateTransform.childCount > 0)
+        if (listView.childCount > 0)
         {
-            for (int i = 0; i < instantiateTransform.childCount; i++)
+            for (int i = 0; i < listView.childCount; i++)
             {
-                instantiateTransform.GetChild(i).gameObject.SetActive(false);
+                listView.RemoveAt(i);
             }
         }
         regularItemMovementRecords.Clear();
@@ -190,17 +249,31 @@ public class GetMovementRecords : MonoBehaviour
         if (regularItemMovementRecords.Count > 0)
         {
             regularItemMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
-            
-                for (int i = 0; i < regularItemMovementRecords.Count; i++)
+
+            for (int i = 0; i < regularItemMovementRecords.Count; i++)
+            {
+                listView.makeItem = () => movementObjectTemplate.Instantiate();
+                listView.bindItem = (element, j) =>
                 {
-                    GameObject instance = PoolManager.Instance.ReuseObject(movementObjectPrefab);
-                    instance.gameObject.SetActive(true);
-                    instance.GetComponent<MovementUIController>().SetMovementInfo(regularItemMovementRecords[i]);               
-                }              
-            
-          
-            MouseManager.Instance.SetDefaultCursor();
-            parameterInput.text = "";
+                    Label nameLabel = element.Q<Label>("NameLabel");
+                    Label nameParameter = element.Q<Label>("NameParameter");
+                    Label quantityLabel = element.Q<Label>("QuantityLabel");
+                    Label quantityParameter = element.Q<Label>("QuantityParameter");
+                    Label user = element.Q<Label>("User");
+                    Label date = element.Q<Label>("Date");
+                    Label whereFrom = element.Q<Label>("WhereFrom");
+                    Label whereTo = element.Q<Label>("WhereTo");
+
+                    nameLabel.text = "Patrimônio";
+                    nameParameter.text = regularItemMovementRecords[i].item.Patrimonio.ToString();
+                    quantityLabel.text = "Serial";
+                    quantityParameter.text = regularItemMovementRecords[i].item.Serial;
+                    user.text = regularItemMovementRecords[i].username;
+                    date.text = regularItemMovementRecords[i].date;
+                    whereFrom.text = regularItemMovementRecords[i].fromWhere.ToString();
+                    whereTo.text = regularItemMovementRecords[i].toWhere.ToString();
+                };
+            }
             return;
         }
         if (noPaNoSeMovementRecords.Count > 0)
@@ -209,39 +282,31 @@ public class GetMovementRecords : MonoBehaviour
 
             for (int i = 0; i < noPaNoSeMovementRecords.Count; i++)
             {
-                GameObject instance = PoolManager.Instance.ReuseObject(movementObjectPrefab);
-                instance.gameObject.SetActive(true);
-                instance.GetComponent<MovementUIController>().SetMovementInfo(noPaNoSeMovementRecords[i]);
+                listView.makeItem = () => movementObjectTemplate.Instantiate();
+                listView.bindItem = (element, j) =>
+                {
+                    Label nameLabel = element.Q<Label>("NameLabel");
+                    Label nameParameter = element.Q<Label>("NameParameter");
+                    Label quantityLabel = element.Q<Label>("QuantityLabel");
+                    Label quantityParameter = element.Q<Label>("QuantityParameter");
+                    Label user = element.Q<Label>("User");
+                    Label date = element.Q<Label>("Date");
+                    Label whereFrom = element.Q<Label>("WhereFrom");
+                    Label whereTo = element.Q<Label>("WhereTo");
+
+                    nameLabel.text = "Nome";
+                    nameParameter.text = noPaNoSeMovementRecords[i].itemName;
+                    quantityLabel.text = "Quantidade";
+                    quantityParameter.text = noPaNoSeMovementRecords[i].quantity.ToString();
+                    user.text = noPaNoSeMovementRecords[i].username;
+                    date.text = noPaNoSeMovementRecords[i].date;
+                    whereFrom.text = noPaNoSeMovementRecords[i].fromWhere.ToString();
+                    whereTo.text = noPaNoSeMovementRecords[i].toWhere.ToString();
+                };
             }
-            MouseManager.Instance.SetDefaultCursor();
-            parameterInput.text = "";
+            MouseManager.Instance.SetDefaultCursor();            
             return;
         }
-       
-    }
-
-    /// <summary>
-    /// Set the isSearchingPatriomonio variable and the placeholder text of the parameterInput according to what
-    /// the user wants to search. 0 = search an item based on it's "patrimônio"; 1 = search an item based on it's 
-    /// name - no patrimônio item
-    /// </summary>
-    public void HandleDP(int value)
-    {
-        if (value == 0)
-        {
-            isSearchingPatrimonio = true;
-            parameterInput.gameObject.SetActive(true);
-            parameterInput.placeholder.GetComponent<TMP_Text>().text = "Digite patrimônio para busca....";
-            nameDP.gameObject.SetActive(false);            
-        }
-        if(value == 1)
-        {
-            isSearchingPatrimonio = false;
-            nameDP.gameObject.SetActive(true);
-            FillNameDP();
-            parameterInput.gameObject.SetActive(false);
-        }
-        parameterInput.text = "";
     }
 
     /// <summary>
@@ -259,7 +324,7 @@ public class GetMovementRecords : MonoBehaviour
         }
         else 
         {            
-            StartCoroutine(ImportNoPaNoSeMovementsRoutine(nameDP.captionText.text));
+            StartCoroutine(ImportNoPaNoSeMovementsRoutine(nameDP.value));
         }
     }
 
@@ -269,5 +334,22 @@ public class GetMovementRecords : MonoBehaviour
     public void ReturnToPreviousScreen()
     {
         ChangeScreenManager.Instance.OpenScene(Scenes.MovementRecordsScene, Scenes.InitialScene);
+    }
+
+    private void HandleSearchOptionsDP(ChangeEvent<string> evt)
+    {
+        if (evt.newValue == "Patrimônio")
+        {
+            isSearchingPatrimonio = true;
+            nameDP.style.display = DisplayStyle.None;
+            parameterInput.style.display = DisplayStyle.Flex;
+            parameterInput.value = "";
+        }
+        else if (evt.newValue == "Nome")
+        {
+            isSearchingPatrimonio = false;
+            parameterInput.style.display = DisplayStyle.None;
+            nameDP.style.display = DisplayStyle.Flex;
+        }
     }
 }

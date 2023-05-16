@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/StyleSheets/MyStyleSheet.uss?fileID=7433441132597879392&amp;guid=8e06778e21dd1b94c990380d3ae94db5&amp;type=3#MyStyleSheet" />
     <ui:VisualElement name="root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between;">
         <ui:VisualElement name="TopContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 15%; align-items: center; justify-content: space-between;">
             <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px; margin-left: 50px;" />
@@ -8,11 +9,11 @@
         <ui:VisualElement name="ParametersContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; align-items: center; justify-content: flex-start; flex-direction: row; flex-wrap: nowrap;">
             <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ParameterDP" style="width: 20%; height: 70px; margin-left: 50px; margin-right: 30px;" />
             <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterTextField" style="width: 20%; height: 70px; display: flex;" />
-            <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="NameDP" style="width: 20%; height: 70px; display: none;" />
+            <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="NameDP" style="width: 20%; height: 70px; display: flex;" />
             <ui:Button text="Consultar movimentações" display-tooltip-when-elided="true" name="ConsultButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; width: 200px; height: 70px; font-size: 20px; white-space: normal; padding-left: 2%; margin-left: 30px;" />
         </ui:VisualElement>
         <ui:VisualElement name="ResultContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-            <ui:ListView focusable="true" style="flex-grow: 1;" />
+            <ui:ListView focusable="true" style="flex-grow: 1; margin-left: 30px; margin-right: 30px; align-items: center;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
