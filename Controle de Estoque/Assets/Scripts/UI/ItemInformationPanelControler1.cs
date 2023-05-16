@@ -302,7 +302,7 @@ namespace Assets.Scripts.UI
             }
             HideEmptyItemBox();
 
-            ChangeSize();
+          //  ChangeSize();
         }
 
         /// <summary>

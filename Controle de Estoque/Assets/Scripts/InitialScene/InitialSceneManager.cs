@@ -156,7 +156,7 @@ namespace InitialScene
 
         private void UpdateClicked()
         {
-            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.UpdateItemScene);
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.TestScene);
         }
 
         private void ExportClicked()
