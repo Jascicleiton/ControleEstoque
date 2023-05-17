@@ -1,164 +1,4 @@
 {
-  "a07e8b4c-fe43-4465-ba25-f66f2e5e4c72": {
-    "ImportUISettings": [
-      {
-        "Location": "Bancada de testes"
-      },
-      {
-        "Location": "BRT"
-      },
-      {
-        "Location": "Concert"
-      },
-      {
-        "Location": "Descarte"
-      },
-      {
-        "Location": "Drogaria Cristina"
-      },
-      {
-        "Location": "Encontre sua franquia"
-      },
-      {
-        "Location": "Escritório"
-      },
-      {
-        "Location": "Estoque"
-      },
-      {
-        "Location": "Fumsoft"
-      },
-      {
-        "Location": "IOCT"
-      },
-      {
-        "Location": "Master truck"
-      },
-      {
-        "Location": "Netlite"
-      },
-      {
-        "Location": "Oficina da roupa"
-      },
-      {
-        "Location": "Outros"
-      },
-      {
-        "Location": "SNP01"
-      },
-      {
-        "Location": "SNP02"
-      },
-      {
-        "Location": "SNP03"
-      },
-      {
-        "Location": "SNP04"
-      },
-      {
-        "Location": "SNP05"
-      },
-      {
-        "Location": "SNP06"
-      },
-      {
-        "Location": "SNP07"
-      },
-      {
-        "Location": "SNP08"
-      },
-      {
-        "Location": "Top Cintos"
-      },
-      {
-        "Location": "Trop 1"
-      },
-      {
-        "Location": "Trop 2"
-      },
-      {
-        "Location": "Uni Santos"
-      },
-      {
-        "Location": "Zaplus Car"
-      },
-      {
-        "Category": "Adaptador AC"
-      },
-      {
-        "Category": "Carregador"
-      },
-      {
-        "Category": "Desktop"
-      },
-      {
-        "Category": "Fonte"
-      },
-      {
-        "Category": "Gbic"
-      },
-      {
-        "Category": "HD"
-      },
-      {
-        "Category": "iDrac"
-      },
-      {
-        "Category": "Memória"
-      },
-      {
-        "Category": "Monitor"
-      },
-      {
-        "Category": "Mouse"
-      },
-      {
-        "Category": "No break"
-      },
-      {
-        "Category": "Notebook"
-      },
-      {
-        "Category": "Outros"
-      },
-      {
-        "Category": "Placa controladora"
-      },
-      {
-        "Category": "Placa de captura de vídeo"
-      },
-      {
-        "Category": "Placa de rede"
-      },
-      {
-        "Category": "Placa de som"
-      },
-      {
-        "Category": "Placa de vídeo"
-      },
-      {
-        "Category": "Processador"
-      },
-      {
-        "Category": "Roteador"
-      },
-      {
-        "Category": "Servidor"
-      },
-      {
-        "Category": "Storage NAS"
-      },
-      {
-        "Category": "Switch"
-      },
-      {
-        "Category": "Teclado"
-      },
-      {
-        "Category": "USB"
-      }
-    ]
-  },
   "01e2bbd9-c199-465b-8d87-3731c6407819": {
     "InternalDatabase": [
       {
@@ -108780,34 +108620,7 @@
         "Category": "Adaptador AC"
       },
       {
-        "Category": "Adaptador AC"
-      },
-      {
-        "Category": "Adaptador AC"
-      },
-      {
-        "Category": "Adaptador AC"
-      },
-      {
         "Category": "Carregador"
-      },
-      {
-        "Category": "Carregador"
-      },
-      {
-        "Category": "Carregador"
-      },
-      {
-        "Category": "Carregador"
-      },
-      {
-        "Category": "Desktop"
-      },
-      {
-        "Category": "Desktop"
-      },
-      {
-        "Category": "Desktop"
       },
       {
         "Category": "Desktop"
@@ -108816,34 +108629,7 @@
         "Category": "Fonte"
       },
       {
-        "Category": "Fonte"
-      },
-      {
-        "Category": "Fonte"
-      },
-      {
-        "Category": "Fonte"
-      },
-      {
         "Category": "Gbic"
-      },
-      {
-        "Category": "Gbic"
-      },
-      {
-        "Category": "Gbic"
-      },
-      {
-        "Category": "Gbic"
-      },
-      {
-        "Category": "HD"
-      },
-      {
-        "Category": "HD"
-      },
-      {
-        "Category": "HD"
       },
       {
         "Category": "HD"
@@ -108852,34 +108638,7 @@
         "Category": "iDrac"
       },
       {
-        "Category": "iDrac"
-      },
-      {
-        "Category": "iDrac"
-      },
-      {
-        "Category": "iDrac"
-      },
-      {
         "Category": "Memória"
-      },
-      {
-        "Category": "Memória"
-      },
-      {
-        "Category": "Memória"
-      },
-      {
-        "Category": "Memória"
-      },
-      {
-        "Category": "Monitor"
-      },
-      {
-        "Category": "Monitor"
-      },
-      {
-        "Category": "Monitor"
       },
       {
         "Category": "Monitor"
@@ -108888,34 +108647,7 @@
         "Category": "Mouse"
       },
       {
-        "Category": "Mouse"
-      },
-      {
-        "Category": "Mouse"
-      },
-      {
-        "Category": "Mouse"
-      },
-      {
         "Category": "No break"
-      },
-      {
-        "Category": "No break"
-      },
-      {
-        "Category": "No break"
-      },
-      {
-        "Category": "No break"
-      },
-      {
-        "Category": "Notebook"
-      },
-      {
-        "Category": "Notebook"
-      },
-      {
-        "Category": "Notebook"
       },
       {
         "Category": "Notebook"
@@ -108924,34 +108656,7 @@
         "Category": "Outros"
       },
       {
-        "Category": "Outros"
-      },
-      {
-        "Category": "Outros"
-      },
-      {
-        "Category": "Outros"
-      },
-      {
         "Category": "Placa controladora"
-      },
-      {
-        "Category": "Placa controladora"
-      },
-      {
-        "Category": "Placa controladora"
-      },
-      {
-        "Category": "Placa controladora"
-      },
-      {
-        "Category": "Placa de captura de vídeo"
-      },
-      {
-        "Category": "Placa de captura de vídeo"
-      },
-      {
-        "Category": "Placa de captura de vídeo"
       },
       {
         "Category": "Placa de captura de vídeo"
@@ -108960,34 +108665,7 @@
         "Category": "Placa de rede"
       },
       {
-        "Category": "Placa de rede"
-      },
-      {
-        "Category": "Placa de rede"
-      },
-      {
-        "Category": "Placa de rede"
-      },
-      {
         "Category": "Placa de som"
-      },
-      {
-        "Category": "Placa de som"
-      },
-      {
-        "Category": "Placa de som"
-      },
-      {
-        "Category": "Placa de som"
-      },
-      {
-        "Category": "Placa de vídeo"
-      },
-      {
-        "Category": "Placa de vídeo"
-      },
-      {
-        "Category": "Placa de vídeo"
       },
       {
         "Category": "Placa de vídeo"
@@ -108996,34 +108674,7 @@
         "Category": "Processador"
       },
       {
-        "Category": "Processador"
-      },
-      {
-        "Category": "Processador"
-      },
-      {
-        "Category": "Processador"
-      },
-      {
         "Category": "Roteador"
-      },
-      {
-        "Category": "Roteador"
-      },
-      {
-        "Category": "Roteador"
-      },
-      {
-        "Category": "Roteador"
-      },
-      {
-        "Category": "Servidor"
-      },
-      {
-        "Category": "Servidor"
-      },
-      {
-        "Category": "Servidor"
       },
       {
         "Category": "Servidor"
@@ -109032,46 +108683,10 @@
         "Category": "Storage NAS"
       },
       {
-        "Category": "Storage NAS"
-      },
-      {
-        "Category": "Storage NAS"
-      },
-      {
-        "Category": "Storage NAS"
-      },
-      {
-        "Category": "Switch"
-      },
-      {
-        "Category": "Switch"
-      },
-      {
-        "Category": "Switch"
-      },
-      {
         "Category": "Switch"
       },
       {
         "Category": "Teclado"
-      },
-      {
-        "Category": "Teclado"
-      },
-      {
-        "Category": "Teclado"
-      },
-      {
-        "Category": "Teclado"
-      },
-      {
-        "Category": "USB"
-      },
-      {
-        "Category": "USB"
-      },
-      {
-        "Category": "USB"
       },
       {
         "Category": "USB"

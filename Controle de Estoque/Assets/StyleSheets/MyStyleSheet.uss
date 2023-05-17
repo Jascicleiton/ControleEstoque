@@ -1,3 +1,30 @@
+#Container {
+    flex-grow: 1;
+    flex-direction: row;
+}
+
+#Menu {
+    width: 28% flex-direction row;
+}
+
+#Menu > VisualElement {
+    background-color: ;
+}
+
+#Navigation {
+    flex-grow: 1;
+    align-items: center;
+    display: flex;
+    font-size: var(--font-size-h2);
+    -unity-text-align: upper-center;
+}
+
+#DecorativeBar {
+    width: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .labelStyle {
     font-size: 16px;
     height: 50%;
@@ -7,4 +34,11 @@
 .parameterImage {
     background-image: url('project://database/Assets/Images/ItemResultImage.png?fileID=21300000&guid=e9d32e23126a78747bc04229e10294cb&type=3#ItemResultImage');
     width: 16%;
+}
+
+.moveLabel {
+    height: 70px;
+    font-size: 20px;
+    -unity-text-align: middle-center;
+    background-image: url('project://database/Assets/Images/ActivityPanel3.png?fileID=21300000&guid=d61330018833c0442a2006e61339b498&type=3#ActivityPanel3');
 }

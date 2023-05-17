@@ -3,7 +3,7 @@
         <ui:VisualElement name="TitleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; flex-direction: row; justify-content: space-between; align-items: center;">
             <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px; margin-left: 50px;" />
             <ui:Label tabindex="-1" text="Atualizar um item" display-tooltip-when-elided="true" style="font-size: 50px;" />
-            <ui:Button display-tooltip-when-elided="true" name="HelpButton" style="margin-right: 50px; width: 70px; height: 70px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Icons/unlitLightBulb.png?fileID=21300000&amp;guid=38dad7f224c41b046a55cb14196f4891&amp;type=3#unlitLightBulb&apos;); margin-left: 130px;" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 250px;" />
         </ui:VisualElement>
         <ui:VisualElement name="SearchParameterContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; justify-content: center; align-items: center;">
             <ui:Label tabindex="-1" text="Patrimônio:" display-tooltip-when-elided="true" style="font-size: 20px;" />

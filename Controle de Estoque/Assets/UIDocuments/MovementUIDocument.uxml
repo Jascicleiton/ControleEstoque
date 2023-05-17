@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/StyleSheets/MyStyleSheet.uss?fileID=7433441132597879392&amp;guid=8e06778e21dd1b94c990380d3ae94db5&amp;type=3#MyStyleSheet" />
     <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between;">
         <ui:VisualElement name="TopContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; margin-top: 30px; flex-direction: row; justify-content: space-between; align-items: center;">
             <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px;" />
@@ -8,29 +9,23 @@
         <ui:VisualElement name="MiddleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 40%; flex-direction: column; justify-content: space-between;">
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between;">
                 <ui:VisualElement name="ItemInformationContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; margin-left: 30px; justify-content: space-between;">
-                    <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ParameterDP" style="height: 70px; font-size: 20px; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;" />
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="moveLabel" />
                     <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterTextField" style="height: 70px; font-size: 20px;" />
                     <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 70px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="FromContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; justify-content: space-between;">
-                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ActivityPanel.png?fileID=21300000&amp;guid=d47d174721987ca44902d8d3d0f4527c&amp;type=3#ActivityPanel&apos;); height: 70px; justify-content: center; align-items: center; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;">
-                        <ui:Label tabindex="-1" text="De onde" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                    </ui:VisualElement>
+                    <ui:Label tabindex="-1" text="De onde" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px;" />
                     <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="FromDP" style="height: 70px;" />
                     <ui:TextField picking-mode="Ignore" value="filler text" name="FromTextField" style="height: 70px; font-size: 20px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="ToContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; justify-content: space-between;">
-                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ActivityPanel.png?fileID=21300000&amp;guid=d47d174721987ca44902d8d3d0f4527c&amp;type=3#ActivityPanel&apos;); height: 70px; justify-content: center; align-items: center; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;">
-                        <ui:Label tabindex="-1" text="Para onde" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                    </ui:VisualElement>
+                    <ui:Label tabindex="-1" text="Para onde" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px;" />
                     <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ToDP" style="height: 70px;" />
                     <ui:TextField picking-mode="Ignore" value="filler text" name="ToTextField" style="height: 70px; font-size: 20px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="WhoContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; margin-right: 30px; justify-content: space-between;">
-                    <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 70px; background-image: url(&apos;project://database/Assets/Images/ActivityPanel.png?fileID=21300000&amp;guid=d47d174721987ca44902d8d3d0f4527c&amp;type=3#ActivityPanel&apos;); justify-content: center; align-items: center; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;">
-                        <ui:Label tabindex="-1" text="Quem está movimentando" display-tooltip-when-elided="true" style="font-size: 20px;" />
-                    </ui:VisualElement>
-                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="WhoLabel" style="height: 70px; font-size: 20px; -unity-text-align: middle-center;" />
+                    <ui:Label tabindex="-1" text="Quem está movimentando" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px;" />
+                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="WhoLabel" style="height: 70px; font-size: 20px; -unity-text-align: middle-center; background-color: rgba(123, 122, 122, 0.47);" />
                     <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="height: 70px; width: 40%; align-self: flex-end; font-size: 20px;" />
                 </ui:VisualElement>
             </ui:VisualElement>

@@ -43,9 +43,18 @@
             <ui:Instance template="ItemResult" name="ItemResult" />
             <ui:Instance template="ItemResult" name="ItemResult" />
         </ui:VisualElement>
-        <ui:VisualElement name="ButtonContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; margin-bottom: 30px; flex-direction: row-reverse; align-items: flex-end;">
+        <ui:VisualElement name="ButtonContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; margin-bottom: 0; flex-direction: row-reverse; align-items: center;">
             <ui:Button text="Adicionar" display-tooltip-when-elided="true" name="AddButton" style="margin-right: 50px; margin-left: 30px; width: 200px; height: 70px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); color: rgb(255, 255, 255); font-size: 25px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-left: 20px; padding-right: 0;" />
             <ui:Button text="Adicionar detalhes" display-tooltip-when-elided="true" name="AddDetailsButton" style="width: 200px; height: 70px; font-size: 25px; flex-wrap: nowrap; white-space: normal; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); color: rgb(255, 255, 255); padding-left: 30px; padding-right: 0;" />
         </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="HelpPanel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; width: 100%; height: 100%;">
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; flex-direction: row; align-items: center;" />
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; align-items: center;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; margin-left: 450px; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/Arrow.png?fileID=21300000&amp;guid=ef7e98a164f5ce94c82edbc9e98caa27&amp;type=3#Arrow&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0); transition-property: -unity-background-image-tint-color; transition-duration: 2s; transition-timing-function: ease-in;" />
+            <ui:Label tabindex="-1" text="Selecione a categoria do item a ser adicionado" display-tooltip-when-elided="true" style="margin-left: 10px; font-size: 30px; white-space: normal; width: 20%; -unity-text-align: upper-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 65%;" />
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; margin-bottom: 0;" />
     </ui:VisualElement>
 </ui:UXML>
