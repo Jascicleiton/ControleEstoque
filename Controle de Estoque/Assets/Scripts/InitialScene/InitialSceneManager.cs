@@ -156,7 +156,7 @@ namespace InitialScene
 
         private void UpdateClicked()
         {
-            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.TestScene);
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.UpdateItemScene);
         }
 
         private void ExportClicked()
@@ -171,7 +171,7 @@ namespace InitialScene
 
         private void NoPaNoSeClicked()
         {
-            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.NoPaNoSeScene);
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.TestScene);
         }
 
         private void RecoverBKPClicked()

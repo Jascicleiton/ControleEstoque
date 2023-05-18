@@ -1,0 +1,24 @@
+{
+  "d5670d65-04ae-4c09-a653-30cc4effad22": {
+    "ImportCategories": []
+  },
+  "35aac1d1-9605-4002-aa5c-4f219df57d60": {
+    "UsersManager": []
+  },
+  "994252a3-6a96-404b-b86a-e4b1a09ef0c6": {
+    "NoPaNoSeImporter": []
+  },
+  "894bbca7-0f05-4eb3-8bc6-61d4fcdb0f67": {
+    "NoPaNoSeMovementSaver": []
+  },
+  "d2b12315-660e-4f44-bb3f-93ef05739adc": {
+    "ImportLocations": []
+  },
+  "15d17b29-0dce-4e13-b79f-796d8b86793e": {
+    "RegularMovementSaver": []
+  },
+  "01e2bbd9-c199-465b-8d87-3731c6407819": {
+    "InternalDatabase": []
+  },
+  "lastSceneBuildIndex": 0
+}

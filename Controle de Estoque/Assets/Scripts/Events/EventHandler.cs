@@ -171,4 +171,16 @@ public static class EventHandler
         }
     }
 
+    /// <summary>
+    /// Uset to notify NoPaNoSeManager that the item quantity was succsessfuly changed, so it can update the ui
+    /// </summary>
+    public static event Action<int> NoPaNoSeItemQuantityChanged;
+    public static void CallNoPaNoSeItemQuantityChanged(int itemNewQuantity)
+    {
+        if(NoPaNoSeItemQuantityChanged != null)
+        {
+            NoPaNoSeItemQuantityChanged(itemNewQuantity);
+        }
+    }
+
 }

@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="NoPaNoSeConsultItem" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; padding-left: 30px; padding-right: 30px; background-image: url(&apos;project://database/Assets/Images/ActivityPanel3.png?fileID=21300000&amp;guid=d61330018833c0442a2006e61339b498&amp;type=3#ActivityPanel3&apos;); -unity-background-scale-mode: stretch-to-fill; height: 80px;">
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="Name" class="NoPaNoSeLabel" />
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="Quantity" class="NoPaNoSeLabel" style="width: 10%; -unity-text-align: middle-center;" />
+    </ui:VisualElement>
+</ui:UXML>

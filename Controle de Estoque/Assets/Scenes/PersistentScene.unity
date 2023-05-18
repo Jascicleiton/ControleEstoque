@@ -865,7 +865,7 @@ MonoBehaviour:
     itens: []
   testingSheet:
     itens: []
-  offlineProgram: 1
+  offlineProgram: 0
   currentEstoque: 0
   testing: []
   sheetToLoad:
