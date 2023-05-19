@@ -1,23 +1,20 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
 
-public class NoPaNoSeItemManager1 : MonoBehaviour
+public class NoPaNoSeItemManager1
 {
-    private NoPaNoSeItem item = new NoPaNoSeItem();
-        
+    public static bool quantityChanged = false;        
     /// <summary>
     /// Change the quantity of an already existing item
     /// </summary>
-    private IEnumerator ChangeItemQuantityRoutine(int quantityToMove)
+    public static IEnumerator ChangeItemQuantityRoutine(NoPaNoSeItem itemToChange, int quantityToMove)
     {
-        int itemNewQuantity = item.Quantity + quantityToMove;
-        
-        item.Quantity = itemNewQuantity;
-        WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.UpdateItemKey, item.ItemName, itemNewQuantity);
+        int itemNewQuantity = itemToChange.Quantity + quantityToMove;
+
+        itemToChange.Quantity = itemNewQuantity;
+        WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.UpdateItemKey, itemToChange.ItemName, itemNewQuantity);
 
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + ConstStrings.UpdateNoPaNoSe, itemForm);
         MouseManager.Instance.SetWaitingCursor();
@@ -50,9 +47,9 @@ public class NoPaNoSeItemManager1 : MonoBehaviour
             }
             else if (response == "Updated")
             {
-                SetItemInformation(item.ItemName, itemNewQuantity);
                 Debug.Log("moved");
-                EventHandler.CallNoPaNoSeItemQuantityChanged(quantityToMove);
+                quantityChanged = true;
+                EventHandler.CallNoPaNoSeItemQuantityChanged(itemToChange.Quantity);
                 EventHandler.CallDatabaseUpdatedEvent();
             }
             else
@@ -70,44 +67,43 @@ public class NoPaNoSeItemManager1 : MonoBehaviour
         MouseManager.Instance.SetDefaultCursor();
     }
 
-    /// <summary>
-    /// Set the item information as is stored on the online database. Called by NoPaNoSeManager  each time an item is instantiated
-    /// </summary>
-    public void SetItemInformation(string name, int quantity)
+      public static bool CanChangeQuantity(NoPaNoSeItem item, int quantityToMove)
     {
-        item.ItemName = name;
-        item.Quantity = quantity;
-       
-    }
-
-    /// <summary>
-    /// Trye to change the quantity value of an item. It won't change nor move the item if the quantity drops below 0
-    /// </summary>
-    public void ChangeItemQuantity(NoPaNoSeItem itemToChange, int quantityToMove, string whereFrom, string whereTo)
-    {
-        item = itemToChange;
-
-        if (quantityToMove < 0)
+        if(quantityToMove == 0)
         {
-            if (itemToChange.Quantity + quantityToMove < 0)
+            //Send message error
+            Debug.Log("zero items to move");
+            return false;
+        }
+        if(quantityToMove > 0)
+        {
+            Debug.Log("positive number to move");
+            return true;
+        }
+        else
+        {
+            if(item.Quantity + quantityToMove >= 0) 
             {
-                EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallOpenMessageEvent("Negative number");
-                return;
+                Debug.Log("can reduce number");
+                return true;
+            }
+            else
+            {
+                Debug.Log("moving more than available");
+                return false;
             }
         }
-        StartCoroutine(ChangeItemQuantityRoutine(quantityToMove));
-        StartCoroutine(MoveItem(quantityToMove, whereFrom, whereTo));
     }
 
+   
     /// <summary>
     /// Called to generate a movement record each time an item quantity is changed. It is a different movement record from an item that do
     /// have "serial" and "patrimônio"
     /// </summary>
-    private IEnumerator MoveItem(int quantityToMove, string whereFrom, string whereTo)
+    public static IEnumerator MoveItem(NoPaNoSeItem itemToChange, int quantityToMove, string whereFrom, string whereTo)
     {
         WWWForm itemForm = new WWWForm();
-        itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, item.ItemName, quantityToMove,
+        itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, itemToChange.ItemName, quantityToMove,
            UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), whereFrom, whereTo);
 
         UnityWebRequest createUpdateInventarioRequest = UnityWebRequest.Post(ConstStrings.PhpNoPaNoSeItemsFolder + ConstStrings.MoveNoPaNoSe, itemForm);
@@ -154,8 +150,8 @@ public class NoPaNoSeItemManager1 : MonoBehaviour
             Debug.LogWarning("MoveItem: " + createUpdateInventarioRequest.error);
             // TODO: send message to user with error and recomendation
         }
+        quantityChanged = false;
         createUpdateInventarioRequest.Dispose();
         MouseManager.Instance.SetDefaultCursor();
-    }
-    
+    }    
 }

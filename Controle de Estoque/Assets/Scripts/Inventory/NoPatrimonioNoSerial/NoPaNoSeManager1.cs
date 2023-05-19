@@ -17,8 +17,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private Button returnButton;
     private Color defaultColor;
     private Color inactiveColor;
-    NoPaNoSeItemManager1 itemManager;
-
+    
     #region New item
     private VisualElement newItemPanel;
     private TextField newItemNameInput;
@@ -63,8 +62,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         defaultColor = new Color(255, 255, 255, 255);
         inactiveColor = new Color(150, 149, 449, 255);
         allitems = new NoPaNoSeAll();
-        itemManager = GetComponent<NoPaNoSeItemManager1>();
-        switch (UsersManager.Instance.currentUser.GetAccessLevel())
+                switch (UsersManager.Instance.currentUser.GetAccessLevel())
         {
             case 1:
             case 2:
@@ -102,7 +100,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         quantityTextField = root.Q<TextField>("QuantityTextField");
         whereFromTextField = root.Q<TextField>("WhereFromTextField");
         whereToTextField = root.Q<TextField>("WhereToTextField");
-        moveItemButton = root.Q<Button>("MoveButton");
+        moveItemButton = root.Q<Button>("MoveItemButton");
         SubscribeToEvents();
         Initialize();
     }
@@ -244,15 +242,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         MouseManager.Instance.SetDefaultCursor();
     }
 
-    /// <summary>
-    /// Scroll down to the bottom of the list to show the last added item
-    /// </summary>
-    private IEnumerator ScrollToBottom()
-    {
-        yield return new WaitForEndOfFrame();
-       //maybe implement this
-    }
-
+    
     /// <summary>
     /// Used by AddNewItem_btn inside newItemPanel
     /// </summary>
@@ -285,13 +275,9 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         {
             if (int.TryParse(quantityTextField.value, out tempInt))
             {
-                if (tempInt != 0)
+                if (NoPaNoSeItemManager1.CanChangeQuantity(itemToMove, tempInt))
                 {
-                    itemManager.ChangeItemQuantity(itemToMove, tempInt, whereFromTextField.value, whereToTextField.value);
-                }
-                else
-                {
-                    print("0");
+                    StartCoroutine(MoveItem(itemToMove, tempInt, whereFromTextField.value, whereToTextField.value));
                 }
             }
             else
@@ -303,6 +289,15 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         {
             print("Null");
         }
+    }
+
+    private IEnumerator MoveItem(NoPaNoSeItem itemToChange, int quantityToMove, string whereFrom, string whereTo)
+    {
+        yield return NoPaNoSeItemManager1.ChangeItemQuantityRoutine(itemToChange, quantityToMove);
+        if(NoPaNoSeItemManager1.quantityChanged)
+        {
+            yield return NoPaNoSeItemManager1.MoveItem(itemToChange, quantityToMove, whereFrom, whereTo);
+        }        
     }
 
     /// <summary>

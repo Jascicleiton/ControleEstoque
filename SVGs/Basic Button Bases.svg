@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="1719.7847"
-     inkscape:cy="1001.0612"
+     inkscape:cx="1100.5612"
+     inkscape:cy="549.52299"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -39,7 +39,7 @@
      inkscape:guide-bbox="true"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
-     inkscape:window-x="1912"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:showpageshadow="2"
@@ -530,8 +530,8 @@
        id="rect2619"
        width="79.375"
        height="39.6875"
-       x="133.36749"
-       y="-85.841309"
+       x="130.42752"
+       y="-95.463013"
        inkscape:export-filename="..\..\..\Pictures\ItemResultImage.png"
        inkscape:export-xdpi="95.553955"
        inkscape:export-ydpi="95.553955" />
@@ -540,15 +540,15 @@
        id="rect5058"
        width="79.375"
        height="19.84375"
-       x="133.36749"
-       y="-65.812294" />
+       x="130.42752"
+       y="-75.433998" />
     <rect
        style="fill:#0d75c1;fill-opacity:1;stroke:none;stroke-width:2.0731"
        id="rect5060"
        width="74.564148"
        height="14.49836"
-       x="135.77292"
-       y="-82.917542" />
+       x="132.83295"
+       y="-92.539246" />
     <rect
        style="fill:#aa4400;stroke-width:1.05833"
        id="rect1027"
@@ -659,5 +659,105 @@
        height="34.395832"
        x="416.9136"
        y="32.532227" />
+    <g
+       id="g501"
+       transform="matrix(1.2180177,0,0,2.5165673,-55.944517,-367.73714)">
+      <g
+         id="g715"
+         inkscape:export-filename="..\Controle de Estoque\Assets\Images\Buttons\Button 3.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"
+         transform="matrix(0.30655623,0,0,0.30655623,178.23086,167.78117)">
+        <rect
+           y="243.22212"
+           x="257.0228"
+           height="14.610847"
+           width="86.889816"
+           id="rect492"
+           style="opacity:1;fill:#333333;fill-opacity:1;stroke:none;stroke-width:3.91991;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+           inkscape:export-filename="..\..\..\Pictures\Button.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96"
+           ry="7.3054237" />
+        <path
+           id="rect557"
+           style="fill:#d45500;stroke-width:0.142952"
+           d="m 257.0228,242.39409 c 0,0 6.67303,-0.99124 8.73093,0 3.9845,1.91923 0,5.42841 0,8.14262 0,2.70809 3.97553,6.20938 0,8.12429 -2.0579,0.99124 -8.73093,0 -8.73093,0 z"
+           sodipodi:nodetypes="cssacc" />
+        <path
+           id="rect555"
+           style="fill:#ff7f2a;stroke-width:0.123801"
+           d="m 257.0228,242.39409 c 0,0 5.00476,-0.74343 6.54819,0 3.92938,1.89268 0,5.35331 0,8.02997 0,2.74565 4.03065,6.29547 0,8.23694 -1.54343,0.74343 -6.54819,0 -6.54819,0 z"
+           sodipodi:nodetypes="caaacc" />
+      </g>
+      <g
+         id="g723"
+         inkscape:export-filename="..\Controle de Estoque\Assets\Images\Buttons\Button 3.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"
+         transform="matrix(-0.30655623,0,0,-0.30655623,278.0441,324.08624)">
+        <path
+           id="rect717"
+           style="opacity:1;fill:#333333;stroke-width:5.48787;stroke-opacity:0"
+           d="m 229.25517,236.87035 h 101.19056 c 5.66608,0 21.56512,6.6973 21.56512,10.48482 0,3.78752 -15.89904,9.97037 -21.56512,9.97037 H 229.25517 c -5.66608,0 -10.22759,-4.56151 -10.22759,-10.22759 0,-5.66609 4.56151,-10.2276 10.22759,-10.2276 z"
+           sodipodi:nodetypes="sszssss"
+           inkscape:export-filename="..\Controle de Estoque\Assets\Images\Buttons\Return Button 3.png"
+           inkscape:export-xdpi="192"
+           inkscape:export-ydpi="192" />
+        <path
+           id="path719"
+           style="fill:#d45500;stroke-width:0.200133"
+           d="m 219.02758,235.71111 c 0,0 9.34224,-1.38774 12.2233,0 5.5783,2.68692 0,7.59977 0,11.39966 0,3.79133 5.56574,8.69314 0,11.37401 -2.88106,1.38774 -12.2233,0 -12.2233,0 z"
+           sodipodi:nodetypes="cssacc" />
+        <path
+           id="path721"
+           style="fill:#ff7f2a;stroke-width:0.173321"
+           d="m 219.02758,235.71111 c 0,0 7.00666,-1.04081 9.16746,0 5.50114,2.64975 0,7.49463 0,11.24195 0,3.84391 5.64291,8.81366 0,11.53172 -2.1608,1.0408 -9.16746,0 -9.16746,0 z"
+           sodipodi:nodetypes="caaacc" />
+      </g>
+      <g
+         id="g732"
+         inkscape:export-filename="..\Controle de Estoque\Assets\Images\Buttons\Button 3.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"
+         transform="matrix(0.30655623,0,0,0.30655623,214.32708,154.18706)">
+        <rect
+           y="243.22212"
+           x="257.0228"
+           height="17.148012"
+           width="70.859604"
+           id="rect726"
+           style="opacity:1;fill:#333333;fill-opacity:1;stroke:none;stroke-width:3.83496;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+           inkscape:export-filename="..\Controle de Estoque\Assets\Images\Buttons\ResetButton.png"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96"
+           ry="8.5740061" />
+      </g>
+    </g>
+    <rect
+       style="fill:#0a5a94;fill-opacity:1;stroke:none;stroke-width:3.1152"
+       id="rect734"
+       width="79.375"
+       height="39.6875"
+       x="324.73245"
+       y="-109.36103"
+       inkscape:export-filename="..\..\..\Pictures\ItemResultImage.png"
+       inkscape:export-xdpi="95.553955"
+       inkscape:export-ydpi="95.553955" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.50236"
+       id="rect736"
+       width="79.375"
+       height="19.84375"
+       x="324.73245"
+       y="-89.332016" />
+    <rect
+       style="fill:#0d75c1;fill-opacity:1;stroke:none;stroke-width:2.263"
+       id="rect738"
+       width="76.832008"
+       height="16.766216"
+       x="326.00394"
+       y="-107.57119"
+       ry="8.3831081" />
   </g>
 </svg>

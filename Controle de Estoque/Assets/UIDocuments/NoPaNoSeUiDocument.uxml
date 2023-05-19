@@ -36,7 +36,7 @@
                                 <ui:TextField picking-mode="Ignore" name="WhereToTextField" style="height: 50%; font-size: 30px;" />
                             </ui:VisualElement>
                         </ui:VisualElement>
-                        <ui:Button text="Mover" display-tooltip-when-elided="true" name="MoveButton" style="width: 200px; height: 70px; align-self: center; background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
+                        <ui:Button text="Mover" display-tooltip-when-elided="true" name="MoveItemButton" style="width: 200px; height: 70px; align-self: center; background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); font-size: 20px; color: rgb(255, 255, 255);" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
