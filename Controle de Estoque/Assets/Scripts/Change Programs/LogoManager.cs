@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class LogoManager : MonoBehaviour
 {
@@ -10,11 +10,12 @@ public class LogoManager : MonoBehaviour
     [SerializeField] private Sprite concerttSprite;
     [SerializeField] private Sprite quistoSprite;
 
-    private Image image;
+    private VisualElement logo;
 
-    private void Awake()
+    private void OnEnable()
     {
-        image = GetComponentInChildren<Image>();
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        logo = root.Q<VisualElement>("ExtraLogo");
     }
 
     /// <summary>
@@ -25,28 +26,28 @@ public class LogoManager : MonoBehaviour
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
-                image.color = new Color(0f, 0f, 0f, 0f);
+                logo.style.display = DisplayStyle.None;
                 break;
             case CurrentEstoque.Fumsoft:
-                image.sprite = fumsoftSprite;
+                logo.style.backgroundImage = new StyleBackground(fumsoftSprite);
                 break;
             case CurrentEstoque.ESF:
-                image.sprite = esfSprite;
+                logo.style.backgroundImage = new StyleBackground(esfSprite);
                 break;
             case CurrentEstoque.Testing:
-                image.sprite = testingSprite;
+                logo.style.backgroundImage = new StyleBackground(testingSprite);
                 break;
             case CurrentEstoque.Clientes:
-                image.sprite = clientesSprite;
+                logo.style.backgroundImage = new StyleBackground(clientesSprite);
                 break;
             case CurrentEstoque.Concert:
-                image.sprite = concerttSprite;
+                logo.style.backgroundImage = new StyleBackground(concerttSprite);
                 break;
             case CurrentEstoque.Quisto:
-                image.sprite = quistoSprite;
+                logo.style.backgroundImage = new StyleBackground(quistoSprite);
                 break;
             default:
-                this.gameObject.SetActive(false);
+                logo.style.display = DisplayStyle.None;
                 break;
         }
     }

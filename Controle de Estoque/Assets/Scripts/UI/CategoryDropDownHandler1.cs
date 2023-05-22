@@ -16,9 +16,9 @@ namespace Assets.Scripts.UI
             {
                 print("not empty");
                 dropdown.choices = InternalDatabase.categories;
-                dropdown.value = dropdown.choices[0];
+               // dropdown.value = dropdown.choices[0];
                 dropdown.formatListItemCallback = (element) => element.ToString();
-                dropdown.formatSelectedValueCallback = (element) => element.ToString();
+               // dropdown.formatSelectedValueCallback = (element) => element.ToString();
                 
             }
             print("empty");

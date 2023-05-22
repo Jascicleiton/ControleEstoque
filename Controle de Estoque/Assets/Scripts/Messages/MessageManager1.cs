@@ -30,9 +30,9 @@ public class MessageManager1 : MonoBehaviour
     private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
-        messageText = root.Q<Label>("ErrorLabel");
-        messagePanel = root.Q<VisualElement>("ErrorContainer");
-        closeMessageButton = root.Q<Button>("ErrorButton");
+        messageText = root.Q<Label>("MessageLabel");
+        messagePanel = root.Q<VisualElement>("MessagePanel");
+        closeMessageButton = root.Q<Button>("MessageButton");
         EventHandler.OpenMessageEvent += MessageReceived;
         EventHandler.EnableInput += SetInputEnabled;
         EventHandler.IsOneMessageOnlyEvent += SetIsOneMessageOnly;

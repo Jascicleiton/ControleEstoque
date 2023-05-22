@@ -11,11 +11,11 @@ namespace Assets.Scripts.UI
         private VisualElement root;
         private VisualElement[] itemBoxes;
         private List<Label> parameterNames;
-        /// <summary>
+                /// <summary>
         /// Patrimônio = 2, Fabricante = 6, Modelo = 7
         /// </summary>
         private List<TextField> parameterValues;
-       // private Label[] parameterValuesText;
+        private Label[] parameterValuesText;
         private TabInputHandler tabInputHandler;
 
         private int numberOfActiveBoxes = 0;
@@ -48,7 +48,7 @@ namespace Assets.Scripts.UI
             root = GetComponent<UIDocument>().rootVisualElement;
             itemBoxes = root.Q<VisualElement>("ParametersContainer").Children().ToArray<VisualElement>();
             parameterNames = root.Query(name: "ParametersContainer").Descendents<Label>().ToList();
-            parameterValues = root.Query(name: "ParametersContainer").Descendents<TextField>().ToList();
+            parameterValues = root.Query(name: "ParametersContainer").Descendents<TextField>().ToList();            
         }
 
         private void SubscribeToEvents()
@@ -170,34 +170,6 @@ namespace Assets.Scripts.UI
                 {
                     break;
                 }
-            }
-        }
-
-        /// <summary>
-        /// Change the size of the panel based on the number of active item boxes
-        /// </summary>
-        private void ChangeSize()
-        {
-            numberOfActiveBoxes = GetNumberOfActiveBoxes();
-            if (numberOfActiveBoxes < 7)
-            {
-                GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 135f);
-            }
-            else if (numberOfActiveBoxes < 13)
-            {
-                GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 260f);
-            }
-            else if (numberOfActiveBoxes < 19)
-            {
-                GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 380f);
-            }
-            else if (numberOfActiveBoxes < 25)
-            {
-                GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 500f);
-            }
-            else
-            {
-                GetComponent<RectTransform>().sizeDelta = new Vector2(0f, 620f);
             }
         }
 
@@ -350,19 +322,6 @@ namespace Assets.Scripts.UI
             parameterValues[8].value = "Estoque";
             HideEmptyItemBox();
         }
-
-        ///// <summary>
-        ///// Disable input of certain item boxes on UpdateItemScene
-        ///// </summary>
-        //public void DisableInputForUpdate()
-        //{
-        //    itemBoxes[0].style.display = DisplayStyle.None;
-        //    itemBoxes[1].style.display = DisplayStyle.None;
-        //    // parameterValues[5].interactable = false;
-        //    // parameterValues[7].interactable = false;
-        //    // parameterValues[8].interactable = false;
-        //    //  parameterValues[9].interactable = false;
-        //}
 
         /// <summary>
         /// Disable the input of certain item boxes  based on the category of the item

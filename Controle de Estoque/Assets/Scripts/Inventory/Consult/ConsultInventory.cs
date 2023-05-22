@@ -65,7 +65,7 @@ public class ConsultInventory : MonoBehaviour
                             {
                                 RemoveOldSearch();
                                 GameObject result = Instantiate(consultResult, consultResultTransform);
-                                result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase), 0);
+                              //  result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase), 0);
                             }
                             else
                             {
@@ -79,7 +79,7 @@ public class ConsultInventory : MonoBehaviour
                         {
                             RemoveOldSearch();
                             GameObject result = Instantiate(consultResult, consultResultTransform);
-                            result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase), 1);
+                         //   result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(inputField.text, InternalDatabase.Instance.fullDatabase), 1);
                         }
                         else
                         {
@@ -211,7 +211,7 @@ public class ConsultInventory : MonoBehaviour
                         {
                             GameObject result = PoolManager.Instance.ReuseObject(consultResult);
                             result.SetActive(true);
-                            result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
+                           // result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
                         }
                         else
                         {
@@ -222,7 +222,7 @@ public class ConsultInventory : MonoBehaviour
                     {
                         GameObject result = PoolManager.Instance.ReuseObject(consultResult);
                         result.SetActive(true);
-                        result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
+                       // result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
                     }
                 }
                          numberOfItemsImage.alpha = 1f;

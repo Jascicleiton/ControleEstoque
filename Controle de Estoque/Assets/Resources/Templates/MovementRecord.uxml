@@ -1,28 +1,28 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="MovementRecord" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; width: 90%; height: 200px; justify-content: space-between; margin-top: 15px; margin-bottom: 15px;">
-        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="NameLabel" class="labelStyle" />
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="NameParameter" class="labelStyle" style="white-space: normal;" />
+    <ui:VisualElement name="MovementRecord" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; width: 1800px; height: 200px; justify-content: space-between; margin-top: 15px; margin-bottom: 15px;">
+        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ItemResultImage%204.png?fileID=21300000&amp;guid=cc3eeaa9d31f0d840a4895f88381a883&amp;type=3#ItemResultImage 4&apos;); -unity-background-scale-mode: scale-to-fit;">
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="NameLabel" class="labelStyle" style="margin-top: 0; padding-top: 6px; padding-bottom: 6px; margin-bottom: 0; margin-left: 0; margin-right: 0; padding-left: 6px; padding-right: 6px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="NameParameter" class="labelStyle" style="white-space: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
         </ui:VisualElement>
-        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="QuantityLabel" class="labelStyle" />
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="QuantityParameter" class="labelStyle" style="white-space: normal;" />
+        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ItemResultImage%204.png?fileID=21300000&amp;guid=cc3eeaa9d31f0d840a4895f88381a883&amp;type=3#ItemResultImage 4&apos;);">
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="QuantityLabel" class="labelStyle" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="QuantityParameter" class="labelStyle" style="white-space: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
         </ui:VisualElement>
-        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" class="labelStyle" />
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="User" class="labelStyle" style="white-space: normal;" />
+        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ItemResultImage%204.png?fileID=21300000&amp;guid=cc3eeaa9d31f0d840a4895f88381a883&amp;type=3#ItemResultImage 4&apos;);">
+            <ui:Label tabindex="-1" text="Usuário" display-tooltip-when-elided="true" class="labelStyle" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="User" class="labelStyle" style="white-space: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
         </ui:VisualElement>
-        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Data da movimentação" display-tooltip-when-elided="true" class="labelStyle" />
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="Date" class="labelStyle" style="white-space: normal;" />
+        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ItemResultImage%204.png?fileID=21300000&amp;guid=cc3eeaa9d31f0d840a4895f88381a883&amp;type=3#ItemResultImage 4&apos;);">
+            <ui:Label tabindex="-1" text="Data da movimentação" display-tooltip-when-elided="true" class="labelStyle" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="Date" class="labelStyle" style="white-space: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
         </ui:VisualElement>
-        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="De onde veio" display-tooltip-when-elided="true" class="labelStyle" />
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="WhereFrom" class="labelStyle" style="white-space: normal;" />
+        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ItemResultImage%204.png?fileID=21300000&amp;guid=cc3eeaa9d31f0d840a4895f88381a883&amp;type=3#ItemResultImage 4&apos;);">
+            <ui:Label tabindex="-1" text="De onde veio" display-tooltip-when-elided="true" class="labelStyle" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="WhereFrom" class="labelStyle" style="white-space: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
         </ui:VisualElement>
-        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
-            <ui:Label tabindex="-1" text="Para onde foi" display-tooltip-when-elided="true" class="labelStyle" />
-            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="WhereTo" class="labelStyle" style="white-space: normal;" />
+        <ui:VisualElement class="parameterImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/ItemResultImage%204.png?fileID=21300000&amp;guid=cc3eeaa9d31f0d840a4895f88381a883&amp;type=3#ItemResultImage 4&apos;);">
+            <ui:Label tabindex="-1" text="Para onde foi" display-tooltip-when-elided="true" class="labelStyle" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
+            <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="WhereTo" class="labelStyle" style="white-space: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 6px; padding-right: 6px; padding-top: 6px; padding-bottom: 6px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="ReturnButton" src="project://database/Assets/Templates/ReturnButton.uxml?fileID=9197481963319205126&amp;guid=7feb79b6cd30ef340b37ae836cb8e0dd&amp;type=3#ReturnButton" />
     <ui:Template name="ItemResult" src="project://database/Assets/Templates/ItemResult.uxml?fileID=9197481963319205126&amp;guid=9de0fe089e406e4469b22e0f72dd4229&amp;type=3#ItemResult" />
+    <Style src="project://database/Assets/StyleSheets/MyStyleSheet.uss?fileID=7433441132597879392&amp;guid=8e06778e21dd1b94c990380d3ae94db5&amp;type=3#MyStyleSheet" />
     <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="TitleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; margin-top: 50px; flex-direction: row; justify-content: space-around;">
             <ui:Instance template="ReturnButton" name="ReturnButton" />
@@ -48,13 +49,29 @@
             <ui:Button text="Adicionar detalhes" display-tooltip-when-elided="true" name="AddDetailsButton" style="width: 200px; height: 70px; font-size: 25px; flex-wrap: nowrap; white-space: normal; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Buttons/Button%202.png?fileID=21300000&amp;guid=642e06fbee7b8a94480561d26e5c36fa&amp;type=3#Button 2&apos;); color: rgb(255, 255, 255); padding-left: 30px; padding-right: 0;" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="HelpPanel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); position: absolute; width: 100%; height: 100%; display: none;">
-        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; flex-direction: row; align-items: center;" />
-        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; align-items: center;">
-            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; margin-left: 450px; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/Arrow.png?fileID=21300000&amp;guid=ef7e98a164f5ce94c82edbc9e98caa27&amp;type=3#Arrow&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0); transition-property: -unity-background-image-tint-color; transition-duration: 2s; transition-timing-function: ease-in;" />
-            <ui:Label tabindex="-1" text="Selecione a categoria do item a ser adicionado" display-tooltip-when-elided="true" style="margin-left: 10px; font-size: 30px; white-space: normal; width: 20%; -unity-text-align: upper-center;" />
+    <ui:VisualElement name="HelpPanel" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(222, 120, 56, 0.45); position: absolute; width: 100%; height: 85%; display: none; top: 161px; left: 0;">
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; align-items: center; margin-top: 15px;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; margin-left: 450px; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/Arrow.png?fileID=21300000&amp;guid=ef7e98a164f5ce94c82edbc9e98caa27&amp;type=3#Arrow&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); transition-property: -unity-background-image-tint-color; transition-duration: 2s; transition-timing-function: ease-in;" />
+            <ui:Label tabindex="-1" text="Selecione a categoria do item a ser adicionado" display-tooltip-when-elided="true" class="helpLabel" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 40px;" />
+            <ui:Label tabindex="-1" text="Clique aqui para resetar os valores dos inputs. Ao selecionar uma outra categoria, os inputs são automaticamente resetados" display-tooltip-when-elided="true" class="helpLabel" style="width: 38%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; margin-left: 0; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/RightArrow.png?fileID=21300000&amp;guid=a99f478ac8f83db43ab87d35080538b9&amp;type=3#RightArrow&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); transition-property: -unity-background-image-tint-color; transition-duration: 2s; transition-timing-function: ease-in;" />
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 65%;" />
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 65%; flex-direction: column;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 350px;" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/Arrow.png?fileID=21300000&amp;guid=ef7e98a164f5ce94c82edbc9e98caa27&amp;type=3#Arrow&apos;); margin-top: 75px;" />
+                <ui:Label tabindex="-1" text="Preencha os campos com os dados do item" display-tooltip-when-elided="true" class="helpLabel" style="width: auto; height: 50px; margin-top: 75px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center;">
+                <ui:Label tabindex="-1" text="Os campos patrimônio, serial são obrigadtórios e devem  ser únicos. Caso o item não tenha serial, coloque o número do patrimônio também como serial." display-tooltip-when-elided="true" class="helpLabel" style="width: 50%; margin-bottom: 20px;" />
+                <ui:Label tabindex="-1" text="Mesmo que não vá colocar detalhes do item (campos após observação), é fundamental colocar o modelo do item para que no futuro fique mais fácil detalhá-lo" display-tooltip-when-elided="true" enable-rich-text="true" class="helpLabel" style="width: 50%; margin-top: 20px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; margin-bottom: 0;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="MessagePanel" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; align-items: center; justify-content: center; width: 70%; border-left-color: rgb(222, 120, 56); border-right-color: rgb(222, 120, 56); border-top-color: rgb(222, 120, 56); border-bottom-color: rgb(222, 120, 56); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; position: absolute; top: 83%; left: 15%; display: none;">
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="MessageLabel" style="font-size: 20px; width: 100%; height: 80%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-center;" />
+        <ui:Button text="OK" display-tooltip-when-elided="true" name="MessageButton" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; font-size: 20px; background-color: rgb(255, 255, 255); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
     </ui:VisualElement>
 </ui:UXML>

@@ -113,14 +113,8 @@ public class MovementManager1 : MonoBehaviour
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
                 yield break;
-            }
-            //if(itemToChange == null)
-            //{
-            //    EventHandler.CallIsOneMessageOnlyEvent(true);
-            //    EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
-            //    yield break;
-            //}
-            WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
+            }         
+       WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
            
             UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
           
@@ -153,7 +147,7 @@ public class MovementManager1 : MonoBehaviour
                 {
                     itemFound = true;
                     EnableDisableMoveButton();
-                    EventHandler.CallChangeAnimation("HelpMovement2");
+                    EventHandler.CallChangeAnimation("2");
                 }
                 else if (response == "Not found or found duplicate") 
                 {
@@ -287,15 +281,15 @@ public class MovementManager1 : MonoBehaviour
     {
         if (shouldHide)
         {
-            fromPanel.style.opacity = 0;
-            toPanel.style.opacity = 0;
-            whoPanel.style.opacity = 0;
+            fromPanel.style.visibility = Visibility.Hidden;
+            toPanel.style.visibility = Visibility.Hidden;
+            whoPanel.style.visibility = Visibility.Hidden;
         }
         else
         {
-            fromPanel.style.opacity = 1;
-            toPanel.style.opacity = 1;
-            whoPanel.style.opacity = 1;
+            fromPanel.style.visibility = Visibility.Visible;
+            toPanel.style.visibility = Visibility.Visible;
+            whoPanel.style.visibility = Visibility.Visible;
         }
     }
 
@@ -353,7 +347,7 @@ public class MovementManager1 : MonoBehaviour
         toInput.value = "";
         ShouldHidePanels(true);
         EnableDisableMoveButton();
-        EventHandler.CallChangeAnimation("HelpMovement");
+        EventHandler.CallChangeAnimation("1");
     }
 
     /// <summary>
@@ -397,7 +391,17 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void EnableDisableMoveButton()
     {
-        //moveButton.
+        if(moveButton.style.visibility == Visibility.Visible)
+        {
+            moveButton.style.visibility = Visibility.Hidden;
+            moveButton.pickingMode = PickingMode.Ignore;
+        }
+        else
+        {
+            moveButton.style.visibility = Visibility.Visible;
+            moveButton.pickingMode = PickingMode.Position;
+        }
+        
     }
 
     /// <summary>
@@ -414,8 +418,7 @@ public class MovementManager1 : MonoBehaviour
     {
         inputEnabled = true;
         itemFound = false;
-        ResetInputs();
-        EnableDisableMoveButton();        
+        ResetInputs();       
     }
 
     /// <summary>

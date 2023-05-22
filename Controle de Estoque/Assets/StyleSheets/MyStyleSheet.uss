@@ -13,7 +13,7 @@
     height: 70px;
     font-size: 20px;
     -unity-text-align: middle-center;
-    background-image: url('project://database/Assets/Images/ActivityPanel3.png?fileID=21300000&guid=d61330018833c0442a2006e61339b498&type=3#ActivityPanel3');
+    background-image: url('project://database/Assets/Images/Panels/ActivityPanel3.png?fileID=21300000&guid=d61330018833c0442a2006e61339b498&type=3#ActivityPanel3');
 }
 
 .NoPaNoSeLabel {
@@ -22,4 +22,13 @@
     -unity-text-align: middle-left;
     white-space: normal;
     width: 70%;
+}
+
+.helpLabel {
+    margin-left: 10px;
+    font-size: 30px;
+    white-space: normal;
+    width: 20%;
+    -unity-text-align: upper-center;
+    color: rgb(0, 0, 0);
 }

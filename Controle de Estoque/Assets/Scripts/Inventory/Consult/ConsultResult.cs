@@ -1,73 +1,121 @@
-using TMPro;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ConsultResult : MonoBehaviour
 {
-    [SerializeField] private TMP_Text itemName; // shows either the item "Serial" or "Patrimônio"
-    [SerializeField] private Image[] itemBoxes;
-    [SerializeField] private ItemInformationPanelControler itemInformationPanelControler;
+    private Label itemName; // shows either the item "Serial" or "Patrimônio"
+    private VisualElement[] itemBoxes;
+    private List<Label> parameterNames;
+    private List<Label> parameterValues;
 
-    /// <summary>
-    /// Makes sure that when the gameObject is enabled, the itemInformationPanelControler variable is not null
-    /// </summary>
     private void OnEnable()
     {
-        if (itemInformationPanelControler == null)
-        {
-            itemInformationPanelControler = GetComponent<ItemInformationPanelControler>();
-        }
+       VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+       itemBoxes = root.Q<VisualElement>("Results").Children().ToArray<VisualElement>();
+        parameterNames = root.Query(name: "ResultPanel").Descendents<Label>(name: "ParameterName").ToList();
+        parameterValues = root.Query(name: "ResultPanel").Descendents<Label>(name: "ParameterValue").ToList();
+    }
+
+    public VisualElement[] GetItemBoxes()
+    {
+        return itemBoxes;
+    }
+
+    public List<Label> GetParameterNames()
+    {
+        return parameterNames;
+    }
+
+    public List<Label> GetParameterValues()
+    {
+        return parameterValues;
     }
 
     /// <summary>
     /// Used to show the result of consulting the database"
     /// itemName = 0: "Patrimônio"; itemName = 1: "Serial"
     /// </summary>
-    public void ShowResult(ItemColumns itemToShow, int itemName)
+    public void ShowResult(ItemColumns itemToShow)
     {
-        if (itemInformationPanelControler == null)
-        {
-            itemInformationPanelControler = GetComponent<ItemInformationPanelControler>();
-        }
+        ActivateAllItemBoxes();
         if (itemToShow != null)
         {
-            if (itemName == 0)
-            {
-                this.itemName.text = "Patrimônio: " + itemToShow.Patrimonio.ToString();
-            }
-            else if (itemName == 1)
-            {
-                this.itemName.text = "Serial: " + itemToShow.Serial;
-            }
-            itemInformationPanelControler.ShowItemConsult(itemToShow);
-            ChangeSize(itemInformationPanelControler.GetNumberOfActiveBoxes());
+            Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+            dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(itemToShow, itemToShow.Categoria);
+            List<string> names = new List<string>();
+            List<string> values = new List<string>();
+            dictionary.TryGetValue("Names", out names);
+            dictionary.TryGetValue("Values", out values);
+            FillNames(names);
+            FillValues(values);
         }
         else
         {
-            Debug.LogWarning("itemToShow is null");
+            print("Item to show is null");
+        }
+        HideEmptyItemBox();
+    }
+
+    /// <summary>
+    /// Activate all item boxes
+    /// </summary>
+    private void ActivateAllItemBoxes()
+    {
+        for (int i = 0; i < itemBoxes.Length; i++)
+        {
+            itemBoxes[i].style.display = DisplayStyle.Flex;     
         }
     }
 
     /// <summary>
-    /// Changes the panel size according to the number of active "boxes" or parameters inside the panel
+    /// Fill the names of all item boxes that should get a name
     /// </summary>
-    public void ChangeSize(int numberOfActiveBoxes)
+    private void FillNames(List<string> names)
     {
-        if (numberOfActiveBoxes < 10)
+        for (int i = 0; i < parameterNames.Count; i++)
         {
-            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 170);
+            if (i < names.Count)
+            {
+                parameterNames[i].text = names[i];
+            }
+            else
+            {
+                break;
+            }
         }
-        else if (numberOfActiveBoxes < 19)
+    }
+
+    /// <summary>
+    /// Fill the values of all item boxes that should get a value. Used when the item box have an inputField object
+    /// </summary>
+    private void FillValues(List<string> values)
+    {
+        for (int i = 0; i < parameterValues.Count; i++)
         {
-            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 280);
+            if (i < values.Count)
+            {
+                parameterValues[i].text = values[i];
+            }
+            else
+            {
+                break;
+            }
         }
-        else if (numberOfActiveBoxes <28)
+    }
+
+    /// <summary>
+    /// Hide all item boxes that have a empty name
+    /// </summary>
+    private void HideEmptyItemBox()
+    {
+        for (int i = 0; i < parameterNames.Count; i++)
         {
-            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 380);
-        }
-        else
-        {
-            GetComponent<RectTransform>().sizeDelta = new Vector2(1900f, 505);
+            if (parameterNames[i] != null && parameterNames[i].text == "")
+            {
+                itemBoxes[i].style.display = DisplayStyle.None;
+            }
         }
     }
 }

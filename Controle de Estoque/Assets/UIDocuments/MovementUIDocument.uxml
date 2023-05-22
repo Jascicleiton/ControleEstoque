@@ -2,41 +2,77 @@
     <Style src="project://database/Assets/StyleSheets/MyStyleSheet.uss?fileID=7433441132597879392&amp;guid=8e06778e21dd1b94c990380d3ae94db5&amp;type=3#MyStyleSheet" />
     <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between;">
         <ui:VisualElement name="TopContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; margin-top: 30px; flex-direction: row; justify-content: space-between; align-items: center;">
-            <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/returnButton.png?fileID=2800000&amp;guid=5a209ef40c4ba70499485f49a1eb7466&amp;type=3#returnButton&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px;" />
+            <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Buttons/Return%20Button%202.png?fileID=21300000&amp;guid=c2792b165bdd98140ae522efb41ac883&amp;type=3#Return Button 2&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px; margin-left: 50px;" />
             <ui:Label tabindex="-1" text="Movimentar estoque" display-tooltip-when-elided="true" style="font-size: 50px;" />
             <ui:Button display-tooltip-when-elided="true" name="HelpButton" style="margin-right: 50px; width: 70px; height: 70px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Icons/unlitLightBulb.png?fileID=21300000&amp;guid=38dad7f224c41b046a55cb14196f4891&amp;type=3#unlitLightBulb&apos;); margin-left: 130px;" />
         </ui:VisualElement>
         <ui:VisualElement name="MiddleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 40%; flex-direction: column; justify-content: space-between;">
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between;">
                 <ui:VisualElement name="ItemInformationContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; margin-left: 30px; justify-content: space-between;">
-                    <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="moveLabel" />
-                    <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterTextField" style="height: 70px; font-size: 20px;" />
+                    <ui:Label tabindex="-1" text="Patrimônio" display-tooltip-when-elided="true" class="moveLabel" style="background-image: url(&apos;project://database/Assets/Images/Panels/ActivityPanel%204.png?fileID=21300000&amp;guid=95b0064a985d94e4d974054d0291ea22&amp;type=3#ActivityPanel 4&apos;); -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:TextField picking-mode="Ignore" name="ParameterTextField" style="height: 70px; font-size: 20px;" />
                     <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 70px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="FromContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; justify-content: space-between;">
-                    <ui:Label tabindex="-1" text="De onde" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px;" />
+                <ui:VisualElement name="FromContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; justify-content: space-between; visibility: hidden;">
+                    <ui:Label tabindex="-1" text="De onde" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px; background-image: url(&apos;project://database/Assets/Images/Panels/ActivityPanel%204.png?fileID=21300000&amp;guid=95b0064a985d94e4d974054d0291ea22&amp;type=3#ActivityPanel 4&apos;);" />
                     <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="FromDP" style="height: 70px;" />
-                    <ui:TextField picking-mode="Ignore" value="filler text" name="FromTextField" style="height: 70px; font-size: 20px;" />
+                    <ui:TextField picking-mode="Ignore" name="FromTextField" style="height: 70px; font-size: 20px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="ToContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; justify-content: space-between;">
-                    <ui:Label tabindex="-1" text="Para onde" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px;" />
+                <ui:VisualElement name="ToContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; justify-content: space-between; visibility: hidden;">
+                    <ui:Label tabindex="-1" text="Para onde" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px; background-image: url(&apos;project://database/Assets/Images/Panels/ActivityPanel%204.png?fileID=21300000&amp;guid=95b0064a985d94e4d974054d0291ea22&amp;type=3#ActivityPanel 4&apos;);" />
                     <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ToDP" style="height: 70px;" />
-                    <ui:TextField picking-mode="Ignore" value="filler text" name="ToTextField" style="height: 70px; font-size: 20px;" />
+                    <ui:TextField picking-mode="Ignore" name="ToTextField" style="height: 70px; font-size: 20px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="WhoContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; margin-right: 30px; justify-content: space-between;">
-                    <ui:Label tabindex="-1" text="Quem está movimentando" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px;" />
+                <ui:VisualElement name="WhoContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; margin-right: 30px; justify-content: space-between; visibility: hidden;">
+                    <ui:Label tabindex="-1" text="Quem está movimentando" display-tooltip-when-elided="true" class="moveLabel" style="font-size: 20px; background-image: url(&apos;project://database/Assets/Images/Panels/ActivityPanel%204.png?fileID=21300000&amp;guid=95b0064a985d94e4d974054d0291ea22&amp;type=3#ActivityPanel 4&apos;);" />
                     <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="WhoLabel" style="height: 70px; font-size: 20px; -unity-text-align: middle-center; background-color: rgba(123, 122, 122, 0.47);" />
-                    <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="height: 70px; width: 40%; align-self: flex-end; font-size: 20px;" />
+                    <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="height: 70px; width: 40%; align-self: flex-end; font-size: 20px; color: rgb(255, 255, 255); background-image: url(&apos;project://database/Assets/Images/Buttons/ResetButton.png?fileID=21300000&amp;guid=51aa0c2f7548ddf41bc93ccd5c72c40d&amp;type=3#ResetButton&apos;); background-color: rgba(188, 188, 188, 0); -unity-background-scale-mode: scale-to-fit;" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center;">
-                <ui:Button text="Mover item" display-tooltip-when-elided="true" name="MoveButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Button.png?fileID=21300000&amp;guid=a0c04667e4cc64e468a098c2d60915c5&amp;type=3#Button&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; width: 200px; height: 70px; font-size: 20px; padding-left: 2%;" />
+                <ui:Button text="Mover item" display-tooltip-when-elided="true" name="MoveButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Buttons/Button%203.png?fileID=21300000&amp;guid=82e46b070298079439f5c112b07ebc6d&amp;type=3#Button 3&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; width: 200px; height: 70px; font-size: 20px; padding-left: 2%; display: flex; visibility: hidden;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="BottomContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; margin-bottom: 50px; justify-content: center; align-items: center;">
-            <ui:VisualElement name="MessageContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 80%; justify-content: center; align-items: center; background-image: url(&apos;project://database/Assets/Images/ActivityPanel3.png?fileID=21300000&amp;guid=d61330018833c0442a2006e61339b498&amp;type=3#ActivityPanel3&apos;);">
+            <ui:VisualElement name="MessageContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 80%; justify-content: center; align-items: center; background-image: url(&apos;project://database/Assets/Images/Panels/ActivityPanel3.png?fileID=21300000&amp;guid=d61330018833c0442a2006e61339b498&amp;type=3#ActivityPanel3&apos;); -unity-background-scale-mode: stretch-to-fill; display: none;">
                 <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="MessageLabel" style="font-size: 20px;" />
             </ui:VisualElement>
         </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="HelpPanel1" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(222, 120, 56, 0.45); position: absolute; width: 100%; height: 85%; display: none; top: 161px; left: 0;">
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 20%; flex-direction: row; align-items: center; margin-top: 0;" />
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 65%; flex-direction: column;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; margin-top: 20px;">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 420px;" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/Arrow.png?fileID=21300000&amp;guid=ef7e98a164f5ce94c82edbc9e98caa27&amp;type=3#Arrow&apos;); margin-top: 75px;" />
+                <ui:Label tabindex="-1" text="Preencha o campo com o número do patrimônio do item a ser movido para verificar se ele existe, e pressione &quot;Enter&quot;." display-tooltip-when-elided="true" class="helpLabel" style="width: 50%; height: 100px; margin-top: 50px; flex-wrap: nowrap;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; margin-bottom: 0;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="HelpPanel2" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(222, 120, 56, 0.45); position: absolute; width: 100%; height: 85%; display: none; top: 161px; left: 0;">
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; align-items: center; margin-top: 15px;" />
+        <ui:VisualElement name="VisualElement" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 80%; flex-direction: row; justify-content: space-between;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; width: 20%;" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: flex-end; align-items: center; width: 20%;">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/Icons/UpArrow.png?fileID=21300000&amp;guid=0ac84c2b0badbdf4290ac9e9ad675aab&amp;type=3#UpArrow&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                <ui:Label tabindex="-1" display-tooltip-when-elided="true" text="Caso o local de onde o item está saindo estiver incorreto, selecione o local correto." class="helpLabel" style="width: 100%; margin-bottom: 50px; margin-left: 0; margin-right: 0; margin-top: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Label tabindex="-1" text="Se o local não estiver aparecendo, escolha Outros e digite na caixa de texto que aparecer o nome do local" display-tooltip-when-elided="true" enable-rich-text="true" class="helpLabel" style="width: 100%; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 70px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: flex-end; align-items: center; width: 20%;">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/Icons/UpArrow.png?fileID=21300000&amp;guid=0ac84c2b0badbdf4290ac9e9ad675aab&amp;type=3#UpArrow&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgb(255, 255, 255);" />
+                <ui:Label tabindex="-1" display-tooltip-when-elided="true" text="Selecione o local para onde o item está sendo movido" class="helpLabel" style="width: 100%; margin-bottom: 50px; margin-left: 0; margin-right: 0; margin-top: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 5%;" />
+                <ui:Label tabindex="-1" text="Se o local não estiver aparecendo, escolha Outros e digite na caixa de texto que aparecer o nome do local" display-tooltip-when-elided="true" enable-rich-text="true" class="helpLabel" style="width: 100%; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 70px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: flex-end; align-items: center; width: 20%;">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/Icons/UpArrow.png?fileID=21300000&amp;guid=0ac84c2b0badbdf4290ac9e9ad675aab&amp;type=3#UpArrow&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgb(255, 255, 255); align-self: flex-end; margin-left: 0; margin-right: 75px;" />
+                <ui:Label tabindex="-1" text="Pressione o botão Reset para cancelar a movimentação." display-tooltip-when-elided="true" enable-rich-text="true" class="helpLabel" style="width: 100%; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 60%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="MessagePanel" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; align-items: center; justify-content: center; width: 70%; border-left-color: rgb(222, 120, 56); border-right-color: rgb(222, 120, 56); border-top-color: rgb(222, 120, 56); border-bottom-color: rgb(222, 120, 56); border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; position: absolute; left: 15%; bottom: 5%; display: none;">
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="MessageLabel" style="font-size: 20px; width: 100%; height: 80%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-center;" />
+        <ui:Button text="OK" display-tooltip-when-elided="true" name="MessageButton" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; font-size: 20px; background-color: rgb(255, 255, 255); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
     </ui:VisualElement>
 </ui:UXML>

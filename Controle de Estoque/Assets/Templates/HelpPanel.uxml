@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="HelpPanel" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(222, 120, 56, 0.45); position: absolute; width: 100%; height: 85%; display: none; top: 161px; left: 0;">
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; align-items: center; margin-top: 15px;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; margin-left: 450px; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/Arrow.png?fileID=21300000&amp;guid=ef7e98a164f5ce94c82edbc9e98caa27&amp;type=3#Arrow&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); transition-property: -unity-background-image-tint-color; transition-duration: 2s; transition-timing-function: ease-in;" />
+            <ui:Label tabindex="-1" text="Selecione a categoria do item a ser adicionado" display-tooltip-when-elided="true" class="helpLabel" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 40px;" />
+            <ui:Label tabindex="-1" text="Clique aqui para resetar os valores dos inputs. Ao selecionar uma outra categoria, os inputs são automaticamente resetados" display-tooltip-when-elided="true" class="helpLabel" style="width: 38%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; margin-left: 0; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/RightArrow.png?fileID=21300000&amp;guid=a99f478ac8f83db43ab87d35080538b9&amp;type=3#RightArrow&apos;); -unity-background-image-tint-color: rgb(255, 255, 255); transition-property: -unity-background-image-tint-color; transition-duration: 2s; transition-timing-function: ease-in;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 65%; flex-direction: column;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 350px;" />
+                <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 50px; height: 50px; background-image: url(&apos;project://database/Assets/Images/Icons/Arrow.png?fileID=21300000&amp;guid=ef7e98a164f5ce94c82edbc9e98caa27&amp;type=3#Arrow&apos;); margin-top: 75px;" />
+                <ui:Label tabindex="-1" text="Preencha os campos com os dados do item" display-tooltip-when-elided="true" class="helpLabel" style="width: auto; height: 50px; margin-top: 75px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center;">
+                <ui:Label tabindex="-1" text="Os campos patrimônio, serial são obrigadtórios e devem  ser únicos. Caso o item não tenha serial, coloque o número do patrimônio também como serial." display-tooltip-when-elided="true" class="helpLabel" style="width: 50%; margin-bottom: 20px;" />
+                <ui:Label tabindex="-1" text="Mesmo que não vá colocar detalhes do item (campos após observação), é fundamental colocar o modelo do item para que no futuro fique mais fácil detalhá-lo" display-tooltip-when-elided="true" enable-rich-text="true" class="helpLabel" style="width: 50%; margin-top: 20px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; margin-bottom: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

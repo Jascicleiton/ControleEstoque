@@ -16,8 +16,9 @@ namespace Assets.Scripts.Inventory.Consult
         private TextField patrimonioSearchInputField; // field use to type the item "Patrimônio" or the item "Serial"
         private Label numberOfItensFoundText; // show how many itens were found on the search
 
-        private VisualElement consultResult;
-        private VisualElement consultResultTransform;
+        private VisualTreeAsset consultResult;
+        private ListView listView;
+        private List<VisualTreeAsset> results = new List<VisualTreeAsset>();
 
         private VisualElement categorySearchParametersPanel;
         private List<TextField> categorySearchInputs;
@@ -113,6 +114,7 @@ namespace Assets.Scripts.Inventory.Consult
                 categorySearchInputs.Add(item as TextField);
             }
             operators = root.Query(name: "SearchParametersContainer").Descendents<DropdownField>().ToList();
+            listView = root.Q<ListView>();
             returnButton = root.Q<Button>("ReturnButton");
         }
 
@@ -128,6 +130,7 @@ namespace Assets.Scripts.Inventory.Consult
             EventHandler.EnableInput -= SetInputEnabled;
         }
 
+      
         /// <summary>
         /// Enables or disables input. Called by Event EnableInput
         /// </summary>
@@ -142,9 +145,9 @@ namespace Assets.Scripts.Inventory.Consult
         private void RemoveOldSearch()
         {
             SetItensFoundText(false);
-            if (consultResultTransform.childCount > 0)
+            if (listView.childCount > 0)
             {
-                foreach (var item in consultResultTransform.Children())
+                foreach (var item in listView.Children())
                 {
                     item.style.display = DisplayStyle.None;
                 }
@@ -205,6 +208,8 @@ namespace Assets.Scripts.Inventory.Consult
             }
         }
 
+       
+
         /// <summary>
         /// Consult the inventory using the parameters chosen from each category
         /// </summary>
@@ -240,24 +245,13 @@ namespace Assets.Scripts.Inventory.Consult
                     {
                         if (InternalDatabase.Instance.currentEstoque != CurrentEstoque.ESF)
                         {
-                            if (foundItens.itens[i].Status != "DEFEITO")
-                            {
-                                //GameObject result = PoolManager.Instance.ReuseObject(consultResult);
-                                //result.SetActive(true);
-                                //result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
-                            }
-                            else
+                            if (foundItens.itens[i].Status == "DEFEITO")
                             {
                                 foundItens.itens.RemoveAt(i);
                             }
                         }
-                        else
-                        {
-                            //GameObject result = PoolManager.Instance.ReuseObject(consultResult);
-                            //result.SetActive(true);
-                            //result.GetComponent<ConsultResult>().ShowResult(foundItens.itens[i], 0);
-                        }
                     }
+                    FillListView(foundItens);
                     numberOfItensFoundText.style.visibility = Visibility.Visible;
                     numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
                 }
@@ -272,7 +266,6 @@ namespace Assets.Scripts.Inventory.Consult
                 numberOfItensFoundText.style.visibility = Visibility.Visible;
                 numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
             }
-
         }
 
         /// <summary>
@@ -333,6 +326,112 @@ namespace Assets.Scripts.Inventory.Consult
         private void ReturnToPreviousScreen()
         {
             ChangeScreenManager.Instance.OpenScene(Scenes.ConsultScene, Scenes.InitialScene);
+        }
+
+
+        private void FillListView(Sheet foundItems)
+        {
+            if (listView.itemsSource != null)
+            {
+                listView.itemsSource.Clear();
+            }
+
+            listView.makeItem = () => consultResult.Instantiate();
+            listView.bindItem = (element, i) =>
+            {
+                VisualElement[] itemBoxes = element.Q<VisualElement>("Results").Children().ToArray();
+                List<Label> parameterNames = element.Query(name: "Results").Descendents<Label>(name: "ParameterName").ToList();
+                List<Label> parameterValues = element.Query(name: "Results").Descendents<Label>(name: "ParameterValue").ToList();
+                Label patrimonioLabel = element.Q<Label>("PatrimonioLabel");
+                
+                ShowResult(foundItems.itens[i], itemBoxes.ToList(), parameterNames, parameterValues);
+            };
+            listView.itemsSource = foundItems.itens;
+        }
+
+        /// <summary>
+        /// Used to show the result of consulting the database"
+        /// </summary>
+        public void ShowResult(ItemColumns itemToShow, List<VisualElement> itemBoxes, List<Label> parameterNames, List<Label> parameterValues)
+        {
+            ActivateAllItemBoxes(itemBoxes);
+            if (itemToShow != null)
+            {
+                Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+                dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(itemToShow, itemToShow.Categoria);
+                List<string> names = new List<string>();
+                List<string> values = new List<string>();
+                dictionary.TryGetValue("Names", out names);
+                dictionary.TryGetValue("Values", out values);
+                FillNames(names, parameterNames);
+                FillValues(values, parameterValues);
+            }
+            else
+            {
+                print("Item to show is null");
+            }
+            HideEmptyItemBox(itemBoxes, parameterNames);
+        }
+
+        /// <summary>
+        /// Activate all item boxes
+        /// </summary>
+        private void ActivateAllItemBoxes(List<VisualElement> itemBoxes)
+        {
+            for (int i = 0; i < itemBoxes.Count; i++)
+            {
+                itemBoxes[i].style.display = DisplayStyle.Flex;
+            }
+        }
+
+        /// <summary>
+        /// Fill the names of all item boxes that should get a name
+        /// </summary>
+        private void FillNames(List<string> names, List<Label> parameterNames)
+        {
+            for (int i = 0; i < parameterNames.Count; i++)
+            {
+                if (i < names.Count)
+                {
+                    parameterNames[i].text = names[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Fill the values of all item boxes that should get a value. Used when the item box have an inputField object
+        /// </summary>
+        private void FillValues(List<string> values, List<Label> parameterValues)
+        {
+            for (int i = 0; i < parameterValues.Count; i++)
+            {
+                if (i < values.Count)
+                {
+                    parameterValues[i].text = values[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hide all item boxes that have a empty name
+        /// </summary>
+        private void HideEmptyItemBox(List<VisualElement> itemBoxes, List<Label> parameterNames)
+        {
+            for (int i = 0; i < parameterNames.Count; i++)
+            {
+                if (parameterNames[i] != null && parameterNames[i].text == "")
+                {
+                    itemBoxes[i].style.display = DisplayStyle.None;
+                }
+            }
         }
     }
 }

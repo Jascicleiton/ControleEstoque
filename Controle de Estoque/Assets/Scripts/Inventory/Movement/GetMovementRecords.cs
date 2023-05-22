@@ -43,7 +43,7 @@ public class GetMovementRecords : MonoBehaviour
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         movementObjectTemplate = Resources.Load<VisualTreeAsset>("Templates/MovementRecord");
-        listView = root.Q<ListView>();
+        listView = root.Q<ListView>("Results");
         parameterInput = root.Q<TextField>("ParameterTextField");
         searchOptionsDP = root.Q<DropdownField>("ParameterDP");
         nameDP = root.Q<DropdownField>("NameDP");
@@ -76,6 +76,7 @@ public class GetMovementRecords : MonoBehaviour
         nameDP.choices = names;
         //nameDP.formatListItemCallback = (element) => element.ToString();
         //nameDP.formatSelectedValueCallback = (element) => element.ToString();
+        nameDP.value = names[0];
         nameDP.style.display = DisplayStyle.None;
     }
 
@@ -246,67 +247,64 @@ public class GetMovementRecords : MonoBehaviour
     private void ShowMovements()
     {
         MouseManager.Instance.SetWaitingCursor();
+        if (listView.itemsSource != null)
+        {
+            listView.itemsSource.Clear();
+        }
         if (regularItemMovementRecords.Count > 0)
         {
             regularItemMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
 
-            for (int i = 0; i < regularItemMovementRecords.Count; i++)
+            listView.makeItem = () => movementObjectTemplate.Instantiate();
+            listView.bindItem = (element, i) =>
             {
-                listView.makeItem = () => movementObjectTemplate.Instantiate();
-                listView.bindItem = (element, j) =>
-                {
-                    Label nameLabel = element.Q<Label>("NameLabel");
-                    Label nameParameter = element.Q<Label>("NameParameter");
-                    Label quantityLabel = element.Q<Label>("QuantityLabel");
-                    Label quantityParameter = element.Q<Label>("QuantityParameter");
-                    Label user = element.Q<Label>("User");
-                    Label date = element.Q<Label>("Date");
-                    Label whereFrom = element.Q<Label>("WhereFrom");
-                    Label whereTo = element.Q<Label>("WhereTo");
+                Label nameLabel = element.Q<Label>("NameLabel");
+                Label nameParameter = element.Q<Label>("NameParameter");
+                Label quantityLabel = element.Q<Label>("QuantityLabel");
+                Label quantityParameter = element.Q<Label>("QuantityParameter");
+                Label user = element.Q<Label>("User");
+                Label date = element.Q<Label>("Date");
+                Label whereFrom = element.Q<Label>("WhereFrom");
+                Label whereTo = element.Q<Label>("WhereTo");
 
-                    nameLabel.text = "Patrimônio";
-                    nameParameter.text = regularItemMovementRecords[i].item.Patrimonio.ToString();
-                    quantityLabel.text = "Serial";
-                    quantityParameter.text = regularItemMovementRecords[i].item.Serial;
-                    user.text = regularItemMovementRecords[i].username;
-                    date.text = regularItemMovementRecords[i].date;
-                    whereFrom.text = regularItemMovementRecords[i].fromWhere.ToString();
-                    whereTo.text = regularItemMovementRecords[i].toWhere.ToString();
-                };
-            }
-            return;
+                nameLabel.text = "Patrimônio";
+                nameParameter.text = regularItemMovementRecords[i].item.Patrimonio.ToString();
+                quantityLabel.text = "Serial";
+                quantityParameter.text = regularItemMovementRecords[i].item.Serial;
+                user.text = regularItemMovementRecords[i].username;
+                date.text = regularItemMovementRecords[i].date;
+                whereFrom.text = regularItemMovementRecords[i].fromWhere.ToString();
+                whereTo.text = regularItemMovementRecords[i].toWhere.ToString();
+            };
+            listView.itemsSource = regularItemMovementRecords;
         }
         if (noPaNoSeMovementRecords.Count > 0)
         {
             noPaNoSeMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
-
-            for (int i = 0; i < noPaNoSeMovementRecords.Count; i++)
+            listView.makeItem = () => movementObjectTemplate.Instantiate();
+            listView.bindItem = (element, i) =>
             {
-                listView.makeItem = () => movementObjectTemplate.Instantiate();
-                listView.bindItem = (element, j) =>
-                {
-                    Label nameLabel = element.Q<Label>("NameLabel");
-                    Label nameParameter = element.Q<Label>("NameParameter");
-                    Label quantityLabel = element.Q<Label>("QuantityLabel");
-                    Label quantityParameter = element.Q<Label>("QuantityParameter");
-                    Label user = element.Q<Label>("User");
-                    Label date = element.Q<Label>("Date");
-                    Label whereFrom = element.Q<Label>("WhereFrom");
-                    Label whereTo = element.Q<Label>("WhereTo");
+                Label nameLabel = element.Q<Label>("NameLabel");
+                Label nameParameter = element.Q<Label>("NameParameter");
+                Label quantityLabel = element.Q<Label>("QuantityLabel");
+                Label quantityParameter = element.Q<Label>("QuantityParameter");
+                Label user = element.Q<Label>("User");
+                Label date = element.Q<Label>("Date");
+                Label whereFrom = element.Q<Label>("WhereFrom");
+                Label whereTo = element.Q<Label>("WhereTo");
 
-                    nameLabel.text = "Nome";
-                    nameParameter.text = noPaNoSeMovementRecords[i].itemName;
-                    quantityLabel.text = "Quantidade";
-                    quantityParameter.text = noPaNoSeMovementRecords[i].quantity.ToString();
-                    user.text = noPaNoSeMovementRecords[i].username;
-                    date.text = noPaNoSeMovementRecords[i].date;
-                    whereFrom.text = noPaNoSeMovementRecords[i].fromWhere.ToString();
-                    whereTo.text = noPaNoSeMovementRecords[i].toWhere.ToString();
-                };
-            }
-            MouseManager.Instance.SetDefaultCursor();            
-            return;
+                nameLabel.text = "Nome";
+                nameParameter.text = noPaNoSeMovementRecords[i].itemName;
+                quantityLabel.text = "Quantidade";
+                quantityParameter.text = noPaNoSeMovementRecords[i].quantity.ToString();
+                user.text = noPaNoSeMovementRecords[i].username;
+                date.text = noPaNoSeMovementRecords[i].date;
+                whereFrom.text = noPaNoSeMovementRecords[i].fromWhere.ToString();
+                whereTo.text = noPaNoSeMovementRecords[i].toWhere.ToString();
+            };
+            listView.itemsSource = noPaNoSeMovementRecords;
         }
+        MouseManager.Instance.SetDefaultCursor();
     }
 
     /// <summary>
@@ -323,7 +321,8 @@ public class GetMovementRecords : MonoBehaviour
             }
         }
         else 
-        {            
+        {
+            DeleteOldSearch();
             StartCoroutine(ImportNoPaNoSeMovementsRoutine(nameDP.value));
         }
     }
@@ -344,12 +343,14 @@ public class GetMovementRecords : MonoBehaviour
             nameDP.style.display = DisplayStyle.None;
             parameterInput.style.display = DisplayStyle.Flex;
             parameterInput.value = "";
+            EventHandler.CallChangeAnimation("1");
         }
         else if (evt.newValue == "Nome")
         {
             isSearchingPatrimonio = false;
             parameterInput.style.display = DisplayStyle.None;
             nameDP.style.display = DisplayStyle.Flex;
+            EventHandler.CallChangeAnimation("2");
         }
     }
 }

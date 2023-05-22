@@ -171,7 +171,7 @@ namespace InitialScene
 
         private void NoPaNoSeClicked()
         {
-            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.TestScene);
+            ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.NoPaNoSeScene);
         }
 
         private void RecoverBKPClicked()

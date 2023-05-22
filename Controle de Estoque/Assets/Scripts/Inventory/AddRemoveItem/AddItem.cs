@@ -54,7 +54,10 @@ namespace Inventory.AddItem
         {
             foreach (var item in parameterValues)
             {
-                item.isReadOnly = inputEnabled;
+                if (item.enabledInHierarchy)
+                {
+                    item.isReadOnly = inputEnabled;
+                }
             }
         }
 
