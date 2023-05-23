@@ -1,43 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UIElements;
 
 public class SearchCategoryDropDownHandler : MonoBehaviour
 {
-    [SerializeField] private TMP_Text[] searchParameters;
-    [SerializeField] private TMP_InputField[] searchParamentersInput;
+    private List<TextField> searchParamentersTextFields;
 
-    List<string> names = new List<string>();
-    Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-    
-    private void Start()
+    private List<string> names = new List<string>();
+   private  Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+    private DropdownField categoryDP;
+
+
+    private void OnEnable()
     {
-        StartCoroutine(WaitATick());
+        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        searchParamentersTextFields = root.Query(name: "SearchParametersContainer").Descendents<TextField>().ToList();
+        categoryDP = root.Q<DropdownField>("CategoryDP");
+        categoryDP.RegisterCallback<ChangeEvent<string>>(HandleInputData);
+        EventHandler.UpdateConsultInputs += UpdateFirstTime;
     }
 
-    /// <summary>
-    /// Wait half a second before initializing, to guarantee everythin is loaded
-    /// </summary>
-    private IEnumerator WaitATick()
+   
+    private void OnDisable()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
-        HandleInputData(0);
+        categoryDP.UnregisterCallback<ChangeEvent<string>>(HandleInputData);
+        EventHandler.UpdateConsultInputs -= UpdateFirstTime;
     }
 
-    /// <summary>
-    /// Handles the inputs placeholder texts for each category
-    /// </summary>
-    public void HandleInputData(int value)
+    private void UpdateFirstTime()
     {
-        foreach (var item in searchParamentersInput)
+        foreach (var item in searchParamentersTextFields)
         {
-            item.gameObject.SetActive(true);
+            item.style.display = DisplayStyle.Flex;
         }
-        names.Clear();       
-        dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, HelperMethods.GetCategoryString(value));
+
+        names.Clear();
+        dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, InternalDatabase.categories[0]);
         dictionary.TryGetValue("Placeholders", out names);
-        SetParameterPlaceholders(value);
+        SetParameterPlaceholders(InternalDatabase.categories[0]);
+    }
+
+    private void HandleInputData(ChangeEvent<string> evt)
+    {
+        foreach (var item in searchParamentersTextFields)
+        {
+            item.style.display = DisplayStyle.Flex;
+        }
+
+        names.Clear();
+        dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, evt.newValue);
+        dictionary.TryGetValue("Placeholders", out names);
+        SetParameterPlaceholders(evt.newValue);
     }
 
     /// <summary>
@@ -45,40 +59,68 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
     /// </summary>
     private void ResetParameterNames()
     {
-        for (int i = 3; i < searchParameters.Length; i++)
+        for (int i = 0; i < searchParamentersTextFields.Count; i++)
         {
-            searchParameters[i].text = "";
-                    }
+            searchParamentersTextFields[i].value = "";
+        }
     }
 
     /// <summary>
     /// Set all search parameters each time a new category is selected
     /// </summary>
-    private void SetParameterPlaceholders(int value)
+    private void SetParameterPlaceholders(string category)
     {
         ResetParameterNames();
         if(names != null && names.Count > 0)
         {
-            searchParameters[0].text = names[3];
-            searchParameters[1].text = names[7];
-            searchParameters[2].text = names[8];
+            SetPlaceholderText(searchParamentersTextFields[0], names[3]);
+            SetPlaceholderText(searchParamentersTextFields[1], names[7]);
+            SetPlaceholderText(searchParamentersTextFields[2], names[8]);
             for (int i = 11; i < names.Count; i++)
             {
-                searchParameters[i - 8].text = names[i];
+                SetPlaceholderText(searchParamentersTextFields[i - 8], names[i]);                
             }
         }
-        if(HelperMethods.GetCategoryString(value) == ConstStrings.Outros)
+        if (category == ConstStrings.Outros)
         {
-            searchParameters[3].text = names[5];
+            SetPlaceholderText(searchParamentersTextFields[3], names[5]);
         }
 
-        for (int i = 0; i < searchParameters.Length; i++)
+        for (int i = 0; i < searchParamentersTextFields.Count; i++)
         {
-            if (searchParameters[i].text == "")
+            if (searchParamentersTextFields[i].value == "" || searchParamentersTextFields[i].value == names[i])
             {
-                searchParamentersInput[i].gameObject.SetActive(false);
+                searchParamentersTextFields[i].style.display = DisplayStyle.None;
             }
         }
         EventHandler.CallUpdateTabInputs();
-    }  
+    }
+
+    private void SetPlaceholderText(TextField textField, string placeholder)
+    {
+        string placeholderClass = TextField.ussClassName + "__placeholder";
+
+        onFocusOut();
+        textField.RegisterCallback<FocusInEvent>(evt => onFocusIn());
+        textField.RegisterCallback<FocusOutEvent>(evt => onFocusOut());
+
+        void onFocusIn()
+        {
+            if (textField.ClassListContains(placeholderClass))
+            {
+                textField.value = string.Empty;
+                textField.RemoveFromClassList(placeholderClass);
+            }
+        }
+
+        void onFocusOut()
+        {
+            if (string.IsNullOrEmpty(textField.text))
+            {
+                textField.SetValueWithoutNotify(placeholder);
+                textField.AddToClassList(placeholderClass);
+            }
+        }
+    }
+
 }

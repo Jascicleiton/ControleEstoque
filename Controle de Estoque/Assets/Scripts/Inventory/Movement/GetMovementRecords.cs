@@ -275,6 +275,7 @@ public class GetMovementRecords : MonoBehaviour
                 date.text = regularItemMovementRecords[i].date;
                 whereFrom.text = regularItemMovementRecords[i].fromWhere.ToString();
                 whereTo.text = regularItemMovementRecords[i].toWhere.ToString();
+                element.style.height = StyleKeyword.Auto;
             };
             listView.itemsSource = regularItemMovementRecords;
         }

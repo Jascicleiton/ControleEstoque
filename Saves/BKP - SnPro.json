@@ -5,7 +5,86 @@
   "lastSceneBuildIndex": 0,
   "3e52c414-566e-4fb4-b6de-6750d5546d5d": {},
   "d5670d65-04ae-4c09-a653-30cc4effad22": {
-    "ImportCategories": []
+    "ImportCategories": [
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Placa SAS"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "USB"
+      }
+    ]
   },
   "35aac1d1-9605-4002-aa5c-4f219df57d60": {
     "UsersManager": [
@@ -22,7 +101,336 @@
     ]
   },
   "994252a3-6a96-404b-b86a-e4b1a09ef0c6": {
-    "NoPaNoSeImporter": []
+    "NoPaNoSeImporter": [
+      {
+        "ItemName": "Espelho cego - perfil baixo",
+        "Quantity": 24
+      },
+      {
+        "ItemName": "Espelho cego - perfil alto",
+        "Quantity": 62
+      },
+      {
+        "ItemName": "Espelho vídeo - perfil alto - Mini display port",
+        "Quantity": 3
+      },
+      {
+        "ItemName": "Espelho vídeo - perfil baixo - Mini display port",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Espelho vídeo - perfil baixo - DVI; HDMI",
+        "Quantity": 6
+      },
+      {
+        "ItemName": "Espelho vídeo - perfil baixo - VGA",
+        "Quantity": 4
+      },
+      {
+        "ItemName": "Espelho ví­deo - perfil alto - DVI; VGA; HDMI",
+        "Quantity": 6
+      },
+      {
+        "ItemName": "Espelho vídeo - perfil alto - VGA; DVI; S-Video",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Espelho rede - perfil alto - 1 entrada",
+        "Quantity": 12
+      },
+      {
+        "ItemName": "Espelho rede - perfil alto - 2 entradas",
+        "Quantity": 6
+      },
+      {
+        "ItemName": "Espelho rede - perfil baixo - 1 entrada",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Espelho rede - perfil baixo - 2 entradas",
+        "Quantity": 6
+      },
+      {
+        "ItemName": "Espelho rede - perfil alto - 4 entradas",
+        "Quantity": 6
+      },
+      {
+        "ItemName": "Espelho rede - perfil baixo - 4 entradas",
+        "Quantity": 4
+      },
+      {
+        "ItemName": "Espelho rede - perfil alto - 3 entradas",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Espelho SAS - perfil alto",
+        "Quantity": 5
+      },
+      {
+        "ItemName": "Espelho SAS - perfil baixo",
+        "Quantity": 3
+      },
+      {
+        "ItemName": "Benjamim",
+        "Quantity": 13
+      },
+      {
+        "ItemName": "Cabo sata comum",
+        "Quantity": 23
+      },
+      {
+        "ItemName": "Cabo sata grande",
+        "Quantity": 11
+      },
+      {
+        "ItemName": "Espelho Gabinete",
+        "Quantity": 10
+      },
+      {
+        "ItemName": "Tampa cega para gabinete",
+        "Quantity": 6
+      },
+      {
+        "ItemName": "Fibra",
+        "Quantity": 38
+      },
+      {
+        "ItemName": "Cabo DVI-I - HDMI",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador DVI-I - DisplayPort",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Cabo Mini DisplayPort - DisplayPort",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador VGA - HDMI",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Adaptador HDMI - DVI-D",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador DVI-D - DisplayPort",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador DisplayPort - Mini DisplayPort",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Adaptador de VGA para placa de vídeo",
+        "Quantity": 7
+      },
+      {
+        "ItemName": "Cabo de força PDU",
+        "Quantity": 9
+      },
+      {
+        "ItemName": "Cabo VGA - VGA",
+        "Quantity": 30
+      },
+      {
+        "ItemName": "Cabo VGA - HDMI",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Cabo DVI-D - DVI-D",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Cabo DisplayPort - DisplayPort",
+        "Quantity": 6
+      },
+      {
+        "ItemName": "Cabo VGA Macho - VGA Fêmea",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Cabo de força padrão novo",
+        "Quantity": 8
+      },
+      {
+        "ItemName": "Cabo de força padrão antigo",
+        "Quantity": 29
+      },
+      {
+        "ItemName": "Cabo de placa controladora",
+        "Quantity": 7
+      },
+      {
+        "ItemName": "Adaptador DVI-D - HDMI",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador VGA - DVI-I",
+        "Quantity": 0
+      },
+      {
+        "ItemName": "Adaptador DVI-D - Mini DisplayPort",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Cabo Console",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Cabo Console Invertido",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Switch KVM",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador VGA Fêmea para placa de vídeo",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Mini Gender Changer VGA",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Adaptador IDE - SATA",
+        "Quantity": 7
+      },
+      {
+        "ItemName": "Adaptador SATA Macho - SATA Fêmea",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Módulo para fonte SATA",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Módulo para fonte IDE",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Gaveta 3.5\" Dell PowerEdge",
+        "Quantity": 3
+      },
+      {
+        "ItemName": "Gaveta 3.5\" Dell C6100/C6200",
+        "Quantity": 15
+      },
+      {
+        "ItemName": "Gaveta 3.5\" HP Non HotPlug",
+        "Quantity": 4
+      },
+      {
+        "ItemName": "Gaveta 3.5\" HP Gen 8/9",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Gaveta 2.5\" Dell PowerEdge",
+        "Quantity": 5
+      },
+      {
+        "ItemName": "Gaveta 2.5 Dell C6200",
+        "Quantity": 10
+      },
+      {
+        "ItemName": "Gaveta 3.5\" Dell RXXX",
+        "Quantity": 20
+      },
+      {
+        "ItemName": "Gaveta cega 2.5\" Dell",
+        "Quantity": 12
+      },
+      {
+        "ItemName": "Gaveta cega 2.5\" Dell gen 14",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Gaveta cega 3.5\" Dell C6600",
+        "Quantity": 5
+      },
+      {
+        "ItemName": "Gaveta cega 3.5\" Dell Gen 14",
+        "Quantity": 12
+      },
+      {
+        "ItemName": "Gaveta cega 3.5\" Dell PowerEdge",
+        "Quantity": 10
+      },
+      {
+        "ItemName": "Gaveta cega 3.5\" Dell T430",
+        "Quantity": 9
+      },
+      {
+        "ItemName": "Gaveta cega 3.5\" Dell PowerEdge (2)",
+        "Quantity": 5
+      },
+      {
+        "ItemName": "Gaveta cega 3.5\" IBM",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Gaveta cega 3.5\" Dell C6100/C6220",
+        "Quantity": 3
+      },
+      {
+        "ItemName": "Gaveta plástica 3.5\" azul IBM",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Gaveta 3.5\" Dell Optiplex",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Gaveta 3.5\" Dell Optiplex C-3598",
+        "Quantity": 4
+      },
+      {
+        "ItemName": "Gaveta 2.5\" Dell Optiplex 3070",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador de gaveta HP",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Gaveta/Adaptador WD",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Caddy para gaveta HP",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Adaptador de gaveta Supermicro",
+        "Quantity": 9
+      },
+      {
+        "ItemName": "Gaveta para desktop",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Espelho vídeo - perfil alto - DVI, DisplayPort",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Conector para HD externo",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Adaptador VGA/DVI-I/HDMI - Mini DisplayPort",
+        "Quantity": 1
+      },
+      {
+        "ItemName": "Cabo HDMI-HDMI",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Filtro de linha sem tomada",
+        "Quantity": 2
+      }
+    ]
   },
   "894bbca7-0f05-4eb3-8bc6-61d4fcdb0f67": {
     "NoPaNoSeMovementSaver": [
@@ -549,7 +957,86 @@
     ]
   },
   "d2b12315-660e-4f44-bb3f-93ef05739adc": {
-    "ImportLocations": []
+    "ImportLocations": [
+      {
+        "Location": "Bancada de testes"
+      },
+      {
+        "Location": "BRT"
+      },
+      {
+        "Location": "Concert"
+      },
+      {
+        "Location": "Descarte"
+      },
+      {
+        "Location": "Drogaria Cristina"
+      },
+      {
+        "Location": "Encontre sua franquia"
+      },
+      {
+        "Location": "Escritório"
+      },
+      {
+        "Location": "Estoque"
+      },
+      {
+        "Location": "Fumsoft"
+      },
+      {
+        "Location": "IOCT"
+      },
+      {
+        "Location": "Master truck"
+      },
+      {
+        "Location": "Netlite"
+      },
+      {
+        "Location": "Oficina da roupa"
+      },
+      {
+        "Location": "Outros"
+      },
+      {
+        "Location": "SNP02"
+      },
+      {
+        "Location": "SNP03"
+      },
+      {
+        "Location": "SNP04"
+      },
+      {
+        "Location": "SNP05"
+      },
+      {
+        "Location": "SNP06"
+      },
+      {
+        "Location": "SNP07"
+      },
+      {
+        "Location": "SNP08"
+      },
+      {
+        "Location": "Top Cintos"
+      },
+      {
+        "Location": "Trop 1"
+      },
+      {
+        "Location": "Trop 2"
+      },
+      {
+        "Location": "Uni Santos"
+      },
+      {
+        "Location": "Zaplus"
+      }
+    ]
   },
   "15d17b29-0dce-4e13-b79f-796d8b86793e": {
     "RegularMovementSaver": [

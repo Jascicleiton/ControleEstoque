@@ -963,15 +963,15 @@ public class HelperMethods
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.Concert:
-                dictionary["Placeholders"].Add("Data de aquisição...");
+                dictionary["Placeholders"].Add("Data de aquisição");
                 dictionary["Placeholders"].Add("Data de entrada no estoque");
                 dictionary["Placeholders"].Add("Número do patrimônio");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO");
                 dictionary["Placeholders"].Add("Serial");
-                dictionary["Placeholders"].Add("Desktop, Servidor....");
+                dictionary["Placeholders"].Add("Categoria");
                 dictionary["Placeholders"].Add("Fabricante");
                 dictionary["Placeholders"].Add("Modelo");
-                dictionary["Placeholders"].Add("Estoque, Descarte, SNP02...");
+                dictionary["Placeholders"].Add("Estoque, Descarte, SNP02, etc");
                 dictionary["Placeholders"].Add("Pessoa alocada ao item");
                 dictionary["Placeholders"].Add("Centro de Custo");
                 dictionary["Placeholders"].Add("Data de saída do estoque");

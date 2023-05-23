@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.UIElements;
 
 public static class EventHandler
 {
@@ -183,4 +184,12 @@ public static class EventHandler
         }
     }
 
+    public static event Action UpdateConsultInputs;
+    public static void CallUpdateConsultInputs()
+    {
+        if(UpdateConsultInputs != null)
+        {
+            UpdateConsultInputs();
+        }
+    }
 }

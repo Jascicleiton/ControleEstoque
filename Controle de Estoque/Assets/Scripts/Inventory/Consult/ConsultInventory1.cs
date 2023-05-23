@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine;
 using System.Linq;
+using System.Drawing;
 
 namespace Assets.Scripts.Inventory.Consult
 {
@@ -27,8 +28,11 @@ namespace Assets.Scripts.Inventory.Consult
         private ConsultCategory consultCategory = null;
         private bool inputEnabled = true;
         private int tempInt = 0; // used for all int.TryParse
+        private Sheet foundItems = new Sheet();
+        string placeholderClass = TextField.ussClassName + "__placeholder";
 
         private Button returnButton;
+        [SerializeField] SearchCategoryDropDownHandler searchCategoryDPHandler;
        
         /// <summary>
         /// get the ConsultCategory component
@@ -36,6 +40,11 @@ namespace Assets.Scripts.Inventory.Consult
         private void Start()
         {
             consultCategory = GetComponent<ConsultCategory>();
+            if(searchCategoryDPHandler == null)
+            {
+                searchCategoryDPHandler = GetComponent<SearchCategoryDropDownHandler>();
+            }
+            foundItems.itens = new List<ItemColumns>();
         }
 
         private void OnEnable()
@@ -64,29 +73,19 @@ namespace Assets.Scripts.Inventory.Consult
                         {
                             if (int.TryParse(patrimonioSearchInputField.text, out tempInt))
                             {
+                                RemoveOldSearch();
                                 if (ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase) != null)
                                 {
                                     RemoveOldSearch();
-                                  //  GameObject result = Instantiate(consultResult, consultResultTransform);
-                                  //  result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase), 0);
+                                    foundItems.itens.Add(ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase));
+                                 
+                                    listView.itemsSource = foundItems.itens;
+                                    foreach (var item in listView.Children())
+                                    {
+                                        item.style.height = StyleKeyword.Auto;
+                                    }
+                                    listView.Rebuild();
                                 }
-                                else
-                                {
-                                    RemoveOldSearch();
-                                }
-                            }
-                        }
-                        else if (searchOptionDP.value == "Serial")
-                        {
-                            if (ConsultDatabase.Instance.ConsultSerial(patrimonioSearchInputField.text, InternalDatabase.Instance.fullDatabase) != null)
-                            {
-                                RemoveOldSearch();
-                                //GameObject result = Instantiate(consultResult, consultResultTransform);
-                                //result.GetComponent<ConsultResult>().ShowResult(ConsultDatabase.Instance.ConsultSerial(searchParameterInputField.text, InternalDatabase.Instance.fullDatabase), 1);
-                            }
-                            else
-                            {
-                                RemoveOldSearch();
                             }
                         }
                     }
@@ -109,13 +108,13 @@ namespace Assets.Scripts.Inventory.Consult
             patrimonioSearchInputField = root.Q<TextField>("PatrimonioTextField");
             numberOfItensFoundText = root.Q<Label>("NumberOfItemsFound");
             categorySearchParametersPanel = root.Q<VisualElement>("SearchParametersContainer");
-            foreach (var item in categorySearchParametersPanel.Children())
-            {
-                categorySearchInputs.Add(item as TextField);
-            }
+            categorySearchInputs = root.Query(name: "SearchParametersContainer").Descendents<TextField>().ToList();
             operators = root.Query(name: "SearchParametersContainer").Descendents<DropdownField>().ToList();
             listView = root.Q<ListView>();
             returnButton = root.Q<Button>("ReturnButton");
+            consultResult = Resources.Load<VisualTreeAsset>("Templates/ResultPanel");
+            
+            FillListView();
         }
 
         private void RegisterToEvents()
@@ -123,6 +122,7 @@ namespace Assets.Scripts.Inventory.Consult
             searchOptionDP.RegisterCallback<ChangeEvent<string>>(HandleSearchOptionDP);
             returnButton.clicked += () => { ReturnToPreviousScreen(); };
             EventHandler.EnableInput += SetInputEnabled;
+            FillDropdowns();
         }
 
         private void UnregisterToEvents()
@@ -145,23 +145,8 @@ namespace Assets.Scripts.Inventory.Consult
         private void RemoveOldSearch()
         {
             SetItensFoundText(false);
-            if (listView.childCount > 0)
-            {
-                foreach (var item in listView.Children())
-                {
-                    item.style.display = DisplayStyle.None;
-                }
-                    
-                    //consultResultTransform.GetChild(i).gameObject.SetActive(false);
-               
-            }
-            for (int i = 0; i < categorySearchInputs.Count; i++)
-            {
-                if (categorySearchInputs[i].style.display == DisplayStyle.Flex)
-                {
-                    categorySearchInputs[i].value = "";
-                }
-            }
+            foundItems.itens.Clear();
+            listView.Rebuild();
         }
 
         /// <summary>
@@ -207,15 +192,13 @@ namespace Assets.Scripts.Inventory.Consult
                 }
             }
         }
-
-       
-
+      
         /// <summary>
         /// Consult the inventory using the parameters chosen from each category
         /// </summary>
         private void ConsultWithCategory()
         {
-            Sheet foundItens = new Sheet();
+            foundItems.itens.Clear();
             List<int> activeIndexes = new List<int>();
             List<string> activeOperators = new List<string>();
 
@@ -223,7 +206,7 @@ namespace Assets.Scripts.Inventory.Consult
             {
                 if (categorySearchInputs[i].style.display == DisplayStyle.Flex)
                 {
-                    if (categorySearchInputs[i].text != "")
+                   if (!categorySearchInputs[i].ClassListContains(placeholderClass))
                     {
                         activeIndexes.Add(i);
                         activeOperators.Add(GetOperatorFromDP(i));
@@ -233,38 +216,43 @@ namespace Assets.Scripts.Inventory.Consult
 
             if (activeIndexes.Count > 0)
             {
-                //print(activeIndexes.Count);          
-                foundItens = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), HelperMethods.GetCategoryDatabaseToConsult(categoryDP.value), activeOperators);
+                print("Active indexes: " + activeIndexes.Count);          
+                foundItems = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), HelperMethods.GetCategoryDatabaseToConsult(categoryDP.value), activeOperators);
             }
-            RemoveOldSearch();
-            if (foundItens != null)
+           
+            if (foundItems != null)
             {
-                if (foundItens.itens.Count > 0)
+                if (foundItems.itens.Count > 0)
                 {
-                    for (int i = 0; i < foundItens.itens.Count; i++)
+                    for (int i = 0; i < foundItems.itens.Count; i++)
                     {
                         if (InternalDatabase.Instance.currentEstoque != CurrentEstoque.ESF)
                         {
-                            if (foundItens.itens[i].Status == "DEFEITO")
+                            if (foundItems.itens[i].Status == "DEFEITO")
                             {
-                                foundItens.itens.RemoveAt(i);
+                                foundItems.itens.RemoveAt(i);
                             }
                         }
                     }
-                    FillListView(foundItens);
+                    listView.itemsSource = foundItems.itens;
+                    foreach (var item in listView.Children())
+                    {
+                        item.style.height = StyleKeyword.Auto;
+                    }
+                    listView.Rebuild();
                     numberOfItensFoundText.style.visibility = Visibility.Visible;
-                    numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
+                    numberOfItensFoundText.text = foundItems.itens.Count.ToString() + " itens encontrados";
                 }
                 else
                 {
                     numberOfItensFoundText.style.visibility = Visibility.Visible;
-                    numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
+                    numberOfItensFoundText.text = foundItems.itens.Count.ToString() + " itens encontrados";
                 }
             }
             else
             {
                 numberOfItensFoundText.style.visibility = Visibility.Visible;
-                numberOfItensFoundText.text = foundItens.itens.Count.ToString() + " itens encontrados";
+                numberOfItensFoundText.text = "Nenhum item encontrado";
             }
         }
 
@@ -276,16 +264,7 @@ namespace Assets.Scripts.Inventory.Consult
         {
             return operators[index].value;
         }
-
-        /// <summary>
-        /// Get the correct sheet base on the category selected, to guarantee the search only happens for the specific category.
-        /// </summary>
-        private Sheet GetCategorySheet(int value)
-        {
-            return HelperMethods.GetCategoryDatabaseToConsult(HelperMethods.GetCategoryString(value));
-        }
-
-  
+ 
         /// <summary>
         /// Handles what happens when the "procurar por" dropdown changes the value
         /// </summary>
@@ -294,10 +273,11 @@ namespace Assets.Scripts.Inventory.Consult
             switch (evt.newValue)
             {
                 case "Categoria":
-                    categoryDP.style.display = DisplayStyle.None;
+                    categoryDP.style.display = DisplayStyle.Flex;
                     categorySearchParametersPanel.style.display = DisplayStyle.Flex;
-                    //locationDP.value = HelperMethods.GetLocationDPValue("Estoque");
+                    categoryDP.value = InternalDatabase.categories[0];
                     patrimonioSearchInputField.style.display = DisplayStyle.None;
+                    EventHandler.CallUpdateConsultInputs();
                     break;
                 case "Patrimônio":
                     categoryDP.style.display = DisplayStyle.None;
@@ -307,15 +287,7 @@ namespace Assets.Scripts.Inventory.Consult
                     numberOfItensFoundText.style.visibility = Visibility.Hidden;
 
                     break;
-                case "Serial":
-                    categoryDP.style.display = DisplayStyle.None;
-                    categorySearchParametersPanel.style.display = DisplayStyle.None;
-                    patrimonioSearchInputField.style.display = DisplayStyle.Flex;
-                    //   searchParameterInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Serial";
-                    numberOfItensFoundText.style.visibility = Visibility.Hidden;
-
-                    break;
-                default:
+               default:
                     break;
             }
         }
@@ -328,14 +300,8 @@ namespace Assets.Scripts.Inventory.Consult
             ChangeScreenManager.Instance.OpenScene(Scenes.ConsultScene, Scenes.InitialScene);
         }
 
-
-        private void FillListView(Sheet foundItems)
+        private void FillListView()
         {
-            if (listView.itemsSource != null)
-            {
-                listView.itemsSource.Clear();
-            }
-
             listView.makeItem = () => consultResult.Instantiate();
             listView.bindItem = (element, i) =>
             {
@@ -343,17 +309,22 @@ namespace Assets.Scripts.Inventory.Consult
                 List<Label> parameterNames = element.Query(name: "Results").Descendents<Label>(name: "ParameterName").ToList();
                 List<Label> parameterValues = element.Query(name: "Results").Descendents<Label>(name: "ParameterValue").ToList();
                 Label patrimonioLabel = element.Q<Label>("PatrimonioLabel");
-                
-                ShowResult(foundItems.itens[i], itemBoxes.ToList(), parameterNames, parameterValues);
+
+                ShowResult(foundItems.itens[i], itemBoxes.ToList(), parameterNames, parameterValues, patrimonioLabel);
+               // element.style.minHeight = 170;
+             //   element.style.maxHeight = 500;
+                element.style.height = StyleKeyword.Auto;
             };
+            listView.fixedItemHeight = 100;
             listView.itemsSource = foundItems.itens;
-        }
+        }            
 
         /// <summary>
         /// Used to show the result of consulting the database"
         /// </summary>
-        public void ShowResult(ItemColumns itemToShow, List<VisualElement> itemBoxes, List<Label> parameterNames, List<Label> parameterValues)
+        public void ShowResult(ItemColumns itemToShow, List<VisualElement> itemBoxes, List<Label> parameterNames, List<Label> parameterValues, Label patrimonioLabel)
         {
+            patrimonioLabel.text = itemToShow.Patrimonio.ToString();
             ActivateAllItemBoxes(itemBoxes);
             if (itemToShow != null)
             {
@@ -431,6 +402,22 @@ namespace Assets.Scripts.Inventory.Consult
                 {
                     itemBoxes[i].style.display = DisplayStyle.None;
                 }
+            }
+        }
+
+        private void FillDropdowns()
+        {
+            List<string> searchOptions = new List<string>(){ "Patrimônio", "Categoria"};
+            searchOptionDP.choices = searchOptions;
+            searchOptionDP.value = searchOptions[0];
+            searchOptionDP.formatListItemCallback = (element) => element.ToString();
+
+            List<string> operatorsValues = new List<string>() { "=", "≠" };
+            foreach (var item in operators)
+            {
+                item.choices = operatorsValues;
+                item.value = operatorsValues[0];
+                item.formatListItemCallback = (element) => element.ToString();
             }
         }
     }
