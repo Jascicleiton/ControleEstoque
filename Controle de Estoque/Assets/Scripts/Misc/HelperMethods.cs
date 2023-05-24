@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
@@ -237,7 +237,7 @@ public class HelperMethods
                     addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaControladoraPostRequest);
                     break;
                 #endregion
-                #region Placa de captura de vídeo
+                #region Placa de captura de vÃ­deo
                 case ConstStrings.PlacaDeCapturaDeVideo:
                     WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaDeCapturaDeVideoForm(appKey, parameters[0], parameters[1]);
 
@@ -274,7 +274,7 @@ public class HelperMethods
                     addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createPlacaDeSomPostRequest);
                     break;
                 #endregion
-                #region Placa de vídeo
+                #region Placa de vÃ­deo
                 case ConstStrings.PlacaDeVideo:
                     WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
 
@@ -389,7 +389,7 @@ public class HelperMethods
         #region Values
         if (itemToShow != null)
         {
-            #region Inventário
+            #region InventÃ¡rio
             switch (InternalDatabase.Instance.currentEstoque)
             {
                 case CurrentEstoque.Concert:
@@ -429,6 +429,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Testing:
                             dictionary["Values"].Add(itemToShow.OndeFunciona);
                             dictionary["Values"].Add(itemToShow.VoltagemDeSaida.ToString());
                             dictionary["Values"].Add(itemToShow.AmperagemDeSaida.ToString());
@@ -532,6 +533,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Testing:
                             dictionary["Values"].Add(itemToShow.HD);
                             dictionary["Values"].Add(itemToShow.Memoria);
                             dictionary["Values"].Add(itemToShow.EntradaRJ45);
@@ -658,6 +660,7 @@ public class HelperMethods
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Testing:
                             dictionary["Values"].Add(itemToShow.QuaisConexoes);
                             dictionary["Values"].Add(itemToShow.Desempenho);
                             break;
@@ -673,13 +676,13 @@ public class HelperMethods
         }
         #endregion
         #region Names
-        #region Inventário
+        #region InventÃ¡rio
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.Concert:
-                dictionary["Names"].Add("Aquisição");
+                dictionary["Names"].Add("AquisiÃ§Ã£o");
                 dictionary["Names"].Add("Entrada");
-                dictionary["Names"].Add("Patrimônio");
+                dictionary["Names"].Add("PatrimÃ´nio");
                 dictionary["Names"].Add("Status");
                 dictionary["Names"].Add("Serial");
                 dictionary["Names"].Add("Categoria");
@@ -688,20 +691,20 @@ public class HelperMethods
                 dictionary["Names"].Add("Local");
                 dictionary["Names"].Add("Pessoa");
                 dictionary["Names"].Add("Centro de Custo");
-                dictionary["Names"].Add("Saída");
+                dictionary["Names"].Add("SaÃ­da");
                 break;
             default:
-                dictionary["Names"].Add("Aquisição");
+                dictionary["Names"].Add("AquisiÃ§Ã£o");
                 dictionary["Names"].Add("Entrada");
-                dictionary["Names"].Add("Patrimônio");
+                dictionary["Names"].Add("PatrimÃ´nio");
                 dictionary["Names"].Add("Status");
                 dictionary["Names"].Add("Serial");
                 dictionary["Names"].Add("Categoria");
                 dictionary["Names"].Add("Fabricante");
                 dictionary["Names"].Add("Modelo");
                 dictionary["Names"].Add("Local");
-                dictionary["Names"].Add("Saída");
-                dictionary["Names"].Add("Observação");
+                dictionary["Names"].Add("SaÃ­da");
+                dictionary["Names"].Add("ObservaÃ§Ã£o");
                 break;
         }
         #endregion
@@ -712,13 +715,14 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         dictionary["Names"].Add("Onde funciona?");
-                        dictionary["Names"].Add("Voltagem de saída");
-                        dictionary["Names"].Add("Amperagem de saída (A)");
+                        dictionary["Names"].Add("Voltagem de saÃ­da");
+                        dictionary["Names"].Add("Amperagem de saÃ­da (A)");
                         break;
                     default:
-                        dictionary["Names"].Add("Voltagem de saída");
-                        dictionary["Names"].Add("Amperagem de saída (A)");
+                        dictionary["Names"].Add("Voltagem de saÃ­da");
+                        dictionary["Names"].Add("Amperagem de saÃ­da (A)");
                         break;
                 }
                 break;
@@ -729,12 +733,12 @@ public class HelperMethods
                 {
                     case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("Onde funciona?");
-                        dictionary["Names"].Add("Voltagem de saída");
-                        dictionary["Names"].Add("Amperagem de saída (mA)");
+                        dictionary["Names"].Add("Voltagem de saÃ­da");
+                        dictionary["Names"].Add("Amperagem de saÃ­da (mA)");
                         break;
                     default:
-                        dictionary["Names"].Add("Voltagem de saída");
-                        dictionary["Names"].Add("Amperagem de saída (mA)");
+                        dictionary["Names"].Add("Voltagem de saÃ­da");
+                        dictionary["Names"].Add("Amperagem de saÃ­da (mA)");
                         break;
                 }
                 break;
@@ -744,17 +748,17 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        dictionary["Names"].Add("Modelo de placa mãe");
+                        dictionary["Names"].Add("Modelo de placa mÃ£e");
                         dictionary["Names"].Add("Fonte?");
-                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("MemÃ³ria?");
                         dictionary["Names"].Add("HD?");
-                        dictionary["Names"].Add("Placa de vídeo?");
+                        dictionary["Names"].Add("Placa de vÃ­deo?");
                         dictionary["Names"].Add("Leitor de DVD?");
                         dictionary["Names"].Add("Processador");
                         break;
                     default:
                         dictionary["Names"].Add("HD?");
-                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("MemÃ³ria?");
                         dictionary["Names"].Add("Processador?");
                         dictionary["Names"].Add("Qual windows?");
                         break;
@@ -763,14 +767,14 @@ public class HelperMethods
             #endregion
             #region Fonte
             case ConstStrings.Fonte:
-                dictionary["Names"].Add("Watts de potência");
+                dictionary["Names"].Add("Watts de potÃªncia");
                 dictionary["Names"].Add("Onde funciona?");
                 dictionary["Names"].Add("Conectores");
                 break;
             #endregion
             #region GBIC
             case ConstStrings.Gbic:
-                dictionary["Names"].Add("Desempenho máx (GB/s)");
+                dictionary["Names"].Add("Desempenho mÃ¡x (GB/s)");
                 break;
             #endregion
             #region HD
@@ -797,11 +801,11 @@ public class HelperMethods
                 dictionary["Names"].Add("Tipo");
                 dictionary["Names"].Add("Capacidade (GB)");
                 dictionary["Names"].Add("Velocidade (MHz)");
-                dictionary["Names"].Add("É low voltage?");
+                dictionary["Names"].Add("Ã‰ low voltage?");
                 dictionary["Names"].Add("Rank");
                 dictionary["Names"].Add("DIMM");
-                dictionary["Names"].Add("Taxa de transmissão");
-                dictionary["Names"].Add("Símbolo");
+                dictionary["Names"].Add("Taxa de transmissÃ£o");
+                dictionary["Names"].Add("SÃ­mbolo");
                 break;
             #endregion
             #region Monitor
@@ -819,8 +823,9 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         dictionary["Names"].Add("HD");
-                        dictionary["Names"].Add("Memória");
+                        dictionary["Names"].Add("MemÃ³ria");
                         dictionary["Names"].Add("Entrada RJ45");
                         dictionary["Names"].Add("Bateria");
                         dictionary["Names"].Add("AdaptadorAC");
@@ -828,7 +833,7 @@ public class HelperMethods
                         break;
                     default:
                         dictionary["Names"].Add("HD?");
-                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("MemÃ³ria?");
                         dictionary["Names"].Add("Processador?");
                         dictionary["Names"].Add("Qual windows?");
                         break;
@@ -837,11 +842,11 @@ public class HelperMethods
             #endregion
             #region Placa controladora
             case ConstStrings.PlacaControladora:
-                dictionary["Names"].Add("Tipo de conexão");
+                dictionary["Names"].Add("Tipo de conexÃ£o");
                 dictionary["Names"].Add("Quantas portas?");
                 dictionary["Names"].Add("Tipos de RAID");
-                dictionary["Names"].Add("Capacidade máx do HD (TB)");
-                dictionary["Names"].Add("Até quantos HDs");
+                dictionary["Names"].Add("Capacidade mÃ¡x do HD (TB)");
+                dictionary["Names"].Add("AtÃ© quantos HDs");
                 dictionary["Names"].Add("Bateria inclusa?");
                 dictionary["Names"].Add("Barramento");
                 break;
@@ -856,7 +861,7 @@ public class HelperMethods
                 dictionary["Names"].Add("Interface");
                 dictionary["Names"].Add("Quantas portas?");
                 dictionary["Names"].Add("Quais portas?");
-                dictionary["Names"].Add("Suporta fibra óptica?");
+                dictionary["Names"].Add("Suporta fibra Ã³ptica?");
                 dictionary["Names"].Add("Desempenho (MB/s)");
                 break;
             #endregion
@@ -874,14 +879,14 @@ public class HelperMethods
             #region Placa SAS
             case ConstStrings.PlacaSAS:
                 dictionary["Names"].Add("Quantas entradas?");
-                dictionary["Names"].Add("Velocidade de transmissão");
+                dictionary["Names"].Add("Velocidade de transmissÃ£o");
                 break;
             #endregion
             #region Processador
             case ConstStrings.Processador:
                 dictionary["Names"].Add("Soquete");
-                dictionary["Names"].Add("Nº núcleos físicos");
-                dictionary["Names"].Add("Nº núcleos lógicos");
+                dictionary["Names"].Add("NÂº nÃºcleos fÃ­sicos");
+                dictionary["Names"].Add("NÂº nÃºcleos lÃ³gicos");
                 break;
             #endregion
             #region Roteador
@@ -891,7 +896,7 @@ public class HelperMethods
                     case CurrentEstoque.SnPro:
                         dictionary["Names"].Add("Wireless?");
                         dictionary["Names"].Add("Quantas entradas?");
-                        dictionary["Names"].Add("Banda máx (MB/s)");
+                        dictionary["Names"].Add("Banda mÃ¡x (MB/s)");
                         break;
                     default:
                         dictionary["Names"].Add("Wireless?");
@@ -905,26 +910,26 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        dictionary["Names"].Add("Modelo da placa mãe");
+                        dictionary["Names"].Add("Modelo da placa mÃ£e");
                         dictionary["Names"].Add("Fonte");
-                        dictionary["Names"].Add("Memórias instaladas");
+                        dictionary["Names"].Add("MemÃ³rias instaladas");
                         dictionary["Names"].Add("HD instalado");
-                        dictionary["Names"].Add("Placa de vídeo");
+                        dictionary["Names"].Add("Placa de vÃ­deo");
                         dictionary["Names"].Add("Placa de rede");
                         dictionary["Names"].Add("Processadores instalados");
-                        dictionary["Names"].Add("Memórias suportadas");
-                        dictionary["Names"].Add("Até quantas memórias");
-                        dictionary["Names"].Add("Ordem das memórias");
+                        dictionary["Names"].Add("MemÃ³rias suportadas");
+                        dictionary["Names"].Add("AtÃ© quantas memÃ³rias");
+                        dictionary["Names"].Add("Ordem das memÃ³rias");
                         dictionary["Names"].Add("Capacidade RAM total");
                         dictionary["Names"].Add("Soquete do processador");
                         dictionary["Names"].Add("Placa controladora");
-                        dictionary["Names"].Add("Até quantos HDs");
+                        dictionary["Names"].Add("AtÃ© quantos HDs");
                         dictionary["Names"].Add("Tipos de HD");
                         dictionary["Names"].Add("Tipos de RAID");
                         break;
                     default:
                         dictionary["Names"].Add("HD?");
-                        dictionary["Names"].Add("Memória?");
+                        dictionary["Names"].Add("MemÃ³ria?");
                         dictionary["Names"].Add("Processador?");
                         dictionary["Names"].Add("Qual windows?");
                         break;
@@ -936,8 +941,8 @@ public class HelperMethods
                 dictionary["Names"].Add("Tamanho dos HDs");
                 dictionary["Names"].Add("Tipos de RAID");
                 dictionary["Names"].Add("Tipo de HD");
-                dictionary["Names"].Add("Capacidade máx do HD");
-                dictionary["Names"].Add("Até quantos HDs");
+                dictionary["Names"].Add("Capacidade mÃ¡x do HD");
+                dictionary["Names"].Add("AtÃ© quantos HDs");
                 break;
             #endregion
             #region Switch
@@ -945,8 +950,9 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         dictionary["Names"].Add("Quantas e quais portas");
-                        dictionary["Names"].Add("Capacidade máx de cada porta (MB/s)");
+                        dictionary["Names"].Add("Capacidade mÃ¡x de cada porta (MB/s)");
                         break;
                     default:
                         dictionary["Names"].Add("Quantas e quais portas");
@@ -959,13 +965,13 @@ public class HelperMethods
         }
         #endregion
         #region Placeholders
-        #region Inventário
+        #region InventÃ¡rio
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.Concert:
-                dictionary["Placeholders"].Add("Data de aquisição");
+                dictionary["Placeholders"].Add("Data de aquisiÃ§Ã£o");
                 dictionary["Placeholders"].Add("Data de entrada no estoque");
-                dictionary["Placeholders"].Add("Número do patrimônio");
+                dictionary["Placeholders"].Add("NÃºmero do patrimÃ´nio");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO");
                 dictionary["Placeholders"].Add("Serial");
                 dictionary["Placeholders"].Add("Categoria");
@@ -974,33 +980,33 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("Estoque, Descarte, SNP02, etc");
                 dictionary["Placeholders"].Add("Pessoa alocada ao item");
                 dictionary["Placeholders"].Add("Centro de Custo");
-                dictionary["Placeholders"].Add("Data de saída do estoque");
+                dictionary["Placeholders"].Add("Data de saÃ­da do estoque");
                 break;
             case CurrentEstoque.ESF:
-                dictionary["Placeholders"].Add("Data de aquisição");
+                dictionary["Placeholders"].Add("Data de aquisiÃ§Ã£o");
                 dictionary["Placeholders"].Add("Data de entrada no estoque");
-                dictionary["Placeholders"].Add("Número do patrimônio");
-                dictionary["Placeholders"].Add("Funciona, DEFEITO, Não testado...");
+                dictionary["Placeholders"].Add("NÃºmero do patrimÃ´nio");
+                dictionary["Placeholders"].Add("Funciona, DEFEITO, NÃ£o testado...");
                 dictionary["Placeholders"].Add("Serial");
                 dictionary["Placeholders"].Add("Desktop, Servidor, Roteador....");
                 dictionary["Placeholders"].Add("Fabricante");
                 dictionary["Placeholders"].Add("Modelo");
                 dictionary["Placeholders"].Add("Estoque, Em uso, Estoque de itens defeituosos, outros");
-                dictionary["Placeholders"].Add("Saída do estoque");
-                dictionary["Placeholders"].Add("Informações adicionais");
+                dictionary["Placeholders"].Add("SaÃ­da do estoque");
+                dictionary["Placeholders"].Add("InformaÃ§Ãµes adicionais");
                 break;
             default:
-                dictionary["Placeholders"].Add("Data de aquisição");
+                dictionary["Placeholders"].Add("Data de aquisiÃ§Ã£o");
                 dictionary["Placeholders"].Add("Data de entrada no estoque");
-                dictionary["Placeholders"].Add("Número do patrimônio");
+                dictionary["Placeholders"].Add("NÃºmero do patrimÃ´nio");
                 dictionary["Placeholders"].Add("Funciona, DEFEITO...");
                 dictionary["Placeholders"].Add("Serial");
                 dictionary["Placeholders"].Add("Desktop, Servidor, HD....");
                 dictionary["Placeholders"].Add("Fabricante");
                 dictionary["Placeholders"].Add("Modelo");
                 dictionary["Placeholders"].Add("Estoque, Descarte...");
-                dictionary["Placeholders"].Add("Data de saída do estoque");
-                dictionary["Placeholders"].Add("Informações adicionais");
+                dictionary["Placeholders"].Add("Data de saÃ­da do estoque");
+                dictionary["Placeholders"].Add("InformaÃ§Ãµes adicionais");
                 break;
         }
         #endregion
@@ -1012,13 +1018,14 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        dictionary["Placeholders"].Add("Patrimônio(s) compatível(is)...");
-                        dictionary["Placeholders"].Add("Voltagem de saída...");
-                        dictionary["Placeholders"].Add("Amperagem de saída (A)...");
+                    case CurrentEstoque.Testing:
+                        dictionary["Placeholders"].Add("PatrimÃ´nio(s) compatÃ­vel(is)...");
+                        dictionary["Placeholders"].Add("Voltagem de saÃ­da...");
+                        dictionary["Placeholders"].Add("Amperagem de saÃ­da (A)...");
                         break;
                     default:
-                        dictionary["Placeholders"].Add("Voltagem de saída...");
-                        dictionary["Placeholders"].Add("Amperagem de saída (A)...");
+                        dictionary["Placeholders"].Add("Voltagem de saÃ­da...");
+                        dictionary["Placeholders"].Add("Amperagem de saÃ­da (A)...");
                         break;
                 }
                 break;
@@ -1028,13 +1035,13 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        dictionary["Placeholders"].Add("Patrimônio(s) compatível(is)...");
-                        dictionary["Placeholders"].Add("Voltagem de saída...");
-                        dictionary["Placeholders"].Add("Amperagem de saída (mA)...");
+                        dictionary["Placeholders"].Add("PatrimÃ´nio(s) compatÃ­vel(is)...");
+                        dictionary["Placeholders"].Add("Voltagem de saÃ­da...");
+                        dictionary["Placeholders"].Add("Amperagem de saÃ­da (mA)...");
                         break;
                     default:
-                        dictionary["Placeholders"].Add("Voltagem de saída...");
-                        dictionary["Placeholders"].Add("Amperagem de saída (mA)...");
+                        dictionary["Placeholders"].Add("Voltagem de saÃ­da...");
+                        dictionary["Placeholders"].Add("Amperagem de saÃ­da (mA)...");
                         break;
                 }
                 break;
@@ -1044,17 +1051,17 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        dictionary["Placeholders"].Add("Modelo de placa mãe...");
-                        dictionary["Placeholders"].Add("Nº do patrimônio da fonte...");
-                        dictionary["Placeholders"].Add("Nº do(s) patrimônio(s) da(s) memória(s)...");
-                        dictionary["Placeholders"].Add("Nº do(s) patrimônio(s) do(s) HD(s)...");
-                        dictionary["Placeholders"].Add("Nº do patrimônio da placa de vídeo...");
+                        dictionary["Placeholders"].Add("Modelo de placa mÃ£e...");
+                        dictionary["Placeholders"].Add("NÂº do patrimÃ´nio da fonte...");
+                        dictionary["Placeholders"].Add("NÂº do(s) patrimÃ´nio(s) da(s) memÃ³ria(s)...");
+                        dictionary["Placeholders"].Add("NÂº do(s) patrimÃ´nio(s) do(s) HD(s)...");
+                        dictionary["Placeholders"].Add("NÂº do patrimÃ´nio da placa de vÃ­deo...");
                         dictionary["Placeholders"].Add("Possui leitor de DVD?...");
-                        dictionary["Placeholders"].Add("Modelo ou patrimônio do processador...");
+                        dictionary["Placeholders"].Add("Modelo ou patrimÃ´nio do processador...");
                         break;
                     default:
-                        dictionary["Placeholders"].Add("Nº do(s) patrimônio(s) do(s) HD(s)...");
-                        dictionary["Placeholders"].Add("Nº do(s) patrimônio(s) da(s) memória(s)...");
+                        dictionary["Placeholders"].Add("NÂº do(s) patrimÃ´nio(s) do(s) HD(s)...");
+                        dictionary["Placeholders"].Add("NÂº do(s) patrimÃ´nio(s) da(s) memÃ³ria(s)...");
                         dictionary["Placeholders"].Add("Modelo do processador...");
                         dictionary["Placeholders"].Add("Qual windows instalado?...");
                         break;
@@ -1063,14 +1070,14 @@ public class HelperMethods
             #endregion
             #region Fonte
             case ConstStrings.Fonte:
-                dictionary["Placeholders"].Add("Watts de potência...");
-                dictionary["Placeholders"].Add("Patrimônio(s) compatível(is)...");
+                dictionary["Placeholders"].Add("Watts de potÃªncia...");
+                dictionary["Placeholders"].Add("PatrimÃ´nio(s) compatÃ­vel(is)...");
                 dictionary["Placeholders"].Add("Quantos e quais conectores possui...");
                 break;
             #endregion
             #region GBIC
             case ConstStrings.Gbic:
-                dictionary["Placeholders"].Add("Desempenho máx (GB/s)...");
+                dictionary["Placeholders"].Add("Desempenho mÃ¡x (GB/s)...");
                 break;
             #endregion
             #region HD
@@ -1079,9 +1086,9 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("3,5\" ou 2,5\"...");
                 dictionary["Placeholders"].Add("SSD, HDD ou HDSSD...");
                 dictionary["Placeholders"].Add("Capacidade em GB...");
-                dictionary["Placeholders"].Add("RPM, SSD é 0...");
+                dictionary["Placeholders"].Add("RPM, SSD Ã© 0...");
                 dictionary["Placeholders"].Add("3, 6....");
-                dictionary["Placeholders"].Add("É enterprise?...");
+                dictionary["Placeholders"].Add("Ã‰ enterprise?...");
                 break;
             #endregion
             #region iDrac
@@ -1097,11 +1104,11 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("DDR2, DDR3...");
                 dictionary["Placeholders"].Add("Capacidade em GB...");
                 dictionary["Placeholders"].Add("Velocidade em MHz...");
-                dictionary["Placeholders"].Add("É low voltage? (< 1.5V)...");
+                dictionary["Placeholders"].Add("Ã‰ low voltage? (< 1.5V)...");
                 dictionary["Placeholders"].Add("1Rx4, 2Rx8...");
                 dictionary["Placeholders"].Add("UDIMM, SODIMM, RDIMM...");
-                dictionary["Placeholders"].Add("Taxa de transmissão...");
-                dictionary["Placeholders"].Add("Letra no final da taxa de transmissão...");
+                dictionary["Placeholders"].Add("Taxa de transmissÃ£o...");
+                dictionary["Placeholders"].Add("Letra no final da taxa de transmissÃ£o...");
                 break;
             #endregion
             #region Monitor
@@ -1119,16 +1126,17 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         dictionary["Placeholders"].Add("Quantidade e capacidade do(s) HD(s)...");
-                        dictionary["Placeholders"].Add("Quatidade e capacidade da(s) memória(s) instalada(s)...");
+                        dictionary["Placeholders"].Add("Quatidade e capacidade da(s) memÃ³ria(s) instalada(s)...");
                         dictionary["Placeholders"].Add("Possui entrada RJ45?...");
                         dictionary["Placeholders"].Add("Estado da bateria...");
-                        dictionary["Placeholders"].Add("Nº do patrimônio da fonte de alimentação...");
+                        dictionary["Placeholders"].Add("NÂº do patrimÃ´nio da fonte de alimentaÃ§Ã£o...");
                         dictionary["Placeholders"].Add("Qual windows instalado?...");
                         break;
                     default:
                         dictionary["Placeholders"].Add("Quantidade e capacidade do(s) HD(s)...");
-                        dictionary["Placeholders"].Add("Quatidade e capacidade da(s) memória(s) instalada(s)...");
+                        dictionary["Placeholders"].Add("Quatidade e capacidade da(s) memÃ³ria(s) instalada(s)...");
                         dictionary["Placeholders"].Add("Modelo do processador...");
                         dictionary["Placeholders"].Add("Qual windows instalado?...");
                         break;
@@ -1137,11 +1145,11 @@ public class HelperMethods
             #endregion
             #region Placa controladora
             case ConstStrings.PlacaControladora:
-                dictionary["Placeholders"].Add("Tipo de conexão...");
+                dictionary["Placeholders"].Add("Tipo de conexÃ£o...");
                 dictionary["Placeholders"].Add("Quantas portas?...");
                 dictionary["Placeholders"].Add("Tipos de RAID...");
-                dictionary["Placeholders"].Add("Capacidade máx do HD em TB...");
-                dictionary["Placeholders"].Add("Suporta até quantos HDs...");
+                dictionary["Placeholders"].Add("Capacidade mÃ¡x do HD em TB...");
+                dictionary["Placeholders"].Add("Suporta atÃ© quantos HDs...");
                 dictionary["Placeholders"].Add("Bateria inclusa?...");
                 dictionary["Placeholders"].Add("Tipo de barramento...");
                 break;
@@ -1156,7 +1164,7 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("Tipo de barramento...");
                 dictionary["Placeholders"].Add("Quantas portas?...");
                 dictionary["Placeholders"].Add("Quais portas?...");
-                dictionary["Placeholders"].Add("Suporta fibra óptica?...");
+                dictionary["Placeholders"].Add("Suporta fibra Ã³ptica?...");
                 dictionary["Placeholders"].Add("Desempenho (MB/s)...");
                 break;
             #endregion
@@ -1174,14 +1182,14 @@ public class HelperMethods
             #region Placa de Video
             case ConstStrings.PlacaSAS:
                 dictionary["Placeholders"].Add("Quantas entradas?");
-                dictionary["Placeholders"].Add("Velocidade de transmissão");
+                dictionary["Placeholders"].Add("Velocidade de transmissÃ£o");
                 break;
             #endregion
             #region Processador
             case ConstStrings.Processador:
                 dictionary["Placeholders"].Add("Soquete...");
-                dictionary["Placeholders"].Add("Nº núcleos físicos...");
-                dictionary["Placeholders"].Add("Nº núcleos lógicos...");
+                dictionary["Placeholders"].Add("NÂº nÃºcleos fÃ­sicos...");
+                dictionary["Placeholders"].Add("NÂº nÃºcleos lÃ³gicos...");
                 break;
             #endregion
             #region Roteador
@@ -1191,7 +1199,7 @@ public class HelperMethods
                     case CurrentEstoque.SnPro:
                         dictionary["Placeholders"].Add("Tem wireless?...");
                         dictionary["Placeholders"].Add("Quantas entradas?...");
-                        dictionary["Placeholders"].Add("Banda máx em MB/s...");
+                        dictionary["Placeholders"].Add("Banda mÃ¡x em MB/s...");
                         break;
                     default:
                         dictionary["Placeholders"].Add("Tem wireless?...");
@@ -1205,26 +1213,26 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        dictionary["Placeholders"].Add("Modelo da placa mãe...");
-                        dictionary["Placeholders"].Add("nº do(s) patrimônio(s) da(s) fonte(s)...");
-                        dictionary["Placeholders"].Add("nº do patrimônio das memórias instaladas...");
-                        dictionary["Placeholders"].Add("nº do patrimônio do(s) HD(s) instalado(s)...");
-                        dictionary["Placeholders"].Add("nº do patrimônio da placa de vídeo...");
-                        dictionary["Placeholders"].Add("nº do(s) patrimônio(s) da(s) placa(s) de rede...");
-                        dictionary["Placeholders"].Add("modelos ou patrimônios dos processadores instalados...");
-                        dictionary["Placeholders"].Add("Configuração das memórias suportadas...");
-                        dictionary["Placeholders"].Add("Até quantas memórias podem ser usadas...");
-                        dictionary["Placeholders"].Add("Ordem de uso das memórias nos DIMMs...");
-                        dictionary["Placeholders"].Add("Capacidade RAM máxima suportada...");
+                        dictionary["Placeholders"].Add("Modelo da placa mÃ£e...");
+                        dictionary["Placeholders"].Add("nÂº do(s) patrimÃ´nio(s) da(s) fonte(s)...");
+                        dictionary["Placeholders"].Add("nÂº do patrimÃ´nio das memÃ³rias instaladas...");
+                        dictionary["Placeholders"].Add("nÂº do patrimÃ´nio do(s) HD(s) instalado(s)...");
+                        dictionary["Placeholders"].Add("nÂº do patrimÃ´nio da placa de vÃ­deo...");
+                        dictionary["Placeholders"].Add("nÂº do(s) patrimÃ´nio(s) da(s) placa(s) de rede...");
+                        dictionary["Placeholders"].Add("modelos ou patrimÃ´nios dos processadores instalados...");
+                        dictionary["Placeholders"].Add("ConfiguraÃ§Ã£o das memÃ³rias suportadas...");
+                        dictionary["Placeholders"].Add("AtÃ© quantas memÃ³rias podem ser usadas...");
+                        dictionary["Placeholders"].Add("Ordem de uso das memÃ³rias nos DIMMs...");
+                        dictionary["Placeholders"].Add("Capacidade RAM mÃ¡xima suportada...");
                         dictionary["Placeholders"].Add("Soquete do processador...");
-                        dictionary["Placeholders"].Add("Patrimônio da placa controladora...");
-                        dictionary["Placeholders"].Add("Suporta até quantos HDs...");
+                        dictionary["Placeholders"].Add("PatrimÃ´nio da placa controladora...");
+                        dictionary["Placeholders"].Add("Suporta atÃ© quantos HDs...");
                         dictionary["Placeholders"].Add("SATA, SAS...");
                         dictionary["Placeholders"].Add("Tipos de RAID suportadas...");
                         break;
                     default:
-                        dictionary["Placeholders"].Add("Patrimônio(s) do(s) HD(s) instalado(s)...");
-                        dictionary["Placeholders"].Add("Patrimônio(s) da(s) memória(s) instalada(s)...");
+                        dictionary["Placeholders"].Add("PatrimÃ´nio(s) do(s) HD(s) instalado(s)...");
+                        dictionary["Placeholders"].Add("PatrimÃ´nio(s) da(s) memÃ³ria(s) instalada(s)...");
                         dictionary["Placeholders"].Add("Modelo do(s) processador(es) instalado(s)...");
                         dictionary["Placeholders"].Add("Qual sistema operacional instalado...");
                         break;
@@ -1236,8 +1244,8 @@ public class HelperMethods
                 dictionary["Placeholders"].Add("3,5\" e/ou 2,5\"...");
                 dictionary["Placeholders"].Add("Tipos de RAID suportadas...");
                 dictionary["Placeholders"].Add("SATA ou SAS...");
-                dictionary["Placeholders"].Add("Capacidade máxima suportada do HD...");
-                dictionary["Placeholders"].Add("Suporta até quantos HDs...");
+                dictionary["Placeholders"].Add("Capacidade mÃ¡xima suportada do HD...");
+                dictionary["Placeholders"].Add("Suporta atÃ© quantos HDs...");
                 break;
             #endregion
             #region Switch
@@ -1245,8 +1253,9 @@ public class HelperMethods
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         dictionary["Placeholders"].Add("Quantas e quais portas possui...");
-                        dictionary["Placeholders"].Add("Capacidade máx de cada porta em MB/s...");
+                        dictionary["Placeholders"].Add("Capacidade mÃ¡x de cada porta em MB/s...");
                         break;
                     default:
                         dictionary["Placeholders"].Add("Quantas e quais portas possui...");
@@ -1317,7 +1326,7 @@ public class HelperMethods
             //   return double.Parse(parameter1) < double.Parse(parameter2);
             case ">":
             //return float.TryParse(parameter1) > float.TryParse(parameter2);
-            case "!=":
+            case "â‰ ":
                 return !string.Equals(parameterToCheck1, parameterToCheck2);
             case "<=":
             //return float.TryParse(parameter1) <= float.TryParse(parameter2);

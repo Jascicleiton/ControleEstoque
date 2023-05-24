@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Linq;
 using UnityEngine.UIElements;
+using System.Xml.Linq;
 
 public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
 {
@@ -15,9 +16,11 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private Button consultButton;
     private Button movementButton;
     private Button returnButton;
+    private Button increaseButton;
+    private Button decreaseButton;
     private Color defaultColor;
     private Color inactiveColor;
-    
+
     #region New item
     private VisualElement newItemPanel;
     private TextField newItemNameInput;
@@ -36,13 +39,19 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private VisualElement itemToMoveContainer;
     private Label itemNameToMoveLabel;
     private TextField quantityTextField;
+    private VisualElement whereFromPanel;
+    private DropdownField fromDP;
     private TextField whereFromTextField;
+    private VisualElement whereToPanel;
+    private DropdownField toDP;
     private TextField whereToTextField;
     private Button moveItemButton;
+    private VisualElement quantityPanel;
     #endregion
 
     private int itemIndex;
     private int tempInt = 0; // Used for all int.TryParse
+    private bool isAdding = false; // if false, the item is being removed from "Estoque", if true the item is beign added to "Estoque"
 
     private void OnEnable()
     {
@@ -62,7 +71,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         defaultColor = new Color(255, 255, 255, 255);
         inactiveColor = new Color(150, 149, 449, 255);
         allitems = new NoPaNoSeAll();
-                switch (UsersManager.Instance.currentUser.GetAccessLevel())
+        switch (UsersManager.Instance.currentUser.GetAccessLevel())
         {
             case 1:
             case 2:
@@ -73,11 +82,12 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
                 break;
         }
         ShowItems(NoPaNoSeImporter.Instance.itemsList.noPaNoSeItems);
+        FillDropdowns();
     }
 
     private void GetUIReferences()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;      
+        root = GetComponent<UIDocument>().rootVisualElement;
         openAddNewItemButton = root.Q<Button>("OpenAddNewItemButton");
         returnButton = root.Q<Button>("ReturnButton");
         itemTemplate = Resources.Load<VisualTreeAsset>("Templates/NoPaNoSeConsultItem");
@@ -98,9 +108,16 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         itemToMoveContainer = root.Q<VisualElement>("ItemToMoveContainer");
         itemNameToMoveLabel = root.Q<Label>("ItemNameToMoveLabel");
         quantityTextField = root.Q<TextField>("QuantityTextField");
+        whereFromPanel = root.Q<VisualElement>("WhereFromPanel");
+        fromDP = root.Q<DropdownField>("FromDP");
         whereFromTextField = root.Q<TextField>("WhereFromTextField");
+        whereToPanel = root.Q<VisualElement>("WhereToPanel");
+        toDP = root.Q<DropdownField>("ToDP");
         whereToTextField = root.Q<TextField>("WhereToTextField");
         moveItemButton = root.Q<Button>("MoveItemButton");
+        increaseButton = root.Q<Button>("IncreaseButton");
+        decreaseButton = root.Q<Button>("DecreaseButton");
+        quantityPanel = root.Q<VisualElement>("QuantityPanel");
         SubscribeToEvents();
         Initialize();
     }
@@ -113,7 +130,11 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         consultButton.clicked += () => { ConsultButtonClicked(); };
         movementButton.clicked += () => { MovementButtonClicked(); };
         itemsNamesDP.RegisterCallback<ChangeEvent<string>>(ItemToMoveChosen);
+        fromDP.RegisterCallback<ChangeEvent<string>>(HandleFromDP);
+        toDP.RegisterCallback<ChangeEvent<string>>(HandleToDP);
         moveItemButton.clicked += () => { MoveItemClicked(); };
+        increaseButton.clicked += () => { IncreaseClicked(); };
+        decreaseButton.clicked += () => { DecreaseClicked(); };
         EventHandler.NoPaNoSeItemQuantityChanged += UpdateItemQuantity;
     }
 
@@ -126,8 +147,23 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         movementButton.clicked -= () => { MovementButtonClicked(); };
         itemsNamesDP.UnregisterCallback<ChangeEvent<string>>(ItemToMoveChosen);
         moveItemButton.clicked -= () => { MoveItemClicked(); };
+        fromDP.UnregisterCallback<ChangeEvent<string>>(HandleFromDP);
+        toDP.UnregisterCallback<ChangeEvent<string>>(HandleToDP);
+        increaseButton.clicked -= () => { IncreaseClicked(); };
+        decreaseButton.clicked -= () => { DecreaseClicked(); };
         EventHandler.NoPaNoSeItemQuantityChanged -= UpdateItemQuantity;
-    }  
+    }
+
+    /// <summary>
+    /// Used by AddNewItem_btn outside newItemPanel
+    /// </summary>
+    private void OpenAddNewItemPanel()
+    {
+        newItemPanel.style.display = DisplayStyle.Flex;
+        newItemNameInput.value = "";
+        newItemQuantityInput.value = "";
+        //  EventHandler.CallUpdateTabInputs();
+    }
 
     /// <summary>
     /// Add a new item to the screen and scrolls to the bottom of the list
@@ -140,17 +176,20 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
             wasActive = false;
             consultContainer.style.display = DisplayStyle.Flex;
         }
-        consultList.makeItem = () => itemTemplate.Instantiate();
-                
+
         NoPaNoSeItem newItem = new NoPaNoSeItem();
         newItem.ItemName = itemName;
         newItem.Quantity = itemQuantity;
         allitems.noPaNoSeItems.Add(newItem);
         NoPaNoSeImporter.Instance.AddNewItem(newItem);
-        consultList.itemsSource.Add(newItem);
+
         if (!wasActive)
         {
             consultContainer.style.display = DisplayStyle.None;
+        }
+        else
+        {
+            consultList.Rebuild();
         }
     }
 
@@ -158,7 +197,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     /// Sort Alphabetically the imported list of items and show it
     /// </summary>
     private void ShowItems(List<NoPaNoSeItem> itemsToShow)
-    {     
+    {
         List<NoPaNoSeItem> sortedItemsToShow = itemsToShow.OrderBy(x => x.ItemName).ToList();
 
         consultList.makeItem = () => itemTemplate.Instantiate();
@@ -170,12 +209,13 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
 
             itemNameLabel.text = sortedItemsToShow[i].ItemName;
             itemQuantityLabel.text = sortedItemsToShow[i].Quantity.ToString();
+            ve.style.height = StyleKeyword.Auto;
         };
 
         consultList.itemsSource = sortedItemsToShow;
-        consultList.fixedItemHeight = 60;
-        
-        allitems.noPaNoSeItems = sortedItemsToShow;              
+        consultList.fixedItemHeight = 100;
+
+        allitems.noPaNoSeItems = sortedItemsToShow;
     }
 
     /// <summary>
@@ -242,13 +282,12 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         MouseManager.Instance.SetDefaultCursor();
     }
 
-    
     /// <summary>
     /// Used by AddNewItem_btn inside newItemPanel
     /// </summary>
     public void AddNewItemClicked()
     {
-        StartCoroutine(AddNewItemRoutine());     
+        StartCoroutine(AddNewItemRoutine());
     }
 
     private void ConsultButtonClicked()
@@ -266,60 +305,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         movementButton.style.unityBackgroundImageTintColor = defaultColor;
         consultButton.style.unityBackgroundImageTintColor = inactiveColor;
         FillItemsToMoveDP();
-    }
-
-    private void MoveItemClicked()
-    {
-        NoPaNoSeItem itemToMove = FindItemToMove();
-        if (itemToMove != null)
-        {
-            if (int.TryParse(quantityTextField.value, out tempInt))
-            {
-                if (NoPaNoSeItemManager1.CanChangeQuantity(itemToMove, tempInt))
-                {
-                    StartCoroutine(MoveItem(itemToMove, tempInt, whereFromTextField.value, whereToTextField.value));
-                }
-            }
-            else
-            {
-                print("invalid number");
-            }
-        }
-        else
-        {
-            print("Null");
-        }
-    }
-
-    private IEnumerator MoveItem(NoPaNoSeItem itemToChange, int quantityToMove, string whereFrom, string whereTo)
-    {
-        yield return NoPaNoSeItemManager1.ChangeItemQuantityRoutine(itemToChange, quantityToMove);
-        if(NoPaNoSeItemManager1.quantityChanged)
-        {
-            yield return NoPaNoSeItemManager1.MoveItem(itemToChange, quantityToMove, whereFrom, whereTo);
-        }        
-    }
-
-    /// <summary>
-    /// Used by AddNewItem_btn outside newItemPanel
-    /// </summary>
-    private void OpenAddNewItemPanel()
-    {
-        newItemPanel.style.display = DisplayStyle.Flex;
-        newItemNameInput.value = "";
-        newItemQuantityInput.value = "";
-      //  EventHandler.CallUpdateTabInputs();
-    }
-
-    private void FillItemsToMoveDP()
-    {
-        List<string> choices = new List<string>();
-        foreach (var item in allitems.noPaNoSeItems)
-        {
-            choices.Add(item.ItemName);
-        }
-        itemsNamesDP.choices = choices;
-        itemsNamesDP.value = choices[0];
+        HideMoveElements();
     }
 
     private void ItemToMoveChosen(ChangeEvent<string> evt)
@@ -328,12 +314,95 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         itemNameToMoveLabel.text = evt.newValue;
     }
 
-    /// <summary>
-    /// Goes to InitialScene
-    /// </summary>
-    private void ReturnToPreviousScreen()
+    private void IncreaseClicked()
     {
-        ChangeScreenManager.Instance.OpenScene(Scenes.NoPaNoSeScene, Scenes.InitialScene);
+        isAdding = true;
+        quantityPanel.style.display = DisplayStyle.Flex;
+        whereFromPanel.style.display = DisplayStyle.Flex;
+        whereToPanel.style.display = DisplayStyle.None;
+        moveItemButton.style.display = DisplayStyle.Flex;
+    }
+
+    private void DecreaseClicked()
+    {
+        isAdding = false;
+        quantityPanel.style.display = DisplayStyle.Flex;
+        whereFromPanel.style.display = DisplayStyle.None;
+        whereToPanel.style.display = DisplayStyle.Flex;
+        moveItemButton.style.display = DisplayStyle.Flex;
+    }
+
+    private void MoveItemClicked()
+    {
+        string whereFrom = "";
+        string whereTo = "";
+        NoPaNoSeItem itemToMove = FindItemToMove();
+        if(int.TryParse(quantityTextField.value, out tempInt))
+        {
+            if (tempInt < 0)
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Negative number");
+                return;
+            }
+            else if (tempInt == 0)
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Zero quantity");
+                return;
+            }
+        }
+        else
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Invalid number");
+
+        }
+        if (itemToMove != null)
+        {
+            if(isAdding)
+            {
+                whereFrom = GetFromLocation();
+                 whereTo = "Estoque";
+                StartCoroutine(MoveItem(itemToMove, tempInt, whereFrom, whereTo));
+            }
+            else
+            {                
+                    if (NoPaNoSeItemManager1.CanChangeQuantity(itemToMove, tempInt))
+                    {
+                        whereFrom = "Estoque";
+                        whereTo = GetToLocation();
+                        StartCoroutine(MoveItem(itemToMove, tempInt, whereFrom, whereTo));
+                    }
+                    else
+                    {
+                        EventHandler.CallIsOneMessageOnlyEvent(true);
+                        EventHandler.CallOpenMessageEvent("Negative quantity");
+                    }            
+            }                      
+        }
+        else
+        {
+            print("Null");
+        }
+    }
+
+    private IEnumerator MoveItem(NoPaNoSeItem itemToChange, int quantityToMove, string whereFrom, string whereTo)
+    {       
+        yield return NoPaNoSeItemManager1.ChangeItemQuantityRoutine(itemToChange, quantityToMove, isAdding);
+        if (NoPaNoSeItemManager1.quantityChanged)
+        {
+            yield return NoPaNoSeItemManager1.MoveItem(itemToChange, quantityToMove, whereFrom, whereTo);
+        }
+    }
+
+    private void UpdateItemQuantity(int itemNewQuantity)
+    {
+        consultContainer.style.display = DisplayStyle.Flex;
+        allitems.noPaNoSeItems[itemIndex].Quantity = itemNewQuantity;
+        consultList.Rebuild();
+        consultContainer.style.display = DisplayStyle.None;
+        HideMoveElements();
     }
 
     private NoPaNoSeItem FindItemToMove()
@@ -346,19 +415,94 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
                 return allitems.noPaNoSeItems[i];
             }
         }
-        return null;        
+        return null;
     }
 
-    private void UpdateItemQuantity(int itemNewQuantity)
+    private void FillItemsToMoveDP()
     {
-        consultContainer.style.display = DisplayStyle.Flex;
-        NoPaNoSeItem itemToChange = (NoPaNoSeItem)consultList.itemsSource[itemIndex];
-        itemToChange.Quantity = itemNewQuantity;
-        consultList.Rebuild();
-        consultContainer.style.display = DisplayStyle.None;
+        List<string> choices = new List<string>();
+        foreach (var item in allitems.noPaNoSeItems)
+        {
+            choices.Add(item.ItemName);
+        }
+        itemsNamesDP.choices = choices;
+        itemsNamesDP.value = allitems.noPaNoSeItems[0].ItemName;
+    }
+
+
+    /// <summary>
+    /// Goes to InitialScene
+    /// </summary>
+    private void ReturnToPreviousScreen()
+    {
+        ChangeScreenManager.Instance.OpenScene(Scenes.NoPaNoSeScene, Scenes.InitialScene);
+    }
+
+    private void FillDropdowns()
+    {
+        fromDP.choices = InternalDatabase.locations;
+        fromDP.value = fromDP.choices[HelperMethods.GetLocationDPValue("Estoque")];
+        toDP.choices = InternalDatabase.locations;
+        toDP.value = toDP.choices[0];
+    }
+
+    private void HandleToDP(ChangeEvent<string> evt)
+    {
+        if (evt.newValue == "Outros")
+        {
+            whereToTextField.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            whereToTextField.style.display = DisplayStyle.None;
+        }
+    }
+
+    private void HandleFromDP(ChangeEvent<string> evt)
+    {
+        if (evt.newValue == "Outros")
+        {
+            whereFromTextField.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            whereFromTextField.style.display = DisplayStyle.None;
+        }
+    }
+
+    private string GetToLocation()
+    {
+        if (toDP.value == "Outros")
+        {
+            return whereToTextField.value;
+        }
+        else
+        {
+            return toDP.value;
+        }
+    }
+
+    private string GetFromLocation()
+    {
+        if (fromDP.value == "Outros")
+        {
+            return whereToTextField.value;
+        }
+        else
+        {
+            return fromDP.value;
+        }
+    }
+
+    private void HideMoveElements()
+    {
         quantityTextField.value = "";
         whereFromTextField.value = "";
         whereToTextField.value = "";
+        moveItemButton.style.display = DisplayStyle.None;
+        quantityPanel.style.display = DisplayStyle.None;
+        whereFromPanel.style.display = DisplayStyle.None;
+        whereToPanel.style.display = DisplayStyle.None;
         itemToMoveContainer.style.display = DisplayStyle.None;
     }
 }

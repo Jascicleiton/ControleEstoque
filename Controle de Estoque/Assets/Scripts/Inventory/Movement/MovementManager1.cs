@@ -170,9 +170,13 @@ public class MovementManager1 : MonoBehaviour
         if (itemFound)
         {
             ShouldHidePanels(false);
-            fromDP.value = itemToChange.Local;
-            if (fromDP.value == "Outros")
+           if(CheckIfLocationIsRegistered(itemToChange.Local))
             {
+                fromDP.value = itemToChange.Local;
+            }
+            else
+            {
+                fromDP.value = "Outros";
                 fromInput.style.opacity = 1;
                 fromInput.value = itemToChange.Local;
             }
@@ -284,6 +288,8 @@ public class MovementManager1 : MonoBehaviour
             fromPanel.style.visibility = Visibility.Hidden;
             toPanel.style.visibility = Visibility.Hidden;
             whoPanel.style.visibility = Visibility.Hidden;
+            fromInput.style.visibility = Visibility.Hidden;
+            fromInput.style.visibility = Visibility.Hidden;
         }
         else
         {
@@ -479,5 +485,19 @@ public class MovementManager1 : MonoBehaviour
         fromDP.choices = InternalDatabase.locations;
         toDP.choices = InternalDatabase.locations;
         toDP.value = InternalDatabase.locations[HelperMethods.GetLocationDPValue("Estoque")];
+    }
+
+    private bool CheckIfLocationIsRegistered(string location)
+    {
+        bool isRegistered = false;
+        foreach (var item in InternalDatabase.locations)
+        {
+            if(item == location)
+            {
+                isRegistered = true;
+                break;
+            }
+        }
+        return isRegistered;
     }
 }

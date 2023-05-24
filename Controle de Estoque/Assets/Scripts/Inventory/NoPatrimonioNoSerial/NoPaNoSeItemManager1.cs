@@ -9,10 +9,18 @@ public class NoPaNoSeItemManager1
     /// <summary>
     /// Change the quantity of an already existing item
     /// </summary>
-    public static IEnumerator ChangeItemQuantityRoutine(NoPaNoSeItem itemToChange, int quantityToMove)
+    public static IEnumerator ChangeItemQuantityRoutine(NoPaNoSeItem itemToChange, int quantityToMove, bool isAdding)
     {
-        int itemNewQuantity = itemToChange.Quantity + quantityToMove;
-
+        int itemNewQuantity = 0;
+        if (isAdding)
+        {
+             itemNewQuantity = itemToChange.Quantity + quantityToMove;
+        }
+        else
+        {
+            itemNewQuantity = itemToChange.Quantity - quantityToMove;
+        }
+        
         itemToChange.Quantity = itemNewQuantity;
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.UpdateItemKey, itemToChange.ItemName, itemNewQuantity);
 
@@ -68,33 +76,18 @@ public class NoPaNoSeItemManager1
     }
 
       public static bool CanChangeQuantity(NoPaNoSeItem item, int quantityToMove)
-    {
-        if(quantityToMove == 0)
-        {
-            //Send message error
-            Debug.Log("zero items to move");
-            return false;
-        }
-        if(quantityToMove > 0)
-        {
-            Debug.Log("positive number to move");
-            return true;
-        }
-        else
-        {
-            if(item.Quantity + quantityToMove >= 0) 
+    {        
+            if(item.Quantity - quantityToMove >= 0) 
             {
-                Debug.Log("can reduce number");
+     //           Debug.Log("can reduce number");
                 return true;
             }
             else
             {
-                Debug.Log("moving more than available");
+       //         Debug.Log("moving more than available");
                 return false;
-            }
-        }
+            }        
     }
-
    
     /// <summary>
     /// Called to generate a movement record each time an item quantity is changed. It is a different movement record from an item that do

@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Testing');
+$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_Testing');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");
@@ -18,11 +18,16 @@ $username = $_POST["username"];
 $usernameClean = filter_var($username, FILTER_SANITIZE_EMAIL);
 
 $usernamecheckquery = "SELECT * from users WHERE username = '" .$usernameClean. "';";
-$usernamecheckresult = mysqli_query($con, $usernamecheckquery) or die ("username query ran into an error");
+$usernamecheckresult = mysqli_query($con, $usernamecheckquery) or die ("Username query ran into an error");
 
-if($usernamecheckresult->num_rows != 1)
+if($usernamecheckresult->num_rows < 1)
 {
-    echo("Username does not exist or there is more than one in the table");
+    echo("Can create new user");
+    exit();
+}
+else if($usernamecheckresult->num_rows > 1)
+{
+    echo("Duplicate username");
     exit();
 }
 else

@@ -198,7 +198,7 @@ namespace Assets.Scripts.Inventory.Consult
         /// </summary>
         private void ConsultWithCategory()
         {
-            foundItems.itens.Clear();
+            RemoveOldSearch();
             List<int> activeIndexes = new List<int>();
             List<string> activeOperators = new List<string>();
 
@@ -216,7 +216,6 @@ namespace Assets.Scripts.Inventory.Consult
 
             if (activeIndexes.Count > 0)
             {
-                print("Active indexes: " + activeIndexes.Count);          
                 foundItems = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), HelperMethods.GetCategoryDatabaseToConsult(categoryDP.value), activeOperators);
             }
            
@@ -262,6 +261,7 @@ namespace Assets.Scripts.Inventory.Consult
         /// </summary>
         private string GetOperatorFromDP(int index)
         {
+            print(operators[index].value);
             return operators[index].value;
         }
  

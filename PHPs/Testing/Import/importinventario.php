@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Testing');
+$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_Testing');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");
@@ -30,13 +30,12 @@ function utf8ize($d)
 }
 
 if($result->num_rows > 0)
-{
-    
+{ 
     $json_array = array();
     while($row = mysqli_fetch_assoc($result))
     {
         $json_array[] = $row;
-            }
+    }
             
     echo json_encode(utf8ize($json_array));
 }

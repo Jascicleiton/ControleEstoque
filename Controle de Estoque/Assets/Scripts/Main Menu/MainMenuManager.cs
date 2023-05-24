@@ -204,6 +204,7 @@ namespace MainMenu
                 }
                 else
                 {
+                    inputEnabled = true;
                     EventHandler.CallIsOneMessageOnlyEvent(true);
                     EventHandler.CallOpenMessageEvent("Wrong authorization access level");
                     yield break;
@@ -286,7 +287,7 @@ namespace MainMenu
             yield return createPostRequest.SendWebRequest();
             if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                newUserPanel.style.display = DisplayStyle.None;
+                adminAuthorizationPanel.style.display = DisplayStyle.None;
                 adminAuthorizing = false;
                 loginPanel.style.display = DisplayStyle.Flex;
                 openAddNewUserPanelButton.style.display = DisplayStyle.Flex;

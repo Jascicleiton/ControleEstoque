@@ -162,7 +162,7 @@ public class ConstStrings
     public const string AddNewInventario = "inventario.php";
     public const string AddNewMemoria = "memoria.php";
     public const string AddNewMonitor = "monitor.php";
-    public const string AddNewNotebook = "tebook.php";
+    public const string AddNewNotebook = "notebook.php";
     public const string AddNewPlacaControladora = "placacontroladora.php";
     public const string AddNewPlacaDeCapturaDeVideo = "placadecapturadevideo.php";
     public const string AddNewPlacaDeRede = "placaderede.php";

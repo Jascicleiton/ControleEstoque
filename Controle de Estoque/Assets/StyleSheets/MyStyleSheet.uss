@@ -42,3 +42,25 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.itemResult {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0);
+    flex-basis: 200px;
+    background-image: url('project://database/Assets/Images/ItemResultImage%202.png?fileID=21300000&guid=608fb9843b49e0745bb53bddb6657040&type=3#ItemResultImage 2');
+    -unity-background-scale-mode: stretch-to-fill;
+    width: 200px;
+    height: 100px;
+    margin-left: 0;
+    margin-right: 11px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    justify-content: space-around;
+}
+
+.listView {
+    flex-grow: 1;
+    margin-left: 30px;
+    margin-right: 30px;
+    align-items: center;
+}

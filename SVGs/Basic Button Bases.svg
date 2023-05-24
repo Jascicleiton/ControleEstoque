@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.37658706"
-     inkscape:cx="658.54627"
-     inkscape:cy="637.30284"
+     inkscape:zoom="1.5063482"
+     inkscape:cx="1002.4243"
+     inkscape:cy="703.68856"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -742,45 +742,38 @@
        x="324.73245"
        y="-89.332016" />
     <g
-       id="g1415"
-       transform="matrix(1.3888889,0,0,1,-101.09469,0)"
+       id="g857"
+       transform="matrix(0.66666666,0,0,0.99999994,73.892133,6.7121404)"
        inkscape:export-filename="..\Controle de Estoque\Assets\Images\ItemResultImage 4.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
-      <g
-         id="g857"
-         transform="matrix(0.95827176,0,0,1.3333334,10.892786,44.962684)"
-         inkscape:export-filename="..\Controle de Estoque\Assets\Images\ItemResultImage 4.png"
-         inkscape:export-xdpi="96.000023"
-         inkscape:export-ydpi="96.000023">
-        <rect
-           style="fill:#0a5a94;fill-opacity:1;stroke:none;stroke-width:2.20278"
-           id="rect734"
-           width="79.375"
-           height="19.84375"
-           x="238.53802"
-           y="-108.42835"
-           inkscape:export-filename="..\..\..\Pictures\ItemResultImage.png"
-           inkscape:export-xdpi="95.553955"
-           inkscape:export-ydpi="95.553955"
-           ry="9.921875" />
-        <rect
-           style="fill:#0d75c1;fill-opacity:1;stroke:none;stroke-width:2.25919"
-           id="rect738"
-           width="75.709587"
-           height="16.957508"
-           x="240.37073"
-           y="-106.98523"
-           ry="8.478754" />
-      </g>
+       inkscape:export-xdpi="96.000023"
+       inkscape:export-ydpi="96.000023">
       <rect
-         style="fill:none;stroke-width:0.295845"
-         id="rect859"
-         width="76.06282"
-         height="26.458336"
-         x="239.33986"
-         y="-73.150124" />
+         style="fill:#0a5a94;fill-opacity:1;stroke:none;stroke-width:2.20278"
+         id="rect734"
+         width="79.375"
+         height="19.84375"
+         x="238.53802"
+         y="-108.42835"
+         inkscape:export-filename="..\..\..\Pictures\ItemResultImage.png"
+         inkscape:export-xdpi="95.553955"
+         inkscape:export-ydpi="95.553955"
+         ry="9.921875" />
+      <rect
+         style="fill:#0d75c1;fill-opacity:1;stroke:none;stroke-width:2.25919"
+         id="rect738"
+         width="75.709587"
+         height="16.957508"
+         x="240.37073"
+         y="-106.98523"
+         ry="8.478754" />
     </g>
+    <rect
+       style="fill:none;stroke-width:0.301946"
+       id="rect859"
+       width="105.64281"
+       height="19.84375"
+       x="232.72696"
+       y="-81.872459" />
     <g
        id="g1163"
        inkscape:export-filename="..\Controle de Estoque\Assets\Images\ActivityPanel 4.png"

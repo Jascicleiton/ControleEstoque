@@ -48,7 +48,8 @@ namespace Assets.Scripts.UI
             root = GetComponent<UIDocument>().rootVisualElement;
             itemBoxes = root.Q<VisualElement>("ParametersContainer").Children().ToArray<VisualElement>();
             parameterNames = root.Query(name: "ParametersContainer").Descendents<Label>().ToList();
-            parameterValues = root.Query(name: "ParametersContainer").Descendents<TextField>().ToList();            
+            parameterValues = root.Query(name: "ParametersContainer").Descendents<TextField>().ToList();
+          
         }
 
         private void SubscribeToEvents()
@@ -352,13 +353,21 @@ namespace Assets.Scripts.UI
         /// </summary>
         public List<string> GetInventoryValues()
         {
+           // print("Number of parameters found by iteminformationpanelcontroller: " + parameterValues.Count);
             List<string> valuesList = new List<string>();
+            int index = 0;
             foreach (var item in parameterValues)
             {
-                if (item.style.display == DisplayStyle.Flex)
+                if (item != null)
                 {
+                    print(index + ": " + item.value);
                     valuesList.Add(item.text);
+                    index++;
                 }
+                //else
+                //{
+                //    print("not active");
+                //}
             }
             return valuesList;
         }
@@ -368,6 +377,10 @@ namespace Assets.Scripts.UI
         /// </summary>
         public List<string> GetCategoryValues(string category)
         {
+            print(parameterValues[7].text);
+            print(parameterValues[11].text);
+            print(parameterValues[12].text);
+            print(parameterValues[13].text);
             List<string> valuesList = new List<string>();
             switch (category)
             {
@@ -563,6 +576,7 @@ namespace Assets.Scripts.UI
                             valuesList.Add(parameterValues[13].text);
                             break;
                         case CurrentEstoque.SnPro:
+                        case CurrentEstoque.Testing:
                             valuesList.Add(parameterValues[7].text);
                             valuesList.Add(parameterValues[6].text);
                             valuesList.Add(parameterValues[11].text);

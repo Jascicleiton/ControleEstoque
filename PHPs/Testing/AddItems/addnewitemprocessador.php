@@ -1,5 +1,5 @@
 <?
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Testing');
+$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_Testing');
 
 if(mysqli_connect_errno())
 {
@@ -12,9 +12,6 @@ $modelo = $_POST["modelo"];
 $soquete = $_POST["soquete"];
 $nucleosfisicos = $_POST["nucleosfisicos"];
 $nucleoslogicos = $_POST["nucleoslogicos"];
-$aceitavirtualizacao = $_POST["aceitavirtualizacao"];
-$turboboost = $_POST["turboboost"];
-$hyperthreading = $_POST["hyperthreading"];
 
 if($appkey != "AddNewItem")
 {
@@ -31,7 +28,7 @@ if($modelocheckresult->num_rows > 0)
     exit();
 }
 
-$insertuserquery= "INSERT INTO Processador(Modelo, Soquete, Nucleos_fisicos, Nucleos_logicos, Aceita_virtualizacao, Turbo_boost, Hyper_Threading) VALUES('". $modelo ."', '". $soquete ."', '". $nucleosfisicos ."', '". $nucleoslogicos ."', '". utf8_decode($aceitavirtualizacao) ."', '". utf8_decode($turboboost) ."', '". utf8_decode($hyperthreading) ."');";
+$insertuserquery= "INSERT INTO Processador(Modelo, Soquete, Nucleos_fisicos, Nucleos_logicos) VALUES('". $modelo ."', '". $soquete ."', '". $nucleosfisicos ."', '". $nucleoslogicos ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Worked");
 

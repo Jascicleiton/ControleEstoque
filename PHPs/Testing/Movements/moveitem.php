@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Testing');
+$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_Testing');
 if(mysqli_connect_errno())
 {
     echo("Database connection error");
@@ -33,7 +33,15 @@ if($paraonde == "Estoque")
     $updatedataquery = "UPDATE Inventario SET Entrada_no_estoque = '".$data."', Saida_do_estoque = '' WHERE Patrimonio = '".$patrimonio."';";
     mysqli_query($con, $updatedataquery) or die("Date query failed");
 }
-$updateinventarioquery = "UPDATE Inventario SET Local = '".$paraonde."' WHERE Patrimonio = '".$patrimonio."';";
+if($paraonde == "Descarte")
+{
+    $updateinventarioquery = "UPDATE Inventario SET Local = '".$paraonde."', Status = 'DEFEITO' WHERE Patrimonio = '".$patrimonio."';";
+}
+else
+{
+    $updateinventarioquery = "UPDATE Inventario SET Local = '".$paraonde."' WHERE Patrimonio = '".$patrimonio."';";
+}
+
 
 mysqli_query($con, $newmoveitemquery) or die("Movement query failed");
 

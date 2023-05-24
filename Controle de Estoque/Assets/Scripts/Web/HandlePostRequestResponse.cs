@@ -1,11 +1,5 @@
-using System.Xml;
-using Telepathy;
-using UnityEditor.PackageManager.Requests;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Networking;
-using static UnityEditor.PlayerSettings;
-using static UnityEditor.Progress;
 
 public class HandlePostRequestResponse
 {

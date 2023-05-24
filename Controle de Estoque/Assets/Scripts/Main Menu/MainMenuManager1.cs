@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Networking;
-using UnityEditor.PackageManager;
 
 public class MainMenuManager1 : MonoBehaviour
 {
@@ -208,6 +207,7 @@ public class MainMenuManager1 : MonoBehaviour
             }
             else
             {
+                inputEnabled = true;
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Wrong authorization access level");
                 yield break;
@@ -290,7 +290,7 @@ public class MainMenuManager1 : MonoBehaviour
         yield return createPostRequest.SendWebRequest();
         if(HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            newUserPanel.style.display = DisplayStyle.None;
+            adminAuthorizationPanel.style.display = DisplayStyle.None;
             adminAuthorizing = false;
             loginPanel.style.display = DisplayStyle.Flex;
             openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
@@ -315,6 +315,7 @@ public class MainMenuManager1 : MonoBehaviour
     /// </summary>
     private void ShowAddNewUserPanel()
     {
+        print("Hello");
         openAddNewUserPanelButton.style.display = DisplayStyle.None;
         loginPanel.style.display = DisplayStyle.None;
         newUserPanel.style.display = DisplayStyle.Flex;

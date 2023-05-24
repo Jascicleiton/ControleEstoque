@@ -49,7 +49,8 @@ public class GetMovementRecords : MonoBehaviour
         nameDP = root.Q<DropdownField>("NameDP");
         returnButton = root.Q<Button>("ReturnButton");
         consultButton = root.Q<Button>("ConsultButton");
-        SubscribeToEvents();      
+        SubscribeToEvents();
+        listView.makeItem = () => movementObjectTemplate.Instantiate();
     }
 
     private void SubscribeToEvents()
@@ -73,11 +74,14 @@ public class GetMovementRecords : MonoBehaviour
         {
             names.Add(item.ItemName);
         }
-        nameDP.choices = names;
-        //nameDP.formatListItemCallback = (element) => element.ToString();
-        //nameDP.formatSelectedValueCallback = (element) => element.ToString();
-        nameDP.value = names[0];
-        nameDP.style.display = DisplayStyle.None;
+        if (names.Count > 0)
+        {
+            nameDP.choices = names;
+            //nameDP.formatListItemCallback = (element) => element.ToString();
+            //nameDP.formatSelectedValueCallback = (element) => element.ToString();
+            nameDP.value = names[0];
+            nameDP.style.display = DisplayStyle.None;
+        }
     }
 
     private void FillSearchOptionsDP()
@@ -95,15 +99,9 @@ public class GetMovementRecords : MonoBehaviour
     /// </summary>
     private void DeleteOldSearch()
     {
-        if (listView.childCount > 0)
-        {
-            for (int i = 0; i < listView.childCount; i++)
-            {
-                listView.RemoveAt(i);
-            }
-        }
         regularItemMovementRecords.Clear();
         noPaNoSeMovementRecords.Clear();
+        listView.Rebuild();
     }
 
     /// <summary>
@@ -247,15 +245,10 @@ public class GetMovementRecords : MonoBehaviour
     private void ShowMovements()
     {
         MouseManager.Instance.SetWaitingCursor();
-        if (listView.itemsSource != null)
-        {
-            listView.itemsSource.Clear();
-        }
+        
         if (regularItemMovementRecords.Count > 0)
         {
-            regularItemMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
-
-            listView.makeItem = () => movementObjectTemplate.Instantiate();
+            regularItemMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));     
             listView.bindItem = (element, i) =>
             {
                 Label nameLabel = element.Q<Label>("NameLabel");
@@ -282,7 +275,6 @@ public class GetMovementRecords : MonoBehaviour
         if (noPaNoSeMovementRecords.Count > 0)
         {
             noPaNoSeMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
-            listView.makeItem = () => movementObjectTemplate.Instantiate();
             listView.bindItem = (element, i) =>
             {
                 Label nameLabel = element.Q<Label>("NameLabel");
@@ -305,6 +297,7 @@ public class GetMovementRecords : MonoBehaviour
             };
             listView.itemsSource = noPaNoSeMovementRecords;
         }
+        listView.fixedItemHeight = 100;
         MouseManager.Instance.SetDefaultCursor();
     }
 

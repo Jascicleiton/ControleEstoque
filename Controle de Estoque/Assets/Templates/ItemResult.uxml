@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:VisualElement name="ItemResult" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-basis: auto; background-image: url(&apos;project://database/Assets/Images/ItemResultImage%202.png?fileID=21300000&amp;guid=608fb9843b49e0745bb53bddb6657040&amp;type=3#ItemResultImage 2&apos;); -unity-background-scale-mode: scale-to-fit; width: 280px; height: 100px; margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; justify-content: space-around;">
-        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 0; margin-right: 0; flex-wrap: wrap; -unity-text-align: middle-center; margin-top: 0; margin-bottom: 0; padding-left: 7px; padding-bottom: 7px; padding-top: 7px; padding-right: 7px; height: 50%;" />
-        <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0; flex-wrap: wrap; height: 50%;" />
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="ParameterName" style="font-size: 16px; margin-left: 0; margin-right: 0; flex-wrap: wrap; -unity-text-align: middle-center; margin-top: 0; margin-bottom: 0; padding-left: 7px; padding-bottom: 7px; padding-top: 7px; padding-right: 7px; height: 50%; white-space: normal;" />
+        <ui:TextField picking-mode="Ignore" value="filler text" name="ParameterValue" style="font-size: 16px; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0; flex-wrap: wrap; height: 50%; white-space: normal;" />
     </ui:VisualElement>
 </ui:UXML>

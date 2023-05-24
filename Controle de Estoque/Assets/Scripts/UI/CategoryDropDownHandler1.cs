@@ -15,7 +15,7 @@ namespace Assets.Scripts.UI
             if (InternalDatabase.categories.Count > 0)
             {
                               dropdown.choices = InternalDatabase.categories;
-                dropdown.value = InternalDatabase.categories[0];
+                dropdown.value = dropdown.choices[0];
                 dropdown.formatListItemCallback = (element) => element.ToString();
                // dropdown.formatSelectedValueCallback = (element) => element.ToString();               
             }            

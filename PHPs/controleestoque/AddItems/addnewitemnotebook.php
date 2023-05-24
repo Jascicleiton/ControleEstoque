@@ -33,7 +33,7 @@ if($modelocheckresult->num_rows > 0)
     exit();
 }
 
-$insertuserquery= "INSERT INTO Notebook(Patrimonio, Modelo, Fabricante, HD, Memoria, EntradaRJ45, Bateria, AdaptdadorAC, Windows) VALUES('". $patrimonio ."','". utf8_decode($modelo) ."','". utf8_decode($fabricante) ."','". utf8_decode($hd) ."','". utf8_decode($memoria) ."','". utf8_decode($EntradaRJ45) ."','". utf8_decode($bateria) ."','". utf8_decode($adaptadorac) ."','". utf8_decode($windows) ."');";
+$insertuserquery= "INSERT INTO Notebook(Patrimonio, Modelo, Fabricante, HD, Memoria, EntradaRJ45, Bateria, AdaptadorAC, Windows) VALUES('". $patrimonio ."','". utf8_decode($modelo) ."','". utf8_decode($fabricante) ."','". utf8_decode($hd) ."','". utf8_decode($memoria) ."','". utf8_decode($EntradaRJ45) ."','". utf8_decode($bateria) ."','". utf8_decode($adaptadorac) ."','". utf8_decode($windows) ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Worked");
 

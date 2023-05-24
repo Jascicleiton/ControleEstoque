@@ -178,7 +178,7 @@ public class MessageManager1 : MonoBehaviour
             inputEnabled = true;
             return;
         }
-        else if (message1 == "Negative number")
+        else if (message1 == "Negative quantity")
         {
             messageText.text = "O estoque é menor que o valor que você quer mover. Altere o valor e tente novamente.";
             StartCoroutine(CloseMessageRoutine());
@@ -246,12 +246,28 @@ public class MessageManager1 : MonoBehaviour
             messageText.text = "Usuário não possui autorização para permitir a criação de um novo usuário";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
+            return;
         }
         else if(message1 == "Empty values")
         {
             messageText.text = "Verifique se o usuário e/ou senha foi digitado corretamente";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
+            return;
+        }
+        else if(message1 == "Negative number")
+        {
+            messageText.text = "Utilize somente números positivos para o campo quantidade";
+                 StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
+        }
+        else if(message1 == "Zero quantity")
+        {
+            messageText.text = "Escolha uma quantidade maior que zero"; 
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
         }
         else
         {

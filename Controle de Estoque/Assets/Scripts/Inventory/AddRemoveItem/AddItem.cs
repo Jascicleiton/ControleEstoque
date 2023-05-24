@@ -9,7 +9,7 @@ namespace Inventory.AddItem
     public class AddItem : MonoBehaviour
     {
         private VisualElement root;
-        private TextField[] parameterValues;
+        private List<TextField> parameterValues;
         private DropdownField categoryDP;
         private Button resetButton;
         private Button returnButton;
@@ -24,12 +24,14 @@ namespace Inventory.AddItem
         bool addDetalheSuccess = false;
         bool addInventarioSuccess = false;
 
+        private void Awake()
+        {
+            itemInformationPanelController = GetComponent<ItemInformationPanelControler1>();
+        }
+
         private void Start()
         {
-           
-                itemInformationPanelController = GetComponent<ItemInformationPanelControler1>();
-           
-            UpdateNames();
+           UpdateNames();
             if (UsersManager.Instance.currentUser.GetAccessLevel() < 10)
             {
                 addDetailsButton.style.display = DisplayStyle.None;
@@ -39,7 +41,8 @@ namespace Inventory.AddItem
         private void OnEnable()
         {
             GetUIReferences();
-            SubscribeToEvents();            
+            SubscribeToEvents();
+           // print("Number of parameters found by additem: " + parameterValues.Count);
         }
 
         private void OnDisable()
@@ -66,6 +69,7 @@ namespace Inventory.AddItem
         /// </summary>
         private void UpdateNames()
         {
+            currentCategory = categoryDP.value;
             itemInformationPanelController.ShowCategoryItemTemplate(currentCategory);
             itemInformationPanelController.DisableItemsForAdd(currentCategory);
             EventHandler.CallUpdateTabInputs();
@@ -83,13 +87,14 @@ namespace Inventory.AddItem
                 #region Add new item to Inventario
                 parameters.Clear();
                 parameters = itemInformationPanelController.GetInventoryValues();
-                if (categoryDP.value == ConstStrings.Outros)
+               // print(parameters.Count);
+                //if (categoryDP.value == ConstStrings.Outros)
+                //{
+                //    parameters.Insert(5, parameterValues[5].text);
+                //}
+                if(categoryDP.value != ConstStrings.Outros)
                 {
-                    parameters.Insert(5, parameterValues[5].text);
-                }
-                else
-                {
-                    parameters.Insert(5, categoryDP.value);
+                    parameters[5] = categoryDP.value;
                 }
 
                 if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
@@ -141,9 +146,9 @@ namespace Inventory.AddItem
                 }
                 if (addInventario)
                 {
-                          AddItemLocal.AddItem(parameterValues, categoryDP.value);
+                          AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
                 }
-                SetInputEnabled(true);
+                
             }
             #endregion
             // Used if is only adding to the details database, to notify the MessageManager that the "adition to the inventory" was a success
@@ -152,7 +157,7 @@ namespace Inventory.AddItem
                 EventHandler.CallOpenMessageEvent("Worked");
                 addInventarioSuccess = true;
             }
-            
+            SetInputEnabled(true);
         }
 
         /// <summary>
@@ -173,6 +178,7 @@ namespace Inventory.AddItem
             returnButton = root.Q<Button>("ReturnButton");
             addButton = root.Q<Button>("AddButton");
             addDetailsButton = root.Q<Button>("AddDetailsButton");
+            parameterValues = root.Query<VisualElement>(name: "ParametersContainer").Descendents<TextField>().ToList();
         }
 
         private void SubscribeToEvents()
