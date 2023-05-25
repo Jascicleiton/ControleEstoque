@@ -5,7 +5,7 @@ using Saving;
 
 public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
 {
-    [SerializeField] GameObject importingWidget;
+   // [SerializeField] GameObject importingWidget;
     [SerializeField] GameObject exportManagerPrefab;
     
     public string currentVersion = "1.0"; // current program version - it is here for lazy reasons

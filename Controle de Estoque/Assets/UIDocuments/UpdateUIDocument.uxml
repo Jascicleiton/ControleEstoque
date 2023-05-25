@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/StyleSheets/MyStyleSheet.uss?fileID=7433441132597879392&amp;guid=8e06778e21dd1b94c990380d3ae94db5&amp;type=3#MyStyleSheet" />
     <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-start;">
         <ui:VisualElement name="TitleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; flex-direction: row; justify-content: space-between; align-items: center;">
             <ui:Button text="Retornar ao menu anterior" display-tooltip-when-elided="true" name="ReturnButton" style="white-space: normal; font-size: 20px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Buttons/Return%20Button%202.png?fileID=21300000&amp;guid=c2792b165bdd98140ae522efb41ac883&amp;type=3#Return Button 2&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; padding-left: 1%; padding-right: 2%; width: 200px; height: 70px; margin-left: 50px;" />
@@ -162,5 +163,9 @@
                 <ui:Button text="OK" display-tooltip-when-elided="true" name="MessageButton" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; font-size: 20px; background-color: rgb(255, 255, 255); border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
             </ui:VisualElement>
         </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="MessagePanel" class="messagePanel" style="display: none;">
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="MessageLabel" class="messageLabel" />
+        <ui:Button text="OK" display-tooltip-when-elided="true" name="MessageButton" class="messageButton" />
     </ui:VisualElement>
 </ui:UXML>

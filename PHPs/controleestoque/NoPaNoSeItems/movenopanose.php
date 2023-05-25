@@ -25,7 +25,6 @@ $newmoveitemquery= "INSERT INTO NoPaNoSeMovements(NomeDoItem, Quantidade, Usuari
 
 mysqli_query($con, $newmoveitemquery) or die("Movement query failed");
 
-
+echo("Moved");
 $con->close();
-
 ?>

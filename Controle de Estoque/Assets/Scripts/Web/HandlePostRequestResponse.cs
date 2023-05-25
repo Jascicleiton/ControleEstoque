@@ -113,14 +113,14 @@ public class HandlePostRequestResponse
             }
             else if (response == "Worked")
             {
-                // Debug.Log("Worked");
+                Debug.Log("Worked");
                 requestWorked = true;
                 EventHandler.CallOpenMessageEvent("Worked");
                 EventHandler.CallPostRequestResponse(response);
             }
             else if (response == "Updated")
             {
-                //  Debug.Log("Updated");
+                Debug.Log("Updated");
                 requestWorked = true;
                 EventHandler.CallOpenMessageEvent("Updated");
                 EventHandler.CallPostRequestResponse(response);
@@ -149,6 +149,25 @@ public class HandlePostRequestResponse
             {
                 requestWorked = true;
             }
+            else if(response == "Changed")
+            {
+                Debug.Log(response);
+                requestWorked = true;
+                EventHandler.CallOpenMessageEvent("Updated");
+            }
+            else if (response == "ChangedMoved")
+            {
+                Debug.Log(response);
+                requestWorked = true;
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Item moved");
+            }
+            else if(response == "Moved")
+            {
+                Debug.Log(response);
+                requestWorked = true;
+                EventHandler.CallOpenMessageEvent("Worked");
+            }
             else if(response == "Username already exist")
             {
                 EventHandler.CallIsOneMessageOnlyEvent(true);
@@ -167,14 +186,14 @@ public class HandlePostRequestResponse
             }
             else
             {
-                Debug.LogWarning(response);
+                Debug.LogWarning("Not recorded response: " + response);
                 EventHandler.CallOpenMessageEvent("Server error: 9");
                 EventHandler.CallPostRequestResponse(response);
             }
         }
         else
         {
-            Debug.LogWarning(requestToHandle.error);
+            Debug.LogWarning("Error: " + requestToHandle.error);
             EventHandler.CallOpenMessageEvent("Server error: 10");
             EventHandler.CallPostRequestResponse(requestToHandle.error);
         }

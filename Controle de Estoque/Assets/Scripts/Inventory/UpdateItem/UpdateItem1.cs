@@ -291,6 +291,7 @@ namespace Assets.Scripts.Inventory.UpdateItem
             {
                 //TODO: update the internal database and try again
             }
+            searchingItem = false;
             inputsPanel.style.display = DisplayStyle.Flex;
             itemInformationPanelControler.ShowItem(itemToUpdate);
             StartCoroutine(WaitATick());
@@ -302,6 +303,7 @@ namespace Assets.Scripts.Inventory.UpdateItem
         private IEnumerator WaitATick()
         {
             yield return new WaitForSeconds(0.5f);
+            inputEnabled = true;
             EventHandler.CallUpdateTabInputs();
             itemInformationPanelControler.GetTabActiveInputs();
         }

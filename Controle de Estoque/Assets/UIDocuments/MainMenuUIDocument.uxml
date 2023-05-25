@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/StyleSheets/MyStyleSheet.uss?fileID=7433441132597879392&amp;guid=8e06778e21dd1b94c990380d3ae94db5&amp;type=3#MyStyleSheet" />
     <ui:VisualElement name="Root" style="flex-grow: 1; background-color: rgba(50, 178, 113, 0);">
         <ui:VisualElement name="Top" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-items: center; padding-top: 50px; padding-bottom: 50px;">
             <ui:Label tabindex="-1" text="Controle de estoque" display-tooltip-when-elided="true" style="font-size: 60px;" />
@@ -60,8 +61,8 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="MessagePanel" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); position: absolute; width: 30%; height: 30%; top: 563px; left: 670px; justify-content: space-between; align-items: center; background-image: url(&apos;project://database/Assets/Images/Panels/ErrorPanel.png?fileID=21300000&amp;guid=651e6ce93cd48934bbc4f25ee5f6f693&amp;type=3#ErrorPanel&apos;); display: none;">
-        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="MessageLabel" style="margin-top: 0; font-size: 30px; flex-wrap: wrap; white-space: normal; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 0; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
-        <ui:Button text="OK" display-tooltip-when-elided="true" name="MessageButton" style="margin-bottom: 20px; height: 70px; width: 70px; font-size: 25px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 50px; border-bottom-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; background-color: rgb(255, 255, 255);" />
+    <ui:VisualElement name="MessagePanel" class="messagePanel" style="display: none;">
+        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="MessageLabel" class="messageLabel" />
+        <ui:Button text="OK" display-tooltip-when-elided="true" name="MessageButton" class="messageButton" />
     </ui:VisualElement>
 </ui:UXML>

@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5063482"
-     inkscape:cx="1002.4243"
-     inkscape:cy="703.68856"
+     inkscape:zoom="1.065149"
+     inkscape:cx="970.75618"
+     inkscape:cy="178.3788"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -743,10 +743,10 @@
        y="-89.332016" />
     <g
        id="g857"
-       transform="matrix(0.66666666,0,0,0.99999994,73.892133,6.7121404)"
-       inkscape:export-filename="..\Controle de Estoque\Assets\Images\ItemResultImage 4.png"
-       inkscape:export-xdpi="96.000023"
-       inkscape:export-ydpi="96.000023">
+       transform="matrix(0.33333333,0,0,0.33333333,153.40481,-65.573421)"
+       inkscape:export-filename="..\Controle de Estoque\Assets\Images\Panels\BluePanel.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
       <rect
          style="fill:#0a5a94;fill-opacity:1;stroke:none;stroke-width:2.20278"
          id="rect734"
@@ -808,13 +808,13 @@
       </g>
     </g>
     <rect
-       style="fill:none;fill-opacity:1;stroke:#de7838;stroke-width:2.67807;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke:#de7838;stroke-width:2.67807;stroke-dasharray:none;stroke-opacity:1"
        id="rect484"
        width="103.15527"
        height="43.642609"
-       x="162.74014"
-       y="-275.94913"
-       inkscape:export-filename="..\Controle de Estoque\Assets\Images\OrangePanel.png"
+       x="236.51503"
+       y="-234.71468"
+       inkscape:export-filename="..\Controle de Estoque\Assets\Images\Panels\MessagePanel2.png"
        inkscape:export-xdpi="97.169632"
        inkscape:export-ydpi="97.169632" />
     <g

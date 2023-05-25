@@ -17,7 +17,7 @@ if($appkey != "UpdateItem")
 $itemname = $_POST["itemname"];
 $itemQuantity = $_POST["itemQuantity"];
 
-$updateQuery = "UPDATE NoPaNoSe SET Name = '".utf8_decode($itemname)."', Quantity = '".$itemQuantity."' WHERE Name = '".utf8_decode($itemname)."';";
+$updateQuery = "UPDATE NoPaNoSe SET Quantity = '".$itemQuantity."' WHERE Name = '".($itemname)."';";
 mysqli_query($con, $updateQuery) or die("Inventario update failed");
 echo("Updated");
 

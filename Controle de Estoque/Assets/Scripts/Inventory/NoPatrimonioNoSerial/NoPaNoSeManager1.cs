@@ -203,7 +203,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         consultList.makeItem = () => itemTemplate.Instantiate();
         consultList.bindItem = (ve, i) =>
         {
-            ve.style.marginTop = 15;
+           // ve.style.marginTop = 15;
             Label itemNameLabel = ve.Q<Label>("Name");
             Label itemQuantityLabel = ve.Q<Label>("Quantity");
 
@@ -211,9 +211,8 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
             itemQuantityLabel.text = sortedItemsToShow[i].Quantity.ToString();
             ve.style.height = StyleKeyword.Auto;
         };
-
-        consultList.itemsSource = sortedItemsToShow;
-        consultList.fixedItemHeight = 100;
+        consultList.fixedItemHeight = 80;
+        consultList.itemsSource = sortedItemsToShow;      
 
         allitems.noPaNoSeItems = sortedItemsToShow;
     }
@@ -311,7 +310,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private void ItemToMoveChosen(ChangeEvent<string> evt)
     {
         itemToMoveContainer.style.display = DisplayStyle.Flex;
-        itemNameToMoveLabel.text = evt.newValue;
+        //itemNameToMoveLabel.text = evt.newValue;
     }
 
     private void IncreaseClicked()
@@ -389,11 +388,12 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
 
     private IEnumerator MoveItem(NoPaNoSeItem itemToChange, int quantityToMove, string whereFrom, string whereTo)
     {       
-        yield return NoPaNoSeItemManager1.ChangeItemQuantityRoutine(itemToChange, quantityToMove, isAdding);
-        if (NoPaNoSeItemManager1.quantityChanged)
-        {
-            yield return NoPaNoSeItemManager1.MoveItem(itemToChange, quantityToMove, whereFrom, whereTo);
-        }
+        yield return NoPaNoSeItemManager1.ChangeItemQuantityRoutine(itemToChange, quantityToMove, isAdding, whereFrom, whereTo);
+        //if (NoPaNoSeItemManager1.quantityChanged)
+        //{
+        //    yield return NoPaNoSeItemManager1.MoveItem(itemToChange, quantityToMove, whereFrom, whereTo);
+        //    yield break;
+        //}        
     }
 
     private void UpdateItemQuantity(int itemNewQuantity)

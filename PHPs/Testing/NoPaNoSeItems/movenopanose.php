@@ -23,8 +23,21 @@ $paraonde = $_POST["paraonde"];
 
 $newmoveitemquery= "INSERT INTO NoPaNoSeMovements(NomeDoItem, Quantidade, Usuario, Data, De_onde, Para_onde) VALUES('". utf8_decode($itemname) ."', '". $itemQuantity ."', '". $usuario ."', '". $data ."', '". utf8_decode($deonde) ."', '". utf8_decode($paraonde) ."');";
 
-mysqli_query($con, $newmoveitemquery) or die("Movement query failed");
+if($deonde == "Estoque")
+{
+    $updateitemquery = "UPDATE NoPaNoSe SET Quantity = '".$itemQuantity."' WHERE Name = '".($itemname)."';";
+    mysqli_query($con, $updateitemquery) or die("Inventario update failed");  
+    echo("Changed");
+}
 
+if($paraonde == "Estoque")
+{
+    $updateitemquery = "UPDATE NoPaNoSe SET Quantity = '".$itemQuantity."' WHERE Name = '".($itemname)."';";
+    mysqli_query($con, $updateitemquery) or die("Inventario update failed");
+    echo("Changed");
+}
+mysqli_query($con, $newmoveitemquery) or die("Movement query failed");
+echo("Moved");
 
 $con->close();
 
