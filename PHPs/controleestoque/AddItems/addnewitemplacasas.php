@@ -29,7 +29,7 @@ if($modelocheckresult->num_rows > 0)
 
 $insertuserquery= "INSERT INTO Placa_SAS(Modelo, Quantas_entradas, Velocidade_de_Transmissao) VALUES('". $modelo ."', '". $quantasentradas ."', '". $velocidadetransmissao ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Worked");
+echo("Worked");
 
 $con->close();
 ?>

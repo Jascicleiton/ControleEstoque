@@ -91,8 +91,8 @@ public class HelperMethods
             addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createUpdateInventarioRequest);
             if (!addUpdateResponse)
             {
-                //EventHandler.CallIsOneMessageOnlyEvent(true);
-                //EventHandler.CallOpenMessageEvent("Inventario Failed");
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Inventario Failed");
                 yield break;
             }
         }

@@ -68,8 +68,8 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     /// </summary>
     private void Initialize()
     {
-        defaultColor = new Color(255, 255, 255, 255);
-        inactiveColor = new Color(150, 149, 449, 255);
+        defaultColor = new Color(1f, 1f, 1f, 1f);
+        inactiveColor = new Color(0.6f, 0.6f, 0.6f, 1f);
         allitems = new NoPaNoSeAll();
         switch (UsersManager.Instance.currentUser.GetAccessLevel())
         {

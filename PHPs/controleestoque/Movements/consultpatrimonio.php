@@ -30,11 +30,4 @@ else
 }
 
 $con->close();
-// Error codes
-// 1 - Database connection error
-// 2 - patrimonio query ran into an error
-// 3 - patrimonio does not exist or there is more than one in the table
-// 4 - patrimonio found
-
-
 ?>

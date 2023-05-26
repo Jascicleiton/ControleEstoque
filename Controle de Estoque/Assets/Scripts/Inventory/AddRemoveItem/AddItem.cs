@@ -101,10 +101,10 @@ namespace Inventory.AddItem
                 {
                     parameters.Add("");
                 }
-                else
-                {
-                    parameters.Insert(9, "");
-                }
+                //else
+                //{
+                //    parameters.Insert(9, "");
+                //}
                 
                   yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(categoryDP.value), 2, parameters, true);
 

@@ -30,13 +30,7 @@ if($modelocheckresult->num_rows > 0)
 
 $insertuserquery= "INSERT INTO Processador(Modelo, Soquete, Nucleos_fisicos, Nucleos_logicos) VALUES('". $modelo ."', '". $soquete ."', '". $nucleosfisicos ."', '". $nucleoslogicos ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Worked");
-
+echo("Worked");
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

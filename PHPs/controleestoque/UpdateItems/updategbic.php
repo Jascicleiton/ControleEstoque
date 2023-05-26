@@ -18,10 +18,20 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE GBIC SET Modelo = '".$modelo."', Fabricante = '".utf8_decode($fabricante)."', Desempenho_max  = '".$desempenho."' WHERE Modelo = '".$modelo."';";
-mysqli_query($con, $updateQuery) or die("Update failed");
-echo("Updated");
+$modelocheckquery = "SELECT * from GBIC WHERE Modelo = '" .$modelo. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Query failed");
 
+if($modelocheckresult->num_rows != 1)
+{
+    $insertuserquery= "INSERT INTO GBIC(Modelo, Fabricante, Desempenho_max) VALUES('". $modelo ."', '". utf8_decode($fabricante) ."', '". $desempenho ."');";
+    mysqli_query($con, $insertuserquery) or die("insert item failed");
+     echo("Worked");
+}
+else
+{
+    $updateQuery = "UPDATE GBIC SET Modelo = '".$modelo."', Fabricante = '".utf8_decode($fabricante)."', Desempenho_max  = '".$desempenho."' WHERE Modelo = '".$modelo."';";
+    mysqli_query($con, $updateQuery) or die("Update failed");
+    echo("Updated");
+}
 $con->close();
-
 ?>

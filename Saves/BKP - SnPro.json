@@ -5,86 +5,7 @@
   "lastSceneBuildIndex": 0,
   "3e52c414-566e-4fb4-b6de-6750d5546d5d": {},
   "d5670d65-04ae-4c09-a653-30cc4effad22": {
-    "ImportCategories": [
-      {
-        "Category": "Adaptador AC"
-      },
-      {
-        "Category": "Carregador"
-      },
-      {
-        "Category": "Desktop"
-      },
-      {
-        "Category": "Fonte"
-      },
-      {
-        "Category": "Gbic"
-      },
-      {
-        "Category": "HD"
-      },
-      {
-        "Category": "iDrac"
-      },
-      {
-        "Category": "Memória"
-      },
-      {
-        "Category": "Monitor"
-      },
-      {
-        "Category": "Mouse"
-      },
-      {
-        "Category": "No break"
-      },
-      {
-        "Category": "Notebook"
-      },
-      {
-        "Category": "Outros"
-      },
-      {
-        "Category": "Placa controladora"
-      },
-      {
-        "Category": "Placa de captura de vídeo"
-      },
-      {
-        "Category": "Placa de rede"
-      },
-      {
-        "Category": "Placa de som"
-      },
-      {
-        "Category": "Placa de vídeo"
-      },
-      {
-        "Category": "Placa SAS"
-      },
-      {
-        "Category": "Processador"
-      },
-      {
-        "Category": "Roteador"
-      },
-      {
-        "Category": "Servidor"
-      },
-      {
-        "Category": "Storage NAS"
-      },
-      {
-        "Category": "Switch"
-      },
-      {
-        "Category": "Teclado"
-      },
-      {
-        "Category": "USB"
-      }
-    ]
+    "ImportCategories": []
   },
   "35aac1d1-9605-4002-aa5c-4f219df57d60": {
     "UsersManager": [
@@ -428,6 +349,10 @@
       },
       {
         "ItemName": "Filtro de linha sem tomada",
+        "Quantity": 2
+      },
+      {
+        "ItemName": "Cabo P2S Fêmea - Macho - 5 metros",
         "Quantity": 2
       }
     ]

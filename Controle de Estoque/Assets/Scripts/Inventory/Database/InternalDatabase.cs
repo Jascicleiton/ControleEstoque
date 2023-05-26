@@ -155,7 +155,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
             {
                 foneRamal.itens.Add(item);
             }
-            else if (item.Categoria.Trim() == ConstStrings.Fonte.Trim())
+            else if (item.Categoria.Trim() == ConstStrings.Fonte)
             {
                 FillCategoryDatabasesFunctions.Fonte(item, fonteTemp);
             }
@@ -255,7 +255,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     /// Get all Sheet classes saved on splitDatabase and join them into a single Sheet class
     /// </summary>
     private void FillFullDatabase()
-    {
+    {      
            Sheet inventarioTemp = new Sheet();
            splitDatabase.TryGetValue(ConstStrings.Inventario, out inventarioTemp);
            // testingSheet = inventarioTemp;
@@ -274,6 +274,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         switch (currentEstoque)
         {
             case CurrentEstoque.SnPro:
+            case CurrentEstoque.Testing:
                 allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
             carregador, desktop, fonte, gbic, hd, idrac, memoria, monitor, nobreak,
             notebook, placaControladora, placaDeCapturaDeVideo, placaDeRede, placaDeSom, placaDeVideo,
@@ -281,7 +282,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
                 break;
             case CurrentEstoque.Fumsoft:
             case CurrentEstoque.ESF:
-            case CurrentEstoque.Testing:
+            
             default:
                 allFullDetailsSheets = HelperMethods.CreateSheetListFromArray(new Sheet[] { adaptadorAC,
             carregador, desktop, foneRamal, fonte, gbic, hd, idrac, memoria, monitor, mouse, nobreak,

@@ -177,7 +177,7 @@ public class MovementManager1 : MonoBehaviour
             else
             {
                 fromDP.value = "Outros";
-                fromInput.style.opacity = 1;
+                fromInput.style.visibility = Visibility.Visible;
                 fromInput.value = itemToChange.Local;
             }
             whoLabel.text = UsersManager.Instance.currentUser.GetUsername();
@@ -189,7 +189,6 @@ public class MovementManager1 : MonoBehaviour
             EventHandler.CallOpenMessageEvent("Item not found");
             //ShowMessage(itemFound);
         }
-
     }
 
     /// <summary>
@@ -209,71 +208,23 @@ public class MovementManager1 : MonoBehaviour
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
-
-        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        if(HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            Debug.LogWarning("MoveItem: conectionerror");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-        {
-            Debug.LogWarning("MoveItem: data processing error");
-        }
-        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-        {
-            Debug.LogWarning("MoveItem: protocol error");
-        }
-
-        if (createPostRequest.error == null)
-        {
-
-            string response = createPostRequest.downloadHandler.text;
-            if (response == "Database connection error" || response == "Wrong appkey")
-            {
-                Debug.LogWarning("MoveItem: Server error");
-                // TODO: show message to user
-            }
-            else if (response == "Movement query failed")
-            {
-                Debug.LogWarning("MoveItem: Movement query failed");
-                // TODO: show message to user
-            }
-            else if (response == "Date query failed")
-            {
-                Debug.LogWarning("MoveItem: Date query failed");
-                // TODO: show message to user
-            }
-            else if (response == "Location query failed")
-            {
-                Debug.LogWarning("MoveItem: Location query failed");
-                // TODO: show message to user
-            }
-            else if (response == "Item moved")
-            {
-                Debug.LogWarning("MoveItem: itemMoved");
-                itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
-                UpdateItemToChange(itemToChange);
-                UpdateDatabase();
-                EventHandler.CallOpenMessageEvent("Item moved");
-                createPostRequest.Dispose();
-                MouseManager.Instance.SetDefaultCursor();
-                itemFound = false;
-                ResetInputs();
-                inputEnabled = true;           
-                EventHandler.CallChangeAnimation("HelpMovement");
-                yield break;
-            }
-            else
-            {
-                Debug.LogWarning("MoveItem: " + response);
-                // TODO: show message to user
-            }
+            Debug.LogWarning("MoveItem: itemMoved");
+            itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
+            UpdateItemToChange(itemToChange);
+            UpdateDatabase();
+            createPostRequest.Dispose();
+            MouseManager.Instance.SetDefaultCursor();
+            itemFound = false;
+            ResetInputs();            
+            EventHandler.CallChangeAnimation("HelpMovement");            
         }
         else
         {
-            Debug.LogWarning(createPostRequest.error);
+            EventHandler.CallOpenMessageEvent("Unable to move");
+            createPostRequest.Dispose();
         }
-        EventHandler.CallOpenMessageEvent("Unable to move");
-        createPostRequest.Dispose();
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;       
     }

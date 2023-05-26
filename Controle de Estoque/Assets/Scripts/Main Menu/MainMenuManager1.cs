@@ -240,6 +240,7 @@ public class MainMenuManager1 : MonoBehaviour
         if(HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
             UsersManager.Instance.currentUser = new User(userInput.text, authorizationAccessLevel);
+            EventHandler.CallFillInternalDatabase();
             LoadScreen();
         }
        

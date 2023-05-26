@@ -67,7 +67,7 @@ namespace Assets.Scripts.Inventory.UpdateItem
                     inputEnabled = false;
                     if (searchingItem)
                     {
-                        //StartCoroutine(CheckIfItemExists());
+                        StartCoroutine(CheckIfItemExists());
                         itemToUpdate = ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(itemToUpdatePatrimonio.value), InternalDatabase.Instance.fullDatabase);
                         ShowUpdateItem();
                     }
@@ -218,15 +218,7 @@ namespace Assets.Scripts.Inventory.UpdateItem
             #region Update inventario
             parameters.Clear();
             parameters = itemInformationPanelControler.GetInventoryValues();
-            if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.SnPro)
-            {
-                parameters.Insert(0, itemToUpdate.Aquisicao);
-                parameters.Insert(1, itemToUpdate.Entrada);
-            }
-            else
-            {
-                parameters.Insert(0, itemToUpdate.Entrada);
-            }
+            Testing();
             yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(itemToUpdate.Categoria), 4, parameters, true);
             if (HelperMethods.GetAddUpdateResponse())
             {
@@ -361,6 +353,15 @@ namespace Assets.Scripts.Inventory.UpdateItem
         {
             ResetInputs();
             searchingItem = true;
-        }        
+        }    
+        
+        private void Testing()
+        {
+            for (int i = 0; i < parameters.Count; i++)
+            {
+                print(i + ": " + parameters[i]);
+            }
+            
+        }
     }
 }

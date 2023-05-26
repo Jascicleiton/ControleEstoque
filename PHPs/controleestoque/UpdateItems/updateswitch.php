@@ -18,9 +18,21 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Switch SET Modelo = '".$modelo."', Quantas_quais_entradas = '".$quantasquaisportas."', Capacidade_max  = '".$capacidademaxporta."' WHERE Modelo = '".$modelo."';";
-mysqli_query($con, $updateQuery) or die("Update failed");
-echo("Updated");
+$modelocheckquery = "SELECT * from Switch WHERE Modelo = '" .$modelo. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Query failed");
+
+if($modelocheckresult->num_rows != 1)
+{
+    $insertuserquery= "INSERT INTO Switch(Modelo, Quantas_quais_entradas, Capacidade_max) VALUES('". $modelo ."', '". $quantasquaisportas ."', '". $capacidademaxporta ."');";
+    mysqli_query($con, $insertuserquery) or die("insert item failed");
+    echo("Worked");
+}
+else
+{
+    $updateQuery = "UPDATE Switch SET Modelo = '".$modelo."', Quantas_quais_entradas = '".$quantasquaisportas."', Capacidade_max  = '".$capacidademaxporta."' WHERE Modelo = '".$modelo."';";
+    mysqli_query($con, $updateQuery) or die("Update failed");
+    echo("Updated");
+}
 
 $con->close();
 ?>

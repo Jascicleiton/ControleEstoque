@@ -162,6 +162,7 @@ public class MessageManager1 : MonoBehaviour
             messageText.text = "Item movido com sucesso";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
+            Debug.LogWarning(messageText.text);
             return;
         }
         else if (message1 == "Unable to move")
@@ -273,6 +274,7 @@ public class MessageManager1 : MonoBehaviour
         {
             messageText.text = message1 + "\nContate o administrador sobre este erro";
         }
+        
         StartCoroutine(CloseMessageRoutine());
         inputEnabled = true;
     }

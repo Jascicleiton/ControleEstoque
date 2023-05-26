@@ -29,8 +29,7 @@ if($modelocheckresult->num_rows > 0)
 
 $insertuserquery= "INSERT INTO Switch(Modelo, Quantas_quais_entradas, Capacidade_max) VALUES('". $modelo ."', '". $quantasquaisportas ."', '". $capacidademaxporta ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Worked");
-
+echo("Worked");
 
 $con->close();
 ?>

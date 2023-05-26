@@ -33,13 +33,7 @@ if($modelocheckresult->num_rows > 0)
 
 $insertuserquery= "INSERT INTO Placa_de_rede(Modelo, Fabricante, Interface, Quantidade_de_portas, Quais_portas, Suporta_fibra_optica, Desempenho) VALUES('". $modelo ."', '". utf8_decode($fabricante) ."', '". $interface ."', '". $quantidadeportas ."', '". $quaisconexoes ."', '". utf8_decode($suportafibraoptica) ."', '". $desempenho ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Worked");
-
+echo("Worked");
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

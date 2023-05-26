@@ -32,13 +32,7 @@ if($modelocheckresult->num_rows > 0)
 
 $insertuserquery= "INSERT INTO Storage_NAS(Modelo, Tamanho_HD, Tipos_de_RAID, Tipo_de_HD, Capacidade_max_hd, Ate_quantos_HDs) VALUES('". $modelo ."', '". $tamanhohd ."', '". $tiporaid ."', '". $tipohd ."', '". $capacidademaxhd ."', '". $quantoshd ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Worked");
-
+echo("Worked");
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

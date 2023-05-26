@@ -46,7 +46,7 @@ else
 mysqli_query($con, $newmoveitemquery) or die("Movement query failed");
 
 mysqli_query($con, $updateinventarioquery) or die("Location query failed");
- echo("Item moved");
+echo("Moved");
 
 $con->close();
 

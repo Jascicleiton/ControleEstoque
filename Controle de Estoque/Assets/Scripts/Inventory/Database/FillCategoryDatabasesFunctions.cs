@@ -5,15 +5,16 @@ public class FillCategoryDatabasesFunctions
 {
     #region adaptadorAC
     public static void AdaptadorAC(ItemColumns item, Sheet adaptadoracTempSheet)
-    {       
-        if(adaptadoracTempSheet != null && adaptadoracTempSheet.itens.Count > 0)
+    {
+        if (adaptadoracTempSheet != null && adaptadoracTempSheet.itens.Count > 0)
         {
             foreach (ItemColumns itemToAdd in adaptadoracTempSheet.itens)
             {
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
-                        if(item.Modelo.Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
+                    case CurrentEstoque.Testing:
+                        if (item.Modelo.Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.OndeFunciona = itemToAdd.OndeFunciona;
                             item.VoltagemDeSaida = itemToAdd.VoltagemDeSaida;
@@ -27,7 +28,7 @@ public class FillCategoryDatabasesFunctions
                             item.AmperagemDeSaida = itemToAdd.AmperagemDeSaida;
                         }
                         break;
-                }             
+                }
             }
         }
         InternalDatabase.adaptadorAC.itens.Add(item);
@@ -43,6 +44,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.OndeFunciona = itemToAdd.OndeFunciona;
@@ -73,6 +75,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         if (item.Patrimonio == itemToAdd.Patrimonio)
                         {
                             item.ModeloPlacaMae = itemToAdd.OndeFunciona;
@@ -110,6 +113,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.Watts = itemToAdd.Watts;
@@ -140,6 +144,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.Desempenho = itemToAdd.Desempenho;
@@ -167,6 +172,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.Interface = itemToAdd.Interface;
@@ -207,6 +213,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.QuaisConexoes = itemToAdd.QuaisConexoes;
@@ -241,6 +248,7 @@ public class FillCategoryDatabasesFunctions
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
+                    case CurrentEstoque.Testing:
                         if (item.Modelo.Trim().Equals(itemToAdd.Modelo.Trim(), System.StringComparison.OrdinalIgnoreCase))
                         {
                             item.Tipo = itemToAdd.Tipo;

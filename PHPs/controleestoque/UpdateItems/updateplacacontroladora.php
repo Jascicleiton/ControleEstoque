@@ -24,10 +24,21 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Placa_controladora SET Modelo = '".$modelo."', Tipo_de_conexao = '".$tipoconexao."', Quantidade_de_portas  = '".$quantidadeportas."', Tipos_de_RAID = '".$tiporaid."', Tipo_de_HD = '".$tipohd."', Capacidade_max_HD = '".$capacidademaxhd."', Ate_quantos_HD = '".$quantoshd."', Bateria_inclusa = '".utf8_decode($bateriainclusa)."', Barramento = '".$barramento."' WHERE Modelo = '".$modelo."';";
-mysqli_query($con, $updateQuery) or die("Update failed");
-echo("Updated");
+$modelocheckquery = "SELECT * from Placa_controladora WHERE Modelo = '" .$modelo. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Query failed");
+
+if($modelocheckresult->num_rows != 1)
+{
+    $insertuserquery= "INSERT INTO Placa_controladora(Modelo, Tipo_de_conexao, Quantidade_de_portas, Tipos_de_RAID, Tipo_de_HD, Capacidade_max_HD, Ate_quantos_HD, Bateria_inclusa, Barramento) VALUES('". $modelo ."', '". $tipoconexao ."', '". $quantidadeportas ."', '". $tiporaid ."', '". $tipohd ."', '". $capacidademaxhd ."', '". $quantoshd ."', '". utf8_decode($bateriainclusa) ."', '". $barramento ."');";
+    mysqli_query($con, $insertuserquery) or die("insert item failed");
+    echo("Worked");
+}
+else
+{
+    $updateQuery = "UPDATE Placa_controladora SET Modelo = '".$modelo."', Tipo_de_conexao = '".$tipoconexao."', Quantidade_de_portas  = '".$quantidadeportas."', Tipos_de_RAID = '".$tiporaid."', Tipo_de_HD = '".$tipohd."', Capacidade_max_HD = '".$capacidademaxhd."', Ate_quantos_HD = '".$quantoshd."', Bateria_inclusa = '".utf8_decode($bateriainclusa)."', Barramento = '".$barramento."' WHERE Modelo = '".$modelo."';";
+    mysqli_query($con, $updateQuery) or die("Update failed");
+    echo("Updated");
+}
 
 $con->close();
-
 ?>

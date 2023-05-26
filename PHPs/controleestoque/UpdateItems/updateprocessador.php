@@ -19,10 +19,21 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Processador SET Modelo = '".$modelo."', Soquete = '".$soquete."', Nucleos_fisicos  = '".$nucleosfisicos."', Nucleos_logicos = '".$nucleoslogicos."' WHERE Modelo = '".$modelo."';";
-mysqli_query($con, $updateQuery) or die("Update failed");
-echo("Updated");
+$modelocheckquery = "SELECT * from Processador WHERE Modelo = '" .$modelo. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Query failed");
+
+if($modelocheckresult->num_rows != 1)
+{
+    $insertuserquery= "INSERT INTO Processador(Modelo, Soquete, Nucleos_fisicos, Nucleos_logicos) VALUES('". $modelo ."', '". $soquete ."', '". $nucleosfisicos ."', '". $nucleoslogicos ."');";
+    mysqli_query($con, $insertuserquery) or die("insert item failed");
+    echo("Worked");
+}
+else
+{
+    $updateQuery = "UPDATE Processador SET Modelo = '".$modelo."', Soquete = '".$soquete."', Nucleos_fisicos  = '".$nucleosfisicos."', Nucleos_logicos = '".$nucleoslogicos."' WHERE Modelo = '".$modelo."';";
+    mysqli_query($con, $updateQuery) or die("Update failed");
+    echo("Updated");
+}
 
 $con->close();
-
 ?>

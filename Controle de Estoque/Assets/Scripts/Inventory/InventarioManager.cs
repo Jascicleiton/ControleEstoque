@@ -16,7 +16,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// <summary>
     /// Import all sheets to internal database. Import different sheets depending of the currentEstoque variable
     /// </summary>
-    public void ImportSheets()
+    private void ImportSheets()
     {
         StartCoroutine(ImportInventarioToDatabase());
         switch (InternalDatabase.Instance.currentEstoque)
@@ -74,27 +74,7 @@ public class InventarioManager : Singleton<InventarioManager>
     /// </summary>
     private void ImportTesting()
     {
-        switch (testingEstoque)
-        {
-            case CurrentEstoque.SnPro:
-                ImportSnPro();
-                break;
-            case CurrentEstoque.Fumsoft:
-                ImportFumsoft();
-                break;
-            case CurrentEstoque.ESF:
-                ImportESF();
-                break;
-            case CurrentEstoque.Clientes:
-                ImportClientes();
-                break;
-            case CurrentEstoque.Concert:
-                ImportConcert();
-                break;
-            default:
-                ImportSnPro();
-                break;
-        }
+        ImportSnPro();
     }
 
     /// <summary>

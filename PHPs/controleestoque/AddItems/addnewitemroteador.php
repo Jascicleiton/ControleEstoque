@@ -31,13 +31,7 @@ if($modelocheckresult->num_rows > 0)
 
 $insertuserquery= "INSERT INTO Roteador(Modelo, Wireless, Quantas_entradas, Banda_max, Voltagem) VALUES('". $modelo ."', '". utf8_decode($wireless) ."', '". $quantasentradas ."', '". $bandamax ."', '". $voltagem ."');";
 mysqli_query($con, $insertuserquery) or die("insert item failed");
- echo("Worked");
-
+echo("Worked");
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

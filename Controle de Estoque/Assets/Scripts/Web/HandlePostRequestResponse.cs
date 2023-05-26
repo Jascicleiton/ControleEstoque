@@ -162,11 +162,12 @@ public class HandlePostRequestResponse
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Item moved");
             }
-            else if(response == "Moved")
+            else if(response == "Moved" || response == "Item moved")
             {
                 Debug.Log(response);
                 requestWorked = true;
-                EventHandler.CallOpenMessageEvent("Worked");
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Item moved");
             }
             else if(response == "Username already exist")
             {

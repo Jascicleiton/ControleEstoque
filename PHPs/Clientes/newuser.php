@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'sysnetpro', 'Sysnetpr0@741963', 'sysnetpro_Estoque_Clientes');
+$con = mysqli_connect('localhost', 'sysnetpro', '*SnpCpanel@741963#', 'sysnetpro_Estoque_Clientes');
 
 if(mysqli_connect_errno())
 {
@@ -36,11 +36,4 @@ mysqli_query($con, $insertuserquery) or die("insert user failed");
 
 
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 2 - username query ran into an error
-// 3 - Username already exists
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

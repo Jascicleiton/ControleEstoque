@@ -21,10 +21,20 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE iDrac SET Modelo = '".$modelo."', Fabricante = '".utf8_decode($fabricante)."', Porta  = '".$porta."', Velocidade = '".$velocidade."',Entrada_SD = '".$entradasd."',Servidores_suportados = '".$servidoressuportados."' WHERE Modelo = '".$modelo."';";
-mysqli_query($con, $updateQuery) or die("Update failed");
-echo("Updated");
+$modelocheckquery = "SELECT * from iDrac WHERE Modelo = '" .$modelo. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Query failed");
 
+if($modelocheckresult->num_rows != 1)
+{
+    $insertuserquery= "INSERT INTO iDrac(Modelo, Fabricante, Porta, Velocidade, Entrada_SD, Servidores_suportados) VALUES('". $modelo ."', '". utf8_decode($fabricante) ."', '". $porta ."', '". $velocidade ."', '". $entradasd ."', '". $servidoressuportados ."');";
+    mysqli_query($con, $insertuserquery) or die("insert item failed");
+     echo("Worked");
+}
+else
+{
+    $updateQuery = "UPDATE iDrac SET Modelo = '".$modelo."', Fabricante = '".utf8_decode($fabricante)."', Porta  = '".$porta."', Velocidade = '".$velocidade."',Entrada_SD = '".$entradasd."',Servidores_suportados = '".$servidoressuportados."' WHERE Modelo = '".$modelo."';";
+    mysqli_query($con, $updateQuery) or die("Update failed");
+    echo("Updated");
+}
 $con->close();
-
 ?>

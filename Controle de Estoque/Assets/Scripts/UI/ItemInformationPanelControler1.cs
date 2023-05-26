@@ -355,19 +355,16 @@ namespace Assets.Scripts.UI
         {
            // print("Number of parameters found by iteminformationpanelcontroller: " + parameterValues.Count);
             List<string> valuesList = new List<string>();
-            int index = 0;
+         //   int index = 0;
             foreach (var item in parameterValues)
             {
                 if (item != null)
-                {
-                    print(index + ": " + item.value);
+                {                    
                     valuesList.Add(item.text);
-                    index++;
+           //         print(index + ": " + valuesList[index]);
+             //       index++;
                 }
-                //else
-                //{
-                //    print("not active");
-                //}
+
             }
             return valuesList;
         }
@@ -377,11 +374,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         public List<string> GetCategoryValues(string category)
         {
-            print(parameterValues[7].text);
-            print(parameterValues[11].text);
-            print(parameterValues[12].text);
-            print(parameterValues[13].text);
-            List<string> valuesList = new List<string>();
+                    List<string> valuesList = new List<string>();
             switch (category)
             {
                 #region Adaptador AC

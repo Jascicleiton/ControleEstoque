@@ -17,9 +17,22 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Placa_de_som SET Modelo = '".$modelo."', Quantos_canais = '".$quantoscanais."' WHERE Modelo = '".$modelo."';";
-mysqli_query($con, $updateQuery) or die("Update failed");
-echo("Updated");
+$modelocheckquery = "SELECT * from Placa_de_som WHERE Modelo = '" .$modelo. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Query failed");
+
+if($modelocheckresult->num_rows != 1)
+{
+    $insertuserquery= "INSERT INTO Placa_de_som(Modelo, Quantos_canais) VALUES('". $modelo ."', '". $quantoscanais ."');";
+    mysqli_query($con, $insertuserquery) or die("insert item failed");
+    echo("Worked");
+}
+else
+{
+    $updateQuery = "UPDATE Placa_de_som SET Modelo = '".$modelo."', Quantos_canais = '".$quantoscanais."' WHERE Modelo = '".$modelo."';";
+    mysqli_query($con, $updateQuery) or die("Update failed");
+    echo("Updated");
+}
+
 
 $con->close();
 

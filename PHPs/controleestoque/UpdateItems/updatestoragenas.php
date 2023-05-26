@@ -21,10 +21,21 @@ if($appkey != "UpdateItem")
     exit();
 }
 
-$updateQuery = "UPDATE Storage_NAS SET Modelo = '".$modelo."', Tamanho_HD = '".$tamanhohd."', Tipos_de_RAID  = '".$tiporaid."', Tipo_de_HD = '".$tipohd."', Capacidade_max_hd = '".$capacidademaxhd."', Ate_quantos_HDs = '".$quantoshd."' WHERE Modelo = '".$modelo."';";
-mysqli_query($con, $updateQuery) or die("Update failed");
-echo("Updated");
+$modelocheckquery = "SELECT * from Storage_NAS WHERE Modelo = '" .$modelo. "';";
+$modelocheckresult = mysqli_query($con, $modelocheckquery) or die ("Query failed");
+
+if($modelocheckresult->num_rows != 1)
+{
+    $insertuserquery= "INSERT INTO Storage_NAS(Modelo, Tamanho_HD, Tipos_de_RAID, Tipo_de_HD, Capacidade_max_hd, Ate_quantos_HDs) VALUES('". $modelo ."', '". $tamanhohd ."', '". $tiporaid ."', '". $tipohd ."', '". $capacidademaxhd ."', '". $quantoshd ."');";
+    mysqli_query($con, $insertuserquery) or die("insert item failed");
+    echo("Worked");
+}
+else
+{
+    $updateQuery = "UPDATE Storage_NAS SET Modelo = '".$modelo."', Tamanho_HD = '".$tamanhohd."', Tipos_de_RAID  = '".$tiporaid."', Tipo_de_HD = '".$tipohd."', Capacidade_max_hd = '".$capacidademaxhd."', Ate_quantos_HDs = '".$quantoshd."' WHERE Modelo = '".$modelo."';";
+    mysqli_query($con, $updateQuery) or die("Update failed");
+    echo("Updated");
+}
 
 $con->close();
-
 ?>
