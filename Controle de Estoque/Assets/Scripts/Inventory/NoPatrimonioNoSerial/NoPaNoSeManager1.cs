@@ -355,6 +355,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         {
             EventHandler.CallIsOneMessageOnlyEvent(true);
             EventHandler.CallOpenMessageEvent("Invalid number");
+            return;
 
         }
         if (itemToMove != null)
@@ -389,11 +390,11 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private IEnumerator MoveItem(NoPaNoSeItem itemToChange, int quantityToMove, string whereFrom, string whereTo)
     {       
         yield return NoPaNoSeItemManager1.ChangeItemQuantityRoutine(itemToChange, quantityToMove, isAdding, whereFrom, whereTo);
-        //if (NoPaNoSeItemManager1.quantityChanged)
-        //{
-        //    yield return NoPaNoSeItemManager1.MoveItem(itemToChange, quantityToMove, whereFrom, whereTo);
-        //    yield break;
-        //}        
+        if (NoPaNoSeItemManager1.quantityChanged)
+        {
+            yield return NoPaNoSeItemManager1.MoveItem(itemToChange, quantityToMove, whereFrom, whereTo);
+            yield break;
+        }
     }
 
     private void UpdateItemQuantity(int itemNewQuantity)
@@ -486,7 +487,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     {
         if (fromDP.value == "Outros")
         {
-            return whereToTextField.value;
+            return whereFromTextField.value;
         }
         else
         {

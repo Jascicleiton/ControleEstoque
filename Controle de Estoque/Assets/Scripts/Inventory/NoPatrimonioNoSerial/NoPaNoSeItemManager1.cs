@@ -21,10 +21,10 @@ public class NoPaNoSeItemManager1
             itemNewQuantity = itemToChange.Quantity - quantityToMove;
         }
                 itemToChange.Quantity = itemNewQuantity;
-        WWWForm itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.MoveItemKey, itemToChange.ItemName, quantityToMove, 
+        WWWForm itemForm = CreateForm.GetMoveNoPaNoSeItemForm(ConstStrings.UpdateItemKey, itemToChange.ItemName, itemNewQuantity, 
             UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), whereFrom, whereTo);
 
-        UnityWebRequest createChangeItemQuantityRequest = CreatePostRequest.GetPostRequest(itemForm, ConstStrings.MoveNoPaNoSe, 5);
+        UnityWebRequest createChangeItemQuantityRequest = CreatePostRequest.GetPostRequest(itemForm, ConstStrings.UpdateNoPaNoSe, 5);
         MouseManager.Instance.SetWaitingCursor();
 
         yield return createChangeItemQuantityRequest.SendWebRequest();
