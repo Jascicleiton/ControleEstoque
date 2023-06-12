@@ -16,7 +16,13 @@ public class ExportCSVs : MonoBehaviour
         WWWForm form = CreateForm.GetExportInventoryForm();
     }
 
-    public void CreateInventarioSheet()
+    public char[] CreateInventarioSheet3()
+    {
+
+        return null; 
+    }
+
+    public TextWriter CreateInventarioSheet()
     {
         Sheet tempSheet = new Sheet();
         fileName = Application.persistentDataPath + "/Inventario.csv";
@@ -40,6 +46,7 @@ public class ExportCSVs : MonoBehaviour
             }
         }
         textWriter.Close();
+        return textWriter;
     }
 
     public void CreateInventarioSheet2()
