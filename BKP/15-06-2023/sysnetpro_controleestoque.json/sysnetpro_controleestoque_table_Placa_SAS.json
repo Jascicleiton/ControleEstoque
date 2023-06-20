@@ -1,0 +1,24 @@
+,{
+    "type": "table",
+    "name": "Placa_SAS",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "SAS 9217-4i4e",
+    "Quantas_entradas": "2",
+    "Velocidade_de_Transmissao": "6"
+},
+{
+    "Modelo": "7056272",
+    "Quantas_entradas": "2",
+    "Velocidade_de_Transmissao": "6"
+},
+{
+    "Modelo": "012DNW",
+    "Quantas_entradas": "2",
+    "Velocidade_de_Transmissao": "6"
+}
+]
+
+}

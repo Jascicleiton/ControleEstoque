@@ -9,8 +9,11 @@ public class InventarioManager : Singleton<InventarioManager>
     [SerializeField] private CurrentEstoque testingEstoque = CurrentEstoque.SnPro;
     void Start()
     {
-     //   DontDestroyOnLoad(this.gameObject);
-        ImportSheets();
+        //   DontDestroyOnLoad(this.gameObject);
+        if (!InternalDatabase.Instance.isOfflineProgram)
+        {
+            ImportSheets();
+        }
     }
 
     /// <summary>

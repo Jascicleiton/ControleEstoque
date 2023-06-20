@@ -1,0 +1,25 @@
+,{
+    "type": "table",
+    "name": "Placa_de_captura_de_video",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "sion 878A",
+    "Quantas_entradas": "4"
+},
+{
+    "Modelo": "Cyclone",
+    "Quantas_entradas": "4"
+},
+{
+    "Modelo": "1",
+    "Quantas_entradas": "2"
+},
+{
+    "Modelo": "2",
+    "Quantas_entradas": "1"
+}
+]
+
+}

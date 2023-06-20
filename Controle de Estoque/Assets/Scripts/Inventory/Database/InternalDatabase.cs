@@ -50,7 +50,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     public static List<Sheet> allFullDetailsSheets = new List<Sheet>();
 
     private bool fullDatabaseFilled = false;
-    public bool offlineProgram = false;
+    public bool isOfflineProgram = false;
 
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
     public List<string> testing = new List<string>();
@@ -58,7 +58,7 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     
     private void Start()
     {
-       if(offlineProgram)
+       if(isOfflineProgram)
         {
             SavingWrapper.Instance.Load();
         }

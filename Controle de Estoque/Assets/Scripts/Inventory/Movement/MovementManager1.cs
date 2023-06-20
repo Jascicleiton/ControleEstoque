@@ -6,7 +6,7 @@ using System;
 using System.IO;
 
 public class MovementManager1 : MonoBehaviour
-{    
+{
     private VisualElement root;
     private TextField itemInformationInput;
     private VisualElement fromPanel;
@@ -51,7 +51,7 @@ public class MovementManager1 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                if(!itemFound)
+                if (!itemFound)
                 {
                     StartCoroutine(CheckIfItemExists());
                 }
@@ -103,74 +103,100 @@ public class MovementManager1 : MonoBehaviour
     private IEnumerator CheckIfItemExists()
     {
         itemFound = false;
-        
-            if (int.TryParse(itemInformationInput.text, out tempInt))
-            {
-                itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase);
-                            }
-            else
-            {
-                EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
-                yield break;
-            }         
-       WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
-           
-            UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
-          
-            MouseManager.Instance.SetWaitingCursor();
-            inputEnabled = false;
-            yield return createPostRequest.SendWebRequest();
-            
-            if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.LogWarning("CheckIfItemExists: conectionerror");
-            }
-            else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
-            {
-                Debug.LogWarning("CheckIfItemExists: data processing error");
-            }
-            else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogWarning("CheckIfItemExists: protocol error");
-            }
 
-            if (createPostRequest.error == null)
+        if (int.TryParse(itemInformationInput.text, out tempInt))
+        {
+            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase);
+        }
+        else
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
+            yield break;
+        }
+
+        if (InternalDatabase.Instance.isOfflineProgram)
+        {
+            if(itemToChange != null)
             {
-                string response = createPostRequest.downloadHandler.text;
-                if (response == "Database connection error" || response == "Query failed" || response == "Wrong appkey")
+                itemFound = true;
+                ShouldHidePanels(false);
+                if (CheckIfLocationIsRegistered(itemToChange.Local))
                 {
-                    Debug.LogWarning("Server errror");
-                    // TODO: show message to user
-                }
-                else if (response == "Item found")
-                {
-                    itemFound = true;
-                    EnableDisableMoveButton();
-                    EventHandler.CallChangeAnimation("2");
-                }
-                else if (response == "Not found or found duplicate") 
-                {
-                    Debug.LogWarning("Item not found or found duplicate");
+                    fromDP.value = itemToChange.Local;
                 }
                 else
                 {
-                    Debug.LogWarning("CheckIfItemExists - Patrimonio: " + response);
+                    fromDP.value = "Outros";
+                    fromInput.style.visibility = Visibility.Visible;
+                    fromInput.value = itemToChange.Local;
                 }
+                whoLabel.text = UsersManager.Instance.currentUser.GetUsername();
             }
             else
-            {               
-                Debug.LogWarning("CheckIfItemExists: " + createPostRequest.error);               
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Invalid patrimonio format");               
             }
-            createPostRequest.Dispose();
-        
+            yield break;
+        }
+        WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
+
+        UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
+
+        MouseManager.Instance.SetWaitingCursor();
+        inputEnabled = false;
+        yield return createPostRequest.SendWebRequest();
+
+        if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogWarning("CheckIfItemExists: conectionerror");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.DataProcessingError)
+        {
+            Debug.LogWarning("CheckIfItemExists: data processing error");
+        }
+        else if (createPostRequest.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogWarning("CheckIfItemExists: protocol error");
+        }
+
+        if (createPostRequest.error == null)
+        {
+            string response = createPostRequest.downloadHandler.text;
+            if (response == "Database connection error" || response == "Query failed" || response == "Wrong appkey")
+            {
+                Debug.LogWarning("Server errror");
+                // TODO: show message to user
+            }
+            else if (response == "Item found")
+            {
+                itemFound = true;
+                EnableDisableMoveButton();
+                EventHandler.CallChangeAnimation("2");
+            }
+            else if (response == "Not found or found duplicate")
+            {
+                Debug.LogWarning("Item not found or found duplicate");
+            }
+            else
+            {
+                Debug.LogWarning("CheckIfItemExists - Patrimonio: " + response);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("CheckIfItemExists: " + createPostRequest.error);
+        }
+        createPostRequest.Dispose();
+
         yield return new WaitForSeconds(0.5f);
         MouseManager.Instance.SetDefaultCursor();
         inputEnabled = true;
         if (itemFound)
         {
             ShouldHidePanels(false);
-           if(CheckIfLocationIsRegistered(itemToChange.Local))
+            if (CheckIfLocationIsRegistered(itemToChange.Local))
             {
                 fromDP.value = itemToChange.Local;
             }
@@ -190,7 +216,7 @@ public class MovementManager1 : MonoBehaviour
             //ShowMessage(itemFound);
         }
     }
-
+   
     /// <summary>
     /// Try to change the item location
     /// </summary>
@@ -198,27 +224,27 @@ public class MovementManager1 : MonoBehaviour
     {
         EventHandler.CallIsOneMessageOnlyEvent(true);
         WWWForm moveItemForm = new WWWForm();
-        
-            moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text, 
-            itemToChange.Serial, UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"), 
-            GetFromLocation(), GetToLocation());
-        
-     
+
+        moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text,
+        itemToChange.Serial, UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"),
+        GetFromLocation(), GetToLocation());
+
+
         UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(moveItemForm, ConstStrings.MoveItem, 3);
         MouseManager.Instance.SetWaitingCursor();
         inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
-        if(HandlePostRequestResponse.HandleWebRequest(createPostRequest))
+        if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
-            Debug.LogWarning("MoveItem: itemMoved");
+           // Debug.LogWarning("MoveItem: itemMoved");
             itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
-            UpdateItemToChange(itemToChange);
+            UpdateItemToChange();
             UpdateDatabase();
             createPostRequest.Dispose();
             MouseManager.Instance.SetDefaultCursor();
             itemFound = false;
-            ResetInputs();            
-            EventHandler.CallChangeAnimation("HelpMovement");            
+            ResetInputs();
+            EventHandler.CallChangeAnimation("HelpMovement");
         }
         else
         {
@@ -226,7 +252,16 @@ public class MovementManager1 : MonoBehaviour
             createPostRequest.Dispose();
         }
         MouseManager.Instance.SetDefaultCursor();
-        inputEnabled = true;       
+        inputEnabled = true;
+    }
+
+    private void MoveItemOffLine()
+    {
+        itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
+        UpdateItemToChange();
+        UpdateDatabase();
+        ResetInputs();
+        itemFound = false;
     }
 
     /// <summary>
@@ -253,10 +288,10 @@ public class MovementManager1 : MonoBehaviour
     /// <summary>
     /// Update the item "Local", "Entrada", "Saída" and create a new MovementRecords
     /// </summary>
-    private void UpdateItemToChange(ItemColumns item)
+    private void UpdateItemToChange()
     {
         movementToRecord = new MovementRecords();
-        movementToRecord.fromWhere = item.Local;
+        movementToRecord.fromWhere = itemToChange.Local;
         movementToRecord.toWhere = toDP.value;
         if (toDP.value != "Outros")
         {
@@ -280,14 +315,14 @@ public class MovementManager1 : MonoBehaviour
 
         movementToRecord.username = UsersManager.Instance.currentUser.GetUsername();
         movementToRecord.date = DateTime.Now.ToString("dd/MM/yyyy");
-        movementToRecord.item = item;
+        movementToRecord.item = itemToChange;
     }
 
     /// <summary>
     /// Update the item on the fullDatabase, save a new MovementRecords and call DatabaseUpdatedEvent
     /// </summary>
     private void UpdateDatabase()
-    {       
+    {
         InternalDatabase.Instance.fullDatabase.itens[itemToChangeIndex] = itemToChange;
         EventHandler.CallDatabaseUpdatedEvent();
     }
@@ -322,7 +357,7 @@ public class MovementManager1 : MonoBehaviour
             location = fromDP.value;
         }
 
-            return location;
+        return location;
     }
 
     /// <summary>
@@ -348,7 +383,7 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void EnableDisableMoveButton()
     {
-        if(moveButton.style.visibility == Visibility.Visible)
+        if (moveButton.style.visibility == Visibility.Visible)
         {
             moveButton.style.visibility = Visibility.Hidden;
             moveButton.pickingMode = PickingMode.Ignore;
@@ -358,7 +393,7 @@ public class MovementManager1 : MonoBehaviour
             moveButton.style.visibility = Visibility.Visible;
             moveButton.pickingMode = PickingMode.Position;
         }
-        
+
     }
 
     /// <summary>
@@ -375,7 +410,7 @@ public class MovementManager1 : MonoBehaviour
     {
         inputEnabled = true;
         itemFound = false;
-        ResetInputs();       
+        ResetInputs();
     }
 
     /// <summary>
@@ -383,7 +418,7 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>    
     private void ShowHideToLocationInput(ChangeEvent<string> evt)
     {
-        if(evt.newValue == "Outros")
+        if (evt.newValue == "Outros")
         {
             toInput.style.visibility = Visibility.Visible;
         }
@@ -426,16 +461,24 @@ public class MovementManager1 : MonoBehaviour
             }
             else
             {
-                StartCoroutine(MoveItem());
+                if (!InternalDatabase.Instance.isOfflineProgram)
+                {
+                    StartCoroutine(MoveItem());
+                }
+                else
+                {
+                    MoveItemOffLine();
+
+                }
             }
         }
-    }
+    }    
 
     private void FillDropDowns()
     {
         fromDP.choices = InternalDatabase.locations;
         toDP.choices = InternalDatabase.locations;
-        toDP.value = InternalDatabase.locations[HelperMethods.GetLocationDPValue("Estoque")];
+        //toDP.value = InternalDatabase.locations[HelperMethods.GetLocationDPValue("Estoque")];
     }
 
     private bool CheckIfLocationIsRegistered(string location)
@@ -443,7 +486,7 @@ public class MovementManager1 : MonoBehaviour
         bool isRegistered = false;
         foreach (var item in InternalDatabase.locations)
         {
-            if(item == location)
+            if (item == location)
             {
                 isRegistered = true;
                 break;

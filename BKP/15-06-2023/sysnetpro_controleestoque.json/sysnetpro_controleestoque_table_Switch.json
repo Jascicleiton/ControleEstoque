@@ -1,0 +1,69 @@
+,{
+    "type": "table",
+    "name": "Switch",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "BLY-2G4E-AB20",
+    "Quantas_quais_entradas": "4",
+    "Capacidade_max": "0"
+},
+{
+    "Modelo": "AM868A - HPE 8\/24 SAN Switch",
+    "Quantas_quais_entradas": "24",
+    "Capacidade_max": "8"
+},
+{
+    "Modelo": "PowerConnect 6224F",
+    "Quantas_quais_entradas": "24",
+    "Capacidade_max": "10"
+},
+{
+    "Modelo": "N2K-C2248TP-1GE V04",
+    "Quantas_quais_entradas": "48",
+    "Capacidade_max": "10"
+},
+{
+    "Modelo": "N2K-C2248TP-1GE V02",
+    "Quantas_quais_entradas": "48",
+    "Capacidade_max": "10"
+},
+{
+    "Modelo": "UDMPro",
+    "Quantas_quais_entradas": "8",
+    "Capacidade_max": "1000"
+},
+{
+    "Modelo": "RB 3011",
+    "Quantas_quais_entradas": "10",
+    "Capacidade_max": "1000"
+},
+{
+    "Modelo": "LS1005G",
+    "Quantas_quais_entradas": "5",
+    "Capacidade_max": "10"
+},
+{
+    "Modelo": "Brocade 6510",
+    "Quantas_quais_entradas": "0",
+    "Capacidade_max": "0"
+},
+{
+    "Modelo": "FG-60D\r",
+    "Quantas_quais_entradas": "10",
+    "Capacidade_max": "0"
+},
+{
+    "Modelo": "3CBLSG48",
+    "Quantas_quais_entradas": "48RJ45-4SFP",
+    "Capacidade_max": "1000"
+},
+{
+    "Modelo": "Catalyst4948",
+    "Quantas_quais_entradas": "48RJ45-4SFP",
+    "Capacidade_max": "1000"
+}
+]
+
+}

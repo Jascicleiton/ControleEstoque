@@ -15,7 +15,10 @@ public class NoPaNoSeMovementSaver : MonoBehaviour, IJsonSaveable
     {
         if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
         {
-            StartCoroutine(GetAllNoPaNoSeMovements());
+            if (!InternalDatabase.Instance.isOfflineProgram)
+            {
+                StartCoroutine(GetAllNoPaNoSeMovements());
+            }
         }
         else
         {

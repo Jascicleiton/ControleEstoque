@@ -685,7 +685,7 @@ public class AddItemLocal
             #region GBIC
             case ConstStrings.Gbic:
                 itemToAddFullDatabase.Categoria = ConstStrings.Gbic;
-                InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
+          //      InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Desempenho = parameterValues[11].text;
                              //  InternalDatabase.Instance.splitDatabase[ConstStrings.Gbic].itens.Add(itemToAddCategoryDatabase);
                 InternalDatabase.gbic.itens.Add(itemToAddFullDatabase);

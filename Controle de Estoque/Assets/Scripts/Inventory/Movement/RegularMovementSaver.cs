@@ -15,7 +15,10 @@ public class RegularMovementSaver : MonoBehaviour, IJsonSaveable
     {
         if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
         {
-            StartCoroutine(GetAllRegularMovements());
+            if (!InternalDatabase.Instance.isOfflineProgram)
+            {
+                StartCoroutine(GetAllRegularMovements());
+            }
         }
         else
         {

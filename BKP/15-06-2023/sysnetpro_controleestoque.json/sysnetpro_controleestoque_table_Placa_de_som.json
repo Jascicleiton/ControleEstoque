@@ -1,0 +1,17 @@
+,{
+    "type": "table",
+    "name": "Placa_de_som",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "CS4280",
+    "Quantos_canais": "4"
+},
+{
+    "Modelo": "ENM232-8VIA",
+    "Quantos_canais": "8"
+}
+]
+
+}

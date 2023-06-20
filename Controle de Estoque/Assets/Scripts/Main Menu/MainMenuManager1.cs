@@ -82,7 +82,7 @@ public class MainMenuManager1 : MonoBehaviour
                 if (loginEnabled)
                 {
                     inputEnabled = false;
-                    if (InternalDatabase.Instance.offlineProgram)
+                    if (InternalDatabase.Instance.isOfflineProgram)
                     {
                         LoginOffline();
                     }

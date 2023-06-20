@@ -1,0 +1,87 @@
+,{
+    "type": "table",
+    "name": "Categorias",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Categorias": "Adaptador AC"
+},
+{
+    "Categorias": "Carregador"
+},
+{
+    "Categorias": "Desktop"
+},
+{
+    "Categorias": "Fonte"
+},
+{
+    "Categorias": "Gbic"
+},
+{
+    "Categorias": "HD"
+},
+{
+    "Categorias": "iDrac"
+},
+{
+    "Categorias": "Memória"
+},
+{
+    "Categorias": "Monitor"
+},
+{
+    "Categorias": "Mouse"
+},
+{
+    "Categorias": "No break"
+},
+{
+    "Categorias": "Notebook"
+},
+{
+    "Categorias": "Outros"
+},
+{
+    "Categorias": "Placa controladora"
+},
+{
+    "Categorias": "Placa de captura de vídeo"
+},
+{
+    "Categorias": "Placa de rede"
+},
+{
+    "Categorias": "Placa de som"
+},
+{
+    "Categorias": "Placa de vídeo"
+},
+{
+    "Categorias": "Placa SAS"
+},
+{
+    "Categorias": "Processador"
+},
+{
+    "Categorias": "Roteador"
+},
+{
+    "Categorias": "Servidor"
+},
+{
+    "Categorias": "Storage NAS"
+},
+{
+    "Categorias": "Switch"
+},
+{
+    "Categorias": "Teclado"
+},
+{
+    "Categorias": "USB"
+}
+]
+
+}

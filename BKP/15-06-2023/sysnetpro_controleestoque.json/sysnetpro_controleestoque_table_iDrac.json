@@ -1,0 +1,17 @@
+,{
+    "type": "table",
+    "name": "iDrac",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "0WD6D2",
+    "Fabricante": "Dell",
+    "Porta": "NIC",
+    "Velocidade": "1",
+    "Entrada_SD": "8GB e 16GB",
+    "Servidores_suportados": "PowerEdge R320, R420, R520, R620, R720, R720xd, R820, T320, T420, T620"
+}
+]
+
+}

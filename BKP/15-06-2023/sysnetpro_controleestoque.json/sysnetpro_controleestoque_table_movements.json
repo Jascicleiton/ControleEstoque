@@ -1,0 +1,3510 @@
+,{
+    "type": "table",
+    "name": "movements",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "ID": "2",
+    "Patrimonio": "473",
+    "Serial": "WMATV2687422",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancadadetestes"
+},
+{
+    "ID": "3",
+    "Patrimonio": "1097",
+    "Serial": "6RABV035",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "4",
+    "Patrimonio": "1100",
+    "Serial": "1100",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "5",
+    "Patrimonio": "204",
+    "Serial": "S2BWJ60B624945",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "6",
+    "Patrimonio": "927",
+    "Serial": "S2BWJ6B50390",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "7",
+    "Patrimonio": "303",
+    "Serial": "S1G1J50QB10794",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "8",
+    "Patrimonio": "19",
+    "Serial": "Z3L5KACVFK5",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "9",
+    "Patrimonio": "731",
+    "Serial": "R106K0VK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "10",
+    "Patrimonio": "899",
+    "Serial": "5VMK2AWK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "11",
+    "Patrimonio": "212",
+    "Serial": "MC36H8NB",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "12",
+    "Patrimonio": "923",
+    "Serial": "9RY1KPDM",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "13",
+    "Patrimonio": "924",
+    "Serial": "WCAYUY873908",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "14",
+    "Patrimonio": "216",
+    "Serial": "S27UJ90B114910",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "15",
+    "Patrimonio": "940",
+    "Serial": "Z1P53VSF",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": ""
+},
+{
+    "ID": "16",
+    "Patrimonio": "26",
+    "Serial": "W2F0TAEV",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": ""
+},
+{
+    "ID": "17",
+    "Patrimonio": "809",
+    "Serial": "174336806268",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "874"
+},
+{
+    "ID": "18",
+    "Patrimonio": "19",
+    "Serial": "Z3L5KACVFK5",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "19",
+    "Patrimonio": "303",
+    "Serial": "S1G1J50QB10794",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "20",
+    "Patrimonio": "899",
+    "Serial": "5VMK2AWK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "21",
+    "Patrimonio": "731",
+    "Serial": "R106K0VK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "22",
+    "Patrimonio": "212",
+    "Serial": "MC36H8NB",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "23",
+    "Patrimonio": "924",
+    "Serial": "WCAYUY873908",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "24",
+    "Patrimonio": "923",
+    "Serial": "9RY1KPDM",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "25",
+    "Patrimonio": "216",
+    "Serial": "S27UJ90B114910",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "26",
+    "Patrimonio": "927",
+    "Serial": "S2BWJ6B50390",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "27",
+    "Patrimonio": "204",
+    "Serial": "S2BWJ60B624945",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "28",
+    "Patrimonio": "1100",
+    "Serial": "1100",
+    "Usuario": "marcelo.fonseca",
+    "Data": "04\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "63",
+    "Patrimonio": "209",
+    "Serial": "S2BWJ50B717260",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "1081",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "31",
+    "Patrimonio": "193",
+    "Serial": "S160J50PB20386",
+    "Usuario": "marcelo.fonseca",
+    "Data": "05\/01\/2023",
+    "De_onde": "0069",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "32",
+    "Patrimonio": "181",
+    "Serial": "9BS131-783",
+    "Usuario": "marcelo.fonseca",
+    "Data": "05\/01\/2023",
+    "De_onde": "1047",
+    "Para_onde": ""
+},
+{
+    "ID": "33",
+    "Patrimonio": "257",
+    "Serial": "SP80520147",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/01\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "34",
+    "Patrimonio": "79",
+    "Serial": "SBR2011043002215",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/01\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "35",
+    "Patrimonio": "79",
+    "Serial": "SBR2011043002215",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de Testes"
+},
+{
+    "ID": "36",
+    "Patrimonio": "1225",
+    "Serial": "Z2976GN9",
+    "Usuario": "marcelo.fonseca",
+    "Data": "11\/01\/2023",
+    "De_onde": "1212",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "37",
+    "Patrimonio": "1226",
+    "Serial": "Z2976R5Q",
+    "Usuario": "marcelo.fonseca",
+    "Data": "11\/01\/2023",
+    "De_onde": "1212",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "38",
+    "Patrimonio": "1227",
+    "Serial": "Z2976H2R",
+    "Usuario": "marcelo.fonseca",
+    "Data": "11\/01\/2023",
+    "De_onde": "1212",
+    "Para_onde": "1199"
+},
+{
+    "ID": "66",
+    "Patrimonio": "818",
+    "Serial": "W0LK8-19JCU4-WW9Q6",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "41",
+    "Patrimonio": "775",
+    "Serial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0775",
+    "Usuario": "marcelo.fonseca",
+    "Data": "11\/01\/2023",
+    "De_onde": "",
+    "Para_onde": "1199"
+},
+{
+    "ID": "42",
+    "Patrimonio": "1055",
+    "Serial": "1055",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/01\/2023",
+    "De_onde": "",
+    "Para_onde": "BRT"
+},
+{
+    "ID": "43",
+    "Patrimonio": "1055",
+    "Serial": "1055",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/01\/2023",
+    "De_onde": "",
+    "Para_onde": "BRT"
+},
+{
+    "ID": "44",
+    "Patrimonio": "1055",
+    "Serial": "1055",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/01\/2023",
+    "De_onde": "",
+    "Para_onde": "BRT"
+},
+{
+    "ID": "45",
+    "Patrimonio": "1055",
+    "Serial": "1055",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17012023",
+    "De_onde": "Estoque",
+    "Para_onde": "BRT"
+},
+{
+    "ID": "46",
+    "Patrimonio": "1212",
+    "Serial": "85Y6047YG10CG33ZDRZ",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/01\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "BRT"
+},
+{
+    "ID": "62",
+    "Patrimonio": "208",
+    "Serial": "S2BWJ60B146191",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "1081",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "61",
+    "Patrimonio": "1077",
+    "Serial": "HYMP151P72CP4-Y5 AB-C 1077",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "1081",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "60",
+    "Patrimonio": "1078",
+    "Serial": "HYMP151P72CP4-Y5 AB-C 1078",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "1081",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "59",
+    "Patrimonio": "217",
+    "Serial": "131703761383",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "960",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "58",
+    "Patrimonio": "684",
+    "Serial": "465769T+1321TC060N",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "1055",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "64",
+    "Patrimonio": "958",
+    "Serial": "VA23S34213",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "65",
+    "Patrimonio": "816",
+    "Serial": "BJLRM-091H02-HWB5F",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "67",
+    "Patrimonio": "0",
+    "Serial": "W0LK8-19JCU4-WW9Q6",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "",
+    "Para_onde": ""
+},
+{
+    "ID": "68",
+    "Patrimonio": "217",
+    "Serial": "131703761383",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "69",
+    "Patrimonio": "208",
+    "Serial": "S2BWJ60B146191",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "70",
+    "Patrimonio": "209",
+    "Serial": "S2BWJ50B717260",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "71",
+    "Patrimonio": "1023",
+    "Serial": "1023",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "72",
+    "Patrimonio": "1263",
+    "Serial": "173051256191\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "73",
+    "Patrimonio": "209",
+    "Serial": "S2BWJ50B717260",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "74",
+    "Patrimonio": "209",
+    "Serial": "S2BWJ50B717260",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Descarte"
+},
+{
+    "ID": "75",
+    "Patrimonio": "69",
+    "Serial": "8HW6GG1",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/02\/2023",
+    "De_onde": "Encontre sua franquia",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "76",
+    "Patrimonio": "1047",
+    "Serial": "1047",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/02\/2023",
+    "De_onde": "Encontre sua franquia",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "77",
+    "Patrimonio": "1047",
+    "Serial": "1047",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "78",
+    "Patrimonio": "979",
+    "Serial": "QB 9L1B90 09 325",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/02\/2023",
+    "De_onde": "Trop 1",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "79",
+    "Patrimonio": "1140",
+    "Serial": "001B21541E0E499CRE46981-003",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/02\/2023",
+    "De_onde": "0873",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "80",
+    "Patrimonio": "194",
+    "Serial": "S0JRJ50PA06933",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "81",
+    "Patrimonio": "8",
+    "Serial": "W4J0VV0T",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "82",
+    "Patrimonio": "720",
+    "Serial": "Y964K0IUF7EE-0720",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "83",
+    "Patrimonio": "1279",
+    "Serial": "CB-012DNW-75435-37N-00XH-A05",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "84",
+    "Patrimonio": "101",
+    "Serial": "PBH2YH1X",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Cava Engenharia"
+},
+{
+    "ID": "85",
+    "Patrimonio": "104",
+    "Serial": "PBH2XTYX",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "86",
+    "Patrimonio": "0",
+    "Serial": "PBH2XTYX",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "",
+    "Para_onde": ""
+},
+{
+    "ID": "87",
+    "Patrimonio": "105",
+    "Serial": "PBH6DW8X",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "88",
+    "Patrimonio": "204",
+    "Serial": "S2BWJ60B624945",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "89",
+    "Patrimonio": "208",
+    "Serial": "S2BWJ60B146191",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "90",
+    "Patrimonio": "210",
+    "Serial": "S2BWJ60B313950",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "91",
+    "Patrimonio": "927",
+    "Serial": "S2BWJ6B50390",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "92",
+    "Patrimonio": "309",
+    "Serial": "VA26S30047",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "118",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "93",
+    "Patrimonio": "487",
+    "Serial": "465769T+1321TC065A",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "119",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "94",
+    "Patrimonio": "0",
+    "Serial": "465769T+1321TC065A",
+    "Usuario": "marcelo.fonseca",
+    "Data": "08\/02\/2023",
+    "De_onde": "",
+    "Para_onde": ""
+},
+{
+    "ID": "95",
+    "Patrimonio": "8",
+    "Serial": "W4J0VV0T",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "96",
+    "Patrimonio": "194",
+    "Serial": "S0JRJ50PA06933",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "97",
+    "Patrimonio": "720",
+    "Serial": "Y964K0IUF7EE-0720",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "98",
+    "Patrimonio": "303",
+    "Serial": "S1G1J50QB10794",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Unisantos"
+},
+{
+    "ID": "99",
+    "Patrimonio": "1281",
+    "Serial": "1281",
+    "Usuario": "leandro",
+    "Data": "10\/02\/2023",
+    "De_onde": "Euler pegou",
+    "Para_onde": "foi pra casa do leandro aciden"
+},
+{
+    "ID": "100",
+    "Patrimonio": "1280",
+    "Serial": "1280",
+    "Usuario": "marcelo.fonseca",
+    "Data": "13\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "101",
+    "Patrimonio": "722",
+    "Serial": "WCC6Y6KHR5CS",
+    "Usuario": "marcelo.fonseca",
+    "Data": "13\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "102",
+    "Patrimonio": "1281",
+    "Serial": "1281",
+    "Usuario": "marcelo.fonseca",
+    "Data": "13\/02\/2023",
+    "De_onde": "Outros",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "103",
+    "Patrimonio": "1298",
+    "Serial": "001B21541E0F 499CR E46981-003",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Outros"
+},
+{
+    "ID": "104",
+    "Patrimonio": "-12",
+    "Serial": "G35740 01 ID2",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "Outros",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "105",
+    "Patrimonio": "584",
+    "Serial": "0584",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "Drogaria Cristina",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "106",
+    "Patrimonio": "500",
+    "Serial": "0500",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "Outros",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "107",
+    "Patrimonio": "506",
+    "Serial": "0506",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "Outros",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "108",
+    "Patrimonio": "1173",
+    "Serial": "047-000-140_01",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Descarte"
+},
+{
+    "ID": "109",
+    "Patrimonio": "-13",
+    "Serial": "2L343239M1352",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "1173",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "110",
+    "Patrimonio": "-22",
+    "Serial": "35152286A1 080",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "50",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "111",
+    "Patrimonio": "1174",
+    "Serial": "AZSS40901133",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "1173",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "112",
+    "Patrimonio": "1266",
+    "Serial": "VA26S31890\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "15\/02\/2023",
+    "De_onde": "50",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "118",
+    "Patrimonio": "979",
+    "Serial": "QB 9L1B90 09 325",
+    "Usuario": "marcelo.fonseca",
+    "Data": "16\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Uni Santos"
+},
+{
+    "ID": "117",
+    "Patrimonio": "968",
+    "Serial": "1415-091",
+    "Usuario": "marcelo.fonseca",
+    "Data": "16\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Uni Santos"
+},
+{
+    "ID": "119",
+    "Patrimonio": "1033",
+    "Serial": "11S43X5052YH10MV005DYXFRU",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "120",
+    "Patrimonio": "1034",
+    "Serial": "11S43X5052YH10MV005DYPFRU",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "121",
+    "Patrimonio": "118",
+    "Serial": "2916NP5528",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "122",
+    "Patrimonio": "119",
+    "Serial": "291BNP0733",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "123",
+    "Patrimonio": "1323",
+    "Serial": "1323",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Encontre sua franquia"
+},
+{
+    "ID": "124",
+    "Patrimonio": "239",
+    "Serial": "CN-0WM4WV-64180-358-11WT",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP06",
+    "Para_onde": "SNP07"
+},
+{
+    "ID": "125",
+    "Patrimonio": "1358",
+    "Serial": "1358",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "SNP05"
+},
+{
+    "ID": "126",
+    "Patrimonio": "66",
+    "Serial": "0066",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP07",
+    "Para_onde": "SNP06"
+},
+{
+    "ID": "127",
+    "Patrimonio": "48",
+    "Serial": "BR-0KW557-70713-7CE-2K1A",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP07",
+    "Para_onde": "SNP06"
+},
+{
+    "ID": "128",
+    "Patrimonio": "1116",
+    "Serial": "CN-0CC299-64180-69T-00AS",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP07",
+    "Para_onde": "SNP06"
+},
+{
+    "ID": "129",
+    "Patrimonio": "873",
+    "Serial": "0873",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP07",
+    "Para_onde": "SNP06"
+},
+{
+    "ID": "130",
+    "Patrimonio": "245",
+    "Serial": "HC110912098426",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "SNP03"
+},
+{
+    "ID": "131",
+    "Patrimonio": "1115",
+    "Serial": "PE02Z8HQ",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP07 - MOD",
+    "Para_onde": "SNP03"
+},
+{
+    "ID": "132",
+    "Patrimonio": "47",
+    "Serial": "BR-06K5NC-TVB00-6CC-306T-A00",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP04",
+    "Para_onde": "SNP08"
+},
+{
+    "ID": "133",
+    "Patrimonio": "65",
+    "Serial": "0065",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP04",
+    "Para_onde": "SNP08"
+},
+{
+    "ID": "134",
+    "Patrimonio": "1110",
+    "Serial": "00186-724-240-616",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "SNP04",
+    "Para_onde": "SNP08"
+},
+{
+    "ID": "135",
+    "Patrimonio": "968",
+    "Serial": "1415-091",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/02\/2023",
+    "De_onde": "Uni Santos",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "136",
+    "Patrimonio": "1297",
+    "Serial": "2L2529SB16UG",
+    "Usuario": "marcelo.fonseca",
+    "Data": "20\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Matheus Lopes"
+},
+{
+    "ID": "137",
+    "Patrimonio": "137",
+    "Serial": "S32SJ5AH200022",
+    "Usuario": "marcelo.fonseca",
+    "Data": "20\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Matheus Lopes"
+},
+{
+    "ID": "138",
+    "Patrimonio": "1297",
+    "Serial": "2L2529SB16UG",
+    "Usuario": "marcelo.fonseca",
+    "Data": "21\/02\/2023",
+    "De_onde": "Matheus Lopes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "139",
+    "Patrimonio": "856",
+    "Serial": "M393B5170FH0-CH9 1123",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Concert",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "140",
+    "Patrimonio": "855",
+    "Serial": "M393B5170FH0-CH9 1126 - 0855",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "960",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "141",
+    "Patrimonio": "534",
+    "Serial": "M393B5170FH0-CH9 1128 - 0534",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Concert",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "142",
+    "Patrimonio": "191",
+    "Serial": "WCAYUS192549",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Concert",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "143",
+    "Patrimonio": "192",
+    "Serial": "WCC6Z3DA5Y61",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Concert",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "144",
+    "Patrimonio": "20",
+    "Serial": "Z3L3KAVYFVK5",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "145",
+    "Patrimonio": "134",
+    "Serial": "WMC6M0K4CNH3",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "146",
+    "Patrimonio": "137",
+    "Serial": "S32SJ5AH200022",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Matheus Lopes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "147",
+    "Patrimonio": "191",
+    "Serial": "WCAYUS192549",
+    "Usuario": "marcelo.fonseca",
+    "Data": "22\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Matheus Lopes"
+},
+{
+    "ID": "153",
+    "Patrimonio": "73",
+    "Serial": "7RD2510018",
+    "Usuario": "marcelo.fonseca",
+    "Data": "23\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "152",
+    "Patrimonio": "895",
+    "Serial": "NA6A56TD",
+    "Usuario": "marcelo.fonseca",
+    "Data": "23\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "154",
+    "Patrimonio": "74",
+    "Serial": "F12731131002033",
+    "Usuario": "marcelo.fonseca",
+    "Data": "23\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "155",
+    "Patrimonio": "712",
+    "Serial": "ZFL0D9X0",
+    "Usuario": "marcelo.fonseca",
+    "Data": "23\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "156",
+    "Patrimonio": "827",
+    "Serial": "Z1E44A0Y",
+    "Usuario": "marcelo.fonseca",
+    "Data": "23\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "157",
+    "Patrimonio": "720",
+    "Serial": "Y964K0IUF7EE-0720",
+    "Usuario": "marcelo.fonseca",
+    "Data": "23\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "158",
+    "Patrimonio": "235",
+    "Serial": "CN-0N2D7T-74445-3AL-A0UL",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "SNP02"
+},
+{
+    "ID": "159",
+    "Patrimonio": "236",
+    "Serial": "CN-0524N3-74261-3C7-2HLV",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "SNP02"
+},
+{
+    "ID": "160",
+    "Patrimonio": "59",
+    "Serial": "0059",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "SNP02"
+},
+{
+    "ID": "161",
+    "Patrimonio": "60",
+    "Serial": "0060",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "SNP02"
+},
+{
+    "ID": "162",
+    "Patrimonio": "579",
+    "Serial": "AAN73068916",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "163",
+    "Patrimonio": "1082",
+    "Serial": "BRG324026G",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "164",
+    "Patrimonio": "140",
+    "Serial": "795745002463",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "165",
+    "Patrimonio": "635",
+    "Serial": "HPMB3-YR9DX",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "166",
+    "Patrimonio": "817",
+    "Serial": "03JP6-R9D9LP-7V9YJ",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "167",
+    "Patrimonio": "524",
+    "Serial": "SBR2014101329077",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "168",
+    "Patrimonio": "525",
+    "Serial": "SBR2020031200306",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "169",
+    "Patrimonio": "908",
+    "Serial": "WXH1A59RYXVF",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Concert",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "170",
+    "Patrimonio": "909",
+    "Serial": "WX21A68RY858",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Concert",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "171",
+    "Patrimonio": "911",
+    "Serial": "WXM1A486VRYR",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Concert",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "172",
+    "Patrimonio": "717",
+    "Serial": "S36VJ9BGC10879",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "895"
+},
+{
+    "ID": "173",
+    "Patrimonio": "720",
+    "Serial": "Y964K0IUF7EE-0720",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "895"
+},
+{
+    "ID": "174",
+    "Patrimonio": "827",
+    "Serial": "Z1E44A0Y",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "895"
+},
+{
+    "ID": "175",
+    "Patrimonio": "712",
+    "Serial": "ZFL0D9X0",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "895"
+},
+{
+    "ID": "176",
+    "Patrimonio": "724",
+    "Serial": "Z1W5RSRW",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "UFMG"
+},
+{
+    "ID": "177",
+    "Patrimonio": "827",
+    "Serial": "Z1E44A0Y",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "895",
+    "Para_onde": "UFMG"
+},
+{
+    "ID": "178",
+    "Patrimonio": "21",
+    "Serial": "9WK4VDQ8",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "179",
+    "Patrimonio": "22",
+    "Serial": "Z1N4GERT",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "180",
+    "Patrimonio": "184",
+    "Serial": "5LY9JBQ5",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "181",
+    "Patrimonio": "202",
+    "Serial": "Z521FYU0",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "182",
+    "Patrimonio": "0",
+    "Serial": "Z521FYU0",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "183",
+    "Patrimonio": "212",
+    "Serial": "MC36H8NB",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "184",
+    "Patrimonio": "218",
+    "Serial": "13130370B549",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "185",
+    "Patrimonio": "602",
+    "Serial": "Z3TEBS2D",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "186",
+    "Patrimonio": "713",
+    "Serial": "Y964K0IUF7EE-0713",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "187",
+    "Patrimonio": "723",
+    "Serial": "9WK0TEJT",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "188",
+    "Patrimonio": "731",
+    "Serial": "R106K0VK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "189",
+    "Patrimonio": "899",
+    "Serial": "5VMK2AWK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "190",
+    "Patrimonio": "924",
+    "Serial": "WCAYUY873908",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "191",
+    "Patrimonio": "1090",
+    "Serial": "XTVYGU7A",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "192",
+    "Patrimonio": "1091",
+    "Serial": "XTVYDT3A",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "193",
+    "Patrimonio": "1265",
+    "Serial": "K45C9513M\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "194",
+    "Patrimonio": "1269",
+    "Serial": "66J0A006TLEB\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "195",
+    "Patrimonio": "1270",
+    "Serial": "56F0A01VTLEB\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "196",
+    "Patrimonio": "1271",
+    "Serial": "66J0A00LTLEB\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "197",
+    "Patrimonio": "1272",
+    "Serial": "66K0A01JTLEB\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "198",
+    "Patrimonio": "1069",
+    "Serial": "HB44D606783023310",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "199",
+    "Patrimonio": "1109",
+    "Serial": "8S5A10K78736L1C266L22F2",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "SNP04"
+},
+{
+    "ID": "200",
+    "Patrimonio": "1313",
+    "Serial": "M1503006906\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "SNP06"
+},
+{
+    "ID": "201",
+    "Patrimonio": "1318",
+    "Serial": "CN-09RRC7-44753-26G-0SWT\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "SNP06"
+},
+{
+    "ID": "202",
+    "Patrimonio": "579",
+    "Serial": "AAN73068916",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "SNP06"
+},
+{
+    "ID": "203",
+    "Patrimonio": "1302",
+    "Serial": "1618HS01VTK8\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "204",
+    "Patrimonio": "1022",
+    "Serial": "SNNVX35MXYB920740",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "IOCT"
+},
+{
+    "ID": "205",
+    "Patrimonio": "19",
+    "Serial": "Z3L5KACVFK5",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "IOCT"
+},
+{
+    "ID": "206",
+    "Patrimonio": "1021",
+    "Serial": "CM1044111601102",
+    "Usuario": "marcelo.fonseca",
+    "Data": "27\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Descarte"
+},
+{
+    "ID": "207",
+    "Patrimonio": "602",
+    "Serial": "Z3TEBS2D",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "?",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "208",
+    "Patrimonio": "899",
+    "Serial": "5VMK2AWK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "?",
+    "Para_onde": "1046"
+},
+{
+    "ID": "209",
+    "Patrimonio": "731",
+    "Serial": "R106K0VK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "?",
+    "Para_onde": "1046"
+},
+{
+    "ID": "210",
+    "Patrimonio": "1259",
+    "Serial": "",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "211",
+    "Patrimonio": "1097",
+    "Serial": "6RABV035",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "1259"
+},
+{
+    "ID": "212",
+    "Patrimonio": "924",
+    "Serial": "WCAYUY873908",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "?",
+    "Para_onde": "1259"
+},
+{
+    "ID": "213",
+    "Patrimonio": "302",
+    "Serial": "0302",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "1259"
+},
+{
+    "ID": "214",
+    "Patrimonio": "253",
+    "Serial": "0253",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "1259"
+},
+{
+    "ID": "215",
+    "Patrimonio": "1194",
+    "Serial": "407DHK20071633",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "253",
+    "Para_onde": "1259"
+},
+{
+    "ID": "216",
+    "Patrimonio": "1195",
+    "Serial": "407DHK20071631",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "253",
+    "Para_onde": "1259"
+},
+{
+    "ID": "217",
+    "Patrimonio": "218",
+    "Serial": "13130370B549",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "?",
+    "Para_onde": "254"
+},
+{
+    "ID": "218",
+    "Patrimonio": "734",
+    "Serial": "S1DDSM3Q",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "254"
+},
+{
+    "ID": "219",
+    "Patrimonio": "721",
+    "Serial": "0721",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "254"
+},
+{
+    "ID": "220",
+    "Patrimonio": "842",
+    "Serial": "Z1DCMJ3N",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "",
+    "Para_onde": "254"
+},
+{
+    "ID": "221",
+    "Patrimonio": "899",
+    "Serial": "5VMK2AWK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "1046",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "222",
+    "Patrimonio": "731",
+    "Serial": "R106K0VK",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "1046",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "223",
+    "Patrimonio": "1164",
+    "Serial": "595813010000199",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1047"
+},
+{
+    "ID": "224",
+    "Patrimonio": "1072",
+    "Serial": "D1N082010626028",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "225",
+    "Patrimonio": "602",
+    "Serial": "Z3TEBS2D",
+    "Usuario": "marcelo.fonseca",
+    "Data": "28\/02\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "226",
+    "Patrimonio": "1423",
+    "Serial": "PKD5XNX",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "227",
+    "Patrimonio": "-77",
+    "Serial": "1620061A0108254",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "228",
+    "Patrimonio": "0",
+    "Serial": "1620061A0108254",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "229",
+    "Patrimonio": "-79",
+    "Serial": "1712061A0121363",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "230",
+    "Patrimonio": "-76",
+    "Serial": "1712061A0127248",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "231",
+    "Patrimonio": "-53",
+    "Serial": "YH10RVDAJ168",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "232",
+    "Patrimonio": "-48",
+    "Serial": "YH10RVDAJ16J",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "233",
+    "Patrimonio": "192",
+    "Serial": "WCC6Z3DA5Y61",
+    "Usuario": "marcelo.fonseca",
+    "Data": "01\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Real Contabilidade"
+},
+{
+    "ID": "234",
+    "Patrimonio": "1036",
+    "Serial": "321813009364",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "SNP04"
+},
+{
+    "ID": "238",
+    "Patrimonio": "893",
+    "Serial": "0893",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/03\/2023",
+    "De_onde": "Master truck",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "239",
+    "Patrimonio": "717",
+    "Serial": "S36VJ9BGC10879",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "895",
+    "Para_onde": "Casa do Pedro"
+},
+{
+    "ID": "240",
+    "Patrimonio": "906",
+    "Serial": "S36VJ9BGC10869",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Casa do Pedro"
+},
+{
+    "ID": "241",
+    "Patrimonio": "907",
+    "Serial": "S36VJ9BGC10874",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Casa do Pedro"
+},
+{
+    "ID": "242",
+    "Patrimonio": "1146",
+    "Serial": "WCC6Z3DA5JHZ",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "1142",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "243",
+    "Patrimonio": "228",
+    "Serial": "1TEAP5-500",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "244",
+    "Patrimonio": "20",
+    "Serial": "Z3L3KAVYFVK5",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "895"
+},
+{
+    "ID": "245",
+    "Patrimonio": "132",
+    "Serial": "WMC6M0K7U1N9",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "895"
+},
+{
+    "ID": "246",
+    "Patrimonio": "133",
+    "Serial": "WMC6M0K80VN1",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "895"
+},
+{
+    "ID": "247",
+    "Patrimonio": "134",
+    "Serial": "WMC6M0K4CNH3",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "895"
+},
+{
+    "ID": "248",
+    "Patrimonio": "712",
+    "Serial": "ZFL0D9X0",
+    "Usuario": "marcelo.fonseca",
+    "Data": "06\/03\/2023",
+    "De_onde": "895",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "249",
+    "Patrimonio": "591",
+    "Serial": "WMAYP0F2F1EP",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "1231",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "250",
+    "Patrimonio": "1096",
+    "Serial": "Z1M13Y85",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "1231",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "251",
+    "Patrimonio": "888",
+    "Serial": "5160922037",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "1231",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "252",
+    "Patrimonio": "1229",
+    "Serial": "PTL8C-29MPWV-JWXU6",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "1231",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "253",
+    "Patrimonio": "842",
+    "Serial": "Z1DCMJ3N",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "254",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "254",
+    "Patrimonio": "721",
+    "Serial": "0721",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "254",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "255",
+    "Patrimonio": "218",
+    "Serial": "13130370B549",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "254",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "256",
+    "Patrimonio": "734",
+    "Serial": "S1DDSM3Q",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "254",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "257",
+    "Patrimonio": "676",
+    "Serial": "M391B5673EH1-CH9 0947 - 0676",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "258",
+    "Patrimonio": "679",
+    "Serial": "M391B5673EH1-CH9 0947 - 0679",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "259",
+    "Patrimonio": "677",
+    "Serial": "M391B5673EH1-CH9 0947 - 0677",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "260",
+    "Patrimonio": "678",
+    "Serial": "M391B5673EH1-CH9 0947 - 0678",
+    "Usuario": "marcelo.fonseca",
+    "Data": "07\/03\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "261",
+    "Patrimonio": "1162",
+    "Serial": "BWSMN33",
+    "Usuario": "pedro.neto",
+    "Data": "08\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Denice"
+},
+{
+    "ID": "262",
+    "Patrimonio": "888",
+    "Serial": "5160922037",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1432"
+},
+{
+    "ID": "263",
+    "Patrimonio": "1037",
+    "Serial": "0323010031196",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1432"
+},
+{
+    "ID": "264",
+    "Patrimonio": "1280",
+    "Serial": "1280",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/03\/2023",
+    "De_onde": "Euler pegou",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "265",
+    "Patrimonio": "1318",
+    "Serial": "CN-09RRC7-44753-26G-0SWT\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/03\/2023",
+    "De_onde": "SNP06",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "266",
+    "Patrimonio": "1281",
+    "Serial": "1281",
+    "Usuario": "marcelo.fonseca",
+    "Data": "17\/03\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Uni Santos"
+},
+{
+    "ID": "267",
+    "Patrimonio": "751",
+    "Serial": "Y050KK24T25B",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "584",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "268",
+    "Patrimonio": "765",
+    "Serial": "0765",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "269",
+    "Patrimonio": "22",
+    "Serial": "Z1N4GERT",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "?",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "270",
+    "Patrimonio": "21",
+    "Serial": "9WK4VDQ8",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "?",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "271",
+    "Patrimonio": "308",
+    "Serial": "R106H60K",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "272",
+    "Patrimonio": "221",
+    "Serial": "WMATV2729834",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "584",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "273",
+    "Patrimonio": "776",
+    "Serial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0776",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "274",
+    "Patrimonio": "777",
+    "Serial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0777",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "275",
+    "Patrimonio": "748",
+    "Serial": "4A003EH+1329H80725",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "584",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "276",
+    "Patrimonio": "670",
+    "Serial": "HMT31GR7BFR4A-H9 T7 AB 1126",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "584",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "277",
+    "Patrimonio": "654",
+    "Serial": "HMT31GR7BFR4A-H9 T7 AB 1127",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "584",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "278",
+    "Patrimonio": "669",
+    "Serial": "HMT31GR7BFR4A-H9 T7 AE 1203",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "584",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "279",
+    "Patrimonio": "799",
+    "Serial": "M393B2G70DB0-YK0",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "280",
+    "Patrimonio": "797",
+    "Serial": "1000000340066457",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "281",
+    "Patrimonio": "790",
+    "Serial": "80CE0216163228E5E1",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "282",
+    "Patrimonio": "801",
+    "Serial": "80CE0216163228CD85",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "283",
+    "Patrimonio": "800",
+    "Serial": "1000000340066466",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "284",
+    "Patrimonio": "805",
+    "Serial": "MT36KSF2G72PZ-1G4E1FG 1321",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "285",
+    "Patrimonio": "675",
+    "Serial": "ZA1ASKHN",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "286",
+    "Patrimonio": "897",
+    "Serial": "0897",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/05\/2023",
+    "De_onde": "PC Marcelo",
+    "Para_onde": "Zaplus"
+},
+{
+    "ID": "287",
+    "Patrimonio": "1279",
+    "Serial": "CB-012DNW-75435-37N-00XH-A05",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "Encontre sua franquia",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "288",
+    "Patrimonio": "217",
+    "Serial": "131703761383",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "289",
+    "Patrimonio": "740",
+    "Serial": "1074F64MX21045Q",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "290",
+    "Patrimonio": "560",
+    "Serial": "1074F64MX200P9",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "291",
+    "Patrimonio": "562",
+    "Serial": "1074F64MX2170HX",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "292",
+    "Patrimonio": "561",
+    "Serial": "1074F64MX2010RP",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "293",
+    "Patrimonio": "741",
+    "Serial": "1074F64MX2123JM",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "294",
+    "Patrimonio": "563",
+    "Serial": "1074F64MX2170HV",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "295",
+    "Patrimonio": "1500",
+    "Serial": "PBH7AU4X",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "296",
+    "Patrimonio": "14",
+    "Serial": "0014",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Descarte"
+},
+{
+    "ID": "297",
+    "Patrimonio": "-129",
+    "Serial": "E64269 01 S77",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1323"
+},
+{
+    "ID": "298",
+    "Patrimonio": "-130",
+    "Serial": "E64269 01 S73",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1323"
+},
+{
+    "ID": "299",
+    "Patrimonio": "-133",
+    "Serial": "2128A8255",
+    "Usuario": "marcelo.fonseca",
+    "Data": "03\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1504"
+},
+{
+    "ID": "300",
+    "Patrimonio": "197",
+    "Serial": "WCAP92926072",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/05\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "301",
+    "Patrimonio": "304",
+    "Serial": "S1HKJ50S454744",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/05\/2023",
+    "De_onde": "0122",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "302",
+    "Patrimonio": "33",
+    "Serial": "AA17069TJXCCA",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/05\/2023",
+    "De_onde": "Escritório",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "303",
+    "Patrimonio": "673",
+    "Serial": "JTWTXZWJ",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "304",
+    "Patrimonio": "674",
+    "Serial": "JXYU54TN",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "305",
+    "Patrimonio": "675",
+    "Serial": "ZA1ASKHN",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "85"
+},
+{
+    "ID": "306",
+    "Patrimonio": "759",
+    "Serial": "CN-0VM02C-77921-5CI-00GW-A12",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "307",
+    "Patrimonio": "791",
+    "Serial": "M393B2G70EB0-YK0Q2 M1616",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "308",
+    "Patrimonio": "796",
+    "Serial": "M393B2G70BH0-YK0 1344",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "309",
+    "Patrimonio": "802",
+    "Serial": "80CE0316121567BCDF",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "310",
+    "Patrimonio": "794",
+    "Serial": "80CE0216163228ECF3",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "311",
+    "Patrimonio": "506",
+    "Serial": "13103566605",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "312",
+    "Patrimonio": "507",
+    "Serial": "M393B2G70DB0-YK0 - 507",
+    "Usuario": "marcelo.fonseca",
+    "Data": "10\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "85"
+},
+{
+    "ID": "313",
+    "Patrimonio": "1440",
+    "Serial": "AZAG1511739TV",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Descarte"
+},
+{
+    "ID": "314",
+    "Patrimonio": "1266",
+    "Serial": "VA26S31890\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "UFMG"
+},
+{
+    "ID": "315",
+    "Patrimonio": "473",
+    "Serial": "WMATV2687422",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "254"
+},
+{
+    "ID": "316",
+    "Patrimonio": "732",
+    "Serial": "6VPKTT05",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "254"
+},
+{
+    "ID": "317",
+    "Patrimonio": "734",
+    "Serial": "S1DDSM3Q",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "254"
+},
+{
+    "ID": "318",
+    "Patrimonio": "842",
+    "Serial": "Z1DCMJ3N",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "254"
+},
+{
+    "ID": "319",
+    "Patrimonio": "86",
+    "Serial": "CN-03P0R3-13740-2AE-0060-A01",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "254"
+},
+{
+    "ID": "320",
+    "Patrimonio": "1507",
+    "Serial": "DGE-528T - 1507",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1506"
+},
+{
+    "ID": "321",
+    "Patrimonio": "1513",
+    "Serial": "BR 0PT2C5 11050 48R 6P73",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1506"
+},
+{
+    "ID": "322",
+    "Patrimonio": "1514",
+    "Serial": "BR 09PT2C5 11050 48R 6PUS",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1506"
+},
+{
+    "ID": "323",
+    "Patrimonio": "770",
+    "Serial": "YTAI201202201",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "324",
+    "Patrimonio": "1508",
+    "Serial": "WMAYP4247708",
+    "Usuario": "marcelo.fonseca",
+    "Data": "18\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Descarte"
+},
+{
+    "ID": "325",
+    "Patrimonio": "718",
+    "Serial": "S33FJ5EF600286",
+    "Usuario": "marcelo.fonseca",
+    "Data": "19\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "IOCT"
+},
+{
+    "ID": "326",
+    "Patrimonio": "254",
+    "Serial": "0254",
+    "Usuario": "marcelo.fonseca",
+    "Data": "26\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "OCP"
+},
+{
+    "ID": "327",
+    "Patrimonio": "724",
+    "Serial": "Z1W5RSRW",
+    "Usuario": "marcelo.fonseca",
+    "Data": "26\/05\/2023",
+    "De_onde": "UFMG",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "328",
+    "Patrimonio": "713",
+    "Serial": "Y964K0IUF7EE-0713",
+    "Usuario": "marcelo.fonseca",
+    "Data": "26\/05\/2023",
+    "De_onde": "254",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "329",
+    "Patrimonio": "792",
+    "Serial": "80CE0216163228E773",
+    "Usuario": "marcelo.fonseca",
+    "Data": "26\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "330",
+    "Patrimonio": "481",
+    "Serial": "RX8R90FKY5A",
+    "Usuario": "marcelo.fonseca",
+    "Data": "26\/05\/2023",
+    "De_onde": "Rosildo",
+    "Para_onde": "Escritório"
+},
+{
+    "ID": "331",
+    "Patrimonio": "482",
+    "Serial": "RX8RA0D234D",
+    "Usuario": "marcelo.fonseca",
+    "Data": "26\/05\/2023",
+    "De_onde": "Euler",
+    "Para_onde": "Escritório"
+},
+{
+    "ID": "332",
+    "Patrimonio": "827",
+    "Serial": "Z1E44A0Y",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "UFMG",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "333",
+    "Patrimonio": "771",
+    "Serial": "WCAU44598756",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "334",
+    "Patrimonio": "601",
+    "Serial": "5QG1ALEB",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "335",
+    "Patrimonio": "713",
+    "Serial": "Y964K0IUF7EE-0713",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "336",
+    "Patrimonio": "724",
+    "Serial": "Z1W5RSRW",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "337",
+    "Patrimonio": "208",
+    "Serial": "S2BWJ60B146191",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "338",
+    "Patrimonio": "927",
+    "Serial": "S2BWJ6B50390",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "339",
+    "Patrimonio": "210",
+    "Serial": "S2BWJ60B313950",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "340",
+    "Patrimonio": "204",
+    "Serial": "S2BWJ60B624945",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "341",
+    "Patrimonio": "217",
+    "Serial": "131703761383",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "254"
+},
+{
+    "ID": "342",
+    "Patrimonio": "831",
+    "Serial": "CN-047MCV-75435-3BD-0171-A05",
+    "Usuario": "marcelo.fonseca",
+    "Data": "30\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "254"
+},
+{
+    "ID": "343",
+    "Patrimonio": "-121",
+    "Serial": "E64269 01 IB2\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "31\/05\/2023",
+    "De_onde": "?",
+    "Para_onde": "115"
+},
+{
+    "ID": "344",
+    "Patrimonio": "-20",
+    "Serial": "E44476 01 S87",
+    "Usuario": "marcelo.fonseca",
+    "Data": "31\/05\/2023",
+    "De_onde": "?",
+    "Para_onde": "116"
+},
+{
+    "ID": "345",
+    "Patrimonio": "-21",
+    "Serial": "E44476 01 IB2",
+    "Usuario": "marcelo.fonseca",
+    "Data": "31\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "116"
+},
+{
+    "ID": "346",
+    "Patrimonio": "-120",
+    "Serial": "E64269 01 ID5\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "31\/05\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "120"
+},
+{
+    "ID": "347",
+    "Patrimonio": "868",
+    "Serial": "9690A0R7F08C",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "897",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "348",
+    "Patrimonio": "1146",
+    "Serial": "WCC6Z3DA5JHZ",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "349",
+    "Patrimonio": "1425",
+    "Serial": "S1ZWJ5OSJ16378",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "350",
+    "Patrimonio": "775",
+    "Serial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0775",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "1199",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "351",
+    "Patrimonio": "950",
+    "Serial": "1074F64MX2170KA",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "352",
+    "Patrimonio": "949",
+    "Serial": "1074F64MX2121KB",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "353",
+    "Patrimonio": "945",
+    "Serial": "1074F64MX2123V4",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "354",
+    "Patrimonio": "882",
+    "Serial": "1074F64MX2104TG",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "355",
+    "Patrimonio": "565",
+    "Serial": "1074F64MX2122KM",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "0962",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "356",
+    "Patrimonio": "1287",
+    "Serial": "101TB53MX13224A C1CKN\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1323"
+},
+{
+    "ID": "357",
+    "Patrimonio": "1295",
+    "Serial": "101TB53MX13224B C1KCN",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1323"
+},
+{
+    "ID": "358",
+    "Patrimonio": "1294",
+    "Serial": "101TB53MX13224C C1KCN",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1323"
+},
+{
+    "ID": "359",
+    "Patrimonio": "1258",
+    "Serial": "6Y21B0150601\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1323"
+},
+{
+    "ID": "360",
+    "Patrimonio": "228",
+    "Serial": "1TEAP5-500",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "361",
+    "Patrimonio": "714",
+    "Serial": "1234034B0B85",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "362",
+    "Patrimonio": "719",
+    "Serial": "WXP1E884L7M4",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "363",
+    "Patrimonio": "844",
+    "Serial": "535DYWLNS",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "364",
+    "Patrimonio": "910",
+    "Serial": "WXR1A484NZ7Z",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "365",
+    "Patrimonio": "912",
+    "Serial": "X3VMT6CTT S23 HDKBB97H0A01 T",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "366",
+    "Patrimonio": "932",
+    "Serial": "412568792025",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "367",
+    "Patrimonio": "938",
+    "Serial": "443781P+1347H00NM0",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "368",
+    "Patrimonio": "939",
+    "Serial": "443781P+1332H00KFU",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "369",
+    "Patrimonio": "1135",
+    "Serial": "OFDB0019743",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "370",
+    "Patrimonio": "1190",
+    "Serial": "1231034615E2",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "371",
+    "Patrimonio": "1191",
+    "Serial": "K43C7753M",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "372",
+    "Patrimonio": "1192",
+    "Serial": "170815FE737E",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "373",
+    "Patrimonio": "1225",
+    "Serial": "Z2976GN9",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "374",
+    "Patrimonio": "1226",
+    "Serial": "Z2976R5Q",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "375",
+    "Patrimonio": "1360",
+    "Serial": "9907259-014.A00G 8490967 - 1933",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "376",
+    "Patrimonio": "1427",
+    "Serial": "W9A32CTW",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "377",
+    "Patrimonio": "1447",
+    "Serial": "WCC3F7HZVR9D",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "378",
+    "Patrimonio": "232",
+    "Serial": "SBR2012110702287",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "379",
+    "Patrimonio": "233",
+    "Serial": "SBR2012110701578",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "380",
+    "Patrimonio": "515",
+    "Serial": "HMT351R7CFR8A-H9 T8 AC - 0515",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "381",
+    "Patrimonio": "530",
+    "Serial": "HMT351R7BFR8A-H9 T7 AB - 0530",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "382",
+    "Patrimonio": "531",
+    "Serial": "HMT351R7BFR8A-H9 T7 AB - 0531",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "383",
+    "Patrimonio": "534",
+    "Serial": "M393B5170FH0-CH9 1128 - 0534",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "384",
+    "Patrimonio": "536",
+    "Serial": "M393B5170FH0-CH9 1128 - 0536",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "385",
+    "Patrimonio": "537",
+    "Serial": "M393B5170FH0-CH9 1128 - 0537",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "386",
+    "Patrimonio": "539",
+    "Serial": "M393B5170FH0-CH9 1128 - 0539",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "387",
+    "Patrimonio": "551",
+    "Serial": "1074F64MX21223K",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "388",
+    "Patrimonio": "556",
+    "Serial": "1074F12CN15001R",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "556"
+},
+{
+    "ID": "389",
+    "Patrimonio": "556",
+    "Serial": "1074F12CN15001R",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "556",
+    "Para_onde": "?"
+},
+{
+    "ID": "390",
+    "Patrimonio": "557",
+    "Serial": "1074F64MX21219P",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "391",
+    "Patrimonio": "559",
+    "Serial": "1074F64MX2121KF",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "392",
+    "Patrimonio": "560",
+    "Serial": "1074F64MX200P9",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "393",
+    "Patrimonio": "566",
+    "Serial": "SBR201011804520",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "394",
+    "Patrimonio": "567",
+    "Serial": "BR0X2VK SMART 155 0UIW",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "395",
+    "Patrimonio": "598",
+    "Serial": "M39B5170FH0-CH9 1126 - 0598",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "396",
+    "Patrimonio": "599",
+    "Serial": "M39B5170FH0-CH9 1126 -0599",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "397",
+    "Patrimonio": "655",
+    "Serial": "MT36KSF2G72PZ-1G4E1FG - 0655",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "398",
+    "Patrimonio": "676",
+    "Serial": "M391B5673EH1-CH9 0947 - 0676",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "399",
+    "Patrimonio": "677",
+    "Serial": "M391B5673EH1-CH9 0947 - 0677",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "400",
+    "Patrimonio": "678",
+    "Serial": "M391B5673EH1-CH9 0947 - 0678",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "401",
+    "Patrimonio": "836",
+    "Serial": "S1516JKG7",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "402",
+    "Patrimonio": "1267",
+    "Serial": "11$43X5052YH10MV005DZ9FRU\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "403",
+    "Patrimonio": "1268",
+    "Serial": "11$43X5052YH10MV005DZEFRU\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "404",
+    "Patrimonio": "1330",
+    "Serial": "R1220329Y",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "405",
+    "Patrimonio": "1331",
+    "Serial": "R1216289I",
+    "Usuario": "marcelo.fonseca",
+    "Data": "02\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "?"
+},
+{
+    "ID": "406",
+    "Patrimonio": "1351",
+    "Serial": "1928SC519LF8",
+    "Usuario": "marcelo.fonseca",
+    "Data": "05\/06\/2023",
+    "De_onde": "SNP04",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "407",
+    "Patrimonio": "1302",
+    "Serial": "1618HS01VTK8\r",
+    "Usuario": "marcelo.fonseca",
+    "Data": "05\/06\/2023",
+    "De_onde": "?",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "408",
+    "Patrimonio": "1322",
+    "Serial": "KVM-41UA 1322",
+    "Usuario": "marcelo.fonseca",
+    "Data": "05\/06\/2023",
+    "De_onde": "Bancada de testes",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "409",
+    "Patrimonio": "1437",
+    "Serial": "KVM-41UA 1437",
+    "Usuario": "marcelo.fonseca",
+    "Data": "05\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "Bancada de testes"
+},
+{
+    "ID": "410",
+    "Patrimonio": "-138",
+    "Serial": "2L152419A1619",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/06\/2023",
+    "De_onde": "Estoque",
+    "Para_onde": "1504"
+},
+{
+    "ID": "411",
+    "Patrimonio": "-133",
+    "Serial": "2128A8255",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/06\/2023",
+    "De_onde": "1504",
+    "Para_onde": "1183"
+},
+{
+    "ID": "412",
+    "Patrimonio": "-134",
+    "Serial": "2125A1706",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/06\/2023",
+    "De_onde": "1504",
+    "Para_onde": "1183"
+},
+{
+    "ID": "413",
+    "Patrimonio": "83",
+    "Serial": "HMT31GR7CFR4A-PB T8 AF 1327 - 0083",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/06\/2023",
+    "De_onde": "1183",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "414",
+    "Patrimonio": "296",
+    "Serial": "4A003EH + 1329H80957",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/06\/2023",
+    "De_onde": "1183",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "415",
+    "Patrimonio": "743",
+    "Serial": "4A003EH+1329H80960",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/06\/2023",
+    "De_onde": "1183",
+    "Para_onde": "Estoque"
+},
+{
+    "ID": "416",
+    "Patrimonio": "749",
+    "Serial": "4A003EH+1329H80962",
+    "Usuario": "marcelo.fonseca",
+    "Data": "09\/06\/2023",
+    "De_onde": "1183",
+    "Para_onde": "Estoque"
+}
+]
+
+}

@@ -15,14 +15,17 @@ public class MovementSaver : Singleton<MovementSaver>, IJsonSaveable
     // Start is called before the first frame update
     void Start()
     {
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        if (!InternalDatabase.Instance.isOfflineProgram)
         {
-            StartCoroutine(GetAllRegularMovements());
-            StartCoroutine(GetAllNoPaNoSeMovements());
-        }
-        else
-        {
-            Destroy(this.gameObject);
+            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+            {
+                StartCoroutine(GetAllRegularMovements());
+                StartCoroutine(GetAllNoPaNoSeMovements());
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

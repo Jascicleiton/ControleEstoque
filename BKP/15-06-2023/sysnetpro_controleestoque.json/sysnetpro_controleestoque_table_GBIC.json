@@ -1,0 +1,94 @@
+,{
+    "type": "table",
+    "name": "GBIC",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "77P8042",
+    "Fabricante": "IBM",
+    "Desempenho_max": "8"
+},
+{
+    "Modelo": "AFBR-57D7AMZ-QL",
+    "Fabricante": "AVAGO",
+    "Desempenho_max": "8"
+},
+{
+    "Modelo": "AFBR-57D9AMZ-IB1",
+    "Fabricante": "AVAGO",
+    "Desempenho_max": "8"
+},
+{
+    "Modelo": "AJ715A",
+    "Fabricante": "HP",
+    "Desempenho_max": "4"
+},
+{
+    "Modelo": "AJ718A",
+    "Fabricante": "HP",
+    "Desempenho_max": "8"
+},
+{
+    "Modelo": "FTLF8519P2BNL-HW",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "2.1"
+},
+{
+    "Modelo": "FTLF8524P2BNC-EC",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "4.25"
+},
+{
+    "Modelo": "FTLF8524P2BNV",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "4"
+},
+{
+    "Modelo": "FTLF8524P2BNV-E5",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "4"
+},
+{
+    "Modelo": "FTLF8528P2BNV-E5",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "8.5"
+},
+{
+    "Modelo": "FTLF8528P3BCV-HD",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "8.5"
+},
+{
+    "Modelo": "FTRJ8519P1BNL-SU",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "2.1"
+},
+{
+    "Modelo": "RDH 102 47\/2 R2A",
+    "Fabricante": "ERICSSON",
+    "Desempenho_max": "2.5"
+},
+{
+    "Modelo": "AFBR-57D7APZ-IB5",
+    "Fabricante": "AVAGO",
+    "Desempenho_max": "8"
+},
+{
+    "Modelo": "RDH 101 47\/2 R2A",
+    "Fabricante": "ERICSSON",
+    "Desempenho_max": ""
+},
+{
+    "Modelo": "FTLF8528P3BCV-ID",
+    "Fabricante": "Finisar",
+    "Desempenho_max": "8.5"
+},
+{
+    "Modelo": "57-1000117-01",
+    "Fabricante": "Brocade",
+    "Desempenho_max": "8"
+}
+]
+
+}

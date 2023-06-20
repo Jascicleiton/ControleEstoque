@@ -10,15 +10,18 @@ public class ImportLocations : MonoBehaviour, IJsonSaveable
     // Start is called before the first frame update
     void Start()
     {
-        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
+        if (!InternalDatabase.Instance.isOfflineProgram)
         {
-            StartCoroutine(ImportLocationsRoutine());
+            if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
+            {
+                StartCoroutine(ImportLocationsRoutine());
+            }
+            else if (Application.isEditor)
+            {
+                StartCoroutine(ImportLocationsRoutine());
+            }
         }
-        else if (Application.isEditor)
-        {
-            StartCoroutine(ImportLocationsRoutine());
-        }
-      // GambiarraParaCarregarLocais();
+       GambiarraParaCarregarLocais();
     }
 
     /// <summary>
