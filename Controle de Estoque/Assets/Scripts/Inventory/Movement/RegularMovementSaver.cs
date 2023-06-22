@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class RegularMovementSaver : MonoBehaviour, IJsonSaveable
+public class RegularMovementSaver : Singleton<RegularMovementSaver>, IJsonSaveable
 {
-    private List<MovementRecords> regularRecords = new List<MovementRecords>();
+    [SerializeField] private List<MovementRecords> regularRecords = new List<MovementRecords>();
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,25 @@ public class RegularMovementSaver : MonoBehaviour, IJsonSaveable
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void RegisterNewRegularMovement(MovementRecords newMovement)
+    {
+        if (newMovement != null)
+        {
+            regularRecords.Add(newMovement);
+        }
+        else
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Null movement record");
+        }
+        SavingWrapper.Instance.Save();
+    }
+
+    public List<MovementRecords> GetAllRegularRecords()
+    {
+        return regularRecords;
     }
 
     private IEnumerator GetAllRegularMovements()

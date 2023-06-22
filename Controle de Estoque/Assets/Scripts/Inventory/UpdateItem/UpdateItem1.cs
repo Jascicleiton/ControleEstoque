@@ -67,13 +67,24 @@ namespace Assets.Scripts.Inventory.UpdateItem
                     inputEnabled = false;
                     if (searchingItem)
                     {
-                        StartCoroutine(CheckIfItemExists());
+                        if (!InternalDatabase.Instance.isOfflineProgram)
+                        {
+                            StartCoroutine(CheckIfItemExists());
+                        }
                         itemToUpdate = ConsultDatabase.Instance.ConsultPatrimonio(int.Parse(itemToUpdatePatrimonio.value), InternalDatabase.Instance.fullDatabase);
+                        itemToUpdateIndex = ConsultDatabase.Instance.GetItemIndex();
                         ShowUpdateItem();
                     }
                     else
                     {
-                        StartCoroutine(UpdateDatabaseRoutine());
+                        if (!InternalDatabase.Instance.isOfflineProgram)
+                        {
+                            StartCoroutine(UpdateDatabaseRoutine());
+                        }
+                        else
+                        {
+                            UpdateFullDatabase();
+                        }
                     }
                 }
             }
@@ -255,16 +266,16 @@ namespace Assets.Scripts.Inventory.UpdateItem
         private void UpdateFullDatabase()
         {
             List<string> parameters = new List<string>();
-            if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.SnPro)
-            {
-                parameters.Add(itemToUpdate.Aquisicao);
-            }
-            parameters.Add(itemToUpdate.Entrada);
             parameters.AddRange(itemInformationPanelControler.GetInventoryValues());
             parameters.AddRange(itemInformationPanelControler.GetCategoryValues(itemToUpdate.Categoria));
 
             UpdateDatabaseItem.UpdateItem(parameters, itemToUpdateIndex);
             EventHandler.CallDatabaseUpdatedEvent();
+            if(InternalDatabase.Instance.isOfflineProgram)
+            {
+                             EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Atualizado");
+            }
         }
 
         /// <summary>
@@ -277,7 +288,7 @@ namespace Assets.Scripts.Inventory.UpdateItem
             {
                 itemToUpdate = tempItem;
                 tempItem = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdate.Patrimonio, InternalDatabase.Instance.fullDatabase);
-                itemToUpdateIndex = ConsultDatabase.Instance.GetItemIndex();
+                
             }
             else
             {

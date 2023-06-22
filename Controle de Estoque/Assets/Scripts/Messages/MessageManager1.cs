@@ -96,38 +96,41 @@ public class MessageManager1 : MonoBehaviour
         EventHandler.CallEnableInput(false);
         inputEnabled = true;
         messagePanel.style.display = DisplayStyle.Flex;
-        if ((message1 == "Worked" && message2 == "Worked") || (message1 == "Updated" && message2 == "Updated"))
+        if (!isOnlyOneMessage)
         {
-            if (message1 == "Worked")
+            if ((message1 == "Worked" && message2 == "Worked") || (message1 == "Updated" && message2 == "Updated"))
             {
-                messageText.text = "Item adicionado com sucesso.";
-            }
-            else if (message1 == "Updated")
-            {
-                messageText.text = "Item atualizado com sucesso.";
-            }
+                if (message1 == "Worked")
+                {
+                    messageText.text = "Item adicionado com sucesso.";
+                }
+                else if (message1 == "Updated")
+                {
+                    messageText.text = "Item atualizado com sucesso.";
+                }
 
-            StartCoroutine(CloseMessageRoutine());
-            inputEnabled = true;
-            return;
-        }
-        else if ((message1 == "Worked" && message2 != "Worked") || (message1 == "Updated" && message2 != "Updated") )
-        {
-            if (message1 == "Worked")
-            {
-                messageText.text = "Item adicionado no inventário com sucesso.\n" + message2;
+                StartCoroutine(CloseMessageRoutine());
+                inputEnabled = true;
+                return;
             }
-            else if (message1 == "Updated" && message2 == "Worked")
+            else if ((message1 == "Worked" && message2 != "Worked") || (message1 == "Updated" && message2 != "Updated"))
             {
-                messageText.text = "Item atualizado no inventário com sucesso.";
+                if (message1 == "Worked")
+                {
+                    messageText.text = "Item adicionado no inventário com sucesso.\n" + message2;
+                }
+                else if (message1 == "Updated" && message2 == "Worked")
+                {
+                    messageText.text = "Item atualizado no inventário com sucesso.";
+                }
+                else
+                {
+                    messageText.text = "Item atualizado no inventário com sucesso.\n" + message2;
+                }
+                StartCoroutine(CloseMessageRoutine());
+                inputEnabled = true;
+                return;
             }
-            else
-            {
-                messageText.text = "Item atualizado no inventário com sucesso.\n" + message2;
-            }
-            StartCoroutine(CloseMessageRoutine());
-            inputEnabled = true;
-            return;
         }
         else if (message1 == "Patrimônio já existe" || message1 == "Serial já existe")
         {
@@ -157,7 +160,7 @@ public class MessageManager1 : MonoBehaviour
             inputEnabled = true;
             return;
         }
-        else if (message1 == "Item moved") 
+        else if (message1 == "Item moved")
         {
             messageText.text = "Item movido com sucesso";
             StartCoroutine(CloseMessageRoutine());
@@ -186,49 +189,49 @@ public class MessageManager1 : MonoBehaviour
             inputEnabled = true;
             return;
         }
-        else if( message1 == "Invalid number")
+        else if (message1 == "Invalid number")
         {
             messageText.text = "Use apenas algarismos para determinar a quantidade a ser movida";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "No movement found")
+        else if (message1 == "No movement found")
         {
             messageText.text = "Nenhuma movimentação encontrada para este item.";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Invalid number format")
+        else if (message1 == "Invalid number format")
         {
             messageText.text = "Use apenas algarismos para determinar a quantidade do item a ser adicionado.";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Username null")
+        else if (message1 == "Username null")
         {
             messageText.text = "Usuário não encontrado. Tente novamente.";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Duplicate username")
+        else if (message1 == "Duplicate username")
         {
             messageText.text = "Usuário duplicado no banco de dados.\nContate seu administrador sobre este erro.";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Wrong password")
+        else if (message1 == "Wrong password")
         {
             messageText.text = "Senha incorreta. Tente novamente.";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Username already exist")
+        else if (message1 == "Username already exist")
         {
             messageText.text = "Usuário já cadastrado.";
             StartCoroutine(CloseMessageRoutine());
@@ -242,33 +245,45 @@ public class MessageManager1 : MonoBehaviour
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Wrong authorization access level")
+        else if (message1 == "Wrong authorization access level")
         {
             messageText.text = "Usuário não possui autorização para permitir a criação de um novo usuário";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Empty values")
+        else if (message1 == "Empty values")
         {
             messageText.text = "Verifique se o usuário e/ou senha foi digitado corretamente";
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
         }
-        else if(message1 == "Negative number")
+        else if (message1 == "Negative number")
         {
             messageText.text = "Utilize somente números positivos para o campo quantidade";
-                 StartCoroutine(CloseMessageRoutine());
-            inputEnabled = true;
-            return;
-        }
-        else if(message1 == "Zero quantity")
-        {
-            messageText.text = "Escolha uma quantidade maior que zero"; 
             StartCoroutine(CloseMessageRoutine());
             inputEnabled = true;
             return;
+        }
+        else if (message1 == "Zero quantity")
+        {
+            messageText.text = "Escolha uma quantidade maior que zero";
+            StartCoroutine(CloseMessageRoutine());
+            inputEnabled = true;
+            return;
+        }
+        else if (message1 == "Atualizado")
+        {
+                        messageText.text = "Item atualizado no inventário com sucesso.";
+        }
+        else if(message1 == "Added")
+        {
+            messageText.text = "Item adicionado com sucesso.";
+        }
+        else if(message1 == "Null movement record")
+        {
+            messageText.text = "Registro do novo movimento não foi adicionado";
         }
         else
         {

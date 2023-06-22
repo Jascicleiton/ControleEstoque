@@ -10,6 +10,7 @@ namespace Saving
     {
         private JsonSavingSystem saving;
         const string defaultSaveFile = "BKP - ";
+        private bool isSavingBkpCopy = false;
 
         // Update is called once per frame
         private void Start()
@@ -40,8 +41,10 @@ namespace Saving
 
         private void Update()
         {
+
             if(Input.GetKeyDown(KeyCode.F10))
             {
+                isSavingBkpCopy = true;
                 Save();
             }
         }
@@ -52,7 +55,15 @@ namespace Saving
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
+            if (!isSavingBkpCopy)
+            {
+                saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
+            }
+            else
+            {
+                saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString() + " - " + DateTime.Now.ToString("dd-mm-yy"));
+                isSavingBkpCopy = false;
+            }
         }
 
         public void Load()

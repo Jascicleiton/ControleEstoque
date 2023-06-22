@@ -16,8 +16,8 @@ public class NoPaNoSeImporter : Singleton<NoPaNoSeImporter>, IJsonSaveable
     {
         if (!InternalDatabase.Instance.isOfflineProgram)
         {
-            StartCoroutine(StartListRoutine());
             itemsList.noPaNoSeItems.Clear();
+            StartCoroutine(StartListRoutine());            
         }
     }
 

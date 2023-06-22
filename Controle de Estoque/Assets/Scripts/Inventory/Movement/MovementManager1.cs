@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 using UnityEngine.Networking;
 using System;
 using System.IO;
+using Saving;
 
 public class MovementManager1 : MonoBehaviour
 {
@@ -52,8 +53,8 @@ public class MovementManager1 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
                 if (!itemFound)
-                {
-                    StartCoroutine(CheckIfItemExists());
+                {                   
+                        StartCoroutine(CheckIfItemExists());                   
                 }
             }
         }
@@ -132,6 +133,8 @@ public class MovementManager1 : MonoBehaviour
                     fromInput.value = itemToChange.Local;
                 }
                 whoLabel.text = UsersManager.Instance.currentUser.GetUsername();
+                EnableDisableMoveButton();
+                EventHandler.CallChangeAnimation("2");
             }
             else
             {
@@ -216,7 +219,7 @@ public class MovementManager1 : MonoBehaviour
             //ShowMessage(itemFound);
         }
     }
-   
+
     /// <summary>
     /// Try to change the item location
     /// </summary>
@@ -262,6 +265,16 @@ public class MovementManager1 : MonoBehaviour
         UpdateDatabase();
         ResetInputs();
         itemFound = false;
+        MovementRecords newMovement = new MovementRecords();
+        newMovement.item = itemToChange;
+        newMovement.date = DateTime.Now.ToString("dd/MM/yyyy");
+        newMovement.username = UsersManager.Instance.currentUser.GetUsername();
+        newMovement.fromWhere = GetFromLocation();
+        newMovement.toWhere = GetToLocation();
+        RegularMovementSaver.Instance.RegisterNewRegularMovement(newMovement);
+        EventHandler.CallIsOneMessageOnlyEvent(true);
+        EventHandler.CallOpenMessageEvent("Item moved");
+        SavingWrapper.Instance.Save();
     }
 
     /// <summary>

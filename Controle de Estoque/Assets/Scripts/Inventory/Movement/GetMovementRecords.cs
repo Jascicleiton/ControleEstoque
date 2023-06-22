@@ -19,6 +19,7 @@ public class GetMovementRecords : MonoBehaviour
     private Button returnButton;
     private Button consultButton;
     bool isSearchingPatrimonio = true;
+    private int tryParseint = 0;
 
     private void OnEnable()
     {
@@ -272,7 +273,7 @@ public class GetMovementRecords : MonoBehaviour
             };
             listView.itemsSource = regularItemMovementRecords;
         }
-        if (noPaNoSeMovementRecords.Count > 0)
+        else        if (noPaNoSeMovementRecords.Count > 0)
         {
             noPaNoSeMovementRecords.Sort((x, y) => x.date.CompareTo(y.date));
             listView.bindItem = (element, i) =>
@@ -297,6 +298,11 @@ public class GetMovementRecords : MonoBehaviour
             };
             listView.itemsSource = noPaNoSeMovementRecords;
         }
+        else
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("No movement found");
+        }
         listView.fixedItemHeight = 100;
         MouseManager.Instance.SetDefaultCursor();
     }
@@ -310,16 +316,32 @@ public class GetMovementRecords : MonoBehaviour
         { 
             if (parameterInput.text != "")
             {
-                DeleteOldSearch();                              
-                    StartCoroutine(ImportPatrimonioMovementsRoutine());                             
+                DeleteOldSearch();
+                if (!InternalDatabase.Instance.isOfflineProgram)
+                {
+                    StartCoroutine(ImportPatrimonioMovementsRoutine());
+                }
+                else
+                {
+                    FindRegularMovementsOffline();
+                }
             }
         }
         else 
         {
             DeleteOldSearch();
-            StartCoroutine(ImportNoPaNoSeMovementsRoutine(nameDP.value));
-        }
+            if(!InternalDatabase.Instance.isOfflineProgram)
+            {
+                StartCoroutine(ImportNoPaNoSeMovementsRoutine(nameDP.value));
+            }
+            else
+            {
+                FindNoPaNoSeMovementsOffline();
+            }
+                    }
     }
+
+    
 
     /// <summary>
     /// Goes to InitialScene
@@ -347,4 +369,40 @@ public class GetMovementRecords : MonoBehaviour
             EventHandler.CallChangeAnimation("2");
         }
     }
+
+    private void FindRegularMovementsOffline()
+    {
+        List<MovementRecords> allMovements = RegularMovementSaver.Instance.GetAllRegularRecords();
+        if(int.TryParse(parameterInput.text, out tryParseint))
+        {
+            foreach (var movementRecord in allMovements)
+            {
+                if(movementRecord.item.Patrimonio == tryParseint)
+                {
+                    regularItemMovementRecords.Add(movementRecord);
+                }
+            }
+            ShowMovements();
+        }
+        else
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
+        }
+        
+    }
+
+    private void FindNoPaNoSeMovementsOffline()
+    {
+        List<NoPaNoSeMovementRecords> allMovements = NoPaNoSeMovementSaver.Instance.GetAllNoPaNoSeRecords();
+        foreach (var movementRecord in allMovements)
+        {
+            if(movementRecord.itemName == nameDP.value)
+            {
+                noPaNoSeMovementRecords.Add(movementRecord);
+            }
+        }
+        ShowMovements();
+    }
+
 }

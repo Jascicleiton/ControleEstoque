@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NoPaNoSeMovementSaver : MonoBehaviour, IJsonSaveable
+public class NoPaNoSeMovementSaver : Singleton<NoPaNoSeMovementSaver>, IJsonSaveable
 {
     private List<NoPaNoSeMovementRecords> noPaNoSeRecords = new List<NoPaNoSeMovementRecords>();
 
@@ -83,6 +83,25 @@ public class NoPaNoSeMovementSaver : MonoBehaviour, IJsonSaveable
         }
         createPostRequest.Dispose();
         SavingWrapper.Instance.Save();
+    }
+
+    public void RegisterNewNoPaNoSeMovement(NoPaNoSeMovementRecords newMovement)
+    {
+        if (newMovement != null)
+        {
+            noPaNoSeRecords.Add(newMovement);
+        }
+        else
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Null movement record");
+        }
+        SavingWrapper.Instance.Save();
+    }
+
+    public List<NoPaNoSeMovementRecords> GetAllNoPaNoSeRecords()
+    {
+        return noPaNoSeRecords;
     }
 
     public JToken CaptureAsJToken()

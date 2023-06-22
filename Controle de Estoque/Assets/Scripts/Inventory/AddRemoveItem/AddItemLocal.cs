@@ -848,6 +848,11 @@ public class AddItemLocal
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
         // ShowMessage();
          EventHandler.CallDatabaseUpdatedEvent();
+        if(InternalDatabase.Instance.isOfflineProgram)
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Added");
+        }
     }
 
 }

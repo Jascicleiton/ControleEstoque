@@ -250,7 +250,7 @@ namespace Inventory.AddItem
         {
             if (InternalDatabase.Instance.isOfflineProgram)
             {
-               // AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
+                AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
             }
             else
             {
