@@ -329,6 +329,10 @@ public class MovementManager1 : MonoBehaviour
         movementToRecord.username = UsersManager.Instance.currentUser.GetUsername();
         movementToRecord.date = DateTime.Now.ToString("dd/MM/yyyy");
         movementToRecord.item = itemToChange;
+        if(itemToChange.Local == "Descarte")
+        {
+            itemToChange.Status = "DEFEITO";
+        }
     }
 
     /// <summary>

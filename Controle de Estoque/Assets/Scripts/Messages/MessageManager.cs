@@ -265,7 +265,7 @@ public class MessageManager : MonoBehaviour
         StopAllCoroutines();
         
         EventHandler.CallMessageClosed();
-        //EventHandler.CallEnableInput(true);
+        EventHandler.CallEnableInput(true);
     }
 
     /// <summary>

@@ -7,7 +7,7 @@ public class ConstStrings
     public const string DataDatabaseSaveFile = "InventoryDatabase";
     public const string UserDatabaseSaveFile = "UserDatabase";
     public const string extension = ".json";
-    public const string SavePath = "C:/Controle de estoque/ControleEstoque/Saves/";
+    public const string SavePath = "D:/Controle de estoque/ControleEstoque/Saves/";
      #endregion
 
     #region Sheets names
@@ -135,6 +135,8 @@ public class ConstStrings
 
     #region Save parameters
     public const string showWarningMessage = "ShowWarningMessage";
+    public const string SavingCounter = "SavingCounter";
+    public const string BkpIndex = "BkpIndex";
     #endregion
 
     #region AppKeys

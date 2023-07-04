@@ -59,7 +59,7 @@ namespace Inventory.AddItem
             {
                 if (item.enabledInHierarchy)
                 {
-                    item.isReadOnly = inputEnabled;
+                    item.isReadOnly = !inputEnabled;
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace Inventory.AddItem
             currentCategory = categoryDP.value;
             itemInformationPanelController.ShowCategoryItemTemplate(currentCategory);
             itemInformationPanelController.DisableItemsForAdd(currentCategory);
-            EventHandler.CallUpdateTabInputs();
+          //  EventHandler.CallUpdateTabInputs();
         }
 
         /// <summary>
@@ -210,6 +210,7 @@ namespace Inventory.AddItem
         {
             if (InternalDatabase.Instance.isOfflineProgram)
             {
+                SetInputEnabled(false);
                 AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
             }
             else
@@ -236,7 +237,7 @@ namespace Inventory.AddItem
         }
 
         /// <summary>
-        /// Resets all inputs to default balues
+        /// Resets all inputs to default values
         /// </summary>
         private void ResetAddItem()
         {

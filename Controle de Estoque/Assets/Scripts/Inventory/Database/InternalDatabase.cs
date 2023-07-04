@@ -55,6 +55,8 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
     public List<string> testing = new List<string>();
     public Sheet sheetToLoad = new Sheet();
+
+    [SerializeField] private int lastProcessador;
     
     private void Start()
     {
@@ -72,6 +74,14 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
     private void OnDisable()
     {
         EventHandler.FillInternalDatabase -= FillFullDatabase;
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            UpdateLastProcessadorPatrimonio();
+        }
     }
 
     /// <summary>
@@ -267,9 +277,10 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
                     fullDatabase.itens.Add(inventarioTemp.itens[i]);
                 }
             }
+
+        UpdateLastProcessadorPatrimonio();
             // Get the values of the detail sheet based on the "modelo" of the item on Inventario SnPro
-            testingSheet = adaptadorAC;
-            FillCategoryDatabases();
+                        FillCategoryDatabases();
        
         switch (currentEstoque)
         {
@@ -292,6 +303,13 @@ public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
         }
 
         fullDatabaseFilled = true;
+    }
+
+    public void UpdateLastProcessadorPatrimonio()
+    {
+        testingSheet = processador;
+        testingSheet.itens.Sort((a, b) => a.Patrimonio.CompareTo(b.Patrimonio));
+        lastProcessador = testingSheet.itens[0].Patrimonio;
     }
 
     /// <summary>

@@ -1,4 +1,1330 @@
 {
+  "d5670d65-04ae-4c09-a653-30cc4effad22": {
+    "ImportCategories": [
+      {
+        "Category": "Adaptador AC"
+      },
+      {
+        "Category": "Carregador"
+      },
+      {
+        "Category": "Desktop"
+      },
+      {
+        "Category": "Fonte"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "Gbic"
+      },
+      {
+        "Category": "HD"
+      },
+      {
+        "Category": "iDrac"
+      },
+      {
+        "Category": "Memória"
+      },
+      {
+        "Category": "Monitor"
+      },
+      {
+        "Category": "Mouse"
+      },
+      {
+        "Category": "No break"
+      },
+      {
+        "Category": "Notebook"
+      },
+      {
+        "Category": "Outros"
+      },
+      {
+        "Category": "Placa controladora"
+      },
+      {
+        "Category": "Placa de captura de vídeo"
+      },
+      {
+        "Category": "Placa de rede"
+      },
+      {
+        "Category": "Placa de som"
+      },
+      {
+        "Category": "Placa de vídeo"
+      },
+      {
+        "Category": "Processador"
+      },
+      {
+        "Category": "Roteador"
+      },
+      {
+        "Category": "Servidor"
+      },
+      {
+        "Category": "Storage NAS"
+      },
+      {
+        "Category": "Switch"
+      },
+      {
+        "Category": "Teclado"
+      },
+      {
+        "Category": "USB"
+      }
+    ]
+  },
+  "35aac1d1-9605-4002-aa5c-4f219df57d60": {
+    "UsersManager": [
+      {
+        "username": "admin",
+        "password": "admin",
+        "accesslevel": 10
+      }
+    ]
+  },
+  "994252a3-6a96-404b-b86a-e4b1a09ef0c6": {
+    "NoPaNoSeImporter": []
+  },
+  "84c8fa63-ef30-44e3-8471-8b41d52b8a58": {
+    "NoPaNoSeMovementSaver": [
+      {
+        "NoPaName": "dghdfg",
+        "NoPaQuantity": "4",
+        "NoPaUsername": "admin",
+        "NoPaDate": "22/35/23",
+        "NoPaFromWhere": "Estoque",
+        "NoPaToWhere": "Bancada de testes"
+      }
+    ]
+  },
+  "1b143eec-06c0-4454-b374-58fd843e0f9b": {
+    "RegularMovementSaver": [
+      {
+        "RegPatrimonio": 741852,
+        "RegSerial": "dzfgbzsd",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 741852,
+        "RegSerial": "dzfgbzsd",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Drogaria Cristina",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1481,
+        "RegSerial": "181017D",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1482,
+        "RegSerial": "181010E",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1199,
+        "RegSerial": "CN-0PH074-42940-03R-00GR-A00",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Uni Santos",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1183,
+        "RegSerial": "32749",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 585,
+        "RegSerial": "0585",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 560,
+        "RegSerial": "1074F64MX200P9",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 557,
+        "RegSerial": "1074F64MX21219P",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 562,
+        "RegSerial": "1074F64MX2170HX",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 740,
+        "RegSerial": "1074F64MX21045Q",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 563,
+        "RegSerial": "1074F64MX2170HV",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 741,
+        "RegSerial": "1074F64MX2123JM",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 123,
+        "RegSerial": "1074F64MX210008",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 563,
+        "RegSerial": "1074F64MX2170HV",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 741,
+        "RegSerial": "1074F64MX2123JM",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 561,
+        "RegSerial": "1074F64MX2010RP",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1287,
+        "RegSerial": "101TB53MX13224A C1CKN\r",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 885,
+        "RegSerial": "0885",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1295,
+        "RegSerial": "101TB53MX13224B C1KCN",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1286,
+        "RegSerial": "101TB53MX13224E C1CKN\r",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1258,
+        "RegSerial": "6Y21B0150601\r",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 515,
+        "RegSerial": "HMT351R7CFR8A-H9 T8 AC - 0515",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 529,
+        "RegSerial": "HMT351R7BFR8A-H9 T7 AB - 0529",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 527,
+        "RegSerial": "HMT351R7CFR8A-H9 T8 AB - 0527",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 867,
+        "RegSerial": "86Q0A04PF08C",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 849,
+        "RegSerial": "S0M1BAQP",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 868,
+        "RegSerial": "9690A0R7F08C",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1199",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 869,
+        "RegSerial": "86R0A032F08C",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1089,
+        "RegSerial": "Z1X19LBM",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1512,
+        "RegSerial": "46BAK9J2FG0B",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 712,
+        "RegSerial": "ZFL0D9X0",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 827,
+        "RegSerial": "Z1E44A0Y",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1183",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 82,
+        "RegSerial": "HMT31GR7CFR4A-PB T8 AF 1327 - 0082",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 295,
+        "RegSerial": "4A003EH + 1329H80722",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1460,
+        "RegSerial": "4A003EH+1329H806A5",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 748,
+        "RegSerial": "4A003EH+1329H80725",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "1183",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 714,
+        "RegSerial": "1234034B0B85",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 730,
+        "RegSerial": "BFHX4SUF",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Concert",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 752,
+        "RegSerial": "Z1P56SF4",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Concert",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 202,
+        "RegSerial": "Z521FYU0",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "962",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1146,
+        "RegSerial": "WCC6Z3DA5JHZ",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Bancada de testes",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 925,
+        "RegSerial": "S2AGZQG7",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Concert",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 926,
+        "RegSerial": "6VMY7BHQ",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Concert",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1324,
+        "RegSerial": "MT36KSF2G72PZ-1G4E1FG 1324",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "116",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 789,
+        "RegSerial": "MT36KSF2G72PZ-1G4E1FG 1325 - 0789",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "116",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1565,
+        "RegSerial": "BR 00RTP1 11050 3A9 0D0B",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "116",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1564,
+        "RegSerial": "RDUZV0FTC4W0CC",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "116",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 649,
+        "RegSerial": "M393B1K70CH0-YH9 649",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 774,
+        "RegSerial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0774",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "116",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 534,
+        "RegSerial": "M393B5170FH0-CH9 1128 - 0534",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 539,
+        "RegSerial": "M393B5170FH0-CH9 1128 - 0539",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 777,
+        "RegSerial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0777",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "116",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 778,
+        "RegSerial": "0000298163",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "116",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 764,
+        "RegSerial": "BFD1309J44566",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 296,
+        "RegSerial": "4A003EH + 1329H80957",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "119",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1105,
+        "RegSerial": "4A003EH+1329H8096D",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 297,
+        "RegSerial": "4A003EH + 1329H80958",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1461,
+        "RegSerial": "4A003EH+1329H80733",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 765,
+        "RegSerial": "0765",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "584",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 792,
+        "RegSerial": "80CE0216163228E773",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "584",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 799,
+        "RegSerial": "M393B2G70DB0-YK0",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "584",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 800,
+        "RegSerial": "1000000340066466",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "584",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 502,
+        "RegSerial": "0502",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 781,
+        "RegSerial": "MT36KSF2G72PZ-1G6E1HI 1428",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1248,
+        "RegSerial": "S1516JH0Y",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 504,
+        "RegSerial": "0504",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 505,
+        "RegSerial": "0505",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 795,
+        "RegSerial": "80CE0216163228CDA4",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "584",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1247,
+        "RegSerial": "S1516JJHV\r",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 797,
+        "RegSerial": "1000000340066457",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "584",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 798,
+        "RegSerial": "M393B2G70DB0-TK0 1343",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "584",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 503,
+        "RegSerial": "0503",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1326,
+        "RegSerial": "BR 00RTP1 11050 3C3 0LAL",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 943,
+        "RegSerial": "1323037cb267",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Concert",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 7,
+        "RegSerial": "0007",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "114",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 8,
+        "RegSerial": "W4J0VV0T",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 9,
+        "RegSerial": "0009",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "114",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 708,
+        "RegSerial": "BFHX1E4F",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "114",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 25,
+        "RegSerial": "Z1P56NGF",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Concert",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 212,
+        "RegSerial": "MC36H8NB",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "114",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 591,
+        "RegSerial": "WMAYP0F2F1EP",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 204,
+        "RegSerial": "S2BWJ60B624945",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Bancada de testes",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 208,
+        "RegSerial": "S2BWJ60B146191",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Bancada de testes",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 309,
+        "RegSerial": "VA26S30047",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1190,
+        "RegSerial": "1231034615E2",
+        "RegUsername": "admin",
+        "RegDate": "22/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 13,
+        "RegSerial": "0013",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1316,
+        "RegSerial": "M1203035692\r",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Trop 1",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 35,
+        "RegSerial": "V366298 2580-AF1",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 573,
+        "RegSerial": "10912580",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 575,
+        "RegSerial": "1953AIA005118",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 578,
+        "RegSerial": "10907634",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 875,
+        "RegSerial": "0875",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 878,
+        "RegSerial": "0878",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1188,
+        "RegSerial": "0214HQAB705616W",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Oficina da roupa",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1189,
+        "RegSerial": "Y1X9HXHF905218D",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Oficina da roupa",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 773,
+        "RegSerial": "1LNS2V1",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 581,
+        "RegSerial": "968GSX201200437",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 985,
+        "RegSerial": "123651",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Oficina da roupa",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 572,
+        "RegSerial": "0572",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 580,
+        "RegSerial": "0580",
+        "RegUsername": "admin",
+        "RegDate": "28/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 766,
+        "RegSerial": "NALDA-494M75-TW8H6",
+        "RegUsername": "admin",
+        "RegDate": "29/06/2023",
+        "RegFromWhere": "IOCT",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 769,
+        "RegSerial": "CBJNF-K91M6X-TV9LL",
+        "RegUsername": "admin",
+        "RegDate": "29/06/2023",
+        "RegFromWhere": "IOCT",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1522,
+        "RegSerial": "XQV2P0SA",
+        "RegUsername": "admin",
+        "RegDate": "30/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 523,
+        "RegSerial": "HMT351R7CFR4A-H9 T8 AC 1237 - 0523",
+        "RegUsername": "admin",
+        "RegDate": "30/06/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1260,
+        "RegSerial": "02101122012413\r",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Descarte",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 48,
+        "RegSerial": "BR-0KW557-70713-7CE-2K1A",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "SNP07",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 66,
+        "RegSerial": "0066",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "SNP07",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1577,
+        "RegSerial": "11138361",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1281,
+        "RegSerial": "1281",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Uni Santos",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1599,
+        "RegSerial": "0065804758557",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "DataCenter",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 48,
+        "RegSerial": "BR-0KW557-70713-7CE-2K1A",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "DataCenter",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 986,
+        "RegSerial": "36011700000434",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "985",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 510,
+        "RegSerial": "78JYT-19RC50-YV9J5",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Escritório",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 509,
+        "RegSerial": "WJLBP-19XCH8-YWH3B",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Escritório",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 609,
+        "RegSerial": "SBR2015050514781",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 790,
+        "RegSerial": "80CE0216163228E5E1",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1325,
+        "RegSerial": "BR 0KTH1G 11050 363 0Y6W",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1329,
+        "RegSerial": "M393B2G70BH0-YH9 1205 1329",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1559,
+        "RegSerial": "BR 00RTP1 11050 3A8 0CMX",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1105,
+        "RegSerial": "4A003EH+1329H8096D",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 654,
+        "RegSerial": "HMT31GR7BFR4A-H9 T7 AB 1127",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 670,
+        "RegSerial": "HMT31GR7BFR4A-H9 T7 AB 1126",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 807,
+        "RegSerial": "0V1534023M0",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 568,
+        "RegSerial": "M393B1G70BH0-YK0",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 806,
+        "RegSerial": "0V1534027QR",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 743,
+        "RegSerial": "4A003EH+1329H80960",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 669,
+        "RegSerial": "HMT31GR7BFR4A-H9 T7 AE 1203",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 649,
+        "RegSerial": "M393B1K70CH0-YH9 649",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 546,
+        "RegSerial": "1074F64MX2103LG",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 558,
+        "RegSerial": "1074F64MX21000B",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1033,
+        "RegSerial": "11S43X5052YH10MV005DYXFRU",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Encontre sua franquia",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 1034,
+        "RegSerial": "11S43X5052YH10MV005DYPFRU",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Encontre sua franquia",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 549,
+        "RegSerial": "1074F64MX21061X",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 547,
+        "RegSerial": "1074F64MX2170CN",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 544,
+        "RegSerial": "1074F64MX21042M",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 523,
+        "RegSerial": "HMT351R7CFR4A-H9 T8 AC 1237 - 0523",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 739,
+        "RegSerial": "1074F64MX21069G",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 528,
+        "RegSerial": "HMT351R7CFR8A-H9 T8 AB - 0528",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 512,
+        "RegSerial": "HMT351R7CFR8A-H9 T8 AC - 0512",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      },
+      {
+        "RegPatrimonio": 539,
+        "RegSerial": "M393B5170FH0-CH9 1128 - 0539",
+        "RegUsername": "admin",
+        "RegDate": "03/07/2023",
+        "RegFromWhere": "Estoque",
+        "RegToWhere": "Estoque"
+      }
+    ]
+  },
+  "d2b12315-660e-4f44-bb3f-93ef05739adc": {
+    "ImportLocations": [
+      {
+        "Location": "Bancada de testes"
+      },
+      {
+        "Location": "BRT"
+      },
+      {
+        "Location": "Concert"
+      },
+      {
+        "Location": "DataCenter"
+      },
+      {
+        "Location": "Descarte"
+      },
+      {
+        "Location": "Drogaria Cristina"
+      },
+      {
+        "Location": "Encontre sua franquia"
+      },
+      {
+        "Location": "Escritório"
+      },
+      {
+        "Location": "Estoque"
+      },
+      {
+        "Location": "Fumsoft"
+      },
+      {
+        "Location": "IOCT"
+      },
+      {
+        "Location": "Master truck"
+      },
+      {
+        "Location": "Netlite"
+      },
+      {
+        "Location": "Oficina da roupa"
+      },
+      {
+        "Location": "Outros"
+      },
+      {
+        "Location": "SNP01"
+      },
+      {
+        "Location": "SNP02"
+      },
+      {
+        "Location": "SNP03"
+      },
+      {
+        "Location": "SNP04"
+      },
+      {
+        "Location": "SNP05"
+      },
+      {
+        "Location": "SNP06"
+      },
+      {
+        "Location": "SNP07"
+      },
+      {
+        "Location": "SNP08"
+      },
+      {
+        "Location": "Top cintos"
+      },
+      {
+        "Location": "Trop 1"
+      },
+      {
+        "Location": "Trop 2"
+      },
+      {
+        "Location": "Uni Santos"
+      },
+      {
+        "Location": "Zaplus Car"
+      }
+    ]
+  },
   "01e2bbd9-c199-465b-8d87-3731c6407819": {
     "InternalDatabase": [
       {
@@ -6373,15 +7699,15 @@
       },
       {
         "Aquisicao": "",
-        "Entrada": "",
+        "Entrada": "28/06/2023",
         "Patrimonio": 875,
         "Status": "Desconhecido",
         "Serial": "0875",
         "Categoria": "",
         "Fabricante": "",
         "Modelo": "",
-        "Local": "SNP07",
-        "Saida": "04/07/2023",
+        "Local": "Estoque",
+        "Saida": "",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
@@ -6583,15 +7909,15 @@
       },
       {
         "Aquisicao": "",
-        "Entrada": "",
+        "Entrada": "28/06/2023",
         "Patrimonio": 878,
         "Status": "Desconhecido",
         "Serial": "BR-0XV0M1-07591-65C-211I",
         "Categoria": "Monitor",
         "Fabricante": "Dell",
         "Modelo": "E1916Hf",
-        "Local": "SNP07",
-        "Saida": "04/07/2023",
+        "Local": "Estoque",
+        "Saida": "",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
@@ -18700,7 +20026,7 @@
         "Categoria": "Fonte",
         "Fabricante": "Dell",
         "Modelo": "Z670P-00",
-        "Local": "DataCenter",
+        "Local": "0069",
         "Saida": "",
         "Observacao": "MOD - VERIFICAR SERIAL",
         "Interface": null,
@@ -38440,7 +39766,7 @@
         "Categoria": "HD",
         "Fabricante": "Hitachi",
         "Modelo": "HDT725025VLA380",
-        "Local": "Descarte",
+        "Local": "",
         "Saida": "",
         "Observacao": "",
         "Interface": "SATA",
@@ -52509,24 +53835,24 @@
         "Serial": "WJLBP-19XCH8-YWH3B",
         "Categoria": "Memória",
         "Fabricante": "Kingston",
-        "Modelo": "KTD-PE316EK4/32G",
+        "Modelo": "",
         "Local": "Estoque",
         "Saida": "",
-        "Observacao": "Para Desktop",
+        "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 8,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1600,
-        "LowVoltage": "não",
-        "Rank": "2Rx8",
-        "DIMM": "UDIMM",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "E",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -52579,24 +53905,24 @@
         "Serial": "78JYT-19RC50-YV9J5",
         "Categoria": "Memória",
         "Fabricante": "Kingston",
-        "Modelo": "KTD-PE316EK4/32G",
+        "Modelo": "",
         "Local": "Estoque",
         "Saida": "",
-        "Observacao": "Para Desktop",
+        "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 8,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1600,
-        "LowVoltage": "não",
-        "Rank": "2Rx8",
-        "DIMM": "UDIMM",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "E",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -53351,7 +54677,7 @@
         "Fabricante": "Hynix",
         "Modelo": "HMT351R7CFR4A-H9",
         "Local": "Estoque",
-        "Saida": "",
+        "Saida": "ok",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
@@ -53365,7 +54691,7 @@
         "LowVoltage": "sim",
         "Rank": "2Rx8",
         "DIMM": "RDIMM",
-        "TaxaDeTransmissao": 0,
+        "TaxaDeTransmissao": 10600,
         "Simbolo": "R",
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
@@ -59649,24 +60975,24 @@
         "Serial": "SBR2015050514781",
         "Categoria": "Memória",
         "Fabricante": "Smart",
-        "Modelo": "M391B1G73QH0-CK0",
+        "Modelo": "",
         "Local": "Estoque",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 8,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1600,
-        "LowVoltage": "não",
-        "Rank": "2Rx8",
-        "DIMM": "UDIMM",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "E",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -60139,24 +61465,24 @@
         "Serial": "SBR1013122123331",
         "Categoria": "Memória",
         "Fabricante": "Smart",
-        "Modelo": "M391B5773DH0-YK0",
+        "Modelo": "M391B5773DH0-CF8",
         "Local": "Estoque",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 2,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1600,
-        "LowVoltage": "sim",
-        "Rank": "1Rx8",
-        "DIMM": "UDIMM",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "E",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -60209,24 +61535,24 @@
         "Serial": "SBR2013122123587",
         "Categoria": "Memória",
         "Fabricante": "Smart",
-        "Modelo": "M391B5773DH0-YK0",
+        "Modelo": "M391B5773DH0-CF8",
         "Local": "Estoque",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 2,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1600,
-        "LowVoltage": "sim",
-        "Rank": "1Rx8",
-        "DIMM": "UDIMM",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "E",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -64549,24 +65875,24 @@
         "Serial": "M391B5673EH1-CH9 0947 - 0679",
         "Categoria": "Memória",
         "Fabricante": "Samsung",
-        "Modelo": "M391B5673EH1-CH9",
+        "Modelo": "",
         "Local": "Estoque",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 2,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1333,
-        "LowVoltage": "não",
-        "Rank": "2Rx8",
-        "DIMM": "UDIMM",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "E",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -67630,7 +68956,7 @@
         "Categoria": "HD",
         "Fabricante": "Dell",
         "Modelo": "ST31000524NS",
-        "Local": "1054",
+        "Local": "?",
         "Saida": "27/02/2023",
         "Observacao": "Ex BR Super",
         "Interface": "SATA",
@@ -67770,8 +69096,8 @@
         "Categoria": "HD",
         "Fabricante": "Crucial",
         "Modelo": "CT2000MX500SSD1",
-        "Local": "1054",
-        "Saida": "04/07/2023",
+        "Local": "Estoque",
+        "Saida": "",
         "Observacao": "",
         "Interface": "SATA",
         "Tamanho": 2.5,
@@ -75323,14 +76649,14 @@
       },
       {
         "Aquisicao": "",
-        "Entrada": "04/07/2023",
+        "Entrada": "",
         "Patrimonio": 48,
         "Status": "À testar",
         "Serial": "BR-0KW557-70713-7CE-2K1A",
         "Categoria": "Monitor",
         "Fabricante": "Dell",
         "Modelo": "1908FP",
-        "Local": "Estoque",
+        "Local": "DataCenter",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
@@ -76583,14 +77909,14 @@
       },
       {
         "Aquisicao": "",
-        "Entrada": "04/07/2023",
+        "Entrada": "",
         "Patrimonio": 66,
         "Status": "À testar",
         "Serial": "0066",
         "Categoria": "Suporte Monitor",
         "Fabricante": "Dell",
         "Modelo": "",
-        "Local": "Estoque",
+        "Local": "DataCenter",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
@@ -80083,14 +81409,14 @@
       },
       {
         "Aquisicao": "",
-        "Entrada": "04/07/2023",
+        "Entrada": "",
         "Patrimonio": 116,
         "Status": "À testar",
         "Serial": "291CNP7535",
         "Categoria": "Lâmina",
         "Fabricante": "Dell",
         "Modelo": "C6100",
-        "Local": "Estoque",
+        "Local": "SNP07",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
@@ -82756,17 +84082,17 @@
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 4,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1600,
-        "LowVoltage": "não",
-        "Rank": "1Rx8",
-        "DIMM": "",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -82960,7 +84286,7 @@
         "Categoria": "HD",
         "Fabricante": "Micron",
         "Modelo": "RealSSD P300 2.5",
-        "Local": "962",
+        "Local": "1504",
         "Saida": "22/06/2023",
         "Observacao": "Ex BR Super",
         "Interface": "SATA",
@@ -105779,24 +107105,24 @@
         "Serial": "SBR2011022201134",
         "Categoria": "Memória",
         "Fabricante": "Smart",
-        "Modelo": "M391B2873FH0-CH9",
+        "Modelo": "M391B2873FH0",
         "Local": "Estoque",
         "Saida": "",
         "Observacao": "",
         "Interface": null,
         "Tamanho": 0.0,
         "FormaDeArmazenamento": null,
-        "CapacidadeEmGB": 1,
+        "CapacidadeEmGB": 0,
         "RPM": 0,
         "VelocidadeDeLeitura": 0.0,
         "Enterprise": null,
-        "Tipo": "DDR3",
-        "VelocidadeMHz": 1333,
-        "LowVoltage": "não",
-        "Rank": "1Rx8",
-        "DIMM": "UDIMM",
+        "Tipo": null,
+        "VelocidadeMHz": 0,
+        "LowVoltage": null,
+        "Rank": null,
+        "DIMM": null,
         "TaxaDeTransmissao": 0,
-        "Simbolo": "E",
+        "Simbolo": null,
         "QuantidadeDePortas": 0,
         "QuaisConexoes": null,
         "SuportaFibraOptica": null,
@@ -114313,15 +115639,15 @@
       },
       {
         "Aquisicao": "19/06/2023",
-        "Entrada": "",
+        "Entrada": "21/06/2023",
         "Patrimonio": 1567,
         "Status": "Funciona",
         "Serial": "WEI17306613",
         "Categoria": "HD",
         "Fabricante": "UpGamer",
         "Modelo": "UP500",
-        "Local": "1054",
-        "Saida": "04/07/2023",
+        "Local": "Estoque",
+        "Saida": "",
         "Observacao": null,
         "Interface": "SATA",
         "Tamanho": 2.5,
@@ -114383,15 +115709,15 @@
       },
       {
         "Aquisicao": "19/06/2023",
-        "Entrada": "",
+        "Entrada": "21/06/2023",
         "Patrimonio": 1568,
         "Status": "Funciona",
         "Serial": "WEI17306627",
         "Categoria": "HD",
         "Fabricante": "UpGamer",
         "Modelo": "UP500",
-        "Local": "1054",
-        "Saida": "04/07/2023",
+        "Local": "Estoque",
+        "Saida": "",
         "Observacao": null,
         "Interface": "SATA",
         "Tamanho": 2.5,
@@ -116268,7 +117594,7 @@
         "EntradaRJ45": null,
         "AdaptadorAC": null,
         "Windows": null,
-        "Pessoa": null,
+        "Pessoa": "",
         "CentroDeCusto": ""
       },
       {
@@ -116338,7 +117664,7 @@
         "EntradaRJ45": null,
         "AdaptadorAC": null,
         "Windows": null,
-        "Pessoa": null,
+        "Pessoa": "",
         "CentroDeCusto": ""
       },
       {
@@ -116408,1764 +117734,10 @@
         "EntradaRJ45": null,
         "AdaptadorAC": null,
         "Windows": null,
-        "Pessoa": null,
+        "Pessoa": "",
         "CentroDeCusto": ""
       }
     ]
   },
-  "lastSceneBuildIndex": 0,
-  "3e52c414-566e-4fb4-b6de-6750d5546d5d": {
-    "NoPaNoSeManager": []
-  },
-  "35aac1d1-9605-4002-aa5c-4f219df57d60": {
-    "UsersManager": [
-      {
-        "username": "admin",
-        "password": "admin",
-        "accesslevel": 10
-      }
-    ]
-  },
-  "994252a3-6a96-404b-b86a-e4b1a09ef0c6": {
-    "NoPaNoSeImporter": [
-      {
-        "ItemName": "Adaptador de gaveta HP",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Adaptador de gaveta Supermicro",
-        "Quantity": 9
-      },
-      {
-        "ItemName": "Adaptador de VGA para placa de vídeo",
-        "Quantity": 7
-      },
-      {
-        "ItemName": "Adaptador DisplayPort - Mini DisplayPort",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Adaptador DVI-D - DisplayPort",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Adaptador DVI-D - HDMI",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Adaptador DVI-D - Mini DisplayPort",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Adaptador DVI-I - DisplayPort",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Adaptador HDMI - DVI-D",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Adaptador IDE - SATA",
-        "Quantity": 7
-      },
-      {
-        "ItemName": "Adaptador SATA Macho - SATA Fêmea",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Adaptador VGA - DVI-I",
-        "Quantity": 0
-      },
-      {
-        "ItemName": "Adaptador VGA - HDMI",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Adaptador VGA Fêmea para placa de vídeo",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Benjamim",
-        "Quantity": 12
-      },
-      {
-        "ItemName": "Cabo Console",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Cabo Console Invertido",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Cabo de força padrão antigo",
-        "Quantity": 27
-      },
-      {
-        "ItemName": "Cabo de força padrão novo",
-        "Quantity": 8
-      },
-      {
-        "ItemName": "Cabo de força PDU",
-        "Quantity": 9
-      },
-      {
-        "ItemName": "Cabo de placa controladora",
-        "Quantity": 7
-      },
-      {
-        "ItemName": "Cabo DisplayPort - DisplayPort",
-        "Quantity": 5
-      },
-      {
-        "ItemName": "Cabo DVI-D - DVI-D",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Cabo DVI-I - HDMI",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Cabo Mini DisplayPort - DisplayPort",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Cabo sata comum",
-        "Quantity": 29
-      },
-      {
-        "ItemName": "Cabo sata grande",
-        "Quantity": 11
-      },
-      {
-        "ItemName": "Cabo VGA - HDMI",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Cabo VGA - VGA",
-        "Quantity": 30
-      },
-      {
-        "ItemName": "Cabo VGA Macho - VGA Fêmea",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Caddy para gaveta HP",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Conector para HD externo",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Espelho cego - perfil alto",
-        "Quantity": 62
-      },
-      {
-        "ItemName": "Espelho cego - perfil baixo",
-        "Quantity": 24
-      },
-      {
-        "ItemName": "Espelho Gabinete",
-        "Quantity": 10
-      },
-      {
-        "ItemName": "Espelho rede - perfil alto - 1 entrada",
-        "Quantity": 11
-      },
-      {
-        "ItemName": "Espelho rede - perfil alto - 2 entradas",
-        "Quantity": 6
-      },
-      {
-        "ItemName": "Espelho rede - perfil alto - 3 entradas",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Espelho rede - perfil alto - 4 entradas",
-        "Quantity": 6
-      },
-      {
-        "ItemName": "Espelho rede - perfil baixo - 1 entrada",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Espelho rede - perfil baixo - 2 entradas",
-        "Quantity": 6
-      },
-      {
-        "ItemName": "Espelho rede - perfil baixo - 4 entradas",
-        "Quantity": 4
-      },
-      {
-        "ItemName": "Espelho SAS - perfil alto",
-        "Quantity": 5
-      },
-      {
-        "ItemName": "Espelho SAS - perfil baixo",
-        "Quantity": 3
-      },
-      {
-        "ItemName": "Espelho vídeo - perfil alto - DVI, DisplayPort",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Espelho ví­deo - perfil alto - DVI; VGA; HDMI",
-        "Quantity": 6
-      },
-      {
-        "ItemName": "Espelho vídeo - perfil alto - Mini display port",
-        "Quantity": 3
-      },
-      {
-        "ItemName": "Espelho vídeo - perfil alto - VGA; DVI; S-Video",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Espelho vídeo - perfil baixo - DVI; HDMI",
-        "Quantity": 6
-      },
-      {
-        "ItemName": "Espelho vídeo - perfil baixo - Mini display port",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Espelho vídeo - perfil baixo - VGA",
-        "Quantity": 4
-      },
-      {
-        "ItemName": "Fibra",
-        "Quantity": 34
-      },
-      {
-        "ItemName": "Gaveta 2.5 Dell C6200",
-        "Quantity": 10
-      },
-      {
-        "ItemName": "Gaveta 2.5\" Dell Optiplex 3070",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Gaveta 2.5\" Dell PowerEdge",
-        "Quantity": 5
-      },
-      {
-        "ItemName": "Gaveta 3.5\" Dell C6100/C6200",
-        "Quantity": 11
-      },
-      {
-        "ItemName": "Gaveta 3.5\" Dell Optiplex",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Gaveta 3.5\" Dell Optiplex C-3598",
-        "Quantity": 4
-      },
-      {
-        "ItemName": "Gaveta 3.5\" Dell PowerEdge",
-        "Quantity": 3
-      },
-      {
-        "ItemName": "Gaveta 3.5\" Dell RXXX",
-        "Quantity": 20
-      },
-      {
-        "ItemName": "Gaveta 3.5\" HP Gen 8/9",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Gaveta 3.5\" HP Non HotPlug",
-        "Quantity": 4
-      },
-      {
-        "ItemName": "Gaveta cega 2.5\" Dell",
-        "Quantity": 12
-      },
-      {
-        "ItemName": "Gaveta cega 2.5\" Dell gen 14",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Gaveta cega 3.5\" Dell C6100/C6220",
-        "Quantity": 3
-      },
-      {
-        "ItemName": "Gaveta cega 3.5\" Dell C6600",
-        "Quantity": 5
-      },
-      {
-        "ItemName": "Gaveta cega 3.5\" Dell Gen 14",
-        "Quantity": 12
-      },
-      {
-        "ItemName": "Gaveta cega 3.5\" Dell PowerEdge",
-        "Quantity": 10
-      },
-      {
-        "ItemName": "Gaveta cega 3.5\" Dell PowerEdge (2)",
-        "Quantity": 5
-      },
-      {
-        "ItemName": "Gaveta cega 3.5\" Dell T430",
-        "Quantity": 9
-      },
-      {
-        "ItemName": "Gaveta cega 3.5\" IBM",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Gaveta para desktop",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Gaveta plástica 3.5\" azul IBM",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Gaveta/Adaptador WD",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Mini Gender Changer VGA",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Módulo para fonte IDE",
-        "Quantity": 2
-      },
-      {
-        "ItemName": "Módulo para fonte SATA",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Switch KVM",
-        "Quantity": 1
-      },
-      {
-        "ItemName": "Tampa cega para gabinete",
-        "Quantity": 6
-      },
-      {
-        "ItemName": "Adaptador de gaveta 2,5 -> 3,5",
-        "Quantity": 10
-      }
-    ]
-  },
-  "d5670d65-04ae-4c09-a653-30cc4effad22": {
-    "ImportCategories": [
-      {
-        "Category": "Adaptador AC"
-      },
-      {
-        "Category": "Carregador"
-      },
-      {
-        "Category": "Desktop"
-      },
-      {
-        "Category": "Fonte"
-      },
-      {
-        "Category": "Gbic"
-      },
-      {
-        "Category": "Gbic"
-      },
-      {
-        "Category": "HD"
-      },
-      {
-        "Category": "iDrac"
-      },
-      {
-        "Category": "Memória"
-      },
-      {
-        "Category": "Monitor"
-      },
-      {
-        "Category": "Mouse"
-      },
-      {
-        "Category": "No break"
-      },
-      {
-        "Category": "Notebook"
-      },
-      {
-        "Category": "Outros"
-      },
-      {
-        "Category": "Placa controladora"
-      },
-      {
-        "Category": "Placa de captura de vídeo"
-      },
-      {
-        "Category": "Placa de rede"
-      },
-      {
-        "Category": "Placa de som"
-      },
-      {
-        "Category": "Placa de vídeo"
-      },
-      {
-        "Category": "Processador"
-      },
-      {
-        "Category": "Roteador"
-      },
-      {
-        "Category": "Servidor"
-      },
-      {
-        "Category": "Storage NAS"
-      },
-      {
-        "Category": "Switch"
-      },
-      {
-        "Category": "Teclado"
-      },
-      {
-        "Category": "USB"
-      }
-    ]
-  },
-  "d2b12315-660e-4f44-bb3f-93ef05739adc": {
-    "ImportLocations": [
-      {
-        "Location": "Bancada de testes"
-      },
-      {
-        "Location": "BRT"
-      },
-      {
-        "Location": "Concert"
-      },
-      {
-        "Location": "DataCenter"
-      },
-      {
-        "Location": "Descarte"
-      },
-      {
-        "Location": "Drogaria Cristina"
-      },
-      {
-        "Location": "Encontre sua franquia"
-      },
-      {
-        "Location": "Escritório"
-      },
-      {
-        "Location": "Estoque"
-      },
-      {
-        "Location": "Fumsoft"
-      },
-      {
-        "Location": "IOCT"
-      },
-      {
-        "Location": "Master truck"
-      },
-      {
-        "Location": "Netlite"
-      },
-      {
-        "Location": "Oficina da roupa"
-      },
-      {
-        "Location": "Outros"
-      },
-      {
-        "Location": "SNP01"
-      },
-      {
-        "Location": "SNP02"
-      },
-      {
-        "Location": "SNP03"
-      },
-      {
-        "Location": "SNP04"
-      },
-      {
-        "Location": "SNP05"
-      },
-      {
-        "Location": "SNP06"
-      },
-      {
-        "Location": "SNP07"
-      },
-      {
-        "Location": "SNP08"
-      },
-      {
-        "Location": "Top cintos"
-      },
-      {
-        "Location": "Trop 1"
-      },
-      {
-        "Location": "Trop 2"
-      },
-      {
-        "Location": "Uni Santos"
-      },
-      {
-        "Location": "Zaplus Car"
-      }
-    ]
-  },
-  "84c8fa63-ef30-44e3-8471-8b41d52b8a58": {
-    "NoPaNoSeMovementSaver": [
-      {
-        "NoPaName": "dghdfg",
-        "NoPaQuantity": "4",
-        "NoPaUsername": "admin",
-        "NoPaDate": "22/35/23",
-        "NoPaFromWhere": "Estoque",
-        "NoPaToWhere": "Bancada de testes"
-      }
-    ]
-  },
-  "1b143eec-06c0-4454-b374-58fd843e0f9b": {
-    "RegularMovementSaver": [
-      {
-        "RegPatrimonio": 741852,
-        "RegSerial": "dzfgbzsd",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 741852,
-        "RegSerial": "dzfgbzsd",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Drogaria Cristina",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1481,
-        "RegSerial": "181017D",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1482,
-        "RegSerial": "181010E",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1199,
-        "RegSerial": "CN-0PH074-42940-03R-00GR-A00",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Uni Santos",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1183,
-        "RegSerial": "32749",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 585,
-        "RegSerial": "0585",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 560,
-        "RegSerial": "1074F64MX200P9",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 557,
-        "RegSerial": "1074F64MX21219P",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 562,
-        "RegSerial": "1074F64MX2170HX",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 740,
-        "RegSerial": "1074F64MX21045Q",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 563,
-        "RegSerial": "1074F64MX2170HV",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 741,
-        "RegSerial": "1074F64MX2123JM",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 123,
-        "RegSerial": "1074F64MX210008",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 563,
-        "RegSerial": "1074F64MX2170HV",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 741,
-        "RegSerial": "1074F64MX2123JM",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 561,
-        "RegSerial": "1074F64MX2010RP",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1287,
-        "RegSerial": "101TB53MX13224A C1CKN\r",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 885,
-        "RegSerial": "0885",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1295,
-        "RegSerial": "101TB53MX13224B C1KCN",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1286,
-        "RegSerial": "101TB53MX13224E C1CKN\r",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1258,
-        "RegSerial": "6Y21B0150601\r",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 515,
-        "RegSerial": "HMT351R7CFR8A-H9 T8 AC - 0515",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 529,
-        "RegSerial": "HMT351R7BFR8A-H9 T7 AB - 0529",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 527,
-        "RegSerial": "HMT351R7CFR8A-H9 T8 AB - 0527",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 867,
-        "RegSerial": "86Q0A04PF08C",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 849,
-        "RegSerial": "S0M1BAQP",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 868,
-        "RegSerial": "9690A0R7F08C",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1199",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 869,
-        "RegSerial": "86R0A032F08C",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1089,
-        "RegSerial": "Z1X19LBM",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1512,
-        "RegSerial": "46BAK9J2FG0B",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 712,
-        "RegSerial": "ZFL0D9X0",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 827,
-        "RegSerial": "Z1E44A0Y",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1183",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 82,
-        "RegSerial": "HMT31GR7CFR4A-PB T8 AF 1327 - 0082",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 295,
-        "RegSerial": "4A003EH + 1329H80722",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1460,
-        "RegSerial": "4A003EH+1329H806A5",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 748,
-        "RegSerial": "4A003EH+1329H80725",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "1183",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 714,
-        "RegSerial": "1234034B0B85",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 730,
-        "RegSerial": "BFHX4SUF",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Concert",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 752,
-        "RegSerial": "Z1P56SF4",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Concert",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 202,
-        "RegSerial": "Z521FYU0",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "962",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1146,
-        "RegSerial": "WCC6Z3DA5JHZ",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Bancada de testes",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 925,
-        "RegSerial": "S2AGZQG7",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Concert",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 926,
-        "RegSerial": "6VMY7BHQ",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Concert",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1324,
-        "RegSerial": "MT36KSF2G72PZ-1G4E1FG 1324",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "116",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 789,
-        "RegSerial": "MT36KSF2G72PZ-1G4E1FG 1325 - 0789",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "116",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1565,
-        "RegSerial": "BR 00RTP1 11050 3A9 0D0B",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "116",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1564,
-        "RegSerial": "RDUZV0FTC4W0CC",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "116",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 649,
-        "RegSerial": "M393B1K70CH0-YH9 649",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 774,
-        "RegSerial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0774",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "116",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 534,
-        "RegSerial": "M393B5170FH0-CH9 1128 - 0534",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 539,
-        "RegSerial": "M393B5170FH0-CH9 1128 - 0539",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 777,
-        "RegSerial": "HMT42GR7MFR4A-H9 T3 AF 1349 - 0777",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "116",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 778,
-        "RegSerial": "0000298163",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "116",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 764,
-        "RegSerial": "BFD1309J44566",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 296,
-        "RegSerial": "4A003EH + 1329H80957",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "119",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1105,
-        "RegSerial": "4A003EH+1329H8096D",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 297,
-        "RegSerial": "4A003EH + 1329H80958",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1461,
-        "RegSerial": "4A003EH+1329H80733",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 765,
-        "RegSerial": "0765",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "584",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 792,
-        "RegSerial": "80CE0216163228E773",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "584",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 799,
-        "RegSerial": "M393B2G70DB0-YK0",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "584",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 800,
-        "RegSerial": "1000000340066466",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "584",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 502,
-        "RegSerial": "0502",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 781,
-        "RegSerial": "MT36KSF2G72PZ-1G6E1HI 1428",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1248,
-        "RegSerial": "S1516JH0Y",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 504,
-        "RegSerial": "0504",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 505,
-        "RegSerial": "0505",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 795,
-        "RegSerial": "80CE0216163228CDA4",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "584",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1247,
-        "RegSerial": "S1516JJHV\r",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 797,
-        "RegSerial": "1000000340066457",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "584",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 798,
-        "RegSerial": "M393B2G70DB0-TK0 1343",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "584",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 503,
-        "RegSerial": "0503",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1326,
-        "RegSerial": "BR 00RTP1 11050 3C3 0LAL",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 943,
-        "RegSerial": "1323037cb267",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Concert",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 7,
-        "RegSerial": "0007",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "114",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 8,
-        "RegSerial": "W4J0VV0T",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 9,
-        "RegSerial": "0009",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "114",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 708,
-        "RegSerial": "BFHX1E4F",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "114",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 25,
-        "RegSerial": "Z1P56NGF",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Concert",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 212,
-        "RegSerial": "MC36H8NB",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "114",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 591,
-        "RegSerial": "WMAYP0F2F1EP",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 204,
-        "RegSerial": "S2BWJ60B624945",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Bancada de testes",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 208,
-        "RegSerial": "S2BWJ60B146191",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Bancada de testes",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 309,
-        "RegSerial": "VA26S30047",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1190,
-        "RegSerial": "1231034615E2",
-        "RegUsername": "admin",
-        "RegDate": "22/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 13,
-        "RegSerial": "0013",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1316,
-        "RegSerial": "M1203035692\r",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Trop 1",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 35,
-        "RegSerial": "V366298 2580-AF1",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 573,
-        "RegSerial": "10912580",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 575,
-        "RegSerial": "1953AIA005118",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 578,
-        "RegSerial": "10907634",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 875,
-        "RegSerial": "0875",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 878,
-        "RegSerial": "0878",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1188,
-        "RegSerial": "0214HQAB705616W",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Oficina da roupa",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1189,
-        "RegSerial": "Y1X9HXHF905218D",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Oficina da roupa",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 773,
-        "RegSerial": "1LNS2V1",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 581,
-        "RegSerial": "968GSX201200437",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 985,
-        "RegSerial": "123651",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Oficina da roupa",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 572,
-        "RegSerial": "0572",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 580,
-        "RegSerial": "0580",
-        "RegUsername": "admin",
-        "RegDate": "28/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 766,
-        "RegSerial": "NALDA-494M75-TW8H6",
-        "RegUsername": "admin",
-        "RegDate": "29/06/2023",
-        "RegFromWhere": "IOCT",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 769,
-        "RegSerial": "CBJNF-K91M6X-TV9LL",
-        "RegUsername": "admin",
-        "RegDate": "29/06/2023",
-        "RegFromWhere": "IOCT",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1522,
-        "RegSerial": "XQV2P0SA",
-        "RegUsername": "admin",
-        "RegDate": "30/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 523,
-        "RegSerial": "HMT351R7CFR4A-H9 T8 AC 1237 - 0523",
-        "RegUsername": "admin",
-        "RegDate": "30/06/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1260,
-        "RegSerial": "02101122012413\r",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Descarte",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 48,
-        "RegSerial": "BR-0KW557-70713-7CE-2K1A",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "SNP07",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 66,
-        "RegSerial": "0066",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "SNP07",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1577,
-        "RegSerial": "11138361",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1281,
-        "RegSerial": "1281",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Uni Santos",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1599,
-        "RegSerial": "0065804758557",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "DataCenter",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 48,
-        "RegSerial": "BR-0KW557-70713-7CE-2K1A",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "DataCenter",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 986,
-        "RegSerial": "36011700000434",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "985",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 510,
-        "RegSerial": "78JYT-19RC50-YV9J5",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Escritório",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 509,
-        "RegSerial": "WJLBP-19XCH8-YWH3B",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Escritório",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 609,
-        "RegSerial": "SBR2015050514781",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 790,
-        "RegSerial": "80CE0216163228E5E1",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1325,
-        "RegSerial": "BR 0KTH1G 11050 363 0Y6W",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1329,
-        "RegSerial": "M393B2G70BH0-YH9 1205 1329",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1559,
-        "RegSerial": "BR 00RTP1 11050 3A8 0CMX",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1105,
-        "RegSerial": "4A003EH+1329H8096D",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 654,
-        "RegSerial": "HMT31GR7BFR4A-H9 T7 AB 1127",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 670,
-        "RegSerial": "HMT31GR7BFR4A-H9 T7 AB 1126",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 807,
-        "RegSerial": "0V1534023M0",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 568,
-        "RegSerial": "M393B1G70BH0-YK0",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 806,
-        "RegSerial": "0V1534027QR",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 743,
-        "RegSerial": "4A003EH+1329H80960",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 669,
-        "RegSerial": "HMT31GR7BFR4A-H9 T7 AE 1203",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 649,
-        "RegSerial": "M393B1K70CH0-YH9 649",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 546,
-        "RegSerial": "1074F64MX2103LG",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 558,
-        "RegSerial": "1074F64MX21000B",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1033,
-        "RegSerial": "11S43X5052YH10MV005DYXFRU",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Encontre sua franquia",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1034,
-        "RegSerial": "11S43X5052YH10MV005DYPFRU",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Encontre sua franquia",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 549,
-        "RegSerial": "1074F64MX21061X",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 547,
-        "RegSerial": "1074F64MX2170CN",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 544,
-        "RegSerial": "1074F64MX21042M",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 523,
-        "RegSerial": "HMT351R7CFR4A-H9 T8 AC 1237 - 0523",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 739,
-        "RegSerial": "1074F64MX21069G",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 528,
-        "RegSerial": "HMT351R7CFR8A-H9 T8 AB - 0528",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 512,
-        "RegSerial": "HMT351R7CFR8A-H9 T8 AC - 0512",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 539,
-        "RegSerial": "M393B5170FH0-CH9 1128 - 0539",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 534,
-        "RegSerial": "M393B5170FH0-CH9 1128 - 0534",
-        "RegUsername": "admin",
-        "RegDate": "03/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1190,
-        "RegSerial": "1231034615E2",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "962",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 875,
-        "RegSerial": "0875",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 878,
-        "RegSerial": "BR-0XV0M1-07591-65C-211I",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 48,
-        "RegSerial": "BR-0KW557-70713-7CE-2K1A",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "DataCenter",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 116,
-        "RegSerial": "291CNP7535",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "SNP07",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 66,
-        "RegSerial": "0066",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "DataCenter",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 723,
-        "RegSerial": "9WK0TEJT",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "1054",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1567,
-        "RegSerial": "WEI17306613",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1568,
-        "RegSerial": "WEI17306627",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 725,
-        "RegSerial": "1803E10B5781",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "Estoque",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 1054,
-        "RegSerial": "CN-0Y104-16293-857-0025 -1053",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "DataCenter",
-        "RegToWhere": "Estoque"
-      },
-      {
-        "RegPatrimonio": 308,
-        "RegSerial": "R106H60K",
-        "RegUsername": "admin",
-        "RegDate": "04/07/2023",
-        "RegFromWhere": "Descarte",
-        "RegToWhere": "Estoque"
-      }
-    ]
-  }
+  "lastSceneBuildIndex": 6
 }

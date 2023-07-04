@@ -67,6 +67,13 @@ namespace Assets.Scripts.Inventory.UpdateItem
                     inputEnabled = false;
                     if (searchingItem)
                     {
+                        if(itemToUpdatePatrimonio.value == "" || itemToUpdatePatrimonio.value == null)
+                        {
+                            EventHandler.CallIsOneMessageOnlyEvent(true);
+                            EventHandler.CallOpenMessageEvent("Empty input");
+                            inputEnabled = true;
+                            return;
+                        }
                         if (!InternalDatabase.Instance.isOfflineProgram)
                         {
                             StartCoroutine(CheckIfItemExists());
@@ -283,6 +290,13 @@ namespace Assets.Scripts.Inventory.UpdateItem
         /// </summary>
         private void ShowUpdateItem()
         {
+            if(itemToUpdate == null)
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Item not found");
+                return;
+            }
+            
             ItemColumns tempItem = ConsultDatabase.Instance.ConsultPatrimonio(itemToUpdate.Patrimonio, HelperMethods.GetCategoryDatabaseToConsult(itemToUpdate.Categoria));
             if (tempItem != null)
             {
@@ -292,7 +306,7 @@ namespace Assets.Scripts.Inventory.UpdateItem
             }
             else
             {
-                //TODO: update the internal database and try again
+               
             }
             searchingItem = false;
             inputsPanel.style.display = DisplayStyle.Flex;
@@ -362,8 +376,8 @@ namespace Assets.Scripts.Inventory.UpdateItem
         /// </summary>
         public void ResetUpdate()
         {
-            ResetInputs();
             searchingItem = true;
+            ResetInputs();            
         }    
         
         private void Testing()

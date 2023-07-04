@@ -446,7 +446,10 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
             choices.Add(item.ItemName);
         }
         itemsNamesDP.choices = choices;
-        itemsNamesDP.value = allitems.noPaNoSeItems[0].ItemName;
+        if (allitems.noPaNoSeItems.Count > 0)
+        {
+            itemsNamesDP.value = allitems.noPaNoSeItems[0].ItemName;
+        }
     }
 
 

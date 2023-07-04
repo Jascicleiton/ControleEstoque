@@ -21,7 +21,7 @@ public class ImportLocations : MonoBehaviour, IJsonSaveable
                 StartCoroutine(ImportLocationsRoutine());
             }
         }
-       GambiarraParaCarregarLocais();
+      // GambiarraParaCarregarLocais();
     }
 
     /// <summary>

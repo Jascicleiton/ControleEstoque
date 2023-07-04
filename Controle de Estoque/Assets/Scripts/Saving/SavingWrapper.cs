@@ -10,20 +10,25 @@ namespace Saving
     {
         private JsonSavingSystem saving;
         const string defaultSaveFile = "BKP - ";
-        private bool isSavingBkpCopy = false;
+        private int bkpIndex = 1;
+        [SerializeField] private int savesCounter = 0;
 
+  
         // Update is called once per frame
         private void Start()
         {
             saving = GetComponent<JsonSavingSystem>();
-            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-            {
-                //DontDestroyOnLoad(this.gameObject);
-               // Load();
-            }
-            else
+            if (!InternalDatabase.Instance.isOfflineProgram)
             {
                 Destroy(this.gameObject);
+            }
+            if (InternalDatabase.Instance.isOfflineProgram == true && PlayerPrefs.HasKey(ConstStrings.SavingCounter))
+            {
+                savesCounter = PlayerPrefs.GetInt(ConstStrings.SavingCounter);
+            }
+            if (InternalDatabase.Instance.isOfflineProgram == true && PlayerPrefs.HasKey(ConstStrings.BkpIndex))
+            {
+                bkpIndex = PlayerPrefs.GetInt(ConstStrings.BkpIndex);
             }
         }
 
@@ -44,26 +49,29 @@ namespace Saving
 
             if(Input.GetKeyDown(KeyCode.F10))
             {
-                isSavingBkpCopy = true;
+                savesCounter = 5;
                 Save();
             }
         }
 
         public void Save()
         {
+            savesCounter++;
             if (saving == null)
             {
                 saving = GetComponent<JsonSavingSystem>();
             }
-            if (!isSavingBkpCopy)
+            saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
+            if (savesCounter >= 5)
             {
-                saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
+                savesCounter = 0;
+                saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString() + " - " + DateTime.Now.ToString("dd-MM-yy") + $" - {bkpIndex}");
+                bkpIndex++;
             }
-            else
-            {
-                saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString() + " - " + DateTime.Now.ToString("dd-mm-yy"));
-                isSavingBkpCopy = false;
-            }
+            
+            PlayerPrefs.SetInt(ConstStrings.SavingCounter, savesCounter);
+            PlayerPrefs.SetInt(ConstStrings.BkpIndex, bkpIndex);
+            PlayerPrefs.Save();
         }
 
         public void Load()
