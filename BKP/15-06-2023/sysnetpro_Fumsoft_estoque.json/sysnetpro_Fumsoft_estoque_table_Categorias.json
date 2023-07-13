@@ -1,0 +1,30 @@
+,{
+    "type": "table",
+    "name": "Categorias",
+    "database": "sysnetpro_Fumsoft_estoque",
+    "data": 
+[
+{
+    "Categorias": "Adaptador AC"
+},
+{
+    "Categorias": "Desktop"
+},
+{
+    "Categorias": "Monitor"
+},
+{
+    "Categorias": "Notebook"
+},
+{
+    "Categorias": "Roteador"
+},
+{
+    "Categorias": "Servidor"
+},
+{
+    "Categorias": "Switch"
+}
+]
+
+}

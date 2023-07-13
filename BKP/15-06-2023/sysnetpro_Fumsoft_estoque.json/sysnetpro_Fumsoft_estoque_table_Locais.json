@@ -1,0 +1,12 @@
+,{
+    "type": "table",
+    "name": "Locais",
+    "database": "sysnetpro_Fumsoft_estoque",
+    "data": 
+[
+{
+    "Local": "Estoque"
+}
+]
+
+}

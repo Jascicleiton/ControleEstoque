@@ -1,0 +1,21 @@
+{
+    "type": "table",
+    "name": "Adaptador_AC",
+    "database": "sysnetpro_Fumsoft_estoque",
+    "data": 
+[
+{
+    "Patrimonio": "28",
+    "Modelo": "VGP-AC19V14",
+    "Voltagem": "19.5",
+    "Amperagem": "4.7"
+},
+{
+    "Patrimonio": "29",
+    "Modelo": "AD6630",
+    "Voltagem": "19",
+    "Amperagem": "2.1"
+}
+]
+
+}

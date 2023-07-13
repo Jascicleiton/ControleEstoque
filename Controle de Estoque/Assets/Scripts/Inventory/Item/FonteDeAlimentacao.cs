@@ -7,15 +7,15 @@ namespace Assets.Scripts.Inventory.Item
     public class FonteDeAlimentacao : ItemParent
     {
         public string OndeFunciona = "";
-        public float Voltagem;
-        public float Amperagem;
+        public float Voltagem_F;
+        public float Amperagem_F;
 
         protected override void Awake()
         {
             base.Awake();
             allValues.Add(OndeFunciona);
-            allValues.Add(Voltagem.ToString());
-            allValues.Add(Amperagem.ToString());
+            allValues.Add(Voltagem_F.ToString());
+            allValues.Add(Amperagem_F.ToString());
         }
     }
 }

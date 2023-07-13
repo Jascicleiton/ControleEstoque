@@ -8,7 +8,7 @@ namespace Assets.Scripts.Inventory.Item
     {
         public string Aquisicao = "";
         public string Entrada = "";
-        public int Patrimonio;
+        public int Patrimonio_I;
         public string Status = "";
         public string Serial = "";
         public string Categoria = "";
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Inventory.Item
         {
             allValues.Add(Aquisicao);
             allValues.Add(Entrada);
-            allValues.Add(Patrimonio.ToString());
+            allValues.Add(Patrimonio_I.ToString());
             allValues.Add(Status);
             allValues.Add(Serial);
             allValues.Add(Categoria);
