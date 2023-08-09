@@ -5,32 +5,36 @@ using UnityEngine.Networking;
 using System;
 using System.IO;
 using Saving;
+using System.Collections.Generic;
+using System.Linq;
 
 public class MovementManager1 : MonoBehaviour
 {
-    private VisualElement root;
-    private TextField itemInformationInput;
-    private VisualElement fromPanel;
-    private DropdownField fromDP;
-    private TextField fromInput;
-    private VisualElement toPanel;
-    private DropdownField toDP;
-    private TextField toInput;
-    private VisualElement whoPanel;
-    private Label whoLabel;
-    private Button resetButton;
-    private Button moveButton;
-    private Button returnButton;
+    private VisualElement _root;
+    private TextField _itemInformationInput;
+    private VisualElement _fromPanel;
+    private DropdownField _fromDP;
+    private TextField _fromInput;
+    private VisualElement _toPanel;
+    private DropdownField _toDP;
+    private TextField _toInput;
+    private VisualElement _whoPanel;
+    private Label _whoLabel;
+    private Button _resetButton;
+    private Button _moveButton;
+    private Button _returnButton;
+    private VisualElement _itemToMoveDetailsContainer;
+    private VisualTreeAsset _itemToMoveDetailsPanel;
 
-    private int itemToChangeIndex;
-    private ItemColumns itemToChange;
-    private bool itemFound = false;
-    private bool inputEnabled = true;
-    private int tempInt = 0; // used for all int.TryParse
-    private bool fromInputEnabled = false;
-    private bool toInputEnabled = false;
+    private int _itemToChangeIndex;
+    private ItemColumns _itemToChange;
+    private bool _itemFound = false;
+    private bool _inputEnabled = true;
+    private int _tempInt = 0; // used for all int.TryParse
+    private bool _fromInputEnabled = false;
+    private bool _toInputEnabled = false;
 
-    MovementRecords movementToRecord;
+    MovementRecords _movementToRecord;
 
     private void OnEnable()
     {
@@ -48,11 +52,11 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (inputEnabled)
+        if (_inputEnabled)
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                if (!itemFound)
+                if (!_itemFound)
                 {                   
                         StartCoroutine(CheckIfItemExists());                   
                 }
@@ -62,39 +66,41 @@ public class MovementManager1 : MonoBehaviour
 
     private void GetUIReferences()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;
-        itemInformationInput = root.Q<TextField>("ParameterTextField");
-        fromPanel = root.Q<VisualElement>("FromContainer");
-        fromDP = root.Q<DropdownField>("FromDP");
-        fromInput = root.Q<TextField>("FromTextField");
-        toPanel = root.Q<VisualElement>("ToContainer");
-        toDP = root.Q<DropdownField>("ToDP");
-        toInput = root.Q<TextField>("ToTextField");
-        whoPanel = root.Q<VisualElement>("WhoContainer");
-        whoLabel = root.Q<Label>("WhoLabel");
-        resetButton = root.Q<Button>("ResetButton");
-        moveButton = root.Q<Button>("MoveButton");
-        returnButton = root.Q<Button>("ReturnButton");
+        _root = GetComponent<UIDocument>().rootVisualElement;
+        _itemInformationInput = _root.Q<TextField>("ParameterTextField");
+        _fromPanel = _root.Q<VisualElement>("FromContainer");
+        _fromDP = _root.Q<DropdownField>("FromDP");
+        _fromInput = _root.Q<TextField>("FromTextField");
+        _toPanel = _root.Q<VisualElement>("ToContainer");
+        _toDP = _root.Q<DropdownField>("ToDP");
+        _toInput = _root.Q<TextField>("ToTextField");
+        _whoPanel = _root.Q<VisualElement>("WhoContainer");
+        _whoLabel = _root.Q<Label>("WhoLabel");
+        _resetButton = _root.Q<Button>("ResetButton");
+        _moveButton = _root.Q<Button>("MoveButton");
+        _returnButton = _root.Q<Button>("ReturnButton");
+        _itemToMoveDetailsPanel = Resources.Load<VisualTreeAsset>("Templates/ResultPanel");
+        _itemToMoveDetailsContainer = _root.Q<VisualElement>("ItemDetailsPanel");
         SubscribeToEvents();
         FillDropDowns();
     }
 
     private void SubscribeToEvents()
     {
-        resetButton.clicked += () => { ResetMovement(); };
-        moveButton.clicked += () => { MoveItemClicked(); };
-        returnButton.clicked += () => { ReturnToPreviousScreen(); };
-        fromDP.RegisterCallback<ChangeEvent<string>>(ShowHideFromLocationInput);
-        toDP.RegisterCallback<ChangeEvent<string>>(ShowHideToLocationInput);
+        _resetButton.clicked += () => { ResetMovement(); };
+        _moveButton.clicked += () => { MoveItemClicked(); };
+        _returnButton.clicked += () => { ReturnToPreviousScreen(); };
+        _fromDP.RegisterCallback<ChangeEvent<string>>(ShowHideFromLocationInput);
+        _toDP.RegisterCallback<ChangeEvent<string>>(ShowHideToLocationInput);
     }
 
     private void UnsubscribeToEvents()
     {
-        resetButton.clicked -= () => { ResetMovement(); };
-        moveButton.clicked -= () => { MoveItemClicked(); };
-        returnButton.clicked -= () => { ReturnToPreviousScreen(); };
-        fromDP.UnregisterCallback<ChangeEvent<string>>(ShowHideFromLocationInput);
-        toDP.UnregisterCallback<ChangeEvent<string>>(ShowHideToLocationInput);
+        _resetButton.clicked -= () => { ResetMovement(); };
+        _moveButton.clicked -= () => { MoveItemClicked(); };
+        _returnButton.clicked -= () => { ReturnToPreviousScreen(); };
+        _fromDP.UnregisterCallback<ChangeEvent<string>>(ShowHideFromLocationInput);
+        _toDP.UnregisterCallback<ChangeEvent<string>>(ShowHideToLocationInput);
     }
 
     /// <summary>
@@ -103,11 +109,11 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private IEnumerator CheckIfItemExists()
     {
-        itemFound = false;
+        _itemFound = false;
 
-        if (int.TryParse(itemInformationInput.text, out tempInt))
+        if (int.TryParse(_itemInformationInput.text, out _tempInt))
         {
-            itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase);
+            _itemToChange = ConsultDatabase.Instance.ConsultPatrimonio(_tempInt, InternalDatabase.Instance.fullDatabase);
         }
         else
         {
@@ -118,21 +124,21 @@ public class MovementManager1 : MonoBehaviour
 
         if (InternalDatabase.Instance.isOfflineProgram)
         {
-            if(itemToChange != null)
+            if(_itemToChange != null)
             {
-                itemFound = true;
+                _itemFound = true;
                 ShouldHidePanels(false);
-                if (CheckIfLocationIsRegistered(itemToChange.Local))
+                if (CheckIfLocationIsRegistered(_itemToChange.Local))
                 {
-                    fromDP.value = itemToChange.Local;
+                    _fromDP.value = _itemToChange.Local;
                 }
                 else
                 {
-                    fromDP.value = "Outros";
-                    fromInput.style.visibility = Visibility.Visible;
-                    fromInput.value = itemToChange.Local;
+                    _fromDP.value = "Outros";
+                    _fromInput.style.visibility = Visibility.Visible;
+                    _fromInput.value = _itemToChange.Local;
                 }
-                whoLabel.text = UsersManager.Instance.currentUser.GetUsername();
+                _whoLabel.text = UsersManager.Instance.currentUser.GetUsername();
                 EnableDisableMoveButton();
                 EventHandler.CallChangeAnimation("2");
             }
@@ -143,12 +149,12 @@ public class MovementManager1 : MonoBehaviour
             }
             yield break;
         }
-        WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, itemInformationInput.text);
+        WWWForm consultPatrimonioForm = CreateForm.GetConsultPatrimonioForm(ConstStrings.ConsultKey, _itemInformationInput.text);
 
         UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(consultPatrimonioForm, "consultpatrimonio.php", 3);
 
         MouseManager.Instance.SetWaitingCursor();
-        inputEnabled = false;
+        _inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
 
         if (createPostRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -174,7 +180,7 @@ public class MovementManager1 : MonoBehaviour
             }
             else if (response == "Item found")
             {
-                itemFound = true;
+                _itemFound = true;
                 EnableDisableMoveButton();
                 EventHandler.CallChangeAnimation("2");
             }
@@ -195,28 +201,85 @@ public class MovementManager1 : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         MouseManager.Instance.SetDefaultCursor();
-        inputEnabled = true;
-        if (itemFound)
+        _inputEnabled = true;
+        if (_itemFound)
         {
             ShouldHidePanels(false);
-            if (CheckIfLocationIsRegistered(itemToChange.Local))
+            if (CheckIfLocationIsRegistered(_itemToChange.Local))
             {
-                fromDP.value = itemToChange.Local;
+                _fromDP.value = _itemToChange.Local;
             }
             else
             {
-                fromDP.value = "Outros";
-                fromInput.style.visibility = Visibility.Visible;
-                fromInput.value = itemToChange.Local;
+                _fromDP.value = "Outros";
+                _fromInput.style.visibility = Visibility.Visible;
+                _fromInput.value = _itemToChange.Local;
             }
-            whoLabel.text = UsersManager.Instance.currentUser.GetUsername();
+            _whoLabel.text = UsersManager.Instance.currentUser.GetUsername();
+            ShowItemDetails();
         }
         else
         {
-            itemFound = false;
+            _itemFound = false;
             EventHandler.CallIsOneMessageOnlyEvent(true);
             EventHandler.CallOpenMessageEvent("Item not found");
             //ShowMessage(itemFound);
+        }
+    }
+
+    private void ShowItemDetails()
+    {
+        DeleteItemDetails();
+        Dictionary<string, List<string>> dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(_itemToChange, _itemToChange.Categoria);
+        List<string> names = new List<string>();
+        List<string> values = new List<string>();
+        dictionary.TryGetValue("Names", out names);
+        dictionary.TryGetValue("Values", out values);
+        var itemPanel = _itemToMoveDetailsPanel.Instantiate();
+        _itemToMoveDetailsContainer.Add(itemPanel);
+        List<VisualElement> itemBoxes = itemPanel.Q<VisualElement>("Results").Children().ToList();
+        List<Label> parameterNamesLabels = itemPanel.Query<Label>(name: "ParameterName").ToList();
+        List<Label> parameterValuesLabels = itemPanel.Query<Label>(name: "ParameterValue").ToList();
+        Label patrimonioLabel = itemPanel.Q<Label>("PatrimonioLabel");
+        patrimonioLabel.text = _itemToChange.Patrimonio.ToString();
+        for (int i = 0; i < parameterNamesLabels.Count; i++)
+        {
+            if(i < names.Count)
+            {
+                parameterNamesLabels[i].text = names[i];
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        for (int i = 0; i < parameterValuesLabels.Count; i++)
+        {
+            if (i < values.Count)
+            {
+                parameterValuesLabels[i].text = values[i];
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        for (int i = 0; i < parameterNamesLabels.Count; i++)
+        {
+            if (parameterNamesLabels[i] != null && parameterNamesLabels[i].text == "")
+            {
+                itemBoxes[i].style.display = DisplayStyle.None;
+            }
+        }
+    }
+
+    private void DeleteItemDetails()
+    {
+        if (_itemToMoveDetailsContainer.childCount > 0)
+        {           
+            _itemToMoveDetailsContainer.RemoveAt(0);
         }
     }
 
@@ -228,24 +291,24 @@ public class MovementManager1 : MonoBehaviour
         EventHandler.CallIsOneMessageOnlyEvent(true);
         WWWForm moveItemForm = new WWWForm();
 
-        moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, itemInformationInput.text,
-        itemToChange.Serial, UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"),
+        moveItemForm = CreateForm.GetMoveItemForm(ConstStrings.MoveItemKey, _itemInformationInput.text,
+        _itemToChange.Serial, UsersManager.Instance.currentUser.GetUsername(), DateTime.Now.ToString("dd/MM/yyyy"),
         GetFromLocation(), GetToLocation());
 
 
         UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(moveItemForm, ConstStrings.MoveItem, 3);
         MouseManager.Instance.SetWaitingCursor();
-        inputEnabled = false;
+        _inputEnabled = false;
         yield return createPostRequest.SendWebRequest();
         if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
         {
            // Debug.LogWarning("MoveItem: itemMoved");
-            itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
+            _itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
             UpdateItemToChange();
             UpdateDatabase();
             createPostRequest.Dispose();
             MouseManager.Instance.SetDefaultCursor();
-            itemFound = false;
+            _itemFound = false;
             ResetInputs();
             EventHandler.CallChangeAnimation("HelpMovement");
         }
@@ -255,18 +318,18 @@ public class MovementManager1 : MonoBehaviour
             createPostRequest.Dispose();
         }
         MouseManager.Instance.SetDefaultCursor();
-        inputEnabled = true;
+        _inputEnabled = true;
     }
 
     private void MoveItemOffLine()
     {
-        itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
+        _itemToChangeIndex = ConsultDatabase.Instance.GetItemIndex();
         UpdateItemToChange();
         UpdateDatabase();
         ResetInputs();
-        itemFound = false;
+        _itemFound = false;
         MovementRecords newMovement = new MovementRecords();
-        newMovement.item = itemToChange;
+        newMovement.item = _itemToChange;
         newMovement.date = DateTime.Now.ToString("dd/MM/yyyy");
         newMovement.username = UsersManager.Instance.currentUser.GetUsername();
         newMovement.fromWhere = GetFromLocation();
@@ -284,17 +347,17 @@ public class MovementManager1 : MonoBehaviour
     {
         if (shouldHide)
         {
-            fromPanel.style.visibility = Visibility.Hidden;
-            toPanel.style.visibility = Visibility.Hidden;
-            whoPanel.style.visibility = Visibility.Hidden;
-            fromInput.style.visibility = Visibility.Hidden;
-            fromInput.style.visibility = Visibility.Hidden;
+            _fromPanel.style.visibility = Visibility.Hidden;
+            _toPanel.style.visibility = Visibility.Hidden;
+            _whoPanel.style.visibility = Visibility.Hidden;
+            _fromInput.style.visibility = Visibility.Hidden;
+            _fromInput.style.visibility = Visibility.Hidden;
         }
         else
         {
-            fromPanel.style.visibility = Visibility.Visible;
-            toPanel.style.visibility = Visibility.Visible;
-            whoPanel.style.visibility = Visibility.Visible;
+            _fromPanel.style.visibility = Visibility.Visible;
+            _toPanel.style.visibility = Visibility.Visible;
+            _whoPanel.style.visibility = Visibility.Visible;
         }
     }
 
@@ -303,35 +366,35 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void UpdateItemToChange()
     {
-        movementToRecord = new MovementRecords();
-        movementToRecord.fromWhere = itemToChange.Local;
-        movementToRecord.toWhere = toDP.value;
-        if (toDP.value != "Outros")
+        _movementToRecord = new MovementRecords();
+        _movementToRecord.fromWhere = _itemToChange.Local;
+        _movementToRecord.toWhere = _toDP.value;
+        if (_toDP.value != "Outros")
         {
-            itemToChange.Local = toDP.value;
+            _itemToChange.Local = _toDP.value;
         }
         else
         {
-            itemToChange.Local = toInput.value;
+            _itemToChange.Local = _toInput.value;
         }
-        if (itemToChange.Local == "Estoque")
+        if (_itemToChange.Local == "Estoque")
         {
-            itemToChange.Entrada = DateTime.Now.ToString("dd/MM/yyyy");
-            itemToChange.Saida = "";
+            _itemToChange.Entrada = DateTime.Now.ToString("dd/MM/yyyy");
+            _itemToChange.Saida = "";
         }
-        if (fromDP.value == "Estoque")
+        if (_fromDP.value == "Estoque")
         {
-            itemToChange.Entrada = "";
-            itemToChange.Saida = DateTime.Now.ToString("dd/MM/yyyy");
+            _itemToChange.Entrada = "";
+            _itemToChange.Saida = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
 
-        movementToRecord.username = UsersManager.Instance.currentUser.GetUsername();
-        movementToRecord.date = DateTime.Now.ToString("dd/MM/yyyy");
-        movementToRecord.item = itemToChange;
-        if(itemToChange.Local == "Descarte")
+        _movementToRecord.username = UsersManager.Instance.currentUser.GetUsername();
+        _movementToRecord.date = DateTime.Now.ToString("dd/MM/yyyy");
+        _movementToRecord.item = _itemToChange;
+        if(_itemToChange.Local == "Descarte")
         {
-            itemToChange.Status = "DEFEITO";
+            _itemToChange.Status = "DEFEITO";
         }
     }
 
@@ -340,7 +403,7 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void UpdateDatabase()
     {
-        InternalDatabase.Instance.fullDatabase.itens[itemToChangeIndex] = itemToChange;
+        InternalDatabase.Instance.fullDatabase.itens[_itemToChangeIndex] = _itemToChange;
         EventHandler.CallDatabaseUpdatedEvent();
     }
 
@@ -349,14 +412,15 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void ResetInputs()
     {
-        itemInformationInput.value = "";
-        toDP.value = "Estoque";
-        whoLabel.text = "";
-        fromInput.value = "";
-        toInput.value = "";
+        _itemInformationInput.value = "";
+        _toDP.value = "Estoque";
+        _whoLabel.text = "";
+        _fromInput.value = "";
+        _toInput.value = "";
         ShouldHidePanels(true);
         EnableDisableMoveButton();
         EventHandler.CallChangeAnimation("1");
+        
     }
 
     /// <summary>
@@ -365,13 +429,13 @@ public class MovementManager1 : MonoBehaviour
     private string GetFromLocation()
     {
         string location = "";
-        if (fromDP.value == "Outros")
+        if (_fromDP.value == "Outros")
         {
-            location = itemToChange.Local;
+            location = _itemToChange.Local;
         }
         else
         {
-            location = fromDP.value;
+            location = _fromDP.value;
         }
 
         return location;
@@ -383,13 +447,13 @@ public class MovementManager1 : MonoBehaviour
     private string GetToLocation()
     {
         string location = "";
-        if (toDP.value == "Outros")
+        if (_toDP.value == "Outros")
         {
-            location = toInput.text;
+            location = _toInput.text;
         }
         else
         {
-            location = toDP.value;
+            location = _toDP.value;
         }
 
         return location;
@@ -400,15 +464,15 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void EnableDisableMoveButton()
     {
-        if (moveButton.style.visibility == Visibility.Visible)
+        if (_moveButton.style.visibility == Visibility.Visible)
         {
-            moveButton.style.visibility = Visibility.Hidden;
-            moveButton.pickingMode = PickingMode.Ignore;
+            _moveButton.style.visibility = Visibility.Hidden;
+            _moveButton.pickingMode = PickingMode.Ignore;
         }
         else
         {
-            moveButton.style.visibility = Visibility.Visible;
-            moveButton.pickingMode = PickingMode.Position;
+            _moveButton.style.visibility = Visibility.Visible;
+            _moveButton.pickingMode = PickingMode.Position;
         }
 
     }
@@ -425,8 +489,9 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void ResetMovement()
     {
-        inputEnabled = true;
-        itemFound = false;
+        DeleteItemDetails();
+        _inputEnabled = true;
+        _itemFound = false;
         ResetInputs();
     }
 
@@ -437,11 +502,11 @@ public class MovementManager1 : MonoBehaviour
     {
         if (evt.newValue == "Outros")
         {
-            toInput.style.visibility = Visibility.Visible;
+            _toInput.style.visibility = Visibility.Visible;
         }
         else
         {
-            toInput.style.visibility = Visibility.Hidden;
+            _toInput.style.visibility = Visibility.Hidden;
         }
     }
 
@@ -452,11 +517,11 @@ public class MovementManager1 : MonoBehaviour
     {
         if (evt.newValue == "Outros")
         {
-            fromInput.style.visibility = Visibility.Visible;
+            _fromInput.style.visibility = Visibility.Visible;
         }
         else
         {
-            fromInput.style.visibility = Visibility.Hidden;
+            _fromInput.style.visibility = Visibility.Hidden;
         }
     }
 
@@ -465,14 +530,14 @@ public class MovementManager1 : MonoBehaviour
     /// </summary>
     private void MoveItemClicked()
     {
-        if (itemFound)
+        if (_itemFound)
         {
             EventHandler.CallIsOneMessageOnlyEvent(true);
-            if (fromInputEnabled && toInputEnabled && (GetFromLocation() == GetToLocation()))
+            if (_fromInputEnabled && _toInputEnabled && (GetFromLocation() == GetToLocation()))
             {
                 EventHandler.CallOpenMessageEvent("Duplicate locations");
             }
-            else if ((toInputEnabled && GetToLocation() == "") || (fromInputEnabled && GetFromLocation() == ""))
+            else if ((_toInputEnabled && GetToLocation() == "") || (_fromInputEnabled && GetFromLocation() == ""))
             {
                 EventHandler.CallOpenMessageEvent("Empty location");
             }
@@ -493,8 +558,8 @@ public class MovementManager1 : MonoBehaviour
 
     private void FillDropDowns()
     {
-        fromDP.choices = InternalDatabase.locations;
-        toDP.choices = InternalDatabase.locations;
+        _fromDP.choices = InternalDatabase.locations;
+        _toDP.choices = InternalDatabase.locations;
         //toDP.value = InternalDatabase.locations[HelperMethods.GetLocationDPValue("Estoque")];
     }
 

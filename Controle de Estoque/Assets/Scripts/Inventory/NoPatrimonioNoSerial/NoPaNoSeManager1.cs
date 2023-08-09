@@ -27,6 +27,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private TextField newItemNameInput;
     private TextField newItemQuantityInput;
     private Button addNewItemButton;
+    private bool isNewItemPanelOpen = false;
     #endregion
 
     #region Consult
@@ -48,6 +49,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private TextField whereToTextField;
     private Button moveItemButton;
     private VisualElement quantityPanel;
+    private Label itemCurrentQuantityLabel;
     #endregion
 
     private int itemIndex;
@@ -62,6 +64,14 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private void OnDisable()
     {
         UnsubscribeToEvents();
+    }
+
+    private void Update()
+    {
+        if(isNewItemPanelOpen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseNewItemPanel();
+        }
     }
 
     /// <summary>
@@ -119,6 +129,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         increaseButton = root.Q<Button>("IncreaseButton");
         decreaseButton = root.Q<Button>("DecreaseButton");
         quantityPanel = root.Q<VisualElement>("QuantityPanel");
+        itemCurrentQuantityLabel = root.Q<Label>("ItemCurrentQuantity");
         SubscribeToEvents();
         Initialize();
     }
@@ -163,6 +174,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         newItemPanel.style.display = DisplayStyle.Flex;
         newItemNameInput.value = "";
         newItemQuantityInput.value = "";
+        isNewItemPanelOpen = true;
         //  EventHandler.CallUpdateTabInputs();
     }
 
@@ -223,8 +235,6 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     /// </summary>
     private IEnumerator AddNewItemRoutine()
     {
-        
-
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, tempInt);
 
         UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, ConstStrings.AddNoPaNoSe, 5);
@@ -297,8 +307,14 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         {
             AddNewItem(newItemNameInput.value, tempInt);
             EventHandler.CallDatabaseUpdatedEvent();
-            newItemPanel.style.display = DisplayStyle.None;
+           CloseNewItemPanel();
         }
+    }
+
+    private void CloseNewItemPanel()
+    {
+        newItemPanel.style.display = DisplayStyle.None;
+        isNewItemPanelOpen = false;
     }
 
     private void ConsultButtonClicked()
@@ -322,6 +338,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private void ItemToMoveChosen(ChangeEvent<string> evt)
     {
         itemToMoveContainer.style.display = DisplayStyle.Flex;
+        itemCurrentQuantityLabel.text = GetItemToMove().Quantity.ToString();
         //itemNameToMoveLabel.text = evt.newValue;
     }
 
@@ -347,7 +364,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     {
         string whereFrom = "";
         string whereTo = "";
-        NoPaNoSeItem itemToMove = FindItemToMove();
+        NoPaNoSeItem itemToMove = GetItemToMove();
         if(!IsItemQuantityInputValid())
         {
             EventHandler.CallIsOneMessageOnlyEvent(true);
@@ -425,7 +442,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         HideMoveElements();
     }
 
-    private NoPaNoSeItem FindItemToMove()
+    private NoPaNoSeItem GetItemToMove()
     {
         for (int i = 0; i < allitems.noPaNoSeItems.Count; i++)
         {

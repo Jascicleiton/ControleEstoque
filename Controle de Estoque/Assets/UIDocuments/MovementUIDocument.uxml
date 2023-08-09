@@ -6,8 +6,8 @@
             <ui:Label tabindex="-1" text="Movimentar estoque" display-tooltip-when-elided="true" style="font-size: 50px;" />
             <ui:Button display-tooltip-when-elided="true" name="HelpButton" style="margin-right: 50px; width: 70px; height: 70px; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Icons/unlitLightBulb.png?fileID=21300000&amp;guid=38dad7f224c41b046a55cb14196f4891&amp;type=3#unlitLightBulb&apos;); margin-left: 130px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="MiddleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 40%; flex-direction: column; justify-content: space-between;">
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between;">
+        <ui:VisualElement name="MiddleContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 80%; flex-direction: column; justify-content: space-between;">
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; height: 40%;">
                 <ui:VisualElement name="ItemInformationContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 20%; margin-left: 30px; justify-content: space-between;">
                     <ui:Label tabindex="-1" text="Patrimônio" display-tooltip-when-elided="true" class="moveLabel" style="background-image: url(&apos;project://database/Assets/Images/Panels/ActivityPanel%204.png?fileID=21300000&amp;guid=95b0064a985d94e4d974054d0291ea22&amp;type=3#ActivityPanel 4&apos;); -unity-background-scale-mode: scale-to-fit;" />
                     <ui:TextField picking-mode="Ignore" name="ParameterTextField" style="height: 70px; font-size: 20px;" />
@@ -29,11 +29,11 @@
                     <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="height: 70px; width: 40%; align-self: flex-end; font-size: 20px; color: rgb(255, 255, 255); background-image: url(&apos;project://database/Assets/Images/Buttons/ResetButton.png?fileID=21300000&amp;guid=51aa0c2f7548ddf41bc93ccd5c72c40d&amp;type=3#ResetButton&apos;); background-color: rgba(188, 188, 188, 0); -unity-background-scale-mode: scale-to-fit; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center;">
-                <ui:Button text="Mover item" display-tooltip-when-elided="true" name="MoveButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Buttons/Button%203.png?fileID=21300000&amp;guid=82e46b070298079439f5c112b07ebc6d&amp;type=3#Button 3&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; width: 200px; height: 70px; font-size: 20px; padding-left: 2%; display: flex; visibility: hidden;" />
+            <ui:VisualElement name="ItemDetailsPanel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 40px;" />
+            <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: center; height: 15%;">
+                <ui:Button text="Mover item" display-tooltip-when-elided="true" name="MoveButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&apos;project://database/Assets/Images/Buttons/Button%203.png?fileID=21300000&amp;guid=82e46b070298079439f5c112b07ebc6d&amp;type=3#Button 3&apos;); color: rgb(255, 255, 255); -unity-background-scale-mode: stretch-to-fill; width: 200px; height: 70px; font-size: 20px; padding-left: 2%; display: flex; visibility: visible; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="BottomContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 15%; margin-bottom: 50px; justify-content: center; align-items: center;" />
     </ui:VisualElement>
     <ui:VisualElement name="HelpPanel1" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(222, 120, 56, 0.45); position: absolute; width: 100%; height: 85%; display: none; top: 161px; left: 0;">
         <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 20%; flex-direction: row; align-items: center; margin-top: 0;" />

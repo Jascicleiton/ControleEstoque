@@ -11,13 +11,14 @@
                 <ui:Button text="Consultar" display-tooltip-when-elided="true" name="ConsultButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; font-size: 30px; background-color: rgb(255, 255, 255); background-image: url(&apos;project://database/Assets/Images/Panels/MessagePanel.png?fileID=21300000&amp;guid=820fb8a40e842ad42bb4aec53cf79596&amp;type=3#MessagePanel&apos;);" />
                 <ui:Button text="Movimentar" display-tooltip-when-elided="true" name="MoveButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; font-size: 30px; background-color: rgba(255, 255, 255, 0); background-image: url(&apos;project://database/Assets/Images/Panels/MessagePanel.png?fileID=21300000&amp;guid=820fb8a40e842ad42bb4aec53cf79596&amp;type=3#MessagePanel&apos;); -unity-background-image-tint-color: rgb(149, 149, 149);" />
             </ui:VisualElement>
-            <ui:VisualElement name="ConsultContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); display: flex; height: 90%;">
+            <ui:VisualElement name="ConsultContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); display: flex; height: 90%; visibility: visible;">
                 <ui:ListView focusable="false" name="ConsultLV" virtualization-method="DynamicHeight" selection-type="None" show-bound-collection-size="false" class="listView" style="align-items: stretch; height: 100%;" />
             </ui:VisualElement>
             <ui:VisualElement name="MovementContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: none;">
                 <ui:VisualElement style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; align-items: center; margin-top: 30px; height: 30%; justify-content: space-between;">
-                    <ui:Label tabindex="-1" text="Selecione o item a ser movimentado" display-tooltip-when-elided="true" class="NoPaNoSeLabel" style="font-size: 30px; width: auto; margin-bottom: 15px;" />
+                    <ui:Label tabindex="-1" text="Selecione o item a ser movimentado" display-tooltip-when-elided="true" name="Label" class="NoPaNoSeLabel" style="font-size: 30px; width: auto; margin-bottom: 15px;" />
                     <ui:DropdownField index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ItemsNamesDP" style="font-size: 30px; height: 30%; margin-bottom: 30px; flex-shrink: 1; min-width: 30%;" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="ItemCurrentQuantity" class="NoPaNoSeLabel" style="-unity-text-align: middle-center;" />
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                     <ui:VisualElement name="ItemToMoveContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex;">

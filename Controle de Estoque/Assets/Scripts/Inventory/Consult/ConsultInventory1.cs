@@ -86,6 +86,11 @@ namespace Assets.Scripts.Inventory.Consult
                                     _listView.Rebuild();
                                 }
                             }
+                            else
+                            {
+                                EventHandler.CallIsOneMessageOnlyEvent(true);
+                                EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
+                            }
                         }
                     }
                 }
