@@ -92,7 +92,7 @@ namespace Inventory.AddItem
                 //{
                 //    parameters.Insert(5, parameterValues[5].text);
                 //}
-                if (categoryDP.value != ConstStrings.Outros)
+                if (categoryDP.value != ConstStrings.C_Outros)
                 {
                     parameters[5] = categoryDP.value;
                 }

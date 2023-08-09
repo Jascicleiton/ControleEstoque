@@ -1,0 +1,10 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Placa_de_som","database":"sysnetpro_controleestoque","data":
+[
+{"Modelo":"CS4280","Quantos_canais":"4"},
+{"Modelo":"ENM232-8VIA","Quantos_canais":"8"}
+]
+}
+]

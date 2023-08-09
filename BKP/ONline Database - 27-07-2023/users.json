@@ -1,0 +1,10 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"users","database":"sysnetpro_controleestoque","data":
+[
+{"ID":"2","username":"marcelo.fonseca","password":"$2y$10$Kryf.bTV3vxIDV9sQoApZe8Lbgi5GaD9CoardUgH5gK0rNm6YhxAC","AccessLevel":"10"},
+{"ID":"6","username":"pedro.neto","password":"$2y$10$5IfMUI78fy9tc6wOaCwKxOwamOMT9xIk9T7yXsfdHTUc7BC7Aw3rq","AccessLevel":"5"}
+]
+}
+]

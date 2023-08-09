@@ -1,0 +1,34 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Locais","database":"sysnetpro_controleestoque","data":
+[
+{"Local":"Bancada de testes"},
+{"Local":"BRT"},
+{"Local":"Concert"},
+{"Local":"Descarte"},
+{"Local":"Drogaria Cristina"},
+{"Local":"Encontre sua franquia"},
+{"Local":"Escritório"},
+{"Local":"Estoque"},
+{"Local":"Fumsoft"},
+{"Local":"IOCT"},
+{"Local":"Master truck"},
+{"Local":"Netlite"},
+{"Local":"Oficina da roupa"},
+{"Local":"Outros"},
+{"Local":"SNP02"},
+{"Local":"SNP03"},
+{"Local":"SNP04"},
+{"Local":"SNP05"},
+{"Local":"SNP06"},
+{"Local":"SNP07"},
+{"Local":"SNP08"},
+{"Local":"Top Cintos"},
+{"Local":"Trop 1"},
+{"Local":"Trop 2"},
+{"Local":"Uni Santos"},
+{"Local":"Zaplus"}
+]
+}
+]

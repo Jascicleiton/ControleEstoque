@@ -33,7 +33,7 @@ public class ExportCSVs : MonoBehaviour
         textWriter.Dispose();
         if (InternalDatabase.Instance != null)
         {
-            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario];
+            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.C_Inventario];
             if (tempSheet != null)
             {
                 foreach (ItemColumns item in tempSheet.itens)
@@ -93,7 +93,7 @@ public class ExportCSVs : MonoBehaviour
             default:
                 break;
         }
-        foreach (ItemColumns item in InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens)
+        foreach (ItemColumns item in InternalDatabase.Instance.splitDatabase[ConstStrings.C_Inventario].itens)
         {
             rowDataTemp.Add(item.Aquisicao);
             rowDataTemp.Add(item.Entrada);

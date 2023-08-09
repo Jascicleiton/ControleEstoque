@@ -347,7 +347,7 @@ public class ItemInformationPanelControler : MonoBehaviour
     /// </summary>
     public void DisableItemsForAdd(string category)
     {
-        if (category == ConstStrings.Outros)
+        if (category == ConstStrings.C_Outros)
         {
             itemBoxes[5].gameObject.SetActive(true);
         }
@@ -391,7 +391,7 @@ public class ItemInformationPanelControler : MonoBehaviour
         switch (category)
         {
             #region Adaptador AC
-            case ConstStrings.AdaptadorAC:
+            case ConstStrings.C_AdaptadorAC:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -422,7 +422,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Carregador
-            case ConstStrings.Carregador:
+            case ConstStrings.C_Carregador:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -450,7 +450,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Desktop
-            case ConstStrings.Desktop:
+            case ConstStrings.C_Desktop:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -492,7 +492,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Fonte
-            case ConstStrings.Fonte:
+            case ConstStrings.C_Fonte:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -512,7 +512,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region GBIC
-            case ConstStrings.Gbic:
+            case ConstStrings.C_Gbic:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -530,7 +530,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region HD
-            case ConstStrings.HD:
+            case ConstStrings.C_HD:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[6].text);
@@ -544,7 +544,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region iDRAC
-            case ConstStrings.Idrac:
+            case ConstStrings.C_Idrac:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[6].text);
@@ -555,7 +555,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Memória
-            case ConstStrings.Memoria:
+            case ConstStrings.C_Memoria:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[6].text);
@@ -570,7 +570,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Monitor
-            case ConstStrings.Monitor:
+            case ConstStrings.C_Monitor:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -598,7 +598,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Notebook
-            case ConstStrings.Notebook:
+            case ConstStrings.C_Notebook:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -628,7 +628,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Placa controladora
-            case ConstStrings.PlacaControladora:
+            case ConstStrings.C_PlacaControladora:
                 valuesList.Clear();
                          valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
@@ -642,14 +642,14 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Placa de captura de vídeo
-            case ConstStrings.PlacaDeCapturaDeVideo:
+            case ConstStrings.C_PlacaDeCapturaDeVideo:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
                 break;
             #endregion
             #region Placa de rede
-            case ConstStrings.PlacaDeRede:
+            case ConstStrings.C_PlacaDeRede:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[6].text);
@@ -661,14 +661,14 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Placa de som
-            case ConstStrings.PlacaDeSom:
+            case ConstStrings.C_PlacaDeSom:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
                 break;
             #endregion
             #region Placa de vídeo
-            case ConstStrings.PlacaDeVideo:
+            case ConstStrings.C_PlacaDeVideo:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
@@ -676,7 +676,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Placa SAS
-            case ConstStrings.PlacaSAS:
+            case ConstStrings.C_PlacaSAS:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
@@ -684,7 +684,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Processador
-            case ConstStrings.Processador:
+            case ConstStrings.C_Processador:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
@@ -693,7 +693,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Roteador
-            case ConstStrings.Roteador:
+            case ConstStrings.C_Roteador:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -722,7 +722,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Servidor
-            case ConstStrings.Servidor:
+            case ConstStrings.C_Servidor:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -773,7 +773,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Storage NAS
-            case ConstStrings.StorageNAS:
+            case ConstStrings.C_StorageNAS:
                 valuesList.Clear();
                 valuesList.Add(parameterValues[7].text);
                 valuesList.Add(parameterValues[11].text);
@@ -784,7 +784,7 @@ public class ItemInformationPanelControler : MonoBehaviour
                 break;
             #endregion
             #region Switch
-            case ConstStrings.Switch:
+            case ConstStrings.C_Switch:
                 valuesList.Clear();
                 switch (InternalDatabase.Instance.currentEstoque)
                 {

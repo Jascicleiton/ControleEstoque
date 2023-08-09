@@ -563,20 +563,20 @@ public class CreateForm
         return item;
     }
 
-    public static WWWForm GetMoveItemForm(string appPassword, string itemName, int itemQuantity, string usuario,
-        string data, string deOnde, string paraOnde)
-    {
-        WWWForm item = new WWWForm();
-        item.AddField("apppassword", appPassword);
-        item.AddField("itemname", itemName);
-        item.AddField("itemQuantity", itemQuantity.ToString());
-        item.AddField("usuario", usuario);
-        item.AddField("data", data);
-        item.AddField("deonde", deOnde);
-        item.AddField("paraonde", paraOnde);
+    //public static WWWForm GetMoveItemForm(string appPassword, string itemName, int itemQuantity, string usuario,
+    //    string data, string deOnde, string paraOnde)
+    //{
+    //    WWWForm item = new WWWForm();
+    //    item.AddField("apppassword", appPassword);
+    //    item.AddField("itemname", itemName);
+    //    item.AddField("itemQuantity", itemQuantity.ToString());
+    //    item.AddField("usuario", usuario);
+    //    item.AddField("data", data);
+    //    item.AddField("deonde", deOnde);
+    //    item.AddField("paraonde", paraOnde);
 
-        return item;
-    }
+    //    return item;
+    //}
 
     /// <summary>
     /// Form used to get all the movements from a specific item for both NoPaNoSe item and regular item

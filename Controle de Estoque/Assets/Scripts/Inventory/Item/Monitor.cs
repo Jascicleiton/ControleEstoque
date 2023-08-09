@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.Scripts.Inventory.Item
+﻿namespace Assets.Scripts.Inventory.Item
 {
     public class Monitor : ItemParent
     {
-        
+        protected override void Awake()
+        {
+            base.Awake();
+            allParameters.Add(ConstStrings.Polegadas, default);
+            allParameters.Add(ConstStrings.QuaisEntradas, default);
+        }
     }
 }

@@ -1,0 +1,16 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Desktop","database":"sysnetpro_controleestoque","data":
+[
+{"Patrimonio":"985","Modelo_placa_mae":"IPMH61R3","Fonte":"não","Memoria":"não","HD":"não","Placa_de_video":"não","Placa_de_rede":"não","Leitor_de_DVD":"não","Processador":""},
+{"Patrimonio":"574","Modelo_placa_mae":"P8H61-M LE","Fonte":"0986","Memoria":"não","HD":"não","Placa_de_video":"não","Placa_de_rede":"não","Leitor_de_DVD":"sim","Processador":"i3-3220"},
+{"Patrimonio":"874","Modelo_placa_mae":"478VN","Fonte":"0987","Memoria":"não","HD":"não","Placa_de_video":"990","Placa_de_rede":"não","Leitor_de_DVD":"sim","Processador":""},
+{"Patrimonio":"3002","Modelo_placa_mae":"2","Fonte":"2","Memoria":"2","HD":"2","Placa_de_video":"2","Placa_de_rede":"2","Leitor_de_DVD":"2","Processador":"2"},
+{"Patrimonio":"3028","Modelo_placa_mae":"1","Fonte":"1","Memoria":"1","HD":"1","Placa_de_video":"1","Placa_de_rede":"1","Leitor_de_DVD":"1","Processador":""},
+{"Patrimonio":"1337","Modelo_placa_mae":"","Fonte":"sim","Memoria":"","HD":"","Placa_de_video":"","Placa_de_rede":"","Leitor_de_DVD":"","Processador":""},
+{"Patrimonio":"1358","Modelo_placa_mae":"","Fonte":"","Memoria":"","HD":"","Placa_de_video":"","Placa_de_rede":"","Leitor_de_DVD":"","Processador":""},
+{"Patrimonio":"1432","Modelo_placa_mae":"","Fonte":"1433","Memoria":"888","HD":"732 e 1191","Placa_de_video":"1037","Placa_de_rede":"não","Leitor_de_DVD":"","Processador":""}
+]
+}
+]

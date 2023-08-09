@@ -84,7 +84,10 @@ public class UsersManager : Singleton<UsersManager>, IJsonSaveable
             Debug.LogWarning(createPostRequest.error);
         }
         createPostRequest.Dispose();
-        SavingWrapper.Instance.Save();
+        if (InternalDatabase.Instance.isOfflineProgram)
+        {
+            SavingWrapper.Instance.Save();
+        }
     }
 
     public JToken CaptureAsJToken()

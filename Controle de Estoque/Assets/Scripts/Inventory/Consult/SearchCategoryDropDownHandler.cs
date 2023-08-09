@@ -81,7 +81,7 @@ public class SearchCategoryDropDownHandler : MonoBehaviour
                 SetPlaceholderText(searchParamentersTextFields[i - 8], names[i]);                
             }
         }
-        if (category == ConstStrings.Outros)
+        if (category == ConstStrings.C_Outros)
         {
             SetPlaceholderText(searchParamentersTextFields[3], names[5]);
         }

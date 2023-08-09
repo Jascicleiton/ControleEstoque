@@ -1,0 +1,10 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Storage_NAS","database":"sysnetpro_controleestoque","data":
+[
+{"Modelo":"STCU100","Tamanho_HD":"2.5\" e 3.5\"","Tipos_de_RAID":"0; 1; 5; 5 com hot spare; 6; 10","Tipo_de_HD":"SATA","Capacidade_max_hd":"2","Ate_quantos_HDs":"4"},
+{"Modelo":"NAS IX4-200D","Tamanho_HD":"3.5\"","Tipos_de_RAID":"5; 10","Tipo_de_HD":"SATA","Capacidade_max_hd":"2","Ate_quantos_HDs":"4"}
+]
+}
+]

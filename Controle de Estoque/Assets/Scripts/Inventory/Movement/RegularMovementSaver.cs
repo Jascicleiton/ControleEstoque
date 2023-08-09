@@ -105,7 +105,10 @@ public class RegularMovementSaver : Singleton<RegularMovementSaver>, IJsonSaveab
             Debug.LogWarning(createPostRequest.error);
         }
         createPostRequest.Dispose();
-        SavingWrapper.Instance.Save();
+        if (InternalDatabase.Instance.isOfflineProgram)
+        {
+            SavingWrapper.Instance.Save();
+        }
     }
 
     public JToken CaptureAsJToken()

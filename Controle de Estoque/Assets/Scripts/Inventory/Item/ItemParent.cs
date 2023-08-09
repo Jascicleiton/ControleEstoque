@@ -1,55 +1,125 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Assets.Scripts.Inventory.Item
 {
-    public class ItemParent : MonoBehaviour
+    public class ItemParent : IItem, IEquatable<ItemParent>
     {
-        public string Aquisicao = "";
-        public string Entrada = "";
-        public int Patrimonio_I;
-        public string Status = "";
-        public string Serial = "";
-        public string Categoria = "";
-        public string Fabricante = "";
-        public string Modelo = "";
-        public string Local = "";
-        public string Saida = "";
-        public string Observacao = "";
-
-        protected List<string> allValues = new List<string>();
+        protected Dictionary<string, string> allParameters = new Dictionary<string, string>();
 
         protected virtual void Awake()
         {
-            allValues.Add(Aquisicao);
-            allValues.Add(Entrada);
-            allValues.Add(Patrimonio_I.ToString());
-            allValues.Add(Status);
-            allValues.Add(Serial);
-            allValues.Add(Categoria);
-            allValues.Add(Fabricante);
-            allValues.Add(Modelo);
-            allValues.Add(Local);
-            allValues.Add(Saida);
-            allValues.Add(Observacao);
+            allParameters.Add(ConstStrings.Aquisicao, default);
+            allParameters.Add(ConstStrings.Entrada, default);
+            allParameters.Add(ConstStrings.Patrimonio_I, default);
+            allParameters.Add(ConstStrings.Status, default);
+            allParameters.Add(ConstStrings.Serial, default);
+            allParameters.Add(ConstStrings.Categoria, default);
+            allParameters.Add(ConstStrings.Fabricante, default);
+            allParameters.Add(ConstStrings.Modelo, default);
+            allParameters.Add(ConstStrings.Local, default);
+            allParameters.Add(ConstStrings.Saida, default);
+            allParameters.Add(ConstStrings.Observacao, default);
         }
 
-        public string GetValue(string variableNameToGet)
+        public string GetSpecificParameter(string parameterNameToGet)
         {
-            foreach (var item in allValues)
+            if (allParameters.ContainsKey(parameterNameToGet))
             {
-                if (nameof(item) == variableNameToGet)
+                return allParameters[parameterNameToGet];
+            }
+            else
+            {
+                Debug.LogWarning($"Invalid parameter name or parameter not registerd on {nameof(allParameters)} dictionary");
+                return null;
+            }
+        }
+
+        public List<string> GetAllParametersAslist()
+        {
+            return allParameters.Values.ToList();
+        }
+
+        public Dictionary<string, string> GetAllParametersDictionary()
+        {
+            return allParameters;
+        }
+
+        public void Setparameters(Dictionary<string, string> parametersDictionary)
+        {
+            foreach (var item in parametersDictionary.Keys)
+            {
+                if (allParameters.ContainsKey(item))
                 {
-                    return item;
+                    allParameters[item] = parametersDictionary[item];
+                }
+                else
+                {
+                    Debug.LogWarning($"Invalid parameter name or parameter not registerd on {nameof(allParameters)} dictionary");
                 }
             }
-            return null;
         }
 
-        public List<string> GetAllValues()
+        public void SetSpecificParameter(string parameterName, string parameterValue)
         {
-            return allValues;
+            if (allParameters.ContainsKey(parameterName))
+            {
+                allParameters[parameterName] = parameterValue;
+            }
+            else
+            {
+                Debug.LogWarning($"Invalid parameter name or parameter not registerd on {nameof(allParameters)} dictionary");
+            }
         }
+
+        public decimal GetParameterAsDecimal(string parameterName)
+        {
+            if (allParameters.ContainsKey(parameterName))
+            {
+                decimal parameterValue;
+                if (decimal.TryParse(allParameters[parameterName], out parameterValue))
+                {
+                    return parameterValue;
+                }
+                Debug.LogError($"Value of {allParameters[parameterName]} is not a decimal");
+            }
+            Debug.LogError($"Invalid parameter name or parameter not registerd on {nameof(allParameters)} dictionary");
+            return -1000;
+        }
+
+        public int GetParameterAsInt(string parameterName)
+        {
+            if (allParameters.ContainsKey(parameterName))
+            {
+                int parameterValue;
+                if (int.TryParse(allParameters[parameterName], out parameterValue))
+                {
+                    return parameterValue;
+                }
+                Debug.LogError($"Value of {allParameters[parameterName]} is not a integer");
+            }
+            Debug.LogError($"Invalid parameter name or parameter not registerd on {nameof(allParameters)} dictionary");
+            return -1000;
+        }
+
+        #region Equality overloads/overrides
+        public bool Equals(ItemParent other)
+        {
+            return GetSpecificParameter(ConstStrings.Patrimonio_I) == other.GetSpecificParameter(ConstStrings.Patrimonio_I);
+        }
+        public override bool Equals(object obj)
+        {
+            return obj is ItemParent other &&
+                GetSpecificParameter(ConstStrings.Patrimonio_I) == other.GetSpecificParameter(ConstStrings.Patrimonio_I);
+        }
+        public override int GetHashCode()
+        {
+            return int.Parse(GetSpecificParameter(ConstStrings.Patrimonio_I));
+        }
+        public static bool operator ==(ItemParent item1, ItemParent item2) => item1.Equals(item2);
+        public static bool operator !=(ItemParent item1, ItemParent item2) => !item1.Equals(item2);
+        #endregion
     }
 }
