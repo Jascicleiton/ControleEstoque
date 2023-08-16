@@ -20,7 +20,7 @@ public class ImportingInventoryFunctions
                     newRow.OndeFunciona = item[1];
                     newRow.VoltagemDeSaida = item[2];
                     newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.AdaptadorAC;
+                    newRow.Categoria = ConstStrings.C_AdaptadorAC;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -35,7 +35,7 @@ public class ImportingInventoryFunctions
                     newRow.Modelo = item[1];
                     newRow.VoltagemDeSaida = item[2];
                     newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.AdaptadorAC;
+                    newRow.Categoria = ConstStrings.C_AdaptadorAC;
                     importSheet.itens.Add(newRow);
                 }                                         
                 break;                                    
@@ -48,11 +48,12 @@ public class ImportingInventoryFunctions
                     newRow.OndeFunciona = item[1];
                     newRow.VoltagemDeSaida = item[2];
                     newRow.AmperagemDeSaida = item[3];
-                    newRow.Categoria = ConstStrings.AdaptadorAC;
+                    newRow.Categoria = ConstStrings.C_AdaptadorAC;
                     importSheet.itens.Add(newRow);
                 }
                 break;
         }
+        InternalDatabase.Instance.testingSheet = importSheet;
     }
 
     public static void ImportCarregador(JSONNode inventario, out Sheet importSheet)
@@ -65,7 +66,7 @@ public class ImportingInventoryFunctions
             newRow.OndeFunciona = item[1];
             newRow.VoltagemDeSaida = item[2];
             newRow.AmperagemDeSaida = item[3];
-            newRow.Categoria = ConstStrings.Carregador;
+            newRow.Categoria = ConstStrings.C_Carregador;
             importSheet.itens.Add(newRow);
         }
     }
@@ -90,7 +91,7 @@ public class ImportingInventoryFunctions
                     newRow.PlacaDeRede = item[6];
                     newRow.LeitorDeDVD = item[7];
                     newRow.Processador = item[8];
-                    newRow.Categoria = ConstStrings.Desktop;
+                    newRow.Categoria = ConstStrings.C_Desktop;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -107,7 +108,7 @@ public class ImportingInventoryFunctions
                     newRow.Memoria = item[4];
                     newRow.Processador = item[5];
                     newRow.Windows = item[6];
-                    newRow.Categoria = ConstStrings.Desktop;
+                    newRow.Categoria = ConstStrings.C_Desktop;
                     importSheet.itens.Add(newRow);
                 }
                 break;           
@@ -124,7 +125,7 @@ public class ImportingInventoryFunctions
                     newRow.PlacaDeRede = item[6];
                     newRow.LeitorDeDVD = item[7];
                     newRow.Processador = item[8];
-                    newRow.Categoria = ConstStrings.Desktop;
+                    newRow.Categoria = ConstStrings.C_Desktop;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -142,7 +143,7 @@ public class ImportingInventoryFunctions
             newRow.Watts = item[1];
             newRow.OndeFunciona = item[2];
             newRow.Conectores = item[3];
-            newRow.Categoria = ConstStrings.Fonte;
+            newRow.Categoria = ConstStrings.C_Fonte;
             importSheet.itens.Add(newRow);
         }
     }
@@ -156,7 +157,7 @@ public class ImportingInventoryFunctions
             newRow.Modelo = item[0];
             newRow.Fabricante = item[1];
             newRow.Desempenho = item[2];
-            newRow.Categoria = ConstStrings.Gbic;
+            newRow.Categoria = ConstStrings.C_Gbic;
             importSheet.itens.Add(newRow);
         }
     }
@@ -178,7 +179,7 @@ public class ImportingInventoryFunctions
             newRow.VelocidadeDeLeitura = item[7];
             newRow.Enterprise = item[8];
             newRow.EstoqueAtual = item[9];
-            newRow.Categoria = ConstStrings.HD;
+            newRow.Categoria = ConstStrings.C_HD;
             importSheet.itens.Add(newRow);
         }
     }
@@ -195,7 +196,7 @@ public class ImportingInventoryFunctions
             newRow.VelocidadeGBs = item[3];
             newRow.EntradaSD = item[4];
             newRow.ServidoresSuportados = item[5];
-            newRow.Categoria = ConstStrings.Idrac;
+            newRow.Categoria = ConstStrings.C_Idrac;
             importSheet.itens.Add(newRow);
         }
     }
@@ -271,7 +272,7 @@ public class ImportingInventoryFunctions
             newRow.TaxaDeTransmissao = item[8];
             newRow.Simbolo = item[9];
             newRow.EstoqueAtual = item[10];
-            newRow.Categoria = ConstStrings.Memoria;
+            newRow.Categoria = ConstStrings.C_Memoria;
 
             importSheet.itens.Add(newRow);
         }
@@ -290,7 +291,7 @@ public class ImportingInventoryFunctions
                     newRow.Fabricante = item[1];
                     newRow.Polegadas = item[2];
                     newRow.QuaisConexoes = item[3];
-                    newRow.Categoria = ConstStrings.Monitor;
+                    newRow.Categoria = ConstStrings.C_Monitor;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -303,7 +304,7 @@ public class ImportingInventoryFunctions
                     newRow.Fabricante = item[2];
                     newRow.Polegadas = item[3];
                     newRow.QuaisConexoes = item[4];
-                    newRow.Categoria = ConstStrings.Monitor;
+                    newRow.Categoria = ConstStrings.C_Monitor;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -329,7 +330,7 @@ public class ImportingInventoryFunctions
                     newRow.BateriaInclusa = item[6];
                     newRow.AdaptadorAC = item[7];
                     newRow.Windows = item[8];
-                    newRow.Categoria = ConstStrings.Notebook;
+                    newRow.Categoria = ConstStrings.C_Notebook;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -347,7 +348,7 @@ public class ImportingInventoryFunctions
                     newRow.Memoria = item[4];
                     newRow.Processador = item[5];
                     newRow.Windows = item[6];
-                    newRow.Categoria = ConstStrings.Notebook;
+                    newRow.Categoria = ConstStrings.C_Notebook;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -364,7 +365,7 @@ public class ImportingInventoryFunctions
                     newRow.BateriaInclusa = item[6];
                     newRow.AdaptadorAC = item[7];
                     newRow.Windows = item[8];
-                    newRow.Categoria = ConstStrings.Notebook;
+                    newRow.Categoria = ConstStrings.C_Notebook;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -386,7 +387,7 @@ public class ImportingInventoryFunctions
             newRow.AteQuantosHDs = item[6];
             newRow.BateriaInclusa = item[7];
             newRow.Barramento = item[8];
-            newRow.Categoria = ConstStrings.PlacaControladora;
+            newRow.Categoria = ConstStrings.C_PlacaControladora;
                         importSheet.itens.Add(newRow);
         }
     }
@@ -399,7 +400,7 @@ public class ImportingInventoryFunctions
             ItemColumns newRow = new ItemColumns();
             newRow.Modelo = item[0];
             newRow.QuantidadeDePortas = item[1];
-            newRow.Categoria = ConstStrings.PlacaDeCapturaDeVideo;
+            newRow.Categoria = ConstStrings.C_PlacaDeCapturaDeVideo;
             importSheet.itens.Add(newRow);
         }
     }
@@ -417,7 +418,7 @@ public class ImportingInventoryFunctions
             newRow.QuaisConexoes = item[4];
             newRow.SuportaFibraOptica = item[5];
             newRow.Desempenho = item[6];
-            newRow.Categoria = ConstStrings.PlacaDeRede;
+            newRow.Categoria = ConstStrings.C_PlacaDeRede;
             importSheet.itens.Add(newRow);
         }
     }
@@ -430,7 +431,7 @@ public class ImportingInventoryFunctions
             ItemColumns newRow = new ItemColumns();
             newRow.Modelo = item[0];
             newRow.QuantosCanais = item[1];
-            newRow.Categoria = ConstStrings.PlacaDeSom;
+            newRow.Categoria = ConstStrings.C_PlacaDeSom;
             importSheet.itens.Add(newRow);
         }
     }
@@ -444,7 +445,7 @@ public class ImportingInventoryFunctions
             newRow.Modelo = item[0];
             newRow.QuantidadeDePortas = item[1];
             newRow.QuaisConexoes = item[2];
-            newRow.Categoria = ConstStrings.PlacaDeVideo;
+            newRow.Categoria = ConstStrings.C_PlacaDeVideo;
             importSheet.itens.Add(newRow);
         }
     }
@@ -460,7 +461,7 @@ public class ImportingInventoryFunctions
                 newRow.Modelo = item[0];
                 newRow.QuantidadeDePortas = item[1];
                 newRow.VelocidadeGBs = item[2];
-                newRow.Categoria = ConstStrings.PlacaSAS;
+                newRow.Categoria = ConstStrings.C_PlacaSAS;
                 importSheet.itens.Add(newRow);
             }
         }
@@ -476,7 +477,7 @@ public class ImportingInventoryFunctions
             newRow.Soquete = item[1];
             newRow.NucleosFisicos = item[2];
             newRow.NucleosLogicos = item[3];
-            newRow.Categoria = ConstStrings.Processador;
+            newRow.Categoria = ConstStrings.C_Processador;
             importSheet.itens.Add(newRow);
         }
     }
@@ -496,7 +497,7 @@ public class ImportingInventoryFunctions
                     newRow.QuantidadeDePortas = item[2];
                     newRow.BandaMaxima = item[3];
                     newRow.VoltagemDeSaida = item[4];
-                    newRow.Categoria = ConstStrings.Roteador;
+                    newRow.Categoria = ConstStrings.C_Roteador;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -512,7 +513,7 @@ public class ImportingInventoryFunctions
                     newRow.Fabricante = item[2];
                     newRow.Wireless = item[3];
                     newRow.QuantidadeDePortas = item[4];                              
-                    newRow.Categoria = ConstStrings.Roteador;
+                    newRow.Categoria = ConstStrings.C_Roteador;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -525,7 +526,7 @@ public class ImportingInventoryFunctions
                     newRow.QuantidadeDePortas = item[2];
                     newRow.BandaMaxima = item[3];
                     newRow.VoltagemDeSaida = item[4];
-                    newRow.Categoria = ConstStrings.Roteador;
+                    newRow.Categoria = ConstStrings.C_Roteador;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -562,7 +563,7 @@ public class ImportingInventoryFunctions
                     newRow.AteQuantosHDs = item[16];
                     newRow.TipoDeHD = item[17];
                     newRow.TipoDeRAID = item[18];
-                    newRow.Categoria = ConstStrings.Servidor;
+                    newRow.Categoria = ConstStrings.C_Servidor;
                                         importSheet.itens.Add(newRow);
                 }
                 break;
@@ -581,7 +582,7 @@ public class ImportingInventoryFunctions
                     newRow.Memoria = item[5];
                     newRow.Processador = item[6];
                     newRow.Windows = item[7];
-                    newRow.Categoria = ConstStrings.Servidor;
+                    newRow.Categoria = ConstStrings.C_Servidor;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -608,7 +609,7 @@ public class ImportingInventoryFunctions
                     newRow.AteQuantosHDs = item[16];
                     newRow.TipoDeHD = item[17];
                     newRow.TipoDeRAID = item[18];
-                    newRow.Categoria = ConstStrings.Servidor;
+                    newRow.Categoria = ConstStrings.C_Servidor;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -628,7 +629,7 @@ public class ImportingInventoryFunctions
             newRow.CapacidadeMaxHD = item[4];
             newRow.AteQuantosHDs = item[5];
             newRow.EstoqueAtual = item[6];
-            newRow.Categoria = ConstStrings.StorageNAS;
+            newRow.Categoria = ConstStrings.C_StorageNAS;
             importSheet.itens.Add(newRow);
         }
     }
@@ -646,7 +647,7 @@ public class ImportingInventoryFunctions
                     newRow.Modelo = item[0];
                     newRow.QuaisConexoes = item[1];
                     newRow.Desempenho = item[2];
-                    newRow.Categoria = ConstStrings.Switch;
+                    newRow.Categoria = ConstStrings.C_Switch;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -661,7 +662,7 @@ public class ImportingInventoryFunctions
                     newRow.Modelo = item[1];
                     newRow.Fabricante = item[2];
                     newRow.QuaisConexoes = item[3];
-                    newRow.Categoria = ConstStrings.Switch;
+                    newRow.Categoria = ConstStrings.C_Switch;
                     importSheet.itens.Add(newRow);
                 }
                 break;
@@ -672,7 +673,7 @@ public class ImportingInventoryFunctions
                     newRow.Modelo = item[0];
                     newRow.QuaisConexoes = item[1];
                     newRow.Desempenho = item[2];
-                    newRow.Categoria = ConstStrings.Switch;
+                    newRow.Categoria = ConstStrings.C_Switch;
                     importSheet.itens.Add(newRow);
                 }
                 break;

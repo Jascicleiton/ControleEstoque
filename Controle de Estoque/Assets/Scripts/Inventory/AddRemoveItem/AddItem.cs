@@ -31,7 +31,7 @@ namespace Inventory.AddItem
 
         private void Start()
         {
-           UpdateNames();
+            UpdateNames();
             if (UsersManager.Instance.currentUser.GetAccessLevel() < 10)
             {
                 addDetailsButton.style.display = DisplayStyle.None;
@@ -42,7 +42,7 @@ namespace Inventory.AddItem
         {
             GetUIReferences();
             SubscribeToEvents();
-           // print("Number of parameters found by additem: " + parameterValues.Count);
+            // print("Number of parameters found by additem: " + parameterValues.Count);
         }
 
         private void OnDisable()
@@ -59,7 +59,7 @@ namespace Inventory.AddItem
             {
                 if (item.enabledInHierarchy)
                 {
-                    item.isReadOnly = inputEnabled;
+                    item.isReadOnly = !inputEnabled;
                 }
             }
         }
@@ -72,7 +72,7 @@ namespace Inventory.AddItem
             currentCategory = categoryDP.value;
             itemInformationPanelController.ShowCategoryItemTemplate(currentCategory);
             itemInformationPanelController.DisableItemsForAdd(currentCategory);
-            EventHandler.CallUpdateTabInputs();
+          //  EventHandler.CallUpdateTabInputs();
         }
 
         /// <summary>
@@ -87,12 +87,12 @@ namespace Inventory.AddItem
                 #region Add new item to Inventario
                 parameters.Clear();
                 parameters = itemInformationPanelController.GetInventoryValues();
-               // print(parameters.Count);
+                // print(parameters.Count);
                 //if (categoryDP.value == ConstStrings.Outros)
                 //{
                 //    parameters.Insert(5, parameterValues[5].text);
                 //}
-                if(categoryDP.value != ConstStrings.Outros)
+                if (categoryDP.value != ConstStrings.C_Outros)
                 {
                     parameters[5] = categoryDP.value;
                 }
@@ -105,8 +105,8 @@ namespace Inventory.AddItem
                 //{
                 //    parameters.Insert(9, "");
                 //}
-                
-                  yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(categoryDP.value), 2, parameters, true);
+
+                yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(categoryDP.value), 2, parameters, true);
 
                 if (HelperMethods.GetAddUpdateResponse())
                 {
@@ -135,7 +135,7 @@ namespace Inventory.AddItem
                 parameters.Clear();
                 parameters = itemInformationPanelController.GetCategoryValues(categoryDP.value);
 
-                  yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(categoryDP.value), 2, parameters, false);
+                yield return HelperMethods.AddUpdateItem(HelperMethods.GetCategoryInt(categoryDP.value), 2, parameters, false);
                 if (HelperMethods.GetAddUpdateResponse())
                 {
                     addDetalheSuccess = true;
@@ -146,9 +146,9 @@ namespace Inventory.AddItem
                 }
                 if (addInventario)
                 {
-                          AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
+                    AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
                 }
-                
+
             }
             #endregion
             // Used if is only adding to the details database, to notify the MessageManager that the "adition to the inventory" was a success
@@ -208,7 +208,15 @@ namespace Inventory.AddItem
         /// </summary>
         private void AddItemClicked()
         {
-            StartCoroutine(AddNewItemRoutine(true));
+            if (InternalDatabase.Instance.isOfflineProgram)
+            {
+                SetInputEnabled(false);
+                AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
+            }
+            else
+            {
+                StartCoroutine(AddNewItemRoutine(true));
+            }
         }
 
         /// <summary>
@@ -229,7 +237,7 @@ namespace Inventory.AddItem
         }
 
         /// <summary>
-        /// Resets all inputs to default balues
+        /// Resets all inputs to default values
         /// </summary>
         private void ResetAddItem()
         {
@@ -241,7 +249,14 @@ namespace Inventory.AddItem
         /// </summary>
         private void AddDetailsItem()
         {
-            StartCoroutine(AddNewItemRoutine(false));
+            if (InternalDatabase.Instance.isOfflineProgram)
+            {
+                AddItemLocal.AddItem(parameterValues.ToArray(), categoryDP.value);
+            }
+            else
+            {
+                StartCoroutine(AddNewItemRoutine(false));
+            }
         }
 
     }

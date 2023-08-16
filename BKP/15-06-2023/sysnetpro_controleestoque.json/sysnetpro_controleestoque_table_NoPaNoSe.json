@@ -1,0 +1,353 @@
+,{
+    "type": "table",
+    "name": "NoPaNoSe",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Name": "Espelho cego - perfil baixo",
+    "Quantity": "21"
+},
+{
+    "Name": "Espelho cego - perfil alto",
+    "Quantity": "64"
+},
+{
+    "Name": "Espelho vídeo - perfil alto - Mini display port",
+    "Quantity": "3"
+},
+{
+    "Name": "Espelho vídeo - perfil baixo - Mini display port",
+    "Quantity": "2"
+},
+{
+    "Name": "Espelho vídeo - perfil baixo - DVI; HDMI",
+    "Quantity": "6"
+},
+{
+    "Name": "Espelho vídeo - perfil baixo - VGA",
+    "Quantity": "4"
+},
+{
+    "Name": "Espelho ví­deo - perfil alto - DVI; VGA; HDMI",
+    "Quantity": "6"
+},
+{
+    "Name": "Espelho vídeo - perfil alto - VGA; DVI; S-Video",
+    "Quantity": "2"
+},
+{
+    "Name": "Espelho rede - perfil alto - 1 entrada",
+    "Quantity": "12"
+},
+{
+    "Name": "Espelho rede - perfil alto - 2 entradas",
+    "Quantity": "5"
+},
+{
+    "Name": "Espelho rede - perfil baixo - 1 entrada",
+    "Quantity": "2"
+},
+{
+    "Name": "Espelho rede - perfil baixo - 2 entradas",
+    "Quantity": "6"
+},
+{
+    "Name": "Espelho rede - perfil alto - 4 entradas",
+    "Quantity": "6"
+},
+{
+    "Name": "Espelho rede - perfil baixo - 4 entradas",
+    "Quantity": "4"
+},
+{
+    "Name": "Espelho rede - perfil alto - 3 entradas",
+    "Quantity": "0"
+},
+{
+    "Name": "Espelho SAS - perfil alto",
+    "Quantity": "3"
+},
+{
+    "Name": "Espelho SAS - perfil baixo",
+    "Quantity": "3"
+},
+{
+    "Name": "Benjamim",
+    "Quantity": "10"
+},
+{
+    "Name": "Cabo sata comum",
+    "Quantity": "33"
+},
+{
+    "Name": "Cabo sata grande",
+    "Quantity": "12"
+},
+{
+    "Name": "Espelho Gabinete",
+    "Quantity": "10"
+},
+{
+    "Name": "Tampa cega para gabinete",
+    "Quantity": "6"
+},
+{
+    "Name": "Fibra",
+    "Quantity": "41"
+},
+{
+    "Name": "Cabo DVI-I - HDMI",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador DVI-I - DisplayPort",
+    "Quantity": "1"
+},
+{
+    "Name": "Cabo Mini DisplayPort - DisplayPort",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador VGA - HDMI",
+    "Quantity": "2"
+},
+{
+    "Name": "Adaptador HDMI - DVI-D",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador DVI-D - DisplayPort",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador DisplayPort - Mini DisplayPort",
+    "Quantity": "2"
+},
+{
+    "Name": "Adaptador de VGA para placa de vídeo",
+    "Quantity": "7"
+},
+{
+    "Name": "Cabo de força PDU",
+    "Quantity": "9"
+},
+{
+    "Name": "Cabo VGA - VGA",
+    "Quantity": "30"
+},
+{
+    "Name": "Cabo VGA - HDMI",
+    "Quantity": "1"
+},
+{
+    "Name": "Cabo DVI-D - DVI-D",
+    "Quantity": "2"
+},
+{
+    "Name": "Cabo DisplayPort - DisplayPort",
+    "Quantity": "6"
+},
+{
+    "Name": "Cabo VGA Macho - VGA Fêmea",
+    "Quantity": "1"
+},
+{
+    "Name": "Cabo de força padrão novo",
+    "Quantity": "8"
+},
+{
+    "Name": "Cabo de força padrão antigo",
+    "Quantity": "29"
+},
+{
+    "Name": "Cabo de placa controladora",
+    "Quantity": "7"
+},
+{
+    "Name": "Adaptador DVI-D - HDMI",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador VGA - DVI-I",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador DVI-D - Mini DisplayPort",
+    "Quantity": "2"
+},
+{
+    "Name": "Cabo Console",
+    "Quantity": "2"
+},
+{
+    "Name": "Cabo Console Invertido",
+    "Quantity": "1"
+},
+{
+    "Name": "Switch KVM",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador VGA Fêmea para placa de vídeo",
+    "Quantity": "1"
+},
+{
+    "Name": "Mini Gender Changer VGA",
+    "Quantity": "2"
+},
+{
+    "Name": "Adaptador IDE - SATA",
+    "Quantity": "7"
+},
+{
+    "Name": "Adaptador SATA Macho - SATA Fêmea",
+    "Quantity": "1"
+},
+{
+    "Name": "Módulo para fonte SATA",
+    "Quantity": "1"
+},
+{
+    "Name": "Módulo para fonte IDE",
+    "Quantity": "2"
+},
+{
+    "Name": "Gaveta 3.5\" Dell PowerEdge",
+    "Quantity": "3"
+},
+{
+    "Name": "Gaveta 3.5\" Dell C6100\/C6200",
+    "Quantity": "15"
+},
+{
+    "Name": "Gaveta 3.5\" HP Non HotPlug",
+    "Quantity": "4"
+},
+{
+    "Name": "Gaveta 3.5\" HP Gen 8\/9",
+    "Quantity": "2"
+},
+{
+    "Name": "Gaveta 2.5\" Dell PowerEdge",
+    "Quantity": "5"
+},
+{
+    "Name": "Gaveta 2.5 Dell C6200",
+    "Quantity": "10"
+},
+{
+    "Name": "Gaveta 3.5\" Dell RXXX",
+    "Quantity": "20"
+},
+{
+    "Name": "Gaveta cega 2.5\" Dell",
+    "Quantity": "12"
+},
+{
+    "Name": "Gaveta cega 2.5\" Dell gen 14",
+    "Quantity": "2"
+},
+{
+    "Name": "Gaveta cega 3.5\" Dell C6600",
+    "Quantity": "5"
+},
+{
+    "Name": "Gaveta cega 3.5\" Dell Gen 14",
+    "Quantity": "12"
+},
+{
+    "Name": "Gaveta cega 3.5\" Dell PowerEdge",
+    "Quantity": "10"
+},
+{
+    "Name": "Gaveta cega 3.5\" Dell T430",
+    "Quantity": "9"
+},
+{
+    "Name": "Gaveta cega 3.5\" Dell PowerEdge (2)",
+    "Quantity": "5"
+},
+{
+    "Name": "Gaveta cega 3.5\" IBM",
+    "Quantity": "2"
+},
+{
+    "Name": "Gaveta cega 3.5\" Dell C6100\/C6220",
+    "Quantity": "3"
+},
+{
+    "Name": "Gaveta plástica 3.5\" azul IBM",
+    "Quantity": "2"
+},
+{
+    "Name": "Gaveta 3.5\" Dell Optiplex",
+    "Quantity": "2"
+},
+{
+    "Name": "Gaveta 3.5\" Dell Optiplex C-3598",
+    "Quantity": "4"
+},
+{
+    "Name": "Gaveta 2.5\" Dell Optiplex 3070",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador de gaveta HP",
+    "Quantity": "1"
+},
+{
+    "Name": "Gaveta\/Adaptador WD",
+    "Quantity": "2"
+},
+{
+    "Name": "Caddy para gaveta HP",
+    "Quantity": "2"
+},
+{
+    "Name": "Adaptador de gaveta Supermicro",
+    "Quantity": "9"
+},
+{
+    "Name": "Gaveta para desktop",
+    "Quantity": "1"
+},
+{
+    "Name": "Espelho vídeo - perfil alto - DVI, DisplayPort",
+    "Quantity": "1"
+},
+{
+    "Name": "Conector para HD externo",
+    "Quantity": "1"
+},
+{
+    "Name": "Adaptador VGA\/DVI-I\/HDMI - Mini DisplayPort",
+    "Quantity": "1"
+},
+{
+    "Name": "Cabo HDMI - HDMI",
+    "Quantity": "2"
+},
+{
+    "Name": "Filtro de linha sem tomada",
+    "Quantity": "2"
+},
+{
+    "Name": "Cabo P2S Fêmea - Macho - 5 metros",
+    "Quantity": "2"
+},
+{
+    "Name": "Espelho placa controladora - perfil baixo",
+    "Quantity": "3"
+},
+{
+    "Name": "Avocent MPUIQ-VMC Video\/USB Extender Cable",
+    "Quantity": "1"
+},
+{
+    "Name": "Cabo serial para placa de vídeo",
+    "Quantity": "1"
+}
+]
+
+}

@@ -1,0 +1,16 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Carregador","database":"sysnetpro_controleestoque","data":
+[
+{"Modelo":"WEU350mA5V00-00","Onde_funciona":"Aparelhos Alcatel","Voltagem":"5","Amperagem":"350"},
+{"Modelo":"TCBR-12","Onde_funciona":"","Voltagem":"5","Amperagem":"500"},
+{"Modelo":"TUUS050055-B00","Onde_funciona":"Aparelhos Alcatel","Voltagem":"5","Amperagem":"550"},
+{"Modelo":"NQBCD2BR","Onde_funciona":"","Voltagem":"9","Amperagem":"500"},
+{"Modelo":"MT12-412000-A1","Onde_funciona":"Roteador TP-LINK","Voltagem":"12","Amperagem":"1"},
+{"Modelo":"WAA017","Onde_funciona":"","Voltagem":"12","Amperagem":"800"},
+{"Modelo":"WAB015","Onde_funciona":"","Voltagem":"9","Amperagem":"300"},
+{"Modelo":"S003KV0500040","Onde_funciona":"","Voltagem":"5","Amperagem":"400"}
+]
+}
+]

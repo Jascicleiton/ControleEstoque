@@ -49,8 +49,8 @@ public class AddItemLocal
         switch (category)
         {
             #region HD
-            case ConstStrings.HD:
-                itemToAddFullDatabase.Categoria = ConstStrings.HD;
+            case ConstStrings.C_HD:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_HD;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
                 {
@@ -147,8 +147,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Memoria
-            case ConstStrings.Memoria:
-                itemToAddFullDatabase.Categoria = ConstStrings.Memoria;
+            case ConstStrings.C_Memoria:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Memoria;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
                 {
@@ -235,8 +235,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Placa de rede
-            case ConstStrings.PlacaDeRede:
-                itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeRede;
+            case ConstStrings.C_PlacaDeRede:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_PlacaDeRede;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
                 {
@@ -283,8 +283,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region iDrac
-            case ConstStrings.Idrac:
-                itemToAddFullDatabase.Categoria = ConstStrings.Idrac;
+            case ConstStrings.C_Idrac:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Idrac;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if(InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
                 {
@@ -327,8 +327,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Placa controladora
-            case ConstStrings.PlacaControladora:
-                itemToAddFullDatabase.Categoria = ConstStrings.PlacaControladora;
+            case ConstStrings.C_PlacaControladora:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_PlacaControladora;
                // InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);              
                 itemToAddFullDatabase.QuaisConexoes = parameterValues[11].text;
                 if (!int.TryParse(parameterValues[12].text, out itemToAddFullDatabase.QuantidadeDePortas))
@@ -366,8 +366,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Processador
-            case ConstStrings.Processador:
-                itemToAddFullDatabase.Categoria = ConstStrings.Processador;
+            case ConstStrings.C_Processador:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Processador;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Soquete = parameterValues[11].text;
                 itemToAddCategoryDatabase.Soquete = parameterValues[11].text;
@@ -394,8 +394,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Desktop
-            case ConstStrings.Desktop:
-                itemToAddFullDatabase.Categoria = ConstStrings.Desktop;
+            case ConstStrings.C_Desktop:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Desktop;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
                 {
@@ -443,8 +443,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Fonte
-            case ConstStrings.Fonte:
-                itemToAddFullDatabase.Categoria = ConstStrings.Fonte;
+            case ConstStrings.C_Fonte:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Fonte;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if(!int.TryParse(parameterValues[11].text, out itemToAddFullDatabase.Watts))
                 {
@@ -465,8 +465,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Switch
-            case ConstStrings.Switch:
-                itemToAddFullDatabase.Categoria = ConstStrings.Switch;
+            case ConstStrings.C_Switch:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Switch;
                 //  InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -497,8 +497,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Roteador
-            case ConstStrings.Roteador:
-                itemToAddFullDatabase.Categoria = ConstStrings.Roteador;
+            case ConstStrings.C_Roteador:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Roteador;
                 // InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -539,8 +539,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Carregador
-            case ConstStrings.Carregador:
-                itemToAddFullDatabase.Categoria = ConstStrings.Carregador;
+            case ConstStrings.C_Carregador:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Carregador;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if (InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
                 {
@@ -591,8 +591,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Adaptador AC
-            case ConstStrings.AdaptadorAC:
-                itemToAddFullDatabase.Categoria = ConstStrings.AdaptadorAC;
+            case ConstStrings.C_AdaptadorAC:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_AdaptadorAC;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -664,9 +664,9 @@ public class AddItemLocal
                 break;
             #endregion
             #region Storage NAS
-            case ConstStrings.StorageNAS:
-                itemToAddFullDatabase.Categoria = ConstStrings.StorageNAS;
-                InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
+            case ConstStrings.C_StorageNAS:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_StorageNAS;
+                InternalDatabase.Instance.splitDatabase[ConstStrings.C_Inventario].itens.Add(itemToAddFullDatabase);
                 if(!float.TryParse(parameterValues[11].text, out itemToAddFullDatabase.Tamanho))
                 {
                     itemToAddFullDatabase.Tamanho = 0f;
@@ -683,17 +683,17 @@ public class AddItemLocal
                 break;
             #endregion
             #region GBIC
-            case ConstStrings.Gbic:
-                itemToAddFullDatabase.Categoria = ConstStrings.Gbic;
-                InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
+            case ConstStrings.C_Gbic:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Gbic;
+          //      InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 itemToAddFullDatabase.Desempenho = parameterValues[11].text;
                              //  InternalDatabase.Instance.splitDatabase[ConstStrings.Gbic].itens.Add(itemToAddCategoryDatabase);
                 InternalDatabase.gbic.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Placa de Video
-            case ConstStrings.PlacaDeVideo:
-                itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeVideo;
+            case ConstStrings.C_PlacaDeVideo:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_PlacaDeVideo;
                //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if(!int.TryParse(parameterValues[11].text, out itemToAddFullDatabase.QuantidadeDePortas))
                 {
@@ -705,8 +705,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Placa de som
-            case ConstStrings.PlacaDeSom:
-                itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeSom;
+            case ConstStrings.C_PlacaDeSom:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_PlacaDeSom;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if(!int.TryParse(parameterValues[11].text, out itemToAddFullDatabase.QuantosCanais))
                 {
@@ -717,8 +717,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Placa de captura de video
-            case ConstStrings.PlacaDeCapturaDeVideo:
-                itemToAddFullDatabase.Categoria = ConstStrings.PlacaDeCapturaDeVideo;
+            case ConstStrings.C_PlacaDeCapturaDeVideo:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_PlacaDeCapturaDeVideo;
               //  InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if(!int.TryParse(parameterValues[11].text, out itemToAddFullDatabase.QuantidadeDePortas))
                 {
@@ -729,8 +729,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Servidor
-            case ConstStrings.Servidor:
-                itemToAddFullDatabase.Categoria = ConstStrings.Servidor;
+            case ConstStrings.C_Servidor:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Servidor;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -779,8 +779,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Notebook
-            case ConstStrings.Notebook:
-                itemToAddFullDatabase.Categoria = ConstStrings.Notebook;
+            case ConstStrings.C_Notebook:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Notebook;
                 //InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
@@ -810,8 +810,8 @@ public class AddItemLocal
                 break;
             #endregion
             #region Monitor
-            case ConstStrings.Monitor:
-                itemToAddFullDatabase.Categoria = ConstStrings.Monitor;
+            case ConstStrings.C_Monitor:
+                itemToAddFullDatabase.Categoria = ConstStrings.C_Monitor;
               //  InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens.Add(itemToAddFullDatabase);
                 if(InternalDatabase.Instance.currentEstoque == CurrentEstoque.Concert)
                 {
@@ -831,12 +831,12 @@ public class AddItemLocal
                 }
                 
                 
-                InternalDatabase.Instance.splitDatabase[ConstStrings.Monitor].itens.Add(itemToAddCategoryDatabase);
+                InternalDatabase.Instance.splitDatabase[ConstStrings.C_Monitor].itens.Add(itemToAddCategoryDatabase);
                 InternalDatabase.monitor.itens.Add(itemToAddFullDatabase);
                 break;
             #endregion
             #region Outros
-            case ConstStrings.Outros:
+            case ConstStrings.C_Outros:
             default:
                 itemToAddFullDatabase.Categoria = parameterValues[5].text;
                 itemToAddCategoryDatabase.Categoria = parameterValues[5].text;
@@ -848,6 +848,11 @@ public class AddItemLocal
         InternalDatabase.Instance.fullDatabase.itens.Add(itemToAddFullDatabase);
         // ShowMessage();
          EventHandler.CallDatabaseUpdatedEvent();
+        if(InternalDatabase.Instance.isOfflineProgram)
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Added");
+        }
     }
 
 }

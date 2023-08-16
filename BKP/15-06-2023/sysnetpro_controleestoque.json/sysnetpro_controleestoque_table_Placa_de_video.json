@@ -1,0 +1,69 @@
+,{
+    "type": "table",
+    "name": "Placa_de_video",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "Radeon 6570 650M",
+    "Quantas_entradas": "1",
+    "Quais_entradas": "Mini DisplayPort"
+},
+{
+    "Modelo": "GeForce 8400GS",
+    "Quantas_entradas": "2",
+    "Quais_entradas": "HDMI; DVI-I"
+},
+{
+    "Modelo": "NVIDIA Quadro NVS 285",
+    "Quantas_entradas": "1",
+    "Quais_entradas": "DMS-59"
+},
+{
+    "Modelo": "NVIDIA Quadro 600",
+    "Quantas_entradas": "2",
+    "Quais_entradas": "DVI-I; DisplayPort"
+},
+{
+    "Modelo": "NVIDIA Quadro FX580",
+    "Quantas_entradas": "3",
+    "Quais_entradas": "DVI-I; DisplayPort; DisplayPort"
+},
+{
+    "Modelo": "GeForce 710",
+    "Quantas_entradas": "2",
+    "Quais_entradas": "HDMI; DVI-I"
+},
+{
+    "Modelo": "GeForce GT630",
+    "Quantas_entradas": "3",
+    "Quais_entradas": "VGA; DVI-D; HDMI"
+},
+{
+    "Modelo": "GV-R523D3-1GL",
+    "Quantas_entradas": "3",
+    "Quais_entradas": "VGA; DVI-D; HDMI"
+},
+{
+    "Modelo": "GeForce N8400GS-TD512",
+    "Quantas_entradas": "2",
+    "Quais_entradas": "VGA; DVI"
+},
+{
+    "Modelo": "AMD Radeon HD 5450",
+    "Quantas_entradas": "3",
+    "Quais_entradas": "VGA; DVI-I; HDMI"
+},
+{
+    "Modelo": "AF210-1024D3L5",
+    "Quantas_entradas": "2",
+    "Quais_entradas": "DVI-I; HDMI"
+},
+{
+    "Modelo": "GV-R523D3-1GL\r",
+    "Quantas_entradas": "3",
+    "Quais_entradas": "HDMI, DVI-D, VGA"
+}
+]
+
+}

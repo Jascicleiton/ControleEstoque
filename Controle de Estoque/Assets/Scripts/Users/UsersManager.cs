@@ -24,7 +24,7 @@ public class UsersManager : Singleton<UsersManager>, IJsonSaveable
     {
         usersDatabase = new List<User>();
         admin = new User("admin", "admin", 10);
-        if (!usersDatabase.Contains(admin) && InternalDatabase.Instance.offlineProgram)
+        if (!usersDatabase.Contains(admin) && InternalDatabase.Instance.isOfflineProgram)
         {
             usersDatabase.Add(admin);
         }
@@ -84,7 +84,10 @@ public class UsersManager : Singleton<UsersManager>, IJsonSaveable
             Debug.LogWarning(createPostRequest.error);
         }
         createPostRequest.Dispose();
-        SavingWrapper.Instance.Save();
+        if (InternalDatabase.Instance.isOfflineProgram)
+        {
+            SavingWrapper.Instance.Save();
+        }
     }
 
     public JToken CaptureAsJToken()

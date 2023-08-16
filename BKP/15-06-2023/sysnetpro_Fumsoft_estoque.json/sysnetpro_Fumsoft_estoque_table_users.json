@@ -1,0 +1,15 @@
+,{
+    "type": "table",
+    "name": "users",
+    "database": "sysnetpro_Fumsoft_estoque",
+    "data": 
+[
+{
+    "ID": "2",
+    "username": "marcelo.fonseca",
+    "password": "$2y$10$IxWxaG7VSgmLSS6AG6oeiOi52B2ZUNYal.aowv\/x4xZuQDvGWugwW",
+    "AccessLevel": "10"
+}
+]
+
+}

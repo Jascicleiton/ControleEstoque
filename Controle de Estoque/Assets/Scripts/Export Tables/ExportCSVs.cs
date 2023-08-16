@@ -16,7 +16,13 @@ public class ExportCSVs : MonoBehaviour
         WWWForm form = CreateForm.GetExportInventoryForm();
     }
 
-    public void CreateInventarioSheet()
+    public char[] CreateInventarioSheet3()
+    {
+
+        return null; 
+    }
+
+    public TextWriter CreateInventarioSheet()
     {
         Sheet tempSheet = new Sheet();
         fileName = Application.persistentDataPath + "/Inventario.csv";
@@ -27,7 +33,7 @@ public class ExportCSVs : MonoBehaviour
         textWriter.Dispose();
         if (InternalDatabase.Instance != null)
         {
-            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario];
+            tempSheet = InternalDatabase.Instance.splitDatabase[ConstStrings.C_Inventario];
             if (tempSheet != null)
             {
                 foreach (ItemColumns item in tempSheet.itens)
@@ -40,6 +46,7 @@ public class ExportCSVs : MonoBehaviour
             }
         }
         textWriter.Close();
+        return textWriter;
     }
 
     public void CreateInventarioSheet2()
@@ -86,7 +93,7 @@ public class ExportCSVs : MonoBehaviour
             default:
                 break;
         }
-        foreach (ItemColumns item in InternalDatabase.Instance.splitDatabase[ConstStrings.Inventario].itens)
+        foreach (ItemColumns item in InternalDatabase.Instance.splitDatabase[ConstStrings.C_Inventario].itens)
         {
             rowDataTemp.Add(item.Aquisicao);
             rowDataTemp.Add(item.Entrada);

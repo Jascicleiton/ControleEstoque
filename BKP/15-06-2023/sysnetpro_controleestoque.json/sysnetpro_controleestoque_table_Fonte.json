@@ -1,0 +1,231 @@
+,{
+    "type": "table",
+    "name": "Fonte",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "7000880-0000",
+    "Watts": "675",
+    "Onde_funciona": "PowerEdge 1800",
+    "Conectores": ""
+},
+{
+    "Modelo": "DPS-350AB-24 A",
+    "Watts": "350",
+    "Onde_funciona": "Servidor Storage",
+    "Conectores": "2 SATA; 5 IDE"
+},
+{
+    "Modelo": "0R5RV4",
+    "Watts": "220",
+    "Onde_funciona": "",
+    "Conectores": "2 SATA"
+},
+{
+    "Modelo": "H525EF-00",
+    "Watts": "525",
+    "Onde_funciona": "Precision T3500",
+    "Conectores": ""
+},
+{
+    "Modelo": "DX 500 FSE",
+    "Watts": "500",
+    "Onde_funciona": "Desktop",
+    "Conectores": "4 SATA; 2 IDE"
+},
+{
+    "Modelo": "VX-350",
+    "Watts": "350",
+    "Onde_funciona": "Desktop",
+    "Conectores": "2 SATA; 2 IDE"
+},
+{
+    "Modelo": "AF-600",
+    "Watts": "600",
+    "Onde_funciona": "Desktop",
+    "Conectores": "6 SATA; 3 IDE"
+},
+{
+    "Modelo": "D670P-S0",
+    "Watts": "670",
+    "Onde_funciona": "PowerEdge 1950, 1046",
+    "Conectores": "0"
+},
+{
+    "Modelo": "A670P-00",
+    "Watts": "670",
+    "Onde_funciona": "PowerEdge 1950 - 1047",
+    "Conectores": "0"
+},
+{
+    "Modelo": "39Y7168",
+    "Watts": "585",
+    "Onde_funciona": "IBM xSeries 336",
+    "Conectores": ""
+},
+{
+    "Modelo": "HSTNS-PL14",
+    "Watts": "460",
+    "Onde_funciona": "1055",
+    "Conectores": ""
+},
+{
+    "Modelo": "SS-300TGW",
+    "Watts": "300",
+    "Onde_funciona": "0961",
+    "Conectores": ""
+},
+{
+    "Modelo": "DPS-750XB A",
+    "Watts": "750",
+    "Onde_funciona": "",
+    "Conectores": ""
+},
+{
+    "Modelo": "SPASUM-10G",
+    "Watts": "1030",
+    "Onde_funciona": "0640",
+    "Conectores": ""
+},
+{
+    "Modelo": "PWS-741P-1R",
+    "Watts": "740",
+    "Onde_funciona": "0071",
+    "Conectores": ""
+},
+{
+    "Modelo": "PSU-GA114BU",
+    "Watts": "400",
+    "Onde_funciona": "0255",
+    "Conectores": ""
+},
+{
+    "Modelo": "N525EF-00",
+    "Watts": "525",
+    "Onde_funciona": "",
+    "Conectores": ""
+},
+{
+    "Modelo": "Aelta S\/M",
+    "Watts": "340",
+    "Onde_funciona": "1142",
+    "Conectores": ""
+},
+{
+    "Modelo": "PS-424-9HA",
+    "Watts": "240",
+    "Onde_funciona": "0873",
+    "Conectores": ""
+},
+{
+    "Modelo": "D235PD-00",
+    "Watts": "235",
+    "Onde_funciona": "0037",
+    "Conectores": ""
+},
+{
+    "Modelo": "FSP180-20TGBAB",
+    "Watts": "180",
+    "Onde_funciona": "1131",
+    "Conectores": ""
+},
+{
+    "Modelo": "AC180AS-00",
+    "Watts": "180",
+    "Onde_funciona": "SNP 06 - MOD",
+    "Conectores": ""
+},
+{
+    "Modelo": "Fonte Alim 500W 1X12 - Wisecase",
+    "Watts": "500",
+    "Onde_funciona": "SNP05 - MOD",
+    "Conectores": ""
+},
+{
+    "Modelo": "PWS-351-1H",
+    "Watts": "350",
+    "Onde_funciona": "1081",
+    "Conectores": ""
+},
+{
+    "Modelo": "Z670P-00",
+    "Watts": "670",
+    "Onde_funciona": "PowerEdge 1950, 0069",
+    "Conectores": "0"
+},
+{
+    "Modelo": "1",
+    "Watts": "1",
+    "Onde_funciona": "1",
+    "Conectores": "1"
+},
+{
+    "Modelo": "2",
+    "Watts": "1",
+    "Onde_funciona": "1",
+    "Conectores": "1"
+},
+{
+    "Modelo": "PX-300RMF",
+    "Watts": "200",
+    "Onde_funciona": "1259",
+    "Conectores": ""
+},
+{
+    "Modelo": "D400P-01",
+    "Watts": "400",
+    "Onde_funciona": "1081",
+    "Conectores": "0"
+},
+{
+    "Modelo": "N2200-PAC-400W V01\r",
+    "Watts": "400",
+    "Onde_funciona": "455",
+    "Conectores": "0"
+},
+{
+    "Modelo": "N2200-PAC-400W V04\r",
+    "Watts": "400",
+    "Onde_funciona": "454",
+    "Conectores": "0"
+},
+{
+    "Modelo": "D750E-S1",
+    "Watts": "750",
+    "Onde_funciona": "1290",
+    "Conectores": "0"
+},
+{
+    "Modelo": "ZM500-HP",
+    "Watts": "500",
+    "Onde_funciona": "",
+    "Conectores": "0"
+},
+{
+    "Modelo": "CMPSU-850TXM",
+    "Watts": "850",
+    "Onde_funciona": "",
+    "Conectores": "4 SATA; 4 IDE"
+},
+{
+    "Modelo": "NPS-875BB",
+    "Watts": "0",
+    "Onde_funciona": "",
+    "Conectores": ""
+},
+{
+    "Modelo": "DPS-400AB-12F",
+    "Watts": "400",
+    "Onde_funciona": "1504",
+    "Conectores": ""
+},
+{
+    "Modelo": "Strike-X600W",
+    "Watts": "600",
+    "Onde_funciona": "1506",
+    "Conectores": "5SATA-4IDE"
+}
+]
+
+}

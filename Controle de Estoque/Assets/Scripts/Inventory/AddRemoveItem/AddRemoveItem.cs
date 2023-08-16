@@ -89,7 +89,7 @@ public class AddRemoveItem : MonoBehaviour
             #region Add new item to Inventario
             parameters.Clear();
             parameters = itemInformationPanelController.GetInventoryValues();
-                if (HelperMethods.GetCategoryString(categoryDP.value) == ConstStrings.Outros)
+                if (HelperMethods.GetCategoryString(categoryDP.value) == ConstStrings.C_Outros)
             {
                 parameters.Insert(5, parameterValues[5].text);
             }

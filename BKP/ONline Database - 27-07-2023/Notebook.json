@@ -1,0 +1,18 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Notebook","database":"sysnetpro_controleestoque","data":
+[
+{"Patrimonio":"-200","Modelo":"Inspiron 15","Fabricante":"Dell","HD":"1","Memoria":"1","EntradaRJ45":"1","Bateria":"1","AdaptadorAC":"1","Windows":"1"},
+{"Patrimonio":"125","Modelo":"Inspiron 5566","Fabricante":"Dell","HD":"1","Memoria":"1","EntradaRJ45":"1","Bateria":"1","AdaptadorAC":"1","Windows":"1"},
+{"Patrimonio":"127","Modelo":"Inspiron 5458","Fabricante":"Dell","HD":"1","Memoria":"1","EntradaRJ45":"1","Bateria":"1","AdaptadorAC":"1","Windows":"1"},
+{"Patrimonio":"244","Modelo":"Vostro 14 5490","Fabricante":"Dell","HD":"1","Memoria":"1","EntradaRJ45":"1","Bateria":"1","AdaptadorAC":"1","Windows":"1"},
+{"Patrimonio":"587","Modelo":"Pavilion dm4-2165br","Fabricante":"HP","HD":"1","Memoria":"1","EntradaRJ45":"1","Bateria":"1","AdaptadorAC":"1","Windows":"1"},
+{"Patrimonio":"1071","Modelo":"MEGANOTE Black Purple","Fabricante":"Megaware","HD":"1 de 500GB","Memoria":"4GB","EntradaRJ45":"sim","Bateria":"Viciada","AdaptadorAC":"","Windows":""},
+{"Patrimonio":"1072","Modelo":"X55U-SX037H","Fabricante":"ASUS","HD":"1 de 500GB","Memoria":"4GB","EntradaRJ45":"sim","Bateria":"Está com aviso para trocar","AdaptadorAC":"1074 - 19V 3.42A","Windows":"Windows 7"},
+{"Patrimonio":"1073","Modelo":"LGE500","Fabricante":"LG","HD":"1 de 250GB","Memoria":"2GB","EntradaRJ45":"sim","Bateria":"boa","AdaptadorAC":"1070 - 19V 4.74A","Windows":"Windows XP"},
+{"Patrimonio":"1428","Modelo":"Latitude 7280","Fabricante":"Dell","HD":"1 de 500 GB","Memoria":"1 de 16GB","EntradaRJ45":"sim","Bateria":"boa","AdaptadorAC":"1429","Windows":"Windows 10 Pro"},
+{"Patrimonio":"129","Modelo":"Vostro14-5480","Fabricante":"Dell","HD":"1SSDde240GB","Memoria":"1de8GB","EntradaRJ45":"","Bateria":"Embomfuncionamento","AdaptadorAC":"130","Windows":"Windows10Pro"}
+]
+}
+]

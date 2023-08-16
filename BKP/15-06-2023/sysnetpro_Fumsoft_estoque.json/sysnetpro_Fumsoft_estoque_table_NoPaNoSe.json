@@ -1,0 +1,385 @@
+,{
+    "type": "table",
+    "name": "NoPaNoSe",
+    "database": "sysnetpro_Fumsoft_estoque",
+    "data": 
+[
+{
+    "Name": "HD SAS 300GB - HUS153030VLS300",
+    "Quantity": "2"
+},
+{
+    "Name": "HD SAS 300GB ST3300655SS",
+    "Quantity": "1"
+},
+{
+    "Name": "HD SATA 1TB - ST31000520AS",
+    "Quantity": "2"
+},
+{
+    "Name": "HD SATA 500GB - ST500DM002",
+    "Quantity": "1"
+},
+{
+    "Name": "HD SATA 80GB - HD081GJ",
+    "Quantity": "1"
+},
+{
+    "Name": "HD SATA 500 GB - HD502HI",
+    "Quantity": "1"
+},
+{
+    "Name": "Kit Recuperação Win 7, Intaler e Manula i7",
+    "Quantity": "26"
+},
+{
+    "Name": "Placa de rede IBM 10\/100",
+    "Quantity": "1"
+},
+{
+    "Name": "Placa de vídeo GeForce",
+    "Quantity": "1"
+},
+{
+    "Name": "Placa de som A87405",
+    "Quantity": "1"
+},
+{
+    "Name": "Placa de som SB0200",
+    "Quantity": "2"
+},
+{
+    "Name": "Placa de vídeo D33011",
+    "Quantity": "1"
+},
+{
+    "Name": "Cabo de força padrão antigo",
+    "Quantity": "105"
+},
+{
+    "Name": "Cabo de força padrão novo",
+    "Quantity": "29"
+},
+{
+    "Name": "Cabo de força dois pinos redondos",
+    "Quantity": "1"
+},
+{
+    "Name": "Cabo de força dois pinos quadrados",
+    "Quantity": "6"
+},
+{
+    "Name": "Cabo de força padrão antigo com adaptador para tomada extra",
+    "Quantity": "10"
+},
+{
+    "Name": "CD Office 2003",
+    "Quantity": "9"
+},
+{
+    "Name": "DVD Windows Vista Ultimate",
+    "Quantity": "1"
+},
+{
+    "Name": "Office 2007",
+    "Quantity": "1"
+},
+{
+    "Name": "WIndows XP",
+    "Quantity": "1"
+},
+{
+    "Name": "WIndows 7",
+    "Quantity": "1"
+},
+{
+    "Name": "CDs diversos",
+    "Quantity": "3"
+},
+{
+    "Name": "CD Air Plus Xtreme G",
+    "Quantity": "1"
+},
+{
+    "Name": "CD HP LaserJet Pro 100",
+    "Quantity": "1"
+},
+{
+    "Name": "CD Seagate Backup Exec",
+    "Quantity": "1"
+},
+{
+    "Name": "Windows Server 2008",
+    "Quantity": "1"
+},
+{
+    "Name": "CD Lotus Smart Suite Millenium",
+    "Quantity": "1"
+},
+{
+    "Name": "Licença para Lotus Domino Mail Server + 5 licenças de acesso para clientes",
+    "Quantity": "1"
+},
+{
+    "Name": "Chave de ativação Office 2010",
+    "Quantity": "1"
+},
+{
+    "Name": "CD DOcman DOcument Management",
+    "Quantity": "1"
+},
+{
+    "Name": "Licença WIndows 98",
+    "Quantity": "1"
+},
+{
+    "Name": "Conjunto CDs Office Xp, Office XP Professional e Microsoft Publisher",
+    "Quantity": "1"
+},
+{
+    "Name": "WIndows XP Professional",
+    "Quantity": "3"
+},
+{
+    "Name": "Licença WIndows Server 2008",
+    "Quantity": "2"
+},
+{
+    "Name": "WIndows para pc Dell",
+    "Quantity": "1"
+},
+{
+    "Name": "CD Corel WordPerfect",
+    "Quantity": "1"
+},
+{
+    "Name": "Licença e CD Microsoft Works 9",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de driver para placa GeForce",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de driver para monitor LG",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de instalação do OfficeConnect para Ponto de Acesso 3COM",
+    "Quantity": "1"
+},
+{
+    "Name": "CD e licença Microsoft FrontPage 98",
+    "Quantity": "1"
+},
+{
+    "Name": "CD e licença Word 2000",
+    "Quantity": "1"
+},
+{
+    "Name": "CD e licença Office 97",
+    "Quantity": "1"
+},
+{
+    "Name": "Conjunto CD e licença Office 2003 Professional e CD de atualização Outlook 2003",
+    "Quantity": "2"
+},
+{
+    "Name": "Licença para Office 2003 Trial e Microsoft Works 8",
+    "Quantity": "2"
+},
+{
+    "Name": "CD de instalação do Roxio Creator Starter",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com documentação, licença e garantia do CIsco RV180",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de instalação do mastermaq",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de utilidades e manual do Roteador ASUS RT-N13U",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de recursos para desktop Dell Vostro 260",
+    "Quantity": "1"
+},
+{
+    "Name": "CD Readiris Pro para PC e Mac",
+    "Quantity": "1"
+},
+{
+    "Name": "CD para versão de teste do D-Link D-View 5.1",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com manual para Ponto de acesso DWL-2100AP",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de instalação de driver placa mãe P8H61-M LE\/BR",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de ferramentas de gerenciamento de sistemas Dell v. 6.4",
+    "Quantity": "1"
+},
+{
+    "Name": "Licença Office Professional 2007",
+    "Quantity": "1"
+},
+{
+    "Name": "CD Microsoft FrontPage 98",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de drivers e utilitários para Dell Inspiron 1110",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com manual e utilitários para Switch D-Link DES-3526",
+    "Quantity": "1"
+},
+{
+    "Name": "CD para reinstalação de programa para webcam Dell",
+    "Quantity": "1"
+},
+{
+    "Name": "CD UPSilon 2000",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de soluções para storage ix4-200d",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com manual e utilitários para monitor da AOC E950S",
+    "Quantity": "2"
+},
+{
+    "Name": "CD de utilitários para desktop Dell D915GLVG",
+    "Quantity": "1"
+},
+{
+    "Name": "DVD de reinstalação Windows 7 Home Basic",
+    "Quantity": "1"
+},
+{
+    "Name": "DVD de restauração do Windows 7 Pro 64x",
+    "Quantity": "1"
+},
+{
+    "Name": "DVD com driver para placa mão ASUS série H81",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com manual e utilitários para Switch Des-1210",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de pré-instalação do Windows XP",
+    "Quantity": "1"
+},
+{
+    "Name": "CD Office 2003 Professional",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de recursos para TP-Link",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de instalação intelbras WPN 300",
+    "Quantity": "1"
+},
+{
+    "Name": "CD e licença Windows 2000 Pro",
+    "Quantity": "1"
+},
+{
+    "Name": "CD e licença Windows XP Pro",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de recursos para Dell OptiPlex",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com drivers e utilitários para Desktop Intel D101GGC",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de reinstalação do Windows XP Pro",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de driver placa mãe KM400A\/KM266",
+    "Quantity": "1"
+},
+{
+    "Name": "CD drivers para desktop D945GCNL e D945GCPE",
+    "Quantity": "1"
+},
+{
+    "Name": "CD driver para desktop D945GNT, D945GCZ, D945GPT",
+    "Quantity": "1"
+},
+{
+    "Name": "CD driver para placa mãe P5PE-VM",
+    "Quantity": "1"
+},
+{
+    "Name": "CD driver para placa mãe SIS 661FX",
+    "Quantity": "1"
+},
+{
+    "Name": "CD driver para Desktop DG41RQ",
+    "Quantity": "1"
+},
+{
+    "Name": "CD driver para desktop DG41TY",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com manual e drivers para AirPlus G Adapter G510",
+    "Quantity": "1"
+},
+{
+    "Name": "CD PowerDVD",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de impressora HP Deskjet 3840",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de instalação do Nero Express 6",
+    "Quantity": "1"
+},
+{
+    "Name": "CD com driver e utilitários para Desktop Intel D915GLVG",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de driver e utilitários para Workstation Dell Precision",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de impressora HP Scanjet G2410",
+    "Quantity": "1"
+},
+{
+    "Name": "CD de impressora Epson Stylus C67",
+    "Quantity": "1"
+},
+{
+    "Name": "CD driver para Desktop D915GEV, D915GUX, D915GAV, D915GAG",
+    "Quantity": "1"
+}
+]
+
+}

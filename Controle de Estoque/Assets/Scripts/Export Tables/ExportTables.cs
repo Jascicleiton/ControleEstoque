@@ -7,7 +7,7 @@ public class ExportTables : MonoBehaviour
 {
    public void ExportInventario()
     {
-        JObject state = ExportFunctions.LoadJsonFromFile(ConstStrings.Inventario + " - " + InternalDatabase.Instance.currentEstoque.ToString());
+        JObject state = ExportFunctions.LoadJsonFromFile(ConstStrings.C_Inventario + " - " + InternalDatabase.Instance.currentEstoque.ToString());
         JArray arrayState = new JArray();
         IList<JToken> stateList = arrayState;
         

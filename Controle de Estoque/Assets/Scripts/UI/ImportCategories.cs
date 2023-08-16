@@ -11,13 +11,16 @@ public class ImportCategories : MonoBehaviour, IJsonSaveable
     // Start is called before the first frame update
     void Start()
     {
-        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
+        if (!InternalDatabase.Instance.isOfflineProgram)
         {
-            StartCoroutine(ImportCategoriesRoutine());
-        }
-        else if (Application.isEditor)
-        {
-            StartCoroutine(ImportCategoriesRoutine());
+            if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
+            {
+                StartCoroutine(ImportCategoriesRoutine());
+            }
+            else if (Application.isEditor)
+            {
+                StartCoroutine(ImportCategoriesRoutine());
+            }
         }
        // GambiarraParaCarregarCategorias();
     }

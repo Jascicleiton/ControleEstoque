@@ -8,80 +8,80 @@ public class ConsultCategoryHelperMethods
     {
         switch (item.Categoria)
         {
-            case ConstStrings.AdaptadorAC:
-            case ConstStrings.Carregador:
+            case ConstStrings.C_AdaptadorAC:
+            case ConstStrings.C_Carregador:
                 return GetFonteDeAlimentacao(item, inputindex);                
 
-            case ConstStrings.Desktop:
+            case ConstStrings.C_Desktop:
                 return GetDesktop(item, inputindex);
 
-            case ConstStrings.Fonte:
+            case ConstStrings.C_Fonte:
                 return GetFonte(item, inputindex);
 
-            case ConstStrings.Gbic:
+            case ConstStrings.C_Gbic:
                 return GetGbic(item, inputindex);
 
-            case ConstStrings.HD:
+            case ConstStrings.C_HD:
                 return GetHD(item, inputindex);
 
-            case ConstStrings.Idrac:
+            case ConstStrings.C_Idrac:
                 return GetIdrac(item, inputindex);
 
-            case ConstStrings.Memoria:
+            case ConstStrings.C_Memoria:
                 return GetMemoria(item, inputindex);
 
-            case ConstStrings.Monitor:
+            case ConstStrings.C_Monitor:
                 return GetMonitor(item, inputindex);
 
-            case ConstStrings.Mouse:
+            case ConstStrings.C_Mouse:
                 return GetMouse(item, inputindex);
 
-            case ConstStrings.Nobreak:
+            case ConstStrings.C_Nobreak:
                 return GetNoBreak(item, inputindex);
 
-            case ConstStrings.Notebook:
+            case ConstStrings.C_Notebook:
                 return GetNotebook(item, inputindex);
 
-            case ConstStrings.Outros:
+            case ConstStrings.C_Outros:
                 return GetOutros(item, inputindex);
 
-            case ConstStrings.PlacaControladora:
+            case ConstStrings.C_PlacaControladora:
                 return GetPlacaControladora(item, inputindex);
 
-            case ConstStrings.PlacaDeCapturaDeVideo:
+            case ConstStrings.C_PlacaDeCapturaDeVideo:
                 return GetPlacaDeCapturaDeVideo(item, inputindex);
 
-            case ConstStrings.PlacaDeRede:
+            case ConstStrings.C_PlacaDeRede:
                 return GetPlacaDeRede(item, inputindex);
 
-            case ConstStrings.PlacaDeSom:
+            case ConstStrings.C_PlacaDeSom:
                 return GetPlacaDeSom(item, inputindex);
 
-            case ConstStrings.PlacaDeVideo:
+            case ConstStrings.C_PlacaDeVideo:
                 return GetPlacaDeVideo(item, inputindex);
 
-                case ConstStrings.PlacaSAS:
+                case ConstStrings.C_PlacaSAS:
                 return GetPlacaSAS(item, inputindex);
 
-            case ConstStrings.Processador:
+            case ConstStrings.C_Processador:
                 return GetProcessador(item, inputindex);
 
-            case ConstStrings.Roteador:
+            case ConstStrings.C_Roteador:
                 return GetRoteador(item, inputindex);
 
-            case ConstStrings.Servidor:
+            case ConstStrings.C_Servidor:
                 return GetServidor(item, inputindex);
 
-            case ConstStrings.StorageNAS:
+            case ConstStrings.C_StorageNAS:
                 return GetStorageNas(item, inputindex);
 
-            case ConstStrings.Switch:
+            case ConstStrings.C_Switch:
                 return GetSwitch(item, inputindex);
 
-            case ConstStrings.Teclado:
+            case ConstStrings.C_Teclado:
                 return GetTeclado(item, inputindex);
 
-            case ConstStrings.USB:
+            case ConstStrings.C_USB:
                 return GetUSB(item, inputindex);
 
             default:

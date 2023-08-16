@@ -71,12 +71,10 @@ public class HandlePostRequestResponse
             {
                 Debug.Log("Patrimônio duplicado");
                 EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Patrimônio já existe");
             }
             else if (response == "Serial found")
             {
-                EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Serial já existe");
             }

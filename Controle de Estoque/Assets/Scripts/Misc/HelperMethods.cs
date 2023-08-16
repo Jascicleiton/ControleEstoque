@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Inventory.Item;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
@@ -91,8 +92,8 @@ public class HelperMethods
             addUpdateResponse = HandlePostRequestResponse.HandleWebRequest(createUpdateInventarioRequest);
             if (!addUpdateResponse)
             {
-                EventHandler.CallIsOneMessageOnlyEvent(true);
-                EventHandler.CallOpenMessageEvent("Inventario Failed");
+                //EventHandler.CallIsOneMessageOnlyEvent(true);
+                //EventHandler.CallOpenMessageEvent("Inventario Failed");
                 yield break;
             }
         }
@@ -101,7 +102,7 @@ public class HelperMethods
             switch (GetCategoryString(catedoryDpValue))
             {
                 #region Adaptador AC
-                case ConstStrings.AdaptadorAC:
+                case ConstStrings.C_AdaptadorAC:
                     WWWForm adaptadorAcForm = CreateForm.GetAdaptadorACForm(appKey, parameters);
 
                     UnityWebRequest createAdaptadorACPostRequest = CreatePostRequest.GetPostRequest(adaptadorAcForm, phpName + 
@@ -113,7 +114,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Carregador
-                case ConstStrings.Carregador:
+                case ConstStrings.C_Carregador:
                     WWWForm carregadorForm = CreateForm.GetCarregadorForm(appKey, parameters);
 
                     UnityWebRequest createCarregadorPostRequest = CreatePostRequest.GetPostRequest(carregadorForm, phpName +
@@ -125,7 +126,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Desktop
-                case ConstStrings.Desktop:
+                case ConstStrings.C_Desktop:
                     WWWForm desktopForm = CreateForm.GetDesktopForm(appKey, parameters);
 
                     UnityWebRequest createDesktopPostRequest = CreatePostRequest.GetPostRequest(desktopForm, phpName +
@@ -137,7 +138,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Fonte
-                case ConstStrings.Fonte:
+                case ConstStrings.C_Fonte:
                     WWWForm fonteForm = CreateForm.GetFonteForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
                     UnityWebRequest createFontePostRequest = CreatePostRequest.GetPostRequest(fonteForm, phpName + 
@@ -149,7 +150,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region GBIC
-                case ConstStrings.Gbic:
+                case ConstStrings.C_Gbic:
                     WWWForm gbicForm = CreateForm.GetGBICForm(appKey, parameters[0], parameters[1], parameters[2]);
 
                     UnityWebRequest createGBICPostRequest = CreatePostRequest.GetPostRequest(gbicForm, phpName +
@@ -161,7 +162,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region HD
-                case ConstStrings.HD:
+                case ConstStrings.C_HD:
                     WWWForm hdForm = CreateForm.GetHDForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
 
@@ -174,7 +175,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region iDrac
-                case ConstStrings.Idrac:
+                case ConstStrings.C_Idrac:
                     WWWForm iDracForm = CreateForm.GetiDracForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                    parameters[4], parameters[5]);
 
@@ -187,7 +188,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Memoria
-                case ConstStrings.Memoria:
+                case ConstStrings.C_Memoria:
                     WWWForm memoriaForm = CreateForm.GetMemoriaForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6], parameters[7], parameters[8], parameters[9]);
 
@@ -201,7 +202,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Monitor
-                case ConstStrings.Monitor:
+                case ConstStrings.C_Monitor:
                     WWWForm monitorForm = CreateForm.GetMonitorForm(appKey, parameters);
 
                     UnityWebRequest createMonitorPostRequest = CreatePostRequest.GetPostRequest(monitorForm, phpName +
@@ -213,7 +214,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Notebook
-                case ConstStrings.Notebook:
+                case ConstStrings.C_Notebook:
                     WWWForm notebookForm = CreateForm.GetNotebookForm(appKey, parameters);
 
                     UnityWebRequest createNotebookPostRequest = CreatePostRequest.GetPostRequest(notebookForm, phpName +
@@ -225,7 +226,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa controladora
-                case ConstStrings.PlacaControladora:
+                case ConstStrings.C_PlacaControladora:
                     WWWForm placaControladoraForm = CreateForm.GetPlacaControladoraForm(appKey, parameters[0], parameters[1], parameters[2],
                     parameters[3], parameters[4], parameters[5], parameters[6], parameters[7], parameters[8]);
 
@@ -238,7 +239,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa de captura de vídeo
-                case ConstStrings.PlacaDeCapturaDeVideo:
+                case ConstStrings.C_PlacaDeCapturaDeVideo:
                     WWWForm placaDeCapturaDeVideoForm = CreateForm.GetPlacaDeCapturaDeVideoForm(appKey, parameters[0], parameters[1]);
 
                     UnityWebRequest createPlacaDeCapturaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeCapturaDeVideoForm, 
@@ -250,7 +251,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa de rede
-                case ConstStrings.PlacaDeRede:
+                case ConstStrings.C_PlacaDeRede:
                     WWWForm placaDeRedeForm = CreateForm.GetPlacaDeRedeForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                     parameters[4], parameters[5], parameters[6]);
 
@@ -263,7 +264,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa de som
-                case ConstStrings.PlacaDeSom:
+                case ConstStrings.C_PlacaDeSom:
                     WWWForm placaDeSomForm = CreateForm.GetPlacaSomForm(appKey, parameters[0], parameters[1]);
 
                     UnityWebRequest createPlacaDeSomPostRequest = CreatePostRequest.GetPostRequest(placaDeSomForm, phpName +
@@ -275,7 +276,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa de vídeo
-                case ConstStrings.PlacaDeVideo:
+                case ConstStrings.C_PlacaDeVideo:
                     WWWForm placaDeVideoForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
 
                     UnityWebRequest createPlacaDeVideoPostRequest = CreatePostRequest.GetPostRequest(placaDeVideoForm, phpName +
@@ -287,7 +288,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa SAS
-                case ConstStrings.PlacaSAS:
+                case ConstStrings.C_PlacaSAS:
                     WWWForm placaSASForm = CreateForm.GetPlacaVideoForm(appKey, parameters[0], parameters[1], parameters[2]);
 
                     UnityWebRequest createPlacaSASPostRequest = CreatePostRequest.GetPostRequest(placaSASForm, phpName +
@@ -299,7 +300,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Processador
-                case ConstStrings.Processador:
+                case ConstStrings.C_Processador:
                     WWWForm processadorForm = CreateForm.GetProcessadorForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3]);
 
                     UnityWebRequest createProcessadorPostRequest = CreatePostRequest.GetPostRequest(processadorForm, phpName +
@@ -311,7 +312,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Roteador
-                case ConstStrings.Roteador:
+                case ConstStrings.C_Roteador:
                     WWWForm roteadorForm = CreateForm.GetRoteadorForm(appKey, parameters);
 
                     UnityWebRequest createRoteadorPostRequest = CreatePostRequest.GetPostRequest(roteadorForm, phpName +
@@ -323,7 +324,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Servidor
-                case ConstStrings.Servidor:
+                case ConstStrings.C_Servidor:
 
                     WWWForm servidorForm = CreateForm.GetServidorForm(appKey, parameters);
 
@@ -336,7 +337,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Storage Nas
-                case ConstStrings.StorageNAS:
+                case ConstStrings.C_StorageNAS:
                     WWWForm storageNasForm = CreateForm.GetStorageNASForm(appKey, parameters[0], parameters[1], parameters[2], parameters[3],
                   parameters[4], parameters[5]);
 
@@ -349,7 +350,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Switch
-                case ConstStrings.Switch:
+                case ConstStrings.C_Switch:
                     WWWForm switchForm = CreateForm.GetSwitchForm(appKey, parameters);
 
                     UnityWebRequest createSwitchPostRequest = CreatePostRequest.GetPostRequest(switchForm, phpName +
@@ -425,7 +426,7 @@ public class HelperMethods
             switch (itemToShow.Categoria)
             {
                 #region Adaptador AC
-                case ConstStrings.AdaptadorAC:
+                case ConstStrings.C_AdaptadorAC:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
@@ -442,7 +443,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Carregador
-                case ConstStrings.Carregador:
+                case ConstStrings.C_Carregador:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
@@ -458,7 +459,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Desktop
-                case ConstStrings.Desktop:
+                case ConstStrings.C_Desktop:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
@@ -480,19 +481,19 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Fonte
-                case ConstStrings.Fonte:
+                case ConstStrings.C_Fonte:
                     dictionary["Values"].Add(itemToShow.Watts.ToString());
                     dictionary["Values"].Add(itemToShow.OndeFunciona);
                     dictionary["Values"].Add(itemToShow.Conectores);
                     break;
                 #endregion
                 #region GBIC
-                case ConstStrings.Gbic:
+                case ConstStrings.C_Gbic:
                     dictionary["Values"].Add(itemToShow.Desempenho);
                     break;
                 #endregion
                 #region HD
-                case ConstStrings.HD:
+                case ConstStrings.C_HD:
                     dictionary["Values"].Add(itemToShow.Interface);
                     dictionary["Values"].Add(itemToShow.Tamanho.ToString());
                     dictionary["Values"].Add(itemToShow.FormaDeArmazenamento);
@@ -503,7 +504,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region iDrac
-                case ConstStrings.Idrac:
+                case ConstStrings.C_Idrac:
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     dictionary["Values"].Add(itemToShow.VelocidadeGBs.ToString());
                     dictionary["Values"].Add(itemToShow.EntradaSD);
@@ -511,7 +512,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Memoria
-                case ConstStrings.Memoria:
+                case ConstStrings.C_Memoria:
                     dictionary["Values"].Add(itemToShow.Tipo);
                     dictionary["Values"].Add(itemToShow.CapacidadeEmGB.ToString());
                     dictionary["Values"].Add(itemToShow.VelocidadeMHz.ToString());
@@ -523,13 +524,13 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Monitor
-                case ConstStrings.Monitor:
+                case ConstStrings.C_Monitor:
                     dictionary["Values"].Add(itemToShow.Polegadas.ToString());
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     break;
                 #endregion
                 #region Notebook
-                case ConstStrings.Notebook:
+                case ConstStrings.C_Notebook:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
@@ -551,7 +552,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa controladora
-                case ConstStrings.PlacaControladora:
+                case ConstStrings.C_PlacaControladora:
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.TipoDeRAID);
@@ -562,12 +563,12 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa de captura de video
-                case ConstStrings.PlacaDeCapturaDeVideo:
+                case ConstStrings.C_PlacaDeCapturaDeVideo:
                     dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     break;
                 #endregion
                 #region Placa de rede
-                case ConstStrings.PlacaDeRede:
+                case ConstStrings.C_PlacaDeRede:
                     dictionary["Values"].Add(itemToShow.Interface);
                     dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
@@ -576,31 +577,31 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Placa de som
-                case ConstStrings.PlacaDeSom:
+                case ConstStrings.C_PlacaDeSom:
                     dictionary["Values"].Add(itemToShow.QuantosCanais.ToString());
                     break;
                 #endregion
                 #region Placa de Video
-                case ConstStrings.PlacaDeVideo:
+                case ConstStrings.C_PlacaDeVideo:
                     dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.QuaisConexoes);
                     break;
                 #endregion
                 #region Placa de Video
-                case ConstStrings.PlacaSAS:
+                case ConstStrings.C_PlacaSAS:
                     dictionary["Values"].Add(itemToShow.QuantidadeDePortas.ToString());
                     dictionary["Values"].Add(itemToShow.VelocidadeGBs.ToString());
                     break;
                 #endregion
                 #region Processador
-                case ConstStrings.Processador:
+                case ConstStrings.C_Processador:
                     dictionary["Values"].Add(itemToShow.Soquete);
                     dictionary["Values"].Add(itemToShow.NucleosFisicos.ToString());
                     dictionary["Values"].Add(itemToShow.NucleosLogicos.ToString());
                     break;
                 #endregion
                 #region Roteador
-                case ConstStrings.Roteador:
+                case ConstStrings.C_Roteador:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
@@ -616,7 +617,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Servidor
-                case ConstStrings.Servidor:
+                case ConstStrings.C_Servidor:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
@@ -647,7 +648,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Storage NAS
-                case ConstStrings.StorageNAS:
+                case ConstStrings.C_StorageNAS:
                     dictionary["Values"].Add(itemToShow.Tamanho.ToString());
                     dictionary["Values"].Add(itemToShow.TipoDeRAID);
                     dictionary["Values"].Add(itemToShow.TipoDeHD);
@@ -656,7 +657,7 @@ public class HelperMethods
                     break;
                 #endregion
                 #region Switch
-                case ConstStrings.Switch:
+                case ConstStrings.C_Switch:
                     switch (InternalDatabase.Instance.currentEstoque)
                     {
                         case CurrentEstoque.SnPro:
@@ -711,7 +712,7 @@ public class HelperMethods
         switch (category)
         {
             #region Adaptador AC
-            case ConstStrings.AdaptadorAC:
+            case ConstStrings.C_AdaptadorAC:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -728,7 +729,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Carregador
-            case ConstStrings.Carregador:
+            case ConstStrings.C_Carregador:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -744,7 +745,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Desktop
-            case ConstStrings.Desktop:
+            case ConstStrings.C_Desktop:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -766,19 +767,19 @@ public class HelperMethods
                 break;
             #endregion
             #region Fonte
-            case ConstStrings.Fonte:
+            case ConstStrings.C_Fonte:
                 dictionary["Names"].Add("Watts de potência");
                 dictionary["Names"].Add("Onde funciona?");
                 dictionary["Names"].Add("Conectores");
                 break;
             #endregion
             #region GBIC
-            case ConstStrings.Gbic:
+            case ConstStrings.C_Gbic:
                 dictionary["Names"].Add("Desempenho máx (GB/s)");
                 break;
             #endregion
             #region HD
-            case ConstStrings.HD:
+            case ConstStrings.C_HD:
                 dictionary["Names"].Add("Interface");
                 dictionary["Names"].Add("Tamanho");
                 dictionary["Names"].Add("Forma de armazenamento");
@@ -789,7 +790,7 @@ public class HelperMethods
                 break;
             #endregion
             #region iDrac
-            case ConstStrings.Idrac:
+            case ConstStrings.C_Idrac:
                 dictionary["Names"].Add("Porta");
                 dictionary["Names"].Add("Velocidade (GB/s)");
                 dictionary["Names"].Add("Entrada SD");
@@ -797,7 +798,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Memoria
-            case ConstStrings.Memoria:
+            case ConstStrings.C_Memoria:
                 dictionary["Names"].Add("Tipo");
                 dictionary["Names"].Add("Capacidade (GB)");
                 dictionary["Names"].Add("Velocidade (MHz)");
@@ -809,17 +810,17 @@ public class HelperMethods
                 break;
             #endregion
             #region Monitor
-            case ConstStrings.Monitor:
+            case ConstStrings.C_Monitor:
                 dictionary["Names"].Add("Polegadas");
                 dictionary["Names"].Add("Quais entradas?");
                 break;
             #endregion
             #region No break
-            case ConstStrings.Nobreak:
+            case ConstStrings.C_Nobreak:
                 break;
             #endregion
             #region Notebook
-            case ConstStrings.Notebook:
+            case ConstStrings.C_Notebook:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -841,7 +842,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Placa controladora
-            case ConstStrings.PlacaControladora:
+            case ConstStrings.C_PlacaControladora:
                 dictionary["Names"].Add("Tipo de conexão");
                 dictionary["Names"].Add("Quantas portas?");
                 dictionary["Names"].Add("Tipos de RAID");
@@ -852,12 +853,12 @@ public class HelperMethods
                 break;
             #endregion
             #region Placa de captura de video
-            case ConstStrings.PlacaDeCapturaDeVideo:
+            case ConstStrings.C_PlacaDeCapturaDeVideo:
                 dictionary["Names"].Add("Quantas entradas?");
                 break;
             #endregion
             #region Placa de rede
-            case ConstStrings.PlacaDeRede:
+            case ConstStrings.C_PlacaDeRede:
                 dictionary["Names"].Add("Interface");
                 dictionary["Names"].Add("Quantas portas?");
                 dictionary["Names"].Add("Quais portas?");
@@ -866,31 +867,31 @@ public class HelperMethods
                 break;
             #endregion
             #region Placa de som
-            case ConstStrings.PlacaDeSom:
+            case ConstStrings.C_PlacaDeSom:
                 dictionary["Names"].Add("Quantos canais?");
                 break;
             #endregion
             #region Placa de Video
-            case ConstStrings.PlacaDeVideo:
+            case ConstStrings.C_PlacaDeVideo:
                 dictionary["Names"].Add("Quantas entradas?");
                 dictionary["Names"].Add("Quais entradas?");
                 break;
             #endregion
             #region Placa SAS
-            case ConstStrings.PlacaSAS:
+            case ConstStrings.C_PlacaSAS:
                 dictionary["Names"].Add("Quantas entradas?");
                 dictionary["Names"].Add("Velocidade de transmissão");
                 break;
             #endregion
             #region Processador
-            case ConstStrings.Processador:
+            case ConstStrings.C_Processador:
                 dictionary["Names"].Add("Soquete");
                 dictionary["Names"].Add("Nº núcleos físicos");
                 dictionary["Names"].Add("Nº núcleos lógicos");
                 break;
             #endregion
             #region Roteador
-            case ConstStrings.Roteador:
+            case ConstStrings.C_Roteador:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -906,7 +907,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Servidor
-            case ConstStrings.Servidor:
+            case ConstStrings.C_Servidor:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -937,7 +938,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Storage NAS
-            case ConstStrings.StorageNAS:
+            case ConstStrings.C_StorageNAS:
                 dictionary["Names"].Add("Tamanho dos HDs");
                 dictionary["Names"].Add("Tipos de RAID");
                 dictionary["Names"].Add("Tipo de HD");
@@ -946,7 +947,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Switch
-            case ConstStrings.Switch:
+            case ConstStrings.C_Switch:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1014,7 +1015,7 @@ public class HelperMethods
         switch (category)
         {
             #region Adaptador AC
-            case ConstStrings.AdaptadorAC:
+            case ConstStrings.C_AdaptadorAC:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1031,7 +1032,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Carregador
-            case ConstStrings.Carregador:
+            case ConstStrings.C_Carregador:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1047,7 +1048,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Desktop
-            case ConstStrings.Desktop:
+            case ConstStrings.C_Desktop:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1069,19 +1070,19 @@ public class HelperMethods
                 break;
             #endregion
             #region Fonte
-            case ConstStrings.Fonte:
+            case ConstStrings.C_Fonte:
                 dictionary["Placeholders"].Add("Watts de potência...");
                 dictionary["Placeholders"].Add("Patrimônio(s) compatível(is)...");
                 dictionary["Placeholders"].Add("Quantos e quais conectores possui...");
                 break;
             #endregion
             #region GBIC
-            case ConstStrings.Gbic:
+            case ConstStrings.C_Gbic:
                 dictionary["Placeholders"].Add("Desempenho máx (GB/s)...");
                 break;
             #endregion
             #region HD
-            case ConstStrings.HD:
+            case ConstStrings.C_HD:
                 dictionary["Placeholders"].Add("SATA, SAS...");
                 dictionary["Placeholders"].Add("3,5\" ou 2,5\"...");
                 dictionary["Placeholders"].Add("SSD, HDD ou HDSSD...");
@@ -1092,7 +1093,7 @@ public class HelperMethods
                 break;
             #endregion
             #region iDrac
-            case ConstStrings.Idrac:
+            case ConstStrings.C_Idrac:
                 dictionary["Placeholders"].Add("Qual tipo de porta possui?...");
                 dictionary["Placeholders"].Add("Velocidade em GB/s...");
                 dictionary["Placeholders"].Add("Possui entrada SD?");
@@ -1100,7 +1101,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Memoria
-            case ConstStrings.Memoria:
+            case ConstStrings.C_Memoria:
                 dictionary["Placeholders"].Add("DDR2, DDR3...");
                 dictionary["Placeholders"].Add("Capacidade em GB...");
                 dictionary["Placeholders"].Add("Velocidade em MHz...");
@@ -1112,17 +1113,17 @@ public class HelperMethods
                 break;
             #endregion
             #region Monitor
-            case ConstStrings.Monitor:
+            case ConstStrings.C_Monitor:
                 dictionary["Placeholders"].Add("Polegadas...");
                 dictionary["Placeholders"].Add("Quais entradas?...");
                 break;
             #endregion
             #region No break
-            case ConstStrings.Nobreak:
+            case ConstStrings.C_Nobreak:
                 break;
             #endregion
             #region Notebook
-            case ConstStrings.Notebook:
+            case ConstStrings.C_Notebook:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1144,7 +1145,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Placa controladora
-            case ConstStrings.PlacaControladora:
+            case ConstStrings.C_PlacaControladora:
                 dictionary["Placeholders"].Add("Tipo de conexão...");
                 dictionary["Placeholders"].Add("Quantas portas?...");
                 dictionary["Placeholders"].Add("Tipos de RAID...");
@@ -1155,12 +1156,12 @@ public class HelperMethods
                 break;
             #endregion
             #region Placa de captura de video
-            case ConstStrings.PlacaDeCapturaDeVideo:
+            case ConstStrings.C_PlacaDeCapturaDeVideo:
                 dictionary["Placeholders"].Add("Quantas entradas?...");
                 break;
             #endregion
             #region Placa de rede
-            case ConstStrings.PlacaDeRede:
+            case ConstStrings.C_PlacaDeRede:
                 dictionary["Placeholders"].Add("Tipo de barramento...");
                 dictionary["Placeholders"].Add("Quantas portas?...");
                 dictionary["Placeholders"].Add("Quais portas?...");
@@ -1169,31 +1170,31 @@ public class HelperMethods
                 break;
             #endregion
             #region Placa de som
-            case ConstStrings.PlacaDeSom:
+            case ConstStrings.C_PlacaDeSom:
                 dictionary["Placeholders"].Add("Quantos canais?...");
                 break;
             #endregion
             #region Placa de Video
-            case ConstStrings.PlacaDeVideo:
+            case ConstStrings.C_PlacaDeVideo:
                 dictionary["Placeholders"].Add("Quantas entradas?...");
                 dictionary["Placeholders"].Add("Quais entradas?...");
                 break;
             #endregion
             #region Placa de Video
-            case ConstStrings.PlacaSAS:
+            case ConstStrings.C_PlacaSAS:
                 dictionary["Placeholders"].Add("Quantas entradas?");
                 dictionary["Placeholders"].Add("Velocidade de transmissão");
                 break;
             #endregion
             #region Processador
-            case ConstStrings.Processador:
+            case ConstStrings.C_Processador:
                 dictionary["Placeholders"].Add("Soquete...");
                 dictionary["Placeholders"].Add("Nº núcleos físicos...");
                 dictionary["Placeholders"].Add("Nº núcleos lógicos...");
                 break;
             #endregion
             #region Roteador
-            case ConstStrings.Roteador:
+            case ConstStrings.C_Roteador:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1209,7 +1210,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Servidor
-            case ConstStrings.Servidor:
+            case ConstStrings.C_Servidor:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1240,7 +1241,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Storage NAS
-            case ConstStrings.StorageNAS:
+            case ConstStrings.C_StorageNAS:
                 dictionary["Placeholders"].Add("3,5\" e/ou 2,5\"...");
                 dictionary["Placeholders"].Add("Tipos de RAID suportadas...");
                 dictionary["Placeholders"].Add("SATA ou SAS...");
@@ -1249,7 +1250,7 @@ public class HelperMethods
                 break;
             #endregion
             #region Switch
-            case ConstStrings.Switch:
+            case ConstStrings.C_Switch:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -1343,59 +1344,59 @@ public class HelperMethods
     {
         switch (category)
         {
-            case ConstStrings.AdaptadorAC:
+            case ConstStrings.C_AdaptadorAC:
                 return InternalDatabase.adaptadorAC;
-            case ConstStrings.Carregador:
+            case ConstStrings.C_Carregador:
                 return InternalDatabase.carregador;
-            case ConstStrings.Desktop:
+            case ConstStrings.C_Desktop:
                 return InternalDatabase.desktop;
-            case ConstStrings.FoneRamal:
+            case ConstStrings.C_FoneRamal:
                 return InternalDatabase.foneRamal;
-            case ConstStrings.Fonte:
+            case ConstStrings.C_Fonte:
                 return InternalDatabase.fonte;
-            case ConstStrings.Gbic:
+            case ConstStrings.C_Gbic:
                 return InternalDatabase.gbic;
-            case ConstStrings.HD:
+            case ConstStrings.C_HD:
                 return InternalDatabase.hd;
-            case ConstStrings.Idrac:
+            case ConstStrings.C_Idrac:
                 return InternalDatabase.idrac;
-            case ConstStrings.Memoria:
+            case ConstStrings.C_Memoria:
                 return InternalDatabase.memoria;
-            case ConstStrings.Monitor:
+            case ConstStrings.C_Monitor:
                 return InternalDatabase.monitor;
-            case ConstStrings.Mouse:
+            case ConstStrings.C_Mouse:
                 return InternalDatabase.mouse;
-            case ConstStrings.Nobreak:
+            case ConstStrings.C_Nobreak:
                 return InternalDatabase.nobreak;
-            case ConstStrings.Notebook:
+            case ConstStrings.C_Notebook:
                 return InternalDatabase.notebook;
-            case ConstStrings.PlacaControladora:
+            case ConstStrings.C_PlacaControladora:
                 return InternalDatabase.placaControladora;
-            case ConstStrings.PlacaDeCapturaDeVideo:
+            case ConstStrings.C_PlacaDeCapturaDeVideo:
                 return InternalDatabase.placaDeCapturaDeVideo;
-            case ConstStrings.PlacaDeRede:
+            case ConstStrings.C_PlacaDeRede:
                 return InternalDatabase.placaDeRede;
-            case ConstStrings.PlacaDeSom:
+            case ConstStrings.C_PlacaDeSom:
                 return InternalDatabase.placaDeSom;
-            case ConstStrings.PlacaDeVideo:
+            case ConstStrings.C_PlacaDeVideo:
                 return InternalDatabase.placaDeVideo;
-            case ConstStrings.PlacaSAS:
+            case ConstStrings.C_PlacaSAS:
                 return InternalDatabase.placaSAS;
-            case ConstStrings.Processador:
+            case ConstStrings.C_Processador:
                 return InternalDatabase.processador;
-            case ConstStrings.Ramal:
+            case ConstStrings.C_Ramal:
                 return InternalDatabase.ramal;
-            case ConstStrings.Roteador:
+            case ConstStrings.C_Roteador:
                 return InternalDatabase.roteador;
-            case ConstStrings.Servidor:
+            case ConstStrings.C_Servidor:
                 return InternalDatabase.servidor;
-            case ConstStrings.StorageNAS:
+            case ConstStrings.C_StorageNAS:
                 return InternalDatabase.storageNAS;
-            case ConstStrings.Switch:
+            case ConstStrings.C_Switch:
                 return InternalDatabase.Switch;
-            case ConstStrings.Teclado:
+            case ConstStrings.C_Teclado:
                 return InternalDatabase.teclado;
-            case ConstStrings.Outros:
+            case ConstStrings.C_Outros:
                 return InternalDatabase.outros;
             default:
                 return InternalDatabase.Instance.fullDatabase;

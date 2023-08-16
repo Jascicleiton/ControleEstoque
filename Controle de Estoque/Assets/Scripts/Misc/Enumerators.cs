@@ -30,3 +30,36 @@ public enum Scenes
     UpdateItemScene,
     TestScene
 }
+
+
+public enum TablesNamesOnDatabase
+{
+    Adaptador_AC,
+    Carregador,
+    Categorias,
+    Desktop,
+    Fonte,
+    GBIC,
+    HD,
+    iDrac,
+    Inventario,
+    Locais,
+    Memoria,
+    Monitor,
+    movements,
+    NoPaNoSe,
+    NoPaNoSeMovements,
+    Notebook,
+    Placa_constroladora,
+    Placa_de_captura_de_video,
+    Placa_de_rede,
+    Placa_de_som,
+    Placa_de_video,
+    Placa_SAS,
+    Processador,
+    Roteador,
+    Servidor,
+    Storage_NAS,
+    Switch,
+    users
+}

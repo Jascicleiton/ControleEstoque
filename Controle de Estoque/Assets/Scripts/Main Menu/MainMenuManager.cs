@@ -80,7 +80,7 @@ namespace MainMenu
                     if (loginEnabled)
                     {
                         inputEnabled = false;
-                        if (InternalDatabase.Instance.offlineProgram)
+                        if (InternalDatabase.Instance.isOfflineProgram)
                         {
                             LoginOffline();
                         }

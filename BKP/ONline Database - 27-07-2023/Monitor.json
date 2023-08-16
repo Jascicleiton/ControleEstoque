@@ -1,0 +1,26 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Monitor","database":"sysnetpro_controleestoque","data":
+[
+{"Modelo":"TRS-XIE-V","Fabricante":"Tronos","Polegadas":"19","Tipos_de_entrada":"VGA"},
+{"Modelo":"LS1922wA","Fabricante":"Lenovo","Polegadas":"19","Tipos_de_entrada":"VGA"},
+{"Modelo":"W1946PW","Fabricante":"Positivo","Polegadas":"18","Tipos_de_entrada":"VGA e DVI-D"},
+{"Modelo":"P2217H","Fabricante":"Dell","Polegadas":"22","Tipos_de_entrada":"USB; VGA; HDMI; DisplayPort"},
+{"Modelo":"1908FP","Fabricante":"Dell","Polegadas":"19","Tipos_de_entrada":"VGA e DVI-D"},
+{"Modelo":"MLE 1950W","Fabricante":"STI","Polegadas":"0","Tipos_de_entrada":""},
+{"Modelo":"L1953H","Fabricante":"LG","Polegadas":"19","Tipos_de_entrada":"VGA e DVI-D"},
+{"Modelo":"P2314H","Fabricante":"Dell","Polegadas":"23","Tipos_de_entrada":"USB; VGA; HDMI; DisplayPort"},
+{"Modelo":"P2414H","Fabricante":"Dell","Polegadas":"24","Tipos_de_entrada":"VGA e DVI-D"},
+{"Modelo":"P2319H","Fabricante":"Dell","Polegadas":"23","Tipos_de_entrada":"DisplayPort; HDMI; VGA"},
+{"Modelo":"P2317H","Fabricante":"Dell","Polegadas":"23","Tipos_de_entrada":"DisplayPort; HDMI; VGA"},
+{"Modelo":"2208WFPt","Fabricante":"Dell","Polegadas":"22","Tipos_de_entrada":"VGA e DVI-D"},
+{"Modelo":"HSTND-7091-A","Fabricante":"HP","Polegadas":"21","Tipos_de_entrada":"VGA e HDMI"},
+{"Modelo":"L200hx","Fabricante":"HP","Polegadas":"20","Tipos_de_entrada":"VGA e DVI-D"},
+{"Modelo":"S2240Lc","Fabricante":"Dell","Polegadas":"21","Tipos_de_entrada":"VGA e HDMI"},
+{"Modelo":"M2470SWH2","Fabricante":"AOC","Polegadas":"23","Tipos_de_entrada":"VGA e HDMI"},
+{"Modelo":"1","Fabricante":"2","Polegadas":"2","Tipos_de_entrada":"2"},
+{"Modelo":"2","Fabricante":"1","Polegadas":"1","Tipos_de_entrada":"1"}
+]
+}
+]

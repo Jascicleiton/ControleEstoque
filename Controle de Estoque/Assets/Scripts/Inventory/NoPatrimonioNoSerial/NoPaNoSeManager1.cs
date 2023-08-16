@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System.Linq;
 using UnityEngine.UIElements;
 using System.Xml.Linq;
+using System;
 
 public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
 {
@@ -26,6 +27,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private TextField newItemNameInput;
     private TextField newItemQuantityInput;
     private Button addNewItemButton;
+    private bool isNewItemPanelOpen = false;
     #endregion
 
     #region Consult
@@ -47,6 +49,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private TextField whereToTextField;
     private Button moveItemButton;
     private VisualElement quantityPanel;
+    private Label itemCurrentQuantityLabel;
     #endregion
 
     private int itemIndex;
@@ -61,6 +64,14 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private void OnDisable()
     {
         UnsubscribeToEvents();
+    }
+
+    private void Update()
+    {
+        if(isNewItemPanelOpen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseNewItemPanel();
+        }
     }
 
     /// <summary>
@@ -118,6 +129,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         increaseButton = root.Q<Button>("IncreaseButton");
         decreaseButton = root.Q<Button>("DecreaseButton");
         quantityPanel = root.Q<VisualElement>("QuantityPanel");
+        itemCurrentQuantityLabel = root.Q<Label>("ItemCurrentQuantity");
         SubscribeToEvents();
         Initialize();
     }
@@ -162,6 +174,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         newItemPanel.style.display = DisplayStyle.Flex;
         newItemNameInput.value = "";
         newItemQuantityInput.value = "";
+        isNewItemPanelOpen = true;
         //  EventHandler.CallUpdateTabInputs();
     }
 
@@ -222,13 +235,6 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     /// </summary>
     private IEnumerator AddNewItemRoutine()
     {
-        if (!int.TryParse(newItemQuantityInput.text, out tempInt))
-        {
-            EventHandler.CallIsOneMessageOnlyEvent(true);
-            EventHandler.CallOpenMessageEvent("Invalid number format");
-            yield break;
-        }
-
         WWWForm itemForm = CreateForm.GetNoPaNoSeForm(ConstStrings.AddNewItemKey, newItemNameInput.text, tempInt);
 
         UnityWebRequest createUpdateInventarioRequest = CreatePostRequest.GetPostRequest(itemForm, ConstStrings.AddNoPaNoSe, 5);
@@ -286,7 +292,29 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     /// </summary>
     public void AddNewItemClicked()
     {
-        StartCoroutine(AddNewItemRoutine());
+        if (!int.TryParse(newItemQuantityInput.text, out tempInt))
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Invalid number format");
+            return;
+        }
+
+        if (!InternalDatabase.Instance.isOfflineProgram)
+        {
+            StartCoroutine(AddNewItemRoutine());
+        }
+        else
+        {
+            AddNewItem(newItemNameInput.value, tempInt);
+            EventHandler.CallDatabaseUpdatedEvent();
+           CloseNewItemPanel();
+        }
+    }
+
+    private void CloseNewItemPanel()
+    {
+        newItemPanel.style.display = DisplayStyle.None;
+        isNewItemPanelOpen = false;
     }
 
     private void ConsultButtonClicked()
@@ -310,6 +338,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     private void ItemToMoveChosen(ChangeEvent<string> evt)
     {
         itemToMoveContainer.style.display = DisplayStyle.Flex;
+        itemCurrentQuantityLabel.text = GetItemToMove().Quantity.ToString();
         //itemNameToMoveLabel.text = evt.newValue;
     }
 
@@ -335,8 +364,14 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
     {
         string whereFrom = "";
         string whereTo = "";
-        NoPaNoSeItem itemToMove = FindItemToMove();
-        if(int.TryParse(quantityTextField.value, out tempInt))
+        NoPaNoSeItem itemToMove = GetItemToMove();
+        if(!IsItemQuantityInputValid())
+        {
+            EventHandler.CallIsOneMessageOnlyEvent(true);
+            EventHandler.CallOpenMessageEvent("Invalid number");
+            return;
+        }
+        else
         {
             if (tempInt < 0)
             {
@@ -351,23 +386,19 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
                 return;
             }
         }
-        else
+          if (itemToMove != null)
         {
-            EventHandler.CallIsOneMessageOnlyEvent(true);
-            EventHandler.CallOpenMessageEvent("Invalid number");
-            return;
-
-        }
-        if (itemToMove != null)
-        {
-            if(isAdding)
+            if (!InternalDatabase.Instance.isOfflineProgram)
             {
-                whereFrom = GetFromLocation();
-                 whereTo = "Estoque";
-                StartCoroutine(MoveItem(itemToMove, tempInt, whereFrom, whereTo));
-            }
-            else
-            {                
+                if (isAdding)
+                {
+                    whereFrom = GetFromLocation();
+                    whereTo = "Estoque";
+                    StartCoroutine(MoveItem(itemToMove, tempInt, whereFrom, whereTo));
+
+                }
+                else
+                {
                     if (NoPaNoSeItemManager1.CanChangeQuantity(itemToMove, tempInt))
                     {
                         whereFrom = "Estoque";
@@ -378,8 +409,13 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
                     {
                         EventHandler.CallIsOneMessageOnlyEvent(true);
                         EventHandler.CallOpenMessageEvent("Negative quantity");
-                    }            
-            }                      
+                    }
+                }
+            }
+            else
+            {
+                MoveItemOffline(itemToMove);
+            }
         }
         else
         {
@@ -406,7 +442,7 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         HideMoveElements();
     }
 
-    private NoPaNoSeItem FindItemToMove()
+    private NoPaNoSeItem GetItemToMove()
     {
         for (int i = 0; i < allitems.noPaNoSeItems.Count; i++)
         {
@@ -427,7 +463,10 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
             choices.Add(item.ItemName);
         }
         itemsNamesDP.choices = choices;
-        itemsNamesDP.value = allitems.noPaNoSeItems[0].ItemName;
+        if (allitems.noPaNoSeItems.Count > 0)
+        {
+            itemsNamesDP.value = allitems.noPaNoSeItems[0].ItemName;
+        }
     }
 
 
@@ -505,5 +544,48 @@ public class NoPaNoSeManager1 : Singleton<NoPaNoSeManager>
         whereFromPanel.style.display = DisplayStyle.None;
         whereToPanel.style.display = DisplayStyle.None;
         itemToMoveContainer.style.display = DisplayStyle.None;
+    }
+
+    private bool IsItemQuantityInputValid()
+    {
+        return int.TryParse(quantityTextField.text, out tempInt);
+    }
+
+    private void MoveItemOffline(NoPaNoSeItem itemToMove)
+    {
+        string whereFrom = "";
+        string whereTo = "";
+        int newItemQuantity = itemToMove.Quantity;
+        if (!isAdding)
+        {
+            if((itemToMove.Quantity - tempInt) < 0)
+            {
+                EventHandler.CallIsOneMessageOnlyEvent(true);
+                EventHandler.CallOpenMessageEvent("Negative quantity");
+                return;
+            }
+            else
+            {
+                whereFrom = "Estoque";
+                whereTo = GetToLocation();
+                newItemQuantity -= tempInt;
+            }
+        }
+        else
+        {
+            newItemQuantity += tempInt; 
+        }
+
+        UpdateItemQuantity(newItemQuantity);
+        NoPaNoSeMovementRecords newMovementRecord = new NoPaNoSeMovementRecords();
+        newMovementRecord.itemName = itemToMove.ItemName;
+        newMovementRecord.quantity = tempInt.ToString();
+        newMovementRecord.username = UsersManager.Instance.currentUser.GetUsername();
+        newMovementRecord.date = DateTime.Now.ToString("dd/mm/yy");
+        newMovementRecord.fromWhere = whereFrom;
+        newMovementRecord.toWhere = whereTo;
+        NoPaNoSeMovementSaver.Instance.RegisterNewNoPaNoSeMovement(newMovementRecord);
+        EventHandler.CallIsOneMessageOnlyEvent(true);
+        EventHandler.CallOpenMessageEvent("Item moved");
     }
 }

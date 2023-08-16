@@ -1,0 +1,117 @@
+,{
+    "type": "table",
+    "name": "Processador",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "E5645",
+    "Soquete": "LGA1366",
+    "Nucleos_fisicos": "6",
+    "Nucleos_logicos": "12"
+},
+{
+    "Modelo": "X5550",
+    "Soquete": "LGA1366",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "8"
+},
+{
+    "Modelo": "E5-2630L",
+    "Soquete": "LGA2011",
+    "Nucleos_fisicos": "6",
+    "Nucleos_logicos": "12"
+},
+{
+    "Modelo": "E7-4870",
+    "Soquete": "LGA1567",
+    "Nucleos_fisicos": "10",
+    "Nucleos_logicos": "20"
+},
+{
+    "Modelo": "E5620",
+    "Soquete": "LGA1366",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "8"
+},
+{
+    "Modelo": "i3-2120",
+    "Soquete": "LGA1155",
+    "Nucleos_fisicos": "2",
+    "Nucleos_logicos": "4"
+},
+{
+    "Modelo": "Pentium G620",
+    "Soquete": "LGA1155",
+    "Nucleos_fisicos": "2",
+    "Nucleos_logicos": "2"
+},
+{
+    "Modelo": "X5355",
+    "Soquete": "LGA771",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "4"
+},
+{
+    "Modelo": "x5450",
+    "Soquete": "LGA771",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "4"
+},
+{
+    "Modelo": "Intel Xeon E4",
+    "Soquete": "",
+    "Nucleos_fisicos": "0",
+    "Nucleos_logicos": "0"
+},
+{
+    "Modelo": "E5410",
+    "Soquete": "LGA771",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "4"
+},
+{
+    "Modelo": "E5-2440 V2",
+    "Soquete": "LGA1356",
+    "Nucleos_fisicos": "8",
+    "Nucleos_logicos": "16"
+},
+{
+    "Modelo": "i3-3220",
+    "Soquete": "",
+    "Nucleos_fisicos": "0",
+    "Nucleos_logicos": "0"
+},
+{
+    "Modelo": "HGST",
+    "Soquete": "",
+    "Nucleos_fisicos": "0",
+    "Nucleos_logicos": "0"
+},
+{
+    "Modelo": "i5-3470\r",
+    "Soquete": "LGA1155",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "4"
+},
+{
+    "Modelo": "E3-1220",
+    "Soquete": "LGA1155",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "4"
+},
+{
+    "Modelo": "E5-2407",
+    "Soquete": "LGA1356",
+    "Nucleos_fisicos": "4",
+    "Nucleos_logicos": "4"
+},
+{
+    "Modelo": "E5-2670",
+    "Soquete": "LGA2011",
+    "Nucleos_fisicos": "8",
+    "Nucleos_logicos": "16"
+}
+]
+
+}

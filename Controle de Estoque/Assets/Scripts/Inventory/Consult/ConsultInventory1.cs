@@ -3,48 +3,47 @@ using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine;
 using System.Linq;
-using System.Drawing;
 
 namespace Assets.Scripts.Inventory.Consult
 {
     public class ConsultInventory1 : MonoBehaviour
     {
         
-        private VisualElement root;
-        private DropdownField searchOptionDP; // drop down used to choose search option
-        private DropdownField categoryDP; // drop down used to search for an item category
+        private VisualElement _root;
+        private DropdownField _searchOptionDP; // drop down used to choose search option
+        private DropdownField _categoryDP; // drop down used to search for an item category
                                           //[SerializeField] TMP_Dropdown locationDP;
-        private TextField patrimonioSearchInputField; // field use to type the item "Patrimônio" or the item "Serial"
-        private Label numberOfItensFoundText; // show how many itens were found on the search
+        private TextField _patrimonioSearchInputField; // field use to type the item "Patrimônio" or the item "Serial"
+        private Label _numberOfItensFoundText; // show how many itens were found on the search
 
-        private VisualTreeAsset consultResult;
-        private ListView listView;
-        private List<VisualTreeAsset> results = new List<VisualTreeAsset>();
+        private VisualTreeAsset _consultResult;
+        private ListView _listView;
+        private List<VisualTreeAsset> _results = new List<VisualTreeAsset>();
 
-        private VisualElement categorySearchParametersPanel;
-        private List<TextField> categorySearchInputs;
-        private List<DropdownField> operators;
+        private VisualElement _categorySearchParametersPanel;
+        private List<TextField> _categorySearchInputs;
+        private List<DropdownField> _operators;
 
-        private ConsultCategory consultCategory = null;
-        private bool inputEnabled = true;
-        private int tempInt = 0; // used for all int.TryParse
-        private Sheet foundItems = new Sheet();
-        string placeholderClass = TextField.ussClassName + "__placeholder";
+        private ConsultCategory _consultCategory = null;
+        private bool _inputEnabled = true;
+        private int _tempInt = 0; // used for all int.TryParse
+        private Sheet _foundItems = new Sheet();
+        private string _placeholderClass = TextField.ussClassName + "__placeholder";
 
-        private Button returnButton;
-        [SerializeField] SearchCategoryDropDownHandler searchCategoryDPHandler;
+        private Button _returnButton;
+        [SerializeField] private SearchCategoryDropDownHandler _searchCategoryDPHandler;
        
         /// <summary>
         /// get the ConsultCategory component
         /// </summary>
         private void Start()
         {
-            consultCategory = GetComponent<ConsultCategory>();
-            if(searchCategoryDPHandler == null)
+            _consultCategory = GetComponent<ConsultCategory>();
+            if(_searchCategoryDPHandler == null)
             {
-                searchCategoryDPHandler = GetComponent<SearchCategoryDropDownHandler>();
+                _searchCategoryDPHandler = GetComponent<SearchCategoryDropDownHandler>();
             }
-            foundItems.itens = new List<ItemColumns>();
+            _foundItems.itens = new List<ItemColumns>();
         }
 
         private void OnEnable()
@@ -63,34 +62,39 @@ namespace Assets.Scripts.Inventory.Consult
         /// </summary>
         private void Update()
         {
-            if (inputEnabled)
+            if (_inputEnabled)
             {
-                if (patrimonioSearchInputField.style.display == DisplayStyle.Flex)
+                if (_patrimonioSearchInputField.style.display == DisplayStyle.Flex)
                 {
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                     {
-                        if (searchOptionDP.value == "Patrimônio")
+                        if (_searchOptionDP.value == "Patrimônio")
                         {
-                            if (int.TryParse(patrimonioSearchInputField.text, out tempInt))
+                            if (int.TryParse(_patrimonioSearchInputField.text, out _tempInt))
                             {
                                 RemoveOldSearch();
-                                if (ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase) != null)
+                                if (ConsultDatabase.Instance.ConsultPatrimonio(_tempInt, InternalDatabase.Instance.fullDatabase) != null)
                                 {
                                     RemoveOldSearch();
-                                    foundItems.itens.Add(ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase));
+                                    _foundItems.itens.Add(ConsultDatabase.Instance.ConsultPatrimonio(_tempInt, InternalDatabase.Instance.fullDatabase));
                                  
-                                    listView.itemsSource = foundItems.itens;
-                                    foreach (var item in listView.Children())
+                                    _listView.itemsSource = _foundItems.itens;
+                                    foreach (var item in _listView.Children())
                                     {
                                         item.style.height = StyleKeyword.Auto;
                                     }
-                                    listView.Rebuild();
+                                    _listView.Rebuild();
                                 }
+                            }
+                            else
+                            {
+                                EventHandler.CallIsOneMessageOnlyEvent(true);
+                                EventHandler.CallOpenMessageEvent("Invalid patrimonio format");
                             }
                         }
                     }
                 }
-                if (categoryDP.style.display == DisplayStyle.Flex)
+                if (_categoryDP.style.display == DisplayStyle.Flex)
                 {
                     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                     {
@@ -102,31 +106,33 @@ namespace Assets.Scripts.Inventory.Consult
 
         private void GetUIElementsReferences()
         {
-            root = GetComponent<UIDocument>().rootVisualElement;
-            searchOptionDP = root.Q<DropdownField>("SearchOptionsDP");
-            categoryDP = root.Q<DropdownField>("CategoryDP");
-            patrimonioSearchInputField = root.Q<TextField>("PatrimonioTextField");
-            numberOfItensFoundText = root.Q<Label>("NumberOfItemsFound");
-            categorySearchParametersPanel = root.Q<VisualElement>("SearchParametersContainer");
-            categorySearchInputs = root.Query(name: "SearchParametersContainer").Descendents<TextField>().ToList();
-            operators = root.Query(name: "SearchParametersContainer").Descendents<DropdownField>().ToList();
-            listView = root.Q<ListView>();
-            returnButton = root.Q<Button>("ReturnButton");
-            consultResult = Resources.Load<VisualTreeAsset>("Templates/ResultPanel");
+            _root = GetComponent<UIDocument>().rootVisualElement;
+            _searchOptionDP = _root.Q<DropdownField>("SearchOptionsDP");
+            _categoryDP = _root.Q<DropdownField>("CategoryDP");
+            _patrimonioSearchInputField = _root.Q<TextField>("PatrimonioTextField");
+            _numberOfItensFoundText = _root.Q<Label>("NumberOfItemsFound");
+            _categorySearchParametersPanel = _root.Q<VisualElement>("SearchParametersContainer");
+            _categorySearchInputs = _root.Query(name: "SearchParametersContainer").Descendents<TextField>().ToList();
+            _operators = _root.Query(name: "SearchParametersContainer").Descendents<DropdownField>().ToList();
+            _listView = _root.Q<ListView>();
+            _returnButton = _root.Q<Button>("ReturnButton");
+            _consultResult = Resources.Load<VisualTreeAsset>("Templates/ResultPanel");
             
             FillListView();
         }
 
         private void RegisterToEvents()
         {
-            searchOptionDP.RegisterCallback<ChangeEvent<string>>(HandleSearchOptionDP);
-            returnButton.clicked += () => { ReturnToPreviousScreen(); };
+            _searchOptionDP.RegisterCallback<ChangeEvent<string>>(HandleSearchOptionDP);
+            _returnButton.clicked += () => { ReturnToPreviousScreen(); };
             EventHandler.EnableInput += SetInputEnabled;
             FillDropdowns();
         }
 
         private void UnregisterToEvents()
         {
+            _searchOptionDP.UnregisterCallback<ChangeEvent<string>>(HandleSearchOptionDP);
+            _returnButton.clicked -= () => {  ReturnToPreviousScreen(); };
             EventHandler.EnableInput -= SetInputEnabled;
         }
 
@@ -136,7 +142,7 @@ namespace Assets.Scripts.Inventory.Consult
         /// </summary>
         private void SetInputEnabled(bool enableInput)
         {
-            inputEnabled = enableInput;
+            _inputEnabled = enableInput;
         }
 
         /// <summary>
@@ -145,8 +151,8 @@ namespace Assets.Scripts.Inventory.Consult
         private void RemoveOldSearch()
         {
             SetItensFoundText(false);
-            foundItems.itens.Clear();
-            listView.Rebuild();
+            _foundItems.itens.Clear();
+            _listView.Rebuild();
         }
 
         /// <summary>
@@ -157,34 +163,34 @@ namespace Assets.Scripts.Inventory.Consult
         {
             if (isInvisible)
             {
-                numberOfItensFoundText.style.visibility = Visibility.Hidden;
+                _numberOfItensFoundText.style.visibility = Visibility.Hidden;
             }
             else
             {
-                numberOfItensFoundText.style.visibility = Visibility.Visible;
-                switch (searchOptionDP.value)
+                _numberOfItensFoundText.style.visibility = Visibility.Visible;
+                switch (_searchOptionDP.value)
                 {
                     case "Patrimônio":
-                        if (int.TryParse(patrimonioSearchInputField.text, out tempInt))
+                        if (int.TryParse(_patrimonioSearchInputField.text, out _tempInt))
                         {
-                            if (ConsultDatabase.Instance.ConsultPatrimonio(tempInt, InternalDatabase.Instance.fullDatabase) == null)
+                            if (ConsultDatabase.Instance.ConsultPatrimonio(_tempInt, InternalDatabase.Instance.fullDatabase) == null)
                             {
-                                numberOfItensFoundText.text = "Patrimônio não encontrado";
+                                _numberOfItensFoundText.text = "Patrimônio não encontrado";
                             }
                             else
                             {
-                                numberOfItensFoundText.text = "1 item encontrado";
+                                _numberOfItensFoundText.text = "1 item encontrado";
                             }
                         }
                         break;
                     case "Serial":
-                        if (ConsultDatabase.Instance.ConsultSerial(patrimonioSearchInputField.text, InternalDatabase.Instance.fullDatabase) == null)
+                        if (ConsultDatabase.Instance.ConsultSerial(_patrimonioSearchInputField.text, InternalDatabase.Instance.fullDatabase) == null)
                         {
-                            numberOfItensFoundText.text = "Serial não encontrado";
+                            _numberOfItensFoundText.text = "Serial não encontrado";
                         }
                         else
                         {
-                            numberOfItensFoundText.text = "1 item encontrado";
+                            _numberOfItensFoundText.text = "1 item encontrado";
                         }
                         break;
                     default:
@@ -202,11 +208,11 @@ namespace Assets.Scripts.Inventory.Consult
             List<int> activeIndexes = new List<int>();
             List<string> activeOperators = new List<string>();
 
-            for (int i = 0; i < categorySearchInputs.Count; i++)
+            for (int i = 0; i < _categorySearchInputs.Count; i++)
             {
-                if (categorySearchInputs[i].style.display == DisplayStyle.Flex)
+                if (_categorySearchInputs[i].style.display == DisplayStyle.Flex)
                 {
-                   if (!categorySearchInputs[i].ClassListContains(placeholderClass))
+                   if (!_categorySearchInputs[i].ClassListContains(_placeholderClass))
                     {
                         activeIndexes.Add(i);
                         activeOperators.Add(GetOperatorFromDP(i));
@@ -216,42 +222,42 @@ namespace Assets.Scripts.Inventory.Consult
 
             if (activeIndexes.Count > 0)
             {
-                foundItems = consultCategory.FindItens(activeIndexes, categorySearchInputs.ToArray(), HelperMethods.GetCategoryDatabaseToConsult(categoryDP.value), activeOperators);
+                _foundItems = _consultCategory.FindItens(activeIndexes, _categorySearchInputs.ToArray(), HelperMethods.GetCategoryDatabaseToConsult(_categoryDP.value), activeOperators);
             }
            
-            if (foundItems != null)
+            if (_foundItems != null)
             {
-                if (foundItems.itens.Count > 0)
+                if (_foundItems.itens.Count > 0)
                 {
-                    for (int i = 0; i < foundItems.itens.Count; i++)
+                    for (int i = 0; i < _foundItems.itens.Count; i++)
                     {
                         if (InternalDatabase.Instance.currentEstoque != CurrentEstoque.ESF)
                         {
-                            if (foundItems.itens[i].Status == "DEFEITO")
+                            if (_foundItems.itens[i].Status == "DEFEITO")
                             {
-                                foundItems.itens.RemoveAt(i);
+                                _foundItems.itens.RemoveAt(i);
                             }
                         }
                     }
-                    listView.itemsSource = foundItems.itens;
-                    foreach (var item in listView.Children())
+                    _listView.itemsSource = _foundItems.itens;
+                    foreach (var item in _listView.Children())
                     {
                         item.style.height = StyleKeyword.Auto;
                     }
-                    listView.Rebuild();
-                    numberOfItensFoundText.style.visibility = Visibility.Visible;
-                    numberOfItensFoundText.text = foundItems.itens.Count.ToString() + " itens encontrados";
+                    _listView.Rebuild();
+                    _numberOfItensFoundText.style.visibility = Visibility.Visible;
+                    _numberOfItensFoundText.text = _foundItems.itens.Count.ToString() + " itens encontrados";
                 }
                 else
                 {
-                    numberOfItensFoundText.style.visibility = Visibility.Visible;
-                    numberOfItensFoundText.text = foundItems.itens.Count.ToString() + " itens encontrados";
+                    _numberOfItensFoundText.style.visibility = Visibility.Visible;
+                    _numberOfItensFoundText.text = _foundItems.itens.Count.ToString() + " itens encontrados";
                 }
             }
             else
             {
-                numberOfItensFoundText.style.visibility = Visibility.Visible;
-                numberOfItensFoundText.text = "Nenhum item encontrado";
+                _numberOfItensFoundText.style.visibility = Visibility.Visible;
+                _numberOfItensFoundText.text = "Nenhum item encontrado";
             }
         }
 
@@ -261,8 +267,8 @@ namespace Assets.Scripts.Inventory.Consult
         /// </summary>
         private string GetOperatorFromDP(int index)
         {
-            print(operators[index].value);
-            return operators[index].value;
+            print(_operators[index].value);
+            return _operators[index].value;
         }
  
         /// <summary>
@@ -273,18 +279,18 @@ namespace Assets.Scripts.Inventory.Consult
             switch (evt.newValue)
             {
                 case "Categoria":
-                    categoryDP.style.display = DisplayStyle.Flex;
-                    categorySearchParametersPanel.style.display = DisplayStyle.Flex;
-                    categoryDP.value = InternalDatabase.categories[0];
-                    patrimonioSearchInputField.style.display = DisplayStyle.None;
+                    _categoryDP.style.display = DisplayStyle.Flex;
+                    _categorySearchParametersPanel.style.display = DisplayStyle.Flex;
+                    _categoryDP.value = InternalDatabase.categories[0];
+                    _patrimonioSearchInputField.style.display = DisplayStyle.None;
                     EventHandler.CallUpdateConsultInputs();
                     break;
                 case "Patrimônio":
-                    categoryDP.style.display = DisplayStyle.None;
-                    categorySearchParametersPanel.style.display = DisplayStyle.None;
-                    patrimonioSearchInputField.style.display = DisplayStyle.Flex;
+                    _categoryDP.style.display = DisplayStyle.None;
+                    _categorySearchParametersPanel.style.display = DisplayStyle.None;
+                    _patrimonioSearchInputField.style.display = DisplayStyle.Flex;
                     //    searchParameterInputField.placeholder.GetComponent<TextMeshProUGUI>().text = "Patrimônio";
-                    numberOfItensFoundText.style.visibility = Visibility.Hidden;
+                    _numberOfItensFoundText.style.visibility = Visibility.Hidden;
 
                     break;
                default:
@@ -302,21 +308,21 @@ namespace Assets.Scripts.Inventory.Consult
 
         private void FillListView()
         {
-            listView.makeItem = () => consultResult.Instantiate();
-            listView.bindItem = (element, i) =>
+            _listView.makeItem = () => _consultResult.Instantiate();
+            _listView.bindItem = (element, i) =>
             {
                 VisualElement[] itemBoxes = element.Q<VisualElement>("Results").Children().ToArray();
                 List<Label> parameterNames = element.Query(name: "Results").Descendents<Label>(name: "ParameterName").ToList();
                 List<Label> parameterValues = element.Query(name: "Results").Descendents<Label>(name: "ParameterValue").ToList();
                 Label patrimonioLabel = element.Q<Label>("PatrimonioLabel");
 
-                ShowResult(foundItems.itens[i], itemBoxes.ToList(), parameterNames, parameterValues, patrimonioLabel);
+                ShowResult(_foundItems.itens[i], itemBoxes.ToList(), parameterNames, parameterValues, patrimonioLabel);
                // element.style.minHeight = 170;
              //   element.style.maxHeight = 500;
                 element.style.height = StyleKeyword.Auto;
             };
-            listView.fixedItemHeight = 100;
-            listView.itemsSource = foundItems.itens;
+            _listView.fixedItemHeight = 100;
+            _listView.itemsSource = _foundItems.itens;
         }            
 
         /// <summary>
@@ -408,12 +414,12 @@ namespace Assets.Scripts.Inventory.Consult
         private void FillDropdowns()
         {
             List<string> searchOptions = new List<string>(){ "Patrimônio", "Categoria"};
-            searchOptionDP.choices = searchOptions;
-            searchOptionDP.value = searchOptions[0];
-            searchOptionDP.formatListItemCallback = (element) => element.ToString();
+            _searchOptionDP.choices = searchOptions;
+            _searchOptionDP.value = searchOptions[0];
+            _searchOptionDP.formatListItemCallback = (element) => element.ToString();
 
             List<string> operatorsValues = new List<string>() { "=", "≠" };
-            foreach (var item in operators)
+            foreach (var item in _operators)
             {
                 item.choices = operatorsValues;
                 item.value = operatorsValues[0];

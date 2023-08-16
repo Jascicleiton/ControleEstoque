@@ -1,0 +1,15 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"sysnetpro_controleestoque"},
+{"type":"table","name":"Placa_controladora","database":"sysnetpro_controleestoque","data":
+[
+{"Modelo":"AOC-SAS2LP-H8IR","Tipo_de_conexao":"SAS","Quantidade_de_portas":"2","Tipos_de_RAID":"0, 1, 5, 6, 10, 50,60","Tipo_de_HD":"SAS, SATA1, SATA2","Capacidade_max_HD":"> 2Tb","Ate_quantos_HD":"240","Bateria_inclusa":"sim","Barramento":"PCI-E x8"},
+{"Modelo":"UCSA-801 - H310","Tipo_de_conexao":"SAS","Quantidade_de_portas":"2","Tipos_de_RAID":"0, 1, 5, 10, 50","Tipo_de_HD":"SAS, SATA, SSD","Capacidade_max_HD":"> 2Tb","Ate_quantos_HD":"32","Bateria_inclusa":"não","Barramento":"PCI-E x8"},
+{"Modelo":"SAS9220-8i","Tipo_de_conexao":"SAS","Quantidade_de_portas":"2","Tipos_de_RAID":"0, 1, 5, 10","Tipo_de_HD":"SAS, SATA","Capacidade_max_HD":"> 2Tb","Ate_quantos_HD":"16","Bateria_inclusa":"não","Barramento":"PCI-E x8"},
+{"Modelo":"UCS-71 - H200","Tipo_de_conexao":"SAS","Quantidade_de_portas":"2","Tipos_de_RAID":"0, 1, 10","Tipo_de_HD":"SAS","Capacidade_max_HD":"> 2Tb","Ate_quantos_HD":"16","Bateria_inclusa":"não","Barramento":"PCI-E x8"},
+{"Modelo":"0JW063","Tipo_de_conexao":"SAS","Quantidade_de_portas":"4","Tipos_de_RAID":"0, 1","Tipo_de_HD":"SAS, SATA","Capacidade_max_HD":"2Tb","Ate_quantos_HD":"32","Bateria_inclusa":"não","Barramento":"PCI-E x8"},
+{"Modelo":"PCI3124-4IR","Tipo_de_conexao":"SATA","Quantidade_de_portas":"4","Tipos_de_RAID":"0, 1, 5, 10","Tipo_de_HD":"SATA","Capacidade_max_HD":"2Tb","Ate_quantos_HD":"0","Bateria_inclusa":"não","Barramento":"PCI-E x1"},
+{"Modelo":"RES2SV240","Tipo_de_conexao":"SATA\/SAS","Quantidade_de_portas":"6","Tipos_de_RAID":"","Tipo_de_HD":"","Capacidade_max_HD":"","Ate_quantos_HD":"0","Bateria_inclusa":"","Barramento":""}
+]
+}
+]

@@ -50,7 +50,7 @@ public class UpdateDatabaseItem
         switch (itemToUpdate.Categoria)
         {
             #region Adaptador AC
-            case ConstStrings.AdaptadorAC:
+            case ConstStrings.C_AdaptadorAC:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -90,7 +90,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Carregador
-            case ConstStrings.Carregador:
+            case ConstStrings.C_Carregador:
                 itemToUpdate.OndeFunciona = parameters[11];
                 if (!float.TryParse(parameters[12], out itemToUpdate.VoltagemDeSaida))
                 {
@@ -105,7 +105,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Desktop
-            case ConstStrings.Desktop:
+            case ConstStrings.C_Desktop:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -134,13 +134,13 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Fone Ramal
-            case ConstStrings.FoneRamal:
+            case ConstStrings.C_FoneRamal:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(InternalDatabase.foneRamal, itemToUpdate.Patrimonio);
                 InternalDatabase.foneRamal.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             #endregion
             #region Fonte
-            case ConstStrings.Fonte:
+            case ConstStrings.C_Fonte:
                 if (!int.TryParse(parameters[11], out itemToUpdate.Watts))
                 {
                     itemToUpdate.Watts = 0;
@@ -152,14 +152,14 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region GBIC
-            case ConstStrings.Gbic:
+            case ConstStrings.C_Gbic:
                 itemToUpdate.Desempenho = parameters[11];
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(InternalDatabase.gbic, itemToUpdate.Patrimonio);
                 InternalDatabase.gbic.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             #endregion
             #region HD
-            case ConstStrings.HD:
+            case ConstStrings.C_HD:
                 itemToUpdate.Interface = parameters[11];
                 if (!float.TryParse(parameters[12], out itemToUpdate.Tamanho))
                 {
@@ -184,7 +184,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region iDrac
-            case ConstStrings.Idrac:
+            case ConstStrings.C_Idrac:
                 itemToUpdate.QuaisConexoes = parameters[11];
                 if (!float.TryParse(parameters[12], out itemToUpdate.VelocidadeGBs))
                 {
@@ -197,7 +197,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Memoria
-            case ConstStrings.Memoria:
+            case ConstStrings.C_Memoria:
                 itemToUpdate.Tipo = parameters[11];
                 if (!int.TryParse(parameters[12], out itemToUpdate.CapacidadeEmGB))
                 {
@@ -220,7 +220,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Monitor
-            case ConstStrings.Monitor:
+            case ConstStrings.C_Monitor:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                                         case CurrentEstoque.Concert:
@@ -243,19 +243,19 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Mouse
-            case ConstStrings.Mouse:
+            case ConstStrings.C_Mouse:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(InternalDatabase.mouse, itemToUpdate.Patrimonio);
                 InternalDatabase.mouse.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             #endregion
             #region NoBreak
-            case ConstStrings.Nobreak:
+            case ConstStrings.C_Nobreak:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(InternalDatabase.nobreak, itemToUpdate.Patrimonio);
                 InternalDatabase.nobreak.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             #endregion
             #region Notebook
-            case ConstStrings.Notebook:
+            case ConstStrings.C_Notebook:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -284,7 +284,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Placa controladora
-            case ConstStrings.PlacaControladora:
+            case ConstStrings.C_PlacaControladora:
                 itemToUpdate.QuaisConexoes = parameters[11];
                 if (!int.TryParse(parameters[12], out itemToUpdate.QuantidadeDePortas))
                 {
@@ -303,7 +303,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Placa de captura de vídeo
-            case ConstStrings.PlacaDeCapturaDeVideo:
+            case ConstStrings.C_PlacaDeCapturaDeVideo:
                 if (!int.TryParse(parameters[11], out itemToUpdate.QuantidadeDePortas))
                 {
                     itemToUpdate.QuantidadeDePortas = 0;
@@ -313,7 +313,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Placa de rede
-            case ConstStrings.PlacaDeRede:
+            case ConstStrings.C_PlacaDeRede:
                 itemToUpdate.Interface = parameters[11];
                 if (!int.TryParse(parameters[12], out itemToUpdate.QuantidadeDePortas))
                 {
@@ -327,7 +327,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Placa de som
-            case ConstStrings.PlacaDeSom:
+            case ConstStrings.C_PlacaDeSom:
                 if (!int.TryParse(parameters[11], out itemToUpdate.QuantosCanais))
                 {
                     itemToUpdate.QuantosCanais = 0;
@@ -337,7 +337,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Placa de vídeo
-            case ConstStrings.PlacaDeVideo:
+            case ConstStrings.C_PlacaDeVideo:
                 if (!int.TryParse(parameters[11], out itemToUpdate.QuantidadeDePortas))
                 {
                     itemToUpdate.QuantidadeDePortas = 0;
@@ -348,7 +348,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Processador
-            case ConstStrings.Processador:
+            case ConstStrings.C_Processador:
                 itemToUpdate.Soquete = parameters[11];
                 if (!int.TryParse(parameters[12], out itemToUpdate.NucleosFisicos))
                 {
@@ -363,13 +363,13 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Ramal
-            case ConstStrings.Ramal:
+            case ConstStrings.C_Ramal:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(InternalDatabase.ramal, itemToUpdate.Patrimonio);
                 InternalDatabase.ramal.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;
             #endregion
             #region Roteador
-            case ConstStrings.Roteador:
+            case ConstStrings.C_Roteador:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -403,7 +403,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Servidor
-            case ConstStrings.Servidor:
+            case ConstStrings.C_Servidor:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -451,7 +451,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Storage NAS
-            case ConstStrings.StorageNAS:
+            case ConstStrings.C_StorageNAS:
                 if (!float.TryParse(parameters[11], out itemToUpdate.Tamanho))
                 {
                     itemToUpdate.Tamanho = 0f;
@@ -464,7 +464,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Switch
-            case ConstStrings.Switch:
+            case ConstStrings.C_Switch:
                 switch (InternalDatabase.Instance.currentEstoque)
                 {
                     case CurrentEstoque.SnPro:
@@ -483,7 +483,7 @@ public class UpdateDatabaseItem
                 break;
             #endregion
             #region Teclado
-            case ConstStrings.Teclado:
+            case ConstStrings.C_Teclado:
                 categoryItemToUpdateIndex = ConsultDatabase.Instance.GetCategoryItemIndex(InternalDatabase.teclado, itemToUpdate.Patrimonio);
                 InternalDatabase.teclado.itens[categoryItemToUpdateIndex] = itemToUpdate;
                 break;

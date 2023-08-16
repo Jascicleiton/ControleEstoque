@@ -14,10 +14,10 @@ public class NoPaNoSeImporter : Singleton<NoPaNoSeImporter>, IJsonSaveable
     // Start is called before the first frame update
     void Start()
     {
-        if (!InternalDatabase.Instance.offlineProgram)
+        if (!InternalDatabase.Instance.isOfflineProgram)
         {
-            StartCoroutine(StartListRoutine());
             itemsList.noPaNoSeItems.Clear();
+            StartCoroutine(StartListRoutine());            
         }
     }
 

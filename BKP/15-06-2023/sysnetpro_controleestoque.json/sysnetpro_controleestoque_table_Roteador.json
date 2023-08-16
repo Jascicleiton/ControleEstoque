@@ -1,0 +1,58 @@
+,{
+    "type": "table",
+    "name": "Roteador",
+    "database": "sysnetpro_controleestoque",
+    "data": 
+[
+{
+    "Modelo": "TL-WR740",
+    "Wireless": "sim",
+    "Quantas_entradas": "4",
+    "Banda_max": "150",
+    "Voltagem": "0"
+},
+{
+    "Modelo": "RV042",
+    "Wireless": "sim",
+    "Quantas_entradas": "4",
+    "Banda_max": "100",
+    "Voltagem": "12"
+},
+{
+    "Modelo": "USG",
+    "Wireless": "sim",
+    "Quantas_entradas": "2",
+    "Banda_max": "1000",
+    "Voltagem": "0"
+},
+{
+    "Modelo": "TL-R470T+",
+    "Wireless": "não",
+    "Quantas_entradas": "4",
+    "Banda_max": "100",
+    "Voltagem": "0"
+},
+{
+    "Modelo": "TL-R600VPN",
+    "Wireless": "não",
+    "Quantas_entradas": "4",
+    "Banda_max": "1000",
+    "Voltagem": "0"
+},
+{
+    "Modelo": "L1-RW333",
+    "Wireless": "sim",
+    "Quantas_entradas": "3",
+    "Banda_max": "100",
+    "Voltagem": "0"
+},
+{
+    "Modelo": "HP MSR931 JG514A\r",
+    "Wireless": "sim",
+    "Quantas_entradas": "10",
+    "Banda_max": "0",
+    "Voltagem": "0"
+}
+]
+
+}
