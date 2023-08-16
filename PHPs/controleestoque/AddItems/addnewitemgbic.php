@@ -31,11 +31,5 @@ $insertuserquery= "INSERT INTO GBIC(Modelo, Fabricante, Desempenho_max) VALUES('
 mysqli_query($con, $insertuserquery) or die("insert item failed");
  echo("Worked");
 
-
 $con->close();
-
-//Error codes
-// 1 - Database connection error
-// 4 - insert user failed
-// 5 - wrong appkey
 ?>

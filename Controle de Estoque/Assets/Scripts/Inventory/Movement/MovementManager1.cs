@@ -309,7 +309,7 @@ public class MovementManager1 : MonoBehaviour
             createPostRequest.Dispose();
             MouseManager.Instance.SetDefaultCursor();
             _itemFound = false;
-            ResetInputs();
+            ResetMovement();
             EventHandler.CallChangeAnimation("HelpMovement");
         }
         else

@@ -830,7 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exportManagerPrefab: {fileID: 2105073642229525601, guid: c2aebfcd608769d449c9b11318651ee5, type: 3}
-  currentVersion: 0.8.1
+  currentVersion: 0.8.1.1
   fullDatabase:
     itens: []
   testingSheet:
