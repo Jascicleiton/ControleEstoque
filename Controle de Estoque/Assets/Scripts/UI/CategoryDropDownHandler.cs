@@ -1,41 +1,29 @@
-using TMPro;
+﻿using Assets.Scripts.Inventory.Database;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class CategoryDropDownHandler : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    [SerializeField] TMP_Dropdown dropdown;
-
-    /// <summary>
-    /// Handle which items are available on the category dropdown
-    /// </summary>
-    void Start()
-    {      
-        if(dropdown == null)
-        {
-            dropdown = GetComponent<TMP_Dropdown>();
-        }
-        dropdown.ClearOptions();
-
-        if (InternalDatabase.categories.Count > 0)
-        {
-            dropdown.AddOptions(InternalDatabase.categories);          
-        }
-    }
-
-    /// <summary>
-    /// Handle which items are available on the category dropdown - also called on Enable to prevent a bug on offline version
-    /// </summary>
-    private void OnEnable()
+    public class CategoryDropDownHandler : MonoBehaviour
     {
-         if (dropdown == null)
-            {
-                dropdown = GetComponent<TMP_Dropdown>();
-            }
-         if(dropdown.options.Count == 0)
+        private DropdownField dropdown;
+
+        private void OnEnable()
         {
-            dropdown.AddOptions(InternalDatabase.categories);
+            VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+            dropdown = root.Q<DropdownField>("CategoryDP");
+            if (InternalDatabase.categories.Count > 0)
+            {
+                dropdown.choices = InternalDatabase.categories;
+                dropdown.value = dropdown.choices[0];
+                dropdown.formatListItemCallback = (element) => element.ToString();
+                // dropdown.formatSelectedValueCallback = (element) => element.ToString();               
+            }
+        }
+
+        public string GetDropdownValue()
+        {
+            return dropdown.value;
         }
     }
-
-
 }

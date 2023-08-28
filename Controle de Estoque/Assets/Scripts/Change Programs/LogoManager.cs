@@ -1,21 +1,22 @@
+using Assets.Scripts.Inventory.Database;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class LogoManager : MonoBehaviour
 {
-    [SerializeField] private Sprite esfSprite;
-    [SerializeField] private Sprite fumsoftSprite;
-    [SerializeField] private Sprite testingSprite;
-    [SerializeField] private Sprite clientesSprite;
-    [SerializeField] private Sprite concerttSprite;
-    [SerializeField] private Sprite quistoSprite;
+    [SerializeField] private Sprite _esfSprite;
+    [SerializeField] private Sprite _fumsoftSprite;
+    [SerializeField] private Sprite _testingSprite;
+    [SerializeField] private Sprite _clientesSprite;
+    [SerializeField] private Sprite _concerttSprite;
+    [SerializeField] private Sprite _quistoSprite;
 
-    private VisualElement logo;
+    private VisualElement _logo;
 
     private void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
-        logo = root.Q<VisualElement>("ExtraLogo");
+        _logo = root.Q<VisualElement>("ExtraLogo");
     }
 
     /// <summary>
@@ -26,28 +27,28 @@ public class LogoManager : MonoBehaviour
         switch (InternalDatabase.Instance.currentEstoque)
         {
             case CurrentEstoque.SnPro:
-                logo.style.display = DisplayStyle.None;
+                _logo.style.display = DisplayStyle.None;
                 break;
             case CurrentEstoque.Fumsoft:
-                logo.style.backgroundImage = new StyleBackground(fumsoftSprite);
+                _logo.style.backgroundImage = new StyleBackground(_fumsoftSprite);
                 break;
             case CurrentEstoque.ESF:
-                logo.style.backgroundImage = new StyleBackground(esfSprite);
+                _logo.style.backgroundImage = new StyleBackground(_esfSprite);
                 break;
             case CurrentEstoque.Testing:
-                logo.style.backgroundImage = new StyleBackground(testingSprite);
+                _logo.style.backgroundImage = new StyleBackground(_testingSprite);
                 break;
             case CurrentEstoque.Clientes:
-                logo.style.backgroundImage = new StyleBackground(clientesSprite);
+                _logo.style.backgroundImage = new StyleBackground(_clientesSprite);
                 break;
             case CurrentEstoque.Concert:
-                logo.style.backgroundImage = new StyleBackground(concerttSprite);
+                _logo.style.backgroundImage = new StyleBackground(_concerttSprite);
                 break;
             case CurrentEstoque.Quisto:
-                logo.style.backgroundImage = new StyleBackground(quistoSprite);
+                _logo.style.backgroundImage = new StyleBackground(_quistoSprite);
                 break;
             default:
-                logo.style.display = DisplayStyle.None;
+                _logo.style.display = DisplayStyle.None;
                 break;
         }
     }

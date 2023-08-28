@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using Assets.Scripts.Inventory.Database;
+using Assets.Scripts.Inventory;
+using Assets.Scripts.Misc;
+using Assets.Scripts.Web;
 
 public class ExportCSVs : MonoBehaviour
 {

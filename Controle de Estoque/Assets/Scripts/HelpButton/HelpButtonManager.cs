@@ -3,48 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HelpButtonManager : MonoBehaviour
+namespace Assets.Scripts.HelpButton
 {
-    [SerializeField] GameObject helpPanel = null;
-    [SerializeField] Image buttonImage;
-    [SerializeField] Sprite litSprite;
-    [SerializeField] Sprite unlitSprite;
-    [SerializeField] Animator animator;
-    [HideInInspector] public string animationToPlay = "";
-
-    private void Start()
+    public class HelpButtonManager : MonoBehaviour
     {
-        if(animator == null)
+        [SerializeField] GameObject helpPanel = null;
+        [SerializeField] Image buttonImage;
+        [SerializeField] Sprite litSprite;
+        [SerializeField] Sprite unlitSprite;
+        [SerializeField] Animator animator;
+        [HideInInspector] public string animationToPlay = "";
+
+        private void Start()
         {
-            animator = GetComponentInChildren<Animator>();
+            if (animator == null)
+            {
+                animator = GetComponentInChildren<Animator>();
+            }
         }
-    }
 
-    private void OnEnable()
-    {
-        EventHandler.ChangeAnimation += GetAnimationName;
-    }
-
-    private void OnDisable()
-    {
-        EventHandler.ChangeAnimation -= GetAnimationName;
-    }
-
-    public void ShowHidePanel()
-    {
-        helpPanel.SetActive(!helpPanel.activeInHierarchy);
-        if(buttonImage.sprite == litSprite)
+        private void OnEnable()
         {
-            buttonImage.sprite = unlitSprite;
+            EventHandler.ChangeAnimation += GetAnimationName;
         }
-        else
-        {
-            buttonImage.sprite = litSprite;
-        }
-    }
 
-    private void GetAnimationName(string animationToPlay)
-    {
-        this.animationToPlay = animationToPlay;   
+        private void OnDisable()
+        {
+            EventHandler.ChangeAnimation -= GetAnimationName;
+        }
+
+        public void ShowHidePanel()
+        {
+            helpPanel.SetActive(!helpPanel.activeInHierarchy);
+            if (buttonImage.sprite == litSprite)
+            {
+                buttonImage.sprite = unlitSprite;
+            }
+            else
+            {
+                buttonImage.sprite = litSprite;
+            }
+        }
+
+        private void GetAnimationName(string animationToPlay)
+        {
+            this.animationToPlay = animationToPlay;
+        }
     }
 }

@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Item that do not have a "serial" nor a "patrimônio"
-/// </summary>
-[System.Serializable]
-public class NoPaNoSeItem
+namespace Assets.Scripts.Inventory.NoPatrimonioNoSerial
 {
-    public string ItemName;
-    public int Quantity;
 
-    public NoPaNoSeItem()
+    /// <summary>
+    /// Item that do not have a "serial" nor a "patrimônio"
+    /// </summary>
+    [System.Serializable]
+    public class NoPaNoSeItem
     {
-        ItemName = "";
-        Quantity = 0;
-    }
+        public string ItemName;
+        public int Quantity;
 
-    public  NoPaNoSeItem(string itemName, int quantity)
-    {
-        this.ItemName = itemName;
-        this.Quantity = quantity;
+        public NoPaNoSeItem()
+        {
+            ItemName = "";
+            Quantity = 0;
+        }
+
+        public NoPaNoSeItem(string itemName, int quantity)
+        {
+            ItemName = itemName;
+            Quantity = quantity;
+        }
     }
 }

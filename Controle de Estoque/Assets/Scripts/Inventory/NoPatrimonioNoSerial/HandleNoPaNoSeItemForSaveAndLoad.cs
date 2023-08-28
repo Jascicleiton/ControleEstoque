@@ -1,49 +1,51 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-public class HandleNoPaNoSeItemForSaveAndLoad
+namespace Assets.Scripts.Inventory.NoPatrimonioNoSerial
 {
-    /// <summary>
-    /// Save all the NoPaNoSeItem for offline use of the program
-    /// </summary>
-    public static JArray SaveObject(NoPaNoSeAll allItems)
+    public class HandleNoPaNoSeItemForSaveAndLoad
     {
-        JArray state = new JArray();
-        IList<JToken> stateList = state;
-        foreach (var item in allItems.noPaNoSeItems)
+        /// <summary>
+        /// Save all the NoPaNoSeItem for offline use of the program
+        /// </summary>
+        public static JArray SaveObject(NoPaNoSeAll allItems)
         {
-            JObject jObjectToReturn = new JObject();
-            IDictionary<string, JToken> stateDict = jObjectToReturn;
-            stateDict["ItemName"] = item.ItemName;
-            stateDict["Quantity"] = item.Quantity;
-            stateList.Add(jObjectToReturn);
+            JArray state = new JArray();
+            IList<JToken> stateList = state;
+            foreach (var item in allItems.noPaNoSeItems)
+            {
+                JObject jObjectToReturn = new JObject();
+                IDictionary<string, JToken> stateDict = jObjectToReturn;
+                stateDict["ItemName"] = item.ItemName;
+                stateDict["Quantity"] = item.Quantity;
+                stateList.Add(jObjectToReturn);
+            }
+
+            return state;
         }
 
-        return state;
-    }
-
-    /// <summary>
-    /// Load all the NoPaNoSeItem for offline use of the program
-    /// </summary>
-    public static void LoadJObject(JToken state, out NoPaNoSeAll itemsToLoad)
-    {
-        itemsToLoad = new NoPaNoSeAll();
-        if(state is JArray stateArray)
+        /// <summary>
+        /// Load all the NoPaNoSeItem for offline use of the program
+        /// </summary>
+        public static void LoadJObject(JToken state, out NoPaNoSeAll itemsToLoad)
         {
-            IList<JToken> stateList = stateArray;
-            foreach (var item in stateList)
+            itemsToLoad = new NoPaNoSeAll();
+            if (state is JArray stateArray)
             {
-                if(item is JObject itemState)
+                IList<JToken> stateList = stateArray;
+                foreach (var item in stateList)
                 {
-                    NoPaNoSeItem itemToLoad = new NoPaNoSeItem();
-                    IDictionary<string, JToken> itemStateDict = itemState;
-                    itemToLoad.ItemName = itemStateDict["ItemName"].ToObject<string>();
-                    itemToLoad.Quantity = itemStateDict["Quantity"].ToObject<int>();
-                    itemsToLoad.noPaNoSeItems.Add(itemToLoad);
+                    if (item is JObject itemState)
+                    {
+                        NoPaNoSeItem itemToLoad = new NoPaNoSeItem();
+                        IDictionary<string, JToken> itemStateDict = itemState;
+                        itemToLoad.ItemName = itemStateDict["ItemName"].ToObject<string>();
+                        itemToLoad.Quantity = itemStateDict["Quantity"].ToObject<int>();
+                        itemsToLoad.noPaNoSeItems.Add(itemToLoad);
+                    }
                 }
             }
-        }
 
+        }
     }
 }
-

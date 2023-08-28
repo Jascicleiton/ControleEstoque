@@ -2,95 +2,98 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class HelpController : MonoBehaviour
+namespace Assets.Scripts.HelpButton
 {
-    private Button helpButton;
-    private VisualElement helpPanel;
-    private VisualElement helpPanel2;
-   [SerializeField] private bool isMovementScene;
-    private int panelToOpenIndex = 1;
-
-    private void OnEnable()
+    public class HelpController : MonoBehaviour
     {
-        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
-        helpButton = root.Q<Button>("HelpButton");
-        if (!isMovementScene)
-        {
-            helpPanel = root.Q<VisualElement>("HelpPanel");
-        }
-        else
-        {
-            helpPanel = root.Q<VisualElement>("HelpPanel1");
-            helpPanel2 = root.Q<VisualElement>("HelpPanel2");
-        }
-        helpButton.clicked += () => { HelpClicked(); };
-        //helpPanel.pickingMode = PickingMode.Ignore;
-        EventHandler.ChangeAnimation += ChangePanelToOpen;
-    }
+        private Button _helpButton;
+        private VisualElement _helpPanel;
+        private VisualElement _helpPanel2;
+        [SerializeField] private bool _isMovementScene;
+        private int _panelToOpenIndex = 1;
 
-    private void OnDisable()
-    {
-        helpButton.clicked -= () => { HelpClicked(); };
-        EventHandler.ChangeAnimation -= ChangePanelToOpen;
-    }
-
-    private void HelpClicked()
-    {
-        if (!isMovementScene)
+        private void OnEnable()
         {
-            if (helpPanel.style.display == DisplayStyle.None)
+            VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+            _helpButton = root.Q<Button>("HelpButton");
+            if (!_isMovementScene)
             {
-                helpPanel.style.display = DisplayStyle.Flex;
+                _helpPanel = root.Q<VisualElement>("HelpPanel");
             }
             else
             {
-                helpPanel.style.display = DisplayStyle.None;
+                _helpPanel = root.Q<VisualElement>("HelpPanel1");
+                _helpPanel2 = root.Q<VisualElement>("HelpPanel2");
             }
+            _helpButton.clicked += () => { HelpClicked(); };
+            //helpPanel.pickingMode = PickingMode.Ignore;
+            EventHandler.ChangeAnimation += ChangePanelToOpen;
         }
-        else
-        {
-            OpenMovementHelpPanel();
-        }
-    }
 
-    private void ChangePanelToOpen(string panelToOpen)
-    {
-        if(panelToOpen == "1")
+        private void OnDisable()
         {
-            panelToOpenIndex = 1;
+            _helpButton.clicked -= () => { HelpClicked(); };
+            EventHandler.ChangeAnimation -= ChangePanelToOpen;
         }
-        else if(panelToOpen == "2")
-        {
-            panelToOpenIndex = 2;
-        }
-        else
-        {
-            panelToOpenIndex = 1;
-        }
-    }
 
-    private void OpenMovementHelpPanel()
-    {
-        if (panelToOpenIndex == 1)
+        private void HelpClicked()
         {
-            if (helpPanel.style.display == DisplayStyle.None)
+            if (!_isMovementScene)
             {
-                helpPanel.style.display = DisplayStyle.Flex;
+                if (_helpPanel.style.display == DisplayStyle.None)
+                {
+                    _helpPanel.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    _helpPanel.style.display = DisplayStyle.None;
+                }
             }
             else
             {
-                helpPanel.style.display = DisplayStyle.None;
+                OpenMovementHelpPanel();
             }
         }
-        else if(panelToOpenIndex == 2)
+
+        private void ChangePanelToOpen(string panelToOpen)
         {
-            if (helpPanel2.style.display == DisplayStyle.None)
+            if (panelToOpen == "1")
             {
-                helpPanel2.style.display = DisplayStyle.Flex;
+                _panelToOpenIndex = 1;
+            }
+            else if (panelToOpen == "2")
+            {
+                _panelToOpenIndex = 2;
             }
             else
             {
-                helpPanel2.style.display = DisplayStyle.None;
+                _panelToOpenIndex = 1;
+            }
+        }
+
+        private void OpenMovementHelpPanel()
+        {
+            if (_panelToOpenIndex == 1)
+            {
+                if (_helpPanel.style.display == DisplayStyle.None)
+                {
+                    _helpPanel.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    _helpPanel.style.display = DisplayStyle.None;
+                }
+            }
+            else if (_panelToOpenIndex == 2)
+            {
+                if (_helpPanel2.style.display == DisplayStyle.None)
+                {
+                    _helpPanel2.style.display = DisplayStyle.Flex;
+                }
+                else
+                {
+                    _helpPanel2.style.display = DisplayStyle.None;
+                }
             }
         }
     }

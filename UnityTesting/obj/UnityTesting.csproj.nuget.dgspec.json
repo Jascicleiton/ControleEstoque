@@ -1,0 +1,415 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Controle de estoque\\ControleEstoque\\UnityTesting\\UnityTesting.csproj": {}
+  },
+  "projects": {
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp-firstpass.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp-firstpass.csproj",
+        "projectName": "Assembly-CSharp-firstpass",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp-firstpass.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MiddlewareTransport.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MiddlewareTransport.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Authenticators.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Authenticators.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Components.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Components.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Editor.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Editor.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MultiplexTransport.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MultiplexTransport.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\SimpleWebTransport.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\SimpleWebTransport.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp.csproj",
+        "projectName": "Assembly-CSharp",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp-firstpass.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp-firstpass.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MiddlewareTransport.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MiddlewareTransport.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Authenticators.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Authenticators.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Components.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Components.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Editor.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Editor.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MultiplexTransport.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MultiplexTransport.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\SimpleWebTransport.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\SimpleWebTransport.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj",
+        "projectName": "kcp2k",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MiddlewareTransport.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MiddlewareTransport.csproj",
+        "projectName": "MiddlewareTransport",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MiddlewareTransport.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Authenticators.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Authenticators.csproj",
+        "projectName": "Mirror.Authenticators",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Authenticators.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj",
+        "projectName": "Mirror.CompilerSymbols",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Components.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Components.csproj",
+        "projectName": "Mirror.Components",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Components.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj",
+        "projectName": "Mirror",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\kcp2k.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.CompilerSymbols.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Editor.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Editor.csproj",
+        "projectName": "Mirror.Editor",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.Editor.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              },
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Unity.Mirror.CodeGen.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Unity.Mirror.CodeGen.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MultiplexTransport.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MultiplexTransport.csproj",
+        "projectName": "MultiplexTransport",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\MultiplexTransport.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\SimpleWebTransport.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\SimpleWebTransport.csproj",
+        "projectName": "SimpleWebTransport",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\SimpleWebTransport.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj",
+        "projectName": "Telepathy",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Telepathy.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Unity.Mirror.CodeGen.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Unity.Mirror.CodeGen.csproj",
+        "projectName": "Unity.Mirror.CodeGen",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Unity.Mirror.CodeGen.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Mirror.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj",
+        "projectName": "where-allocations",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\where-allocations.csproj",
+        "frameworks": {
+          "net471": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net471": {}
+      }
+    },
+    "D:\\Controle de estoque\\ControleEstoque\\UnityTesting\\UnityTesting.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Controle de estoque\\ControleEstoque\\UnityTesting\\UnityTesting.csproj",
+        "projectName": "UnityTesting",
+        "projectPath": "D:\\Controle de estoque\\ControleEstoque\\UnityTesting\\UnityTesting.csproj",
+        "packagesPath": "C:\\Users\\marcelo.fonseca\\.nuget\\packages\\",
+        "outputPath": "D:\\Controle de estoque\\ControleEstoque\\UnityTesting\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\marcelo.fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp.csproj": {
+                "projectPath": "D:\\Controle de estoque\\ControleEstoque\\Controle de Estoque\\Assembly-CSharp.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.7.1, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.69, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
+using Assets.Scripts.Inventory.Database;
+using Assets.Scripts.Misc;
 
 public class ExportTables : MonoBehaviour
 {

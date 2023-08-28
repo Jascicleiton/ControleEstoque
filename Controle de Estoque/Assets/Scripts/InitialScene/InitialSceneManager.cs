@@ -1,27 +1,27 @@
+using Assets.Scripts.ScreenManager;
+using Assets.Scripts.Users;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace InitialScene
+namespace Assets.Scripts.InitialScene
 {
     public class InitialSceneManager : MonoBehaviour
     {
-        private VisualElement root;
+        private Button _consultButton;
+        private Button _moveButton;
+        private Button _addRemoveButton;
+        private Button _updateItemButton;
+        private Button _exportSheetsButton;
+        private Button _logoutButton;
+        private Button _noPaNoSeButton;
+        private Button _showMovementRecordsButton;
+        private Button _recoverBKPButton;
 
-        private Button consultButton;
-        private Button moveButton;
-        private Button addRemoveButton;
-        private Button updateItemButton;
-        private Button exportSheetsButton;
-        private Button logoutButton;
-        private Button noPaNoSeButton;
-        private Button showMovementRecordsButton;
-        private Button recoverBKPButton;
-
-        private Label helloMessage;
+        private Label _helloMessage;
 
         void Start()
         {
-            helloMessage.text = "Olá " + UsersManager.Instance.currentUser.GetUsername() + ". \nO que você deseja fazer agora?";
+            _helloMessage.text = "Olá " + UsersManager.Instance.CurrentUser.GetUsername() + ". \nO que você deseja fazer agora?";
             ShowHideButtons();
         }
 
@@ -37,44 +37,44 @@ namespace InitialScene
 
         private void GetUiElementsReferences()
         {
-            root = GetComponent<UIDocument>().rootVisualElement;
-            consultButton = root.Q<Button>("ConsultButton");
-            moveButton = root.Q<Button>("MoveButton");
-            addRemoveButton = root.Q<Button>("AddButton");
-            updateItemButton = root.Q<Button>("UpdateButton");
-            exportSheetsButton = root.Q<Button>("ExportSheetsButton");
-            logoutButton = root.Q<Button>("LogoutButton");
-            noPaNoSeButton = root.Q<Button>("NoPaNoSeButton");
-            showMovementRecordsButton = root.Q<Button>("ShowMovementsRecordsButton");
-            recoverBKPButton = root.Q<Button>("RecoberBKPButton");
-            helloMessage = root.Q<Label>("GrettingLabel");
+            VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+            _consultButton = root.Q<Button>("ConsultButton");
+            _moveButton = root.Q<Button>("MoveButton");
+            _addRemoveButton = root.Q<Button>("AddButton");
+            _updateItemButton = root.Q<Button>("UpdateButton");
+            _exportSheetsButton = root.Q<Button>("ExportSheetsButton");
+            _logoutButton = root.Q<Button>("LogoutButton");
+            _noPaNoSeButton = root.Q<Button>("NoPaNoSeButton");
+            _showMovementRecordsButton = root.Q<Button>("ShowMovementsRecordsButton");
+            _recoverBKPButton = root.Q<Button>("RecoberBKPButton");
+            _helloMessage = root.Q<Label>("GrettingLabel");
             SubscribeUIElementsToEvents();
         }
 
         private void SubscribeUIElementsToEvents()
         {
-            consultButton.clicked += () => { ConsultClicked(); };
-            moveButton.clicked += () => { MoveClicked(); };
-            addRemoveButton.clicked += () => { AddClicked(); };
-            updateItemButton.clicked += () => { UpdateClicked(); };
-            exportSheetsButton.clicked += () => { ExportClicked(); };
-            logoutButton.clicked += () => { LogoutClicked(); };
-            noPaNoSeButton.clicked += () => { NoPaNoSeClicked(); };
-            showMovementRecordsButton.clicked += () => { MovementRecordsClicked(); };
-            recoverBKPButton.clicked += () => { RecoverBKPClicked(); };
+            _consultButton.clicked += () => { ConsultClicked(); };
+            _moveButton.clicked += () => { MoveClicked(); };
+            _addRemoveButton.clicked += () => { AddClicked(); };
+            _updateItemButton.clicked += () => { UpdateClicked(); };
+            _exportSheetsButton.clicked += () => { ExportClicked(); };
+            _logoutButton.clicked += () => { LogoutClicked(); };
+            _noPaNoSeButton.clicked += () => { NoPaNoSeClicked(); };
+            _showMovementRecordsButton.clicked += () => { MovementRecordsClicked(); };
+            _recoverBKPButton.clicked += () => { RecoverBKPClicked(); };
         }
 
         private void UnsubscribeUIElementsToEvents()
         {
-            consultButton.clicked -= () => { ConsultClicked(); };
-            moveButton.clicked -= () => { MoveClicked(); };
-            addRemoveButton.clicked -= () => { AddClicked(); };
-            updateItemButton.clicked -= () => { UpdateClicked(); };
-            exportSheetsButton.clicked -= () => { ExportClicked(); };
-            logoutButton.clicked -= () => { LogoutClicked(); };
-            noPaNoSeButton.clicked -= () => { NoPaNoSeClicked(); };
-            showMovementRecordsButton.clicked -= () => { MovementRecordsClicked(); };
-            recoverBKPButton.clicked -= () => { RecoverBKPClicked(); };
+            _consultButton.clicked -= () => { ConsultClicked(); };
+            _moveButton.clicked -= () => { MoveClicked(); };
+            _addRemoveButton.clicked -= () => { AddClicked(); };
+            _updateItemButton.clicked -= () => { UpdateClicked(); };
+            _exportSheetsButton.clicked -= () => { ExportClicked(); };
+            _logoutButton.clicked -= () => { LogoutClicked(); };
+            _noPaNoSeButton.clicked -= () => { NoPaNoSeClicked(); };
+            _showMovementRecordsButton.clicked -= () => { MovementRecordsClicked(); };
+            _recoverBKPButton.clicked -= () => { RecoverBKPClicked(); };
         }
 
         /// <summary>
@@ -84,52 +84,52 @@ namespace InitialScene
         {
             if (UsersManager.Instance != null)
             {
-                switch (UsersManager.Instance.currentUser.GetAccessLevel())
+                switch (UsersManager.Instance.CurrentUser.GetAccessLevel())
                 {
                     case 1:
-                        addRemoveButton.style.display = DisplayStyle.None;
-                        updateItemButton.style.display = DisplayStyle.None;
-                        exportSheetsButton.style.display = DisplayStyle.None;
-                        showMovementRecordsButton.style.display = DisplayStyle.None;
-                        recoverBKPButton.style.display = DisplayStyle.None;
+                        _addRemoveButton.style.display = DisplayStyle.None;
+                        _updateItemButton.style.display = DisplayStyle.None;
+                        _exportSheetsButton.style.display = DisplayStyle.None;
+                        _showMovementRecordsButton.style.display = DisplayStyle.None;
+                        _recoverBKPButton.style.display = DisplayStyle.None;
                         break;
                     case 2:
-                        addRemoveButton.style.display = DisplayStyle.None;
-                        updateItemButton.style.display = DisplayStyle.None;
-                        moveButton.style.display = DisplayStyle.None;
-                        recoverBKPButton.style.display = DisplayStyle.None;
+                        _addRemoveButton.style.display = DisplayStyle.None;
+                        _updateItemButton.style.display = DisplayStyle.None;
+                        _moveButton.style.display = DisplayStyle.None;
+                        _recoverBKPButton.style.display = DisplayStyle.None;
                         break;
                     case 3:
-                        updateItemButton.style.display = DisplayStyle.None;
-                        exportSheetsButton.style.display = DisplayStyle.None;
-                        noPaNoSeButton.style.display = DisplayStyle.None;
-                        showMovementRecordsButton.style.display = DisplayStyle.None;
-                        recoverBKPButton.style.display = DisplayStyle.None;
+                        _updateItemButton.style.display = DisplayStyle.None;
+                        _exportSheetsButton.style.display = DisplayStyle.None;
+                        _noPaNoSeButton.style.display = DisplayStyle.None;
+                        _showMovementRecordsButton.style.display = DisplayStyle.None;
+                        _recoverBKPButton.style.display = DisplayStyle.None;
                         break;
                     case 5:
-                        updateItemButton.style.display = DisplayStyle.None;
-                        recoverBKPButton.style.display = DisplayStyle.None;
+                        _updateItemButton.style.display = DisplayStyle.None;
+                        _recoverBKPButton.style.display = DisplayStyle.None;
                         break;
                     case 4:
-                        addRemoveButton.style.display = DisplayStyle.None;
-                        updateItemButton.style.display = DisplayStyle.None;
-                        exportSheetsButton.style.display = DisplayStyle.None;
-                        showMovementRecordsButton.style.display = DisplayStyle.None;
-                        moveButton.style.display = DisplayStyle.None;
-                        recoverBKPButton.style.display = DisplayStyle.None;
+                        _addRemoveButton.style.display = DisplayStyle.None;
+                        _updateItemButton.style.display = DisplayStyle.None;
+                        _exportSheetsButton.style.display = DisplayStyle.None;
+                        _showMovementRecordsButton.style.display = DisplayStyle.None;
+                        _moveButton.style.display = DisplayStyle.None;
+                        _recoverBKPButton.style.display = DisplayStyle.None;
                         break;
                     case 10:
 
                         break;
                     default:
-                        consultButton.style.display = DisplayStyle.None;
-                        moveButton.style.display = DisplayStyle.None;
-                        addRemoveButton.style.display = DisplayStyle.None;
-                        updateItemButton.style.display = DisplayStyle.None;
-                        exportSheetsButton.style.display = DisplayStyle.None;
-                        noPaNoSeButton.style.display = DisplayStyle.None;
-                        showMovementRecordsButton.style.display = DisplayStyle.None;
-                        recoverBKPButton.style.display = DisplayStyle.None;
+                        _consultButton.style.display = DisplayStyle.None;
+                        _moveButton.style.display = DisplayStyle.None;
+                        _addRemoveButton.style.display = DisplayStyle.None;
+                        _updateItemButton.style.display = DisplayStyle.None;
+                        _exportSheetsButton.style.display = DisplayStyle.None;
+                        _noPaNoSeButton.style.display = DisplayStyle.None;
+                        _showMovementRecordsButton.style.display = DisplayStyle.None;
+                        _recoverBKPButton.style.display = DisplayStyle.None;
                         break;
                 }
             }
@@ -181,7 +181,7 @@ namespace InitialScene
 
         private void LogoutClicked()
         {
-            UsersManager.Instance.currentUser = new User("pessoa", "");
+            UsersManager.Instance.CurrentUser = new User("pessoa", "");
             ChangeScreenManager.Instance.OpenScene(Scenes.InitialScene, Scenes.MainMenu);
         }
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using Assets.Scripts.Misc;
 
 public class ExportFunctions
     {

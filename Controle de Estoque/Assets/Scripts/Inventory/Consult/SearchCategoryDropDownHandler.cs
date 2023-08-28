@@ -1,126 +1,104 @@
+using Assets.Scripts.Inventory.Database;
+using Assets.Scripts.Misc;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class SearchCategoryDropDownHandler : MonoBehaviour
+namespace Assets.Scripts.Inventory.Consult
 {
-    private List<TextField> searchParamentersTextFields;
-
-    private List<string> names = new List<string>();
-   private  Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
-    private DropdownField categoryDP;
-
-
-    private void OnEnable()
+    public class SearchCategoryDropDownHandler : MonoBehaviour
     {
-        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
-        searchParamentersTextFields = root.Query(name: "SearchParametersContainer").Descendents<TextField>().ToList();
-        categoryDP = root.Q<DropdownField>("CategoryDP");
-        categoryDP.RegisterCallback<ChangeEvent<string>>(HandleInputData);
-        EventHandler.UpdateConsultInputs += UpdateFirstTime;
-    }
+        private List<TextField> _searchParamentersTextFields;
 
-   
-    private void OnDisable()
-    {
-        categoryDP.UnregisterCallback<ChangeEvent<string>>(HandleInputData);
-        EventHandler.UpdateConsultInputs -= UpdateFirstTime;
-    }
+        private List<string> _names = new List<string>();
+        private Dictionary<string, List<string>> _dictionary = new Dictionary<string, List<string>>();
+        private DropdownField _categoryDP;
 
-    private void UpdateFirstTime()
-    {
-        foreach (var item in searchParamentersTextFields)
+
+        private void OnEnable()
         {
-            item.style.display = DisplayStyle.Flex;
+            VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+            _searchParamentersTextFields = root.Query(name: "SearchParametersContainer").Descendents<TextField>().ToList();
+            _categoryDP = root.Q<DropdownField>("CategoryDP");
+            _categoryDP.RegisterCallback<ChangeEvent<string>>(HandleInputData);
+            EventHandler.UpdateConsultInputs += UpdateFirstTime;
         }
 
-        names.Clear();
-        dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, InternalDatabase.categories[0]);
-        dictionary.TryGetValue("Placeholders", out names);
-        SetParameterPlaceholders(InternalDatabase.categories[0]);
-    }
 
-    private void HandleInputData(ChangeEvent<string> evt)
-    {
-        foreach (var item in searchParamentersTextFields)
+        private void OnDisable()
         {
-            item.style.display = DisplayStyle.Flex;
+            _categoryDP.UnregisterCallback<ChangeEvent<string>>(HandleInputData);
+            EventHandler.UpdateConsultInputs -= UpdateFirstTime;
         }
 
-        names.Clear();
-        dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, evt.newValue);
-        dictionary.TryGetValue("Placeholders", out names);
-        SetParameterPlaceholders(evt.newValue);
-    }
-
-    /// <summary>
-    /// Reset all the search parameters to their default values
-    /// </summary>
-    private void ResetParameterNames()
-    {
-        for (int i = 0; i < searchParamentersTextFields.Count; i++)
+        private void UpdateFirstTime()
         {
-            searchParamentersTextFields[i].value = "";
-        }
-    }
-
-    /// <summary>
-    /// Set all search parameters each time a new category is selected
-    /// </summary>
-    private void SetParameterPlaceholders(string category)
-    {
-        ResetParameterNames();
-        if(names != null && names.Count > 0)
-        {
-            SetPlaceholderText(searchParamentersTextFields[0], names[3]);
-            SetPlaceholderText(searchParamentersTextFields[1], names[7]);
-            SetPlaceholderText(searchParamentersTextFields[2], names[8]);
-            for (int i = 11; i < names.Count; i++)
+            foreach (var item in _searchParamentersTextFields)
             {
-                SetPlaceholderText(searchParamentersTextFields[i - 8], names[i]);                
+                item.style.display = DisplayStyle.Flex;
             }
-        }
-        if (category == ConstStrings.C_Outros)
-        {
-            SetPlaceholderText(searchParamentersTextFields[3], names[5]);
+
+            _names.Clear();
+            _dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, InternalDatabase.categories[0]);
+            _dictionary.TryGetValue("Placeholders", out _names);
+            SetParameterPlaceholders(InternalDatabase.categories[0]);
         }
 
-        for (int i = 0; i < searchParamentersTextFields.Count; i++)
+        private void HandleInputData(ChangeEvent<string> evt)
         {
-            if (searchParamentersTextFields[i].value == "" || searchParamentersTextFields[i].value == names[i])
+            foreach (var item in _searchParamentersTextFields)
             {
-                searchParamentersTextFields[i].style.display = DisplayStyle.None;
+                item.style.display = DisplayStyle.Flex;
             }
+
+            _names.Clear();
+            _dictionary = HelperMethods.GetParameterValuesNamesPlaceholders(null, evt.newValue);
+            _dictionary.TryGetValue("Placeholders", out _names);
+            SetParameterPlaceholders(evt.newValue);
         }
-        EventHandler.CallUpdateTabInputs();
-    }
 
-    private void SetPlaceholderText(TextField textField, string placeholder)
-    {
-        string placeholderClass = TextField.ussClassName + "__placeholder";
-
-        onFocusOut();
-        textField.RegisterCallback<FocusInEvent>(evt => onFocusIn());
-        textField.RegisterCallback<FocusOutEvent>(evt => onFocusOut());
-
-        void onFocusIn()
+        /// <summary>
+        /// Reset all the search parameters to their default values
+        /// </summary>
+        private void ResetParameterNames()
         {
-            if (textField.ClassListContains(placeholderClass))
+            for (int i = 0; i < _searchParamentersTextFields.Count; i++)
             {
-                textField.value = string.Empty;
-                textField.RemoveFromClassList(placeholderClass);
+                _searchParamentersTextFields[i].value = "";
             }
         }
 
-        void onFocusOut()
+        /// <summary>
+        /// Set all search parameters each time a new category is selected
+        /// </summary>
+        private void SetParameterPlaceholders(string category)
         {
-            if (string.IsNullOrEmpty(textField.text))
+            ResetParameterNames();
+            if (_names != null && _names.Count > 0)
             {
-                textField.SetValueWithoutNotify(placeholder);
-                textField.AddToClassList(placeholderClass);
+                _searchParamentersTextFields[0].textEdition.placeholder = _names[3];
+                _searchParamentersTextFields[1].textEdition.placeholder = _names[7];
+                _searchParamentersTextFields[2].textEdition.placeholder = _names[8];
+
+                for (int i = 11; i < _names.Count; i++)
+                {
+                    _searchParamentersTextFields[i - 8].textEdition.placeholder = _names[i];
+                }
             }
+            if (category == ConstStrings.C_Outros)
+            {
+                _searchParamentersTextFields[3].textEdition.placeholder = _names[5];
+            }
+
+            for (int i = 0; i < _searchParamentersTextFields.Count; i++)
+            {
+                if (_searchParamentersTextFields[i].textEdition.placeholder == "" || _searchParamentersTextFields[i].value == _names[i])
+                {
+                    _searchParamentersTextFields[i].style.display = DisplayStyle.None;
+                }
+            }
+            EventHandler.CallUpdateTabInputs();
         }
     }
-
 }

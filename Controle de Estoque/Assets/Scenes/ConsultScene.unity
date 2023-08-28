@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -44,7 +44,6 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -134,7 +130,6 @@ GameObject:
   - component: {fileID: 605719724}
   - component: {fileID: 605719723}
   - component: {fileID: 605719727}
-  - component: {fileID: 605719726}
   - component: {fileID: 605719725}
   - component: {fileID: 605719728}
   - component: {fileID: 605719729}
@@ -168,13 +163,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605719722}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &605719725
 MonoBehaviour:
@@ -186,18 +181,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4215a7d8f02414c47a53b4a81b2381e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &605719726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605719722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404e1548700f7e24d8b453142a7e3a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &605719727
@@ -212,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309ba06a726058f4d9896aa23db7f531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchCategoryDPHandler: {fileID: 605719729}
+  _searchCategoryDPHandler: {fileID: 605719729}
 --- !u!114 &605719728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,3 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb91fcb7bfa84d498dfc6eee7709709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 605719724}

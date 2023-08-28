@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Used to close a pop up window using Esc
-/// </summary>
-public class CloseWindow : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Used to close a pop up window using Esc
+    /// </summary>
+    public class CloseWindow : MonoBehaviour
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        // Update is called once per frame
+        void Update()
         {
-            EventHandler.CallWindowClosed();
-            gameObject.SetActive(false);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                EventHandler.CallWindowClosed();
+                gameObject.SetActive(false);
+            }
         }
     }
 }

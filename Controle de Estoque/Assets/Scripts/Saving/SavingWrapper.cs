@@ -1,87 +1,86 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Saving;
 using System;
+using Assets.Scripts.Inventory.Database;
+using Assets.Scripts.Misc;
 
-namespace Saving
+namespace Assets.Scripts.Saving
 {
     public class SavingWrapper : Singleton<SavingWrapper>
     {
-        private JsonSavingSystem saving;
+        private JsonSavingSystem _saving;
         const string defaultSaveFile = "BKP - ";
-        private int bkpIndex = 1;
-        [SerializeField] private int savesCounter = 0;
+        private int _bkpIndex = 1;
+        [SerializeField] private int _savesCounter = 0;
 
-  
+
         // Update is called once per frame
         private void Start()
         {
-            saving = GetComponent<JsonSavingSystem>();
+            _saving = GetComponent<JsonSavingSystem>();
             if (!InternalDatabase.Instance.isOfflineProgram)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
             if (InternalDatabase.Instance.isOfflineProgram == true && PlayerPrefs.HasKey(ConstStrings.SavingCounter))
             {
-                savesCounter = PlayerPrefs.GetInt(ConstStrings.SavingCounter);
+                _savesCounter = PlayerPrefs.GetInt(ConstStrings.SavingCounter);
             }
             if (InternalDatabase.Instance.isOfflineProgram == true && PlayerPrefs.HasKey(ConstStrings.BkpIndex))
             {
-                bkpIndex = PlayerPrefs.GetInt(ConstStrings.BkpIndex);
+                _bkpIndex = PlayerPrefs.GetInt(ConstStrings.BkpIndex);
             }
         }
 
         private void OnEnable()
         {
             EventHandler.DatabaseUpdatedEvent += Save;
-  //          EventHandler.DisconectedFromInternet += Load;
+            //          EventHandler.DisconectedFromInternet += Load;
         }
 
         private void OnDisable()
         {
             EventHandler.DatabaseUpdatedEvent -= Save;
-    //        EventHandler.DisconectedFromInternet -= Load;
+            //        EventHandler.DisconectedFromInternet -= Load;
         }
 
         private void Update()
         {
 
-            if(Input.GetKeyDown(KeyCode.F10))
+            if (Input.GetKeyDown(KeyCode.F10))
             {
-                savesCounter = 5;
+                _savesCounter = 5;
                 Save();
             }
         }
 
         public void Save()
         {
-            savesCounter++;
-            if (saving == null)
+            _savesCounter++;
+            if (_saving == null)
             {
-                saving = GetComponent<JsonSavingSystem>();
+                _saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
-            if (savesCounter >= 5)
+            _saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
+            if (_savesCounter >= 5)
             {
-                savesCounter = 0;
-                saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString() + " - " + DateTime.Now.ToString("dd-MM-yy") + $" - {bkpIndex}");
-                bkpIndex++;
+                _savesCounter = 0;
+                _saving.Save(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString() + " - " + DateTime.Now.ToString("dd-MM-yy") + $" - {_bkpIndex}");
+                _bkpIndex++;
             }
-            
-            PlayerPrefs.SetInt(ConstStrings.SavingCounter, savesCounter);
-            PlayerPrefs.SetInt(ConstStrings.BkpIndex, bkpIndex);
+
+            PlayerPrefs.SetInt(ConstStrings.SavingCounter, _savesCounter);
+            PlayerPrefs.SetInt(ConstStrings.BkpIndex, _bkpIndex);
             PlayerPrefs.Save();
         }
 
         public void Load()
         {
             //Debug.Log("Event called");
-            if (saving == null)
+            if (_saving == null)
             {
-                saving = GetComponent<JsonSavingSystem>();
+                _saving = GetComponent<JsonSavingSystem>();
             }
-            saving.Load(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
+            _saving.Load(defaultSaveFile + InternalDatabase.Instance.currentEstoque.ToString());
         }
     }
 }

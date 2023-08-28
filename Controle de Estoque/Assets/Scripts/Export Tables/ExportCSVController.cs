@@ -1,3 +1,4 @@
+using Assets.Scripts.ScreenManager;
 using FrostweepGames.Plugins.WebGLFileBrowser;
 using System;
 using System.Collections;
@@ -9,7 +10,7 @@ using UnityEngine.UIElements;
 public class ExportCSVController : MonoBehaviour
 {
     private ExportCSVs exportCSVs = null;
-    private int csvToExportIndex = 0;
+   // private int csvToExportIndex = 0;
     
     private VisualElement root;
     private Button returnButton;

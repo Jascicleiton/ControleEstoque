@@ -1,0 +1,15 @@
+﻿using Assets.Scripts.Misc;
+
+namespace Assets.Scripts.Inventory.PatrimonioItem
+{
+    public class Desktop : PatrimonioItemParent
+    {
+        public Desktop() 
+        {
+            allParameters.Add(ConstStrings.Processador, default);
+            allParameters.Add(ConstStrings.Hd, default);
+            allParameters.Add(ConstStrings.Memoria, default);
+            allParameters.Add(ConstStrings.QualWindows, default);
+        }
+    }
+}

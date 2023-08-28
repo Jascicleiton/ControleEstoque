@@ -3,49 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[ExecuteAlways]
-public class JsonSaveableEntity : MonoBehaviour
+namespace Assets.Scripts.Saving
 {
-
-    [SerializeField] string uniqueIdentifier = "";
-
-    // CACHED STATE
-    static Dictionary<string, JsonSaveableEntity> globalLookup = new Dictionary<string, JsonSaveableEntity>();
-
-    public string GetUniqueIdentifier()
+    [ExecuteAlways]
+    public class JsonSaveableEntity : MonoBehaviour
     {
-        return uniqueIdentifier;
-    }
 
-    public JToken CaptureAsJtoken()
-    {
-        JObject state = new JObject();
-        IDictionary<string, JToken> stateDict = state;
-        foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())
+        [SerializeField] string _uniqueIdentifier = "";
+
+        // CACHED STATE
+        static Dictionary<string, JsonSaveableEntity> globalLookup = new Dictionary<string, JsonSaveableEntity>();
+
+        public string GetUniqueIdentifier()
         {
-            JToken token = jsonSaveable.CaptureAsJToken();
-            string component = jsonSaveable.GetType().ToString();
-          //  Debug.Log($"{name} Capture {component} = {token.ToString()}");
-            stateDict[jsonSaveable.GetType().ToString()] = token;
+            return _uniqueIdentifier;
         }
-        return state;
-    }
 
-    public void RestoreFromJToken(JToken s)
-    {
-        JObject state = s.ToObject<JObject>();
-        IDictionary<string, JToken> stateDict = state;
-        foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())
+        public JToken CaptureAsJtoken()
         {
-            string component = jsonSaveable.GetType().ToString();
-            if (stateDict.ContainsKey(component))
+            JObject state = new JObject();
+            IDictionary<string, JToken> stateDict = state;
+            foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())
             {
+                JToken token = jsonSaveable.CaptureAsJToken();
+                string component = jsonSaveable.GetType().ToString();
+                //  Debug.Log($"{name} Capture {component} = {token.ToString()}");
+                stateDict[jsonSaveable.GetType().ToString()] = token;
+            }
+            return state;
+        }
 
-               // Debug.Log($"{name} Restore {component} =>{stateDict[component].ToString()}");
-                jsonSaveable.RestoreFromJToken(stateDict[component]);
+        public void RestoreFromJToken(JToken s)
+        {
+            JObject state = s.ToObject<JObject>();
+            IDictionary<string, JToken> stateDict = state;
+            foreach (IJsonSaveable jsonSaveable in GetComponents<IJsonSaveable>())
+            {
+                string component = jsonSaveable.GetType().ToString();
+                if (stateDict.ContainsKey(component))
+                {
+
+                    // Debug.Log($"{name} Restore {component} =>{stateDict[component].ToString()}");
+                    jsonSaveable.RestoreFromJToken(stateDict[component]);
+                   string ha = nameof(_uniqueIdentifier);
+                }
             }
         }
-    }
 
 #if UNITY_EDITOR
         private void Update() {
@@ -53,7 +56,7 @@ public class JsonSaveableEntity : MonoBehaviour
             if (string.IsNullOrEmpty(gameObject.scene.path)) return;
 
             SerializedObject serializedObject = new SerializedObject(this);
-            SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
+            SerializedProperty property = serializedObject.FindProperty(nameof(_uniqueIdentifier));
             
             if (string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue))
             {
@@ -65,26 +68,27 @@ public class JsonSaveableEntity : MonoBehaviour
         }
 #endif
 
-    private bool IsUnique(string candidate)
-    {
-        if (!globalLookup.ContainsKey(candidate)) return true;
-
-        if (globalLookup[candidate] == this) return true;
-
-        if (globalLookup[candidate] == null)
+        private bool IsUnique(string candidate)
         {
-            globalLookup.Remove(candidate);
-            return true;
+            if (!globalLookup.ContainsKey(candidate)) return true;
+
+            if (globalLookup[candidate] == this) return true;
+
+            if (globalLookup[candidate] == null)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+
+            if (globalLookup[candidate].GetUniqueIdentifier() != candidate)
+            {
+                globalLookup.Remove(candidate);
+                return true;
+            }
+
+            return false;
         }
 
-        if (globalLookup[candidate].GetUniqueIdentifier() != candidate)
-        {
-            globalLookup.Remove(candidate);
-            return true;
-        }
 
-        return false;
     }
-
-
 }

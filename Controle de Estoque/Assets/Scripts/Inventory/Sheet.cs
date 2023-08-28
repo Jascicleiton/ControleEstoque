@@ -1,12 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-/// <summary>
-/// Each instance of this class is a different table from the sql database, with different informations
-/// </summary>
-[System.Serializable]
-public class Sheet
+namespace Assets.Scripts.Inventory
 {
-    public List<ItemColumns> itens = new List<ItemColumns>();
+
+    /// <summary>
+    /// Each instance of this class is a different table from the sql database, with different informations
+    /// </summary>
+    [System.Serializable]
+    public class Sheet
+    {
+        public List<ItemColumns> itens = new List<ItemColumns>();
+    }
 }

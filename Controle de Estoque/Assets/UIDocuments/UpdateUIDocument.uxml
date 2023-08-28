@@ -8,7 +8,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="SearchParameterContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 10%; flex-direction: row; justify-content: center; align-items: center;">
             <ui:Label tabindex="-1" text="Patrimônio:" display-tooltip-when-elided="true" style="font-size: 20px;" />
-            <ui:TextField picking-mode="Ignore" name="PatrimonioTextField" style="width: 30%; height: 70px; font-size: 20px; margin-left: 20px; margin-right: 100px;" />
+            <ui:TextField name="PatrimonioTextField" tooltip="Número do patrimônio" style="width: 30%; height: 70px; font-size: 20px; margin-left: 20px; margin-right: 100px;" />
             <ui:Button text="Reset" display-tooltip-when-elided="true" name="ResetButton" style="width: 100px; height: 50px; font-size: 20px;" />
         </ui:VisualElement>
         <ui:VisualElement name="ParametersContainer" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 60%; flex-direction: row; flex-wrap: wrap; align-items: stretch; justify-content: flex-start; display: none;">

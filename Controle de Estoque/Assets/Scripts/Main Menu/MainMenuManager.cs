@@ -1,65 +1,70 @@
+using Assets.Scripts.Inventory.Database;
+using Assets.Scripts.Misc;
+using Assets.Scripts.Mouse;
+using Assets.Scripts.ScreenManager;
+using Assets.Scripts.Users;
+using Assets.Scripts.Web;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UIElements;
 
-namespace MainMenu
+namespace Assets.Scripts.MainMenu
 {
     public class MainMenuManager : MonoBehaviour
     {
         #region Login
-        private VisualElement loginPanel;
-        private TextField userInput;
-        private TextField passwordInput;
-        private Button loginShowHidePasswordButton;
+        private VisualElement _loginPanel;
+        private TextField _userInput;
+        private TextField _passwordInput;
+        private Button _loginShowHidePasswordButton;
         #endregion
         #region NewUser
-        private VisualElement newUserPanel;
-        private TextField addNewUserInput;
-        private TextField addNewPasswordInput;
-        private Button closeNewUserPanelButton;
-        private Button openAdminAuthorizationPanelButton;
-        private Button newUserShowHidePasswordButton;
+        private VisualElement _newUserPanel;
+        private TextField _addNewUserInput;
+        private TextField _addNewPasswordInput;
+        private Button _closeNewUserPanelButton;
+        private Button _openAdminAuthorizationPanelButton;
+        private Button _newUserShowHidePasswordButton;
         #endregion
         #region Admin
-        private VisualElement adminAuthorizationPanel;
-        private TextField adminUserInput;
-        private TextField adminPasswordInput;
-        private Button closeAdminAuthorizationPanelButton;
-        private Button adminShowHidePasswordButton;
+        private VisualElement _adminAuthorizationPanel;
+        private TextField _adminUserInput;
+        private TextField _adminPasswordInput;
+        private Button _closeAdminAuthorizationPanelButton;
+        private Button _adminShowHidePasswordButton;
         #endregion
-        private Button openAddNewUserPanelButton;
-        private VisualElement root;
+        private Button _openAddNewUserPanelButton;
+        
+        private bool _loginEnabled = true; // enable or disable the Enter key press to login
+        private bool _adminAuthorizing = false;
+        private bool _inputEnabled = true;
+        private int _authorizationAccessLevel; // used to check if the person authorizing the creation of a new user have high enough access level
+                                              //  private bool isWindows = false;
 
-        private bool loginEnabled = true; // enable or disable the Enter key press to login
-        private bool adminAuthorizing = false;
-        private bool inputEnabled = true;
-        private int authorizationAccessLevel; // used to check if the person authorizing the creation of a new user have high enough access level
-        private bool isWindows = false;
+        private Label _versionLabel;
 
-        private Label versionLabel;
-
-        [SerializeField] private Texture2D image1; // eye closed image
-        [SerializeField] private Texture2D image2; // eye open image
+        [SerializeField] private Texture2D _eyeClosedTexture;
+        [SerializeField] private Texture2D _eyeOpenTexture;
 
         /// <summary>
         /// Initializes the varibles
         /// </summary>
         private void Start()
         {
-            loginEnabled = true;
-            adminAuthorizing = false;
-            inputEnabled = true;
-            authorizationAccessLevel = 0;
+            _loginEnabled = true;
+            _adminAuthorizing = false;
+            _inputEnabled = true;
+            _authorizationAccessLevel = 0;
 
-            CheckIfCurrentPlatformIsWindows();
+            //CheckIfCurrentPlatformIsWindows();
         }
 
         private void OnEnable()
         {
             EventHandler.PostRequestResponse += GetUserAccessLevel;
             GetUiElementsReferences();
-            versionLabel.text = InternalDatabase.Instance.currentVersion;
+            _versionLabel.text = InternalDatabase.Instance.currentVersion;
         }
 
         private void OnDisable()
@@ -73,13 +78,13 @@ namespace MainMenu
         /// </summary>
         private void Update()
         {
-            if (inputEnabled)
+            if (_inputEnabled)
             {
                 if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
                 {
-                    if (loginEnabled)
+                    if (_loginEnabled)
                     {
-                        inputEnabled = false;
+                        _inputEnabled = false;
                         if (InternalDatabase.Instance.isOfflineProgram)
                         {
                             LoginOffline();
@@ -89,9 +94,9 @@ namespace MainMenu
                             StartCoroutine(Login());
                         }
                     }
-                    if (adminAuthorizing)
+                    if (_adminAuthorizing)
                     {
-                        inputEnabled = false;
+                        _inputEnabled = false;
                         StartCoroutine(CheckIfAdmin());
                     }
                 }
@@ -103,47 +108,47 @@ namespace MainMenu
         /// </summary>
         private void GetUiElementsReferences()
         {
-            root = GetComponent<UIDocument>().rootVisualElement;
-            loginPanel = root.Q<VisualElement>("LoginContainer");
-            userInput = root.Q<TextField>("UserTextField");
-            passwordInput = root.Q<TextField>("PasswordTextField");
-            newUserPanel = root.Q<VisualElement>("NewUserContainer");
-            addNewUserInput = root.Q<TextField>("NewUserTextField");
-            addNewPasswordInput = root.Q<TextField>("NewPasswordTextField");
-            openAddNewUserPanelButton = root.Q<Button>("AddNewUserButton");
-            adminAuthorizationPanel = root.Q<VisualElement>("AdminAuthorizationContainer");
-            adminUserInput = root.Q<TextField>("AdminUserTextField");
-            adminPasswordInput = root.Q<TextField>("AdminPasswordTextField");
-            closeAdminAuthorizationPanelButton = root.Q<Button>("AdminCancelButton");
-            closeNewUserPanelButton = root.Q<Button>("CancelNewuserButton");
-            openAdminAuthorizationPanelButton = root.Q<Button>("OpenAdminAuthorizeButton");
-            loginShowHidePasswordButton = root.Q<Button>("LoginShowHidePassword");
-            newUserShowHidePasswordButton = root.Q<Button>("NewUserShowHidePassword");
-            adminShowHidePasswordButton = root.Q<Button>("AdminShowHidePassword");
-            versionLabel = root.Q<Label>("Version");
+            VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+            _loginPanel = root.Q<VisualElement>("LoginContainer");
+            _userInput = root.Q<TextField>("UserTextField");
+            _passwordInput = root.Q<TextField>("PasswordTextField");
+            _newUserPanel = root.Q<VisualElement>("NewUserContainer");
+            _addNewUserInput = root.Q<TextField>("NewUserTextField");
+            _addNewPasswordInput = root.Q<TextField>("NewPasswordTextField");
+            _openAddNewUserPanelButton = root.Q<Button>("AddNewUserButton");
+            _adminAuthorizationPanel = root.Q<VisualElement>("AdminAuthorizationContainer");
+            _adminUserInput = root.Q<TextField>("AdminUserTextField");
+            _adminPasswordInput = root.Q<TextField>("AdminPasswordTextField");
+            _closeAdminAuthorizationPanelButton = root.Q<Button>("AdminCancelButton");
+            _closeNewUserPanelButton = root.Q<Button>("CancelNewuserButton");
+            _openAdminAuthorizationPanelButton = root.Q<Button>("OpenAdminAuthorizeButton");
+            _loginShowHidePasswordButton = root.Q<Button>("LoginShowHidePassword");
+            _newUserShowHidePasswordButton = root.Q<Button>("NewUserShowHidePassword");
+            _adminShowHidePasswordButton = root.Q<Button>("AdminShowHidePassword");
+            _versionLabel = root.Q<Label>("Version");
             SubscribeUIElementsToEvents();
         }
 
         private void SubscribeUIElementsToEvents()
         {
-            openAddNewUserPanelButton.clicked += () => { ShowAddNewUserPanel(); };
-            closeAdminAuthorizationPanelButton.clicked += () => { CloseAdminPanel(); };
-            closeNewUserPanelButton.clicked += () => { CancelAddNewUser(); };
-            openAdminAuthorizationPanelButton.clicked += () => { AdminAuthorizeAddNewUserClicked(); };
-            loginShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
-            newUserShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
-            adminShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+            _openAddNewUserPanelButton.clicked += () => { ShowAddNewUserPanel(); };
+            _closeAdminAuthorizationPanelButton.clicked += () => { CloseAdminPanel(); };
+            _closeNewUserPanelButton.clicked += () => { CancelAddNewUser(); };
+            _openAdminAuthorizationPanelButton.clicked += () => { AdminAuthorizeAddNewUserClicked(); };
+            _loginShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+            _newUserShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
+            _adminShowHidePasswordButton.clicked += () => { ShowHidePassword(); };
         }
 
         private void UnsubscribeUIElementsToEvents()
         {
-            openAddNewUserPanelButton.clicked -= () => { ShowAddNewUserPanel(); };
-            closeAdminAuthorizationPanelButton.clicked -= () => { CloseAdminPanel(); };
-            closeNewUserPanelButton.clicked -= () => { CancelAddNewUser(); };
-            openAdminAuthorizationPanelButton.clicked -= () => { AdminAuthorizeAddNewUserClicked(); };
-            loginShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
-            newUserShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
-            adminShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+            _openAddNewUserPanelButton.clicked -= () => { ShowAddNewUserPanel(); };
+            _closeAdminAuthorizationPanelButton.clicked -= () => { CloseAdminPanel(); };
+            _closeNewUserPanelButton.clicked -= () => { CancelAddNewUser(); };
+            _openAdminAuthorizationPanelButton.clicked -= () => { AdminAuthorizeAddNewUserClicked(); };
+            _loginShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+            _newUserShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
+            _adminShowHidePasswordButton.clicked -= () => { ShowHidePassword(); };
         }
 
         /// <summary>
@@ -151,29 +156,29 @@ namespace MainMenu
         /// </summary>
         private void GetUserAccessLevel(string accessLevel)
         {
-            authorizationAccessLevel = int.Parse(accessLevel);
+            _authorizationAccessLevel = int.Parse(accessLevel);
         }
 
-        /// <summary>
-        /// Check if the current platform that the program is running is Windows or not.
-        /// </summary>
-        private void CheckIfCurrentPlatformIsWindows()
-        {
-            if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-            {
-                isWindows = true;
-            }
-            else
-            {
-                isWindows = false;
-            }
-        }
+        ///// <summary>
+        ///// Check if the current platform that the program is running is Windows or not.
+        ///// </summary>
+        //private void CheckIfCurrentPlatformIsWindows()
+        //{
+        //    if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+        //    {
+        //        isWindows = true;
+        //    }
+        //    else
+        //    {
+        //        isWindows = false;
+        //    }
+        //}
 
         private void LoginOffline()
         {
-            if (userInput.text == UsersManager.Instance.admin.GetUsername() && passwordInput.text == UsersManager.Instance.admin.GetPassword())
+            if (_userInput.text == UsersManager.Instance.Admin.GetUsername() && _passwordInput.text == UsersManager.Instance.Admin.GetPassword())
             {
-                UsersManager.Instance.currentUser = new User(userInput.text, 10);
+                UsersManager.Instance.CurrentUser = new User(_userInput.text, 10);
                 LoadScreen();
             }
         }
@@ -183,28 +188,28 @@ namespace MainMenu
         /// </summary>
         private IEnumerator CheckIfAdmin()
         {
-            if ((adminUserInput.text == "" || adminUserInput.text == "Digite seu usuário") || (adminPasswordInput.text == "" || adminPasswordInput.text == "Digite sua senha"))
+            if ((_adminUserInput.text == "" || _adminUserInput.text == "Digite seu usuário") || (_adminPasswordInput.text == "" || _adminPasswordInput.text == "Digite sua senha"))
             {
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Empty values");
                 yield break;
             }
 
-            WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, adminUserInput.text, adminPasswordInput.text);
+            WWWForm checkAccesssLevelForm = CreateForm.GetCheckAccessLevelForm(ConstStrings.LoginKey, _adminUserInput.text, _adminPasswordInput.text);
 
             UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(checkAccesssLevelForm, ConstStrings.CheckAccessLevel, 0);
 
             yield return createPostRequest.SendWebRequest();
             if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                if (authorizationAccessLevel == 2 || authorizationAccessLevel > 4)
+                if (_authorizationAccessLevel == 2 || _authorizationAccessLevel > 4)
                 {
-                    User userToAdd = new User(addNewUserInput.text, addNewPasswordInput.text);
+                    User userToAdd = new User(_addNewUserInput.text, _addNewPasswordInput.text);
                     StartCoroutine(AddNewUser(userToAdd));
                 }
                 else
                 {
-                    inputEnabled = true;
+                    _inputEnabled = true;
                     EventHandler.CallIsOneMessageOnlyEvent(true);
                     EventHandler.CallOpenMessageEvent("Wrong authorization access level");
                     yield break;
@@ -217,7 +222,7 @@ namespace MainMenu
         /// </summary>
         private IEnumerator Login()
         {
-            if ((userInput.text == "" || userInput.text == "Digite seu usuário") || (passwordInput.text == "" || passwordInput.text == "Digite sua senha"))
+            if ((_userInput.text == "" || _userInput.text == "Digite seu usuário") || (_passwordInput.text == "" || _passwordInput.text == "Digite sua senha"))
             {
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Empty values");
@@ -225,23 +230,23 @@ namespace MainMenu
             }
             WWWForm loginUserInfo = new WWWForm();
             loginUserInfo.AddField("apppassword", "LoginUser");
-            loginUserInfo.AddField("username", userInput.text);
-            loginUserInfo.AddField("password", passwordInput.text);
+            loginUserInfo.AddField("username", _userInput.text);
+            loginUserInfo.AddField("password", _passwordInput.text);
 
             UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(loginUserInfo, ConstStrings.CheckLoginUser, 0);
 
             MouseManager.Instance.SetWaitingCursor();
-            inputEnabled = false;
+            _inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
 
             if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                UsersManager.Instance.currentUser = new User(userInput.text, authorizationAccessLevel);
+                UsersManager.Instance.CurrentUser = new User(_userInput.text, _authorizationAccessLevel);
                 LoadScreen();
             }
 
             MouseManager.Instance.SetDefaultCursor();
-            inputEnabled = true;
+            _inputEnabled = true;
         }
 
         /// <summary>
@@ -251,23 +256,23 @@ namespace MainMenu
         {
             WWWForm newUserInfo = new WWWForm();
             newUserInfo.AddField("apppassword", "CheckIfUserExist");
-            newUserInfo.AddField("username", addNewUserInput.text);
+            newUserInfo.AddField("username", _addNewUserInput.text);
 
             UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckUserExist, 0);
 
             MouseManager.Instance.SetWaitingCursor();
-            inputEnabled = false;
+            _inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
 
             if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                newUserPanel.style.display = DisplayStyle.None;
-                adminAuthorizationPanel.style.display = DisplayStyle.Flex;
-                adminAuthorizing = true;
+                _newUserPanel.style.display = DisplayStyle.None;
+                _adminAuthorizationPanel.style.display = DisplayStyle.Flex;
+                _adminAuthorizing = true;
             }
 
             MouseManager.Instance.SetDefaultCursor();
-            inputEnabled = true;
+            _inputEnabled = true;
         }
 
         /// <summary>
@@ -283,19 +288,19 @@ namespace MainMenu
             UnityWebRequest createPostRequest = CreatePostRequest.GetPostRequest(newUserInfo, ConstStrings.CheckNewUser, 0);
 
             MouseManager.Instance.SetWaitingCursor();
-            inputEnabled = false;
+            _inputEnabled = false;
             yield return createPostRequest.SendWebRequest();
             if (HandlePostRequestResponse.HandleWebRequest(createPostRequest))
             {
-                adminAuthorizationPanel.style.display = DisplayStyle.None;
-                adminAuthorizing = false;
-                loginPanel.style.display = DisplayStyle.Flex;
-                openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
-                loginEnabled = true;
+                _adminAuthorizationPanel.style.display = DisplayStyle.None;
+                _adminAuthorizing = false;
+                _loginPanel.style.display = DisplayStyle.Flex;
+                _openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
+                _loginEnabled = true;
             }
 
             MouseManager.Instance.SetDefaultCursor();
-            inputEnabled = true;
+            _inputEnabled = true;
         }
 
         /// <summary>
@@ -312,11 +317,11 @@ namespace MainMenu
         /// </summary>
         private void ShowAddNewUserPanel()
         {
-            openAddNewUserPanelButton.style.display = DisplayStyle.None;
-            loginPanel.style.display = DisplayStyle.None;
-            newUserPanel.style.display = DisplayStyle.Flex;
+            _openAddNewUserPanelButton.style.display = DisplayStyle.None;
+            _loginPanel.style.display = DisplayStyle.None;
+            _newUserPanel.style.display = DisplayStyle.Flex;
 
-            adminAuthorizing = false;
+            _adminAuthorizing = false;
         }
 
         /// <summary>
@@ -325,7 +330,7 @@ namespace MainMenu
         /// </summary>
         private void AdminAuthorizeAddNewUserClicked()
         {
-            if ((addNewUserInput.text == "" || addNewUserInput.text == "Digite o usuário a ser adicionado") || (addNewPasswordInput.text == "" || addNewPasswordInput.text == "Digite a senha do novo usuário"))
+            if ((_addNewUserInput.text == "" || _addNewUserInput.text == "Digite o usuário a ser adicionado") || (_addNewPasswordInput.text == "" || _addNewPasswordInput.text == "Digite a senha do novo usuário"))
             {
                 EventHandler.CallIsOneMessageOnlyEvent(true);
                 EventHandler.CallOpenMessageEvent("Empty values");
@@ -333,7 +338,7 @@ namespace MainMenu
             }
             else
             {
-                loginEnabled = false;
+                _loginEnabled = false;
 
 
                 StartCoroutine(CheckIfUserAlreadyExists());
@@ -345,43 +350,43 @@ namespace MainMenu
         /// </summary>
         private void ShowHidePassword()
         {
-            if (newUserPanel.style.display == DisplayStyle.Flex)
+            if (_newUserPanel.style.display == DisplayStyle.Flex)
             {
-                if (addNewPasswordInput.isPasswordField)
+                if (_addNewPasswordInput.isPasswordField)
                 {
-                    addNewPasswordInput.isPasswordField = false;
-                    newUserShowHidePasswordButton.style.backgroundImage = image2;
+                    _addNewPasswordInput.isPasswordField = false;
+                    _newUserShowHidePasswordButton.style.backgroundImage = _eyeOpenTexture;
                 }
                 else
                 {
-                    addNewPasswordInput.isPasswordField = true;
-                    newUserShowHidePasswordButton.style.backgroundImage = image1;
+                    _addNewPasswordInput.isPasswordField = true;
+                    _newUserShowHidePasswordButton.style.backgroundImage = _eyeClosedTexture;
                 }
             }
-            if (adminAuthorizationPanel.style.display == DisplayStyle.Flex)
+            if (_adminAuthorizationPanel.style.display == DisplayStyle.Flex)
             {
-                if (adminPasswordInput.isPasswordField)
+                if (_adminPasswordInput.isPasswordField)
                 {
-                    adminPasswordInput.isPasswordField = false;
-                    adminShowHidePasswordButton.style.backgroundImage = image2;
+                    _adminPasswordInput.isPasswordField = false;
+                    _adminShowHidePasswordButton.style.backgroundImage = _eyeOpenTexture;
                 }
                 else
                 {
-                    adminPasswordInput.isPasswordField = true;
-                    adminShowHidePasswordButton.style.backgroundImage = image1;
+                    _adminPasswordInput.isPasswordField = true;
+                    _adminShowHidePasswordButton.style.backgroundImage = _eyeClosedTexture;
                 }
             }
             else
             {
-                if (passwordInput.isPasswordField)
+                if (_passwordInput.isPasswordField)
                 {
-                    passwordInput.isPasswordField = false;
-                    loginShowHidePasswordButton.style.backgroundImage = image2;
+                    _passwordInput.isPasswordField = false;
+                    _loginShowHidePasswordButton.style.backgroundImage = _eyeOpenTexture;
                 }
                 else
                 {
-                    passwordInput.isPasswordField = true;
-                    loginShowHidePasswordButton.style.backgroundImage = image1;
+                    _passwordInput.isPasswordField = true;
+                    _loginShowHidePasswordButton.style.backgroundImage = _eyeClosedTexture;
                 }
             }
         }
@@ -391,14 +396,14 @@ namespace MainMenu
         /// </summary>
         private void CancelAddNewUser()
         {
-            addNewPasswordInput.SetValueWithoutNotify("Digite a senha do novo usuário");
-            addNewUserInput.SetValueWithoutNotify("Digite o usuário a ser adicionado");
-            newUserPanel.style.display = DisplayStyle.None;
-            loginPanel.style.display = DisplayStyle.Flex;
-            openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
-            loginEnabled = true;
-            adminAuthorizing = false;
-            inputEnabled = true;
+            _addNewPasswordInput.SetValueWithoutNotify("Digite a senha do novo usuário");
+            _addNewUserInput.SetValueWithoutNotify("Digite o usuário a ser adicionado");
+            _newUserPanel.style.display = DisplayStyle.None;
+            _loginPanel.style.display = DisplayStyle.Flex;
+            _openAddNewUserPanelButton.style.display = DisplayStyle.Flex;
+            _loginEnabled = true;
+            _adminAuthorizing = false;
+            _inputEnabled = true;
         }
 
         /// <summary>
@@ -406,11 +411,11 @@ namespace MainMenu
         /// </summary>
         private void CloseAdminPanel()
         {
-            adminUserInput.SetValueWithoutNotify("");
-            adminPasswordInput.SetValueWithoutNotify("");
-            adminAuthorizationPanel.style.display = DisplayStyle.None;
-            adminAuthorizing = false;
-            newUserPanel.style.display = DisplayStyle.Flex;
+            _adminUserInput.SetValueWithoutNotify("");
+            _adminPasswordInput.SetValueWithoutNotify("");
+            _adminAuthorizationPanel.style.display = DisplayStyle.None;
+            _adminAuthorizing = false;
+            _newUserPanel.style.display = DisplayStyle.Flex;
         }
     }
 }
