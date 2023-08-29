@@ -8,6 +8,7 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
         {
             allParameters.Add(ConstStrings.FonteDeAlimentacao, default);
             allParameters.Add(ConstStrings.Bateria, default);
+            allParameters.Add(ConstStrings.EntradaRJ45, default);
         }
     }
 }

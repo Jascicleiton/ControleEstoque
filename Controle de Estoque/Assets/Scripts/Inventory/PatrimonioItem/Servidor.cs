@@ -9,7 +9,7 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
             allParameters.Add(ConstStrings.Hd, default);
             allParameters.Add(ConstStrings.Memoria, default);
             allParameters.Add(ConstStrings.Processador, default);
-            allParameters.Add(ConstStrings.QualWindows, default);
+            allParameters.Add(ConstStrings.QualSistemaOperacional, default);
         }
     }
 }

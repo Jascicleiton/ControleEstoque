@@ -10,7 +10,7 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
             allParameters.Add(ConstStrings.QuantasPortas_I, default);
             allParameters.Add(ConstStrings.QuaisPortas, default);
             allParameters.Add(ConstStrings.SuportaFibra, default);
-            allParameters.Add(ConstStrings.DesempenhoMax_I, default);
+            allParameters.Add(ConstStrings.DesempenhoMax_F, default);
         }
     }
 }

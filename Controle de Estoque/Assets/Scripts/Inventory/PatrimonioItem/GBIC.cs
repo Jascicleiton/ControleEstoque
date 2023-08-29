@@ -6,7 +6,7 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
     {
         public GBIC()
         {
-            allParameters.Add(ConstStrings.DesempenhoMax_I, default);
+            allParameters.Add(ConstStrings.DesempenhoMax_F, default);
         }
     }
 }

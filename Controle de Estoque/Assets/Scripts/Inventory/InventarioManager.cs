@@ -12,9 +12,11 @@ namespace Assets.Scripts.Inventory
 {
     public class InventarioManager : Singleton<InventarioManager>
     {
+        private IImportingInventoryFunctions importingInventoryFunctions;
         //[SerializeField] private CurrentEstoque testingEstoque = CurrentEstoque.SnPro;
         void Start()
         {
+            importingInventoryFunctions = new NewImportingInventoryFunctions(InternalDatabase.Instance);
             //   DontDestroyOnLoad(this.gameObject);
             if (!InternalDatabase.Instance.isOfflineProgram)
             {
@@ -181,7 +183,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportAdaptadorAC(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportAdaptadorAC(inventario, out tempSheet);
 
                 }
             }
@@ -239,7 +241,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportCarregador(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportCarregador(inventario, out tempSheet);
 
                 }
             }
@@ -296,7 +298,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportDesktop(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportDesktop(inventario, out tempSheet);
 
                 }
             }
@@ -354,7 +356,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportFonte(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportFonte(inventario, out tempSheet);
 
                 }
             }
@@ -411,7 +413,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportGBIC(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportGBIC(inventario, out tempSheet);
 
                 }
             }
@@ -469,7 +471,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportHD(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportHD(inventario, out tempSheet);
 
                 }
             }
@@ -530,7 +532,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportIdrac(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportIdrac(inventario, out tempSheet);
 
                 }
             }
@@ -591,7 +593,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportInventory(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportInventory(inventario, out tempSheet);
                 }
             }
             else
@@ -652,7 +654,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportMemoria(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportMemoria(inventario, out tempSheet);
 
                 }
             }
@@ -713,7 +715,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportMonitor(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportMonitor(inventario, out tempSheet);
 
                 }
             }
@@ -770,7 +772,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportNotebook(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportNotebook(inventario, out tempSheet);
 
                 }
             }
@@ -827,7 +829,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportPlacaControladora(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportPlacaControladora(inventario, out tempSheet);
 
                 }
             }
@@ -884,7 +886,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportPlacaDeCapturaDeVideo(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportPlacaDeCapturaDeVideo(inventario, out tempSheet);
 
                 }
             }
@@ -941,7 +943,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportPlacaDeRede(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportPlacaDeRede(inventario, out tempSheet);
 
                 }
             }
@@ -999,7 +1001,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportPlacaDeSom(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportPlacaDeSom(inventario, out tempSheet);
 
                 }
             }
@@ -1056,7 +1058,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportPlacaDeVideo(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportPlacaDeVideo(inventario, out tempSheet);
 
                 }
             }
@@ -1113,7 +1115,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportPlacaSAS(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportPlacaSAS(inventario, out tempSheet);
 
                 }
             }
@@ -1170,7 +1172,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportProcessador(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportProcessador(inventario, out tempSheet);
 
                 }
             }
@@ -1227,7 +1229,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportRoteador(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportRoteador(inventario, out tempSheet);
 
                 }
             }
@@ -1284,7 +1286,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportServidor(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportServidor(inventario, out tempSheet);
 
                 }
             }
@@ -1341,7 +1343,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportStorageNas(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportStorageNas(inventario, out tempSheet);
 
                 }
             }
@@ -1398,7 +1400,7 @@ namespace Assets.Scripts.Inventory
                 else
                 {
                     JSONNode inventario = JSON.Parse(getInventarioRequest.downloadHandler.text);
-                    ImportingInventoryFunctions.ImportSwitch(inventario, out tempSheet);
+                    importingInventoryFunctions.ImportSwitch(inventario, out tempSheet);
 
                 }
             }

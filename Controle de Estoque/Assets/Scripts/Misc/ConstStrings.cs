@@ -49,7 +49,7 @@ namespace Assets.Scripts.Misc
         public const string RPM_I = nameof(RPM_I);
         public const string VelocidadeDeLeitura_I = nameof(VelocidadeDeLeitura_I);
         public const string Enterprise = nameof(Enterprise);
-        public const string DesempenhoMax_I = nameof(DesempenhoMax_I);
+        public const string DesempenhoMax_F = nameof(DesempenhoMax_F);
         public const string Watts_I = nameof(Watts_I);
         public const string Conectores = nameof(Conectores);
         public const string Polegadas = nameof(Polegadas);
@@ -81,6 +81,8 @@ namespace Assets.Scripts.Misc
         public const string TamanhoDosHds = nameof(TamanhoDosHds);
         public const string QuantasEQuaisPortas = nameof(QuantasEQuaisPortas);
         public const string CapacidadeMaxCadaPorta = nameof(CapacidadeMaxCadaPorta);
+        public const string EntradaRJ45 = nameof(EntradaRJ45);
+        public const string QualSistemaOperacional = nameof(QualSistemaOperacional);
         #endregion
 
         #region categories names

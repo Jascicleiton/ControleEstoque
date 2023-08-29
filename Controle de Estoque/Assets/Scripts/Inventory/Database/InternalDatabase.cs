@@ -5,10 +5,11 @@ using Assets.Scripts.Inventory.NoPatrimonioItem;
 using Assets.Scripts.Inventory.Movement;
 using Assets.Scripts.Misc;
 using Assets.Scripts.Saving;
+using Assets.Scripts.Inventory.PatrimonioItem;
 
 namespace Assets.Scripts.Inventory.Database
 {
-    public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable
+    public class InternalDatabase : Singleton<InternalDatabase>, IJsonSaveable, IInternalDatabase
     {
         // [SerializeField] GameObject importingWidget;
         [SerializeField] GameObject exportManagerPrefab;
@@ -60,6 +61,8 @@ namespace Assets.Scripts.Inventory.Database
         public CurrentEstoque currentEstoque = CurrentEstoque.SnPro;
         public List<string> testing = new List<string>();
         public Sheet sheetToLoad = new Sheet();
+        public List<PatrimonioItemParent> itemsList = new List<PatrimonioItemParent>(2000);
+        public List<PatrimonioItemParent> tempItemsList = new List<PatrimonioItemParent>(500);
 
         [SerializeField] private int lastProcessador;
 
@@ -333,6 +336,22 @@ namespace Assets.Scripts.Inventory.Database
             HandleSheetsForSaveAndLoad.LoadJObject(state, out sheetToLoad);
             fullDatabase = sheetToLoad;
             FillCategoryDatabases();
+        }
+
+        public void AddTemporaryPatrimonioItem(PatrimonioItemParent item)
+        {
+            if(!tempItemsList.Contains(item))
+            {
+                tempItemsList.Add(item);
+            }            
+        }
+
+        public void AddPatrimonioItem(PatrimonioItemParent item)
+        {
+            if (!itemsList.Contains(item))
+            {
+                itemsList.Add(item);
+            }
         }
     }
 }

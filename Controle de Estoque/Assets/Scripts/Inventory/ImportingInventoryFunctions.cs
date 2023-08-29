@@ -5,13 +5,12 @@ using Assets.Scripts.Misc;
 
 namespace Assets.Scripts.Inventory
 {
-
     /// <summary>
     /// Class used to fill the sheet from a specific inventory table that was imported and generated a JSONNode
     /// </summary>
-    public class ImportingInventoryFunctions
+    public class ImportingInventoryFunctions : IImportingInventoryFunctions
     {
-        public static void ImportAdaptadorAC(JSONNode inventario, out Sheet importSheet)
+        public void ImportAdaptadorAC(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             switch (InternalDatabase.Instance.currentEstoque)
@@ -57,11 +56,10 @@ namespace Assets.Scripts.Inventory
                         importSheet.itens.Add(newRow);
                     }
                     break;
-            }
-            InternalDatabase.Instance.testingSheet = importSheet;
+            }       
         }
 
-        public static void ImportCarregador(JSONNode inventario, out Sheet importSheet)
+        public void ImportCarregador(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -76,7 +74,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportDesktop(JSONNode inventario, out Sheet importSheet)
+        public void ImportDesktop(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
 
@@ -137,7 +135,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportFonte(JSONNode inventario, out Sheet importSheet)
+        public void ImportFonte(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
 
@@ -153,7 +151,12 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportGBIC(JSONNode inventario, out Sheet importSheet)
+        public void ImportFonteDeAlimentacao(JSONNode inventario)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ImportGBIC(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -167,7 +170,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportHD(JSONNode inventario, out Sheet importSheet)
+        public void ImportHD(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -189,7 +192,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportIdrac(JSONNode inventario, out Sheet importSheet)
+        public void ImportIdrac(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -206,7 +209,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportInventory(JSONNode inventario, out Sheet importSheet)
+        public void ImportInventory(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             if (inventario != null)
@@ -259,7 +262,7 @@ namespace Assets.Scripts.Inventory
 
         }
 
-        public static void ImportMemoria(JSONNode inventario, out Sheet importSheet)
+        public void ImportMemoria(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -283,7 +286,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportMonitor(JSONNode inventario, out Sheet importSheet)
+        public void ImportMonitor(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             switch (InternalDatabase.Instance.currentEstoque)
@@ -316,7 +319,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportNotebook(JSONNode inventario, out Sheet importSheet)
+        public void ImportNotebook(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             switch (InternalDatabase.Instance.currentEstoque)
@@ -377,7 +380,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportPlacaControladora(JSONNode inventario, out Sheet importSheet)
+        public void ImportPlacaControladora(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -397,7 +400,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportPlacaDeCapturaDeVideo(JSONNode inventario, out Sheet importSheet)
+        public void ImportPlacaDeCapturaDeVideo(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -410,7 +413,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportPlacaDeRede(JSONNode inventario, out Sheet importSheet)
+        public void ImportPlacaDeRede(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -428,7 +431,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportPlacaDeSom(JSONNode inventario, out Sheet importSheet)
+        public void ImportPlacaDeSom(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -441,7 +444,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportPlacaDeVideo(JSONNode inventario, out Sheet importSheet)
+        public void ImportPlacaDeVideo(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -455,7 +458,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportPlacaSAS(JSONNode inventario, out Sheet importSheet)
+        public void ImportPlacaSAS(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             if (inventario.Count > 0)
@@ -472,7 +475,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportProcessador(JSONNode inventario, out Sheet importSheet)
+        public void ImportProcessador(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -487,7 +490,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportRoteador(JSONNode inventario, out Sheet importSheet)
+        public void ImportRoteador(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             switch (InternalDatabase.Instance.currentEstoque)
@@ -539,7 +542,7 @@ namespace Assets.Scripts.Inventory
 
         }
 
-        public static void ImportServidor(JSONNode inventario, out Sheet importSheet)
+        public void ImportServidor(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             switch (InternalDatabase.Instance.currentEstoque)
@@ -621,7 +624,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportStorageNas(JSONNode inventario, out Sheet importSheet)
+        public void ImportStorageNas(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             foreach (JSONNode item in inventario)
@@ -639,7 +642,7 @@ namespace Assets.Scripts.Inventory
             }
         }
 
-        public static void ImportSwitch(JSONNode inventario, out Sheet importSheet)
+        public void ImportSwitch(JSONNode inventario, out Sheet importSheet)
         {
             importSheet = new Sheet();
             switch (InternalDatabase.Instance.currentEstoque)

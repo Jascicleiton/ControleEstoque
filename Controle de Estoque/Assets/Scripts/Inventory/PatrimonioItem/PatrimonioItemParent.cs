@@ -46,7 +46,15 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
         /// </summary>
         public List<string> GetAllParametersAslist()
         {
-            return allParameters.Values.ToList();
+            var listToReturn = allParameters.Values.ToList();
+            foreach (var item in listToReturn)
+            {
+                if(item is null)
+                {
+                    listToReturn.Remove(item);
+                }
+            }
+            return listToReturn;
         }
 
         /// <summary>
@@ -54,7 +62,16 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
         /// </summary>
         public Dictionary<string, string> GetAllParametersDictionary()
         {
-            return allParameters;
+            Dictionary<string, string> dictionaryToReturn = new Dictionary<string, string>();
+            foreach (var item in allParameters)
+            {
+                if(item.Value is not null)
+                {
+                    dictionaryToReturn.Add(item.Key, item.Value);
+                }
+            }
+
+            return dictionaryToReturn;
         }
 
         /// <summary>
@@ -73,7 +90,7 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
                     Debug.LogWarning($"Invalid parameter name or parameter not registerd on {nameof(allParameters)} dictionary");
                 }
             }
-        }
+        }       
 
         /// <summary>
         /// Set a specific parameter value
@@ -125,11 +142,22 @@ namespace Assets.Scripts.Inventory.PatrimonioItem
             return null;
         }
 
+        public int GetPatrimonio()
+        {
+            return int.Parse(GetSpecificParameter(ConstStrings.Patrimonio_I));
+        }
+
         #region Equality overloads/overrides
         public bool Equals(PatrimonioItemParent other)
         {
             return GetSpecificParameter(ConstStrings.Patrimonio_I) == other.GetSpecificParameter(ConstStrings.Patrimonio_I);
         }
+
+        public bool Equals(PatrimonioItemParent other, string parameterToBeUsedToCompare)
+        {
+            return GetSpecificParameter(parameterToBeUsedToCompare).ToLower() == other.GetSpecificParameter(parameterToBeUsedToCompare).ToLower();
+        }
+
         public override bool Equals(object obj)
         {
             return obj is PatrimonioItemParent other &&
